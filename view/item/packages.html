@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body class="body-padding-xs cart-padding">
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">组合促销</div>
+      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+    </header>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      
+    </div>
+    <div class="action-bar-mini">
+      <div class="op-item content-left">
+        组合优惠价：<mark class="total fontm">¥ 0</mark>
+      </div>
+      <div class="op-item content-right">
+        <div class="mui-numbox" data-numbox-min="1" data-numbox-max="">
+          <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+          <input id="socket" min="1" pattern="\d*" class="mui-input-numbox action-quantity-input" type="number" value="1">
+          <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="action-bar">
+      <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/quickcart.html">
+        <div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span>购物车</span></div>
+      </div>
+      <div class="op-item op-btn goods-op-cart action-addtocart">
+        <a>加入购物车</a>
+      </div>
+      <div class="op-item op-btn goods-op-buy action-fastbuy">
+        <a>立即购买</a>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+
+  <script type="text/html" id="packages_list">
+    <% for(var i=0; i<item.length; i++){ %>
+      <section class="section-white package-item" data-sku="<% if(item[i].sku != null){ %><%= $json_string(item[i].sku.specSku) %><% } %>" data-skuid="<% if(item[i].default_sku_id){ %><%= item[i].default_sku_id %><% } %>">
+        <div class="action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= item[i].item_id %>}'>
+          <div class="content-padded box-display theme-border-bottom">
+            <div class="thumb"><img class="goods-photo" src="<%= item[i].image_default_id %>" alt=""></div>
+            <div class="box-item-flex1 package-socket" style="position: relative">
+              <div class="inline-overflow font-gray-0 fontS"><%= item[i].title%></div>
+              <div class="font-gray-40 fonts">组合价：<mark class="fontm"><%= $format_price(item[i].package_price) %></mark></div>
+              <div class="font-gray-40 fonts">原&nbsp;&nbsp;&nbsp;&nbsp;价：<span class="original-price"><%= $format_price(item[i].price) %></span></div>
+              <div class="package-socket-none fontS font-gray-40">无库存</div>
+            </div>
+          </div>
+        </div>
+        <% if(item[i].sku != null){ %>
+        <div class="goods-sku-list">
+          <ul class="font-gray-20">
+              <% if(item[i].sku.spec_desc != null){ %>
+              <% for(var j=0; j< item[i].sku.spec_desc.length; j++) { %>
+              <li class="sku-item">
+                <div class="goods-sku-name">
+                  <%= item[i].sku.spec_desc[j].spec_name %>
+                </div>
+                <div class="goods-sku-options">
+                  <% for(var k=0; k<item[i].sku.spec_desc[j].spec_val.length; k++) { %>
+                    <span data-photo="<%= item[i].sku.spec_desc[j].spec_val[k].spec_image %>" data-spec-value-id="<%= item[i].sku.spec_desc[j].spec_val[k].spec_value_id %>"><%= item[i].sku.spec_desc[j].spec_val[k].spec_value %></span>
+                  <% } %>
+                </div>
+              </li>
+              <% } %>
+              <% } %>
+            </ul>
+        </div>
+        <% } %>
+      </section>
+    <% } %>
+  </script>
+
+  <script>
+    mui.plusReady(function() {
+      var state = app.getState();
+      var package_id = plus.webview.currentWebview().packageid;
+      var param = {
+        queryData: {
+          'method': config.apimethod.packages,
+          'package_id': package_id
+        },
+        method: 'GET'
+      }
+
+      $.dataRequest(param, function(rs) {
+        var data = rs.data;
+        var packagesEl = template('packages_list', data);
+        $('.container').html(packagesEl);
+        $('.total').text(Currency.format(data.package_total_price));
+        if(data.valid == false){
+          $('.goods-op-cart').removeClass('action-addtocart').addClass('bg-gray-40');
+          $('.goods-op-buy').removeClass('action-fastbuy').addClass('bg-gray-20');
+          $('.header-title').text('已失效商品');
+        }
+        
+        var realStore, total=0;
+        var skuIds = [];
+        $('.container').on('tap', '.goods-sku-options>span', function() {
+          var skuStore;
+          var spec_select = $(this).parents('.goods-sku-list');
+          var spec_size = spec_select.find('.sku-item').length;
+          $(this).addClass('checked').siblings().removeClass('checked');
+          if($(this).data('photo')) {
+            $(this).parents('.package-item').find('.goods_photo').attr('src', $(this).data('photo'));
+          }
+          var selected = spec_select.find('.checked');
+          var selectedSpec = [];
+          selected.each(function(index, el) {
+            selectedSpec.push($(this).html());
+          });
+          
+          if(selected.length == spec_size) {
+            var key = [];
+            selected.each(function(index, el) {
+              key.push($(this).attr('data-spec-value-id'));
+              selectedSpec.push($(this).html());
+            });
+            key = key.join('_');
+            var skuGroup = $(this).parents('.package-item').data('sku');
+            
+            for (var i=0; i<skuGroup.length; i++) {
+            	 if(skuGroup[i].spec == key){
+            	   skuStore = skuGroup[i].store;
+            	   if(skuGroup[i].store==0){
+            	     $(this).parents('.package-item').find('.package-socket-none').show();
+            	   }else{
+            	     $(this).parents('.package-item').find('.package-socket-none').hide();
+            	   }
+            	   $(this).parents('.package-item').data('skuid',skuGroup[i].sku_id);
+            	   total = total+(+skuGroup[i].price);
+            	 }
+            }
+            
+            if(realStore==undefined){
+              realStore = skuStore;
+            }else{
+              if(realStore>skuStore){
+                realStore = skuStore;
+              }
+            }
+            $('#skuStore').attr('mui-data-max',realStore);
+             var max = mui('.mui-numbox').numbox();
+             max.options["max"] = realStore;
+          }
+        });
+        
+        $('.mui-numbox').on('tap', '.mui-btn', function() {
+          var currentPrice = data.package_total_price*$('.action-quantity-input').val();
+          $('.total').text(Currency.format(currentPrice));
+        });
+        
+        $('.action-fastbuy').on('tap', function() {
+          var skuIds = '';
+          var itemlist = $('.package-item');
+          for(var i=0; i<itemlist.length; i++){
+            var currentSku = $(itemlist[i]).data('skuid');
+            if(!currentSku){
+              mui.toast('请选择完整的规格');
+              return;
+            }else{
+              skuIds = skuIds+currentSku+',';
+            }
+          }
+          var param = {
+            queryData: {
+              'method': config.apimethod.cartadd,
+              'accessToken': state.token,
+              'quantity': $('.action-quantity-input').val(),
+              'package_id': package_id,
+              'package_sku_ids': skuIds,
+              'obj_type': 'package',
+              'mode': 'fastbuy'
+            },
+            method: 'GET'
+          }
+          log(param);
+          $.dataRequest(param, function(rs) {
+            clicked('_www/view/cart/checkout.html', {
+              'mode': 'fastbuy'
+            });
+          });
+        });
+        $('.action-addtocart').on('tap', function() {
+          var skuIds = [];
+          var itemlist = $('.package-item');
+          for(var i=0; i<itemlist.length; i++){
+            var currentSku = $(itemlist[i]).data('skuid');
+            if(!currentSku){
+              mui.toast('请选择完整的规格');
+              return;
+            }else{
+              skuIds = skuIds+currentSku+',';
+            }
+          }
+          var param = {
+            queryData: {
+              'method': config.apimethod.cartadd,
+              'accessToken': state.token,
+              'quantity': $('.action-quantity-input').val(),
+              'package_id': package_id,
+              'package_sku_ids': skuIds,
+              'obj_type': 'package',
+              'mode': 'cart'
+            },
+            method: 'GET'
+          }
+          $.dataRequest(param, function(rs) {
+            mui.toast('成功添加到购物车')
+          });
+        });
+      });
+    })
+  </script>
+
+</html>

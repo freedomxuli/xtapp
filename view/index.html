@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/widgets.css" />
+  </head>
+
+  <body>
+    <header class="home-header">
+      <div class="header-logo"><img src=""></div>
+      <div class="main">
+        <form onsubmit="return false;">
+          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
+        </form>
+      </div>
+      <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
+      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
+    </header>
+    <div class="container">
+      <div class="mui-scroll-wrapper bbc-pullrefresh-top">
+        <div class="mui-scroll">
+          <div class="mui-content content-bottom-padded-nav"></div>
+        </div>
+      </div>
+    </div>
+    <nav class="mui-bar bbc-bar-tab">
+      <a class="bbc-tab-item bbc-active">
+        <span class="mui-icon bbc-icon bbc-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+        <span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+        <span class="mui-tab-label">分类</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
+        <span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+        <span class="mui-tab-label">购物车</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+        <span class="mui-tab-label">会员</span>
+      </a>
+    </nav>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/template.min.js"></script>
+    <script src="../config.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/mipush.js"></script>
+
+    <script type="text/html" id="widget_slider">
+      <div id="slider" class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop widgets-slider">
+          <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+          <div class="mui-slider-item mui-slider-item-duplicate">
+            <a class="action-webview" data-webview="<%= pic[pic.length-1].webview %>" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
+              <img src="<%= pic[pic.length-1].imagesrc %>">
+            </a>
+          </div>
+          <% for(var i in pic) { %>
+          <div class="mui-slider-item">
+            <a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+              <img src="<%= pic[i].imagesrc %>">
+            </a>
+          </div>
+          <% } %>
+          <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+          <div class="mui-slider-item mui-slider-item-duplicate">
+            <a class="action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+              <img src="<%= pic[0].imagesrc %>">
+            </a>
+          </div>
+        </div>
+        <div class="mui-slider-indicator">
+          <% for(var i=0; i<pic.length; i++) { %>
+          <div class="mui-indicator <%= (i==0) ? 'mui-active' : ' ' %> "></div>
+          <% } %>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/html" id="widget_icons_nav">
+      <section>
+        <ul class="widgets-icons-nav">
+          <% for(var i in pic) { %>
+          <li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'><i><a href="#"><img src="<%= pic[i].imagesrc %>"></a></i><span><%= pic[i].tag %></span></li>
+          <% } %>
+        </ul>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_single_pic">
+      <section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
+        <img src="<%= imagesrc %>">
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_double_pics">
+      <section class="widgets-double-pics">
+        <div class="pics-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+          <a><img src="<%= pic[0].imagesrc %>"></a>
+        </div>
+        <div class="pics-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
+          <a><img src="<%= pic[1].imagesrc %>"></a>
+        </div>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_floor_one">
+      <section class="widgets-floor section-white">
+        <div class="section-title">
+          <div class="title-txt">
+            <%= title %>
+          </div>
+          <div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
+        </div>
+        <div class="floor-container floor-showarea-inline">
+          <div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+            <a href="#"><img src="<%= pic[0].imagesrc %>"></a>
+          </div>
+          <div class="showarea-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
+            <a href="#"><img src="<%= pic[1].imagesrc %>"></a>
+          </div>
+        </div>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_floor_two">
+      <section class="widgets-floor section-white">
+        <div class="section-title">
+          <div class="title-txt">
+            <%= title %>
+          </div>
+          <div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
+        </div>
+        <div class="floor-container floor-showarea-group">
+          <div class="showarea-item-ingroup">
+            <div class="item-ingroup-top action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+              <a href="#"><img src="<%= pic[0].imagesrc %>"></a>
+            </div>
+            <div class="item-ingroup-bottom">
+              <div class="ingroup-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
+                <a href="#"><img src="<%= pic[1].imagesrc %>"></a>
+              </div>
+              <div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
+                <a href="#"><img src="<%= pic[2].imagesrc %>"></a>
+              </div>
+            </div>
+          </div>
+          <div class="showarea-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
+            <a href="#"><img src="<%= pic[3].imagesrc %>"></a>
+          </div>
+        </div>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_floor_three">
+      <section class="widgets-floor section-white">
+        <div class="section-title">
+          <div class="title-txt">
+            <%= title %>
+          </div>
+          <div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
+        </div>
+        <div class="floor-container floor-showarea-group">
+          <div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+            <a href="#"><img src="<%= pic[0].imagesrc %>"></a>
+          </div>
+          <div class="showarea-item-ingroup">
+            <div class="item-ingroup-top action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
+              <a href="#"><img src="<%= pic[1].imagesrc %>"></a>
+            </div>
+            <div class="item-ingroup-bottom">
+              <div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
+                <a href="#"><img src="<%= pic[2].imagesrc %>"></a>
+              </div>
+              <div class="ingroup-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
+                <a href="#"><img src="<%= pic[3].imagesrc %>"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_category_nav">
+      <section class="widgets-category-nav section-white">
+        <div class="section-title">
+          <div class="title-txt">商品分类</div>
+          <div class="more-link action-webview" data-webview="_www/view/category/category.html">查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
+        </div>
+        <ul class="category-nav-list">
+          <% for(var i in pic) { %>
+          <li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+            <div class="nav-items">
+              <div class="category-nav-txt">
+                <div>
+                  <p class="category-name">
+                    <%= pic[i].categoryname %>
+                  </p>
+                  <p class="category-sub-des">
+                    <%= pic[i].linkinfo %>
+                  </p>
+                </div>
+              </div>
+              <div class="category-thumb-img">
+                <a href="#"><img src="<%= pic[i].imagesrc %>" alt=""></a>
+              </div>
+            </div>
+          </li>
+          <% } %>
+        </ul>
+      </section>
+    </script>
+
+    <script type="text/html" id="widget_goods_like">
+      <section class="widgets-goods-like">
+        <div class="widgets-goods-like-header">
+          <span>猜你喜欢</span>
+        </div>
+        <div class="mui-table-view">
+          <ul class="pro-list-grid">
+            <% for(var i in pic) { %>
+            <li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+              <div class="thumbnail">
+                <div class="thumb-img">
+                  <a href="#"><img src="<%= object[i].imagesrc %>" alt=""></a>
+                </div>
+                <div class="caption">
+                  <h1 class="goods-title"><span class="tag"><%= pic[i].promotion %></span><%= pic[i].title %></h1>
+                  <div class="price">
+                    <div class="amount CNY">
+                      <%= pic[i].price %>
+                    </div>
+                    <div class="purchased">已有
+                      <%= pic[i].num %>人购买</div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </section>
+    </script>
+
+    <script type="text/javascript">
+      mui.init({
+        swipeBack: true //启用右滑关闭功能
+      });
+
+      var param = {
+        queryData: {
+          'method': config.apimethod.home,
+          'tmpl': 'index'
+        },
+        method: 'GET'
+      }
+
+      $.dataRequest(param, function(rs) {
+        var data = rs.data.modules;
+        for(var i = 0; i < data.length; i++) {
+          var tpl_id = '';
+          if(!isEmptyObject(data[i].params)) {
+            if(data[i].widget == 'floor') {
+              tpl_id = 'widget_' + data[i].widget + '_' + data[i].params.styletag;
+            } else {
+              tpl_id = 'widget_' + data[i].widget
+            }
+            var widgets = template(tpl_id, data[i].params);
+            $('.mui-content').append(widgets);
+            mui('.mui-scroll-wrapper').scroll({
+              indicators: false
+            });
+          }
+        }
+        $('.header-logo img').attr('src',rs.data.brand_logo);
+
+        var gallery = mui("#slider");
+        gallery.slider({
+          interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+        });
+      });
+
+      $('.bbc-tab-item').on('tap', function() {
+        var webview = $(this).data('webview');
+        if(webview) {
+          mui.openWindow({
+            url: webview,
+            id: webview,
+            createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+            show: {
+              autoShow: true, //页面loaded事件发生后自动显示，默认为true
+              aniShow: 'none'
+            },
+            extras:{
+              refresh: true
+            },
+            waiting: {
+              autoShow: true //自动显示等待框，默认为true
+            }
+          });
+          var openw = plus.webview.getWebviewById(webview);
+          if(openw) {
+            mui.fire(openw,'refresh');
+          }
+        }
+      });
+
+      mui.plusReady(function() {
+        // Android处理返回键
+        plus.key.addEventListener('backbutton', function() {
+          plus.runtime.quit();
+        }, false);
+      });
+    </script>
+  </body>
+
+</html>

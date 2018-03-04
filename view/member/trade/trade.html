@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <style>
+      .mui-bar~.mui-content .mui-fullscreen {
+        top: 44px;
+        height: auto;
+      }
+      
+      .mui-pull-top-tips {
+        position: absolute;
+        top: -1.8rem;
+        left: 50%;
+        margin-left: -0.8rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 100%;
+        z-index: 1;
+      }
+      
+      .mui-bar~.mui-pull-top-tips {
+        top: 2rem;
+      }
+      
+      .mui-pull-top-wrapper {
+        width: 42px;
+        height: 42px;
+        display: block;
+        text-align: center;
+        background-color: #efeff4;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        background-clip: padding-box;
+        box-shadow: 0 4px 10px #bbb;
+        overflow: hidden;
+      }
+      
+      .mui-pull-top-tips.mui-transitioning {
+        -webkit-transition-duration: 200ms;
+        transition-duration: 200ms;
+      }
+      
+      .mui-pull-top-tips .mui-pull-loading {
+        /*-webkit-backface-visibility: hidden;
+        -webkit-transition-duration: 400ms;
+        transition-duration: 400ms;*/
+        margin: 0;
+      }
+      
+      .mui-pull-top-wrapper .mui-icon,
+      .mui-pull-top-wrapper .mui-spinner {
+        margin-top: 7px;
+      }
+      
+      .mui-pull-top-wrapper .mui-icon.mui-reverse {
+        /*-webkit-transform: rotate(180deg) translateZ(0);*/
+      }
+      
+      .mui-pull-bottom-tips {
+        text-align: center;
+        background-color: #efeff4;
+        font-size: .9rem;
+        line-height: 2.2rem;
+        color: #777;
+      }
+      
+      .mui-pull-top-canvas {
+        overflow: hidden;
+        background-color: #fafafa;
+        border-radius: 40px;
+        box-shadow: 0 4px 10px #bbb;
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+      }
+      
+      .mui-pull-top-canvas canvas {
+        width: 40px;
+      }
+      
+      .mui-slider-indicator.mui-segmented-control {
+        background-color: #efeff4;
+      }
+      
+      .mui-scroll> .mui-table-view> .mui-table-view-cell {
+        padding: 0;
+        background: #fff;
+        margin-bottom: 10px;
+      }
+      
+      .mui-preview-image.mui-fullscreen {
+        position: fixed;
+        z-index: 20;
+        background-color: #000;
+      }
+      
+      .mui-preview-header,
+      .mui-preview-footer {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        z-index: 10;
+      }
+      
+      .mui-preview-header {
+        height: 44px;
+        top: 0;
+      }
+      
+      .mui-preview-footer {
+        height: 50px;
+        bottom: 0px;
+      }
+      
+      .mui-preview-header .mui-preview-indicator {
+        display: block;
+        line-height: 25px;
+        color: #fff;
+        text-align: center;
+        margin: 15px auto 4px;
+        width: 70px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+        font-size: 16px;
+      }
+      
+      .mui-preview-image {
+        display: none;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+      
+      .mui-preview-image.mui-preview-in {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+      }
+      
+      .mui-preview-image.mui-preview-out {
+        background: none;
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+      }
+      
+      .mui-preview-image.mui-preview-out .mui-preview-header,
+      .mui-preview-image.mui-preview-out .mui-preview-footer {
+        display: none;
+      }
+      
+      .mui-zoom-scroller {
+        position: absolute;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        -webkit-backface-visibility: hidden;
+      }
+      
+      .mui-zoom {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+      
+      .mui-slider .mui-slider-group .mui-slider-item img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      
+      .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+        width: 100%;
+      }
+      
+      .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+        display: inline-table;
+      }
+      
+      .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      
+      .mui-preview-loading {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      
+      .mui-preview-loading.mui-active {
+        display: block;
+      }
+      
+      .mui-preview-loading .mui-spinner-white {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -25px;
+        margin-top: -25px;
+        height: 50px;
+        width: 50px;
+      }
+      
+      .mui-preview-image img.mui-transitioning {
+        -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+      
+      @-webkit-keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      @-webkit-keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      
+      p img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">我的订单</div>
+      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+    </header>
+    <div class="container">
+      <div id="slider" class="mui-slider mui-fullscreen bbc-tab-bar bbc-pullrefresh-top">
+        <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+          <a class="mui-control-item mui-active" href="#item1mobile">全部</a>
+          <a class="mui-control-item" href="#item2mobile">待付款</a>
+          <a class="mui-control-item" href="#item3mobile">待发货</a>
+          <a class="mui-control-item" href="#item4mobile">待收货</a>
+          <a class="mui-control-item" href="#item5mobile">待评价</a>
+        </div>
+        <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2-5"></div>
+        <div class="mui-slider-group">
+          <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+            <div id="scroll1" class="mui-scroll-wrapper">
+              <div class="mui-scroll" data-count="1">
+                <ul class="mui-table-view" data-type="">
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="item2mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll2" class="mui-scroll-wrapper">
+              <div class="mui-scroll" data-count="1">
+                <ul class="mui-table-view" data-type="WAIT_BUYER_PAY">
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="item3mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll3" class="mui-scroll-wrapper">
+              <div class="mui-scroll" data-count="1">
+                <ul class="mui-table-view" data-type="WAIT_SELLER_SEND_GOODS">
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="item4mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll4" class="mui-scroll-wrapper">
+              <div class="mui-scroll" data-count="1">
+                <ul class="mui-table-view" data-type="WAIT_BUYER_CONFIRM_GOODS">
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div id="item5mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll5" class="mui-scroll-wrapper">
+              <div class="mui-scroll" data-count="1">
+                <ul class="mui-table-view" data-type="WAIT_RATE">
+                  <div class="mui-loading">
+                    <div class="mui-spinner">
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/mui.pullToRefresh.js"></script>
+    <script src="../../../js/mui.pullToRefresh.material.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+
+    <script type="text/html" id="trade_list">
+      <% for(var i=0; i<list.length; i++){ %>
+      <li class="mui-table-view-cell">
+        <div class="content-padded">
+          <div class="mui-table">
+            <div class="mui-table-cell mui-col-xs-6">
+              <a class="inline-overflow action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= list[i].shop_id %>}'>
+                <%= list[i].shopname %>
+              </a>
+              <i class="bbc-icon bbc-icon-forward font-gray-40"></i>
+            </div>
+            <div class="mui-table-cell mui-col-xs-4 mui-text-right">
+              <mark><%= list[i].status_desc %></mark>
+            </div>
+          </div>
+        </div>
+        <div  class="content-padded function-list bg-gray-0">
+          <a class="mui-navigate-right action-webview" data-webview="_www/view/member/trade/tradedetail.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+            <div class="mui-table">
+              <div class="mui-table-cell mui-col-xs-8 checkout-goods-list">
+                <div class="checkout-goods-warp ">
+                  <% for(var j=0; j<list[i].order.length; j++){ %>
+                  <div class="thumbnail ">
+                    <div class="thumb-img ">
+                      <img src="<%= list[i].order[j].pic_path %>" alt="">
+                    </div>
+                  </div>
+
+                  <% if(list[i].order[j].gift_data){ %>
+                  <% for(var n=0; n<list[i].order[j].gift_data.length; n++){ %>
+                  <div class="thumbnail">
+                    <div class="thumb-img">
+                      <img src="<%= list[i].order[j].gift_data[n].image_default_id %>" alt="">
+                    </div>
+                  </div>
+                  <% } %>
+                  <% } %>
+
+                  <% } %>
+                </div>
+              </div>
+              <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+                共
+                <%= list[i].totalItem %> 件
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="content-padded">
+          <div class="box-display">
+            <div class="box-item-flex1">
+              实付金额：
+              <mark><%= $format_price(list[i].payment) %></mark>
+            </div>
+            <div class="box-item-flex1 mui-text-right">
+              <% if(list[i].status=="WAIT_BUYER_PAY"){ %>
+              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-pay action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= list[i].tid %>,"type":"trade"}'>
+                去付款
+              </a>
+              <% if(list[i].cancel_status=="NO_APPLY_CANCEL"){ %>
+              <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+                取消订单
+              </a>
+              <% } %>
+              <% }else if(list[i].status=="WAIT_SELLER_SEND_GOODS" && list[i].cancel_status=="NO_APPLY_CANCEL"){ %>
+              <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+                取消订单
+              </a>
+              <% }else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS"){ %>
+              <% if(list[i].cancel_status=='NO_APPLY_CANCEL' && list[i].pay_type=="online"){ %>
+              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-confirm" data-tid='<%= list[i].tid %>'>
+                确认收货
+              </a>
+              <% } %>
+              <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm show_logistics" data-logistics_data="<%= $json_string(list[i].delivery) %>">
+                查看物流
+              </a>
+              <% } %>
+              <% if(list[i].is_buyer_rate){ %>
+              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm action-webview" data-webview="_www/view/member/trade/traderate.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+                去评价
+              </a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% } %>
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+      mui.plusReady(function() {
+        mui.init({
+          beforeback: function() {
+            var fw = plus.webview.currentWebview().opener();
+            fw.reload(true);
+            fw.addEventListener('loaded',function(){
+              //返回true，继续页面关闭逻辑
+              return true;
+            })
+          }
+        });
+        
+        var active = plus.webview.currentWebview().tab;
+        if(active) {
+          getTradeList(active);
+        } else {
+          getTradeList('');
+        }
+      });
+      
+
+      function getTradeList(active) {
+        var state = app.getState();
+        var param = {
+          queryData: {
+            'method': config.apimethod.tradelist,
+            'accessToken': state.token,
+            'status': '',
+            'page_no': config.cpage,
+            'page_size': config.pagesize
+          },
+          method: 'GET'
+        }
+
+        $.tabWithPageRequest(param, 'trade_list', 'scroll1', 'status', function() {
+          if(active == 'pay') {
+            setTimeout(function(){
+              mui('#slider').slider().gotoItem(1, 1);
+            },200)
+          } else if(active == 'send') {
+            setTimeout(function(){
+              mui('#slider').slider().gotoItem(2, 1);
+            },200)
+          } else if(active == 'receive') {
+            setTimeout(function(){
+              mui('#slider').slider().gotoItem(3, 1);
+            },200)
+          } else if(active == 'rate') {
+            setTimeout(function(){
+              mui('#slider').slider().gotoItem(4, 1);
+            },200)
+          } else {
+            setTimeout(function(){
+              $('#scroll1').find('.mui-table-view').empty();
+              mui('#scroll1 .mui-scroll').pullToRefresh().pullUpLoading();
+            },200)
+          }
+        });
+      }
+
+      $(window).on('tap', '.trade-confirm', function() {
+        var tid = $(this).data('tid');
+        mui.confirm('是否确认已收到货', '', ['取消', '确认'], function(e) {
+          if(e.index == 1) {
+            var state = app.getState();
+            var param = {
+              queryData: {
+                'method': config.apimethod.tradeconfirm,
+                'accessToken': state.token,
+                'tid': tid
+              },
+              method: 'POST'
+            }
+
+            $.dataRequest(param, function(rs) {
+              if(rs.data.status == 'success') {
+                mui.toast('确认收货成功');
+                plus.webview.currentWebview().reload();
+              }
+            });
+          } else {
+            return false;
+          }
+        })
+      }, false);
+
+      $(window).on('tap', '.show_logistics', function() {
+        var logistics_data = $(this).data('logistics_data');
+        clicked('_www/view/member/logistics.html', {
+          'logistics_data': logistics_data,
+        })
+      });
+    </script>
+  </body>
+
+</html>

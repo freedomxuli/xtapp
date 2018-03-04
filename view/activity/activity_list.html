@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/widgets.css" />
+  </head>
+
+  <body>
+    <div id="pullrefresh" class="mui-content fontS mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <div class="section-white section-title content-bottom-padded-mini">
+          <div class="title-txt">正在抢购中</div>
+          <div id="upcoming" class="more-link">即将开售<i class="bbc-icon bbc-icon-forward"></i></div>
+        </div>
+        <div class="activity-list">
+
+        </div>
+      </div>
+    </div>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/share.js"></script>
+  
+  <script type="text/html" id="activity_list">
+    <% for(var i=0; i<list.length; i++) { %>
+    <section class="section-white content-padded action-activity-goods" data-activityid="<%= list[i].activity_id %>">
+      <div class="page-banner"><img src="<%= list[i].slide_images %>" alt=""></div>
+      <div class="activity-caption">
+        <p class="activity-title"><span class="tag"><%= list[i].discount_min*10/100 %>折起</span>
+          <%= list[i].activity_name %>
+        </p>
+        <p class="fontS font-gray-20"><i class="bbc-icon bbc-icon-countdown"></i> 距离活动结束还有：<mark class="countdown-view" data-time="<%= list[i].end_time %>"></mark></p>
+      </div>
+    </section>
+    <% } %>
+  </script>
+  <script type="text/javascript">
+    $('.activity-list').on('tap', '.action-activity-goods', function() {
+      var activity_id = $(this).data('activityid');
+      clicked('_www/view/activity/activitygoodslist.html', {
+        'activity_id': activity_id
+      });
+    });
+    $('#upcoming').on('tap', function() {
+      clicked('_www/view/activity/activityupcoming.html');
+    });
+
+    mui.plusReady(function() {
+      var param = {
+        queryData: {
+          'method': config.apimethod.activitylist,
+          'status': 'active',
+          'page_no': config.cpage,
+          'page_size': config.pagesize,
+          'orderBy': ''
+        },
+        method: 'GET'
+      }
+      $.pageRequest(param, '#pullrefresh', 'activity_list', 'activity-list', function(rs) {
+        // 倒计时
+        $('.countdown-view').each(function(el, index) {
+          var current = new Date().getTime();
+          countdown($(index), {
+            'start': (($(index).data('time') * 1000) - current) / 1000,
+            'secondOnly': false,
+            'callback': function() {
+              setTimeout(function() {
+                $(index).parent().html('活动已结束');
+              }, 200);
+            }
+          });
+        });
+      }, true, true);
+
+    });
+  </script>
+
+</html>

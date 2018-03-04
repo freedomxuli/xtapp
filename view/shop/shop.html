@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/widgets.css" />
+  </head>
+
+  <body>
+    <!--侧滑菜单容器-->
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+      <aside id="offCanvasSide" class="mui-off-canvas-right goods-list-filters">
+        <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <ul id="nav" class="mui-table-view mui-table-view-chevron fontS font-gray-20">
+
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div class="mui-inner-wrap">
+        <div class="mui-bar">
+          <header class="home-header">
+            <i class="icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+            <div class="main">
+              <form onsubmit="return false;">
+                <div class="mui-input-row header-search-form"><input id="shop_search" type="search" class="header-search mui-input-clear" placeholder="搜索店铺内商品"></div>
+              </form>
+            </div>
+            <a id="offCanvasBtn" href="#offCanvasSide" class="search-hide icon-func bbc-icon bbc-icon-submenu"></a>
+            <a href="#minimenu" class="search-hide icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+            <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
+          </header>
+          
+        </div>
+        <section id="offCanvasContentScroll" class="container mui-scroll-wrapper">
+          <div id="content" class="mui-scroll">
+          </div>
+        </section>
+        <!-- off-canvas backdrop -->
+        <div class="mui-off-canvas-backdrop"></div>
+      </div>
+    </div>
+    <div id="share_sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+      <div class="section-white">
+        <div class="section-title theme-border-bottom">分享到</div>
+        <div class="section-container">
+          <div class="section-init action-share" data-platform="qq"><i class="bbc-icon bbc-icon-QQ-member"></i></div>
+          <div class="section-init action-share" data-platform="weixin"><i class="bbc-icon bbc-icon-weixin-member"></i></div>
+          <div class="section-init action-share" data-platform="timeline"><i class="bbc-icon bbc-icon-moments"></i></div>
+          <div class="section-init action-share" data-platform="weibo"><i class="bbc-icon bbc-icon-sina-member"></i></div>
+        </div>
+      </div>
+    </div>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+          <li class="mui-table-view-cell action-share">
+            <a><i class="bbc-icon bbc-icon-share"></i> 分享</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/share.js"></script>
+
+  <script type="text/html" id="shop_dead">
+    <div class="shop-sign">
+      <div class="shop-sign-cover"></div>
+      <div class="shop-sign-img">
+        <img src="<%= logo_image.shop_logo %>">
+      </div>
+      <div class="shop-sign-info">
+        <div class="shop-logo"><img src="<%= shopdata.shop_logo %>" alt=""></div>
+        <div class="shop-name">
+          <a href="">
+            <%= shopdata.shop_name %>
+          </a> <i class="bbc-icon bbc-icon-forward"></i></div>
+      </div>
+    </div>
+    <section class="container content-center">
+      <p class="font-gray-20 mui-content-padded">该店铺已被关闭</p>
+      <a class="mui-col-xs-4 mui-btn mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/index.html">返回首页</a>
+    </section>
+  </script>
+
+  <script type="text/html" id="shop_content">
+    <section>
+      <div class="shop-sign">
+        <div class="shop-sign-cover"></div>
+        <div class="shop-sign-img no-banner" <% if(logo_image && logo_image.shop_logo){ %> style="background: url(
+          <%= logo_image.shop_logo %>) no-repeat center; background-size: cover;"
+          <% } %> >
+        </div>
+        <div class="shop-sign-info">
+          <div class="shop-logo action-shop-info">
+            <a><img src="<%= shopdata.shop_logo %>" alt=""></a>
+          </div>
+          <div class="shop-name action-shop-info action-webview" data-webview="_www/view/shop/shopinfo.html" data-webparam='{' shopid ': <%= shopdata.shop_id %>}'>
+            <a>
+              <%= shopdata.shop_name %>
+            </a><i class="bbc-icon bbc-icon-forward"></i></div>
+          <div class="shop-favorite-btn"><i class="bbc-icon bbc-icon-star-empty"></i> <span>收藏</span></div>
+        </div>
+      </div>
+      <% if(itemInfo != null){ %>
+      <div class="shop-nav">
+        <% for(var i=0; i<itemInfo.length; i++){ %>
+        <div class="shop-nav-item" data-item_id="<%= itemInfo[i].params.item_id %>">
+          <a href="#">
+            <%= itemInfo[i].params.tagsname %>
+          </a>
+        </div>
+        <% } %>
+      </div>
+    </section>
+    <% } %>
+    <% if(homeCouponList != null){ %>
+    <section class="section-white">
+      <div class="section-title">
+        <div class="title-txt">优惠券</div>
+        <% if(homeCouponList.length > 3){ %>
+        <div id="view_coupon" class="more-link action-webview" data-webview="_www/view/shop/shopcoupon.html" data-webparam='{"shopid":<%= shopdata.shop_id %>}'>
+          更多优惠券 <i class="bbc-icon bbc-icon-forward"></i>
+        </div>
+        <% } %>
+      </div>
+      <div class="section-container coupon-list coupons-inline">
+        <% for(var i=0; i<3; i++){ %>
+        <% if(homeCouponList[i]){ %>
+        <div class="coupon" data-promotion="<%= homeCouponList[i].coupon_id %>">
+          <div class="coupon-denomination">¥<em><%= $int_price(homeCouponList[i].deduct_money) %></em></div>
+          <div class="coupon-rule">
+            <%= homeCouponList[i].coupon_name %>
+          </div>
+        </div>
+        <% } %>
+        <% } %>
+      </div>
+    </section>
+    <% } %>
+    <% if(slider != null){ %>
+    <div id="slider" class="mui-slider">
+      <div class="mui-slider-group mui-slider-loop widgets-slider">
+        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#">
+            <img src="<%= slider[slider.length-1].sliderImage %>">
+          </a>
+        </div>
+        <% for(var i=0; i<slider.length; i++){ %>
+        <div class="mui-slider-item">
+          <a href="#">
+            <img src="<%= slider[i].sliderImage %>">
+          </a>
+        </div>
+        <% } %>
+        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#">
+            <img src="<%= slider[0].sliderImage %>">
+          </a>
+        </div>
+      </div>
+      <div class="mui-slider-indicator">
+        <% for(var i=0; i<slider.length; i++){ %>
+        <div class="mui-indicator <%= (i==0) ? 'mui-active' : ' ' %>"></div>
+        <% } %>
+      </div>
+    </div>
+    <% } %>
+    <% if(showitems != null){ %>
+    <% for(var i=0; i<showitems.length; i++){ %>
+    <section class="widgets-goods-like">
+      <div class="widgets-goods-like-header">
+        <span><%= showitems[i].params.tagsname %></span>
+      </div>
+      <ul class="pro-list-grid">
+        <% for(var k=0; k<showitems[i].params.itemlist.list.length; k++){ %>
+        <li class="action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= showitems[i].params.itemlist.list[k].item_id %>}'>
+          <div class="thumbnail">
+            <div class="thumb-img">
+              <a href="#"><img src="<%= showitems[i].params.itemlist.list[k].image_default_id  %>" alt=""></a>
+            </div>
+            <div class="caption">
+              <h1 class="goods-title"><%= showitems[i].params.itemlist.list[k].title  %></h1>
+              <div class="price">
+                <div class="amount CNY">
+                  <%= $format_price(showitems[i].params.itemlist.list[k].price) %>
+                </div>
+                <div class="purchased">已有
+                  <%= showitems[i].params.itemlist.list[k].sold_quantity %>人购买</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <% } %>
+        <% if( showitems[i].params.item_id.split(',').length > showitems[i].params.itemlimit ) { %>
+        <div class="shop-nav-item more-link content-right" data-item_id="<%= showitems[i].params.item_id %>">
+          <span class="font-gray-40">更多商品<i class="bbc-icon bbc-icon-forward"></i></span>
+        </div>
+        <% } %>
+
+      </ul>
+
+    </section>
+    <% } %>
+    <% } %>
+    <% if(custom != null){ %>
+    <section class="widgets-custom-content" id="custom-content">
+    </section>
+    <% } %>
+  </script>
+
+  <script type="text/html" id="shop_nav">
+    <li class="mui-table-view-cell" data-shop_cat_id="">
+      <a>
+        全部商品
+      </a>
+    </li>
+    <% if(shopcat){ %>
+    <% for(var i=0; i<shopcat.length; i++){ %>
+    <li class="mui-table-view-cell" data-shop_cat_id="<%= shopcat[i].cat_id %>">
+      <a>
+        <%= shopcat[i].cat_name %>
+      </a>
+    </li>
+    <% } %>
+    <% } %>
+  </script>
+
+  <script type="text/html" id="shop_widget">
+    <div class="shop-sign">
+      <div class="shop-sign-cover"></div>
+      <div class="shop-sign-img no-banner" <% if(shopdata.shop_logo){ %> style="background: url(
+        <%= shopdata.shop_logo %>) no-repeat center; background-size: cover;"
+        <% } %> >
+      </div>
+      <div class="shop-sign-info">
+        <div class="shop-logo action-shop-info">
+          <a><img src="<%= shopdata.shop_logo %>" alt=""></a>
+        </div>
+        <div class="shop-name action-shop-info action-webview" data-webview="_www/view/shop/shopinfo.html" data-webparam='{' shopid ': <%= shopdata.shop_id %>}'>
+          <a>
+            <%= shopdata.shop_name %>
+          </a><i class="bbc-icon bbc-icon-forward"></i></div>
+        <div class="shop-favorite-btn"><i class="bbc-icon bbc-icon-star-empty"></i> <span>收藏</span></div>
+      </div>
+    </div>
+      <% for(var i=0; i<widgets.length; i++){ %>
+      <% if(widgets[i].widgets_type == 'goods'){ %>
+        <section class="widgets-goods-like">
+          <div class="widgets-goods-like-header">
+            <span><%= widgets[i].params.title %></span>
+            <% if( widgets[i].params.item_id.length > 6 ) { %>
+              <a href="#" class="widgets-goods-show-all"  data-item_id="<%= $json_string(widgets[i].params.item_id) %>"><i class="bbc-icon bbc-icon-forward"></i></a>
+            <% } %>
+          </div>
+          <ul class="pro-list-grid">
+            <% if(widgets[i].showitems != null){ %>
+            <% var goodslist = widgets[i].showitems.list.length > 6 ? 6 : widgets[i].showitems.list.length %>
+            <% for(var k=0; k<goodslist; k++){ %>
+            <li class="action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= widgets[i].showitems.list[k].item_id %>}'>
+              <div class="thumbnail">
+                <div class="thumb-img">
+                  <a href="#"><img src="<%= widgets[i].showitems.list[k].image_default_id  %>" alt=""></a>
+                </div>
+                <div class="caption">
+                  <h1 class="goods-title"><%= widgets[i].showitems.list[k].title  %></h1>
+                  <div class="price">
+                    <div class="amount CNY">
+                      <%= $format_price(widgets[i].showitems.list[k].price) %>
+                    </div>
+                    <div class="purchased">已有
+                      <%= widgets[i].showitems.list[k].sold_quantity %>人购买</div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% } %>
+            <% } %>
+          </ul>
+        </section>
+      <% } %>
+      <% if(widgets[i].widgets_type == 'nav'){ %>
+        <section class="shop-nav">
+          <% for(var k=0; k<widgets[i].params.length; k++){ %>
+            <% if(widgets[i].params[k].type=='goods'){ %>
+            <div class="shop-nav-item" data-item_id="<%= widgets[i].params[k].item_ids %>">
+            <% }else if(widgets[i].params[k].type=='promotion'){ %>
+            <div class="shop-nav-item" data-promotion_id="<%= widgets[i].params[k].promotion_id %>">
+            <% }else if(widgets[i].params[k].type=='link'){ %>
+            <div class="shop-nav-item" data-url="<%= widgets[i].params[k].navlink %>">
+            <% } %>
+              <a href="#">
+                <%= widgets[i].params[k].name %>
+              </a>
+            </div>
+          <% } %>
+        </section>
+      <% } %>
+      <% if(widgets[i].widgets_type == 'slider'){ %>
+        <div class="mui-slider">
+          <div class="mui-slider-group mui-slider-loop widgets-slider">
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate action-webview" data-webview="<%= widgets[i].params[widgets[i].params.length-1].imglink %>">
+              <a href="#">
+                <img src="<%= widgets[i].params[widgets[i].params.length-1].imgurl %>">
+              </a>
+            </div>
+            <% for(var k=0; k<widgets[i].params.length; k++){ %>
+            <div class="mui-slider-item action-webview" data-webview="<%= widgets[i].params[k].imglink %>">
+              <a href="#">
+                <img src="<%= widgets[i].params[k].imgurl %>">
+              </a>
+            </div>
+            <% } %>
+            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate action-webview" data-webview="<%= widgets[i].params[0].imglink %>">
+              <a href="#">
+                <img src="<%= widgets[i].params[0].imgurl %>">
+              </a>
+            </div>
+          </div>
+          <div class="mui-slider-indicator">
+            <% for(var k=0; k<widgets[i].params.length; k++){ %>
+            <div class="mui-indicator <%= (k==0) ? 'mui-active' : ' ' %>"></div>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+      <% if(widgets[i].widgets_type == 'oneimg'){ %>
+        <section class="single-img section-white">
+          <div class="action-webview" data-webview="<%= widgets[i].params.imglink %>"><a href="#"><img src="<%= widgets[i].params.imgurl %>" alt="" /></a></div>
+        </section>
+      <% } %>
+      <% if(widgets[i].widgets_type == 'coupon'){ %>
+        <section class="section-white">
+          <div class="section-title">
+            <div class="title-txt">优惠券</div>
+            <div id="view_coupon" class="more-link action-webview" data-webview="_www/view/shop/shopcoupon.html" data-webparam='{"shopid":<%= widgets[i].shop_id %>}'>
+              更多优惠券 <i class="bbc-icon bbc-icon-forward"></i>
+            </div>
+          </div>
+          <div class="section-container coupon-list coupons-inline">
+            <% for(var k=0; k<widgets[i].params.length; k++){ %>
+            <div class="coupon" data-promotion="<%= widgets[i].params[k].coupon_id %>">
+              <div class="coupon-denomination">¥<em><%= $price_To_Int(widgets[i].params[k].amount) %></em></div>
+              <div class="coupon-rule">
+                <%= widgets[i].params[k].rule %>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </section>
+      <% } %>
+    <% } %>
+  </script>
+
+  <script>
+    mui.plusReady(function() {
+      var shopId = plus.webview.currentWebview().shopid;
+      var state = app.getState();
+      var favorite_shop = app.getFavoriteShop();
+      var shopArr = [];
+      if(favorite_shop != null) {
+        shopArr = favorite_shop;
+      }
+      var isExistShop = false;
+      $.each(shopArr, function() {
+        if(+this == shopId) {
+          isExistShop = true;
+        }
+      });
+      var param = {
+        queryData: {
+          'method': config.apimethod.shop,
+          'accessToken': state.token,
+          'shop_id': shopId
+        },
+        method: 'GET'
+      }
+      $.dataRequest(param, function(rs) {
+      // 分享
+      $(document).on('tap','.action-share',function(){
+        var shareData = {
+          title: rs.data.shopdata.shop_name, 
+          href: rs.data.shopdata.h5href, 
+          desc: rs.data.shopdata.shop_name,
+          pic: rs.data.shopdata.shop_logo
+        };
+        appshare(shareData);
+      });
+
+        var shopid = rs.data.shopdata.shop_id;
+        if(rs.data.shopdata.status == 'dead') {
+          var content = template('shop_dead', rs.data);
+          $('#content').html(content);
+          $('.home-header').html('<i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i><div class="main"><div class="header-title">店铺关闭</div></div><a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>');
+          $('.goods-list-filters').remove();
+        } else {
+          var gallery;
+          if(!rs.data.widgets){
+            var content = template('shop_content', rs.data);
+            $('#content').html(content);
+            if(rs.data.custom != null){
+              $('#custom-content').html(rs.data.custom);
+            }
+            gallery = mui("#slider");
+          }else{
+            var content = template('shop_widget', rs.data);
+            $('#content').html(content);
+            gallery = mui(".mui-slider");
+          }
+          
+          var nav = template('shop_nav', rs.data);
+          $('#nav').html(nav);
+          gallery.slider({
+            interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+          });
+          mui.init({
+            swipeBack: false,
+          });
+          
+          //侧滑容器父节点
+          var offCanvasWrapper = mui('#offCanvasWrapper');
+          //主界面容器
+          var offCanvasInner = offCanvasWrapper[0].querySelector('.mui-inner-wrap');
+          //菜单容器
+          var offCanvasSide = document.getElementById("offCanvasSide");
+          //Android暂不支持整体移动动画
+          // if (!mui.os.android) {
+          //   document.getElementById("move-togger").classList.remove('mui-hidden');
+          //   var spans = document.querySelectorAll('.android-only');
+          //   for (var i = 0, len = spans.length; i < len; i++) {
+          //     spans[i].style.display = "none";
+          //   }
+          // }
+          //移动效果是否为整体移动
+          var moveTogether = false;
+          //侧滑容器的class列表，增加.mui-slide-in即可实现菜单移动、主界面不动的效果；
+          var classList = offCanvasWrapper[0].classList;
+          //变换侧滑动画移动效果；
+          mui('.mui-input-group').on('change', 'input', function() {
+            if(this.checked) {
+              offCanvasSide.classList.remove('mui-transitioning');
+              offCanvasSide.setAttribute('style', '');
+              classList.remove('mui-slide-in');
+              classList.remove('mui-scalable');
+              switch(this.value) {
+                case 'main-move':
+                  if(moveTogether) {
+                    //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+                    offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+                    moveTogether = false;
+                  }
+                  break;
+                case 'main-move-scalable':
+                  if(moveTogether) {
+                    //仅主内容滑动时，侧滑菜单在off-canvas-wrap内，和主界面并列
+                    offCanvasWrapper[0].insertBefore(offCanvasSide, offCanvasWrapper[0].firstElementChild);
+                  }
+                  classList.add('mui-scalable');
+                  break;
+                case 'menu-move':
+                  classList.add('mui-slide-in');
+                  break;
+                case 'all-move':
+                  moveTogether = true;
+                  //整体滑动时，侧滑菜单在inner-wrap内
+                  offCanvasInner.insertBefore(offCanvasSide, offCanvasInner.firstElementChild);
+                  break;
+              }
+              offCanvasWrapper.offCanvas().refresh();
+            }
+          });
+          // document.getElementById('offCanvasShow').addEventListener('tap', function() {
+          //   offCanvasWrapper.offCanvas('show');
+          // });
+          // document.getElementById('offCanvasHide').addEventListener('tap', function() {
+          //   offCanvasWrapper.offCanvas('close');
+          // });
+          //主界面和侧滑菜单界面均支持区域滚动；
+          mui('#offCanvasSideScroll').scroll();
+          mui('#offCanvasContentScroll').scroll();
+          //实现ios平台的侧滑关闭页面；
+          if(mui.os.plus && mui.os.ios) {
+            offCanvasWrapper[0].addEventListener('shown', function(e) { //菜单显示完成事件
+              plus.webview.currentWebview().setStyle({
+                'popGesture': 'none'
+              });
+            });
+            offCanvasWrapper[0].addEventListener('hidden', function(e) { //菜单关闭完成事件
+              plus.webview.currentWebview().setStyle({
+                'popGesture': 'close'
+              });
+            });
+          }
+
+          mui('body').on('shown', '.mui-popover', function(e) {
+            //console.log('shown', e.detail.id);//detail为当前popover元素
+          });
+          mui('body').on('hidden', '.mui-popover', function(e) {
+            //console.log('hidden', e.detail.id);//detail为当前popover元素
+          });
+          if(shopArr.length > 0 && isExistShop) {
+            $('.shop-favorite-btn').addClass('has-favorited');
+            $('.shop-favorite-btn').find('.bbc-icon').removeClass('bbc-icon-star-empty').addClass('bbc-icon-faverite');
+            $('.shop-favorite-btn').find('span').html("已收藏");
+          }
+          $('body').on('tap', function(e) {
+            $('body').removeClass('bbc-no-backdrop');
+          })
+
+          $('body').on('tap', '.btn-mini-menu', function() {
+            $('body').addClass('bbc-no-backdrop');
+          })
+
+          $('.action-shop-info').on('tap', function() {
+            clicked('_www/view/shop/shopinfo.html');
+          });
+
+          $('.coupon-list .coupon').on('tap', function() {
+            var cid = $(this).data('promotion');
+            var param = {
+              queryData: {
+                'method': config.apimethod.shopcouponget,
+                'accessToken': state.token,
+                'coupon_id': cid
+              },
+              method: 'POST'
+            }
+
+            $.dataRequest(param, function() {
+              mui.alert('领取成功');
+            });
+          });
+
+          $('.shop-favorite-btn').on('tap', function() {
+            var $this = $(this);
+            if(isExistShop) return;
+            var param = {
+              queryData: {
+                'method': config.apimethod.favoriteshopadd,
+                'shop_id': shopId,
+                'accessToken': state.token
+              },
+              method: 'POST'
+            }
+
+            $.dataRequest(param, function(rs) {
+              app.setFavoriteShop(shopId);
+              isExistShop = true;
+              $this.addClass('has-favorited');
+              $this.find('.bbc-icon').removeClass('bbc-icon-star-empty').addClass('bbc-icon-faverite');
+              $this.find('span').html("已收藏");
+            });
+          });
+
+          $('#nav').on('tap', 'li', function() {
+            var shop_cat_id = $(this).data('shop_cat_id');
+            clicked('_www/view/shop/shopgoods.html', {
+              'shop_cat_id': shop_cat_id,
+              'shopid': shopid,
+              'catlist': rs.data.shopcat
+            });
+          });
+
+          $('.shop-nav-item').on('tap', function() {
+            var navlink = $(this).data('url');
+            var goods = $(this).data('item_id');
+            var promotion = $(this).data('promotion_id');
+            if(goods){
+              var item_id = goods.join(',');
+              clicked('_www/view/shop/shopgoods.html', {
+                'item_id': item_id,
+                'shopid': shopid,
+                'catlist': rs.data.shopcat
+              });
+            };
+            
+            if(promotion){
+              clicked('_www/view/promotion/promotion.html', {
+                'promotion_id': promotion
+              });
+            };
+            if(navlink){
+              clicked('_www/view/h5.html', {
+                'promotion_id': navlink
+              });
+            }
+          });
+          
+          $('.widgets-goods-show-all').on('tap', function() {
+            var item_id = $(this).data('item_id');
+            item_id = item_id.join(',');
+            clicked('_www/view/shop/shopgoods.html', {
+              'item_id': item_id,
+              'shopid': shopid,
+              'catlist': rs.data.shopcat
+            });
+          });
+
+          document.getElementById('shop_search').onfocus = function(){
+            toSearch(this,'_www/view/shop/shopgoods.html',{'shopid': shopid, 'catlist':rs.data.shopcat})
+          }
+        }
+      });
+
+    });
+  </script>
+
+</html>

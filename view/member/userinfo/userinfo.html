@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">会员信息</div>
+      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+    </header>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="container">
+      <section class="section-white">
+        <ul class="mui-table-view function-list font-gray-20">
+          <li class="mui-table-view-cell" id="account">
+            <a href="#forward" class="mui-navigate-right">
+              <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-4">头像:</div>
+                <div id="avatar" class="mui-table-cell mui-col-xs-8 mui-text-right"><img class="userinfo-avatar" src="../../../img/shop_logo.gif" /></div>
+              </div>
+            </a>
+          </li>
+          <li class="mui-table-view-cell" id="account">
+            <div class="mui-table">
+              <div class="mui-table-cell mui-col-xs-4">用户名:</div>
+              <div id="account_info" class="mui-table-cell mui-col-xs-8 mui-text-right"></div>
+            </div>
+          </li>
+          <li id="username" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-4">姓名：</div>
+                <div id="username_info" class="mui-table-cell mui-col-xs-8 mui-text-right"></div>
+              </div>
+            </a>
+          </li>
+          <li id="nickname" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-4">昵称：</div>
+                <div id="nickname_info" class="mui-table-cell mui-col-xs-8 mui-text-right"></div>
+              </div>
+            </a>
+          </li>
+          <li id="gender" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-4">性别：</div>
+                <div id="gender_info" class="mui-table-cell mui-col-xs-8 mui-text-right"></div>
+              </div>
+            </a>
+          </li>
+          <li class="mui-table-view-cell">
+            <a id="birthday" href="#" data-options='{"type":"date","beginYear":1930,"endYear":2050}' class="mui-navigate-right">
+              <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-4">生日：</div>
+                <div id="result" class="mui-table-cell mui-col-xs-8 mui-text-right"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="section-white font-gray-20">
+        <ul class="mui-table-view">
+          <li id="address" class="mui-table-view-cell">
+            <a href="#" class="mui-navigate-right">收货地址</a>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <div id="forward" class="mui-popover mui-popover-action mui-popover-bottom">
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+          <a onclick="getImage()">拍照</a>
+        </li>
+        <li class="mui-table-view-cell">
+          <a onclick="galleryImg()">从手机相册选择</a>
+        </li>
+      </ul>
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+          <a href="#forward"><b>取消</b></a>
+        </li>
+      </ul>
+    </div>
+
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/mui.picker.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      mui.init({
+        swipeBack: true, //启用右滑关闭功能
+      });
+
+      var state = app.getState();
+      var param = {
+        queryData: {
+          'method': config.apimethod.userinfo,
+          'accessToken': state.token
+        },
+        method: 'GET'
+      }
+      $.dataRequest(param, function(rs) {
+        var data = rs.data;
+        document.getElementById('account_info').innerText = data.login_account;
+        document.getElementById('username_info').innerText = data.username;
+        document.getElementById('nickname_info').innerText = data.name;
+        if(data.sex == 0) {
+          document.getElementById('gender_info').innerText = '女';
+        }
+        if(data.sex == 1) {
+          document.getElementById('gender_info').innerText = '男';
+        }
+        if(data.sex == 2) {
+          document.getElementById('gender_info').innerText = '保密';
+        }
+        document.getElementById('result').innerText = data.birthday;
+      });
+
+      (function() {
+        mui.init();
+        var result = mui('#result')[0];
+        var btn = mui('#birthday')[0];
+        btn.addEventListener('tap', function() {
+          var optionsJson = this.getAttribute('data-options') || '{}';
+          var options = JSON.parse(optionsJson);
+          var id = this.getAttribute('id');
+          var picker = new mui.DtPicker(options);
+          picker.show(function(rs) {
+
+            result.innerText = rs.text;
+            var param = {
+              queryData: {
+                'method': config.apimethod.updateuserinfo,
+                'accessToken': state.token,
+                'birthday': rs.text
+              },
+              method: 'POST'
+            }
+            $.dataRequest(param, function(rs) {
+              mui.toast('更新成功');
+            });
+
+            picker.dispose();
+          });
+        }, false);
+      })();
+
+      document.getElementById('account').addEventListener('tap', function() {
+        var name = $("#account_info").text();
+        if(name == '') {
+          clicked('_www/view/member/userinfo/account.html');
+        }
+      });
+      document.getElementById('username').addEventListener('tap', function() {
+        clicked('_www/view/member/userinfo/username.html');
+      });
+      document.getElementById('nickname').addEventListener('tap', function() {
+        clicked('_www/view/member/userinfo/nickname.html');
+      });
+      document.getElementById('gender').addEventListener('tap', function() {
+        clicked('_www/view/member/userinfo/gender.html');
+      });
+      document.getElementById('address').addEventListener('tap', function() {
+        clicked('_www/view/member/userinfo/address.html');
+      });
+
+      function plusReady() {
+        // 用户侧滑返回时关闭显示的图片
+        plus.webview.currentWebview().addEventListener("popGesture", function(e) {
+          if(e.type == "start") {
+            closeImg();
+          }
+        }, false);
+      }
+      document.addEventListener('plusready', plusReady, false);
+
+      function getImage() {
+        var AVCaptureDevice = plus.ios.importClass("AVCaptureDevice");
+        var Status = AVCaptureDevice.authorizationStatusForMediaType("vide");
+        if (3 != Status) {
+            mui.confirm('请在设置中允许使用相机','',["取消","确定"],function(e){
+              log(e.index);
+              if(e.index==1){
+                var UIApplication = plus.ios.import("UIApplication");
+                var NSURL = plus.ios.import("NSURL");
+                var setting = NSURL.URLWithString("app-settings:");
+                var application = UIApplication.sharedApplication();
+                application.openURL(setting);
+                plus.ios.deleteObject(setting);
+                plus.ios.deleteObject(application);
+              }
+            });
+        }
+        var cmr = plus.camera.getCamera();
+        cmr.captureImage(function(path) {
+          plus.gallery.save(path);
+          //outSet("照片已成功保存到系统相册");
+        }, function(e) {
+          //outSet("取消拍照");
+        }, {
+          filename: "_doc/gallery/",
+          index: 1
+        });
+      }
+
+      function galleryImg() {
+        // 从相册中选择图片
+        //outSet("从相册中选择图片:");
+        plus.gallery.pick(function(path) {
+          //outLine(path);
+          //showImg( path );
+          //createItem(path);
+        }, function(e) {
+          //outSet("取消选择图片");
+        }, {
+          filter: "image"
+        });
+      }
+    </script>
+  </body>
+
+</html>

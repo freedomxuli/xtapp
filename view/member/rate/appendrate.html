@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+  </head>
+
+  <body class="body-padding-mini">
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">追加评价</div>
+    </header>
+    <div class="container">
+      <div class="section-white">
+        <div class="section section-title action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= orders[i].item_id%>}'>
+          <div class="thumb"><img id="goods_img" src="" alt=""></div>
+          <div id="goods_title" class="box-item-flex1 fontS font-gray-20">
+          </div>
+        </div>
+        <div class="content-padded">
+          <textarea id="content" class="bbc-texteara fontS" maxlength="300" rows="8" placeholder="评价内容最多300字"></textarea>
+        </div>
+        <div class="content-padded mui-clearfix rate-img">
+          <ul class="rate-img-list mui-pull-left">
+          </ul>
+          <div class="rate-img-icon-box mui-pull-left box-display">
+            <div class="rate-img-box font-gray-60 fontB">
+              <i class="mui-icon mui-icon-camera"></i>
+            </div>
+            <div class="box-item-flex1 fontS font-gray-40 content-horizontal-padded">上传图片</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="navigation">
+      <div class="action-bar-mini">
+        <div class="action-bar-mini-item mui-col-xs-8">
+        </div>
+        <div class="action-bar-op-item">
+          <button type="botton" id="submit_rate" class="action-bar-op-btn">发布评论</button>
+        </div>
+      </div>
+    </footer>
+    <div id="choose_img" class="mui-popover mui-popover-bottom mui-popover-action">
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell fonts font-gray-40">亲，您还可以上传<span class="img-count">5</span>张照片</li>
+        <li class="mui-table-view-cell action-camera">
+          <a>拍照</a>
+        </li>
+        <li class="mui-table-view-cell action-gallery">
+          <a>相册</a>
+        </li>
+      </ul>
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell">
+          <a href="#choose_img"><b>取消</b></a>
+        </li>
+      </ul>
+    </div>
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+
+    <script>
+      mui.plusReady(function() {
+        var state = app.getState();
+        var rate_id = plus.webview.currentWebview().rateid;
+        var goodsImg = plus.webview.currentWebview().goodsimg;
+        var goodsTitle = plus.webview.currentWebview().goodstitle;
+        var imgCount = 0;
+        $('#goods_img').attr('src',goodsImg);
+        $('#goods_title').text(goodsTitle);
+        $('#submit_rate').on('tap', function() {
+          var img_ids = [];
+          var img_list = $('.rate-img-list').find('li');
+          for(var i=0; i<img_list.length; i++) {
+            img_ids.push($(img_list[i]).find('img').attr('data-id'));
+          }
+          var rate_pic = img_ids.join(',');
+
+          var param = {
+            queryData: {
+              'method': config.apimethod.goodappendrate,
+              'accessToken': state.token,
+              'rate_id': rate_id,
+              'content': $('#content').val(),
+              'rate_pic': rate_pic
+            },
+            method: 'POST'
+          }
+          $.dataRequest(param, function(rs) {
+            mui.toast('评价成功');
+            plus.nativeUI.showWaiting();
+            var fw = plus.webview.currentWebview().opener();
+            fw.reload(true);
+            fw.addEventListener('loaded', function() {
+              plus.nativeUI.closeWaiting();
+              //返回true，继续页面关闭逻辑
+              mui.back();
+            });
+          });
+        });
+
+        var maxcount = 0;
+        //上传图片
+        $('.rate-img-box').on('tap', function() {
+          that = $(this).parent().parent();
+          maxcount = 5 - that.find('.rate-img-list').find('li').length;
+          $('.img-count').html(maxcount);
+          mui('#choose_img').popover('toggle');
+        });
+        $('.action-camera').on('tap', function() {
+          getImage();
+          mui('#choose_img').popover('hide');
+        });
+        $('.action-gallery').on('tap', function() {
+          galleryImgsMaximum(maxcount);
+          mui('#choose_img').popover('hide');
+        });
+        $('.choose-cancel').on('tap', function() {
+          mui('#choose_img').popover('hide');
+        });
+        //拍照
+        function getImage() {
+          var cmr = plus.camera.getCamera();
+          cmr.captureImage(function(p) {
+            imgCount = that.find('.rate-img-list').find('img').length + 1;
+            if(imgCount >= 5) {
+              that.find('.rate-img-icon-box').hide();
+            } else {
+              that.find('.rate-img-icon-box').show();
+            }
+            plus.io.resolveLocalFileSystemURL(p, function(entry) {
+              var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+              appendFile(entry.toLocalURL(), name);
+            }, function(e) {
+              log("读取拍照文件错误：" + e.message);
+            });
+          }, function(e) {
+            log("失败：" + e.message);
+          }, {
+            filename: "_doc/camera/",
+            index: 1
+          });
+        }
+
+        //从相册中选择图片
+        function galleryImgsMaximum(maxcount) {
+          // 从相册中选择图片
+          plus.gallery.pick(function(e) {
+            var imgstr = "";
+            imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
+            if(imgCount >= 5) {
+              that.find('.rate-img-icon-box').hide();
+            } else {
+              that.find('.rate-img-icon-box').show();
+            }
+            var name = '';
+            for(var i in e.files) {
+              name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+              appendFile(e.files[i], name);
+            }
+          }, function(e) {
+            //          log( "取消选择图片" );
+          }, {
+            filter: "image",
+            multiple: true,
+            maximum: maxcount,
+            system: false,
+            onmaxed: function() {
+              plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
+            }
+          });
+        }
+        // 添加文件
+        function appendFile(path, imgname) {
+          var img = new Image();
+          img.src = path; // 传过来的图片路径在这里用。
+          var img_id = '';
+          img.onload = function() {
+            var el = this;
+            //生成比例 
+            var w = el.width,
+              h = el.height;
+            if(w > h) {
+              var scale = w / h;
+              w = 1280 || w;
+              h = w / scale;
+            } else {
+              var scale = h / w;
+              h = 1280 || h;
+              w = h / scale;
+            }
+            //生成canvas
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            if(w > h) {
+              $(canvas).attr({
+                width: w,
+                height: h
+              });
+              ctx.drawImage(el, 0, 0, w, h);
+            } else {
+              $(canvas).attr({
+                width: h,
+                height: w
+              });
+              ctx.drawImage(el, 0, 0, h, w);
+            }
+
+            var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+            upload(path, base64, imgname);
+          }
+        }
+        // 上传文件
+        function upload(localPath, base64, imagename) {
+          plus.nativeUI.showWaiting();
+          //发送数据  
+          var imgParam = {
+            'v': config.apiversion,
+            'format': 'json',
+            'method': config.apimethod.imgupload,
+            'accessToken': state.token,
+            'upload_type': 'base64',
+            'image': base64,
+            'image_input_title': imagename,
+            'image_type': 'rate'
+          };
+          mui.post(config.server + config.apiname, imgParam, function(rs) {
+            if(rs.errorcode == 0) {
+              plus.nativeUI.closeWaiting();
+              var imgstr = '<li><img src="' + localPath + '" data-id="' + rs.data.image_id + '"/></li>'
+              that.find('.rate-img-list').append(imgstr);
+            } else {
+              mui.alert(rs.message);
+            }
+          }, 'json');
+        }
+      });
+    </script>
+  </body>
+
+</html>

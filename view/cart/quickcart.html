@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body class="body-padding-mini">
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">购物车</div>
+      <div id="cart_edit" class="header-right txt-func" style="display: none;">编辑</div>
+    </header>
+    <div class="cart-main checkout-action">
+
+    </div>
+    <div id="promotion" class="mui-popover mui-popover-action mui-popover-bottom promotion-modal">
+      <div class="mui-content-padded content-center">促销活动</div>
+      <ul class="mui-table-view mui-table-view-radio bbc-radio theme-no-radius">
+
+      </ul>
+      <div class="action-bar">
+        <div class="action-bar-op-btn">确定</div>
+      </div>
+    </div>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+
+    <script type="text/html" id="cart_list">
+      <section class="container">
+        <div class="cart-list">
+          <% for(var i=0; i<cartlist.length; i++){ %>
+          <section class="order-goods">
+            <div class="section-title order-goods-header">
+              <div class="mui-checkbox bbc-checkbox shop-checkbox">
+                <label></label>
+                <input type="checkbox" <% if(cartlist[i].nocheckedall==0){ %> checked
+                <% } %> >
+              </div>
+              <div class="shop title-txt fontS font-gray-20 action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= cartlist[i].shop_id %>}'>
+                <%= cartlist[i].shop_name %> <i class="mui-icon mui-icon-arrowright"></i></div>
+              <% if(cartlist[i].hasCoupon==1){ %>
+              <div class="more-link"><button class="mui-btn mui-btn-danger bbc-btn-sm action-btn get-coupon action-webview" data-webview="_www/view/shop/shopcoupon.html" data-webparam='{"shopid": <%= cartlist[i].shop_id %>}'>领券</button></div>
+              <% } %>
+            </div>
+            <div class="promotion-goods">
+              <% for(var j=0; j<cartlist[i].promotion_cartitems.length; j++){ %>
+              <div class="promotion-goods-group">
+                <% if(cartlist[i].promotion_cartitems[j].promotion != null){ %>
+                <div class="group-header section-title">
+                  <div class="title-txt font-gray-0 fontSm"><span class="tag tag-outline"><%= cartlist[i].promotion_cartitems[j].promotion.promotion_tag %></span>&nbsp;&nbsp;
+                    <%= cartlist[i].promotion_cartitems[j].promotion.promotion_name %>
+                  </div>
+                  <div class="promotion more-link action-webview" data-webview='_www/view/promotion/promotion.html' data-webparam='{"promotion_id": <%= cartlist[i].promotion_cartitems[j].promotion.promotion_id %>}'><i class="bbc-icon bbc-icon-forward fonts font-orange"></i></div>
+                </div>
+                <% } %>
+                <ul class="order-goods-list">
+                  <% for(var k=0; k<cartlist[i].promotion_cartitems[j].cartitemlist.length; k++){ %>
+                  <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].obj_type == 'item'){ %>
+                  <li <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>class="invalid"<% } %> data-ischecked="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].is_checked %>" data-cartid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].cart_id %>" data-promotionid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].selected_promotion %>">
+                    <div class="thumbnail">
+                      <div class="mui-checkbox bbc-checkbox shop-item-checkbox <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>mui-disabled<% } %>">
+                        <label></label>
+                        <input name="checkbox" type="checkbox" data-cartid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].cart_id %>" <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].is_checked==1){ %>checked
+                        <% } %>
+                        <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>disabled
+                        <% } %>>
+                      </div>
+                      <div class="thumb-detail">
+                        <div class="thumb-img">
+                          <a><img src="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].image_default_id %>" alt=""></a>
+                        </div>
+                        <div class="caption">
+                          <div class="order-goods-info">
+                            <div class="order-goods-top">
+                              <div class="order-goods-title action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].item_id %>}'>
+                                <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].activityinfo){ %>
+                                  <span class="tag"><%= cartlist[i].promotion_cartitems[j].cartitemlist[k].activityinfo.activity_tag %></span>
+                                <% } %>
+                                <a>
+                                  <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].title %>
+                                </a>
+                              </div>
+                              <div class="order-goods-sku">
+                                <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].spec_info %>
+                              </div>
+                            </div>
+                            <div class="order-goods-price">
+                              <mark><%= $format_price(cartlist[i].promotion_cartitems[j].cartitemlist[k].price.price) %></mark>
+                              <div class="order-goods-num-control">
+                                <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==true){ %>
+                                <div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].store %>">
+                                  <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+                                  <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].quantity %>">
+                                  <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                                </div>
+                                <% }else{ %>
+                                <span class="font-gray-40">已失效</span>
+                                <% } %>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="order-goods-num content-right" style="display: none;">x
+                            <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].quantity %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].gifts != null){ %>
+                    <div class="box-display gift-view">
+                      <div>赠品：</div>
+                      <div class="box-item-flex1">
+                        <% for(var v=0; v<cartlist[i].promotion_cartitems[j].cartitemlist[k].gifts.length; v++){ %>
+                        <div class="box-display">
+                          <div class="gifts-info" data-itemid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].gifts[v].item_id %>">
+                            <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].gifts[v].title %>
+                          </div>
+                          <div class="gifts-num"> x
+                            <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].gifts[v].gift_num %>
+                          </div>
+                        </div>
+                        <% } %>
+                      </div>
+                    </div>
+                    <% } %>
+                    <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].promotiontags != null  && cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==true){ %>
+                    <a data-promotion="<%= $json_string(cartlist[i].promotion_cartitems[j].cartitemlist[k].promotiontags) %>" href="#promotion" class="promotion-select">
+                      <div class="promotion-info">
+                        优惠：
+                        <span>
+                        <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].selected_promotion > 0){ %>
+                        <%= cartlist[i].promotion_cartitems[j].promotion.promotion_name %>
+                        <% }else{ %> 不使用优惠
+                        <% } %>
+                        </span>
+                      </div>
+                      <i class="bbc-icon promotion-edit">选择优惠</i>
+                    </a>
+                    <% } %>
+                  </li>
+                  <% } %>
+                  <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].obj_type=='package'){ %>
+                  <li <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>class="invalid"<% } %> data-ischecked="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].is_checked %>" data-cartid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].cart_id %>" data-promotionid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].selected_promotion %>" data-quantity="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].quantity %>">
+                    <div class="package-header section-title content-bottom-padded-mini">
+                      <div class="title-txt font-gray-0 fontSm"><span class="tag tag-outline">组合</span> <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].title%></div>
+                    </div>
+                    <div class="thumbnail">
+                      <div class="mui-checkbox bbc-checkbox shop-item-checkbox <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>mui-disabled<% } %>">
+                        <label></label>
+                        <input name="checkbox" type="checkbox" data-cartid="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].cart_id %>" <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].is_checked==1){ %>checked
+                        <% } %>
+                        <% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].valid==false){ %>disabled
+                        <% } %>>
+                      </div>
+                      <div class="package-goods-group">
+                        <% for(var m=0; m<cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList.length; m++){ %>
+                        <div class="package-goods-item">
+                          <div class="thumb-img">
+                            <a><img src="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].image_default_id %>" alt=""></a>
+                          </div>
+                          <div class="caption">
+                            <div class="order-goods-info">
+                              <div class="order-goods-title action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].item_id %>}'>
+                                <a><%= cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].title%></a>
+                              </div>
+                              <div class="order-goods-sku"><% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].spec_info){ %><%= cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].spec_info%><% } %></div>
+                              <div class="order-goods-price content-right">
+                                <p><mark><%= $format_price(cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].price.price) %></mark></p>
+                                <p><span class="fonts font-gray-40 original-price"><%= $format_price(cartlist[i].promotion_cartitems[j].cartitemlist[k].skuList[m].price.old_price) %></span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+                        <div class="package-goods-num-control content-right">
+                          <div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="<% if(cartlist[i].promotion_cartitems[j].cartitemlist[k].activityDetail && cartlist[i].promotion_cartitems[j].cartitemlist[k].activityDetail.activity_info.buy_limit){ %><%= cartlist[i].promotion_cartitems[j].cartitemlist[k].activityDetail.activity_info.buy_limit%><% }else{ %><%= cartlist[i].promotion_cartitems[j].cartitemlist[k].store%><% } %>">
+                            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+                            <input id="test" name="cart_num[<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].cart_id%>]" class="action-modify mui-input-numbox" type="number" value="<%= cartlist[i].promotion_cartitems[j].cartitemlist[k].quantity%>">
+                            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                          </div>
+                          <div class="order-goods-num content-right" style="display:none;">组合数量：x<span> <%= cartlist[i].promotion_cartitems[j].cartitemlist[k].quantity%></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <% } %>
+                  <% } %>
+                </ul>
+              </div>
+              <% } %>
+            </div>
+          </section>
+          <% } %>
+        </div>
+      </section>
+      <div class="action-bar-mini">
+        <div class="action-bar-mini-item">
+          <div class="mui-input-row mui-checkbox mui-left bbc-checkbox">
+            <label>全选</label>
+            <input id="checkAll" name="cart_all" data-name="cart_all" type="checkbox" <% if(nocheckedall==0){ %>checked
+            <% } %>>
+          </div>
+        </div>
+        <div id="edit_off" class="action-bar-op-item">
+          <div class="action-bar-op-info cart-list-total">
+            <div class="total-price font-gray-20 fontS">合计: <mark class="fontm"><%= $format_price(totalCart.totalAfterDiscount) %></mark></div>
+            <div class="cart-post-fee">(已优惠
+              <%= $format_price(totalCart.totalDiscount) %> 元)</div>
+          </div>
+          <div id="checkout" class="action-bar-op-btn">
+            <a>结算</a>
+          </div>
+        </div>
+        <div id="edit_on" class="action-bar-op-item content-right" style="display: none;">
+          <div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
+        </div>
+      </div>
+    </script>
+
+    <script>
+      mui.plusReady(function() {
+        var wid = plus.webview.currentWebview().id;
+        var state = app.getState();
+        if(state.token) {
+          mui.plusReady(function() {
+            fetchList();
+          });
+        } else {
+          $('.cart-main').append('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
+        }
+
+        function fetchList() {
+          var loading = plus.nativeUI.showWaiting();
+          var param = {
+            queryData: {
+              'method': config.apimethod.cartlist,
+              'accessToken': state.token,
+              'mode': 'cart'
+            },
+            method: 'GET'
+          }
+          $.dataRequest(param, function(rs) {
+            if(!isEmptyObject(rs.data)) {
+              var list = template('cart_list', rs.data);
+              $('.cart-main').html(list);
+              mui('.mui-numbox').numbox();
+              $('#cart_edit').show();
+            } else {
+              $('#cart_edit').hide();
+              $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-tip">亲，暂无数据～</div></div></div>')
+            }
+            loading.close();
+          });
+        }
+
+        var flag = false;
+        var isPromotionSelect = true;
+        $('#cart_edit').on('tap', function() {
+          if($(this).hasClass('editing')) {
+            $(this).removeClass('editing').text('编辑');
+            $('#edit_on').hide();
+            $('#edit_off').show();
+            $('.mui-numbox').show();
+            $('.order-goods-num').hide();
+            $('.order-goods-header .more-link').show();
+            $('.cart-main').addClass('checkout-action').removeClass('del-action');
+            $('.invalid').find('input[type="hidden"]').attr('disabled', 'disabled');
+            $('.invalid').find('input[type="checkbox"]').attr('disabled', 'disabled');
+            $('.promotion-select').attr('href', '#promotion');
+            $('.promotion-edit').show();
+            flag = true;
+            isPromotionSelect = true;
+            fetchList();
+          } else {
+            $(this).addClass('editing').text('完成');
+            $('#edit_on').show();
+            $('#edit_off').hide();
+            $('.mui-numbox').hide();
+            $('.order-goods-num').show();
+            $('.order-goods-header .more-link').hide();
+            $('.cart-main').addClass('del-action').removeClass('checkout-action');
+            $('.invalid').find('input[type="hidden"]').removeAttr('disabled');
+            $('.invalid').find('input[type="checkbox"]').removeAttr('disabled');
+            $('input[type="checkbox"]').prop('checked', false);
+            $('.promotion-select').attr('href', 'javascript:void(0);');
+            $('.promotion-edit').hide();
+            isPromotionSelect = false;
+          }
+        });
+
+        $('.cart-main').off();
+        $('.cart-main').on('change', '#checkAll', function(event) {
+          var value = this.checked ? true : false;
+          if(value === true) {
+            $('input[type="checkbox"]').each(function() {
+              if(!$(this).attr('disabled')) {
+                $(this).prop('checked', true);
+              }
+              $('.cart-list').find('li').data('ischecked', 1);
+            });
+          } else {
+            $('input[type="checkbox"]').prop('checked', false);
+            $('.cart-list').find('li').data('ischecked', 0);
+            $('#checkAll').prop('checked', false);
+          }
+          if($('.cart-main').hasClass('checkout-action')) {
+            updateItem();
+          }
+        });
+
+        $('.cart-main').on('change', '.order-goods-header input[type="checkbox"]', function(event) {
+          var value = this.checked ? true : false;
+          if(value === true) {
+            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').each(function() {
+              if(!$(this).attr('disabled')) {
+                $(this).prop('checked', true);
+              };
+              $($(this).parents('.order-goods').find('li')).data('ischecked', 1);
+            });
+          } else {
+            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').prop('checked', false);
+            $($(this).parents('.order-goods').find('li')).data('ischecked', 0);
+            $('#checkAll').prop('checked', false);
+          }
+          if($('.cart-main').hasClass('checkout-action')) {
+            updateItem();
+          }
+        })
+
+        $('.cart-main').on('change', '.shop-item-checkbox input[type="checkbox"]', function(event) {
+            var fa = $(this).parents('.promotion-goods');
+            var shop = $(this).parents('.order-goods').find('.section-title input[type="checkbox"]');
+            var totalChecked = $(fa).find('input[type="checkbox"]');
+            var totalCheck = $(fa).find('input[type="checkbox"]:checked');
+
+            var val = this.checked ? true : false;
+            if(val === true) {
+              $(this).parents('li').data('ischecked', 1);
+            } else {
+              $(this).parents('li').data('ischecked', 0);
+            }
+            if(totalCheck.length == totalChecked.length) {
+              $(shop).prop('checked', true);
+            } else {
+              $(shop).prop('checked', false);
+            }
+
+            if($('.cart-main').hasClass('checkout-action')) {
+              updateItem();
+            }
+          })
+          .on('change', '.action-modify', function() {
+            $(this).parents('li').data('quantity', parseInt($(this).val()));
+            if($('.cart-main').hasClass('checkout-action')) {
+              updateItem();
+            }
+          })
+
+        $('.cart-main').on('tap', '#cart_del', function() {
+          var data = '';
+          if(!$('.cart-list').find('input[name="checkbox"]:checked').length) {
+            mui.alert('请选择需要删除的商品');
+            return
+          }
+          var checkedItem = $('.cart-list').find('input[name="checkbox"]:checked');
+          for(var i = 0; i < checkedItem.length; i++) {
+            var delDom = $(checkedItem[i]).data('cartid');
+            data += delDom + ',';
+          };
+          var btnArray = ['否', '是'];
+          mui.confirm('是否删除所选商品？', '提示', btnArray, function(e) {
+            if(e.index == 1) {
+              updateCart(data)
+            } else {
+              return
+            }
+          });
+        });
+
+        $('body').off();
+        $('body').on('tap', '.promotion-select', function(e) {
+          var that = $(this);
+          if(!isPromotionSelect) return;
+          var promotion_id = $(this).parents('li').data('promotionid');
+          var list = $(this).data('promotion');
+          var listwrapper = $('#promotion');
+
+          if(list) {
+            var html = ' ';
+            for(var i = 0; i < list.length; i++) {
+              html += '<li class="mui-table-view-cell" data-id="' + list[i].promotion_id + '"><a class="mui-navigate-right"><span class="tag tag-outline">' + list[i].promotion_tag + '</span><em> ' + list[i].promotion_name + '</em></a></li>'
+            }
+            html += '<li class="mui-table-view-cell" data-id="0"><a class="mui-navigate-right"><em>不使用优惠</em></a></li>';
+
+            listwrapper.find('ul').html(html);
+            listwrapper.find('li').each(function() {
+              if($(this).data('id') == promotion_id) {
+                $(this).addClass('mui-selected');
+                return true;
+              }
+            });
+          }
+          listwrapper.off('tap');
+          listwrapper.on('tap', '.action-bar-op-btn', function() {
+            var checked = listwrapper.find('.mui-selected');
+            if(checked.length > 0) {
+              var id = $(checked).data('id');
+              var name = $(checked).find('em').text();
+              that.find('span').text(name);
+              that.parents('li').data('promotionid', id);
+              updateItem();
+              mui('#promotion').popover('hide');
+            } else {
+              mui.alert('请选择一种优惠方式');
+            }
+          });
+        });
+
+        function updateItem() {
+          var cartList = $('.cart-list').find('.order-goods-list li');
+          var cartParam = [];
+          for(var i = 0; i < cartList.length; i++) {
+            if(!$(cartList[i]).hasClass('invalid')) {
+              var itemParam = {};
+              itemParam.cart_id = $(cartList[i]).data('cartid');
+              itemParam.is_checked = $(cartList[i]).data('ischecked');
+              itemParam.selected_promotion = $(cartList[i]).data('promotionid');
+              itemParam.totalQuantity = $(cartList[i]).find('.action-modify').val();
+              cartParam.push(itemParam);
+            }
+          }
+          cartParam = JSON.stringify(cartParam);
+          if(flag) {
+            $('input[type="checkbox"]').prop('checked', false);
+          }
+          var param = {
+            queryData: {
+              'method': config.apimethod.cartupdate,
+              'accessToken': state.token,
+              'cart_params': cartParam
+            },
+            method: 'GET'
+          }
+          
+          $.dataRequest(param, function(rs) {
+            fetchList();
+            if(flag) {
+              $('input[type="checkbox"]').prop('checked', false);
+              flag = false;
+            }
+          });
+        }
+
+        function updateCart(data) {
+          var param = {
+            queryData: {
+              'method': config.apimethod.cartdel,
+              'accessToken': state.token,
+              'cart_id': data
+            },
+            method: 'POST'
+          }
+          data = data.split(',');
+          data = data.splice(0, data.length - 1);
+          $.dataRequest(param, function() {
+            for(var i = 0; i < data.length; i++) {
+              $('input[data-cartid="' + data[i] + '"]').parents('li').remove()
+            }
+            var promotionlist = $('.promotion-goods-group');
+            for(var i = 0; i < promotionlist.length; i++) {
+              if($(promotionlist[i]).find('li').length == 0) {
+                $(promotionlist[i]).remove();
+              }
+            }
+            var shoplist = $('.order-goods');
+            for(var i = 0; i < shoplist.length; i++) {
+              if($(shoplist[i]).find('.promotion-goods-group').length == 0) {
+                $(shoplist[i]).remove();
+              }
+            }
+          });
+        }
+
+        $('.get-coupon').on('tap', function() {
+          clicked('_www/view/shop/shopcoupon.html');
+        });
+
+        $('.shop').on('tap', function() {
+          clicked('_www/view/shop/shop.html');
+        });
+
+        $('body').on('tap', '#checkout', function() {
+          if(!$('.cart-list').find('input[name="checkbox"]:checked').length) {
+            return
+          }
+          clicked('_www/view/cart/checkout.html', {
+            'mode': 'cart'
+          });
+        })
+
+        mui('#promotion').on('tap', '*', function(e) {
+          e.detail.gesture.preventDefault();
+        });
+
+        $('#log').on('tap', function() {
+          clicked('_www/view/passport/login.html', {'entrance':wid}, 'slide-in-bottom');
+        });
+      });
+    </script>
+  </body>
+</html>

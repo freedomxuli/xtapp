@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+      html,
+      body {
+        background-color: #efeff4;
+      }
+
+      p {
+        text-indent: 22px;
+      }
+
+      span.mui-icon {
+        font-size: 14px;
+        color: #007aff;
+        margin-left: -15px;
+        padding-right: 10px;
+      }
+      .goods-filters {
+        top: 44px;
+      }
+      .mui-bar-nav {
+        background: #FFF;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <header class="mui-bar-nav">
+      <header class="home-header">
+        <i class="icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+        <div class="main">
+          <form onsubmit="return false;">
+            <div class="mui-input-row header-search-form">
+              <input type="search" class="header-search mui-input-clear" placeholder="搜索店铺内商品">
+            </div>
+          </form>
+        </div>
+        <i class="icon-func bbc-icon bbc-icon-submenu mui-action-menu"></i>
+      </header>
+    </header>
+    <div class="mui-bar-nav mui-bar-standard mui-bar-header-secondary goods-filters">
+      <div class="goods-filters-item no-order active" data-order="">综合</div>
+      <div class="goods-filters-item" data-order="sold_quantity">销量</div>
+      <div class="goods-filters-item" data-order="price">价格 <i class="goods-filters-order order-desc"></i></div>
+      <div class="goods-filters-item" data-order="modified_time">最新</div>
+      <div id="show_style" class="goods-show-style"><i class="bbc-icon bbc-icon-thumb"></i></div>
+    </div>
+    <div class="mui-content">
+
+    </div>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script>
+      mui.plusReady(function() {
+        var wv = plus.webview.currentWebview();
+        var item_id = wv.item_id;
+        var shop_cat_id = wv.shop_cat_id;
+        var keyword = wv.keyword;
+        var shopid = wv.shopid;
+        var order;
+        if(keyword) {
+          $('input[type="search"]').val(keyword);
+          shop_cat_id = '';
+        }
+
+        var contentWebview = null;
+        var hlist = localStorage.getItem('_history');
+        var form = $('input[type="search"]').parents('form');
+        var sinput = $('input[type="search"]');
+        $(form).submit(function() {
+          var search_val = $('input[type="search"]').val();
+          if(hlist != null) {
+            var list = hlist.split(",");
+          }
+          var flag = true;
+          if(search_val != '') {
+            if(hlist != null) {
+              for(var i = 0; i < list.length; i++) {
+                if(list[i] == search_val) {
+                  flag = false;
+                }
+              }
+            }
+            if(flag == true) {
+              if(hlist != null) {
+                hlist += (search_val + ',');
+                localStorage.setItem('_history', hlist);
+              } else {
+                localStorage.setItem('_history', search_val + ',');
+              }
+            }
+            if(contentWebview == null) {
+              contentWebview = plus.webview.currentWebview().children()[0];
+            }
+            mui.fire(contentWebview, 'getlist', {
+              'search_keywords': search_val,
+              'shop_id': shopid,
+              'orderBy': order
+            })
+            sinput.blur();
+          }
+        });
+
+        //店铺分类筛选进来，只需要shop_id和shop_cat_id
+        window.addEventListener('getkey', function(event) {
+          if(contentWebview == null) {
+            contentWebview = plus.webview.currentWebview().children()[0];
+          }
+          if(event.detail.search_enter && event.detail.search_enter == 'shopgoods_aside') {
+            order = '';
+            $('.goods-filters .no-order').addClass('active').siblings('.goods-filters-item').removeClass('active');
+          }
+          
+          $('input[type="search"]').val("");
+
+          shop_cat_id = event.detail.search_shop_cat_id;
+          mui.fire(contentWebview, 'getlist', {
+            'shop_id': shopid,
+            'search_keywords': '',
+            'search_shop_cat_id': shop_cat_id,
+            'orderBy': order
+          });
+        });
+
+        var main, menu, mask = mui.createMask(_closeMenu);
+        var showMenu = false,
+          mode = 'menu-move';
+
+        mui.init({
+          swipeBack: false,
+          beforeback: back,
+          subpages: [{
+            url: '_www/view/shop/shopgoods_list.html',
+            id: '_www/view/shop/shopgoods_list.html',
+            styles: {
+              top: '88px',
+              bottom: '0px'
+            }
+          }]
+        });
+
+        //整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+        //      if (!mui.os.android) {
+        //        //整体滑动暂不支持android手机，因为两个页面的移动动画，无法保证同步性；
+        //        document.getElementById("move-togger").classList.remove('mui-hidden');
+        //        var spans = document.querySelectorAll('.android-only');
+        //        for (var i=0,len=spans.length;i<len;i++) {
+        //          spans[i].style.display = "none";
+        //        }
+        //      }
+
+        function back() {
+          if(showMenu) {
+            //菜单处于显示状态，返回键应该先关闭菜单,阻止主窗口执行mui.back逻辑；
+            closeMenu();
+            return false;
+          } else {
+            //菜单处于隐藏状态，执行返回时，要先close菜单页面，然后继续执行mui.back逻辑关闭主窗口；
+            menu.close('none');
+            return true;
+          }
+        }
+        //plusReady事件后，自动创建menu窗口；
+        mui.plusReady(function() {
+          main = plus.webview.currentWebview();
+
+          //setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
+          setTimeout(function() {
+            menu = mui.preload({
+              id: '_www/view/shop/shopgoods_aside.html',
+              url: '_www/view/shop/shopgoods_aside.html',
+              styles: {
+                left: "30%",
+                width: '70%',
+                zindex: 9997
+              }
+            });
+          }, 300);
+        });
+
+        /*
+         * 显示菜单菜单
+         */
+        function openMenu() {
+          if(!showMenu) {
+            //解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+            if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+              document.querySelector("header.mui-bar").style.position = "static";
+              //同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+              document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "0px";
+            }
+
+            //侧滑菜单处于隐藏状态，则立即显示出来；
+            //显示完毕后，根据不同动画效果移动窗体；
+            menu.show('none', 0, function() {
+              switch(mode) {
+                case 'main-move':
+                  //主窗体开始侧滑；
+                  main.setStyle({
+                    left: '-70%',
+                    zindex: 9999,
+                    transition: {
+                      duration: 150
+                    }
+                  });
+                  break;
+                case 'menu-move':
+                  menu.setStyle({
+                    left: '30%',
+                    transition: {
+                      duration: 150
+                    }
+                  });
+                  break;
+                case 'all-move':
+                  main.setStyle({
+                    left: '-70%',
+                    transition: {
+                      duration: 150
+                    }
+                  });
+                  menu.setStyle({
+                    left: '30%',
+                    transition: {
+                      duration: 150
+                    }
+                  });
+                  break;
+              }
+            });
+            //显示主窗体遮罩
+            setTimeout(function() {
+              var sub = plus.webview.currentWebview().children()[0];
+              mui.fire(sub, 'subMaskShow', {});
+            }, 100);
+            setTimeout(function() {
+              mask.show();
+            }, 100);
+
+            showMenu = true;
+          }
+        }
+
+        function closeMenu() {
+          //窗体移动
+          _closeMenu();
+          setTimeout(function() {
+            var sub = plus.webview.currentWebview().children()[0];
+            mui.fire(sub, 'subMaskClose', {});
+            //关闭遮罩
+          }, 100);
+          setTimeout(function() {
+            mask.close();
+          }, 100);
+        }
+
+        function closeMask() {
+          mask.close();
+        }
+        /**
+         * 关闭侧滑菜单(业务部分)
+         */
+        function _closeMenu() {
+          if(showMenu) {
+            //解决android 4.4以下版本webview移动时，导致fixed定位元素错乱的bug;
+            if(mui.os.android && parseFloat(mui.os.version) < 4.4) {
+              document.querySelector("header.mui-bar").style.position = "fixed";
+              //同时需要修改以下.mui-contnt的padding-top，否则会多出空白；
+              document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = "44px";
+            }
+
+            switch(mode) {
+              case 'main-move':
+                //主窗体开始侧滑；
+                main.setStyle({
+                  left: '0',
+                  transition: {
+                    duration: 150
+                  }
+                });
+                break;
+              case 'menu-move':
+                //主窗体开始侧滑；
+                menu.setStyle({
+                  left: '100%',
+                  transition: {
+                    duration: 150
+                  }
+                });
+                break;
+              case 'all-move':
+                //主窗体开始侧滑；
+                main.setStyle({
+                  left: '0',
+                  transition: {
+                    duration: 150
+                  }
+                });
+                //menu页面同时移动
+                menu.setStyle({
+                  left: '100%',
+                  transition: {
+                    duration: 150
+                  }
+                });
+
+                break;
+            }
+            //等窗体动画结束后，隐藏菜单webview，节省资源；
+            var sub = plus.webview.currentWebview().children()[0];
+            mui.fire(sub, 'subMaskClose', {});
+            setTimeout(function() {
+              menu.hide();
+            }, 300);
+            showMenu = false;
+          }
+        }
+
+        //点击侧滑图标，打开侧滑菜单；
+        document.querySelector('.mui-action-menu').addEventListener('tap', openMenu);
+        //在android4.4中的swipe事件，需要preventDefault一下，否则触发不正常
+        //故，在dragleft，dragright中preventDefault
+        window.addEventListener('dragright', function(e) {
+          e.detail.gesture.preventDefault();
+        });
+        window.addEventListener('dragleft', function(e) {
+          e.detail.gesture.preventDefault();
+        });
+        //主界面向左滑动，若菜单未显示，则显示菜单；否则不做任何操作；
+        window.addEventListener("swipeleft", openMenu);
+        //主界面向右滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+        window.addEventListener("swiperight", closeMenu);
+        //menu页面向右滑动，关闭菜单；
+        window.addEventListener("menu:swiperight", closeMenu);
+
+        window.addEventListener('_closeMenu', _closeMenu);
+        window.addEventListener('closeMask', closeMask);
+
+        //重写mui.menu方法，Android版本menu按键按下可自动打开、关闭侧滑菜单；
+        mui.menu = function() {
+          if(showMenu) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        }
+        
+        $('.goods-filters-item').on('tap', function() {
+          $(this).addClass('active').siblings().removeClass('active');
+          order = $(this).data('order');
+          var filterItem = $(this).find('.goods-filters-order')
+          if(filterItem && $(this).hasClass('active') && filterItem.hasClass('order-desc')) {
+            filterItem.removeClass('order-desc').addClass('order-asc');
+            order = order ? order + ' ' + 'desc' : '';
+          } else if(filterItem && $(this).hasClass('active') && filterItem.hasClass('order-asc')) {
+            filterItem.removeClass('order-asc').addClass('order-desc');
+            order = order ? order + ' ' + 'asc' : '';
+          }
+          
+          if(contentWebview == null) {
+            contentWebview = plus.webview.currentWebview().children()[0];
+          }
+          
+          var search_val = $('input[type="search"]').val();
+          if(search_val!=''){
+            shop_cat_id = ''
+          };
+
+          mui.fire(contentWebview, 'getlist', {
+            'page_no': config.cpage,
+            'search_shop_cat_id': shop_cat_id,
+            'shop_id': shopid,
+            'orderBy': order,
+            'search_keywords': search_val,
+            'item_id': item_id
+          });
+        });
+
+        $('#show_style').on('tap', function() {
+          if(contentWebview == null) {
+            contentWebview = plus.webview.currentWebview().children()[0];
+          }
+          if($(this).find('.bbc-icon').hasClass('bbc-icon-gallery')) {
+            $(this).find('.bbc-icon').removeClass('bbc-icon-gallery').addClass('bbc-icon-thumb');
+            mui.fire(contentWebview,'gallerystyle');
+            contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+            localStorage.setItem('list_type', 'gallery');
+          } else if($(this).find('.bbc-icon').hasClass('bbc-icon-thumb')) {
+            $(this).find('.bbc-icon').removeClass('bbc-icon-thumb').addClass('bbc-icon-gallery');
+            mui.fire(contentWebview,'liststyle');
+            contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+            localStorage.setItem('list_type', 'thumb');
+          }
+        });
+      });
+    </script>
+  </body>
+
+</html>

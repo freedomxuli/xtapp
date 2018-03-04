@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title"></div>
+      <i class="header-right icon-func bbc-icon bbc-icon-more-vertical"></i>
+    </header>
+    <div class="mui-content"></div>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../config.js"></script>
+    <script src="../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      mui.plusReady(function() {
+        var link = plus.webview.currentWebview().link
+        mui.init({
+          swipeBack: true, //启用右滑关闭功能
+          gestureConfig: {
+            doubletap: true
+          },
+          subpages: [{
+            url: link,
+            id: link,
+            styles: {
+              top: '44px',
+              bottom: '0px',
+            }
+          }]
+        });
+
+        var contentWebview = null;
+        document.querySelector('header').addEventListener('doubletap', function() {
+          if(contentWebview == null) {
+            contentWebview = plus.webview.currentWebview().children()[0];
+          }
+          contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+        });
+      });
+    </script>
+  </body>
+
+</html>

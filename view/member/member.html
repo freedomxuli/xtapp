@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <style type="text/css">
+    .box {
+      height: 15rem;
+      position: relative;
+      overflow: hidden;
+      background: #FFF;
+      transform: translate3d(0, 0, 0); }
+
+     .box:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
+      z-index: 5;
+      transform: translate3d(0, 0, 0); }
+
+    	 .wave {
+      opacity: .4;
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      background: #0af;
+      width: 800px;
+      height: 800px;
+      margin-left: -400px;
+      margin-top: -600px;
+      transform-origin: 50% 48%;
+      border-radius: 43%;
+      animation: drift 20000ms infinite linear; }
+
+    .wave.three {
+      animation: drift 19500ms infinite linear; }
+
+    .wave.two {
+      animation: drift 22000ms infinite linear;
+      opacity: .1;
+      background: yellow; }
+
+    @keyframes drift {
+      from {
+        transform: rotate(0deg); }
+      from {
+        transform: rotate(360deg); } }
+
+      .user-header {
+        min-height: 12rem;
+      }
+    </style>
+  </head>
+
+  <body class="body-padding-xs">
+    <div class="user-header box">
+      <div class='wave one'></div>
+      <div class='wave two'></div>
+      <div class='wave three'></div>
+      <a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>
+      <div id="login" class="user-login" style="display: none;">
+        <div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>
+        <div>会员登录</div>
+      </div>
+      <div id="user_info" class="user-logined action-clickview" style="display: none;" data-view="_www/view/member/userinfo/userinfo.html">
+        <div class="login-avatar"><i class="bbc-icon bbc-icon-member fontB"></i></div>
+        <div>您好，<span id="account"></span></div>
+        <div><span id="grade_name" class="fontS font-yellow"></span></div>
+      </div>
+    </div>
+    <section class="section-white">
+      <div class="section-title user-title">
+        <div class="title-txt"><i class="user-icon bbc-icon bbc-icon-list user-order"></i> 我的订单</div>
+        <div class="more-link">
+          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview">查看全部订单</a><i class="bbc-icon bbc-icon-forward"></i></div>
+      </div>
+      <div class="box-display content-vertical-padded user-orders fontS">
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><i class="bbc-icon bbc-icon-pay"><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-package"><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待发货</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-logistics"><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-message-gap"><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待评价</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>
+      </div>
+    </section>
+    <section class="section-white">
+      <div class="section-title user-title">
+        <div class="title-txt"><i class="user-icon bbc-icon bbc-icon-assets user-assets"></i> 我的资产</div>
+      </div>
+      <div class="box-display content-vertical-padded user-assetses font-gray-20">
+        <div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">0</em><br><span class="font-gray-20 fontS">红包</span></div>
+        <div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">0</em><br><span class="font-gray-20 fontS">购物券</span></div>
+        <div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0</em><br><span class="font-gray-20 fontS">优惠券</span></div>
+        <div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">0</em><br><span class="font-gray-20 fontS">积分</span></div>
+      </div>
+    </section>
+    <section class="section-white">
+      <ul class="mui-table-view">
+        <li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-history user-returns"></i> 退换货记录</a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-password user-safe"></i> 安全中心</a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-star-empty user-favorite"></i> 我的收藏</a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/rate/rate.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-rate-empty user-rate"></i> 我的评价</a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-communication user-complain"></i> 我的投诉</a>
+        </li>
+      </ul>
+    </section>
+
+    <nav class="mui-bar bbc-bar-tab">
+      <a class="bbc-tab-item" data-webview="_www/view/index.html">
+        <span class="mui-icon bbc-icon bbc-icon-home-empty"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+        <span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+        <span class="mui-tab-label">分类</span>
+      </a>
+      <a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
+        <span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+        <span class="mui-tab-label">购物车</span>
+      </a>
+      <a class="bbc-tab-item bbc-active">
+        <span class="mui-icon bbc-icon bbc-icon-user"></span>
+        <span class="mui-tab-label">会员</span>
+      </a>
+    </nav>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      mui.plusReady(function() {
+        window.addEventListener('refresh', fetchMemberData);
+        fetchMemberData();
+
+        $(window).on('tap', '.action-clickview', function() {
+          var state = app.getState();
+          var _this = $(this).data('view');
+          var needlog = $(this).data('needlog');
+          var data = $(this).data('param');
+          if(_this && _this != '') {
+            if(needlog && needlog == true) {
+              if(state.token) {
+                if(data && data != '') {
+                  clicked(_this, data);
+                } else {
+                  clicked(_this);
+                }
+              } else {
+                var faid = plus.webview.currentWebview().id;
+                clicked('_www/view/passport/login.html', {
+                  'faid': faid,
+                  'entrance': faid
+                }, 'slide-in-bottom');
+              }
+            } else {
+              clicked(_this);
+            }
+          }
+        });
+
+        $('#setting').on('tap', function() {
+          var _this = $(this).data('view');
+          var faid = plus.webview.currentWebview().id;
+          clicked(_this, {
+            'faid': faid
+          });
+        });
+
+        $('#login').on('tap', function() {
+          var faid = plus.webview.currentWebview().id;
+          clicked('_www/view/passport/login.html', {
+            'faid': faid,
+            'entrance': faid
+          }, 'slide-in-bottom');
+        });
+
+        function fetchMemberData() {
+          var state = app.getState();
+          if(state.token) {
+            //document.getElementById('account').innerText = state.account;
+            document.getElementById('setting').style.display = "block";
+            document.getElementById('login').style.display = "none";
+            document.getElementById('user_info').style.display = "block";
+            var param = {
+              queryData: {
+                'method': config.apimethod.member,
+                'accessToken': state.token
+              },
+              method: 'GET'
+            }
+            $.dataRequest(param, function(rs) {
+              var data = rs.data;
+              document.getElementById('trade_pay_num').innerText = data.wait_pay_num;
+              document.getElementById('trade_send_num').innerText = data.wait_send_goods_num;
+              document.getElementById('trade_receive_num').innerText = data.wait_confirm_goods_num;
+              document.getElementById('trade_rate_num').innerText = data.notrate_num;
+              document.getElementById('canceled_num').innerText = data.canceled_num;
+              document.getElementById('voucher').innerText = data.voucher_num;
+              document.getElementById('coupon').innerText = data.coupon_num;
+              document.getElementById('integral').innerText = data.point;
+              document.getElementById('redpackets').innerText = Currency.format(data.hongbaoCount.hongbao_total);
+              //document.getElementById('grade_logo').src = data.gradeInfo.grade_logo;
+              document.getElementById('grade_name').innerText = data.gradeInfo.grade_name;
+              document.getElementById('account').innerText = data.username ? data.username : state.account;
+              var badges = document.querySelectorAll('.bbc-badge');
+              for(var i = 0; i < badges.length; i++) {
+                if(state.token && parseInt(badges[i].innerText) > 0) {
+                  badges[i].style.display = "block";
+                }
+              }
+            });
+          } else {
+            document.getElementById('trade_pay_num').innerText = 0;
+            document.getElementById('trade_send_num').innerText = 0;
+            document.getElementById('trade_receive_num').innerText = 0;
+            document.getElementById('trade_rate_num').innerText = 0;
+            document.getElementById('canceled_num').innerText = 0;
+            document.getElementById('coupon').innerText = 0;
+            document.getElementById('integral').innerText = 0;
+            document.getElementById('setting').style.display = "none";
+            document.getElementById('login').style.display = "block";
+            document.getElementById('user_info').style.display = "none";
+          }
+        }
+      });
+
+      $('.bbc-tab-item').on('tap', function() {
+        var webview = $(this).data('webview');
+        if(webview) {
+          mui.openWindow({
+            url: webview,
+            id: webview,
+            createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+            show: {
+              autoShow: true, //页面loaded事件发生后自动显示，默认为true
+              aniShow: 'none'
+            },
+            waiting: {
+              autoShow: true //自动显示等待框，默认为true
+            }
+          });
+          var openw = plus.webview.getWebviewById(webview);
+          if(openw) {
+            mui.fire(openw, 'refresh');
+          }
+        }
+      });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body>
+    <div class="mui-content filters">
+      <div class="section-white section-container filters-header">
+        <div class="filters-op reset-filters-options">重置</div>
+        <div class="section-init">筛选</div>
+        <div id="close-btn" class="filters-op">确定</div>
+      </div>
+      <div id="filters_box" class="mui-scroll">
+        
+      </div>
+    </div>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    
+    <script type="text/html" id="filters_list">
+      <div class="filters-options mui-content-padded clearfix" style="height: auto;">
+        <span data-name="sf" data-value="1" id="is_self">自营</span>
+      </div>
+        <%if(brand != null) {%>
+        <div class="filters-options mui-content-padded clearfix">
+          <div class="clearfix"><div class="mui-pull-left options-name">品牌:&nbsp;</div><label class="font-red fontS mui-pull-left options-choose"></label><% if(brand_count > 3) {%><i class="mui-pull-right mui-icon mui-icon-arrowdown action-all"></i><% } %></div>
+          <% for(var i=0; i<brand.length; i++) { %>
+          <span data-name="brand_id" data-value="<%=brand[i].brand_id %>" ><%=brand[i].brand_name %></span>
+          <% } %>
+         </div>
+        <% } %>
+      
+        <%if(cat != null) {%>
+        <div class="filters-options mui-content-padded clearfix">
+          <div class="clearfix"><div class="mui-pull-left options-name">类目:&nbsp;</div> <label class="font-red fontS mui-pull-left options-choose"></label><% if(cat_count > 3) {%><i class="mui-pull-right mui-icon mui-icon-arrowdown action-all"></i><% } %></div>
+          <% for(var i=0; i<cat.length; i++) { %>
+          <span data-name="cat_id" data-value="<%=cat[i].cat_id %>" class="<%if(activeFilter['cat_id'] != null) {%>checked<% } %>" ><%=cat[i].cat_name %> </span>
+          <% } %>
+        </div>
+        <% } %>
+        
+        <%if(props != null) {%>
+        <% for(var i=0; i<props.length; i++) { %>
+        <div class="filters-options mui-content-padded clearfix">
+          <div class="clearfix"><div class="mui-pull-left options-name"><%=props[i].prop_name%><%=props[i].prop_name%><%=props[i].prop_name%><%=props[i].prop_name%>:&nbsp;</div> <label class="font-red fontS mui-pull-left options-choose"></label><% if(props[i].prop_count > 3) { %><i class="mui-pull-right mui-icon mui-icon-arrowdown action-all"></i><% } %></div>
+          <%if(props[i].prop_value != null) {%>
+          <% for(var j=0; j<props[i].prop_value.length; j++) { %>
+          <span data-name="prop_index" data-value="<%=props[i].prop_value[j].prop_index%>"><%=props[i].prop_value[j].prop_value%> </span>
+          <% } %>
+          <% } %>
+        </div>
+        <% } %>
+        <% } %>
+     </script>
+    
+    <script type="text/javascript" charset="utf-8">
+      //关闭back、menu按键监听，这样侧滑主界面会自动获得back和memu的按键事件，仅在主界面处理按键逻辑即可；
+      mui.init({
+        keyEventBind: {
+          backbutton: false,
+          menubutton: false
+        }
+      });
+      var flag = false,
+            main = null;
+      $('.reset-filters-options').on('tap', function(){
+        clearOption();
+      });
+     var cat_id;
+     var virtual_cat_id;
+      mui.plusReady(function() {
+        main = plus.webview.currentWebview().opener();
+        cat_id = main.catid || '';
+        virtual_cat_id = main.virtualcatid || '';
+        var keyword = main.keyword || '';
+        var is_selft = '';
+        var orderBy = '';
+        var param = {
+          queryData: {
+            'method': config.apimethod.filteritems,
+            'cat_id': cat_id,
+            'virtual_cat_id': virtual_cat_id,
+            'brand_id': '',
+            'prop_index': '',
+            'search_keywords': keyword,
+            'is_selfshop': is_selft,
+            'page_no': config.cpage,
+            'page_size': config.pagesize,
+            'orderBy': orderBy
+          },
+          method: 'GET'
+        }
+        $.dataRequest(param, function(response) {
+          if(!isEmptyObject(response.data)){
+            var result = template('filters_list', response.data);
+            $('#filters_box').html(result);
+            var catid = response.data.activeFilter.cat_id;
+            $('.filters-options').on('tap', 'span', function() {
+              if(catid != null && catid != "" && catid == $(this).attr('data-value')) return;
+              $(this).toggleClass('checked');
+              var ele = $(this).parent().find('label');
+              var eleText = ele.text();
+              var chooseOptions = [];
+              var txt = $(this).text();
+              if(eleText != null && eleText != "") {
+                  if(eleText.indexOf(';') < 0) {
+                      chooseOptions.push(eleText);
+                  } else {
+                      chooseOptions = eleText.split(';');
+                  }
+              }
+              if($(this).hasClass('checked')) {
+                  chooseOptions.push(txt);
+              } else {
+                  chooseOptions.splice($.inArray(txt, chooseOptions), 1);
+              }
+              ele.html(chooseOptions.join(';'));
+            });
+            $('.filters-options').on('tap', '.action-all', function(){
+              $(this).toggleClass('mui-icon-arrowdown').toggleClass('mui-icon-arrowup');
+              if($(this).hasClass('mui-icon-arrowdown')) {
+                  $(this).parents('.filters-options').css('height', '5rem');
+              } else {
+                  $(this).parents('.filters-options').css('height', 'auto');
+              } 
+            });
+            initChooseOptions();
+          }
+        });
+      });
+      function initChooseOptions(){
+          $('.filters-options').each(function(){
+              var filters = [];
+              $(this).find('span.checked').each(function(){
+                  filters.push($(this).text());
+              });
+              $(this).find('.options-choose').html(filters.join(';'));
+          });
+      }
+      document.getElementById("close-btn").addEventListener('tap', function() {
+        var is_selfshop = $('#is_self').hasClass('checked') ? 1 : 0;
+
+        var brandIds = [];
+        var catIds = [];
+        var propIds = [];
+        var cat_id = '';
+        var brand_id = '';
+        var prop_id = '';
+        $('.filters-options span.checked').each(function() {
+            var checkedFiltersOptions = $(this).hasClass('checked');
+            var name = $(this).data('name');
+            if(name == "brand_id") {
+                brandIds.push($(this).data('value'));
+            } else if(name == "cat_id") {
+                catIds.push($(this).data('value'));
+            } else if(name == "prop_index") {
+                propIds.push($(this).data('value'));
+            } 
+        });
+        
+        if(brandIds.length > 0) {
+            brand_id = brandIds.join(',');
+        }
+        if(catIds.length > 0) {
+            cat_id = catIds.join(',');
+        }
+        if(propIds.length > 0) {
+            prop_id = propIds.join(',');
+        }
+        mui.fire(main, 'getkey', {
+          'is_selfshop': is_selfshop,
+          'cat_id': cat_id,
+          'virtual_cat_id': virtual_cat_id,
+          'brand_id': brand_id,
+          'prop_id': prop_id
+        });
+        closeMenu()
+      });
+
+      function closeMenu() {
+        mui.fire(main, "menu:swiperight");
+      }
+
+      function clearOption() {
+        $('.filters-options span').removeClass('checked');
+        $('.filters-options .options-choose').html("");
+        if(cat_id != "") {
+           var chk_filter = $('.filters-options').find('span[data-value="' + cat_id + '"]');
+           chk_filter.addClass('checked');
+           chk_filter.parent().find('.options-choose').html(chk_filter.html());
+        }
+      }
+      //左滑显示出来的菜单，只需监听右滑，然后将菜单关闭即可；在该菜单上左滑，不做任何操作；
+      window.addEventListener("swiperight", function(e){
+        var detail = e.detail;
+        if(Math.abs(detail.deltaX)>150){
+          closeMenu();
+//        clearOption();
+        }
+      });
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+
+  <body class="no-fix">
+    <header class="icons-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+    </header>
+    <div id="pullrefresh" class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <div class="mui-table-view activity-list">
+
+        </div>
+      </div>
+    </div>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+          <li class="mui-table-view-cell action-share">
+            <a><i class="bbc-icon bbc-icon-share"></i> 分享</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="share_sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+      <div class="section-white">
+        <div class="section-title theme-border-bottom">分享到</div>
+        <div class="section-container">
+          <div class="section-init action-share" data-platform="qq"><i class="bbc-icon bbc-icon-QQ-member"></i></div>
+          <div class="section-init action-share" data-platform="weixin"><i class="bbc-icon bbc-icon-weixin-member"></i></div>
+          <div class="section-init action-share" data-platform="timeline"><i class="bbc-icon bbc-icon-moments"></i></div>
+          <div class="section-init action-share" data-platform="weibo"><i class="bbc-icon bbc-icon-sina-member"></i></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/share.js"></script>
+  
+  <script type="text/html" id="activity_info">
+    <div class="page-banner"><img src="<%= info.slide_images %>" alt=""></div>
+    <div class="section-white content-padded">
+      <p class="activity-title"><span class="tag"><%= info.discount_min*10/100 %>折起</span>
+        <%= info.activity_name %>
+      </p>
+      <p>
+        <% if(info.status=='active'){ %>
+        <span class="fontS font-gray-20">距离活动结束还有：</span><mark class="countdown-view" data-time="<%= info.end_time %>"></mark>
+        <% }else if(info.status=='comming'){ %>
+        <span class="fontS font-gray-20">距离活动开始还有：</span><mark class="countdown-view" data-time="<%= info.start_time %>"></mark>
+        <% }else{ %>
+        <span class="fontS font-gray-40">活动已结束</span>
+        <% } %>
+      </p>
+    </div>
+  </script>
+  <script type="text/html" id="goods_list">
+    <ul class="ui-table-view pro-list-grid goods-list activity">
+      <% for(var i=0; i<list.length; i++) { %>
+      <li class="action-view-activity-detail action-webview" data-webview="_www/view/activity/activitygoodsdetail.html" data-webparam='{"item_id":<%= list[i].item_id %>,"activity_id":<%= list[i].activity_id %>}'>
+        <div class="thumbnail">
+          <div class="thumb-img">
+            <a ><img src="<%= list[i].item_default_image %>" alt=""></a>
+          </div>
+          <div class="caption">
+            <h1 class="goods-title"><%= list[i].title %></h1>
+            <div class="price">
+              <div class="original-price fonts font-gray-40">
+                <%= $format_price(list[i].price) %>
+              </div>
+              <div class="box-display">
+                <div class="amount CNY">
+                  <%= $format_price(list[i].activity_price) %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </script>
+  <script type="text/javascript">
+    $('.action-view-activity-detail').on('tap', function() {
+      clicked('_www/view/activity/activitygoodsdetail.html');
+    });
+
+    mui.plusReady(function() {
+      var activity_id = plus.webview.currentWebview().activity_id;
+      var param = {
+        queryData: {
+          'method': config.apimethod.activitydetaillist,
+          'activity_id': activity_id,
+          'page_no': config.cpage,
+          'page_size': config.pagesize,
+          'orderBy': '',
+          'info_fields': '*',
+          'item_fields': '*'
+        },
+        method: 'GET'
+      }
+
+      $.pageRequest(param, '#pullrefresh', 'goods_list', 'activity-list', function(rs) {
+        if($('.page-banner').length==0){
+          var acinfo = template('activity_info', rs.data);
+          $('.activity-list').before(acinfo);
+        }
+        // 分享
+        $(document).on('tap','.action-share',function(){
+          var shareData = {
+            title: rs.data.info.activity_name, 
+            href: rs.data.share.h5href, 
+            desc: rs.data.info.activity_name,
+            pic: rs.data.share.image
+          };
+          appshare(shareData);
+        });
+
+        // 倒计时
+        var start_time = $('.countdown-view').data('time');
+        var current = new Date().getTime();
+        countdown('.countdown-view', {
+          'start': ((start_time * 1000) - current)/1000,
+          'secondOnly': false,
+          'callback': function(){
+            plus.webview.currentWebview().reload(true);
+          }
+        });
+
+      },true);
+
+    });
+  </script>
+
+</html>

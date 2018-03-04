@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/mui.picker.min.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">修改姓名</div>
+    </header>
+    <section class="container">
+      <div class="form-container" id="user_form">
+        <section class="mui-input-group">
+          <div class="mui-input-row">
+            <label>姓名：</label>
+            <input id="username" type="text" value="" class="mui-input-clear" placeholder="请输入您的姓名">
+          </div>
+        </section>
+        <section class="mui-content-padded form-op-section">
+          <button id="save" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">保存</button>
+        </section>
+      </div>
+    </section>
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var state = app.getState();
+
+      var param = {
+        queryData: {
+          'method': config.apimethod.userinfo,
+          'accessToken': state.token
+        },
+        method: 'GET'
+      }
+      $.dataRequest(param, function(rs) {
+        var data = rs.data;
+        if(rs.errorcode == 0) {
+          document.getElementById('username').value = data.username;
+        } else {
+          mui.alert(rs.msg)
+        }
+      });
+
+      document.getElementById('save').addEventListener('tap', function() {
+        var param = {
+          queryData: {
+            'method': config.apimethod.updateuserinfo,
+            'accessToken': state.token,
+            'username': document.getElementById('username').value
+          },
+          method: 'POST'
+        }
+        $.dataRequest(param, function(rs) {
+          var data = rs.data;
+          mui.toast('更新成功');
+          var parent = plus.webview.getWebviewById('_www/view/member/userinfo/userinfo.html');
+          parent.reload();
+          mui.back();
+        });
+      }, false)
+    </script>
+  </body>
+
+</html>

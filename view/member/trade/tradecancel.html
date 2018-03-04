@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">取消订单</div>
+    </header>
+    <section class="container">
+
+    </section>
+  </body>
+  <script src="../../../js/zepto.js"></script>
+  <script src="../../../js/mui.min.js"></script>
+  <script src="../../../js/template.min.js"></script>
+  <script src="../../../config.js"></script>
+  <script src="../../../js/app.js"></script>
+
+  <script type="text/html" id="cancel_content">
+    <section class="section-white content-padded">
+      订单号：<mark class="action-tid"></mark>
+    </section>
+    <div class="section-white section-title">
+      <div class="title-txt">请选择取消订单原因</div>
+    </div>
+    <ul id="reason" class="section-white mui-table-view mui-table-view-radio bbc-radio">
+      <% for(var i=0; i<list.length; i++){ %>
+      <li class="mui-table-view-cell" data-type="<%= i %>">
+        <a class="mui-navigate-right">
+          <%= list[i] %>
+        </a>
+      </li>
+      <% } %>
+      <li class="mui-table-view-cell" data-type="other">
+        <a class="mui-navigate-right">其他原因</a>
+      </li>
+    </ul>
+    <section id="other" class="section-white content-padded" style="display: none;">
+      <textarea class="bbc-textarea" name="other_reason" id="other_reason" cols="30" rows="5"></textarea>
+    </section>
+    <section class="mui-content-padded form-op-section">
+      <button type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-cancel">确认取消</button>
+    </section>
+  </script>
+
+  <script>
+    var state = app.getState();
+    mui.plusReady(function() {
+      var tid = plus.webview.currentWebview().tid;
+      var param = {
+        queryData: {
+          'method': config.apimethod.tradecancelreason,
+          'accessToken': state.token
+        },
+        method: 'GET'
+      }
+      $.dataRequest(param, function(rs) {
+        var tempEl = template('cancel_content', rs.data);
+        $('.container').html(tempEl);
+        $('.action-tid').text(tid);
+
+        $('#reason').on('tap', 'li', function() {
+          var reason = $(this).data('type');
+          $('#cancel_reason').val(reason);
+          if(reason && reason == 'other') {
+            $('#other').show();
+          } else {
+            $('#other').hide();
+          }
+        });
+
+        $('.action-cancel').on('tap', function() {
+          var chk = $('.mui-selected');
+          if(chk.length != 0) {
+            var reason = '';
+            if(chk.data('type') == 'other') {
+              reason = $('#other_reason').val();
+            } else {
+              reason = chk.find('a').text();
+            }
+            if(reason == '') {
+              mui.alert('请填写取消原因');
+              return;
+            }
+            cancelTrade(reason);
+          } else {
+            mui.alert('请选择取消原因');
+          }
+        });
+      });
+
+      function cancelTrade(reason) {
+        var param = {
+          queryData: {
+            'method': config.apimethod.tradecancel,
+            'accessToken': state.token,
+            'tid': tid,
+            'cancel_reason': reason
+          },
+          method: 'POST'
+        }
+        $.dataRequest(param, function(rs) {
+          mui.toast('取消成功');
+          plus.nativeUI.showWaiting();
+          var fw = plus.webview.currentWebview().opener();
+          fw.reload(true);
+          fw.addEventListener('loaded', function() {
+            plus.nativeUI.closeWaiting();
+            //返回true，继续页面关闭逻辑
+            mui.back();
+          });
+        });
+      }
+    });
+  </script>
+
+</html>

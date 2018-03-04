@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/widgets.css" />
+    <style>
+      .pt16 {
+        background-size: 50px 50px;
+        background-color: #f90;
+        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+        background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+      }
+
+      .pt16 * {
+        color: #FFFFFF;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mui-content">
+      <div id="pullrefresh" class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <div class="section-white pt16">
+            <div class="promotion-header">
+            </div>
+          </div>
+          <ul class="mui-table-view pro-list-grid goods-list">
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+
+  <script type="text/html" id="goods_list">
+    <% for(var i=0; i<list.length; i++) { %>
+    <li class="mui-table-view-cell action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= list[i].item_id %>}'>
+      <div class="thumbnail">
+        <div class="thumb-img">
+          <a ><img src="<%= list[i].image_default_id %>" alt=""></a>
+        </div>
+        <div class="caption">
+          <h1 class="goods-title"><%= list[i].title %></h1>
+          <div class="price">
+            <div class="amount CNY">
+              <%= $format_price(list[i].price) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <% } %>
+  </script>
+
+  <script type="text/html" id="promotion_header">
+    <div class="promotion-name">
+      <%= info.promotion_name %>
+    </div>
+    <div class="promotion-exp">
+      <%= info.promotion_desc %>
+    </div>
+    <div class="promotion-range">活动时间:
+      <%= $timestamp_To_Date(info.start_time) %> 至
+      <%= $timestamp_To_Date(info.end_time) %>
+    </div>
+  </script>
+
+  <script>
+    mui.plusReady(function() {
+      var promotion_id = plus.webview.currentWebview().opener().promotion_id;
+      fetchList();
+
+      function fetchList(options, callback) {
+        var param = {
+          queryData: {
+            'method': config.apimethod.promotiondetail,
+            'promotion_id': promotion_id,
+            'page_no': config.cpage,
+            'page_size': config.pagesize,
+            'orderBy': ""
+          },
+          method: 'GET'
+        }
+
+        if(options) {
+          if(typeof(options) != "object") {
+            return;
+          }
+          $.extend(param.queryData, options);
+        }
+
+        $.pageRequest(param, '#pullrefresh', 'goods_list', 'goods-list', function(rs) {
+          var header = template('promotion_header', rs.data);
+          $('.promotion-header').html(header);
+          var pwv = plus.webview.currentWebview().parent();
+          mui.fire(pwv, 'inputHeader', {
+            txt: rs.data.info.promotion_name
+          });
+        });
+      }
+
+      $('.goods-filters-item').on('tap', function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        var order = $(this).data('order');
+        var filterItem = $(this).find('.goods-filters-order')
+        if(filterItem && $(this).hasClass('active') && filterItem.hasClass('order-desc')) {
+          filterItem.removeClass('order-desc').addClass('order-asc');
+          order = order ? order + ' ' + 'desc' : '';
+        } else if(filterItem && $(this).hasClass('active') && filterItem.hasClass('order-asc')) {
+          filterItem.removeClass('order-asc').addClass('order-desc');
+          order = order ? order + ' ' + 'asc' : '';
+        }
+
+        fetchList({
+          'page_no': config.cpage,
+          'orderBy': order
+        });
+      });
+
+      $('#show_style').on('tap', function() {
+        if($(this).find('.bbc-icon').hasClass('bbc-icon-gallery')) {
+          $(this).find('.bbc-icon').removeClass('bbc-icon-gallery').addClass('bbc-icon-thumb');
+          $('.goods-list').addClass('pro-list-grid').removeClass('pro-list-normal');
+          mui('#pullrefresh').pullRefresh().scrollTo(0, 0, 100);
+          localStorage.setItem('list_type', 'gallery');
+        } else if($(this).find('.bbc-icon').hasClass('bbc-icon-thumb')) {
+          $(this).find('.bbc-icon').removeClass('bbc-icon-thumb').addClass('bbc-icon-gallery');
+          $('.goods-list').addClass('pro-list-normal').removeClass('pro-list-grid');
+          mui('#pullrefresh').pullRefresh().scrollTo(0, 0, 100);
+          localStorage.setItem('list_type', 'thumb');
+        }
+      });
+    });
+  </script>
+
+</html>

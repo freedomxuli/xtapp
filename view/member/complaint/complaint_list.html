@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <style type="text/css">
+      .mui-table-view> .mui-table-view-cell {
+        padding: 0;
+        background: #fff;
+        margin-bottom: 10px;
+      }
+      .mui-table-view:after {
+        height: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="pullrefresh" class="fontS mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <div class="mui-table-view complaint-list">
+
+        </div>
+      </div>
+    </div>
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+
+    <script type="text/html" id="complaint_list">
+      <% if(list != null){ %>
+      <% for(var i=0; i<list.length; i++) { %>
+      <section class="section-white complaint-detail" data-id="<%= list[i].complaints_id%>">
+        <div class="section-title">
+          <div class="box-item-flex1 fontS font-gray-40"><%= list[i].complaints_type%></div>
+          <div class="box-item-flex1 fontS  content-right"><mark><%= list[i].status_desc%></mark></div>
+        </div>
+        <div class="content-padded box-display bg-gray-0">
+          <div class="thumb"><img src="<%= list[i].pic_path%>" alt="" ></div>
+          <div class="box-item-flex1 fontS" ><%= list[i].title%></div>
+        </div>
+        <div class="content-padded fontS font-gray-40 content-right"><%= $timestamp_To_Time(list[i].created_time)%></div>
+      </section>
+      <% } %>
+      <% } %>
+    </script>
+
+    <script>
+      var state = app.getState();
+      var param = {
+        queryData: {
+          'method': config.apimethod.complaintslist,
+          'accessToken': state.token,
+          'page_no': config.cpage,
+          'page_size': config.pagesize
+        },
+        method: 'GET'
+      }
+      mui.plusReady(function() {
+        $.pageRequest(param, '#pullrefresh', 'complaint_list', 'complaint-list');
+      });
+
+      $(window).on('tap', '.complaint-detail', function() {
+        var complaintsId = $(this).data('id');
+        clicked('_www/view/member/complaint/complaintdetail.html', {"complaints_id":complaintsId} );
+      });
+    </script>
+  </body>
+
+</html>

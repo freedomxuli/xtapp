@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">会员注册</div>
+    </header>
+    <section class="container">
+      <form class="form-container">
+        <input type="hidden" name="key" value="topwap_signup">
+        <section class="mui-input-group">
+          <div class="mui-input-row register_multipletype">
+            <!-- 模板内容 -->
+          </div>
+          <div class="form-inline">
+            <div class="mui-input-row form-inline-adaptive">
+              <label>验证码：</label>
+              <input id="vcode" type="text" class="mui-input-clear" placeholder="请输入验证码">
+            </div>
+            <div class="form-inline-unadaptive">
+              <img id="vcode_img" width="100" height="30" src="">
+            </div>
+          </div>
+        </section>
+        <section class="content-vertical-padded box-display">
+          <div class="mui-checkbox bbc-checkbox shop-checkbox">
+            <label></label>
+            <input name="license" value="1" type="checkbox" checked>
+          </div>
+          <div class="box-item-flex1 fontS font-gray-20">我已阅读并同意<mark id="agreement">《会员注册协议》</mark></div>
+        </section>
+        <section class="mui-content-padded form-op-section">
+          <button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
+        </section>
+      </form>
+    </section>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+
+    <script type="text/html" id="onlymobile">
+      <label>手机号：</label>
+      <input id="account" type="text" class="mui-input-clear" placeholder="请输入您的手机号">
+    </script>
+
+    <script type="text/html" id="multipletype">
+      <label>帐号：</label>
+      <input id="account" type="text" class="mui-input-clear" placeholder="请输入您的手机号/用户名">
+    </script>
+
+    <script>
+      mui.plusReady(function() {
+        // 判断是否支持多账号类型注册
+        checkMultipletypeRegister();
+
+        var entrance = plus.webview.currentWebview().entrance;
+        fetchVcode('topapi_register',$('#vcode_img'));
+        $('#vcode_img').on('tap', function() {
+          fetchVcode('topapi_register',$(this));
+        })
+        $('#register_next').on('tap', function() {
+          var account = $('#account').val();
+          var vcode = $('#vcode').val();
+          if(!account) {
+            mui.alert('用户名或者手机号不能为空');
+            return
+          }
+          if(!vcode) {
+            mui.alert('请填写验证码');
+            return
+          }
+          if(!$('input[name="license"]').prop('checked')) {
+            mui.alert('请阅读并接受会员注册协议');
+            return;
+          }
+          var param = {
+            queryData: {
+              'method': config.apimethod.verifyAccount,
+              'account': account,
+              'vcode_type': 'topapi_register',
+              'verifycode': vcode
+            },
+            method: 'POST'
+          }
+          $.dataRequest(param, function(rs) {
+            var data = rs.data;
+            var token = data.verifyAccount_token
+            if( data.type === 'login_account' || data.type === 'email') {
+              clicked('_www/view/member/safe/logpasswordset.html', {
+                'accesstoken': token,
+                'account': account,
+                'entrance': entrance
+              });
+            }else if(data.type === 'mobile') {
+
+              sendSms(account,token);
+
+              clicked('_www/view/member/safe/verificationsms.html', {
+                'accesstoken': token,
+                'mobile': account,
+                'actiontype': 'register',
+                'signup_token': token,
+                'entrance': entrance
+              });
+            }
+          });
+        });
+      });
+
+      function sendSms(account, token) {
+        var param = {
+          queryData: {
+            'method': config.apimethod.usersendSms,
+            'mobile': account,
+            'type': 'signup',
+            'send_sms_token': token
+          },
+          method: 'POST'
+        }
+        $.dataRequest(param, function(rs) {
+        });
+      }
+
+      // 检查是否只支持手机注册，还是多种方式注册
+      function checkMultipletypeRegister(){
+          var param = {
+            queryData: {
+              'method': config.apimethod.getcommonsetting,
+              'settingname': 'check_register_multipletype',
+            },
+            method: 'POST'
+          }
+          $.dataRequest(param, function(rs) {
+            if(rs.data.check_register_multipletype=='1'){
+              var temp = 'multipletype';
+            }else{
+              var temp = 'onlymobile';
+            }
+            var regisnametemp = template(temp, rs.data);
+            $('.register_multipletype').html(regisnametemp);
+          });
+      }
+
+      document.getElementById('agreement').addEventListener('tap', function() {
+        clicked('_www/view/passport/agreement.html', {}, 'slide-in-bottom');
+      });
+      
+      window.addEventListener('readed',function(event){
+        $('input[name="license"]').prop('checked', 'checked');
+      });
+    </script>
+  </body>
+
+</html>

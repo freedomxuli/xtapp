@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">商品详情</div>
+    </header>
+    <section class="container">
+      <div id="slider" class="mui-slider goods-detail-info">
+        <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+          <a class="mui-control-item" href="#item1mobile">图文详情</a>
+          <a class="mui-control-item" href="#item2mobile">详细参数</a>
+          <a class="mui-control-item" href="#item3mobile">备注信息</a>
+        </div>
+        <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+        <div class="mui-slider-group">
+          <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+            <div id="scroll1" class="mui-scroll-wrapper">
+              <div class="mui-scroll">
+                <div class="mui-content-padded goods-graphic">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="item2mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll2" class="mui-scroll-wrapper">
+              <div class="mui-scroll">
+                <div class="mui-loading">
+                  <div class="mui-spinner">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="item3mobile" class="mui-slider-item mui-control-content">
+            <div id="scroll3" class="mui-scroll-wrapper">
+              <div class="mui-scroll">
+                <div class="mui-loading">
+                  <div class="mui-spinner">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+
+  <script type="text/html" id="parameters">
+    <section class="parameter-table-view">
+      <div class="parameter-table-view-group">
+        <div class="parameter-table-view-header">基本参数</div>
+        <% for(var i in natureProps) { %>
+        <div class="parameter-table-view-cell">
+          <div class="parameter-table-view-key"><%= natureProps[i].prop_name %>：</div>
+          <div class="parameter-table-view-val"><%= natureProps[i].prop_value %></div>
+        </div>
+        <% } %>
+      </div>
+      <% for(var tit in params) { %>
+      <div class="parameter-table-view-group">
+        <div class="parameter-table-view-header"><%= tit %></div>
+        <% for(var key in params[tit]) { %>
+        <div class="parameter-table-view-cell">
+          <div class="parameter-table-view-key"><%= key %>：</div>
+          <div class="parameter-table-view-val"><%= params[tit][key] %></div>
+        </div>
+        <% } %>
+      </div>
+      <% } %>
+    </section>
+  </script>
+  
+  <script type="text/html" id="remark">
+    <section class="parameter-table-view">
+      <% for(var key in remark) { %>
+      <div class="parameter-table-view-cell">
+        <div class="parameter-table-view-key"><%= key %>：</div>
+        <div class="parameter-table-view-val"><%= remark[key] %></div>
+      </div>
+      <% } %>
+    </section>
+  </script>
+
+  <script>
+    $(function() {
+      var windowHeight = $(window).height();
+      var headerHeight = $('header').height();
+      var navHeight = $('#sliderSegmentedControl').height() + $('#sliderProgressBar').height();
+      var contentHeight = windowHeight - (headerHeight + navHeight);
+      $('.mui-control-content').height(contentHeight);
+    });
+
+    mui.plusReady(function() {
+      var goods_id = plus.webview.currentWebview().itemid;
+      var param = {
+        queryData: {
+          'method': config.apimethod.goodsdesc,
+          'item_id': goods_id
+        },
+        method: 'GET'
+      }
+
+      $.dataRequest(param, function(rs) {
+        var data = rs.data;
+        var photo_details = data.wap_desc;
+        $('.goods-graphic').html(photo_details);
+
+        mui('.mui-scroll-wrapper').scroll({
+          indicators: true //是否显示滚动条
+        });
+        var html2 = template('parameters',data);
+        var html3 = template('remark',data);
+        var item2 = document.getElementById('item2mobile');
+        var item3 = document.getElementById('item3mobile');
+        document.getElementById('slider').addEventListener('slide', function(e) {
+          if(e.detail.slideNumber === 1) {
+            if(item2.querySelector('.mui-loading')) {
+              setTimeout(function() {
+                item2.querySelector('.mui-scroll').innerHTML = html2;
+              }, 500);
+            }
+          } else if(e.detail.slideNumber === 2) {
+            if(item3.querySelector('.mui-loading')) {
+              setTimeout(function() {
+                item3.querySelector('.mui-scroll').innerHTML = html3;
+              }, 500);
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+</html>

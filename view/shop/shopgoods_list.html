@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+
+  <body>
+    <div class="mui-content">
+      <div id="pullrefresh" class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <ul class="mui-table-view pro-list-grid goods-list"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+
+    <script type="text/html" id="goods_list">
+      <% if(list){ %>
+      <% for(var i=0; i<list.length; i++) { %>
+      <li class="mui-table-view-cell action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= list[i].item_id %>}'>
+        <div class="thumbnail">
+          <div class="thumb-img">
+            <a href="#"><img src="<%= list[i].image_default_id %>" alt=""></a>
+            <% if(list[i].activity){ %>
+            <span class="activity-tag-mini"><%= list[i].activity.activity_tag %></span>
+            <% } %>
+          </div>
+          <div class="caption">
+            <h1 class="goods-title"><%= list[i].title %></h1>
+            <div class="price">
+              <div class="amount CNY">
+                <%= $format_price(!list[i].activity ? list[i].price : list[i].activity.price, cur_symbol.sign) %>
+              </div>
+              <div class="purchased">已有
+                <%= list[i].sold_quantity %>人购买</div>
+            </div>
+            <div class="tags-group">
+              <% if(list[i].promotion.length > 0) { %>
+              <% for(var key in list[i].promotion) { %>
+              <span class="tag"><%= list[i].promotion[key].tag %></span>
+              <% } %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% } %>
+      <% } %>
+    </script>
+
+    <script>
+      mui.plusReady(function() {
+        var fw = plus.webview.currentWebview().parent();
+        var item_id = fw.item_id || '';
+        var shop_cat_id = fw.shop_cat_id || '';
+        var keyword = fw.keyword || '';
+        var shopid = fw.shopid;
+        var orderBy = '';
+        log(item_id);
+        
+        var param = {
+          queryData: {
+            'method': config.apimethod.goodslist,
+            'search_shop_cat_id': shop_cat_id,
+            'item_id': item_id,
+            'brand_id': '',
+            'shop_id': shopid,
+            'search_keywords': keyword,
+            'page_no': config.cpage,
+            'page_size': config.pagesize,
+            'orderBy': orderBy,
+            'fields': ''
+          },
+          method: 'GET'
+        }
+        
+        //分页初始化
+         mui.init({
+          pullRefresh: {
+            container: '#pullrefresh',
+            down: {
+              callback: pulldownRefresh
+            },
+            up: {
+              contentdown: '',
+              contentrefresh: '正在加载...',
+              callback: pullupRefresh
+            }
+          }
+        });
+        
+        //定义下拉刷新方法
+        function pulldownRefresh() {
+          setTimeout(function(){
+            htmlList(param);
+          },500);
+        }
+        var count = 0;
+        
+        //定义上拉加载更多方法
+        function pullupRefresh() {
+          appendList(param);
+        }
+        if (mui.os.plus) {
+          mui.plusReady(function() {
+              mui('#pullrefresh').pullRefresh().pullupLoading();
+          });
+        } else {
+          mui.ready(function() {
+            mui('#pullrefresh').pullRefresh().pullupLoading();
+          });
+        }
+        
+        //下拉刷新业务逻辑
+        function htmlList(options) {
+          options.queryData.page_no = config.cpage;
+          options.queryData.search_shop_cat_id = shop_cat_id;
+          options.queryData.orderBy = orderBy;
+          options.queryData.search_keywords = keyword;
+          $.dataRequest(options, function(response) {
+            if(!isEmptyObject(response.data)){
+              var result = template('goods_list', response.data);
+              $('.goods-list').html(result);
+            }else{
+              $('.goods-list').parent().parent().html(nodata_el);
+            }
+          });
+          mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
+          mui('#pullrefresh').pullRefresh().enablePullupToRefresh(); //refresh completed
+        }
+        
+        //上拉加载更多业务逻辑
+        function appendList(options) {
+          count ++
+          options.queryData.search_shop_cat_id = shop_cat_id;
+          options.queryData.page_no = count;
+          options.queryData.orderBy = orderBy;
+          options.queryData.search_keywords = keyword;
+          $.dataRequest(options, function(response) {
+            if(!isEmptyObject(response.data) && response.data.pagers.total){
+              var total = Math.ceil(response.data.pagers.total / config.pagesize);
+              if(count > total){
+                mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+              }else{
+                var result = template('goods_list', response.data);
+                $('.goods-list').append(result);
+                mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+              }
+            }else{
+              mui('#pullrefresh').pullRefresh().endPullupToRefresh(true,' ');
+              $('.goods-list').parent().parent().html(nodata_el);
+            }
+          });
+        }
+
+        window.addEventListener('getlist', function(event) {
+          if(event.detail.search_keywords!=''){
+            keyword = event.detail.search_keywords;
+            shop_cat_id = '';
+          }else{
+            keyword = ''
+            shop_cat_id = event.detail.search_shop_cat_id
+          }
+          orderBy = event.detail.orderBy || '';
+          count = 0
+          $('.goods-list').empty();
+          mui('#pullrefresh').pullRefresh().refresh(true);
+          mui('#pullrefresh').pullRefresh().scrollTo(0,0,10);
+          mui('#pullrefresh').pullRefresh().pullupLoading();
+        });
+
+        var main = plus.webview.currentWebview().opener()
+        var mask = mui.createMask(function() {
+          mui.fire(main, '_closeMenu');
+          mui.fire(main, 'closeMask');
+        });
+
+        window.addEventListener('subMaskShow', function() {
+          mask.show();
+        });
+        window.addEventListener('subMaskClose', function() {
+          mask.close();
+        });
+
+        function openMenu() {
+          mui.fire(main, "swipeleft");
+        }
+        function closeMenu() {
+          mui.fire(main, "swiperight");
+        }
+        window.addEventListener("swipeleft", function(e){
+          var detail = e.detail;
+          if(Math.abs(detail.deltaX)>150){
+            openMenu()
+          }
+        });
+        window.addEventListener("swiperight", function(e){
+          var detail = e.detail;
+          if(Math.abs(detail.deltaX)>150){
+            closeMenu()
+          }
+        });
+        window.addEventListener('gallerystyle',function(){
+          $('.goods-list').addClass('pro-list-grid').removeClass('pro-list-normal');
+        });
+        window.addEventListener('liststyle',function(){
+          $('.goods-list').addClass('pro-list-normal').removeClass('pro-list-grid');
+        });
+      });
+    </script>
+  </body>
+
+</html>

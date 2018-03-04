@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">安全中心</div>
+    </header>
+    <section class="container">
+      <section class="section-white">
+        <ul class="mui-table-view">
+          <li id="log_password" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              登录密码<br><span class="fontS font-gray-40">请经常更换登录密码，加强账户安全</span>
+            </a>
+          </li>
+          <li id="pay_password" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              支付密码<br><span class="fontS font-gray-40">使用红包等支付时使用的密码</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="section-white">
+        <ul class="mui-table-view">
+          <li id="bind_phone" class="mui-table-view-cell bindmobile">
+            <a class="mui-navigate-right">
+              绑定手机号<br><span class="fontS font-gray-40">绑定后可使用手机号登录和找回密码</span>
+            </a>
+          </li>
+          <li id="unbind_phone" class="mui-table-view-cell unbindmobile">
+            <a class="mui-navigate-right">
+              修改手机号 <span class="fontS font-gray-40" id="txt_mobile"></span><br><span class="fontS font-gray-40">绑定后可使用手机号登录和找回密码</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </section>
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      mui.init({
+        swipeBack: true, //启用右滑关闭功能
+      });
+      var mobile = "";
+      var state = app.getState();
+      var param = {
+        queryData : {
+          'method': config.apimethod.userconfig,
+          'accessToken': state.token
+        },
+        method: 'POST'
+      };
+      $.dataRequest(param, function(rs){
+        if(rs.data.userMobile && rs.data.userMobile != "") {
+           mobile = rs.data.userMobile;
+          document.getElementById('txt_mobile').innerHTML = mobile.substring(0,3) + '****' + mobile.substring(7);
+          $('.bindmobile').hide();
+          $('.unbindmobile').show();
+        } else {
+          $('.bindmobile').show();
+          $('.unbindmobile').hide();
+        }
+      });
+      document.getElementById('log_password').addEventListener('tap', function() {
+        clicked('_www/view/member/safe/checkpassword.html', {'checkItem': 'pwdmodify'});
+      });
+
+      document.getElementById('pay_password').addEventListener('tap', function() {
+        clicked('_www/view/member/safe/paypassword.html');
+      });
+
+      document.getElementById('bind_phone').addEventListener('tap', function() {
+        clicked('_www/view/member/safe/checkpassword.html', {'checkItem': 'bindphone'});
+      });
+
+      document.getElementById('unbind_phone').addEventListener('tap', function() {
+
+        clicked('_www/view/member/safe/viewbind.html', {'mobile': mobile});
+      });
+    </script>
+  </body>
+
+</html>

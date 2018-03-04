@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <div class="header-title">店铺信息</div>
+    </header>
+    <div class="container">
+
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+
+  <script type="text/html" id="shop_info">
+    <section>
+      <div class="section-container content-top-padded">
+        <% if(shopInfo.shop_logo){ %>
+        <div class="shop-info-brand"><img src="<%= shopInfo.shop_logo %>" alt=""></div>
+        <% } %>
+      </div>
+      <div class="content-center content-bottom-padded shop-info-name">
+        <%= shopInfo.shopname %>
+      </div>
+    </section>
+    <section class="font-gray-20 fontS">
+      <div class="mui-input-group">
+        <div class="mui-input-row">
+          <label>店铺简介</label>
+          <div class="mui-input-info"><%= shopInfo.shop_descript %></div>
+        </div>
+        <div class="mui-input-row">
+          <label>联系电话</label>
+          <div class="mui-input-info"><%= shopInfo.mobile %></div>
+        </div>
+        <div class="mui-input-row">
+          <label>开店时间</label>
+          <div class="mui-input-info"><%= $timestamp_To_Date(shopInfo.open_time) %></div>
+        </div>
+        <div class="mui-input-row">
+          <label>服务评分</label>
+          <div class="mui-input-info"><%= shopDsrData.attitude_dsr %> 分</div>
+        </div>
+        <div class="mui-input-row">
+          <label>商品评分</label>
+          <div class="mui-input-info"><%= shopDsrData.tally_dsr %> 分</div>
+        </div>
+        <div class="mui-input-row">
+          <label>配送评分</label>
+          <div class="mui-input-info"><%= shopDsrData.delivery_speed_dsr %> 分</div>
+        </div>
+      </div>
+    </section>
+  </script>
+
+  <script type="text/javascript">
+    mui.plusReady(function() {
+      var shopid = plus.webview.getWebviewById('_www/view/shop/shop.html').shopid;
+      var param = {
+        queryData: {
+          'method': config.apimethod.shopinfo,
+          'shop_id': shopid
+        },
+        method: 'GET'
+      }
+      $.dataRequest(param, function(rs) {
+        var tempEl = template('shop_info', rs.data);
+        $('.container').html(tempEl);
+      });
+    });
+  </script>
+
+</html>

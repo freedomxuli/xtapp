@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <style type="text/css">
+      .mui-table-view> .mui-table-view-cell {
+        padding: 0;
+        background: #fff;
+        margin-bottom: 10px;
+      }
+      .mui-table-view:after {
+        height: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="pullrefresh" class="fontS mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <ul class="mui-table-view canceled-list">
+
+        </ul>
+      </div>
+    </div>
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+
+    <script type="text/html" id="canceled_list">
+      <% for(var i=0; i<list.length; i++) { %>
+      <li class="mui-table-view-cell">
+        <div class="content-padded">
+          <div class="mui-table">
+            <div class="mui-table-cell mui-col-xs-6">
+              <a class="inline-overflow action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= list[i].shop_id %>}'>
+                <%= list[i].shopname %>
+              </a>
+              <i class="bbc-icon bbc-icon-forward font-gray-40"></i>
+            </div>
+            <div class="mui-table-cell mui-col-xs-4 mui-text-right">
+              <mark><%= list[i].status_desc %></mark>
+            </div>
+          </div>
+        </div>
+        <div class="content-padded function-list bg-gray-0">
+          <a class="mui-navigate-right action-webview" data-webview="_www/view/member/trade/tradedetail.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+            <div class="mui-table">
+              <div class="mui-table-cell mui-col-xs-8 checkout-goods-list">
+                <div class="checkout-goods-warp">
+                  <% for(var j=0; j<list[i].order.length; j++){ %>
+                  <div class="thumbnail">
+                    <div class="thumb-img">
+                      <img src="<%= list[i].order[j].pic_path %>" alt="">
+                    </div>
+                  </div>
+
+                  <% if(list[i].order[j].gift_data){ %>
+                  <% for(var n=0; n<list[i].order[j].gift_data.length; n++){ %>
+                  <div class="thumbnail">
+                    <div class="thumb-img">
+                      <img src="<%= list[i].order[j].gift_data[n].image_default_id %>" alt="">
+                    </div>
+                  </div>
+                  <% } %>
+                  <% } %>
+                  <% } %>
+                </div>
+              </div>
+              <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+                共 <%= list[i].totalItem %> 件
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="content-padded">
+          <div class="box-display">
+            <div class="box-item-flex1">
+              实付金额：
+              <mark><%= $format_price(list[i].payed_fee) %></mark>
+            </div>
+            <div class="box-item-flex1 mui-text-right">
+              <button class="canceled-detail font-blue action-webview mui-btn mui-btn-outlined mui-btn-warning bbc-btn-sm bbc-btn-outlined" data-webview="_www/view/member/trade/canceleddetail.html" data-webparam='{"cancel_id": <%= list[i].cancel_id %>}'>订单取消详情</button>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% } %>
+    </script>
+
+    <script>
+      var state = app.getState();
+      var param = {
+        queryData: {
+          'method': config.apimethod.tradecancellist,
+          'accessToken': state.token,
+          'page_no': config.cpage,
+          'page_size': config.pagesize
+        },
+        method: 'GET'
+      }
+      mui.plusReady(function() {
+        $.pageRequest(param, '#pullrefresh', 'canceled_list', 'canceled-list');
+      });
+    </script>
+  </body>
+
+</html>

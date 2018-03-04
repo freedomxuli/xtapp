@@ -1,0 +1,10 @@
+\#*
+.\#*
+.*
+!.gitignore
+*.swp
+*~
+*.swo
+$.swn
+manifest.json
+unpackage/.confirmed_dependencies

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <style type="text/css">
+      .activity-closed-bar {
+        height: 3.24rem !important;
+      }
+      .activity-closed-bar .op-item {
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        height: 3.24rem;
+        font-size: 1rem;
+        color: #FFF;
+      }
+    </style>
+  </head>
+
+  <body class="body-padding body-padding-big">
+    <header id="header" class="mui-bar mui-bar-transparent">
+      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
+      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
+    </header>
+    <div id="minimenu" class="bbc-mini-menu mui-popover">
+      <div class="mui-popover-arrow"></div>
+      <div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
+            <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
+            <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
+            <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
+          </li>
+          <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
+            <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
+          </li>
+          <li class="mui-table-view-cell action-share">
+            <a><i class="bbc-icon bbc-icon-share"></i> 分享</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="share_sheet" class="mui-popover mui-popover-bottom mui-popover-action">
+      <div class="section-white">
+        <div class="section-title theme-border-bottom">分享到</div>
+        <div class="section-container">
+          <div class="section-init action-share" data-platform="qq"><i class="bbc-icon bbc-icon-QQ-member"></i></div>
+          <div class="section-init action-share" data-platform="weixin"><i class="bbc-icon bbc-icon-weixin-member"></i></div>
+          <div class="section-init action-share" data-platform="timeline"><i class="bbc-icon bbc-icon-moments"></i></div>
+          <div class="section-init action-share" data-platform="weibo"><i class="bbc-icon bbc-icon-sina-member"></i></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../js/zepto.js"></script>
+  <script src="../../js/mui.min.js"></script>
+  <script src="../../js/template.min.js"></script>
+  <script src="../../config.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/share.js"></script>
+
+  <script type="text/html" id="item_detail">
+    <section class="container no-header">
+      <div id="slider" class="mui-slider">
+
+        <div class="mui-slider-group mui-slider-loop goods-slider">
+          <% if(item.images){ %>
+          <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+          <div class="mui-slider-item mui-slider-item-duplicate">
+            <a>
+              <img src="<%= item.images[item.images.length-1] %>">
+            </a>
+          </div>
+          <% for(var i=0; i<item.images.length; i++) { %>
+          <div class="mui-slider-item">
+            <a>
+              <img src="<%= item.images[i] %>">
+            </a>
+          </div>
+          <% } %>
+          <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+          <div class="mui-slider-item mui-slider-item-duplicate">
+            <a>
+              <img src="<%= item.images[0] %>">
+            </a>
+          </div>
+          <% } %>
+        </div>
+        <% if(item.images){ %>
+        <div class="mui-slider-indicator">
+          <% for(var i=0; i<item.images.length; i++) { %>
+          <div class="mui-indicator <%= (i==0) ? 'mui-active' : ' ' %>"></div>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+      <section class="section-white mui-content-padded activity">
+        <div class="goods-detail-brief action-goods-des">
+          <div class="goods-detail-title">
+            <h1><%= item.title %></h1>
+            <h2><%= item.sub_title %></h2>
+          </div>
+        </div>
+        <div class="goods-detail-purchase content-top-padding theme-border-dashed-top">
+          <div class="activity-countdown">
+            <% if(activity.status=='comming'){ %>
+            <p><i class="bbc-icon bbc-icon-countdown"></i> 距离活动开始还有：</p>
+            <p><mark class="countdown-view" data-time="<%= activity.start_time %>">0</mark></p>
+            <% } %>
+
+            <% if(activity.status=='active'){ %>
+            <p><i class="bbc-icon bbc-icon-countdown"></i> 距离活动结束还有：</p>
+            <p><mark class="countdown-view" data-time="<%= activity.end_time %>">0</mark></p>
+            <% } %>
+
+            <% if(activity.status=='closed'){ %>
+            <div class="activity-closed">已结束</div>
+            <% } %>
+          </div>
+          <div class="goods-detail-purchase-num">
+            <%= group_item.sales_count %>人购买</div>
+        </div>
+      </section>
+      <section class="section-white">
+        <div class="mui-table-view">
+          <div class="mui-table-view-cell action-goods-des">
+            <a class="mui-navigate-right section-list-item">
+              <div class="section-list-key">宝贝描述</div>
+              <div class="section-list-val"></div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="section-white">
+        <div class="action-shop shop-goods-brand mui-content-padded">
+          <div class="shop-goods-brand-logo"><img src="<%= shop.shop_logo %>" alt=""></div>
+          <div class="shop-goods-brand-name">
+            <%= shop.shop_name %>
+          </div>
+        </div>
+        <div class="action-group mui-content-padded">
+          <div class="action-item"><button class="mui-btn mui-btn-warning mui-btn-outlined mui-btn-block bbc-btn-outlined collect-shop"><i class="bbc-icon bbc-icon-star-empty"></i> 收藏店铺</button></div>
+          <div class="action-item action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid": <%= shop.shop_id %>}'><button class="mui-btn mui-btn-warning mui-btn-outlined mui-btn-block bbc-btn-outlined"><i class="bbc-icon bbc-icon-store-empty"></i> 进入店铺</button></div>
+        </div>
+      </section>
+      <section id="evaluation" class="section-white">
+        <div class="mui-table-view">
+          <div class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+              <p>评价晒单</p>
+              <p class="fontS font-gray-20">好评 <mark><% if(item.rate_count > 0 ){ %><%= $int_price((item.rate_good_count/item.rate_count)*100) %><% }else{ %> 100 <% } %> %</mark>
+                <%= item.rate_count %>人评论</p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </section>
+    <% if(activity.status=='active'){ %>
+    <section class="action-bar activity-bar activity-start">
+      <div class="box-item-flex1 content-center">
+        <div class="fontM"><i class="bbc-icon bbc-icon-tag"></i>
+          <%= $format_price(group_item.activity_price) %>
+        </div>
+        <div class="fontS">建议价格：<span class="original-price"><%= $format_price(group_item.price) %></span></div>
+      </div>
+      <div class="box-item-flex1 content-center">
+        <a class="mui-btn mui-btn-warning action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= item.item_id %>}'>马上抢</a><br>
+        <span class="fonts">每人限购<%= activity.buy_limit %>件</span>
+      </div>
+    </section>
+    <% } %>
+    <% if(activity.status=='comming'){ %>
+    <section class="action-bar activity-bar activity-ready">
+      <div class="box-item-flex1 content-center">
+        <div class="fontM"><i class="bbc-icon bbc-icon-tag"></i>
+          <%= $format_price(group_item.activity_price) %>
+        </div>
+        <div class="fontS">建议价格：<span class="original-price"><%= $format_price(group_item.price) %></span></div>
+      </div>
+      <div class="box-item-flex1 content-center">
+        <a class="mui-btn mui-btn-warning action-webview" data-webview="_www/view/activity/remind.html" data-webparam='{"activity_id": <%= activity.activity_id %>}'>开售提醒</a><br>
+        <span class="fonts">每人限购<%= activity.buy_limit %>件</span>
+      </div>
+    </section>
+    <% } %>
+    <% if(activity.status=='closed'){ %>
+    <section class="action-bar activity-closed-bar">
+      <div class="op-item op-btn goods-op-cart action-webview" data-webview="_www/view/activity/activitygoodslist.html" data-webparam='{"activity_id":<%= group_item.activity_id %>}'>
+        <span>去活动首页</span>
+      </div>
+      <div class="op-item op-btn goods-op-buy action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= item.item_id %>}'>
+        <span>原价购买</span>
+      </div>
+    </section>
+    <% } %>
+  </script>
+
+  <script>
+    mui.plusReady(function() {
+      var old_back = mui.back;
+      mui.back = function() {
+        old_back();
+      }
+      var state = app.getState();
+      var activity_id = plus.webview.currentWebview().activity_id;
+      var item_id = plus.webview.currentWebview().item_id;
+      var favorite_shop = app.getFavoriteShop();
+      var shopArr = [];
+      if(favorite_shop != null) {
+        shopArr = favorite_shop;
+      }
+
+      var param = {
+        queryData: {
+          'method': config.apimethod.activityitemdetail,
+          'activity_id': activity_id,
+          'item_id': item_id,
+        },
+        method: 'GET'
+      }
+
+      $.dataRequest(param, function(rs) {
+        var data = rs.data;
+        var shopId = data.shop.shop_id;
+        var detailTemplate = template('item_detail', data);
+        $('body').append(detailTemplate);
+        // 分享
+        $(document).on('tap', '.action-share', function() {
+            var shareData = {
+                title: data.item.title,
+                href: data.share.h5href,
+                desc: data.item.sub_title,
+                pic: data.share.image
+            };
+            appshare(shareData);
+        });
+
+        $('.action-goods-des').on('tap', function() {
+          clicked('_www/view/item/goodsdetaildes.html', {
+            'itemid': item_id
+          });
+        });
+        $('#evaluation').on('tap', function() {
+          clicked('_www/view/item/evaluation.html', {
+            'itemid': item_id
+          });
+        });
+        var isExistShop = false;
+        $.each(shopArr, function() {
+          if(this == shopId) {
+            isExistShop = true;
+          }
+        });
+        if(shopArr.length > 0 && isExistShop) {
+          $('.collect-shop i').removeClass('bbc-icon-star-empty').addClass('bbc-icon-faverite');
+          $('.collect-shop span').text("已收藏");
+        }
+
+        //收藏店铺
+        $('.collect-shop').on('tap', function(e) {
+          var $this = $(this);
+          if(isExistShop) return;
+
+          var param = {
+            queryData: {
+              'method': config.apimethod.favoriteshopadd,
+              'shop_id': shopId,
+              'accessToken': state.token
+            },
+            method: 'POST'
+          }
+
+          $.dataRequest(param, function(rs) {
+            app.setFavoriteShop(shopId);
+            isExistShop = true;
+            $this.find('i').removeClass('bbc-icon-star-empty').addClass('bbc-icon-faverite');
+            $this.find('span').html("已收藏");
+          });
+        });
+
+        // 轮播
+        mui("#slider").slider();
+        // 倒计时
+        var start_time = $('.countdown-view').data('time');
+        var current = new Date().getTime();
+        countdown('.countdown-view', {
+          'start': ((start_time * 1000) - current) / 1000,
+          'secondOnly': false,
+          'callback': function(){
+            plus.webview.currentWebview().reload(true);
+          }
+        });
+
+      });
+ 
+    });
+  </script>
+
+</html>
