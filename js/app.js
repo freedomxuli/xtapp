@@ -633,9 +633,9 @@ function compatibleAdjust() {
   // 关闭启动界面
   setTimeout(function() {
     plus.navigator.closeSplashscreen();
-    plus.navigator.setStatusBarBackground('#FFFFFF');
+    //plus.navigator.setStatusBarBackground('#FFFFFF');
     if(plus.navigator.isImmersedStatusbar()) {
-      plus.navigator.setStatusBarStyle('UIStatusBarStyleBlackOpaque');
+      plus.navigator.setStatusBarStyle('light');
     }
   }, 500);
 }
