@@ -70,8 +70,8 @@
       }
       
       .szicon{
-      	height: 1.5rem;
-      	width: 1.5rem;
+      	height: 1.2rem;
+      	width: 1.2rem;
       }
       
       .hyzx-title{
@@ -82,7 +82,7 @@
 			  bottom: 0;
 			  text-align: center;
 			  color: #FFFFFF;
-			  font-size: 1.3rem;
+			  font-size: 1rem;
 			  z-index: 5;
 			  overflow: hidden;
 			  white-space: nowrap;
@@ -90,12 +90,65 @@
 			  vertical-align: middle;
 			  padding: 1rem 0rem;
       }
+      
       .wdxx{
       	position: absolute;
       	right: 0px;
       	top: 0px;
       	z-index: 5;
       	padding: 1rem 1rem;
+      }
+      
+      .user-login-head{
+      	position: absolute;
+			  top: 6rem;
+			  left: 1.5rem;
+			  right: 0;
+			  height: 10rem;
+			  z-index: 10;
+      }
+      
+      .head-img{
+      	height: 4rem;
+      	width: 4rem;
+      }
+      
+      .head-font-wel{
+      	position: absolute;
+      	font-family: "arial rounded mt bold";
+      	font-weight: bold;
+      	font-size: 1.2rem;
+      	color: #ffffff;
+      	top: 0.2rem;
+      	left: 5rem;
+			  right: 0;
+      	z-index: 10;
+      }
+      
+      .head-font-font{
+      	position: absolute;
+      	font-family: "microsoft yahei";
+      	font-size: 0.8rem;
+      	color: #ffffff;
+      	top: 2rem;
+      	left: 5rem;
+			  right: 0;
+      	z-index: 10;
+      }
+      
+      .user-login-button{
+      	position: absolute;
+      	font-family: "microsoft yahei";
+      	font-size: 0.85rem;
+			  top: 10rem;
+			  left: 6.5rem;
+			  right: 1.5rem;
+			  height: 2rem;
+			  z-index: 10;
+			  background-color: #f33e35;
+			  text-align: center;
+			  padding: 0.2rem;
+			  border-radius: 0.4rem;
       }
     </style>
   </head>
@@ -109,9 +162,18 @@
       <div class='wave two'></div>
       <div class='wave three'></div>-->
       <a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>
-      <div id="login" class="user-login" style="display: none;">
+<!--      <div id="login" class="user-login" style="display: none;">
         <div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>
         <div>会员登录</div>
+      </div>-->
+      <div id="login" class="user-login-head" >
+        <!--<div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>-->
+        <div><img class="head-img" src="../../img/hyzx/head-img.png"></div>
+        <span class="head-font-wel">WELCOME</span>
+        <span class="head-font-font">您还不是会员，登录</span>
+      </div>
+      <div class="user-login-button">
+      	<span>去登陆</span> 
       </div>
       <div id="user_info" class="user-logined action-clickview" style="display: none;" data-view="_www/view/member/userinfo/userinfo.html">
         <div class="login-avatar"><i class="bbc-icon bbc-icon-member fontB"></i></div>
