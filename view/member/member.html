@@ -143,13 +143,130 @@
 			  top: 10rem;
 			  left: 6.5rem;
 			  right: 1.5rem;
-			  height: 2rem;
+			  height: 2.5rem;
+			  line-height: 2.5rem;
 			  z-index: 10;
 			  background-color: #f33e35;
 			  text-align: center;
-			  padding: 0.2rem;
 			  border-radius: 0.4rem;
       }
+      
+      .zc-class{
+      	background-color: #b63e3e;
+      }
+      
+      .assets-data{
+      	color:#d89998;
+      }
+      
+      .order-img{
+      	height: 1.4rem;
+      	width: 1.4rem;
+      }
+      
+      .sel-icon{
+      	height: 1.6rem !important;
+      	width: 1.4rem !important;
+      	float: left;
+      	margin: 0 auto;
+      	text-align: center; 
+      	position:relative;
+      	left: 40%;
+      }
+      
+      .fk-icon{
+      	height: 1.6rem !important;
+      	width: 1.8rem !important;
+      	float: left;
+      	margin: 0 auto;
+      	text-align: center; 
+      	position:relative;
+      	left: 40%;
+      }
+      
+       .nh-icon{
+      	height: 1.6rem !important;
+      	width: 1.6rem !important;
+      	float: left;
+      	margin: 0 auto;
+      	text-align: center; 
+      	position:relative;
+      	left: 40%;
+      }
+      
+      .kp-icon{
+      	height: 1.6rem !important;
+      	width: 1.6rem !important;
+      	float: left;
+      	margin: 0 auto;
+      	text-align: center; 
+      	position:relative;
+      	left: 40%;
+      }
+      
+      .yck-font-1{
+      	position:relative;
+      	left: 21%;
+      }
+      
+      .yck-font-2{
+      	position:relative;
+      	left: 21%;
+      	color: #666666;
+      	font-family: "arial rounded mt bold";
+      	font-weight: bold;
+      	font-size: 1.45rem;
+      }
+      
+      .yck-font-3{
+      	width: 75%;
+      	position:relative;
+      	left: 21%;
+      	background-color: #e35d4c;
+      	text-align: center;
+      	font-size: 1rem;
+      	height: 2rem;
+      	color: #ffffff;
+      }
+      
+      .yck-font-5{
+      	position:relative;
+      	left: 7%;
+      }
+      
+      .yck-font-6{
+      	position:relative;
+      	left: 7%;
+      	color: #666666;
+      	font-family: "arial rounded mt bold";
+      	font-weight: bold;
+      	font-size: 1.45rem;
+      }
+      
+      .yck-font-7{
+      	width: 75%;
+      	position:relative;
+      	left: 7%;
+      	text-align: center;
+      	font-size: 1rem;
+      	height: 2rem;
+      	color: #e35d4c;
+      	border:1px solid #e35d4c;
+      }
+      
+      .lineheight-cz {
+			  line-height: 1rem;
+			}
+			
+			.lb-font{
+				color:#666666;
+				margin-left: 0.8rem;
+			}
+			
+			.lbm-font{
+				color:#222222;
+				margin-left: 0.8rem;
+			}
     </style>
   </head>
 
@@ -181,21 +298,54 @@
         <div><span id="grade_name" class="fontS font-yellow"></span></div>
       </div>
     </div>
+    <div class="zc-class">
+		  <div class="box-display content-vertical-padded user-assetses font-gray-20">
+		    <div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">￥1.00</em><br><span class="font-white fontS">红包</span></div>
+		    <div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">1张</em><br><span class="font-white fontS">购物券</span></div>
+		    <div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0张</em><br><span class="font-white fontS">优惠券</span></div>
+		    <div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">248</em><br><span class="font-white fontS">积分</span></div>
+		  </div>
+	  </div>
     <section class="section-white">
       <div class="section-title user-title">
-        <div class="title-txt"><i class="user-icon bbc-icon bbc-icon-list user-order"></i> 我的订单</div>
+        <div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myorder.png" /> <!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--> <span class="lbm-font">我的订单</span></div>
         <div class="more-link">
-          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview">查看全部订单</a><i class="bbc-icon bbc-icon-forward"></i></div>
+          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">查看全部</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
       </div>
       <div class="box-display content-vertical-padded user-orders fontS">
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><i class="bbc-icon bbc-icon-pay"><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-package"><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待发货</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-logistics"><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-message-gap"><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待评价</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../../img/hyzx/sh-icon.png" /> <!--<i class="bbc-icon bbc-icon-pay">--><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待审核</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="fk-icon" src="../../img/hyzx/fk-icon.png" /><!--<i class="bbc-icon bbc-icon-package">--><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="nh-icon" src="../../img/hyzx/nh-icon.png" /><!--<i class="bbc-icon bbc-icon-logistics">--><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
+        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="kp-icon" src="../../img/hyzx/kp-icon.png" /><!--<i class="bbc-icon bbc-icon-message-gap">--><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待开票</a>
+        <!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
       </div>
     </section>
     <section class="section-white">
+      <div class="section-title user-title">
+        <div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myyck.png" /> <!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--> <span class="lbm-font">我的预存款</span></div>
+        <div class="more-link">
+          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">交易记录</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+      </div>
+      <div class="box-display content-vertical-padded user-orders fontS">
+        <a class="box-item-flex1 action-clickview font-gray-20">
+        	<span class="yck-font-1 font-gray-20">现金预存款</span>
+        	<br />
+        	<span class="yck-font-2">11797.62</span><span class="yck-font-1 font-gray-0"> 元</span>
+        	<br />
+          <div class="lineheight-cz">　</div>
+        	<div class="yck-font-3"><span>充值</span></div>
+        </a>
+        <a class="box-item-flex1 action-clickview">
+        	<span class="yck-font-5">承兑预存款</span>
+        	<br />
+        	<span class="yck-font-6">11797.62</span><span class="yck-font-5 font-gray-0"> 元</span>
+        	<br />
+        	<div class="lineheight-cz">　</div>
+        	<div class="yck-font-7"><span>提现</span></div>
+        </a>
+      </div>
+    </section>
+<!--    <section class="section-white">
       <div class="section-title user-title">
         <div class="title-txt"><i class="user-icon bbc-icon bbc-icon-assets user-assets"></i> 我的资产</div>
       </div>
@@ -205,25 +355,38 @@
         <div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0</em><br><span class="font-gray-20 fontS">优惠券</span></div>
         <div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">0</em><br><span class="font-gray-20 fontS">积分</span></div>
       </div>
-    </section>
+    </section>-->
     <section class="section-white">
       <ul class="mui-table-view">
         <li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-history user-returns"></i> 退换货记录</a>
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/wlgl.png" /><span class="lb-font">物流管理</span></a>
         </li>
         <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-password user-safe"></i> 安全中心</a>
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/fbzy.png" /><span class="lb-font">发布资源</span></a>
         </li>
         <li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-star-empty user-favorite"></i> 我的收藏</a>
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/lljr.png" /><span class="lb-font">炉料金融</span></a>
         </li>
         <li data-needlog="true" data-view="_www/view/member/rate/rate.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-rate-empty user-rate"></i> 我的评价</a>
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/dzd.png" /><span class="lb-font">对账单</span></a>
         </li>
         <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><i class="user-icon bbc-icon bbc-icon-communication user-complain"></i> 我的投诉</a>
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/kpxx.png" /><span class="lb-font">开票信息</span></a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/shdz.png" /><span class="lb-font">收货地址</span></a>
+        </li>
+        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/qyrz.png" /><span class="lb-font">企业认证</span></a>
         </li>
       </ul>
+    </section>
+        <section class="section-white">
+	      <ul class="mui-table-view">
+	        <li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
+	          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">账户设置</span></a>
+	        </li>
+	      </ul>
     </section>
 		<section style="height:1.6rem;"></section>
     <nav class="mui-bar bbc-bar-tab">
