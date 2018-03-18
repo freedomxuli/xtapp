@@ -9,72 +9,898 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link rel="stylesheet" href="../../css/style.css">
+    <link href="../../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
     <style>
       .mui-row.mui-fullscreen>[class*="mui-col-"] {
         height: 100%;
       }
       
       .mui-col-xs-3,
-      .mui-control-content {
+      .mui-control-content1 {
         overflow-y: auto;
         height: 100%;
       }
       
-      .mui-segmented-control .mui-control-item {
+/*      .mui-segmented-control .mui-control-item {
         line-height: 50px;
         width: 100%;
       }
       
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
+      }*/
+      .mui-slider-indicator.mui-segmented-control{
+     		background-color: #ffffff !important;
       }
+      
+      .mui-bar-backcolor{
+      	background-color:#d92e2e;
+      	display: flex;  
+      }
+      
+      .child{   
+			    flex:1;    
+			} 
+			
+			.child_1{   
+			    flex:3;    
+			} 
+			
+			.category_img{
+				height: 0.8rem;
+				width: 1.1rem;
+      }
+      
+      .category_size{
+      	line-height: 3rem;
+      	text-align: center;
+      }
+      
+      .category_title{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	margin-left: 0.4rem;
+      	font-size: 0.9rem;
+      }
+      
+      .title_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1rem;
+      }
+      
+      .search_img{
+      	height: 1.2rem;
+				width: 1.2rem;
+      }
+      
+      .message_img{
+      	height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+      }
+      
+      .search_size{
+      	line-height: 3.5rem;
+      	text-align: center;
+      }
+      
+      .mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-slider-progress-bar{
+				background-color:#e35d4c !important;
+			}
+			
+			.mui-scroll-wrapper{
+				overflow-y:scroll;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~ .mui-slider-group
+			{
+				position: relative;
+				top:0;
+			}
+			
+			.mui-col-xs-1{
+				width: 11.8%;
+			}
+			
+			#sliderSegmentedControl .mui-active{
+				border-bottom:2px solid #e35d4c !important;
+			}
+			
+			/*新css*/
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			/*select-box*/
+			.select-box{
+				display: flex;
+				flex-direction: row;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background-color: #ffffff;
+				border-top: 1px solid #e3e3e6;
+			}
+			
+			.select-items{
+				flex:1;
+				border-right: 1px solid #e3e3e6;
+				color: #333333;
+				font-family: "微软雅黑";
+			}
+			
+			.select-items1{
+				flex:1.5;
+				border-right: 1px solid #e3e3e6;
+				color: #333333;
+				font-family: "微软雅黑";
+			}
+			
+			/*li content*/
+			.content-li{
+				list-style-type:none;
+			}
+			.content-space{
+				height: 10px;
+				background-color: #f0eff5;
+			}
+			.content-outer{
+				display: flex;
+				flex-direction: row;
+			}
+			.content-inner-left{
+				flex: 3;
+				padding-left: 20px;
+			}
+			.content-inner-right{
+				flex: 1;
+				text-align: center;
+				color: #E35D4C;
+				height: 6rem;
+				vertical-align:text-bottom;
+				margin-right: 0.5rem;
+			}
+			.content-inner-right-word{
+				padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+				border: 1px solid #E35D4C;
+				border-radius: 5px;
+				font-size: 1rem;
+				font-family: "微软雅黑";
+				vertical-align:text-bottom;position: relative;
+      	top: 50%;
+			}
+			.content-inner-left-top{
+				display: flex;
+				flex-direction: row;
+			}
+			.content-inner-left-top-item{
+				flex:1;
+				color: #222222;
+				font-family: "arial rounded mt bold";
+				height: 2rem;
+				line-height: 2rem;
+			}
+			.content-inner-left-middle-item{
+				color: #666666;
+				font-size: 0.8rem;
+				font-family: "microsoft yahei";
+				height: 1.5rem;
+				line-height: 1.5rem;
+			}
+			.content-inner-left-bottom{
+				display: flex;
+				flex-direction: row;
+			}
+			.content-inner-left-bottom-item1{
+				flex:1;
+				color: #666666;
+				font-family: "microsoft yahei";
+				vertical-align:text-bottom;
+				height: 2.5rem;
+				line-height: 2.5rem;
+			}
+			.content-inner-left-bottom-item2{
+				flex:1.3;
+				color: #E35D4C;
+				font-family: "arial rounded mt bold";
+				font-size: 1.2rem;
+				font-weight: bold;
+				vertical-align:text-bottom;
+				height: 2.5rem;
+				line-height: 2.5rem;
+			}
+			
+			/*侧滑css*/
+			.mui-off-canvas-left, .mui-off-canvas-right{
+				width:90%;
+				min-height: 70%;
+				background-color: #ffffff;
+				display: flex;
+				flex-direction: column;
+			}
+			.left-side-content{
+				flex: 10;
+				display: flex;
+			}
+			.left-side-content-nav{
+				flex: 1;
+				background-color: #F7F7F7;
+			}
+			.left-side-content-nav li{
+				color:#222222;
+				list-style-type: none;
+				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				border-bottom: 1px solid #d0d0d0;
+			}
+			.nav-active{
+				background-color: #ffffff;
+				color:#E35D4C !important;
+			}
+			.left-side-content-detail{
+				flex: 2;
+			}
+			.left-side-content-detail-li{
+				list-style-type: none;
+				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+			}
+			.left-side-content-detail-list ul{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap:wrap;
+			}
+			.left-side-content-detail-list li{
+				flex: 1;
+				width: 45%;
+				min-width: 45%;
+				max-height: 45%;
+				padding: 0.2rem 0.2rem 0.2rem 0rem;
+				margin-right: 0.2rem;
+				text-align: left;
+				line-height: 1.2rem;
+			}
+			.left-side-content-detail-active{
+				color:#E35D4C;
+			}
+			.left-side-submit{
+				flex: 1;
+				text-align: center;
+				background-color:#E35D4C ;
+				color: #ffffff;
+				font-size: 1.2rem;
+				font-family: "微软雅黑";
+				line-height: 60px;
+			}
     </style>
   </head>
 
   <body>
-    <header class="home-header">
-      <div class="header-logo"><img src="../../img/logo.png"></div>
+<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
       <div class="main">
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
         </form>
       </div>
       <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
-      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
-    </header>
-    <section class="container mui-row mui-fullscreen category-nav">
+      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>-->
+  		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+<!--	      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left">分类</a>
+	      <h1 class="mui-title">标题</h1>-->
+<!--	    <div class="shezhi"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
+    	<div class="hyzx-title">我的账户</div>
+    	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>-->
+	    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/category/category.png" /><span class="category_title">分类</span></div>  
+		    <div class="child_1 category_size"><span class="title_span">炉料商城</span></div>  
+		    <div class="child search_size"><img class="search_img" src="../../img/category/search.png" /><img class="message_img" src="../../img/category/message.png" /></div>  
+	   </header>
+    
+     <section class="container mui-row mui-fullscreen category-nav">
+	    <!-- 侧滑导航根容器 -->
+			<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			  <!-- 菜单容器 -->
+			  <aside class="mui-off-canvas-left" id="left-side">
+			    <div class="left-side-content">
+			    	<div class="left-side-content-nav">
+			    		<ul>
+			    			<li class="nav-active">生铁</li>
+			    			<li>废钢</li>
+			    			<li>增碳剂</li>
+			    			<li>铁合金</li>
+			    			<li>孕育剂</li>
+			    			<li>其他辅料</li>
+			    		</ul>
+			    	</div>
+			    	<div class="left-side-content-detail">
+			    		<ul>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					球铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li class="left-side-content-detail-active">
+			    							Q8
+			    						</li>
+			    						<li>
+			    							Q10
+			    						</li>
+			    						<li>
+			    							Q12
+			    						</li>
+			    						<li>
+			    							Q16
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					铸铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					炼钢铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li>
+			    							L7
+			    						</li>
+			    						<li>
+			    							L8
+			    						</li>
+			    						<li>
+			    							L10
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    		</ul>
+			    	</div>
+			    </div>
+			    <div class="left-side-submit" id="left-side-submit">确定</div>
+			  </aside>
+			  <!-- 主页面容器 -->
+			  <div class="mui-inner-wrap mui-content">
+			    <!-- 主页面标题 -->
+<!--			    <header class="mui-bar mui-bar-nav">
+			      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+			      <h1 class="mui-title">标题</h1>
+			    </header>-->
+					<div id="slider" class="mui-slider">
+						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<a class="mui-control-item mui-active" href="#item1mobile">
+								全部
+							</a>
+							<a class="mui-control-item" href="#item2mobile">
+								生铁
+							</a>
+							<a class="mui-control-item" href="#item3mobile">
+								废钢
+							</a>
+							<a class="mui-control-item" href="#item4mobile">
+								增碳剂
+							</a>
+							<a class="mui-control-item" href="#item5mobile">
+								铁合金
+							</a>
+							<a class="mui-control-item" href="#item6mobile">
+								孕育剂
+							</a>
+							<a class="mui-control-item" href="#item7mobile">
+								其他辅料
+							</a>
+						</div>
+						<div class="select-box">
+							<div class="select-items1" id="showPlacePicker">产家/产地 ▼</div>
+							<div class="select-items" id="showNamePicker">品名 ▼</div>
+							<div class="select-items" id="showSizePicker">规格 ▼</div>
+							<div class="select-items" id="showJgPicker">交割库 ▼</div>
+						</div>
+						<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
+							<div class="mui-slider-group" id="content-main">
+								<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+									<div id="scroll1" class="mui-scroll-wrapper">
+										<div class="mui-scroll">
+											<ul class="mui-table-view" id="content-ul">
+												<li class="content-li">
+													<div class="content-space"> </div>
+													<div class="content-outer">
+														<div class="content-inner-left">
+															<div class="content-inner-left-top">
+																<div class="content-inner-left-top-item">
+																	新兴生铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	球铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	Q10
+																</div>
+																<div class="content-inner-left-top-item">
+																	中途库
+																</div>
+															</div>
+															<div class="content-inner-left-middle">
+																<div class="content-inner-left-middle-item">
+																	1000　吨
+																</div>
+															</div>
+															<div class="content-inner-left-bottom">
+																<div class="content-inner-left-bottom-item1">
+																	现金价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3200
+																</div>
+																<div class="content-inner-left-bottom-item1">
+																	承兑价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3230
+																</div>
+															</div>
+														</div>
+														<div class="content-inner-right">
+															<div class="content-inner-right-word">下单</div>
+														</div>
+													</div>
+												</li>
+												<li class="content-li">
+													<div class="content-space"> </div>
+													<div class="content-outer">
+														<div class="content-inner-left">
+															<div class="content-inner-left-top">
+																<div class="content-inner-left-top-item">
+																	新兴生铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	球铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	Q10
+																</div>
+																<div class="content-inner-left-top-item">
+																	中途库
+																</div>
+															</div>
+															<div class="content-inner-left-middle">
+																<div class="content-inner-left-middle-item">
+																	1000　吨
+																</div>
+															</div>
+															<div class="content-inner-left-bottom">
+																<div class="content-inner-left-bottom-item1">
+																	现金价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3200
+																</div>
+																<div class="content-inner-left-bottom-item1">
+																	承兑价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3230
+																</div>
+															</div>
+														</div>
+														<div class="content-inner-right">
+															<div class="content-inner-right-word">下单</div>
+														</div>
+													</div>
+												</li>
+												<li class="content-li">
+													<div class="content-space"> </div>
+													<div class="content-outer">
+														<div class="content-inner-left">
+															<div class="content-inner-left-top">
+																<div class="content-inner-left-top-item">
+																	新兴生铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	球铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	Q10
+																</div>
+																<div class="content-inner-left-top-item">
+																	中途库
+																</div>
+															</div>
+															<div class="content-inner-left-middle">
+																<div class="content-inner-left-middle-item">
+																	1000　吨
+																</div>
+															</div>
+															<div class="content-inner-left-bottom">
+																<div class="content-inner-left-bottom-item1">
+																	现金价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3200
+																</div>
+																<div class="content-inner-left-bottom-item1">
+																	承兑价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3230
+																</div>
+															</div>
+														</div>
+														<div class="content-inner-right">
+															<div class="content-inner-right-word">下单</div>
+														</div>
+													</div>
+												</li>
+												<li class="content-li">
+													<div class="content-space"> </div>
+													<div class="content-outer">
+														<div class="content-inner-left">
+															<div class="content-inner-left-top">
+																<div class="content-inner-left-top-item">
+																	新兴生铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	球铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	Q10
+																</div>
+																<div class="content-inner-left-top-item">
+																	中途库
+																</div>
+															</div>
+															<div class="content-inner-left-middle">
+																<div class="content-inner-left-middle-item">
+																	1000　吨
+																</div>
+															</div>
+															<div class="content-inner-left-bottom">
+																<div class="content-inner-left-bottom-item1">
+																	现金价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3200
+																</div>
+																<div class="content-inner-left-bottom-item1">
+																	承兑价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3230
+																</div>
+															</div>
+														</div>
+														<div class="content-inner-right">
+															<div class="content-inner-right-word">下单</div>
+														</div>
+													</div>
+												</li>
+												<li class="content-li">
+													<div class="content-space"> </div>
+													<div class="content-outer">
+														<div class="content-inner-left">
+															<div class="content-inner-left-top">
+																<div class="content-inner-left-top-item">
+																	新兴生铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	球铁
+																</div>
+																<div class="content-inner-left-top-item">
+																	Q10
+																</div>
+																<div class="content-inner-left-top-item">
+																	中途库
+																</div>
+															</div>
+															<div class="content-inner-left-middle">
+																<div class="content-inner-left-middle-item">
+																	1000　吨
+																</div>
+															</div>
+															<div class="content-inner-left-bottom">
+																<div class="content-inner-left-bottom-item1">
+																	现金价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3200
+																</div>
+																<div class="content-inner-left-bottom-item1">
+																	承兑价：
+																</div>
+																<div class="content-inner-left-bottom-item2">
+																	￥3230
+																</div>
+															</div>
+														</div>
+														<div class="content-inner-right">
+															<div class="content-inner-right-word">下单</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="item2mobile" class="mui-slider-item mui-control-content">
+									<div class="mui-scroll-wrapper">
+										<div class="mui-scroll">
+											<ul class="mui-table-view">
+												<li class="mui-table-view-cell">
+													第2个选项卡子项-1
+												</li>
+												<li class="mui-table-view-cell">
+													第2个选项卡子项-2
+												</li>
+												<li class="mui-table-view-cell">
+													第2个选项卡子项-3
+												</li>
+												<li class="mui-table-view-cell">
+													第2个选项卡子项-4
+												</li>
+												<li class="mui-table-view-cell">
+													第2个选项卡子项-5
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="item3mobile" class="mui-slider-item mui-control-content">
+									<div class="mui-scroll-wrapper">
+										<div class="mui-scroll">
+											<ul class="mui-table-view">
+												<li class="mui-table-view-cell">
+													第3个选项卡子项-1
+												</li>
+												<li class="mui-table-view-cell">
+													第3个选项卡子项-2
+												</li>
+												<li class="mui-table-view-cell">
+													第3个选项卡子项-3
+												</li>
+												<li class="mui-table-view-cell">
+													第3个选项卡子项-4
+												</li>
+												<li class="mui-table-view-cell">
+													第3个选项卡子项-5
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="item4mobile" class="mui-slider-item mui-control-content">
+									<div class="mui-scroll-wrapper">
+										<div class="mui-scroll">
+											<ul class="mui-table-view">
+												<li class="mui-table-view-cell">
+													第4个选项卡子项-1
+												</li>
+												<li class="mui-table-view-cell">
+													第4个选项卡子项-2
+												</li>
+												<li class="mui-table-view-cell">
+													第4个选项卡子项-3
+												</li>
+												<li class="mui-table-view-cell">
+													第4个选项卡子项-4
+												</li>
+												<li class="mui-table-view-cell">
+													第4个选项卡子项-5
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div id="item5mobile" class="mui-slider-item mui-control-content">
+									<div class="mui-scroll-wrapper">
+										<div class="mui-scroll">
+											<ul class="mui-table-view">
+												<li class="mui-table-view-cell">
+													第5个选项卡子项-1
+												</li>
+												<li class="mui-table-view-cell">
+													第5个选项卡子项-2
+												</li>
+												<li class="mui-table-view-cell">
+													第5个选项卡子项-3
+												</li>
+												<li class="mui-table-view-cell">
+													第5个选项卡子项-4
+												</li>
+												<li class="mui-table-view-cell">
+													第5个选项卡子项-5
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							<div id="item6mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<li class="mui-table-view-cell">
+												第6个选项卡子项-1
+											</li>
+											<li class="mui-table-view-cell">
+												第6个选项卡子项-2
+											</li>
+											<li class="mui-table-view-cell">
+												第6个选项卡子项-3
+											</li>
+											<li class="mui-table-view-cell">
+												第6个选项卡子项-4
+											</li>
+											<li class="mui-table-view-cell">
+												第6个选项卡子项-5
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div id="item7mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view">
+											<li class="mui-table-view-cell">
+												第7个选项卡子项-1
+											</li>
+											<li class="mui-table-view-cell">
+												第7个选项卡子项-2
+											</li>
+											<li class="mui-table-view-cell">
+												第7个选项卡子项-3
+											</li>
+											<li class="mui-table-view-cell">
+												第7个选项卡子项-4
+											</li>
+											<li class="mui-table-view-cell">
+												第7个选项卡子项-5
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+			  </div>
+			</div>
+		</section>
+<!--    <section class="container mui-row mui-fullscreen category-nav">
       <div class="mui-col-xs-3">
         <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical content-bottom-padded-nav">
 
         </div>
       </div>
       <div id="segmentedControlContents" class="mui-col-xs-9 category-nav-content content-bottom-padded-nav">
-
+<div id="content1" class="mui-control-content">
+	<div class="category-nav-group"><div class="category-nav-header">测试1</div><div id="group11" class="category-nav-list"><button data-catid="12312" class="category-nav-item">测试2</button></div></div>
+</div>
       </div>
-    </section>
-    <nav class="mui-bar bbc-bar-tab">
-      <a class="bbc-tab-item" data-webview="_www/view/index.html">
-        <span class="mui-icon bbc-icon bbc-icon-home-empty"></span>
-        <span class="mui-tab-label">首页</span>
-      </a>
-      <a class="bbc-tab-item bbc-active">
-        <span class="mui-icon bbc-icon bbc-icon-category"></span>
-        <span class="mui-tab-label">分类</span>
-      </a>
-      <a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-        <span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
-        <span class="mui-tab-label">购物车</span>
-      </a>
-      <a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-        <span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
-        <span class="mui-tab-label">会员</span>
-      </a>
-    </nav>
+    </section>-->
+		<nav class="mui-bar bbc-bar-tab">
+			<a class="bbc-tab-item">
+				<span class="mui-icon bbc-icon bbc-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="bbc-tab-item bbc-active" data-webview="_www/view/category/category.html">
+				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+				<span class="mui-tab-label">现代商城</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+				<span class="mui-icon bbc-icon bbc-icon-share"></span>
+				<span class="mui-tab-label">共享资源</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
+				<span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+				<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
     <script src="../../js/zepto.js"></script>
     <script src="../../js/mui.min.js"></script>
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
+    <script src="../../js/mui.pullToRefresh.js"></script>
+		<script src="../../js/mui.pullToRefresh.material.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
     <script>
       mui.init({
         swipeBack: false //启用右滑关闭功能
@@ -84,8 +910,8 @@
           'method': config.apimethod.category
         },
         method: 'GET'
-      }
-
+      };
+			
       $.dataRequest(param, function(rs) {
         var data = rs.data.categorys;
         var isvirtualcat = rs.data.is_virtualcat;
@@ -93,7 +919,7 @@
         var content_list = '';
         var sec = [],
           thd = [];
-        for(var i = 0; i < data.length; i++) {
+        /*for(var i = 0; i < data.length; i++) {
           if(isvirtualcat){
             control_list += '<a class="mui-control-item" href="#content' + i + '">' + data[i].virtual_cat_name + '</a>';
           }else{
@@ -128,11 +954,233 @@
               $('#group' + thd[i][j].parent_id).append(content_item);
             }
           }
+        }*/
+      });
+      mui.init();
+        
+      (function($){ 
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										var ul = self.element.querySelector('.mui-table-view');
+										ul.appendChild(createFragment(ul, index, 5));
+										self.endPullUpToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+					var createFragment = function(ul, index, count, reverse) {
+						var length = ul.querySelectorAll('li').length;
+						var fragment = document.createDocumentFragment();
+						var ulment = document.getElementById("content-ul");
+						var li;
+						for (var i = 0; i < count; i++) {
+							var html = '<li class="content-li">'+
+													'<div class="content-space"> </div>'+
+													'<div class="content-outer">'+
+														'<div class="content-inner-left">'+
+															'<div class="content-inner-left-top">'+
+																'<div class="content-inner-left-top-item">'+
+																	'新兴生铁'+
+																'</div>'+
+																'<div class="content-inner-left-top-item">'+
+																	'球铁'+
+																'</div>'+
+																'<div class="content-inner-left-top-item">'+
+																	'Q10'+
+																'</div>'+
+																'<div class="content-inner-left-top-item">'+
+																	'中途库'+
+																'</div>'+
+															'</div>'+
+															'<div class="content-inner-left-middle">'+
+																'<div class="content-inner-left-middle-item">'+
+																	'1000　吨'+
+																'</div>'+
+															'</div>'+
+															'<div class="content-inner-left-bottom">'+
+																'<div class="content-inner-left-bottom-item1">'+
+																	'现金价：'+
+																'</div>'+
+																'<div class="content-inner-left-bottom-item2">'+
+																	'￥3200'+
+																'</div>'+
+																'<div class="content-inner-left-bottom-item1">'+
+																	'承兑价：'+
+																'</div>'+
+																'<div class="content-inner-left-bottom-item2">'+
+																	'￥3230'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+														'<div class="content-inner-right">'+
+															'<div class="content-inner-right-word">下单</div>'+
+														'</div>'+
+													'</div>'+
+												'</li>';
+							//li = document.create
+							//fragment.append(html);
+							ulment.insertAdjacentHTML('afterend', html);
+						}
+						return fragment;
+					};
+					document.getElementById("content-main").style.height = (document.documentElement.clientHeight-170)+"px";
+					document.getElementById("left-side").style.height = (document.documentElement.clientHeight-90)+"px";
+				});
+			})(mui);
+			//点击侧滑
+			//mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			var leftcontent = document.getElementById("left-content");
+			leftcontent.addEventListener("tap",function(event){
+				mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			}, false);
+			var leftsubmit = document.getElementById("left-side-submit");
+			leftsubmit.addEventListener("tap",function(event){
+				mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			}, false);
+			//产地列表
+			var placePicker = new mui.PopPicker(); 
+			placePicker.setData([{
+				value: '产地1',
+				text: '产地1'
+			}, {
+				value: '产地2',
+				text: '产地2'
+			}, {
+				value: '产地3',
+				text: '产地3'
+			}, {
+				value: '产地4',
+				text: '产地4'
+			}]);
+			var showPlacePickerButton = document.getElementById('showPlacePicker');
+			showPlacePickerButton.addEventListener('tap', function(event) {
+			placePicker.show(function(items) {
+				//PlaceResult.innerText = JSON.stringify(items[0]);
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+			}, false);
+			
+			//品名列表
+			var NamePicker = new mui.PopPicker(); 
+			NamePicker.setData([{
+				value: '品名1',
+				text: '品名1'
+			}, {
+				value: '品名2',
+				text: '品名2'
+			}, {
+				value: '品名3',
+				text: '品名3'
+			}, {
+				value: '品名4',
+				text: '品名4'
+			}]);
+			var showNamePickerButton = document.getElementById('showNamePicker');
+			showNamePickerButton.addEventListener('tap', function(event) {
+			NamePicker.show(function(items) {
+				//userResult.innerText = JSON.stringify(items[0]);
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+			}, false);
+			
+			//规格列表
+			var SizePicker = new mui.PopPicker(); 
+			SizePicker.setData([{
+				value: '规格1',
+				text: '规格1'
+			}, {
+				value: '规格2',
+				text: '规格2'
+			}, {
+				value: '规格3',
+				text: '规格3'
+			}, {
+				value: '规格4',
+				text: '规格4'
+			}]);
+			var showSizePickerButton = document.getElementById('showSizePicker');
+			showSizePickerButton.addEventListener('tap', function(event) {
+			SizePicker.show(function(items) {
+				//PlaceResult.innerText = JSON.stringify(items[0]);
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+			}, false);
+			
+			//交割库列表
+			var JgPicker = new mui.PopPicker(); 
+			JgPicker.setData([{
+				value: '交割1',
+				text: '交割1'
+			}, {
+				value: '交割2',
+				text: '交割2'
+			}, {
+				value: '交割3',
+				text: '交割3'
+			}, {
+				value: '交割4',
+				text: '交割4'
+			}]);
+			var showJgPickerButton = document.getElementById('showJgPicker');
+			showJgPickerButton.addEventListener('tap', function(event) {
+			JgPicker.show(function(items) {
+				//userResult.innerText = JSON.stringify(items[0]);
+				//返回 false 可以阻止选择框的关闭
+				//return false;
+			});
+			}, false);
+			
+    	$('.bbc-tab-item').on('tap', function() {
+        var webview = $(this).data('webview');
+        if(webview) {
+          if(webview) {
+            mui.openWindow({
+              url: webview,
+              id: webview,
+              createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+              show: {
+                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                aniShow: 'none'
+              },
+              waiting: {
+                autoShow: true //自动显示等待框，默认为true
+              }
+            });
+            var openw = plus.webview.getWebviewById(webview);
+            if(openw) {
+              mui.fire(openw, 'refresh');
+            }
+          }
         }
-
-        mui.init();
-
-        var controls = document.getElementById("segmentedControls");
+      });
+        /*var controls = document.getElementById("segmentedControls");
         var contents = document.getElementById("segmentedControlContents");
         //默认选中第一个
         controls.querySelector('.mui-control-item').classList.add('mui-active');
@@ -163,31 +1211,7 @@
             }
           });
         }
-      });
-
-      $('.bbc-tab-item').on('tap', function() {
-        var webview = $(this).data('webview');
-        if(webview) {
-          if(webview) {
-            mui.openWindow({
-              url: webview,
-              id: webview,
-              createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-              show: {
-                autoShow: true, //页面loaded事件发生后自动显示，默认为true
-                aniShow: 'none'
-              },
-              waiting: {
-                autoShow: true //自动显示等待框，默认为true
-              }
-            });
-            var openw = plus.webview.getWebviewById(webview);
-            if(openw) {
-              mui.fire(openw, 'refresh');
-            }
-          }
-        }
-      });
+      });*/
     </script>
   </body>
 
