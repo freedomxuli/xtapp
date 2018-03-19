@@ -83,10 +83,110 @@
 	    }
 	    
 	    /*详情列表*/
+	   	.mui-content{
+	   		background-color:#ffffff;
+	   	}
 		  .mui-table-view{
 		   	margin-top:80px;
 		   	margin-bottom: 40px;
 		  }
+		  .content-space{
+				height: 10px;
+				background-color: #f0eff5;
+			}
+			.check-title{
+				font-family: "arial rounded mt bold";
+				color: #666666;
+			}
+			.check-right-img{
+				width: 0.4rem;
+				margin-left: 5rem;
+			}
+			.check-div-border{
+				border-bottom: 1px solid #e3e3e6;
+			}
+			.check-content{
+				display: flex !important;
+				flex-direction: row;
+			}
+			.check-content-left{
+				flex: 2;
+				color:#333333;
+				font-size: 0.9rem;
+				font-family: "微软雅黑";
+			}
+			.check-content-right{
+				flex: 1;
+				color:#666666;
+				font-size: 0.8rem;
+				font-family: "微软雅黑";
+				text-align: right;
+			}
+			.content-price{
+				padding: 0px 0px 20px 58px;
+				display: flex;
+				flex-direction: row;
+			}
+			.content-price-left{
+				flex:2;
+				margin: 0px auto;
+			}
+			.content-price-right{
+				flex:1;
+				margin: 0px auto;
+				padding-top: 5px;
+			}
+			.content-price-left-text{
+				color: #666666;
+				font-size: 0.8rem;
+			}
+			
+			/*底部样式*/
+			.submit-bottom-div{
+				background-color: #ffffff;
+				border-top: 1px solid #e3e3e6;
+				display: flex;
+				flex: row;
+			}
+			.submit-bottom-left{
+				flex:4.5;
+			}
+			.submit-bottom-right{
+				flex:1;
+				color: #ffffff;
+				background-color: #f85251;
+				font-size: 0.4rem;
+				text-align: center;
+				padding-top: 10px;
+			}
+			.submit-bottom{
+				display: flex !important;
+				flex-direction: row;
+				align-items:center;
+			}
+			.submit-bottom-flex-1{
+				flex: 1;
+				margin: 0 auto;
+				font-size: 0.6rem;
+				color:#666666;
+			}
+			.submit-bottom-flex-2{
+				flex:2;
+				font-size: 0.6rem;
+				color:#666666;
+			}
+			.submit-bottom-flex-3{
+				flex:4;
+				font-size: 0.6rem;
+				color:#666666;
+			}
+			.submit-bottom-flex-3-price{
+				color: #e25d4c;
+				font-weight: bold;
+			}
+			.submit-bottom-flex-3-kind{
+				color: #222222;
+			}
     </style>
   </head>
 
@@ -114,12 +214,103 @@
 			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 				<div class="mui-scroll">
 					<!--数据列表-->
+					<div class="content-space"> </div>
 					<ul class="mui-table-view mui-table-view-chevron" id="content-main">
-						
+						<li>
+							<div class="content-space"> </div>
+							<div class="mui-input-row mui-checkbox mui-left check-div-border">
+							  <label class="check-title">B商家商家商家<img class="check-right-img" src="../../img/cart/right.png" /></label>
+							  <input name="checkbox1" value="Item 1" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox mui-left">
+							  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+							  <input name="checkbox2" value="Item 1" type="checkbox">
+							</div>
+							<div class="content-price">
+								<div class="content-price-left">
+									<div class="content-price-left-text">现金价：￥4980</div>
+									<div class="content-price-left-text">承兑价：￥4980</div>
+								</div>
+								<div class="content-price-right">
+									<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+			              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+			              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+			              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			            </div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="content-space"> </div>
+							<div class="mui-input-row mui-checkbox mui-left check-div-border">
+							  <label class="check-title">B商家商家商家<img class="check-right-img" src="../../img/cart/right.png" /></label>
+							  <input name="checkbox1" value="Item 1" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox mui-left">
+							  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+							  <input name="checkbox2" value="Item 1" type="checkbox">
+							</div>
+							<div class="content-price">
+								<div class="content-price-left">
+									<div class="content-price-left-text">现金价：￥4980</div>
+									<div class="content-price-left-text">承兑价：￥4980</div>
+								</div>
+								<div class="content-price-right">
+									<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+			              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+			              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+			              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			            </div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="content-space"> </div>
+							<div class="mui-input-row mui-checkbox mui-left check-div-border">
+							  <label class="check-title">B商家商家商家<img class="check-right-img" src="../../img/cart/right.png" /></label>
+							  <input name="checkbox1" value="Item 1" type="checkbox">
+							</div>
+							<div class="mui-input-row mui-checkbox mui-left">
+							  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+							  <input name="checkbox2" value="Item 1" type="checkbox">
+							</div>
+							<div class="content-price">
+								<div class="content-price-left">
+									<div class="content-price-left-text">现金价：￥4980</div>
+									<div class="content-price-left-text">承兑价：￥4980</div>
+								</div>
+								<div class="content-price-right">
+									<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+			              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+			              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+			              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			            </div>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
-			<nav class="mui-bar bbc-bar-tab">
+			<nav class="mui-bar bbc-bar-tab submit-bottom-div">
+				<div class="mui-input-row mui-checkbox mui-left submit-bottom-left">
+				  <label class="submit-bottom">
+				  	<div class="submit-bottom-flex-1">全选</div>
+				  	<div class="submit-bottom-flex-2">
+				  		<div>合计1</div>
+				  		<div>2.3690吨</div>
+				  	</div>
+				  	<div class="submit-bottom-flex-3">
+				  		<div><span class="submit-bottom-flex-3-kind">现金总金额：</span><span class="submit-bottom-flex-3-price">￥11797.62</span></div>
+				  		<div><span class="submit-bottom-flex-3-kind">承兑总金额：</span><span class="submit-bottom-flex-3-price">￥11797.62</span></div>
+				  	</div>
+				  </label>
+				  <input name="checkbox3" value="Item 1" type="checkbox">
+				</div>
+				<div class="submit-bottom-right">
+					提交订单
+				</div>
+			</nav>
+<!--			<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
@@ -140,7 +331,7 @@
 				<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
 				<span class="mui-tab-label">我的</span>
 			</a>
-		</nav>
+		</nav>-->
     <div id="promotion" class="mui-popover mui-popover-action mui-popover-bottom promotion-modal">
       <div class="mui-content-padded content-center">促销活动</div>
       <ul class="mui-table-view mui-table-view-radio bbc-radio theme-no-radius">
@@ -362,14 +553,14 @@
 			function pullupRefresh() {
 				setTimeout(function() {
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
+/*					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
 					for (var i = cells.length, len = i + 20; i < len; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
 						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
 						table.appendChild(li);
-					}
+					}*/
 				}, 1500);
 			}
 			if (mui.os.plus) {
@@ -384,7 +575,7 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-			document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight-60)+"px";
+			document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
 			/*以下是原有的*/
       mui.plusReady(function() {
         var wid = plus.webview.currentWebview().id;
