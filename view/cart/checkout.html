@@ -150,6 +150,152 @@
 .mui-bar .mui-btn-link {
   color: #ea2329 !important;
 }
+
+			/*标题栏*/
+			.mui-bar-backcolor{
+      	background-color:#d92e2e;
+      	display: flex;  
+      }
+			.child{   
+			    flex:1;    
+			} 
+			
+			.child_1{   
+			    flex:7;    
+			} 
+			
+			.category_img{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+      }
+      
+      .category_size{
+      	line-height: 3rem;
+      	text-align: center;
+      }
+      
+      .category_title{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	margin-left: 0.4rem;
+      	font-size: 0.9rem;
+      }
+      
+      .title_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1.2rem;
+      }
+      
+      .edit_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1rem;
+      	height: 1.2rem;
+      	line-height: 1.2rem;
+      }
+      
+      .search_img{
+      	height: 1.2rem;
+				width: 1.2rem;
+      }
+      .search_size{
+      	line-height: 3.5rem;
+      	text-align: center;
+      }
+      
+      .message_img{
+      	height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+      }
+      
+      /*等待付款*/
+	    .wait_part{
+	     	display: flex;
+	     	flex-direction: row;
+	     	background-color: #ffffff;
+	     	align-items: center;
+	    }
+	    .wait_part_left{
+	    	flex: 1;
+	    	text-align: center;
+	    }
+	    .wait_part_left_img{
+	    	height: 2rem;
+	    	width: 1.8rem;
+	    }
+	    .wait_part_right{
+	    	flex: 4;
+	    }
+	    .wait_part_right_top_text{
+	    	color:#e25d4c;
+	    	font-family: "微软雅黑";
+	    	font-size: 1.2rem;
+	    	font-weight: bold;
+	    	padding: 15px 0px 0px 0px;
+	    }
+	    .wait_part_right_center_text{
+	    	color:#666666;
+	    	font-family: "arial rounded mt bold";
+	    	font-size: 1rem;
+	    }
+	    .wait_part_right_bottom_text{
+	    	color:#666666;
+	    	font-family: "arial rounded mt bold";
+	    	font-size: 1rem;
+	    	padding: 0px 0px 15px 0px;
+	    }
+	    /*地址块*/
+	    .address_part{
+	    	margin-top:10px ;
+	    	display: flex;
+	     	flex-direction: row;
+	     	background-color: #ffffff;
+	     	align-items: center;
+	    }
+	    .address_part_left{
+	    	flex: 1;
+	    	text-align: center;
+	    }
+	    .address_part_center{
+	    	flex: 3;
+	    }
+	    .address_part_center_top{
+	    	display: flex;
+	    	flex-direction: row;
+	    	justify-content: center;
+	    	padding: 15px 0px 0px 0px;
+	    }
+	    .address_part_center_top_left{
+	    	flex: 1;
+	    	color: #666666;
+	    	font-family: "微软雅黑";
+	    }
+	    .address_part_center_top_right{
+	    	flex: 1;
+	    	color: #666666;
+	    	font-family: "微软雅黑";
+	    	text-align: right;
+	    }
+	    .address_part_center_bottom{
+	    	color: #666666;
+	    	font-family: "微软雅黑";
+	    	font-size: 0.9rem;
+	    	padding: 5px 0px 15px 0px;
+	    }
+	    .address_part_right{
+	    	flex: 1;
+	    	text-align: center;
+	    }
+	    .check-right-img{
+				width: 0.4rem;
+			}
+			/*物品详情*/
+			
     </style>
 
   </head>
@@ -161,6 +307,42 @@
         <div class="mui-navbar">
         </div>
         <div class="mui-pages">
+        	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
+				    <div class="child_1 category_size"><span class="title_span">订单详情</span></div>  
+				    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
+			   	</header>
+			   	<div class="wait_part">
+			   		<div class="wait_part_left">
+			   			<img class="wait_part_left_img" src="../../img/orderdetail/edit.png" />
+			   		</div>
+			   		<div class="wait_part_right"> 
+			   			<div class="wait_part_right_top_text">
+			   				等待买家付款
+			   			</div>
+			   			<div class="wait_part_right_center_text">
+			   				订单号：342321313323213
+			   			</div>
+			   			<div class="wait_part_right_bottom_text">
+			   				创建时间：2018-01-22 09:54:18
+			   			</div>
+			   		</div>
+			   	</div>
+			   	<div class="address_part">
+			    	<div class="address_part_left">
+			    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
+			    	</div>
+			    	<div class="address_part_center">
+			    		<div class="address_part_center_top">
+			    			<div class="address_part_center_top_left">张三</div>
+			    			<div class="address_part_center_top_right">13621543583</div>
+			    		</div>
+			    		<div class="address_part_center_bottom">江苏省-常州市-武进区 常州科教城</div>
+			    	</div>
+			    	<div class="address_part_right">
+			    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
+			    	</div>
+			   	</div>
         </div>
       </div>
     </div>
