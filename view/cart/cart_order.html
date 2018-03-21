@@ -214,45 +214,8 @@
 				margin-left: 0.8rem;
       }
       
-      /*等待付款*/
-	    .wait_part{
-	     	display: flex;
-	     	flex-direction: row;
-	     	background-color: #ffffff;
-	     	align-items: center;
-	    }
-	    .wait_part_left{
-	    	flex: 1;
-	    	text-align: center;
-	    }
-	    .wait_part_left_img{
-	    	height: 2rem;
-	    	width: 1.8rem;
-	    }
-	    .wait_part_right{
-	    	flex: 4;
-	    }
-	    .wait_part_right_top_text{
-	    	color:#e25d4c;
-	    	font-family: "微软雅黑";
-	    	font-size: 1.1rem;
-	    	font-weight: bold;
-	    	padding: 15px 0px 0px 0px;
-	    }
-	    .wait_part_right_center_text{
-	    	color:#666666;
-	    	font-family: "arial rounded mt bold";
-	    	font-size: 0.9rem;
-	    }
-	    .wait_part_right_bottom_text{
-	    	color:#666666;
-	    	font-family: "arial rounded mt bold";
-	    	font-size: 0.9rem;
-	    	padding: 0px 0px 15px 0px;
-	    }
 	    /*地址块*/
 	    .address_part{
-	    	margin-top:10px ;
 	    	display: flex;
 	     	flex-direction: row;
 	     	background-color: #ffffff;
@@ -293,124 +256,177 @@
 	    	text-align: center;
 	    }
 	    .check-right-img{
-				width: 0.4rem;
-			}
-			
-			/*物品详情*/
-			.goods_detail{
-				margin-top:10px ;
-	     	background-color: #ffffff;
-			}
-			.goods_shop{
-				color: #666666;
-				padding: 0.6rem 0px 0.6rem 1.2rem;
-				border-bottom:1px solid #e3e3e5;
-			}
-			.goods_memo{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-			}
-			.goods_xq{
-				color: #666666;
-				font-family: "arial rounded mt bold";
-				font-size: 0.8rem;
-				flex: 5;
-				padding: 0.6rem 0px 0.3rem 1.2rem;
-			}
-			.goods_address{
-				color: #666666;
-				font-family: "arial rounded mt bold";
-				font-size: 0.8rem;
-				flex: 1;
-				text-align: center;
-			}
-			.goods_price{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				border-bottom:1px solid #e3e3e5;
-			}
-			.goods_price_detail{
-				color: #666666;
-				font-family: "arial rounded mt bold";
-				font-size: 0.8rem;
-				flex: 5;
-				padding: 0.3rem 0px 0.6rem 1.2rem;
-			}
-			/*价格详情*/
-			.goods_order{
-				display: flex;
-				flex-direction: row;
-				background-color: #ffffff;
-			}
-			.goods_order_left{
-				flex: 1;
-			}
-			.goods_order_right{
-				flex: 1.5;
-			}
-			.goods_order_right_detail{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-			}
-			.goods_order_right_memo{
-				flex: 1;
-				color: #222222;
-				font-size: 0.8rem;
-				font-family: "微软雅黑";
-				padding: 0.4rem 0rem 0.2rem 0rem;
-			}
-			.goods_order_right_price{
-				flex: 1;
-				color: #e25d4c;
-				font-size: 0.9rem;
-				font-family: "arial rounded mt bold";
-				padding: 0.4rem 0rem 0.2rem 0rem;
-			}
-			.goods_order_right_price1{
-				flex: 1;
-				color: #e25d4c;
-				font-size: 1.2rem;
-				font-family: "arial rounded mt bold";
-				padding: 0.4rem 0rem 0.2rem 0rem;
-			}
-			/*支付信息*/
-			.goods_info{
-				margin-top:10px ;
-	     	background-color: #ffffff;
-			}
-			.goods_info_detail{
-				color: #666666;
-				font-family: "arial rounded mt bold";
-				font-size: 0.8rem;
-				padding: 0.6rem 0px 0.6rem 1.2rem;
-				border: 1px solid #e3e3e5;
-			}
-			/*底部样式*/
-			.submit-bottom-div{
-				background-color: #ffffff;
-				border-top: 1px solid #e3e3e6;
-				display: flex;
-				flex: row;
-				align-items: center;
-				justify-content: flex-end;
-			}
-			.submit-bottom-button1{
-				margin-right: 15px;
-				background-color: #e25d4c;
-				color: #ffffff;
-				border-radius: 5px;
-				padding: 5px 25px 5px 25px;
-			}
-			.submit-bottom-button2{
-				margin-right: 15px;
-				color: #e25d4c;
-				border-radius: 5px;
-				padding: 5px 15px 5px 15px;
-				border: 1px solid #e25d4c;
-			}
+			width: 0.4rem;
+		}
+		/*付款选择*/
+	    .kind-select{
+	    	margin-top:10px ;
+	     	background-color: #ffffff !important;
+	     	display: flex;
+	     	flex-direction: row;
+	     	z-index: 10000;
+	     	align-items: center;
+	    }
+	    .kind-text{
+	    	color:#666666;
+	    	font-family: "微软雅黑";
+	    	flex: 1;
+	    	font-size: 0.6rem;
+	    	padding: 0.6rem 0px 0.6rem 1.2rem;
+	    }
+	    .mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
+	    	color: #E35D4C;
+	    }
+	    .radio-text{
+	    	color: #666666;
+	    	font-size: 0.8rem;
+	    }
+		/*物品详情*/
+		.goods_detail{
+			margin-top:10px ;
+     		background-color: #ffffff;
+		}
+		.goods_shop{
+			color: #666666;
+			padding: 0.6rem 0px 0.6rem 1.2rem;
+			border-bottom:1px solid #e3e3e5;
+		}
+		.goods_memo{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		.goods_xq{
+			color: #666666;
+			font-family: "arial rounded mt bold";
+			font-size: 0.8rem;
+			flex: 5;
+			padding: 0.6rem 0px 0.3rem 1.2rem;
+		}
+		.goods_address{
+			color: #666666;
+			font-family: "arial rounded mt bold";
+			font-size: 0.8rem;
+			flex: 1;
+			text-align: center;
+		}
+		.goods_price{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			border-bottom:1px solid #e3e3e5;
+		}
+		.goods_price_detail{
+			color: #666666;
+			font-family: "arial rounded mt bold";
+			font-size: 0.8rem;
+			flex: 5;
+			padding: 0.3rem 0px 0.6rem 1.2rem;
+		}
+		/*价格详情*/
+		.goods_order{
+			display: flex;
+			flex-direction: row;
+			background-color: #ffffff;
+		}
+		.goods_order_left{
+			flex: 1;
+		}
+		.goods_order_right{
+			flex: 1.5;
+		}
+		.goods_order_right_detail{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		.goods_order_right_memo{
+			flex: 1;
+			color: #222222;
+			font-size: 0.8rem;
+			font-family: "微软雅黑";
+			padding: 0.4rem 0rem 0.2rem 0rem;
+		}
+		.goods_order_right_price{
+			flex: 1;
+			color: #e25d4c;
+			font-size: 0.9rem;
+			font-family: "arial rounded mt bold";
+			padding: 0.4rem 0rem 0.2rem 0rem;
+		}
+		.goods_order_right_price1{
+			flex: 1;
+			color: #e25d4c;
+			font-size: 1.2rem;
+			font-family: "arial rounded mt bold";
+			padding: 0.4rem 0rem 0.2rem 0rem;
+		}
+		/*支付信息*/
+		.goods_info{
+			margin-top:10px ;
+     		background-color: #ffffff;
+		}
+		.goods_info_detail{
+			color: #666666;
+			font-family: "arial rounded mt bold";
+			font-size: 0.8rem;
+			padding: 0.6rem 0px 0.6rem 1.2rem;
+			border: 1px solid #e3e3e5;
+			display: flex;
+			flex-direction: row;
+		}
+		.goods_info_detail_type{
+			flex: 1;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+		}
+		.goods_info_detail_type_text{
+			flex: 2;
+			text-align: end;
+		}
+		.goods_info_detail_type_img{
+			flex: 1;
+			text-align: end;
+			padding: 0px 15px 0px 0px;
+		}
+		.input-div{
+			display: flex;
+			flex: row;
+			align-items: center;
+		}
+		.input-text{
+			flex: 1;
+			padding: 0 !important;
+		}
+		.input-write{
+			flex: 3;
+			padding: 0 !important;
+			height: auto !important;
+		}
+		/*底部样式*/
+		.submit-bottom-div{
+			background-color: #ffffff;
+			border-top: 1px solid #e3e3e6;
+			display: flex;
+			flex: row;
+			align-items: center;
+			justify-content: flex-end;
+		}
+		.submit-bottom-button1{
+			margin-right: 15px;
+			background-color: #e25d4c;
+			color: #ffffff;
+			border-radius: 5px;
+			padding: 5px 25px 5px 25px;
+		}
+		.submit-bottom-button2{
+			margin-right: 15px;
+			color: #e25d4c;
+			border-radius: 5px;
+			padding: 5px 15px 5px 15px;
+			border: 1px solid #e25d4c;
+		}
     </style>
 
   </head>
@@ -424,25 +440,9 @@
         <div class="mui-pages">
         	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
-				    <div class="child_1 category_size"><span class="title_span">订单详情</span></div>  
+				    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
 				    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
 			   	</header>
-			   	<div class="wait_part">
-			   		<div class="wait_part_left">
-			   			<img class="wait_part_left_img" src="../../img/orderdetail/edit.png" />
-			   		</div>
-			   		<div class="wait_part_right"> 
-			   			<div class="wait_part_right_top_text">
-			   				等待买家付款
-			   			</div>
-			   			<div class="wait_part_right_center_text">
-			   				订单号：342321313323213
-			   			</div>
-			   			<div class="wait_part_right_bottom_text">
-			   				创建时间：2018-01-22 09:54:18
-			   			</div>
-			   		</div>
-			   	</div>
 			   	<div class="address_part">
 			    	<div class="address_part_left">
 			    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
@@ -458,6 +458,16 @@
 			    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
 			    	</div>
 			   	</div>
+			   	<div class="kind-select">
+		    		<div class="mui-input-row mui-radio mui-left">
+						<label class="radio-text">现金预存款支付</label>
+						<input name="radio1" type="radio" checked="checked">
+					</div>
+					<div class="mui-input-row mui-radio mui-left">
+						<label class="radio-text">承兑预存款支付</label>
+						<input name="radio1" type="radio">
+					</div>
+		    	</div>
 			   	<div class="goods_detail">
 			   		<div class="goods_shop">
 			   			A商家商家商家商家
@@ -475,6 +485,30 @@
 			   				现金价：￥4980　承兑价：￥4980
 			   			</div>
 			   		</div>
+			   		<div class="goods_info_detail">
+			   			<div class="goods_info_detail_type">开票信息</div>
+			   			<div class="goods_info_detail_type">
+			   				<div class="goods_info_detail_type_text">增值税发票</div>
+			   				<div class="goods_info_detail_type_img">
+			   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
+			   				</div>
+			   			</div>
+			   		</div>
+			   		<div class="goods_info_detail">
+			   			<div class="goods_info_detail_type">优惠券</div>
+			   			<div class="goods_info_detail_type">
+			   				<div class="goods_info_detail_type_text">不使用</div>
+			   				<div class="goods_info_detail_type_img">
+			   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
+			   				</div>
+			   			</div>
+			   		</div>
+			   		<div class="goods_info_detail">
+				   		<div class="mui-input-row input-div">
+					        <label class="input-text">快速删除：</label>
+					        <input type="text" class="input-write" placeholder="本次交易补充说明">
+					    </div>
+				    </div>
 			   	</div>
 			   	<div class="goods_order">
 			   		<div class="goods_order_left">
@@ -483,15 +517,15 @@
 			   		<div class="goods_order_right">
 			   			<div class="goods_order_right_detail">
 			   				<div class="goods_order_right_memo">
-			   					订单总金额：
+			   					商品数量：
 			   				</div>
 			   				<div class="goods_order_right_price">
-			   					￥96174.00
+			   					2.66
 			   				</div>
 			   			</div>
 			   			<div class="goods_order_right_detail">
 			   				<div class="goods_order_right_memo">
-			   					涨价或优惠：
+			   					运费：
 			   				</div>
 			   				<div class="goods_order_right_price">
 			   					￥-1068.60
@@ -515,22 +549,11 @@
 			   			</div>
 			   		</div>
 			   	</div>
-			   	<div class="goods_info">
-			   		<div class="goods_info_detail">
-			   			支付方式：现金预付款
-			   		</div>
-			   		<div class="goods_info_detail">
-			   			出库单号：56551510
-			   		</div>
-			   		<div class="goods_info_detail">
-			   			开票信息：常州市建邦金属材料有限公司
-			   		</div>
-			   	</div>
-        </div>
+        	</div>
     	  <nav class="mui-bar bbc-bar-tab submit-bottom-div">
-					<div class="submit-bottom-button1">去付款</div>
-					<div class="submit-bottom-button2">取消订单</div>
-				</nav>
+				<div class="submit-bottom-button1">去付款</div>
+				<div class="submit-bottom-button2">取消订单</div>
+			</nav>
       </div>
     </div>
     <!--页面主结构结束-->
