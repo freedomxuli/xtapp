@@ -7,26 +7,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+	  
 		<link rel="stylesheet" href="../../css/style.css">
-		<link rel="stylesheet" href="../../css/mui.min.css">
+	
 		<link href="../../css/mui.picker.min.css" rel="stylesheet" />
 		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
 		<style>
+			html{
+				background-color: #FFFFFF;
+			}
 			.mui-slider-indicator.mui-segmented-control {
 				background-color: #ffffff !important;
 			}
 			
-			.mui-bar-backcolor {
-				background-color: #d92e2e;
-				display: flex;
-			}
 			
-			.title_span {
-				color: #ffffff;
-				font-family: "微软雅黑";
-				font-size: 1.2rem;
-			}
+			
 			
 			.child {
 				flex: 1;
@@ -36,54 +31,39 @@
 				flex: 3;
 			}
 			
-			.back_img {
-				height: 1rem;
-				width: 0.6rem;
-			}
+
 			
-			.title_size {
-				line-height: 3rem;
-				text-align: center;
-			}
-			
-			.back_height {
-				line-height: 3rem;
-			}
-			
-			.back_size {
-				line-height: 3rem;
-				padding-left: 10px;
-			}
-			
-			.message_size {
-				position: absolute;
-				line-height: 3.5rem;
-				right: 10px;
-			}
-			
-			.message_img {
-				height: 1.5rem;
-				width: 1.5rem;
-			}
-			
+
 			.chart {
 				height: 200px;
 				margin: 0px;
 				padding: 0px;
 			}
 			h5 {
-				margin-top: 30px;
-				font-weight: bold;
+				margin-top: 0px;
+				font-size: 1rem;
+				color: #222222;
+				font-family: "microsoft yahei";
 			}
 			h5:first-child {
-				margin-top: 15px;
+				margin-top: 0px;
 			}
+			.mui-content{
+				background-color: #FFFFFF;
+			}
+			.content-space {
+    height: 10px;
+    background-color: #f0eff5;
+}
+.chart_height{
+	height:270px;
+}
 		</style>
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-			<a class="mui-action-back mui-pull-left back_height">
+			<a class="mui-action-back mui-pull-left back-left">
 				<img class="back_img" src="../../img/item/back_arrow.png" />
 			</a>
 			<h1 class="mui-title title_span">炉料指数</h1>
@@ -91,12 +71,14 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</a>
 		</header>
-		<div class="mui-content">
+		<div class="mui-content chart_height">
 			<div class="mui-content-padded">
-				<h5>线图示例</h5>
+				<h5>价格指数</h5>
 				<div class="chart" id="lineChart"></div>
 			</div>
 		</div>
+		<div class="content-space"></div>
+		<div style="height:60px;background-color: #FFFFFF;">价格指导</div>
 
 		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
@@ -112,6 +94,7 @@
 		<script>
 			var getOption = function(chartType) {
 				var chartOption = chartType == 'pie' ? {
+					height:150,
 					calculable: false,
 					series: [{
 						name: '访问来源',
@@ -137,13 +120,14 @@
 					}]
 				} : {
 					legend: {
-						data: ['蒸发量', '降水量']
+						data: ['球铁', '铸铁','炼钢铁']
 					},
 					grid: {
 						x: 35,
 						x2: 10,
 						y: 30,
-						y2: 25
+						y2: 25,
+						height:120
 					},
 					toolbox: {
 						show: false,
@@ -179,14 +163,20 @@
 						}
 					}],
 					series: [{
-						name: '蒸发量',
+						name: '球铁',
 						type: chartType,
 						data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
 					}, {
-						name: '降水量',
+						name: '铸铁',
 						type: chartType,
 						data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-					}]
+					},
+					{
+						name: '炼钢铁',
+						type: chartType,
+						data: [4, 6, 9.0, 2, 4, 5, 175.6, 182.2, 48.7, 18.8, 6.0, 3]
+					}
+					]
 				};
 				return chartOption;
 			};
