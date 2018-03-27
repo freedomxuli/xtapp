@@ -79,6 +79,9 @@
 			color: #e35d4c;
 			border-bottom: 2px solid #E35D4C;
 		}
+		.mui-col-xs-6{
+			width:33%;
+		}
 	</style>
 
 	<body>
@@ -100,21 +103,51 @@
 			</i>
 			<a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
 		</header>
-		<div class="mui-slider">
-			<div class="mui-slider-group">
-				<div class="mui-slider-item">
-					<a href="#"><img src="../img/index/_banner.png" /></a>
+		<div id="title_slider" class="mui-slider">
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../img/index/_banner.png">
+					</a>
 				</div>
+				<!-- 第一张 -->
 				<div class="mui-slider-item">
-					<a href="#"><img src="../img/index/_banner.png" /></a>
+					<a href="#">
+						<img src="../img/index/_banner.png">
+					</a>
 				</div>
+				<!-- 第二张 -->
 				<div class="mui-slider-item">
-					<a href="#"><img src="../img/index/_banner.png" /></a>
+					<a href="#">
+						<img src="../img/index/_banner.png">
+					</a>
 				</div>
+				<!-- 第三张 -->
 				<div class="mui-slider-item">
-					<a href="#"><img src="../img/index/_banner.png" /></a>
+					<a href="#">
+						<img src="../img/index/_banner.png">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="../img/index/_banner.png">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="../images/shuijiao.jpg">
+					</a>
 				</div>
 			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>		
 		</div>
 		<div style="height:0.34rem;background-color: #f0eff5;"></div>
 		<section class="section-white">
@@ -161,7 +194,42 @@
 				<div class="more-link">
 					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 			</div>
-			<div class="box-display content-vertical-padded fontS">
+			 <div id="hzcj_slider" class="mui-slider">
+		        <div class="mui-slider-group mui-slider-loop">
+		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+		            <div class="mui-slider-item mui-slider-item-duplicate">
+		                <ul class="mui-table-view mui-grid-view">
+		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
+                            <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
+ 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
+		                </ul>
+		            </div>
+		            <div class="mui-slider-item">
+		                <ul class="mui-table-view mui-grid-view">
+		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
+                            <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
+ 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
+		                </ul>
+		            </div>
+		            <div class="mui-slider-item">
+		                <ul class="mui-table-view mui-grid-view">
+		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
+                            <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
+ 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
+		                </ul>
+		            </div>
+		            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+		            <div class="mui-slider-item mui-slider-item-duplicate">
+		                <ul class="mui-table-view mui-grid-view">
+		                   <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
+                            <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
+ 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
+		                </ul>
+		            </div>
+		        </div>
+		       
+		    </div>
+			<!--<div class="box-display content-vertical-padded fontS">
 				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="../img/index/ztgt.png" /></a>
 				<div style="width:1rem"></div>
 				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
@@ -171,6 +239,7 @@
 				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
 				<div style="width:1rem"></div>
 				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="../img/index/xxzg.png" /></a>
+			</div>-->
 		</section>
 
 		<section class="section-white">
@@ -565,10 +634,11 @@
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
 			});
-			var gallery = mui('.mui-slider');
+			var gallery = mui('#title_slider');
 			gallery.slider({
 				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 			});
+			
 			var param = {
 				queryData: {
 					'method': config.apimethod.home,
