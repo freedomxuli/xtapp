@@ -156,20 +156,20 @@
 				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../img/index/llsc.png" />
 					<div class="menu-name">炉料商城</div>
 				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/gxzy.png" />
+				<a id="gxzy" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/gxzy.png" />
 					<div class="menu-name">共享资源</div>
 				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/lljr.png" />
+				<a id="lljr" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/lljr.png" />
 					<div class="menu-name">炉料金融</div>
 				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/llzx.png" />
+				<a id="llzx" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/llzx.png" />
 					<div class="menu-name">炉料资讯</div>
 				</a>
 				<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
 			</div>
 
 			<div class="box-display menu menu-top">
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../img/index/zxhd.png" />
+				<a id="zxhd" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../img/index/zxhd.png" />
 					<div class="menu-name">最新活动</div>
 				</a>
 				<a id="llzs" data-needlog="true" data-view="_www/view/item/goodsindex.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/llzs.png" />
@@ -191,8 +191,8 @@
 				<div class="title-txt title-txt-padding">
 
 					<span class="lbm-font">合作厂家</span></div>
-				<div class="more-link">
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+				<div id="hzcj"  class="more-link">
+					<a class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 			</div>
 			 <div id="hzcj_slider" class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop">
@@ -229,20 +229,11 @@
 		        </div>
 		       
 		    </div>
-			<!--<div class="box-display content-vertical-padded fontS">
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="../img/index/ztgt.png" /></a>
-				<div style="width:1rem"></div>
-				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
-				<div style="width:1rem"></div>
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="../img/index/bgjt.png" /></a>
-				<div style="width:1rem"></div>
-				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
-				<div style="width:1rem"></div>
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="../img/index/xxzg.png" /></a>
-			</div>-->
+		
 		</section>
 
 		<section class="section-white">
+			
 			<div class="section-title user-title title">
 				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
 				<div class="title-txt title-txt-padding">
@@ -414,7 +405,7 @@
 				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
 				<span class="mui-tab-label">现代商城</span>
 			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+			<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
 				<span class="mui-icon bbc-icon bbc-icon-share"></span>
 				<span class="mui-tab-label">共享资源</span>
 			</a>
@@ -430,7 +421,7 @@
 		<script src="../js/zepto.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/template.min.js"></script>
-		<script src="../config.js"></script>
+		<script src="../config.js"></script> 
 		<script src="../js/app.js"></script>
 		<script src="../js/mipush.js"></script>
 
@@ -635,9 +626,9 @@
 				swipeBack: true //启用右滑关闭功能
 			});
 			var gallery = mui('#title_slider');
-			gallery.slider({
-				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
-			});
+//			gallery.slider({
+//				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+//			});
 			
 			var param = {
 				queryData: {
@@ -685,7 +676,7 @@
 						},
 						extras: {
 							refresh: true
-						},
+						},  
 						waiting: {
 							autoShow: true //自动显示等待框，默认为true
 						}
@@ -708,6 +699,36 @@
 				mui.openWindow({
 					url: 'item/goodsindex.html',
 					id: 'llzs'
+				});
+			});
+			document.getElementById('gxzy').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/shareresource.html',
+					id: 'gxzy'
+				});
+			});
+			document.getElementById('llzx').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/information_list.html',
+					id: 'llzx'
+				});
+			});
+				document.getElementById('hzcj').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/merchants.html',
+					id: 'hzcj'
+				});
+			});
+			document.getElementById('zxhd').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/activity.html',
+					id: 'zxhd'
+				});
+			});
+			document.getElementById('lljr').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/finance.html',
+					id: 'lljr'
 				});
 			});
 		</script>
