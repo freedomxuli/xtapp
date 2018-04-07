@@ -1,65 +1,113 @@
 <!DOCTYPE html>
 <html class="ui-page-login">
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <style>
-      .oauth-area {
-        position: absolute;
-        bottom: 20px;
-        left: 0px;
-        text-align: center;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-      }
+		<link rel="stylesheet" href="../../css/style.css">
+		<style>
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			.message_size {
+				line-height: 3rem;
+				font-family: "microsoft yahei";
+				color: #FFFFFF;
+				font-size: 1.1rem;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				left: 0;
+			}
+			
+			.mui-input-row img {
+				height: 1.3rem;
+				width: 1rem;
+			}
+			
+			.mui-input-row label {
+				width: 3rem;
+				padding-top: 0.9rem;
+			}
+			
+			.form-container {
+				padding-top: 0.5rem;
+			}
+			
+			.font-orange {
+				color: #666666;
+			}
+			
+			.form-op-section {
+				padding-top: 1.8rem;
+			}
+			
+			.bbc-btn-warning {
+				background: #e35d4c;
+				border-color: #e35d4c;
+				font-size: 1.1rem;
+			}
+		</style>
+	</head>
 
-      .oauth-area .oauth-btn {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        background-size: 30px 30px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        margin: 0px 20px;
-        /*-webkit-filter: grayscale(100%); */
-        border: solid 1px #ddd;
-        border-radius: 25px;
-      }
-
-      .oauth-area .oauth-btn:active {
-        border: solid 1px #aaa;
-      }
-
-      .oauth-area .oauth-btn.disabled {
-        background-color: #ddd;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header class="page-header">
+	<body>
+		<!--<header class="page-header">
       <div class="header-title">会员登录</div>
       <i id="close_login" class="header-right txt-func">取消</i>
-    </header>
-    <section class="container">
-      <form class="form-container" id="login_form">
-        <section class="mui-input-group">
-          <div class="mui-input-row">
-            <label>帐号：</label>
-            <input id="account" type="text" value="" class="mui-input-clear mui-input" placeholder="请输入您的用户名/手机号">
-          </div>
-          <div class="mui-input-row">
-            <label>密码：</label>
-            <input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
-          </div>
-          <div id="vcode_form" class="form-inline" style="display: none;">
+    </header>-->
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a id="close_login" class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">会员登录</h1>
+			<a id="reg" class="message_size">
+				快速注册
+			</a>
+		</header>
+		<section class="container">
+			<form class="form-container" id="login_form">
+				<section class="mui-input-group">
+					<div class="mui-input-row">
+						<label><img src="../../img/item/name.png" /></label>
+						<input id="account" type="text" value="" class="mui-input-clear mui-input" placeholder="请输入手机号">
+					</div>
+					<div class="mui-input-row">
+						<label><img src="../../img/item/password.png" /></label>
+						<input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
+					</div>
+					<!--<div id="vcode_form" class="form-inline" style="display: none;">
             <div class="mui-input-row form-inline-adaptive">
               <label>验证码：</label>
               <input id="vcode" type="text" class="mui-input-clear" placeholder="请输入验证码">
@@ -67,203 +115,197 @@
             <div class="form-inline-unadaptive">
               <img id="vcode_img" width="100" height="30" src="">
             </div>
-          </div>
-        </section>
-      </form>
-      <section class="content-horizontal-padded content-right">
-        <a id='forgetPassword' class="fontS font-orange">忘记密码</a>
-      </section>
-      <section class="content-horizontal-padded form-op-section">
-        <button id='login' type="submit" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">登录</button>
-      </section>
-      <section class="content-horizontal-padded">
-        <button id="reg" class="mui-btn mui-btn-block">快速注册</button>
-      </section>
-      
-      <section class="font-gray-20 sns-login">
-        <div class="section-title font-gray-60">使用其他账号</div>
-        <div class="section-container">
-          
-        </div>
-      </section>
-      
-    </section>
-    <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
-    <script src="../../js/mui.enterfocus.js"></script>
-    <script src="../../js/template.min.js"></script>
-    <script src="../../config.js"></script>
-    <script src="../../js/app.js"></script>
-    <script>
-        mui.plusReady(function() {
-          var settings = app.getSettings();
-          var state = app.getState();
-          var entrance = plus.webview.currentWebview().entrance;
-          var toMain = function() {
-            var parentview = plus.webview.currentWebview().opener();
-            parentview.reload(true);
-            var ws = plus.webview.currentWebview();
-            plus.webview.close(ws,'slide-out-bottom');
-          };
-          //检查 "登录状态/锁屏状态" 开始
-          if(state.token) {
-            document.getElementById('account').value = state.account;
-          } else {
-            app.setState(null);
-            //第三方登录
-            var authBtns = ['qq','weixin','sinaweibo']; //配置业务支持的第三方登录
-            var auths = {};
-            var oauthArea = document.querySelector('.sns-login .section-container');
-            plus.oauth.getServices(function(services) {
-              for(var i in services) {
-                var service = services[i];
-                auths[service.id] = service;
-                if(~authBtns.indexOf(service.id)) {
-                  var isInstalled = app.isInstalled(service.id);
-                  var btn = document.createElement('a'); 
-                  //如果微信未安装，则为不启用状态
-                  btn.setAttribute('class', 'section-init content-center oauth-btn' + (!isInstalled && service.id === 'weixin' ? (' disabled') : ''));
-                  btn.authId = service.id;
-                  if(service.id=='weixin'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-weixin-member"></i><br> 微信';
-                  }else if(service.id=='qq'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-QQ-member"></i><br> QQ';
-                  }else if(service.id=='sinaweibo'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-sina-member"></i><br> 微博';
-                  }
-                  oauthArea.appendChild(btn);
-                }
-              }
+          </div>-->
+				</section>
+			</form>
+			<section class="content-horizontal-padded content-right">
+				<a id='forgetPassword' class="fontS font-orange">忘记账号或密码？</a>
+			</section>
+			<section class="content-horizontal-padded form-op-section">
+				<button id='login' type="submit" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">登录</button>
+			</section>
 
-              mui(oauthArea).on('tap', 'a', function() {
-                if(this.classList.contains('disabled')) {
-                  plus.nativeUI.toast('您尚未安装微信客户端');
-                  return;
-                }
-                var auth = auths[this.authId];
-                var waiting = plus.nativeUI.showWaiting();
-                auth.login(function() {
-                  waiting.close(); 
-                  plus.nativeUI.toast("登录认证成功"); 
-                  auth.getUserInfo(function() {
-//                  plus.nativeUI.toast("获取用户信息成功");
-//                  var name = auth.userInfo.nickname || auth.userInfo.name;
+		</section>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.enterfocus.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
+		<script>
+			mui.plusReady(function() {
+				var settings = app.getSettings();
+				var state = app.getState();
+				var entrance = plus.webview.currentWebview().entrance;
+				var toMain = function() {
+					var parentview = plus.webview.currentWebview().opener();
+					parentview.reload(true);
+					var ws = plus.webview.currentWebview();
+					plus.webview.close(ws, 'slide-out-bottom');
+				};
+				//检查 "登录状态/锁屏状态" 开始
+				if(state.token) {
+					document.getElementById('account').value = state.account;
+				} else {
+					app.setState(null);
+					//第三方登录
+					var authBtns = ['qq', 'weixin', 'sinaweibo']; //配置业务支持的第三方登录
+					var auths = {};
+					var oauthArea = document.querySelector('.sns-login .section-container');
+					plus.oauth.getServices(function(services) {
+						//            for(var i in services) {
+						//              var service = services[i];
+						//              auths[service.id] = service;
+						//              if(~authBtns.indexOf(service.id)) {
+						//                var isInstalled = app.isInstalled(service.id);
+						//                var btn = document.createElement('a'); 
+						//                //如果微信未安装，则为不启用状态
+						//                btn.setAttribute('class', 'section-init content-center oauth-btn' + (!isInstalled && service.id === 'weixin' ? (' disabled') : ''));
+						//                btn.authId = service.id;
+						//                if(service.id=='weixin'){
+						//                  btn.innerHTML = '<i class="bbc-icon bbc-icon-weixin-member"></i><br> 微信';
+						//                }else if(service.id=='qq'){
+						//                  btn.innerHTML = '<i class="bbc-icon bbc-icon-QQ-member"></i><br> QQ';
+						//                }else if(service.id=='sinaweibo'){
+						//                  btn.innerHTML = '<i class="bbc-icon bbc-icon-sina-member"></i><br> 微博';
+						//                }
+						//                oauthArea.appendChild(btn);
+						//              }
+						//            }
 
-                    var param = {
-                      queryData: {
-                        'method': config.apimethod.trustDcloudLogin,
-                        'trust_params': JSON.stringify(auth),
-                        'deviceid':plus.device.uuid
-                      },
-                      method: 'POST'
-                    }
+						mui(oauthArea).on('tap', 'a', function() {
+							if(this.classList.contains('disabled')) {
+								plus.nativeUI.toast('您尚未安装微信客户端');
+								return;
+							}
+							var auth = auths[this.authId];
+							var waiting = plus.nativeUI.showWaiting();
+							auth.login(function() {
+								waiting.close();
+								plus.nativeUI.toast("登录认证成功");
+								auth.getUserInfo(function() {
+									//                  plus.nativeUI.toast("获取用户信息成功");
+									//                  var name = auth.userInfo.nickname || auth.userInfo.name;
 
-                    Zepto.dataRequest(param, function(rs) {
-                      if(!rs.data.binded ) {
-                        clicked('_www/view/passport/bind.html', {'trust_params':auth});
-                      }else{
-                        var data = rs.data;
-                        var account = data.account;
-                        var token = data.accessToken;
-                        app.createState(account,token,function(){
-                          clicked('_www/view/member/member.html');
-                        });
-                      }
-                    });
-                  }, function(e) {
-                    plus.nativeUI.toast("获取用户信息失败：" + e.message);
-                  });
-                }, function(e) {
-                  waiting.close();
-                  plus.nativeUI.toast("登录认证失败：" + e.message);
-                });
-              });
-            }, function(e) {
-              oauthArea.style.display = 'none';
-              plus.nativeUI.toast("获取登录认证失败：" + e.message);
-            });
-          }
-          // close splash
-          setTimeout(function() {
-            //关闭 splash
-            plus.navigator.closeSplashscreen();
-          }, 600);
-          //检查 "登录状态/锁屏状态" 结束
-          var loginButton = document.getElementById('login');
-          var accountBox = document.getElementById('account');
-          var passwordBox = document.getElementById('password');
-          var vcodeBox = document.getElementById('vcode');
-          var autoLoginButton = document.getElementById("autoLogin");
-          var regButton = document.getElementById('reg');
-          var forgetButton = document.getElementById('forgetPassword');
-          var loginErrTime = 0;
-          loginButton.addEventListener('tap', function(event) {
-            var loginInfo = {
-              account: accountBox.value,
-              password: passwordBox.value,
-              vcode: vcodeBox.value
-            };
-            app.login(loginInfo, function(err) {
-              if(err) {
-                var islogined = localStorage.getItem('loginErroTimes');
-                if(islogined){
-                  if(islogined >= 3){
-                    $('#vcode_form').show();
-                    fetchVcode('topapi_login',$('#vcode_img'));
-                  }
-                  islogined ++
-                  localStorage.setItem('loginErroTimes',islogined);
-                }else{
-                  islogined = 1
-                  localStorage.setItem('loginErroTimes',islogined);
-                }
-                plus.nativeUI.toast(err);
-                return;
-              }
-              toMain();
-              localStorage.removeItem('loginErroTimes');
-            });
-          });
-          
-          $('#vcode_img').on('tap', function() {
-            fetchVcode('topapi_login',$(this));
-          })
+									var param = {
+										queryData: {
+											'method': config.apimethod.trustDcloudLogin,
+											'trust_params': JSON.stringify(auth),
+											'deviceid': plus.device.uuid
+										},
+										method: 'POST'
+									}
 
-          mui.enterfocus('#login_form input', function() {
-            mui.trigger(loginButton, 'tap');
-          });
+									Zepto.dataRequest(param, function(rs) {
+										if(!rs.data.binded) {
+											clicked('_www/view/passport/bind.html', {
+												'trust_params': auth
+											});
+										} else {
+											var data = rs.data;
+											var account = data.account;
+											var token = data.accessToken;
+											app.createState(account, token, function() {
+												clicked('_www/view/member/member.html');
+											});
+										}
+									});
+								}, function(e) {
+									plus.nativeUI.toast("获取用户信息失败：" + e.message);
+								});
+							}, function(e) {
+								waiting.close();
+								plus.nativeUI.toast("登录认证失败：" + e.message);
+							});
+						});
+					}, function(e) {
+						oauthArea.style.display = 'none';
+						plus.nativeUI.toast("获取登录认证失败：" + e.message);
+					});
+				}
+				// close splash
+				setTimeout(function() {
+					//关闭 splash
+					plus.navigator.closeSplashscreen();
+				}, 600);
+				//检查 "登录状态/锁屏状态" 结束
+				var loginButton = document.getElementById('login');
+				var accountBox = document.getElementById('account');
+				var passwordBox = document.getElementById('password');
+				var vcodeBox = document.getElementById('vcode');
+				var autoLoginButton = document.getElementById("autoLogin");
+				var regButton = document.getElementById('reg');
+				var forgetButton = document.getElementById('forgetPassword');
+				var loginErrTime = 0;
+				loginButton.addEventListener('tap', function(event) {
+					var loginInfo = {
+						account: accountBox.value,
+						password: passwordBox.value
+						//  vcode: vcodeBox.value
+					};
+					app.login(loginInfo, function(err) {
+						if(err) {
+							var islogined = localStorage.getItem('loginErroTimes');
+							if(islogined) {
+								//                if(islogined >= 3){
+								//                  $('#vcode_form').show();
+								//                  fetchVcode('topapi_login',$('#vcode_img'));
+								//                }
+								islogined++
+								localStorage.setItem('loginErroTimes', islogined);
+							} else {
+								islogined = 1
+								localStorage.setItem('loginErroTimes', islogined);
+							}
+							plus.nativeUI.toast(err);
+							return;
+						}
+						toMain();
+						localStorage.removeItem('loginErroTimes');
+					});
+				});
 
-          regButton.addEventListener('tap', function(event) {
-            clicked('_www/view/passport/register.html',{'entrance':entrance});
-          }, false);
+				$('#vcode_img').on('tap', function() {
+					fetchVcode('topapi_login', $(this));
+				})
 
-          forgetButton.addEventListener('tap', function(event) {
-            clicked('_www/view/passport/checkusername.html')
-          }, false);
+				mui.enterfocus('#login_form input', function() {
+					mui.trigger(loginButton, 'tap');
+				});
 
-          window.addEventListener('resize', function() {
-            //oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
-          }, false);
+				regButton.addEventListener('tap', function(event) {
+					clicked('_www/view/passport/register.html', {
+						'entrance': entrance
+					});
+				}, false);
 
-          var backButtonPress = 0;
-          mui.back = function(event) {
-            backButtonPress++;
-            if(backButtonPress > 1) {
-              plus.runtime.quit();
-            } else {
-              plus.nativeUI.toast('再按一次退出应用');
-            }
-            setTimeout(function() {
-              backButtonPress = 0;
-            }, 1000);
-            return false;
-          };
-        });
+				forgetButton.addEventListener('tap', function(event) {
+					clicked('_www/view/passport/checkusername.html')
+				}, false);
 
-        mui(document).on('tap', '#close_login', function() {
-          plus.webview.close('_www/view/passport/login.html', 'slide-out-bottom');
-        });
-    </script>
-  </body>
+				window.addEventListener('resize', function() {
+					//oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
+				}, false);
+
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					backButtonPress++;
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+			});
+
+			mui(document).on('tap', '#close_login', function() {
+				plus.webview.close('_www/view/passport/login.html', 'slide-out-bottom');
+			});
+		</script>
+	</body>
 
 </html>

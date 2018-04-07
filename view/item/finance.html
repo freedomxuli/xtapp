@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/style.css">
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">炉料金融</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../img/category/message.png" />
+			</a>
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a id="" href="#account" class="mui-navigate-right">申请金融服务</a>
+				</li>
+			</ul>
+			<div style="height:10px;"></div>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a id="jkjl" href="#account" class="mui-navigate-right">借款记录</a>
+				</li>
+			</ul>
+
+		</div>
+
+		<script>
+			document.getElementById('jkjl').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'loanrecord.html',
+					id: 'jkjl'
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

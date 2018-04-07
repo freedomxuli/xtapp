@@ -10,25 +10,48 @@
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+    <style>
+    	
+		.mui-input-row label {
+			width: 5rem;
+		}
+		.form-container {
+			padding-top: 0.5rem;
+		}
+		
+		.font-orange {
+			color: #666666;
+		}
+		.bbc-btn-warning {
+			background: #e35d4c;
+			border-color: #e35d4c;
+			font-size: 1.1rem;
+		}
+    </style>
   </head>
 
   <body>
-    <header class="page-header">
-      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">忘记密码</div>
-    </header>
+    	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">找回密码</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../img/category/message.png" />
+			</a>
+		</header>
     <section class="container">
       <form class="form-container" action="<%url action=topwap_ctl_passport@verifyUsername%>" method="post" id="form_forget">
         <input type="hidden" name="verifycodekey" value="topwap_forgot">
         <section class="mui-input-group">
           <div class="mui-input-row">
-            <label>帐号：</label>
-            <input type="text" id="account" name="username" class="mui-input-clear" placeholder="请输入您的手机号/用户名">
+            <label>手机号</label>
+            <input type="text" id="account" name="username" class="mui-input-clear" placeholder="请输入您的手机号">
           </div>
           <div class="mui-input-row">
             <div class="form-inline">
               <div class="mui-input-row form-inline-adaptive">
-                <label>验证码：</label>
+                <label>验证码</label>
                 <input type="text" id="vcode" name="verifycode" class="mui-input-clear" placeholder="请输入验证码">
               </div>
               <div class="form-inline-unadaptive">

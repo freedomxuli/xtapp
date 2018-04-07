@@ -283,13 +283,13 @@
         <div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>
         <div>会员登录</div>
       </div>-->
-      <div id="login" class="user-login-head" >
+      <div class="user-login-head" >
         <!--<div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>-->
         <div><img class="head-img" src="../../img/hyzx/head-img.png"></div>
         <span class="head-font-wel">WELCOME</span>
         <span class="head-font-font">您还不是会员，登录</span>
       </div>
-      <div class="user-login-button">
+      <div id="login"  class="user-login-button">
       	<span>去登陆</span> 
       </div>
       <div id="user_info" class="user-logined action-clickview" style="display: none;" data-view="_www/view/member/userinfo/userinfo.html">
@@ -390,7 +390,7 @@
     </section>
 		<section style="height:1.6rem;"></section>
 		<nav class="mui-bar bbc-bar-tab">
-			<a class="bbc-tab-item">
+			<a class="bbc-tab-item" data-webview="_www/view/index.html">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
@@ -503,7 +503,7 @@
             document.getElementById('trade_send_num').innerText = 0;
             document.getElementById('trade_receive_num').innerText = 0;
             document.getElementById('trade_rate_num').innerText = 0;
-            document.getElementById('canceled_num').innerText = 0;
+            //document.getElementById('canceled_num').innerText = 0;
             document.getElementById('coupon').innerText = 0;
             document.getElementById('integral').innerText = 0;
             document.getElementById('setting').style.display = "none";
