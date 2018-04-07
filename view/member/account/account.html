@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link href="../../../css/mui.picker.min.css" rel="stylesheet" />
+	<link href="../../../css/mui.poppicker.css" rel="stylesheet" />
+    <style>
+      .mui-row.mui-fullscreen>[class*="mui-col-"] {
+        height: 100%;
+      }
+      
+      .mui-col-xs-3,
+      .mui-control-content1 {
+        overflow-y: auto;
+        height: 100%;
+      }
+      
+/*      .mui-segmented-control .mui-control-item {
+        line-height: 50px;
+        width: 100%;
+      }
+      
+      .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+        background-color: #fff;
+      }*/
+      .mui-slider-indicator.mui-segmented-control{
+     		background-color: #ffffff !important;
+      }
+      
+      		/*标题栏*/
+			.mui-bar-backcolor{
+			   background-color:#d92e2e;
+			   display: flex;  
+			 }
+			.child{   
+				flex:1;    
+			} 
+					
+			.child_1{   
+				flex:7;    
+			} 
+					
+			.category_img{
+			    height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+		    }
+		      
+		    .category_size{
+		      	line-height: 3rem;
+		      	text-align: center;
+		    }
+		      
+		     .category_title{
+		      	color: #ffffff;
+		      	font-family: "微软雅黑";
+		      	margin-left: 0.4rem;
+		      	font-size: 0.9rem;
+		     }
+		      
+		     .title_span{
+		      	color: #ffffff;
+		      	font-family: "微软雅黑";
+		      	text-align: center;
+		      	font-size: 1.2rem;
+		     }
+		      
+		     .edit_span{
+		      	color: #ffffff;
+		      	font-family: "微软雅黑";
+		      	text-align: center;
+		      	font-size: 1rem;
+		      	height: 1.2rem;
+		      	line-height: 1.2rem;
+		     }
+		      
+		     .search_img{
+		      	height: 1.2rem;
+				width: 1.2rem;
+		     }
+		     .search_size{
+		      	line-height: 3.5rem;
+		      	text-align: center;
+		     }
+		      
+		     .message_img{
+		      	height: 1.5rem;
+						width: 1.5rem;
+						margin-left: 0.8rem;
+		     }
+      
+		     .mui-control-content {
+					background-color: #F0EFF5;
+					min-height: 1000px !important;
+				 }
+			 .mui-control-content .mui-loading {
+				margin-top: 50px;
+			 }
+			
+			 .mui-slider-progress-bar{
+				background-color:#e35d4c !important;
+			 }
+			
+			 .mui-scroll-wrapper{
+				overflow-y:scroll;
+			 }
+			
+			.mui-fullscreen .mui-segmented-control~ .mui-slider-group
+			{
+				position: relative;
+				top:0;
+				/*height: 600px;*/
+			}
+			
+			.mui-col-xs-1{
+				width: 11.8%;
+			}
+			
+			#sliderSegmentedControl .mui-active{
+				border-bottom:2px solid #e35d4c !important;
+			}
+			
+			/*新css*/
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			/*日期栏*/
+			.top-date-div{
+				display: flex;
+				flex-flow: row;
+				align-items: center;
+				border-bottom: 1px solid #cccccc;
+				background-color: #FFFFFF;
+			}
+			.top-date-div-left{
+				flex:1;
+				padding: 0.8rem 0.4rem 0.8rem 1.8rem;
+			}
+			.top-date-div-right{
+				flex:0.6;
+				text-align: right;
+				padding: 0.8rem 0.4rem 0.8rem 1.8rem;
+			}
+			.top-date-div-left-img{
+				height: 1.4rem;
+				width: 1.4rem !important;
+				margin-right: 1.4rem;
+			}
+			.top-date-div-left-date{
+				color: #e35d4c;
+			}
+			.top-date-div-left-span{
+				color: #666666;
+			}
+			.top-date-div-left-span1{
+				padding: 0rem 0.4rem 0.4rem 0rem !important;
+			}
+			.center-top-name{
+				font-size: 1rem;
+				color: #e35d4c;
+				text-align: center;
+				text-decoration: underline;
+				padding: 1rem 0rem 1rem 0rem;
+				display: flex;
+				flex-direction: row;
+			}
+			.center-top-name-list{
+				flex: 1;
+			}
+			.center-top-div{
+				padding-bottom:1rem ;
+				background-color: #FFFFFF;
+			}
+			.center-top-price{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			.center-top-price-left{
+				flex: 1;
+				text-align: center;
+				border-right: 1px solid #cccccc;
+			}
+			.center-top-price-left1{
+				flex: 1;
+				text-align: center;
+			}
+			.center-top-price-right{
+				flex: 1;
+				text-align: center;
+			}
+			.center-top-price-left-name{
+				color: #666666;
+			}
+			.center-top-price-left-price{
+				color: #222222;
+				font-size: 1.1rem;
+			}
+			.text-height{
+				height: 0.5rem;
+				background-color: #F0EFF5;
+			}
+			.center-bottom-name{
+				font-size: 1rem;
+				color: #445dab;
+				text-align: center;
+				text-decoration: underline;
+				padding: 1rem 0rem 1rem 0rem;
+			}
+			.bottom-div{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 0.8rem 0rem 0.8rem 1.8rem;
+				border-bottom: 1px solid #CCCCCC;
+				background-color: #FFFFFF;
+			}
+			.bottom-div-left{
+				flex: 3;
+			}
+			.bottom-div-right{
+				flex: 1;
+			}
+			.bottom-div-left{
+				font-family: "微软雅黑";
+				color: #666666 !important;
+			}
+			.bottom-div-right-text{
+				font-family: "微软雅黑";
+				color: #666666 !important;
+			}
+			.bottom-div-right-price{
+				font-family: "微软雅黑";
+				color: #222222 !important;
+			}
+			.bottom-submit{
+				text-align: center;
+				font-size: 1rem;
+				color: #FFFFFF;
+				background-color:#E35D4C ;
+				margin: 1rem 0.6rem 0.6rem 0.6rem;
+				padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+				border-radius:0.2rem;
+			}
+    </style>
+  </head>
+
+  <body>
+<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
+      <div class="main">
+        <form onsubmit="return false;">
+          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
+        </form>
+      </div>
+      <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
+      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>-->
+	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+    	<div class="child category_size" id="left-content"><img class="category_img" src="../../../img/cart/back.png" /></div>  
+	    <div class="child_1 category_size"><span class="title_span">对账单</span></div>  
+	    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../../img/category/message.png" /></div>  
+   	</header>
+    
+     <section class="container mui-row mui-fullscreen category-nav">
+	    <!-- 侧滑导航根容器 -->
+			<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			  <!-- 主页面容器 -->
+			  <div class="mui-inner-wrap mui-content">
+			    <!-- 主页面标题 -->
+<!--			    <header class="mui-bar mui-bar-nav">
+			      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+			      <h1 class="mui-title">标题</h1>
+			    </header>-->
+				<div id="slider" class="mui-slider">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a class="mui-control-item mui-active" href="#item1mobile">
+							余额对账
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							开票对账
+						</a>
+					</div>
+
+					<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
+					<div class="mui-slider-group" id="content-main">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="scroll1" class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="top-date-div">
+										<div class="top-date-div-left">
+											<span class="top-date-div-left-date">2018年01月</span>
+											<span class="top-date-div-left-span">余额对账</span>
+										</div>
+										<div class="top-date-div-right">
+											<span class="top-date-div-left-span top-date-div-left-span1">查询</span>
+										</div>
+										<img class="top-date-div-left-img" src="../../../img/account/date.png"/>
+									</div>
+									<div class="center-top-div">
+										<div class="center-top-name">
+											<div class="center-top-name-list">期初余额</div>
+										</div>
+										<div class="center-top-price">
+											<div class="center-top-price-left">
+												<div class="center-top-price-left-name">现金（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+											<div class="center-top-price-right">
+												<div class="center-top-price-left-name">现金（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+										</div>
+									</div>
+									<div class="text-height">
+										&nbsp;
+									</div>
+									<div class="center-top-div">
+										<div class="center-bottom-name">
+											期末余额
+										</div>
+										<div class="center-top-price">
+											<div class="center-top-price-left">
+												<div class="center-top-price-left-name">现金（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+											<div class="center-top-price-right">
+												<div class="center-top-price-left-name">现金（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+										</div>
+									</div>
+									<div class="text-height">
+										&nbsp;
+									</div>
+									<div class="bottom-div">
+										<div class="bottom-div-left">
+											本期充值
+										</div>
+										<div class="bottom-div-right">
+											<div>
+												<span class="bottom-div-right-text">现金：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+											<div>
+												<span class="bottom-div-right-text">承兑：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+										</div>
+									</div>
+									<div class="bottom-div">
+										<div class="bottom-div-left">
+											本期采购
+										</div>
+										<div class="bottom-div-right">
+											<div>
+												<span class="bottom-div-right-text">现金：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+											<div>
+												<span class="bottom-div-right-text">承兑：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+										</div>
+									</div>
+									<div class="bottom-div">
+										<div class="bottom-div-left">
+											本期提现
+										</div>
+										<div class="bottom-div-right">
+											<div>
+												<span class="bottom-div-right-text">现金：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+											<div>
+												<span class="bottom-div-right-text">承兑：</span>
+												<span class="bottom-div-right-price">0.00</span>
+											</div>
+										</div>
+									</div>
+									<div class="bottom-submit">
+										查看明细
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="item2mobile" class="mui-slider-item mui-control-content">
+							<div class="mui-scroll-wrapper">
+								<div class="mui-scroll">
+									<div class="top-date-div">
+										<div class="top-date-div-left">
+											<span class="top-date-div-left-date">2018年01月</span>
+											<span class="top-date-div-left-span">余额对账</span>
+										</div>
+										<div class="top-date-div-right">
+											<span class="top-date-div-left-span top-date-div-left-span1">查询</span>
+										</div>
+										<img class="top-date-div-left-img" src="../../../img/account/date.png"/>
+									</div>
+									<div class="center-top-div">
+										<div class="center-top-name">
+											<div class="center-top-name-list">期初票额</div>
+											<div class="center-top-name-list">期末票额</div>
+										</div>
+										<div class="center-top-price">
+											<div class="center-top-price-left">
+												<div class="center-top-price-left-name">票额（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+											<div class="center-top-price-right">
+												<div class="center-top-price-left-name">票额（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+										</div>
+									</div>
+									<div class="center-top-div">
+										<div class="center-bottom-name">
+											期末余额
+										</div>
+										<div class="center-top-price">
+											<div class="center-top-price-left1">
+												<div class="center-top-price-left-name">票额（元）</div>
+												<div class="center-top-price-left-price">65822.65</div>
+											</div>
+										</div>
+									</div>
+									<div class="bottom-submit">
+										查看明细
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+			</div>
+		</section>
+<!--    <section class="container mui-row mui-fullscreen category-nav">
+      <div class="mui-col-xs-3">
+        <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical content-bottom-padded-nav">
+
+        </div>
+      </div>
+      <div id="segmentedControlContents" class="mui-col-xs-9 category-nav-content content-bottom-padded-nav">
+<div id="content1" class="mui-control-content">
+	<div class="category-nav-group"><div class="category-nav-header">测试1</div><div id="group11" class="category-nav-list"><button data-catid="12312" class="category-nav-item">测试2</button></div></div>
+</div>
+      </div>
+    </section>-->
+<!--		<nav class="mui-bar bbc-bar-tab">
+			<a class="bbc-tab-item">
+				<span class="mui-icon bbc-icon bbc-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="bbc-tab-item bbc-active" data-webview="_www/view/category/category.html">
+				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+				<span class="mui-tab-label">现代商城</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+				<span class="mui-icon bbc-icon bbc-icon-share"></span>
+				<span class="mui-tab-label">共享资源</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
+				<span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+				<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>-->
+    <script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.min.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/mui.pullToRefresh.js"></script>
+	<script src="../../../js/mui.pullToRefresh.material.js"></script>
+	<script src="../../../js/mui.picker.min.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+    <script>
+      mui.init({
+        swipeBack: false, //启用右滑关闭功能
+        statusBarBackground:"#E35D4C"
+      });
+      var param = {
+        queryData: {
+          'method': config.apimethod.category
+        },
+        method: 'GET'
+      };
+			
+      $.dataRequest(param, function(rs) {
+        var data = rs.data.categorys;
+        var isvirtualcat = rs.data.is_virtualcat;
+        var control_list = '';
+        var content_list = '';
+        var sec = [],
+          thd = [];
+        /*for(var i = 0; i < data.length; i++) {
+          if(isvirtualcat){
+            control_list += '<a class="mui-control-item" href="#content' + i + '">' + data[i].virtual_cat_name + '</a>';
+          }else{
+            control_list += '<a class="mui-control-item" href="#content' + i + '">' + data[i].cat_name + '</a>';
+          }
+          content_list += '<div id="content' + i + '" class="mui-control-content"></div>'
+          sec.push(data[i].lv2);
+        }
+        $('#segmentedControls').html(control_list);
+        $('#segmentedControlContents').html(content_list);
+
+        for(var i = 0; i < sec.length; i++) {
+          var content_group = '';
+          for(var j = 0; j < sec[i].length; j++) {
+            if(isvirtualcat){
+              content_group += '<div class="category-nav-group"><div class="category-nav-header">' + sec[i][j].virtual_cat_name + '</div><div id="group' + sec[i][j].virtual_cat_id + '" class="category-nav-list"></div></div>';
+            }else{
+              content_group += '<div class="category-nav-group"><div class="category-nav-header">' + sec[i][j].cat_name + '</div><div id="group' + sec[i][j].cat_id + '" class="category-nav-list"></div></div>';
+            }
+            thd.push(sec[i][j].lv3);
+          }
+          $('#content' + i).html(content_group);
+        }
+
+        for(var i = 0; i < thd.length; i++) {
+          for(var j = 0; j < thd[i].length; j++) {
+            if(isvirtualcat){
+              var content_item = '<button data-virtualcatid="' + thd[i][j].virtual_cat_id + '" class="category-nav-item" data-url="' + thd[i][j].url.webview + '" data-webparam=' + JSON.stringify(thd[i][j].url.webparam) + '>' + thd[i][j].virtual_cat_name + '</button>';
+              $('#group' + thd[i][j].virtual_parent_id).append(content_item);
+            }else{
+              var content_item = '<button data-catid="' + thd[i][j].cat_id + '" class="category-nav-item">' + thd[i][j].cat_name + '</button>';
+              $('#group' + thd[i][j].parent_id).append(content_item);
+            }
+          }
+        }*/
+      });
+      mui.init();
+        
+      (function($){ 
+				//阻尼系数
+				var deceleration = mui.os.ios?0.003:0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration:deceleration
+				});
+				$.ready(function() {
+					
+				});
+			})(mui);
+			//点击侧滑
+			
+    	$('.bbc-tab-item').on('tap', function() {
+        var webview = $(this).data('webview');
+        if(webview) {
+          if(webview) {
+            mui.openWindow({
+              url: webview,
+              id: webview,
+              createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+              show: {
+                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+                aniShow: 'none'
+              },
+              waiting: {
+                autoShow: true //自动显示等待框，默认为true
+              }
+            });
+            var openw = plus.webview.getWebviewById(webview);
+            if(openw) {
+              mui.fire(openw, 'refresh');
+            }
+          }
+        }
+      });
+        /*var controls = document.getElementById("segmentedControls");
+        var contents = document.getElementById("segmentedControlContents");
+        //默认选中第一个
+        controls.querySelector('.mui-control-item').classList.add('mui-active');
+        contents.querySelector('.mui-control-content').classList.add('mui-active');
+
+        var btns = document.querySelectorAll('.category-nav-item');
+        for(var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('tap', function() {
+            var cat_id = this.dataset.catid;
+            var virtual_cat_id = this.dataset.virtualcatid;
+            if(cat_id){
+              clicked('_www/view/list/goods.html', {
+                'catid': cat_id
+              });
+            }
+
+            if(virtual_cat_id){
+               var url = this.dataset.url;
+               var web_param = this.dataset.webparam;
+               web_param = web_param != 'undefined' && web_param != '' && web_param != 'null' ? JSON.parse(web_param) : {};
+               if(isvirtualcat && url != '' && url != 'null' && url != 'undefined') {
+                  clicked(url, web_param || {});
+                } else {
+                clicked('_www/view/list/goods.html', {
+                  'virtualcatid': virtual_cat_id
+                });
+              }
+            }
+          });
+        }
+      });*/
+    </script>
+  </body>
+
+</html>

@@ -214,77 +214,24 @@
 				margin-left: 0.8rem;
       }
       
-	    /*地址块*/
-	    .address_part{
-	    	display: flex;
-	     	flex-direction: row;
-	     	background-color: #ffffff;
-	     	align-items: center;
-	    }
-	    .address_part_left{
-	    	flex: 1;
-	    	text-align: center;
-	    }
-	    .address_part_center{
-	    	flex: 3;
-	    }
-	    .address_part_center_top{
-	    	display: flex;
-	    	flex-direction: row;
-	    	justify-content: center;
-	    	padding: 15px 0px 0px 0px;
-	    }
-	    .address_part_center_top_left{
-	    	flex: 1;
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    }
-	    .address_part_center_top_right{
-	    	flex: 1;
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    	text-align: right;
-	    }
-	    .address_part_center_bottom{
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    	font-size: 0.9rem;
-	    	padding: 5px 0px 15px 0px;
-	    }
-	    .address_part_right{
-	    	flex: 1;
-	    	text-align: center;
-	    }
 	    .check-right-img{
 			width: 0.4rem;
 		}
-		/*付款选择*/
-	    .kind-select{
-	    	margin-top:10px ;
-	     	background-color: #ffffff !important;
-	     	display: flex;
-	     	flex-direction: row;
-	     	z-index: 10000;
-	     	align-items: center;
-	    }
-	    .kind-text{
-	    	color:#666666;
-	    	font-family: "微软雅黑";
-	    	flex: 1;
-	    	font-size: 0.6rem;
-	    	padding: 0.6rem 0px 0.6rem 1.2rem;
-	    }
-	    .mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
+		.check-right-img3{
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		.mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
 	    	color: #E35D4C;
-	    }
-	    .radio-text{
-	    	color: #666666;
-	    	font-size: 0.8rem;
 	    }
 		/*物品详情*/
 		.goods_detail{
-			margin-top:10px ;
      		background-color: #ffffff;
+     		margin-top: -8px;
+		}
+		.goods_detail2{
+     		background-color: #ffffff;
+     		margin-top: 10px;
 		}
 		.goods_shop{
 			color: #666666;
@@ -367,7 +314,6 @@
 		}
 		/*支付信息*/
 		.goods_info{
-			margin-top:10px ;
      		background-color: #ffffff;
 		}
 		.goods_info_detail{
@@ -380,15 +326,37 @@
 			flex-direction: row;
 		}
 		.goods_info_detail_type{
-			flex: 1;
+			flex: 2;
 			display: flex;
 			flex-direction: row;
 			align-items: flex-end;
 		}
+		.goods_info_detail_type2{
+			flex: 2;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+			color:#222222;
+			font-size: 1rem;
+		}
+		.goods_info_detail_type3{
+			flex: 2;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		.goods_info_detail_red{
+			color: #e25d4c;
+		}
 		.goods_info_detail_type_text{
+			flex: 1;
+			color: #e25d4c;
+			font-weight: bold;
+		}
+		/*.goods_info_detail_type_text{
 			flex: 2;
 			text-align: end;
-		}
+		}*/
 		.goods_info_detail_type_img{
 			flex: 1;
 			text-align: end;
@@ -408,35 +376,15 @@
 			padding: 0 !important;
 			height: auto !important;
 		}
-		/*底部样式*/
-		.submit-bottom-div{
-			background-color: #ffffff;
-			border-top: 1px solid #e3e3e6;
-			display: flex;
-			flex: row;
-			align-items: center;
-			justify-content: flex-end;
-		}
-		.submit-bottom-button1{
-			background-color: #8c8c8c;
-			color: #ffffff;
-			padding: 10px 0px 10px 0px;
-		}
-		.submit-bottom-button2{
-			background-color: #e25d4c;
-			color: #ffffff;
-			padding: 10px 0px 10px 0px;
-		}
-		.submit-bottom-div-flex{
-			flex: 1;
+		
+		.bottom-submit{
 			text-align: center;
-		}
-		.submit-bottom-div-flex-span{
-			font-size: 0.8rem ;
-		}
-		.submit-bottom-div-flex-color{
-			color:#e25d4c;
-			font-weight: bold;
+			font-size: 1rem;
+			color: #FFFFFF;
+			background-color:#E35D4C ;
+			margin: 1rem 0.6rem 0.6rem 0.6rem;
+			padding: 0.6rem 0.6rem 0.6rem 0.6rem;
+			border-radius:0.2rem;
 		}
     </style>
 
@@ -454,120 +402,40 @@
 				    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
 				    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
 			   	</header>
-			   	<div class="address_part">
-			    	<div class="address_part_left">
-			    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
-			    	</div>
-			    	<div class="address_part_center">
-			    		<div class="address_part_center_top">
-			    			<div class="address_part_center_top_left">张三</div>
-			    			<div class="address_part_center_top_right">13621543583</div>
-			    		</div>
-			    		<div class="address_part_center_bottom">江苏省-常州市-武进区 常州科教城</div>
-			    	</div>
-			    	<div class="address_part_right">
-			    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
-			    	</div>
-			   	</div>
-			   	<div class="kind-select">
-		    		<div class="mui-input-row mui-radio mui-left">
-						<label class="radio-text">现金预存款支付</label>
-						<input name="radio1" type="radio" checked="checked">
-					</div>
-					<div class="mui-input-row mui-radio mui-left">
-						<label class="radio-text">承兑预存款支付</label>
-						<input name="radio1" type="radio">
-					</div>
-		    	</div>
+
 			   	<div class="goods_detail">
-			   		<div class="goods_shop">
-			   			A商家商家商家商家
-			   		</div>
-			   		<div class="goods_memo">
-			   			<div class="goods_xq">
-			   				新兴生铁 - 球铁 低硅铁 10#　2.3690吨
-			   			</div>
-			   			<div class="goods_address">
-			   				中途库
-			   			</div>
-			   		</div>
-			   		<div class="goods_price">
-			   			<div class="goods_price_detail">
-			   				现金价：￥4980　承兑价：￥4980
-			   			</div>
+			   		<div class="goods_info_detail">
+			   			<div class="goods_info_detail_type">应付金额</div>
+			   			<div class="goods_info_detail_type_text">￥11797.62</div>
 			   		</div>
 			   		<div class="goods_info_detail">
-			   			<div class="goods_info_detail_type">开票信息</div>
+			   			<div class="goods_info_detail_type">使用红包 抵扣：<span class="goods_info_detail_red">-￥0.00</span></div>
 			   			<div class="goods_info_detail_type">
-			   				<div class="goods_info_detail_type_text">增值税发票</div>
 			   				<div class="goods_info_detail_type_img">
 			   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
 			   				</div>
 			   			</div>
 			   		</div>
-			   		<div class="goods_info_detail">
-			   			<div class="goods_info_detail_type">优惠券</div>
-			   			<div class="goods_info_detail_type">
-			   				<div class="goods_info_detail_type_text">不使用</div>
-			   				<div class="goods_info_detail_type_img">
-			   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
-			   				</div>
-			   			</div>
+			   	</div>
+			   	<div class="goods_detail2">
+				   	<div class="goods_info_detail">
+			   			<div class="goods_info_detail_type2">请选择支付方式</div>
 			   		</div>
 			   		<div class="goods_info_detail">
-				   		<div class="mui-input-row input-div">
-					        <label class="input-text">快速删除：</label>
-					        <input type="text" class="input-write" placeholder="本次交易补充说明">
-					    </div>
+			   			<div class="goods_info_detail_type3">
+			   				<img class="check-right-img3" src="../../img/payorder/order.png" />
+			   				　现金预存款
+			   			</div>
+			   			<div class="mui-input-row mui-radio mui-left">
+							<label class="radio-text"></label>
+							<input name="radio1" type="radio" checked="checked">
+						</div>
 				    </div>
-			   	</div>
-			   	<div class="goods_order">
-			   		<div class="goods_order_left">
-			   			　
-			   		</div>
-			   		<div class="goods_order_right">
-			   			<div class="goods_order_right_detail">
-			   				<div class="goods_order_right_memo">
-			   					商品数量小计：
-			   				</div>
-			   				<div class="goods_order_right_price">
-			   					<span class="goods_order_right_price_font">共计</span>2.66<span class="goods_order_right_price_font">吨</span>
-			   				</div>
-			   			</div>
-			   			<div class="goods_order_right_detail">
-			   				<div class="goods_order_right_memo">
-			   					运费：
-			   				</div>
-			   				<div class="goods_order_right_price">
-			   					￥0.00
-			   				</div>
-			   			</div>
-			   			<div class="goods_order_right_detail">
-			   				<div class="goods_order_right_memo">
-			   					商品现金总金额：
-			   				</div>
-			   				<div class="goods_order_right_price">
-			   					￥95105.40
-			   				</div>
-			   			</div>
-			   			<div class="goods_order_right_detail">
-			   				<div class="goods_order_right_memo">
-			   					商品承兑总金额：
-			   				</div>
-			   				<div class="goods_order_right_price1">
-			   					￥95105.40
-			   				</div>
-			   			</div>
-			   		</div>
-			   	</div>
-        	</div>
-    	  <nav class="mui-bar bbc-bar-tab submit-bottom-div">
-    	  	<div class="submit-bottom-div-flex submit-bottom-div-flex-span">合计<span class="submit-bottom-div-flex-color">￥11797.62</span></div>
-    	  	<div class="submit-bottom-div-flex submit-bottom-button1">继续购物</div>
-    	  	<div class="submit-bottom-div-flex submit-bottom-button2">提交订单</div>
-					<!--<div class="submit-bottom-button1">去付款</div>
-					<div class="submit-bottom-button2">取消订单</div>-->
-				</nav>
+			    </div>
+				<div class="bottom-submit">
+					去支付
+				</div>
+        </div>
       </div>
     </div>
     <!--页面主结构结束-->
