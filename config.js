@@ -1,5 +1,5 @@
 var config = {
-    server: 'http://www.taoluliao.com:8080/test_hangtong/public/index.php/',
+    server: 'http://47.96.163.10:8080/test_hangtong/public/index.php/',
     apiversion: 'v1', //系统api版本
     apiname: 'topapi', //系统配置的api名称
     pagesize: 10, // 分页组件每页显示数量
