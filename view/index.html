@@ -176,10 +176,10 @@
 				<a id="llzs" data-needlog="true" data-view="_www/view/item/goodsindex.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/llzs.png" />
 					<div class="menu-name">炉料指数</div>
 				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/xxwl.png" />
+				<a id="xxwl" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/xxwl.png" />
 					<div class="menu-name">线下网络</div>
 				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/qggy.png" />
+				<a id="qggy" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/qggy.png" />
 					<div class="menu-name">求购供应</div>
 				</a>
 				<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
@@ -734,6 +734,18 @@
 				mui.openWindow({
 					url: 'item/finance.html',
 					id: 'lljr'
+				});
+			});
+			document.getElementById('xxwl').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/offlinenetwork.html',
+					id: 'xxwl'
+				});
+			});
+			document.getElementById('qggy').addEventListener('tap', function() {
+				mui.openWindow({
+					url: 'item/supply.html',
+					id: 'qggy'
 				});
 			});
 		</script>
