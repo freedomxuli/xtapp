@@ -964,11 +964,11 @@
         statusBarBackground:"#E35D4C",
         swipe:false
       });
-      window.onload = function(){
+/*      window.onload = function(){
 				mui('.left-side-content-detail').scroll({
-					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+					deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 				});
-			}
+			}*/
       var param = {
         queryData: {
           'method': config.apimethod.filteritems,
@@ -1191,7 +1191,7 @@
         
       (function($){ 
 				//阻尼系数
-				var deceleration = mui.os.ios?0.003:0.0009;
+				var deceleration = mui.os.ios?0.003:0.0001;
 				$('.mui-scroll-wrapper').scroll({
 					bounce: false,
 					indicators: true, //是否显示滚动条
@@ -1452,9 +1452,9 @@
       	
 				result = template('filters_left_content', left_content_obj);
 				$('.left-side-content-detail').html(result);
-				mui('.left-side-content-detail').scroll({
-					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-				});
+				/*mui('.left-side-content-detail').scroll({
+					deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				});*/
       }
         /*var controls = document.getElementById("segmentedControls");
         var contents = document.getElementById("segmentedControlContents");
