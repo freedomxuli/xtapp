@@ -582,10 +582,10 @@
 
 						</div>
 						<div class="select-box">
-							<div class="select-items1" id="showPlacePicker">产家/产地 <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items1" id="showPlacePicker"><span>产家/产地</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showNamePicker">品名 <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showSizePicker">规格 <img class="xb_class" src="../../img/category/xb.png"/></div>
-							<div class="select-items" id="showJgPicker">交割库 <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showJgPicker"><span>交割库</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 						</div>
 						<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
 						<div class="mui-slider-group" id="content-main">
@@ -687,6 +687,9 @@
       var fl_obj = new Object();
       var page_obj = new Object();
       var fl_sort_obj = new Object();
+      var current_page_sort = 0;
+      var child_data;
+      var NamePicker = new mui.PopPicker();
       
       var param = {
         queryData: {
@@ -734,6 +737,8 @@
       			{
       				if(!fl_zl_obj.hasOwnProperty(rs.data.lv1Cats[left_kind_id].lv2[i].parent_id))
       					fl_zl_obj[rs.data.lv1Cats[left_kind_id].lv2[i].parent_id] = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id;
+	      			var path = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_path;
+	      			pm_obj[rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id] = path.substring(1,path.length-1); 
       			}
       		}  			
       	}
@@ -756,8 +761,6 @@
       		var left_content_small_num = 0;
       		for(var j = 0;j < rs.data.lv1Cats[fl_id].lv2[i].lv3.length;j++)
       		{
-      			var path = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_path;
-      			pm_obj[rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id] = path.substring(1,path.length-1); 
       			if(left_content_num==0)
       			{
       				gg_id = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id;
@@ -842,14 +845,17 @@
 				var showPlacePickerButton = document.getElementById('showPlacePicker');
 				showPlacePickerButton.addEventListener('tap', function(event) {
 					placePicker.show(function(items) {
-						//PlaceResult.innerText = JSON.stringify(items[0]);
+						$("#showPlacePicker span").html(JSON.stringify(items[0].text));
+						cd_id = JSON.stringify(items[0].value);
+						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
 						//返回 false 可以阻止选择框的关闭
 						//return false;
 					});
 				}, false);
 				
 				//品名列表
-				GetProList(rs.data.lv2Cats,fl_id);
+				child_data = rs.data.lv2Cats;
+				GetProList(NamePicker,rs.data.lv2Cats,fl_id);
 				
 				//规格列表
 				GetGGList(pro_name_id);
@@ -870,7 +876,9 @@
 				var showJgPickerButton = document.getElementById('showJgPicker');
 				showJgPickerButton.addEventListener('tap', function(event) {
 					JgPicker.show(function(items) {
-						//userResult.innerText = JSON.stringify(items[0]);
+						$("#showJgPicker span").html(JSON.stringify(items[0].text));
+						jgk_id = JSON.stringify(items[0].value);
+						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
 						//返回 false 可以阻止选择框的关闭
 						//return false;
 					});
@@ -910,12 +918,12 @@
 							$(pullRefreshEl).pullToRefresh({
 								down: {
 									callback: function() {
-										var self = this;
+										/*var self = this;
 										setTimeout(function() {
 											var ul = self.element.querySelector('.mui-table-view');
 											ul.insertBefore(createFragment(ul, index, config.pagesize, true), ul.firstChild);
 											self.endPullDownToRefresh();
-										}, 1000);
+										}, 1000);*/
 									}
 								},
 								up: {
@@ -931,7 +939,23 @@
 								}
 							});
 						});
-						var createFragment = function(ul, index, count, reverse) {
+						document.getElementById("content-main").addEventListener("swiperight",function(event){
+						     current_page_sort--;
+						     fl_id = fl_sort_obj[current_page_sort];
+						     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+						     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+						});
+						document.getElementById("content-main").addEventListener("swipeleft",function(event){
+						     current_page_sort++;
+						     fl_id = fl_sort_obj[current_page_sort];
+						     console.log(current_page_sort);
+						     console.log(fl_id);
+						     console.log(fl_zl_obj[fl_id]);
+						     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+						     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+						});
+						//#sliderSegmentedControl .mui-active
+						/*var createFragment = function(ul, index, count, reverse) {
 							var fragment = document.createDocumentFragment();
 							var ulment = document.getElementById("content-ul" + index);
 							var li;
@@ -984,7 +1008,7 @@
 								ulment.insertAdjacentHTML('afterend', html);
 							}
 							return fragment;
-						};
+						};*/
 					},100);
 					
 					document.getElementById("content-main").style.height = (document.documentElement.clientHeight-170)+"px";
@@ -1036,6 +1060,34 @@
 				gg_id = $(this).data('cid');
 				ChangeLeftContent(fl_id,gg_id);
 			});
+			
+			$("#left-side-submit").on('tap',function(event){
+				var cid1 = $('.left-side-content-detail .left-side-content-detail-active').data("cid");
+				var fl_id1 = pm_obj[cid1].split(',')[0];
+				GetContentList(fl_id1,cid1,'','','',1);
+				mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
+					if(fl_sort_obj[index] == fl_id1) 
+					{ 
+						current_page_sort = index;
+						mui('#slider').slider().gotoItem(index);
+						fl_id = fl_sort_obj[index];
+						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+					} 
+				});
+			});
+			
+			mui("#sliderSegmentedControl").on('tap','.mui-control-item',function(){
+				var fl_id1 = $(this).data("cid");
+			 	mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
+					if(fl_sort_obj[index] == fl_id1) 
+					{ 
+						current_page_sort = index;
+						fl_id = fl_sort_obj[index];
+						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+					} 
+				});
+			}); 
 			
 			function GetContentList(fl_new_id,gg_new_id,guige,cd_new_id,jgk_new_id,page_new)
 			{
@@ -1121,7 +1173,7 @@
 			}
       
       //构造品名combobox
-      function GetProList(objs,fl)
+      function GetProList(NamePickerNew,objs,fl)
       {
       	var pm_list = [];
 				for(var l_id in objs)
@@ -1135,14 +1187,12 @@
 						pm_list.push(l_obj);
 					}
 				}
-				var NamePicker = new mui.PopPicker(); 
-				NamePicker.setData(pm_list);
+				NamePickerNew.setData(pm_list);
 				var showNamePickerButton = document.getElementById('showNamePicker');
 				showNamePickerButton.addEventListener('tap', function(event) {
-				NamePicker.show(function(items) {
-					pro_name_id = items[0].value;
-					GetGGList(pro_name_id);
-				});
+					NamePickerNew.show(function(items) {
+						
+					});
 				}, false);
       }
       
@@ -1353,12 +1403,12 @@
     			if(lv1Cats[i].is_select==0)
     			{
     				%>
-    				<a class="mui-control-item" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+    				<a class="mui-control-item" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
     				<%
     			}else
     			{
 						%>
-						<a class="mui-control-item mui-active" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+						<a class="mui-control-item mui-active" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
 						<%
     			}
     		}
