@@ -667,12 +667,12 @@
       
       setTimeout(function(){
       	mui.plusReady(function() {
-			    var deceleration = mui.os.ios ? 0.003 : 0.0009;
-			    mui('.mui-scroll-wrapper').scroll({
-			        bounce: false,
-			        indicators: true, //是否显示滚动条
-			        deceleration: deceleration
-			    });
+		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
+		    mui('.mui-scroll-wrapper').scroll({
+		        bounce: false,
+		        indicators: true, //是否显示滚动条
+		        deceleration: deceleration
+		    });
 			});
       },2000);
 			
@@ -911,21 +911,12 @@
 				  supportsPassive ? { passive: true } : false
 				);*/ 
 				$.ready(function() { 
+					
 					setTimeout(function(){
 						//$('.mui-scroll-wrapper').scroll();
 						//循环初始化所有下拉刷新，上拉加载。
 						$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 							$(pullRefreshEl).pullToRefresh({
-								down: {
-									callback: function() {
-										/*var self = this;
-										setTimeout(function() {
-											var ul = self.element.querySelector('.mui-table-view');
-											ul.insertBefore(createFragment(ul, index, config.pagesize, true), ul.firstChild);
-											self.endPullDownToRefresh();
-										}, 1000);*/
-									}
-								},
 								up: {
 									callback: function() {
 										var self = this;
@@ -940,19 +931,22 @@
 							});
 						});
 						document.getElementById("content-main").addEventListener("swiperight",function(event){
-						     current_page_sort--;
-						     fl_id = fl_sort_obj[current_page_sort];
-						     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
-						     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+								 if(current_page_sort!=0)
+								 {
+								 	 current_page_sort--;
+							     fl_id = fl_sort_obj[current_page_sort];
+							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+								 }
 						});
 						document.getElementById("content-main").addEventListener("swipeleft",function(event){
-						     current_page_sort++;
-						     fl_id = fl_sort_obj[current_page_sort];
-						     console.log(current_page_sort);
-						     console.log(fl_id);
-						     console.log(fl_zl_obj[fl_id]);
-						     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
-						     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+								 if(current_page_sort<fl_sort_obj.length)
+								 {
+								 	 current_page_sort++;
+							     fl_id = fl_sort_obj[current_page_sort];
+							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+								 }
 						});
 						//#sliderSegmentedControl .mui-active
 						/*var createFragment = function(ul, index, count, reverse) {
@@ -1088,6 +1082,11 @@
 					} 
 				});
 			}); 
+			
+			mui(".mui-control-content").on('tap','.content-li',function(){
+				console.log(111);
+				console.log($(this).data("cid"));
+			});
 			
 			function GetContentList(fl_new_id,gg_new_id,guige,cd_new_id,jgk_new_id,page_new)
 			{
@@ -1303,6 +1302,39 @@
 					deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 				});*/
       }
+      
+      function fetchList() {
+	      var state = app.getState();
+	      if(state.token) {
+	        var loading = plus.nativeUI.showWaiting();
+	        var param = {
+	          queryData: {
+	            'method': config.apimethod.cartlist,
+	            'accessToken': state.token,
+	            'mode': 'cart'
+	          },
+	          method: 'GET'
+	        }
+	        $.dataRequest(param, function(rs) {
+	          if(!isEmptyObject(rs.data)) {
+	            var list = template('cart_list', rs.data);
+	            $('.cart-main').html(list);
+	            mui('.mui-numbox').numbox();
+	            $('#cart_edit').show();
+	          } else {
+	            $('#cart_edit').hide();
+	            $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><i class="bbc-icon bbc-icon-nodata"></i></div><div class="nodata-tip">亲，暂无数据～</div></div></div>')
+	          }
+	          loading.close();
+	        });
+	      }else{
+	        $('.cart-main').html('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
+	      }
+	    }
+      function test(item_id,cat_id)
+			{
+				alert(item_id);
+			}
         /*var controls = document.getElementById("segmentedControls");
         var contents = document.getElementById("segmentedControlContents");
         //默认选中第一个
@@ -1493,8 +1525,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="content-inner-right">
-									<div class="content-inner-right-word">下单</div>
+								<div class="content-inner-right" onclick="test(<%=list[i].item_id%>,<%=list[i].cat_id%>);">
+									<div class="content-inner-right-word">下单</div> 
 								</div>
 							</div>
 						</li>

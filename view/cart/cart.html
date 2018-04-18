@@ -576,6 +576,13 @@
 				});
 			}
 			document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
+			
+			
+			mui(document).on('tap', '#left-content', function() {
+				mui.back();
+			});
+			
+			
 			/*以下是原有的*/
       mui.plusReady(function() {
         var wid = plus.webview.currentWebview().id;
