@@ -14,6 +14,7 @@
     	.mui-bar-backcolor{
       	background-color:#d92e2e;
       	display: flex;  
+      	flex-direction: row;
       }
 			.child{   
 			    flex:1;    
@@ -65,6 +66,20 @@
       	line-height: 3.5rem;
       	text-align: center;
       }
+      .nodata-layout{
+      	top:9rem;
+      }
+      .nodata-tip{
+      	font-size: 1.2rem;
+      	color: #222222;
+      }
+      .qxd-class{
+      	background-color: #E35D4C;
+      	color: #FFFFFF;
+      	width: 20rem;
+      	height: 3rem;
+      	margin-top: 2rem;
+      }
       
       /*付款选择*/
 	    .kind-select{
@@ -83,12 +98,16 @@
 	    }
 	    
 	    /*详情列表*/
+	   	.mui-left-all{
+	   		border-bottom: 1px solid #CCCCCC;
+	   	}
 	   	.mui-content{
-	   		background-color:#ffffff;
+	   		background-color:#F0EFF5;
 	   	}
 		  .mui-table-view{
-		   	margin-top:80px;
+		   	margin-top:30px;
 		   	margin-bottom: 40px;
+		   	background-color:#FFFFFF;
 		  }
 		  .content-space{
 				height: 10px;
@@ -155,7 +174,7 @@
 				flex:1;
 				color: #ffffff;
 				background-color: #f85251;
-				font-size: 0.4rem;
+				font-size: 1rem;
 				text-align: center;
 				padding-top: 10px;
 			}
@@ -187,6 +206,9 @@
 			.submit-bottom-flex-3-kind{
 				color: #222222;
 			}
+			.action-bar-op-item{
+				padding: 1rem;
+			}
     </style>
   </head>
 
@@ -201,7 +223,7 @@
 	    <div id="cart_edit" class="child category_size"><span class="edit_span">编辑</span></div>  
    	</header>
     <div class="cart-main checkout-action ">
-			<div class="kind-select">
+<!--			<div class="kind-select">
     		<div class="mui-input-row mui-radio mui-left">
 					<label class="radio-text">现金预存款支付</label>
 					<input name="radio1" type="radio" checked="checked">
@@ -210,33 +232,73 @@
 					<label class="radio-text">承兑预存款支付</label>
 					<input name="radio1" type="radio">
 				</div>
-    	</div>
+    	</div>-->
 			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 				<div class="mui-scroll">
 					<!--数据列表-->
 					<div class="content-space"> </div>
 					<ul class="mui-table-view mui-table-view-chevron" id="content-main">
-						<li>
+						<!--<li>
 							<div class="content-space"> </div>
 							<div class="mui-input-row mui-checkbox mui-left check-div-border">
 							  <label class="check-title">B商家商家商家<img class="check-right-img" src="../../img/cart/right.png" /></label>
 							  <input name="checkbox1" value="Item 1" type="checkbox">
 							</div>
-							<div class="mui-input-row mui-checkbox mui-left">
-							  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
-							  <input name="checkbox2" value="Item 1" type="checkbox">
-							</div>
-							<div class="content-price">
-								<div class="content-price-left">
-									<div class="content-price-left-text">现金价：￥4980</div>
-									<div class="content-price-left-text">承兑价：￥4980</div>
+							<div class="mui-left-all">
+								<div class="mui-input-row mui-checkbox mui-left">
+								  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+								  <input name="checkbox2" value="Item 1" type="checkbox">
 								</div>
-								<div class="content-price-right">
-									<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
-			              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-			              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
-			              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-			            </div>
+								<div class="content-price">
+									<div class="content-price-left">
+										<div class="content-price-left-text">现金价：￥4980</div>
+										<div class="content-price-left-text">承兑价：￥4980</div>
+									</div>
+									<div class="content-price-right">
+										<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+				              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+				              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+				            </div>
+									</div>
+								</div>
+							</div>
+							<div class="mui-left-all">
+								<div class="mui-input-row mui-checkbox mui-left">
+								  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+								  <input name="checkbox2" value="Item 1" type="checkbox">
+								</div>
+								<div class="content-price">
+									<div class="content-price-left">
+										<div class="content-price-left-text">现金价：￥4980</div>
+										<div class="content-price-left-text">承兑价：￥4980</div>
+									</div>
+									<div class="content-price-right">
+										<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+				              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+				              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+				            </div>
+									</div>
+								</div>
+							</div>
+							<div class="mui-left-all">
+								<div class="mui-input-row mui-checkbox mui-left">
+								  <label class="check-content"><div class="check-content-left">新兴生铁 - 铁球 低硅球10#</div><div class="check-content-right">中途库</div></label>
+								  <input name="checkbox2" value="Item 1" type="checkbox">
+								</div>
+								<div class="content-price">
+									<div class="content-price-left">
+										<div class="content-price-left-text">现金价：￥4980</div>
+										<div class="content-price-left-text">承兑价：￥4980</div>
+									</div>
+									<div class="content-price-right">
+										<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="100">
+				              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+				              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+				            </div>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -287,29 +349,35 @@
 			            </div>
 								</div>
 							</div>
-						</li>
+						</li>-->
 					</ul>
 				</div>
 			</div>
-			<nav class="mui-bar bbc-bar-tab submit-bottom-div">
-				<div class="mui-input-row mui-checkbox mui-left submit-bottom-left">
-				  <label class="submit-bottom">
-				  	<div class="submit-bottom-flex-1">全选</div>
-				  	<div class="submit-bottom-flex-2">
-				  		<div>合计1</div>
-				  		<div>2.3690吨</div>
-				  	</div>
-				  	<div class="submit-bottom-flex-3">
-				  		<div><span class="submit-bottom-flex-3-kind">现金总金额：</span><span class="submit-bottom-flex-3-price">￥11797.62</span></div>
-				  		<div><span class="submit-bottom-flex-3-kind">承兑总金额：</span><span class="submit-bottom-flex-3-price">￥11797.62</span></div>
-				  	</div>
-				  </label>
-				  <input name="checkbox3" value="Item 1" type="checkbox">
-				</div>
-				<div class="submit-bottom-right">
-					提交订单
-				</div>
+			<nav id="edit_off" class="mui-bar bbc-bar-tab submit-bottom-div">
+				<div id="checkAll" class="mui-input-row mui-checkbox mui-left submit-bottom-left">
+					  <label class="submit-bottom">
+					  	<div class="submit-bottom-flex-1">全选</div>
+					  	<div class="submit-bottom-flex-2">
+					  		<div>合计<span class="hj-num">1</span></div>
+					  		<div><span class="hj-weight">2.3690</span>吨</div>
+					  	</div>
+					  	<div class="submit-bottom-flex-3">
+					  		<div><span class="submit-bottom-flex-3-kind">现金总金额：</span><span class="submit-bottom-flex-3-price xj-total">￥11797.62</span></div>
+					  		<div><span class="submit-bottom-flex-3-kind">承兑总金额：</span><span class="submit-bottom-flex-3-price cd-total">￥11797.62</span></div>
+					  	</div>
+					  </label>
+					  <input name="checkbox3" value="Item 1" type="checkbox">
+					</div>
+					<div id="checkout" class="submit-bottom-right">
+            	结算
+         </div>
 			</nav>
+			<nav id="edit_on" class="mui-bar bbc-bar-tab submit-bottom-div" style="display: none;">
+				<div class="action-bar-op-item content-right">
+          <div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
+        </div>
+			</nav>
+			
 <!--			<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
@@ -346,8 +414,51 @@
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
-
+    
     <script type="text/html" id="cart_list">
+    	<%
+    		for(var shop in resultCartData)
+    		{
+    			%>
+    			<li>
+						<div class="content-space"> </div>
+						<div class="mui-input-row mui-checkbox mui-left check-div-border shop">
+						  <label class="check-title"><%=resultCartData[shop].shop_name %><img class="check-right-img" src="../../img/cart/right.png" /></label>
+						  <input name="checkbox1" value="Item 1" type="checkbox">
+						</div>
+						<%
+							for(var obj_id in resultCartData[shop].object)
+							{
+								%>
+								<div data-cartid = "<%=obj_id%>" data-ischecked = "<%=resultCartData[shop].object[obj_id].is_checked%>" data-promotionid = "<%=resultCartData[shop].object[obj_id].selected_promotion%>" <%if(resultCartData[shop].object[obj_id].price.valid){%>class="mui-left-all invalid"<%}else{%>class="mui-left-all"<%}%>>
+									<div class="mui-input-row mui-checkbox mui-left">
+									  <label class="check-content"><div class="check-content-left"><%=resultCartData[shop].object[obj_id].manufacturers_name%>-<%=resultCartData[shop].object[obj_id].pm_name%> <%=resultCartData[shop].object[obj_id].guige%></div><div class="check-content-right"><%=resultCartData[shop].object[obj_id].storage_name%></div></label>
+									  <input name="checkbox2" value="Item 1" type="checkbox" <%if(resultCartData[shop].object[obj_id].is_checked == 1){%>checked<%}%>>
+									</div>
+									<div class="content-price">
+										<div class="content-price-left">
+											<div class="content-price-left-text">现金价：￥<%=resultCartData[shop].object[obj_id].price.total_price%></div>
+											<div class="content-price-left-text">承兑价：￥<%=resultCartData[shop].object[obj_id].price_accept.total_price%></div>
+										</div>
+										<div class="content-price-right">
+											<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="10000">
+					              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+					              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="1">
+					              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+					            </div>
+										</div>
+									</div>
+								</div>
+								<%
+							}
+						%>
+					</li>
+					<%
+    		}
+    	%>
+    </script>
+
+    <!--<script type="text/html" id="cart_list">
       <section class="container">
         <div class="cart-list">
           <% for(var i=0; i<cartlist.length; i++){ %>
@@ -533,8 +644,8 @@
           <div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
         </div>
       </div>
-    </script>
-
+    </script>-->
+		
     <script>
     	mui.init({
 				pullRefresh: {
@@ -545,14 +656,14 @@
 					}
 				}
 			});
-
+			
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
 				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 0)); //参数为true代表没有更多数据了。
 /*					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
 					for (var i = cells.length, len = i + 20; i < len; i++) {
@@ -561,9 +672,9 @@
 						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
 						table.appendChild(li);
 					}*/
-				}, 1500);
+				}, 100);
 			}
-			if (mui.os.plus) {
+			/*if (mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
 						mui('#pullrefresh').pullRefresh().pullupLoading();
@@ -574,8 +685,8 @@
 				mui.ready(function() {
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
-			}
-			document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
+			}*/
+			//document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
 			
 			
 			mui(document).on('tap', '#left-content', function() {
@@ -590,6 +701,7 @@
         fetchList();
         function fetchList() {
           var state = app.getState();
+          console.log(state.token);
           if(state.token) {
             var loading = plus.nativeUI.showWaiting();
             var param = {
@@ -603,16 +715,42 @@
             $.dataRequest(param, function(rs) {
               if(!isEmptyObject(rs.data)) {
                 var list = template('cart_list', rs.data);
-                $('.cart-main').html(list);
+                $('#content-main').html(list);
                 mui('.mui-numbox').numbox();
+                $('.edit_span').html("编辑");
                 $('#cart_edit').show();
+                $('.hj-num').text(rs.data.totalCart.number);
+                $('.hj-weight').text(rs.data.totalCart.totalWeight);
+                $('.xj-total').text("￥"+rs.data.totalCart.totalPrice);
+                $('.cd-total').text("￥"+rs.data.totalCart.totalAcceptPrice);
               } else {
-                $('#cart_edit').hide();
-                $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><i class="bbc-icon bbc-icon-nodata"></i></div><div class="nodata-tip">亲，暂无数据～</div></div></div>')
+                $('.edit_span').html("");
+                $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
+              	
+				        document.getElementById("qxd-button").addEventListener("tap",function () {
+								  var webview = "_www/view/category/category.html";
+									mui.openWindow({
+					          url: webview,
+					          id: webview,
+					          createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					          show: {
+					            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+					            aniShow: 'none'
+					          },
+					          waiting: {
+					            autoShow: true //自动显示等待框，默认为true
+					          }
+					        });
+					        var openw = plus.webview.getWebviewById(webview);
+					        if(openw) {
+					          mui.fire(openw, 'refresh');
+					        }
+								});
               }
               loading.close();
             });
           }else{
+          	$('.edit_span').html("");
             $('.cart-main').html('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
           }
         }
@@ -625,13 +763,13 @@
             $('#edit_on').hide();
             $('#edit_off').show();
             $('.mui-numbox').show();
-            $('.order-goods-num').hide();
-            $('.order-goods-header .more-link').show();
+            //$('.order-goods-num').hide();
+            //$('.order-goods-header .more-link').show();
             $('.cart-main').addClass('checkout-action').removeClass('del-action');
-            $('.invalid').find('input[type="hidden"]').attr('disabled', 'disabled');
-            $('.invalid').find('input[type="checkbox"]').attr('disabled', 'disabled');
-            $('.promotion-select').attr('href', '#promotion');
-            $('.promotion-edit').show();
+            //$('.invalid').find('input[type="hidden"]').attr('disabled', 'disabled');
+            //$('.invalid').find('input[type="checkbox"]').attr('disabled', 'disabled');
+            //$('.promotion-select').attr('href', '#promotion');
+            //$('.promotion-edit').show();
             flag = true;
             isPromotionSelect = true;
             fetchList();
@@ -640,14 +778,14 @@
             $('#edit_on').show();
             $('#edit_off').hide();
             $('.mui-numbox').hide();
-            $('.order-goods-num').show();
-            $('.order-goods-header .more-link').hide();
+            //$('.order-goods-num').show();
+            //$('.order-goods-header .more-link').hide();
             $('.cart-main').addClass('del-action').removeClass('checkout-action');
-            $('.invalid').find('input[type="hidden"]').removeAttr('disabled');
-            $('.invalid').find('input[type="checkbox"]').removeAttr('disabled');
+            //$('.invalid').find('input[type="hidden"]').removeAttr('disabled');
+            //$('.invalid').find('input[type="checkbox"]').removeAttr('disabled');
             $('input[type="checkbox"]').prop('checked', false);
-            $('.promotion-select').attr('href', 'javascript:void(0);');
-            $('.promotion-edit').hide();
+            //$('.promotion-select').attr('href', 'javascript:void(0);');
+            //$('.promotion-edit').hide();
             isPromotionSelect = false;
           }
         });
@@ -660,19 +798,19 @@
               if(!$(this).attr('disabled')) {
                 $(this).prop('checked', true);
               }
-              $('.cart-list').find('li').data('ischecked', 1);
+              $('#content-main').find('.mui-left-all').data('ischecked', 1);
             });
           } else {
             $('input[type="checkbox"]').prop('checked', false);
-            $('.cart-list').find('li').data('ischecked', 0);
+            $('#content-main').find('.mui-left-all').data('ischecked', 0);
             $('#checkAll').prop('checked', false);
           }
           if($('.cart-main').hasClass('checkout-action')) {
-            updateItem();
+            //updateItem();
           }
         });
 
-        $('.cart-main').on('change', '.order-goods-header input[type="checkbox"]', function(event) {
+/*        $('.cart-main').on('change', '.order-goods-header input[type="checkbox"]', function(event) {
           var value = this.checked ? true : false;
           if(value === true) {
             $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').each(function() {
@@ -689,19 +827,36 @@
           if($('.cart-main').hasClass('checkout-action')) {
             updateItem();
           }
-        })
+        })*/
+        
+        $('.cart-main').on('change', '.check-div-border input[type="checkbox"]', function(event) {
+        		if(this.checked)
+        		{
+        			$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked","checked");
+        			$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 1);
+        		}
+        		else
+        		{
+        			$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked",false);
+        			$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 0);
+        		}
+        		if($('.cart-main').hasClass('checkout-action')) {
+	            updateItem();
+	          }
+        });
 
-        $('.cart-main').on('change', '.shop-item-checkbox input[type="checkbox"]', function(event) {
-            var fa = $(this).parents('.promotion-goods');
-            var shop = $(this).parents('.order-goods').find('.section-title input[type="checkbox"]');
+        $('.cart-main').on('change', '.mui-left-all input[type="checkbox"]', function(event) {
+            var fa = $(this).parents('.mui-left-all');
+            var shop = $(this).parents('.mui-left-all').siblings('.check-div-border').find('input[type="checkbox"]');
             var totalChecked = $(fa).find('input[type="checkbox"]');
             var totalCheck = $(fa).find('input[type="checkbox"]:checked');
-
+						console.log(totalChecked);
+						console.log(totalCheck);
             var val = this.checked ? true : false;
             if(val === true) {
-              $(this).parents('li').data('ischecked', 1);
+              $(this).parents('.mui-left-all').data('ischecked', 1);
             } else {
-              $(this).parents('li').data('ischecked', 0);
+              $(this).parents('.mui-left-all').data('ischecked', 0);
             }
             if(totalCheck.length == totalChecked.length) {
               $(shop).prop('checked', true);
@@ -722,13 +877,13 @@
 
         $('.cart-main').on('tap', '#cart_del', function() {
           var data = '';
-          if(!$('.cart-list').find('input[name="checkbox"]:checked').length) {
+          if(!$('#content-main .mui-left-all').find('input[type="checkbox"]').length) {
             mui.alert('请选择需要删除的商品');
             return
           }
-          var checkedItem = $('.cart-list').find('input[name="checkbox"]:checked');
+          var checkedItem = $('#content-main .mui-left-all').find('input[type="checkbox"]:checked');
           for(var i = 0; i < checkedItem.length; i++) {
-            var delDom = $(checkedItem[i]).data('cartid');
+            var delDom = $(checkedItem[i]).parents('.mui-left-all').data('cartid');
             data += delDom + ',';
           };
           var btnArray = ['否', '是'];
@@ -782,17 +937,21 @@
 
         function updateItem() {
           var state = app.getState();
-          var cartList = $('.cart-list').find('.order-goods-list li');
-          var cartParam = [];
+          var cartList = $('#content-main').find('li');
+          var cartParam = [];//mui-left-all
           for(var i = 0; i < cartList.length; i++) {
-            if(!$(cartList[i]).hasClass('invalid')) {
-              var itemParam = {};
-              itemParam.cart_id = $(cartList[i]).data('cartid');
-              itemParam.is_checked = $(cartList[i]).data('ischecked');
-              itemParam.selected_promotion = $(cartList[i]).data('promotionid');
-              itemParam.totalQuantity = $(cartList[i]).find('.action-modify').val();
-              cartParam.push(itemParam);
-            }
+          	var cartNew = $(cartList[i]).find('.mui-left-all');
+          	for(var j = 0;j<cartNew.length;j++)
+          	{
+          		if(!$(cartNew[j]).hasClass('invalid')) {
+	              var itemParam = {};
+	              itemParam.cart_id = $(cartNew[j]).data('cartid');
+	              itemParam.is_checked = $(cartNew[j]).data('ischecked');
+	              itemParam.selected_promotion = $(cartNew[j]).data('promotionid');
+	              itemParam.totalQuantity = $(cartNew[j]).find('.action-modify').val();
+	              cartParam.push(itemParam);
+	            }
+          	}
           }
           cartParam = JSON.stringify(cartParam);
           if(flag) {
@@ -828,7 +987,12 @@
           data = data.split(',');
           data = data.splice(0, data.length - 1);
           $.dataRequest(param, function() {
-            for(var i = 0; i < data.length; i++) {
+          	fetchList();
+            if(flag) {
+              $('input[type="checkbox"]').prop('checked', false);
+              flag = false;
+            }
+            /*for(var i = 0; i < data.length; i++) {
               $('input[data-cartid="' + data[i] + '"]').parents('li').remove()
             }
             var promotionlist = $('.promotion-goods-group');
@@ -842,7 +1006,7 @@
               if($(shoplist[i]).find('.promotion-goods-group').length == 0) {
                 $(shoplist[i]).remove();
               }
-            }
+            }*/
           });
         }
 
@@ -855,11 +1019,11 @@
         });
 
         $('body').on('tap', '#checkout', function() {
-          if(!$('.cart-list').find('input[name="checkbox"]:checked').length) {
+          if(!$('#content-main').find('input[type="checkbox"]:checked').length) {
             mui.alert('请至少选择一件商品');
             return
           }
-          clicked('_www/view/cart/checkout.html', {
+          clicked('_www/view/cart/cart_order.html', {
             'mode': 'cart'
           });
         })
@@ -871,9 +1035,10 @@
         $('body').on('tap',' #log', function() {
           clicked('_www/view/passport/login.html', {'entrance':wid}, 'slide-in-bottom');
         });
+        
       });
 
-      $('.bbc-tab-item').on('tap', function() {
+/*      $('.bbc-tab-item').on('tap', function() {
         var webview = $(this).data('webview');
         if(webview) {
           mui.openWindow({
@@ -893,7 +1058,7 @@
             mui.fire(openw,'refresh');
           }
         }
-      });
+      });*/
     </script>
   </body>
 

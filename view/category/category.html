@@ -664,9 +664,10 @@
         statusBarBackground:"#E35D4C",
         swipeBack:false
       });
-      
+      var wid = "";
       setTimeout(function(){
       	mui.plusReady(function() {
+      	wid = plus.webview.currentWebview().id;
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
 		    mui('.mui-scroll-wrapper').scroll({
 		        bounce: false,
@@ -1083,11 +1084,6 @@
 				});
 			}); 
 			
-			mui(".mui-control-content").on('tap','.content-li',function(){
-				console.log(111);
-				console.log($(this).data("cid"));
-			});
-			
 			function GetContentList(fl_new_id,gg_new_id,guige,cd_new_id,jgk_new_id,page_new)
 			{
 				var param1 = {
@@ -1303,37 +1299,81 @@
 				});*/
       }
       
-      function fetchList() {
-	      var state = app.getState();
-	      if(state.token) {
-	        var loading = plus.nativeUI.showWaiting();
-	        var param = {
-	          queryData: {
-	            'method': config.apimethod.cartlist,
-	            'accessToken': state.token,
-	            'mode': 'cart'
-	          },
-	          method: 'GET'
-	        }
-	        $.dataRequest(param, function(rs) {
-	          if(!isEmptyObject(rs.data)) {
-	            var list = template('cart_list', rs.data);
-	            $('.cart-main').html(list);
-	            mui('.mui-numbox').numbox();
-	            $('#cart_edit').show();
-	          } else {
-	            $('#cart_edit').hide();
-	            $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><i class="bbc-icon bbc-icon-nodata"></i></div><div class="nodata-tip">亲，暂无数据～</div></div></div>')
-	          }
-	          loading.close();
-	        });
-	      }else{
-	        $('.cart-main').html('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
-	      }
-	    }
-      function test(item_id,cat_id)
+      function OrderDenno(item_id,cat_id)
 			{
-				alert(item_id);
+				var state = app.getState();
+				if(state.token)
+				{
+					var param_detail = {
+		        queryData: {
+		          'method': config.apimethod.goodsdetail,
+		          'item_id':item_id,
+		          'fields':''
+		        },
+		        method: 'GET'
+		      };
+					$.dataRequest(param_detail, function(rs) {
+	          if(!isEmptyObject(rs.data)) {
+	          	var sku_id;
+	          	for(var id in rs.data.item.sku)
+	          	{
+	          		sku_id = id;
+	          	}
+	          	
+	          	var param_order = {
+				        queryData: {
+				          'method': config.apimethod.cartadd,
+				          'accessToken':state.token,
+				          'quantity':1,
+				          'sku_id':rs.data.item.sku[sku_id].sku_id,
+				          'package_sku_ids':'',
+				          'package_id':'',
+				          'obj_type':'item',
+				          'mode':'cart'
+				        },
+				        method: 'GET'
+				      };
+	          	
+	          	$.dataRequest(param_order, function(r) {
+	          		if(!isEmptyObject(r.data)) {
+	          			var btnArray = ['否', '是'];
+	                mui.confirm('是否前往购物车？', '提示', btnArray, function(e) {
+	                    if (e.index == 1) {
+	                        var webview = "_www/view/cart/cart.html";
+													mui.openWindow({
+									          url: webview,
+									          id: webview,
+									          createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+									          show: {
+									            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									            aniShow: 'none'
+									          },
+									          waiting: {
+									            autoShow: true //自动显示等待框，默认为true
+									          }
+									        });
+									        var openw = plus.webview.getWebviewById(webview);
+									        if(openw) {
+									          mui.fire(openw, 'refresh');
+									        }
+	                    } 
+	                });
+	          			
+	          		}else
+	          		{
+	          			mui.alert("下单失败！");
+	            		return;
+	          		}
+	          	})
+	          } else {
+	            mui.alert("下单失败！");
+	            return;
+	          }
+	        });
+				}else
+				{
+					clicked('_www/view/passport/login.html', {'entrance':wid}, 'slide-in-bottom');
+				}
 			}
         /*var controls = document.getElementById("segmentedControls");
         var contents = document.getElementById("segmentedControlContents");
@@ -1525,7 +1565,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="content-inner-right" onclick="test(<%=list[i].item_id%>,<%=list[i].cat_id%>);">
+								<div class="content-inner-right" onclick="OrderDenno(<%=list[i].item_id%>,<%=list[i].cat_id%>);">
 									<div class="content-inner-right-word">下单</div> 
 								</div>
 							</div>
