@@ -1,138 +1,137 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../../css/style.css" />
-    <style type="text/css">
-      .mui-segmented-control.mui-scroll-wrapper {
-        height: 5rem;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
-        height: 5rem;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-control-item {
-        padding: 0;
-        margin-right: 10px;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-control-item img {
-        height: 5rem;
-      }
-
-      .mui-ios .mui-navbar .mui-bar .mui-title {
-        position: static;
-      }
-
-      .mui-views,
-      .mui-view,
-      .mui-pages,
-      .mui-page,
-      .mui-page-content {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        /*min-height: 100%;*/
-        /*background-color: #fff;*/
-      }
-
-      .mui-page-content .mui-input-group:before {
-        height: 0;
-      }
-
-      .mui-pages {
-        top: 2.7rem;
-        min-height: auto;
-        overflow-y: auto;
-        bottom:2.5rem;
-      }
-
-      .mui-page,
-      .mui-pages .mui-page-content .mui-page {
-        display: none;
-      }
-
-      .mui-pages .mui-page {
-        background-color: #efeff4;
-        display: block;
-      }
-
-      .mui-page.mui-transitioning {
-        -webkit-transition: -webkit-transform 300ms ease;
-        transition: transform 300ms ease;
-      }
-
-      .mui-page-left {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-
-      .mui-ios .mui-page-left {
-        -webkit-transform: translate3d(-20%, 0, 0);
-        transform: translate3d(-20%, 0, 0);
-      }
-
-      .mui-navbar {
-        position: fixed;
-        right: 0;
-        left: 0;
-        z-index: 10;
-        
-        background-color: #fff;
-      }
-
-      .mui-navbar .mui-bar {
-        position: absolute;
-        background: transparent;
-        text-align: center;
-      }
-
-      .mui-android .mui-navbar-inner.mui-navbar-left,
-      .mui-ios .mui-navbar-left .mui-left,
-      .mui-ios .mui-navbar-left .mui-center,
-      .mui-ios .mui-navbar-left .mui-right {
-        opacity: 0;
-      }
-
-      .mui-navbar .mui-btn-nav {
-        -webkit-transition: none;
-        transition: none;
-        -webkit-transition-duration: .0s;
-        transition-duration: .0s;
-      }
-
-      .mui-navbar .mui-bar .mui-title {
-        display: inline-block;
-        width: auto;
-      }
-
-      .mui-page-shadow {
-        position: absolute;
-        right: 100%;
-        top: 0;
-        width: 16px;
-        height: 100%;
-        z-index: -1;
-        background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
-        background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
-      }
-
-      .mui-navbar-inner.mui-transitioning,
-      .mui-navbar-inner .mui-transitioning {
-        -webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
-        transition: opacity 300ms ease, transform 300ms ease;
-      }
-      /*.mui-fullscreen {
+		<link rel="stylesheet" href="../../../css/style.css" />
+		<style type="text/css">
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 0;
+				margin-right: 10px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item img {
+				height: 5rem;
+			}
+			
+			.mui-ios .mui-navbar .mui-bar .mui-title {
+				position: static;
+			}
+			
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				/*min-height: 100%;*/
+				/*background-color: #fff;*/
+			}
+			
+			.mui-page-content .mui-input-group:before {
+				height: 0;
+			}
+			
+			.mui-pages {
+				top: 2.7rem;
+				min-height: auto;
+				overflow-y: auto;
+				bottom: 2.5rem;
+			}
+			
+			.mui-page,
+			.mui-pages .mui-page-content .mui-page {
+				display: none;
+			}
+			
+			.mui-pages .mui-page {
+				background-color: #efeff4;
+				display: block;
+			}
+			
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				background-color: #fff;
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			
+			.mui-android .mui-navbar-inner.mui-navbar-left,
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				width: auto;
+			}
+			
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			/*.mui-fullscreen {
       position: fixed;
       z-index: 20;
       background-color: #000;
@@ -140,194 +139,221 @@
       .mui-ios .mui-navbar .mui-bar .mui-title {
       position: static;
       }*/
-
-.mui-scroll-wrapper.has-btn {
-  bottom: 3rem;
-}
-
-.body-padding-mini .action-bar-mini {
-  position: absolute;
-}
-
-.mui-bar .mui-btn-link {
-  color: #ea2329 !important;
-}
-
+			
+			.mui-scroll-wrapper.has-btn {
+				bottom: 3rem;
+			}
+			
+			.body-padding-mini .action-bar-mini {
+				position: absolute;
+			}
+			
+			.mui-bar .mui-btn-link {
+				color: #ea2329 !important;
+			}
 			/*标题栏*/
-			.mui-bar-backcolor{
-      	background-color:#d92e2e;
-      	display: flex;  
-      }
-			.child{   
-			    flex:1;    
-			} 
 			
-			.child_1{   
-			    flex:7;    
-			} 
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
 			
-			.category_img{
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
 				height: 1rem;
 				width: 0.6rem;
 				line-height: 1rem;
-      }
-      
-      .category_size{
-      	line-height: 3rem;
-      	text-align: center;
-      }
-      
-      .category_title{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	margin-left: 0.4rem;
-      	font-size: 0.9rem;
-      }
-      
-      .title_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1.2rem;
-      }
-      
-      .edit_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 1.2rem;
-      	line-height: 1.2rem;
-      }
-      
-      .search_img{
-      	height: 1.2rem;
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
 				width: 1.2rem;
-      }
-      .search_size{
-      	line-height: 3.5rem;
-      	text-align: center;
-      }
-      
-      .message_img{
-      	height: 1.5rem;
-		width: 1.5rem;
-		margin-left: 0.8rem;
-      }
-      
-		/*支付信息*/
-		.goods_info{
-     		background-color: #ffffff;
-		}
-		.goods_info_detail{
-			color: #666666;
-			font-family: "arial rounded mt bold";
-			font-size: 0.8rem;
-			padding: 0.6rem 0px 0.6rem 1.2rem;
-			border: 1px solid #e3e3e5;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-		.goods_info_detail_important{
-			color:#ff0057;
-		}
-		.goods_info_detail_label{
-			flex: 1;
-		}
-		.goods_info_detail_content{
-			flex: 2;
-			display: flex;
-	     	flex-direction: row;
-	     	color: #222222;
-		}
-		.goods_info_detail_memo{
-			flex: 1;
-			font-size: 0.6rem;
-			color: #666666;
-		}
-		.goods_info_detail_img_padding{
-			width: 4rem;
-			height: 3.5rem;
-			border: 1px dashed #CCCCCC;
-		}
-		.goods_info_detail_image{
-			width: 2rem;
-			height: 1.5rem;
-			margin: 1rem;
-		}
-	    .mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
-	    	color: #E35D4C;
-	    }
-	    .radio-text{
-	    	color: #666666;
-	    }
-	    .mui-radio.mui-left label, .mui-checkbox.mui-left label{
-	    	padding-left:3rem;
-	    	padding-right:1rem;
-	    }
-		/*底部样式*/
-		.submit-bottom-div{
-			background-color: #ffffff;
-			border-top: 1px solid #e3e3e6;
-			display: flex;
-			flex: row;
-			align-items: center;
-		}
-		.submit-bottom-button1{
-			flex:1;
-			text-align: center;
-			font-size: 0.8rem;
-			color: #FFFFFF;
-			background-color: #E35D4C;
-			padding: 0.8rem 0rem 0.8rem 0rem;
-			/*margin-right: 15px;
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.message_img {
+				height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+			}
+			/*支付信息*/
+			
+			.goods_info {
+				background-color: #ffffff;
+			}
+			
+			.goods_info_detail {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+				border-bottom: 1px solid #e3e3e5;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.goods_info_detail_important {
+				color: #ff0057;
+			}
+			
+			.goods_info_detail_label {
+				flex: 1;
+			}
+			
+			.goods_info_detail_content {
+				flex: 2;
+				display: flex;
+				flex-direction: row;
+				color: #222222;
+			}
+			
+			.goods_info_detail_memo {
+				flex: 1;
+				font-size: 0.6rem;
+				color: #666666;
+			}
+			
+			.goods_info_detail_img_padding {
+				width: 4rem;
+				height: 3.5rem;
+				border: 1px dashed #CCCCCC;
+			}
+			
+			.goods_info_detail_image {
+				width: 2rem;
+				height: 1.5rem;
+				margin: 1rem;
+			}
+			
+			.mui-radio input[type="radio"]:checked:before,
+			.mui-checkbox input[type="checkbox"]:checked:before {
+				color: #E35D4C;
+			}
+			
+			.radio-text {
+				color: #666666;
+			}
+			
+			.mui-radio.mui-left label,
+			.mui-checkbox.mui-left label {
+				padding-left: 3rem;
+				padding-right: 1rem;
+			}
+			/*底部样式*/
+			
+			.submit-bottom-div {
+				background-color: #ffffff;
+				border-top: 1px solid #e3e3e6;
+				display: flex;
+				flex: row;
+				align-items: center;
+			}
+			
+			.submit-bottom-button1 {
+				flex: 1;
+				text-align: center;
+				font-size: 0.8rem;
+				color: #FFFFFF;
+				background-color: #E35D4C;
+				padding: 0.8rem 0rem 0.8rem 0rem;
+				/*margin-right: 15px;
 			background-color: #e25d4c;
 			color: #ffffff;
 			border-radius: 5px;
 			padding: 5px 25px 5px 25px;*/
-		}
-		.submit-bottom-button2{
-			flex:1;
-			text-align: center;
-			font-size: 0.8rem;
-			color: #FFFFFF;
-			background-color: #b7b6b6;
-			padding: 0.8rem 0rem 0.8rem 0rem;
-		}
-    </style>
+			}
+			
+			.submit-bottom-button2 {
+				flex: 1;
+				text-align: center;
+				font-size: 0.8rem;
+				color: #FFFFFF;
+				background-color: #b7b6b6;
+				padding: 0.8rem 0rem 0.8rem 0rem;
+			}
+			
+			.back-width {
+				width: 2.8rem;
+			}
+			
+			.detail-font {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.9rem;
+			}
+		</style>
 
-  </head>
+	</head>
 
-  <body class="body-padding-mini">
-    <!--页面主结构开始-->
-    <div id="app" class="mui-views">
-      <div class="mui-view">
-        <div class="mui-navbar">
-        </div>
-        <div class="mui-pages">
-	    	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-		    	<div class="child category_size" id="left-content"><img class="category_img" src="../../../img/cart/back.png" /></div>  
-			    <div class="child_1 category_size"><span class="title_span">订单详情</span></div>  
-			    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../../img/category/message.png" /></div>  
-		   	</header>
-		   	<div class="goods_info">
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司名称</div>
-		   			<div class="goods_info_detail_content">常州XXXXXXXXXXXXX有限公司</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label">税号</div>
-		   			<div class="goods_info_detail_content">321432321321123</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label">公司法人</div>
-		   			<div class="goods_info_detail_content">xxxxxxxxxxxxx</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司类型</div>
-		   			<div class="goods_info_detail_content">
-			    		<div class="mui-input-row mui-radio mui-left">
+	<body class="body-padding-mini">
+
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left back-width">
+				<img class="back_img" src="../../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">企业认证</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../../img/category/message.png" />
+			</a>
+		</header>
+		<div class="mui-content">
+			<section class="mui-input-group detail-font">
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司名称</div></label>
+					<input id="gsmc" type="text" class="mui-input-clear" placeholder="请输入公司名称" required data-caution="请输入公司名称">
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>税号</div></label>
+					<input id="sh" type="text" class="mui-input-clear" placeholder="请输入税号" required data-caution="请输入税号">
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>公司法人</div></label>
+					<input id="gsfr" type="text" class="mui-input-clear" placeholder="请输入公司法人" required data-caution="请输入公司法人">
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>公司法人</div></label>
+					<div class="goods_info_detail_content">
+						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">中间商</label>
 							<input name="radio1" type="radio" checked="checked">
 						</div>
@@ -335,102 +361,243 @@
 							<label class="radio-text">终端客户</label>
 							<input name="radio1" type="radio">
 						</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人</div>
-		   			<div class="goods_info_detail_content">xxxxxxxxxxxxx</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人手机号</div>
-		   			<div class="goods_info_detail_content">11111111111</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_memo">附件信息（注意营业执照为必填项，所有证件均需盖公章或者合同章。限使用jpg、就jpeg、png、git、bmp格式，且大小为1M内）</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传证件</div>
-		   			<div class="goods_info_detail_content">
-			    		<div class="mui-input-row mui-radio mui-left">
+					</div>
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>指定联系人</div></label>
+					<input id="zdlxr" type="text" class="mui-input-clear" placeholder="请输入指定联系人" required data-caution="请输入指定联系人">
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>指定联系人手机号</div></label>
+					<input id="zdlxrsjh" type="text" class="mui-input-clear" placeholder="请输入指定联系人手机号" required data-caution="请输入指定联系人手机号">
+				</div>
+				<div class="mui-input-row">
+					<div class="goods_info_detail">
+						<div class="goods_info_detail_memo">附件信息（注意营业执照为必填项，所有证件均需盖公章或者合同章。限使用jpg、就jpeg、png、git、bmp格式，且大小为1M内）</div>
+					</div>
+				</div>
+				<div class="mui-input-row">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>上传证件</div></label>
+					<div class="goods_info_detail_content">
+						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">三证合一</label>
-							<input name="radio1" type="radio" >
+							<input name="radio2" type="radio" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">企业五证</label>
-							<input name="radio1" type="radio" checked="checked">
+							<input name="radio2" type="radio">
 						</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
-		   			<div class="goods_info_detail_content">
-		   				<div class="goods_info_detail_img_padding">
-		   					<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-		   				</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>组织机构代码</div>
-		   			<div class="goods_info_detail_content">
-		   				<div class="goods_info_detail_img_padding">
-		   					<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-		   				</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label">税务登记证</div>
-		   			<div class="goods_info_detail_content">
-		   				<div class="goods_info_detail_img_padding">
-		   					<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-		   				</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label">开户许可证</div>
-		   			<div class="goods_info_detail_content">
-		   				<div class="goods_info_detail_img_padding">
-		   					<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-		   				</div>
-		   			</div>
-		   		</div>
-		   		<div class="goods_info_detail">
-		   			<div class="goods_info_detail_label">企业认证授权书</div>
-		   			<div class="goods_info_detail_content">
-		   				<div class="goods_info_detail_img_padding">
-		   					<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</div>
-        </div>
-    	<nav class="mui-bar bbc-bar-tab submit-bottom-div">
+					</div>
+				</div>
+
+				<div class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
+					<div class="goods_info_detail_content">
+						<div class="rate-img-box goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>					
+					</div>
+					<ul class="rate-img-list mui-pull-left">
+						</ul>
+				</div>
+				<div class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>组织机构代码</div>
+					<div class="goods_info_detail_content">
+						<div class="goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>
+					</div>
+				</div>
+				<div class="goods_info_detail">
+					<div class="goods_info_detail_label">税务登记证</div>
+					<div class="goods_info_detail_content">
+						<div class="goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>
+					</div>
+				</div>
+				<div class="goods_info_detail">
+					<div class="goods_info_detail_label">开户许可证</div>
+					<div class="goods_info_detail_content">
+						<div class="goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>
+					</div>
+				</div>
+				<div class="goods_info_detail">
+					<div class="goods_info_detail_label">企业认证授权书</div>
+					<div class="goods_info_detail_content">
+						<div class="goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+		</div>
+		<div id="choose_img" class="mui-popover mui-popover-bottom mui-popover-action">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell fonts font-gray-40">亲，您还可以上传<span class="img-count">5</span>张照片</li>
+				<li class="mui-table-view-cell action-camera">
+					<a>拍照</a>
+				</li>
+				<li class="mui-table-view-cell action-gallery">
+					<a>相册</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#choose_img"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+		<nav class="mui-bar bbc-bar-tab submit-bottom-div">
 			<div class="submit-bottom-button1">提交认证</div>
 			<div class="submit-bottom-button2">变更认证</div>
 		</nav>
-      </div>
-    </div>
-    <!--页面主结构结束-->
-  </body>
 
-  <script src="../../../js/zepto.js"></script>
-  <script src="../../../js/mui.min.js"></script>
-  <script src="../../../js/mui.view.js"></script>
-  <script src="../../../js/template.min.js"></script>
-  <script src="../../../config.js"></script>
-  <script src="../../../js/app.js"></script>
+		<script src="../../../js/zepto.js"></script>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.view.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
 
-  <script type="text/javascript">
-    mui.plusReady(function() {
-      var mode = plus.webview.currentWebview().mode;
-      var state = app.getState();
-      var param = {
-        queryData: {
-          'method': config.apimethod.checkout,
-          'accessToken': state.token,
-          'mode': mode
+		<script type="text/javascript">
+			mui.plusReady(function() {
+			var mode = plus.webview.currentWebview().mode;
+			var state = app.getState();
+			var param = {
+				queryData: {
+					'method': config.apimethod.checkout,
+					'accessToken': state.token,
+					'mode': mode
+				}
+			}
+
+			var maxcount = 0;
+			//上传图片
+			$('.rate-img-box').on('tap', function() {
+				that = $(this).parent().parent();
+				maxcount = 5 - that.find('.rate-img-list').find('li').length;
+				$('.img-count').html(maxcount);
+				mui('#choose_img').popover('toggle');
+			});
+			$('.action-camera').on('tap', function() {
+				getImage();
+				mui('#choose_img').popover('hide');
+			});
+			$('.action-gallery').on('tap', function() {
+				galleryImgsMaximum(maxcount);
+				mui('#choose_img').popover('hide');
+			});
+			$('.choose-cancel').on('tap', function() {
+				mui('#choose_img').popover('hide');
+			});
+			
+			        //拍照
+        function getImage() {
+          var cmr = plus.camera.getCamera();
+          cmr.captureImage( function ( p ) {
+            imgCount = that.find('.rate-img-list').find('img').length + 1;
+            if(imgCount >= 5) {
+              that.find('.rate-img-icon-box').hide();
+            } else {
+              that.find('.rate-img-icon-box').show();
+            }
+            plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
+              var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+              appendFile(entry.toLocalURL(), name);
+            }, function ( e ) {
+              log( "读取拍照文件错误："+e.message );
+            });
+          }, function ( e ) {
+            log( "失败："+e.message );
+          }, {filename:"_doc/camera/",index:1} );
         }
-      }
-    });
-  </script>
+       
+        //从相册中选择图片
+        function galleryImgsMaximum(maxcount){
+          // 从相册中选择图片
+          plus.gallery.pick( function(e){
+            var imgstr = "";
+            imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
+            if(imgCount >= 5) {
+              that.find('.rate-img-icon-box').hide();
+            } else {
+              that.find('.rate-img-icon-box').show();
+            }
+            var name = '';
+            for(var i in e.files){
+              name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+              appendFile(e.files[i], name);
+            }
+          }, function ( e ) {
+//          log( "取消选择图片" );
+          },{filter:"image",multiple:true,maximum:maxcount,system:false,onmaxed:function(){
+            plus.nativeUI.alert('最多只能选择'+maxcount+'张图片');
+          }});
+        }
+        // 添加文件
+        function appendFile(path, imgname){
+          var img = new Image();
+          img.src = path;        // 传过来的图片路径在这里用。
+          var img_id = '';
+          img.onload = function () {
+              var el = this;
+              //生成比例 
+              var w = el.width,
+                  h = el.height;
+                  if(w>h){
+                    var scale = w / h; 
+                    w = 1280 || w;
+                    h = w / scale;
+                  }else{
+                    var scale = h / w; 
+                    h = 1280 || h; 
+                    w = h / scale;
+                  }
+              //生成canvas
+              var canvas = document.createElement('canvas');
+              var ctx = canvas.getContext('2d');
+              if(w>h){
+                $(canvas).attr({width : w, height : h});
+                ctx.drawImage(el, 0, 0, w, h);
+              }else{
+                $(canvas).attr({width : h, height : w});
+                ctx.drawImage(el, 0, 0, h, w);
+              }
+              
+              var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8 );   //1最清晰，越低越模糊。
+              upload(path, base64, imgname);
+            }
+        }
+        // 上传文件
+        function upload(localPath, base64, imagename){
+          plus.nativeUI.showWaiting();
+          //发送数据  
+          var imgParam = {
+              'v': config.apiversion,
+              'format': 'json',
+              'method': config.apimethod.imgupload,
+              'accessToken': state.token,
+              'upload_type': 'base64',
+              'image': base64,
+              'image_input_title': imagename
+          };
+          mui.post(config.server + config.apiname,imgParam,function(rs){
+              if(rs.errorcode==0){
+                plus.nativeUI.closeWaiting();
+                var imgstr = '<li><img src="' + localPath + '" data-id="'+rs.data.image_id+'"/></li>'
+                that.find('.rate-img-list').append(imgstr);
+              }else{
+                mui.alert(rs.message);
+              }
+            },'json'
+          );
+        }
+	});
+		</script>
 
 </html>
