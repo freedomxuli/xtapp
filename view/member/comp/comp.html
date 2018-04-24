@@ -321,6 +321,23 @@
 				font-family: "arial rounded mt bold";
 				font-size: 0.9rem;
 			}
+			.imgDiv {
+            display: inline-block;
+            position: relative;
+        }
+			.delete {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                width: 10px;
+                height: 1px;
+            }
+            .rate-img-list li img {
+    width: 3rem;
+    height: 3rem; 
+    border-radius: 0.2rem;
+}
+            
 		</style>
 
 	</head>
@@ -392,13 +409,18 @@
 
 				<div class="goods_info_detail">
 					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
+					<ul class="rate-img-list mui-pull-left">
+						
+						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
+						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
+						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
+						</ul>
 					<div class="goods_info_detail_content">
 						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>					
 					</div>
-					<ul class="rate-img-list mui-pull-left">
-						</ul>
+					
 				</div>
 				<div class="goods_info_detail">
 					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>组织机构代码</div>
