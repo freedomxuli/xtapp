@@ -321,23 +321,208 @@
 				font-family: "arial rounded mt bold";
 				font-size: 0.9rem;
 			}
+			
 			.imgDiv {
-            display: inline-block;
-            position: relative;
-        }
+				display: inline-block;
+				position: relative;
+			}
+			
 			.delete {
-                position: absolute;
-                top: 0px;
-                right: 0px;
-                width: 10px;
-                height: 1px;
-            }
-            .rate-img-list li img {
-    width: 3rem;
-    height: 3rem; 
-    border-radius: 0.2rem;
-}
-            
+				position: absolute;
+				top: -15px;
+				right: 2px;
+				width: 10px;
+				height: 1px;
+			}
+			
+			.rate-img-list li img {
+				width: 3rem;
+				height: 3rem;
+				border-radius: 0.2rem;
+			}
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.mui-icon {
+				font-size: 20px;
+			}
+			
+			.hide {
+				display: none;
+			}
 		</style>
 
 	</head>
@@ -357,36 +542,36 @@
 			<section class="mui-input-group detail-font">
 				<div class="mui-input-row">
 					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司名称</div></label>
-					<input id="gsmc" type="text" class="mui-input-clear" placeholder="请输入公司名称" required data-caution="请输入公司名称">
+					<input id="business_name" type="text" class="mui-input-clear" placeholder="请输入公司名称" required data-caution="请输入公司名称">
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>税号</div></label>
-					<input id="sh" type="text" class="mui-input-clear" placeholder="请输入税号" required data-caution="请输入税号">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>税号</div></label>
+					<input id="business_tax" type="text" class="mui-input-clear" placeholder="请输入税号" required data-caution="请输入税号">
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>公司法人</div></label>
-					<input id="gsfr" type="text" class="mui-input-clear" placeholder="请输入公司法人" required data-caution="请输入公司法人">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司法人</div></label>
+					<input id="business_person" type="text" class="mui-input-clear" placeholder="请输入公司法人" required data-caution="请输入公司法人">
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>公司法人</div></label>
-					<div class="goods_info_detail_content">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司法人</div></label>
+					<div class="goods_info_detail_content" id="gsfr">
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">中间商</label>
-							<input name="radio1" type="radio" checked="checked">
+							<input name="radio1" type="radio" value="middle" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">终端客户</label>
-							<input name="radio1" type="radio">
+							<input name="radio1" value="end" type="radio">
 						</div>
 					</div>
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>指定联系人</div></label>
-					<input id="zdlxr" type="text" class="mui-input-clear" placeholder="请输入指定联系人" required data-caution="请输入指定联系人">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人</div></label>
+					<input id="business_linkman" type="text" class="mui-input-clear" placeholder="请输入指定联系人" required data-caution="请输入指定联系人">
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>指定联系人手机号</div></label>
-					<input id="zdlxrsjh" type="text" class="mui-input-clear" placeholder="请输入指定联系人手机号" required data-caution="请输入指定联系人手机号">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人手机号</div></label>
+					<input id="business_linkmantel" type="text" class="mui-input-clear" placeholder="请输入指定联系人手机号" required data-caution="请输入指定联系人手机号">
 				</div>
 				<div class="mui-input-row">
 					<div class="goods_info_detail">
@@ -394,62 +579,78 @@
 					</div>
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>上传证件</div></label>
-					<div class="goods_info_detail_content">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传证件</div></label>
+					<div class="goods_info_detail_content" id="sczj">
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">三证合一</label>
-							<input name="radio2" type="radio" checked="checked">
+							<input name="radio2" type="radio" value="3" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">企业五证</label>
-							<input name="radio2" type="radio">
+							<input name="radio2" value="5" type="radio">
 						</div>
 					</div>
 				</div>
 
-				<div class="goods_info_detail">
+				<div id="ul1" class="goods_info_detail">
 					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
-					<ul class="rate-img-list mui-pull-left">
-						
-						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
-						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
-						<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="../../../img/activity_ads01.jpg" data-id=""/></li>
-						</ul>
+					<ul type="1" class="rate-img-list mui-pull-left">
+
+						<!--<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="file:///storage/emulated/0/MagazineUnlock/magazine-unlock-01-2.3.871-_1bd2f4e07cf244cc99af0eceb7618c31.jpg" data-preview-src="" data-preview-group="1" data-id="/images/21/f2/7e/fee13c6c2bb4fa11ad42730dd2061dfb399492d9.jpg" /></li>-->
+					</ul>
 					<div class="goods_info_detail_content">
 						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>					
+						</div>
 					</div>
-					
+
 				</div>
-				<div class="goods_info_detail">
+				<div id="ul2" class="goods_info_detail">
 					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>组织机构代码</div>
+					<ul type="2" class="rate-img-list mui-pull-left">
+					</ul>
 					<div class="goods_info_detail_content">
-						<div class="goods_info_detail_img_padding">
+						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>
 					</div>
 				</div>
-				<div class="goods_info_detail">
-					<div class="goods_info_detail_label">税务登记证</div>
+				<div id="ul3" class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>税务登记证</div>
+					<ul type="3" class="rate-img-list mui-pull-left">
+					</ul>
 					<div class="goods_info_detail_content">
-						<div class="goods_info_detail_img_padding">
+						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>
 					</div>
 				</div>
-				<div class="goods_info_detail">
-					<div class="goods_info_detail_label">开户许可证</div>
+				<div id="ul4" class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>开户许可证</div>
+					<ul type="4" class="rate-img-list mui-pull-left">
+					</ul>
 					<div class="goods_info_detail_content">
-						<div class="goods_info_detail_img_padding">
+						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>
 					</div>
 				</div>
-				<div class="goods_info_detail">
-					<div class="goods_info_detail_label">企业认证授权书</div>
+				<div id="ul5" class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>企业认证授权书</div>
+					<ul type="5" class="rate-img-list mui-pull-left">
+					</ul>
 					<div class="goods_info_detail_content">
-						<div class="goods_info_detail_img_padding">
+						<div class="rate-img-box goods_info_detail_img_padding">
+							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
+						</div>
+					</div>
+				</div>
+				<div id="ul6" class="goods_info_detail">
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>开票信息</div>
+					<ul type="6" class="rate-img-list mui-pull-left">
+					</ul>
+					<div class="goods_info_detail_content">
+						<div class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>
 					</div>
@@ -458,6 +659,7 @@
 			</section>
 
 		</div>
+
 		<div id="choose_img" class="mui-popover mui-popover-bottom mui-popover-action">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell fonts font-gray-40">亲，您还可以上传<span class="img-count">5</span>张照片</li>
@@ -475,8 +677,8 @@
 			</ul>
 		</div>
 		<nav class="mui-bar bbc-bar-tab submit-bottom-div">
-			<div class="submit-bottom-button1">提交认证</div>
-			<div class="submit-bottom-button2">变更认证</div>
+			<!--<div id="tj" class="submit-bottom-button1">提交认证</div>
+			<div id="bg" class="submit-bottom-button2">变更认证</div>-->
 		</nav>
 
 		<script src="../../../js/zepto.js"></script>
@@ -485,141 +687,359 @@
 		<script src="../../../js/template.min.js"></script>
 		<script src="../../../config.js"></script>
 		<script src="../../../js/app.js"></script>
+		<script src="../../../js/mui.zoom.js"></script>
+		<script src="../../../js/mui.previewimage.js"></script>
 
 		<script type="text/javascript">
-			mui.plusReady(function() {
-			var mode = plus.webview.currentWebview().mode;
-			var state = app.getState();
-			var param = {
-				queryData: {
-					'method': config.apimethod.checkout,
-					'accessToken': state.token,
-					'mode': mode
-				}
-			}
+			var val_payPlatform = $('input[type=radio][name=radio2]').val()
+			$('#ul2').hide();
+			$('#ul3').hide();
+			$('#ul4').hide();
+			$('#ul5').hide();
 
-			var maxcount = 0;
-			//上传图片
-			$('.rate-img-box').on('tap', function() {
-				that = $(this).parent().parent();
-				maxcount = 5 - that.find('.rate-img-list').find('li').length;
-				$('.img-count').html(maxcount);
-				mui('#choose_img').popover('toggle');
+			$('input[type=radio][name=radio2]').change(function() {
+				if(this.value == '3') {
+					$('#ul1').show();
+					$('#ul6').show();
+					$('#ul2').hide();
+					$('#ul3').hide();
+					$('#ul4').hide();
+					$('#ul5').hide();
+				} else if(this.value == '5') {
+					$('#ul1').show();
+					$('#ul6').hide();
+					$('#ul2').show();
+					$('#ul3').show();
+					$('#ul4').show();
+					$('#ul5').show();
+				}
 			});
-			$('.action-camera').on('tap', function() {
-				getImage();
-				mui('#choose_img').popover('hide');
+			mui.previewImage();
+			$(".rate-img-list").on("click", ".delete", function() {
+				$(this).parent().remove();
 			});
-			$('.action-gallery').on('tap', function() {
-				galleryImgsMaximum(maxcount);
-				mui('#choose_img').popover('hide');
+
+			mui.plusReady(function() {
+				var mode = plus.webview.currentWebview().mode;
+				var state = app.getState();
+
+				var param = {
+					queryData: {
+						'method': config.apimethod.enterpriseinfo,
+						'accessToken': state.token
+					},
+					method: 'GET'
+				}
+				$.dataRequest(param, function(rs) {
+					var data = rs.data.enterprise;
+					if(data.business_name != "" && data.business_name != null) {
+						$('.submit-bottom-div').append('<div class="submit-bottom-button2">提交认证</div><div class="submit-bottom-button1">变更认证</div>');
+					} else {
+						$('.submit-bottom-div').append('<div class="submit-bottom-button1">提交认证</div><div class="submit-bottom-button2">变更认证</div>');
+					}
+
+					$("#business_name").val(data.business_name);
+					$("#business_tax").val(data.business_tax);
+					$("#business_person").val(data.business_person);
+					$("#business_linkman").val(data.business_linkman);
+					$("#business_linkmantel").val(data.business_linkmantel);
+					$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
+					$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
+					if(data.certificate_type == '3') {
+						var imgs = data.business_license_three.split(',');
+						var imgstr = "";
+						for(var i in imgs) {
+							imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
+						}
+
+						$("#ul1").find('.rate-img-list').append(imgstr);
+					}
+				});
+
+				//				$('#test').on('tap', function() {
+				//					var param = {
+				//						queryData: {
+				//							'method': config.apimethod.enterpriseinfo,
+				//							'accessToken': state.token
+				//						},
+				//						method: 'GET'
+				//					}
+				//					$.dataRequest(param, function(rs) {
+				//						var data = rs.data.enterprise;
+				//						$("#business_name").val(data.business_name);
+				//						$("#business_tax").val(data.business_tax);
+				//						$("#business_person").val(data.business_person);
+				//						$("#business_linkman").val(data.business_linkman);
+				//						$("#business_linkmantel").val(data.business_linkmantel);
+				//						$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
+				//						$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
+				//						if(data.certificate_type == '3') {
+				//							var imgs = data.business_license_three.split(',');
+				//							var imgstr = "";
+				//							for(var i in imgs) {
+				//								imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
+				//							}
+				//
+				//							$("#ul1").find('.rate-img-list').append(imgstr);
+				//						}
+				//					});
+				//
+				//				});
+				$(".submit-bottom-div").on("click", ".submit-bottom-button1", function() {
+					var business_name = $("#business_name").val();
+					var business_tax = $("#business_tax").val();
+					var business_person = $("#business_person").val();
+					var business_type = $('input[type=radio][name=radio1]').val();
+					var business_linkman = $("#business_linkman").val();
+					var business_linkmantel = $("#business_linkmantel").val();
+					var certificate_type = $('input[type=radio][name=radio2]').val();
+					var business_license_three = '';
+					var business_license_five = '';
+					var tissue_code = '';
+					var tax_proof = '';
+					var license_proof = '';
+					var business_impower = '';
+
+					if(business_name == "" || business_name == null) {
+						plus.nativeUI.alert('请输入公司名称');
+						return;
+					}
+					if(business_tax == "" || business_tax == null) {
+						plus.nativeUI.alert('请输入税号');
+						return;
+					}
+					if(business_person == "" || business_person == null) {
+						plus.nativeUI.alert('请输入公司法人');
+						return;
+					}
+					if(business_linkman == "" || business_linkman == null) {
+						plus.nativeUI.alert('请输入指定联系人');
+						return;
+					}
+					if(business_linkmantel == "" || business_linkmantel == null) {
+						plus.nativeUI.alert('请输入指定联系人手机');
+						return;
+					}
+
+					var img_ids = [];
+					for(var i = 1; i < 7; i++) {
+						img_ids = [];
+						var img_list = $('#ul' + i).find('.rate-img-list').find('li');
+						for(var j = 0; j < img_list.length; j++) {
+							img_ids.push($(img_list[j]).find('img').attr('data-id'));
+						}
+						var img_str = img_ids.join(',');
+						if(i == 1)
+							business_license_three = img_str;
+						else if(i == 6)
+							business_license_five = img_str;
+						else if(i == 2)
+							tissue_code = img_str;
+						else if(i == 3)
+							tax_proof = img_str;
+						else if(i == 4)
+							license_proof = img_str;
+						else if(i == 5)
+							business_impower = img_str;
+					}
+
+					if(certificate_type == '3') {
+						if(business_license_three == "" || business_license_three == null) {
+							plus.nativeUI.alert('请上传营业执照');
+							return;
+						}
+						if(business_license_five == "" || business_license_five == null) {
+							plus.nativeUI.alert('请上传开票信息');
+							return;
+						}
+					}
+					if(certificate_type == '5') {
+						if(business_license_three == "" || business_license_three == null) {
+							plus.nativeUI.alert('请上传营业执照');
+							return;
+						}
+						if(tissue_code == "" || tissue_code == null) {
+							plus.nativeUI.alert('请上传组织机构证');
+							return;
+						}
+						if(tax_proof == "" || tax_proof == null) {
+							plus.nativeUI.alert('请上传税务许可证');
+							return;
+						}
+						if(license_proof == "" || license_proof == null) {
+							plus.nativeUI.alert('请上传开户许可证');
+							return;
+						}
+						if(business_impower == "" || business_impower == null) {
+							plus.nativeUI.alert('请上传企业认证授权书');
+							return;
+						}
+					}
+
+					var param = {
+						queryData: {
+							'method': config.apimethod.enterpriseauth,
+							'accessToken': state.token,
+							'business_name': business_name,
+							'business_tax': business_tax,
+							'business_person': business_person,
+							'business_type': business_type,
+							'business_linkman': business_linkman,
+							'business_linkmantel': business_linkmantel,
+							'certificate_type': certificate_type,
+							'business_license_three': business_license_three,
+							'business_license_five': business_license_five,
+							'tissue_code': tissue_code,
+							'tax_proof': tax_proof,
+							'license_proof': license_proof,
+							'business_impower': business_impower
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						plus.nativeUI.alert('提交成功');
+						clicked('_www/view/member/member.html');
+					});
+				});
+
+				var maxcount = 0;
+				//上传图片
+				$('.rate-img-box').on('tap', function() {
+					that = $(this).parent().parent();
+					maxcount = 5 - that.find('.rate-img-list').find('li').length;
+					$('.img-count').html(maxcount);
+					mui('#choose_img').popover('toggle');
+				});
+				$('.action-camera').on('tap', function() {
+					getImage();
+					mui('#choose_img').popover('hide');
+				});
+				$('.action-gallery').on('tap', function() {
+					galleryImgsMaximum(maxcount);
+					mui('#choose_img').popover('hide');
+				});
+				$('.choose-cancel').on('tap', function() {
+					mui('#choose_img').popover('hide');
+				});
+
+				//拍照
+				function getImage() {
+					var cmr = plus.camera.getCamera();
+					cmr.captureImage(function(p) {
+						imgCount = that.find('.rate-img-list').find('img').length + 1;
+						if(imgCount >= 5) {
+							that.find('.rate-img-icon-box').hide();
+						} else {
+							that.find('.rate-img-icon-box').show();
+						}
+						plus.io.resolveLocalFileSystemURL(p, function(entry) {
+							var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+							appendFile(entry.toLocalURL(), name);
+						}, function(e) {
+							log("读取拍照文件错误：" + e.message);
+						});
+					}, function(e) {
+						log("失败：" + e.message);
+					}, {
+						filename: "_doc/camera/",
+						index: 1
+					});
+				}
+
+				//从相册中选择图片
+				function galleryImgsMaximum(maxcount) {
+					// 从相册中选择图片
+					plus.gallery.pick(function(e) {
+						var imgstr = "";
+						imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
+						if(imgCount >= 5) {
+							that.find('.rate-img-icon-box').hide();
+						} else {
+							that.find('.rate-img-icon-box').show();
+						}
+						var name = '';
+						for(var i in e.files) {
+							name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+							appendFile(e.files[i], name);
+						}
+					}, function(e) {
+						//          log( "取消选择图片" );
+					}, {
+						filter: "image",
+						multiple: true,
+						maximum: maxcount,
+						system: false,
+						onmaxed: function() {
+							plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
+						}
+					});
+				}
+				// 添加文件
+				function appendFile(path, imgname) {
+					var img = new Image();
+					img.src = path; // 传过来的图片路径在这里用。
+					var img_id = '';
+					img.onload = function() {
+						var el = this;
+						//生成比例 
+						var w = el.width,
+							h = el.height;
+						if(w > h) {
+							var scale = w / h;
+							w = 1280 || w;
+							h = w / scale;
+						} else {
+							var scale = h / w;
+							h = 1280 || h;
+							w = h / scale;
+						}
+						//生成canvas
+						var canvas = document.createElement('canvas');
+						var ctx = canvas.getContext('2d');
+						if(w > h) {
+							$(canvas).attr({
+								width: w,
+								height: h
+							});
+							ctx.drawImage(el, 0, 0, w, h);
+						} else {
+							$(canvas).attr({
+								width: h,
+								height: w
+							});
+							ctx.drawImage(el, 0, 0, h, w);
+						}
+
+						var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+						upload(path, base64, imgname);
+					}
+				}
+				// 上传文件
+				function upload(localPath, base64, imagename) {
+					plus.nativeUI.showWaiting();
+					//发送数据  
+					var imgParam = {
+						'v': config.apiversion,
+						'format': 'json',
+						'method': config.apimethod.imgupload,
+						'accessToken': state.token,
+						'upload_type': 'base64',
+						'image': base64,
+						'image_input_title': imagename
+					};
+					mui.post(config.server + config.apiname, imgParam, function(rs) {
+						if(rs.errorcode == 0) {
+							plus.nativeUI.closeWaiting();
+							var type = that.find('.rate-img-list').attr("type");
+							var imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + localPath + '" data-preview-src="" data-preview-group="' + type + '" data-id="' + rs.data.image_id + '" /></li>';
+
+							that.find('.rate-img-list').append(imgstr);
+						} else {
+							mui.alert(rs.message);
+						}
+					}, 'json');
+				}
 			});
-			$('.choose-cancel').on('tap', function() {
-				mui('#choose_img').popover('hide');
-			});
-			
-			        //拍照
-        function getImage() {
-          var cmr = plus.camera.getCamera();
-          cmr.captureImage( function ( p ) {
-            imgCount = that.find('.rate-img-list').find('img').length + 1;
-            if(imgCount >= 5) {
-              that.find('.rate-img-icon-box').hide();
-            } else {
-              that.find('.rate-img-icon-box').show();
-            }
-            plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
-              var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
-              appendFile(entry.toLocalURL(), name);
-            }, function ( e ) {
-              log( "读取拍照文件错误："+e.message );
-            });
-          }, function ( e ) {
-            log( "失败："+e.message );
-          }, {filename:"_doc/camera/",index:1} );
-        }
-       
-        //从相册中选择图片
-        function galleryImgsMaximum(maxcount){
-          // 从相册中选择图片
-          plus.gallery.pick( function(e){
-            var imgstr = "";
-            imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
-            if(imgCount >= 5) {
-              that.find('.rate-img-icon-box').hide();
-            } else {
-              that.find('.rate-img-icon-box').show();
-            }
-            var name = '';
-            for(var i in e.files){
-              name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
-              appendFile(e.files[i], name);
-            }
-          }, function ( e ) {
-//          log( "取消选择图片" );
-          },{filter:"image",multiple:true,maximum:maxcount,system:false,onmaxed:function(){
-            plus.nativeUI.alert('最多只能选择'+maxcount+'张图片');
-          }});
-        }
-        // 添加文件
-        function appendFile(path, imgname){
-          var img = new Image();
-          img.src = path;        // 传过来的图片路径在这里用。
-          var img_id = '';
-          img.onload = function () {
-              var el = this;
-              //生成比例 
-              var w = el.width,
-                  h = el.height;
-                  if(w>h){
-                    var scale = w / h; 
-                    w = 1280 || w;
-                    h = w / scale;
-                  }else{
-                    var scale = h / w; 
-                    h = 1280 || h; 
-                    w = h / scale;
-                  }
-              //生成canvas
-              var canvas = document.createElement('canvas');
-              var ctx = canvas.getContext('2d');
-              if(w>h){
-                $(canvas).attr({width : w, height : h});
-                ctx.drawImage(el, 0, 0, w, h);
-              }else{
-                $(canvas).attr({width : h, height : w});
-                ctx.drawImage(el, 0, 0, h, w);
-              }
-              
-              var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8 );   //1最清晰，越低越模糊。
-              upload(path, base64, imgname);
-            }
-        }
-        // 上传文件
-        function upload(localPath, base64, imagename){
-          plus.nativeUI.showWaiting();
-          //发送数据  
-          var imgParam = {
-              'v': config.apiversion,
-              'format': 'json',
-              'method': config.apimethod.imgupload,
-              'accessToken': state.token,
-              'upload_type': 'base64',
-              'image': base64,
-              'image_input_title': imagename
-          };
-          mui.post(config.server + config.apiname,imgParam,function(rs){
-              if(rs.errorcode==0){
-                plus.nativeUI.closeWaiting();
-                var imgstr = '<li><img src="' + localPath + '" data-id="'+rs.data.image_id+'"/></li>'
-                that.find('.rate-img-list').append(imgstr);
-              }else{
-                mui.alert(rs.message);
-              }
-            },'json'
-          );
-        }
-	});
 		</script>
 
 </html>
