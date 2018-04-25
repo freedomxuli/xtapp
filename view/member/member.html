@@ -272,18 +272,18 @@
 
   <body>
     <div class="user-header box">
-    	<div class="shezhi"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
+    	<div class="shezhi"><a id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></a></div>
     	<div class="hyzx-title">我的账户</div>
     	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>
 <!--      <div class='wave one'></div>
       <div class='wave two'></div>
       <div class='wave three'></div>-->
-      <a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>
+      <!--<a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>-->
 <!--      <div id="login" class="user-login" style="display: none;">
         <div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>
         <div>会员登录</div>
       </div>-->
-      <div class="user-login-head" >
+      <div id="nologin" class="user-login-head" >
         <!--<div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>-->
         <div><img class="head-img" src="../../img/hyzx/head-img.png"></div>
         <span class="head-font-wel">WELCOME</span>
@@ -469,7 +469,10 @@
             //document.getElementById('account').innerText = state.account;
             document.getElementById('setting').style.display = "block";
             document.getElementById('login').style.display = "none";
+             document.getElementById('nologin').style.display = "none";
             document.getElementById('user_info').style.display = "block";
+            
+            
             var param = {
               queryData: {
                 'method': config.apimethod.member,
@@ -483,7 +486,7 @@
               document.getElementById('trade_send_num').innerText = data.wait_send_goods_num;
               document.getElementById('trade_receive_num').innerText = data.wait_confirm_goods_num;
               document.getElementById('trade_rate_num').innerText = data.notrate_num;
-              document.getElementById('canceled_num').innerText = data.canceled_num;
+            //  document.getElementById('canceled_num').innerText = data.canceled_num;
               document.getElementById('voucher').innerText = data.voucher_num;
               document.getElementById('coupon').innerText = data.coupon_num;
               document.getElementById('integral').innerText = data.point;
@@ -491,12 +494,12 @@
               //document.getElementById('grade_logo').src = data.gradeInfo.grade_logo;
               document.getElementById('grade_name').innerText = data.gradeInfo.grade_name;
               document.getElementById('account').innerText = data.username ? data.username : state.account;
-              var badges = document.querySelectorAll('.bbc-badge');
-              for(var i = 0; i < badges.length; i++) {
-                if(state.token && parseInt(badges[i].innerText) > 0) {
-                  badges[i].style.display = "block";
-                }
-              }
+//            var badges = document.querySelectorAll('.bbc-badge');
+//            for(var i = 0; i < badges.length; i++) {
+//              if(state.token && parseInt(badges[i].innerText) > 0) {
+//                badges[i].style.display = "block";
+//              }
+//            }
             });
           } else {
             document.getElementById('trade_pay_num').innerText = 0;
@@ -508,6 +511,7 @@
             document.getElementById('integral').innerText = 0;
             document.getElementById('setting').style.display = "none";
             document.getElementById('login').style.display = "block";
+             document.getElementById('nologin').style.display = "block";
             document.getElementById('user_info').style.display = "none";
           }
         }

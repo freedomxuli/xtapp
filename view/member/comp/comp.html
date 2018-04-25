@@ -645,16 +645,6 @@
 						</div>
 					</div>
 				</div>
-				<div id="ul6" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>开票信息</div>
-					<ul type="6" class="rate-img-list mui-pull-left">
-					</ul>
-					<div class="goods_info_detail_content">
-						<div class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-				</div>
 
 			</section>
 
@@ -700,14 +690,12 @@
 			$('input[type=radio][name=radio2]').change(function() {
 				if(this.value == '3') {
 					$('#ul1').show();
-					$('#ul6').show();
 					$('#ul2').hide();
 					$('#ul3').hide();
 					$('#ul4').hide();
 					$('#ul5').hide();
 				} else if(this.value == '5') {
 					$('#ul1').show();
-					$('#ul6').hide();
 					$('#ul2').show();
 					$('#ul3').show();
 					$('#ul4').show();
@@ -746,45 +734,47 @@
 					$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
 					$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
 					if(data.certificate_type == '3') {
-						var imgs = data.business_license_three.split(',');
+						var imgs = data.business_license.split(',');
 						var imgstr = "";
 						for(var i in imgs) {
-							imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
+							imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + imgs[i] + '" /></li>';
 						}
-
 						$("#ul1").find('.rate-img-list').append(imgstr);
+					}
+					else{
+						
 					}
 				});
 
-				//				$('#test').on('tap', function() {
-				//					var param = {
-				//						queryData: {
-				//							'method': config.apimethod.enterpriseinfo,
-				//							'accessToken': state.token
-				//						},
-				//						method: 'GET'
-				//					}
-				//					$.dataRequest(param, function(rs) {
-				//						var data = rs.data.enterprise;
-				//						$("#business_name").val(data.business_name);
-				//						$("#business_tax").val(data.business_tax);
-				//						$("#business_person").val(data.business_person);
-				//						$("#business_linkman").val(data.business_linkman);
-				//						$("#business_linkmantel").val(data.business_linkmantel);
-				//						$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
-				//						$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
-				//						if(data.certificate_type == '3') {
-				//							var imgs = data.business_license_three.split(',');
-				//							var imgstr = "";
-				//							for(var i in imgs) {
-				//								imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
-				//							}
-				//
-				//							$("#ul1").find('.rate-img-list').append(imgstr);
-				//						}
-				//					});
-				//
-				//				});
+//				$('#tj').on('tap', function() {
+//					var param = {
+//						queryData: {
+//							'method': config.apimethod.enterpriseinfo,
+//							'accessToken': state.token
+//						},
+//						method: 'GET'
+//					}
+//					$.dataRequest(param, function(rs) {
+//						var data = rs.data.enterprise;
+//						$("#business_name").val(data.business_name);
+//						$("#business_tax").val(data.business_tax);
+//						$("#business_person").val(data.business_person);
+//						$("#business_linkman").val(data.business_linkman);
+//						$("#business_linkmantel").val(data.business_linkmantel);
+//						$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
+//						$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
+//						if(data.certificate_type == '3') {
+//							var imgs = data.business_license_three.split(',');
+//							var imgstr = "";
+//							for(var i in imgs) {
+//								imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
+//							}
+//
+//							$("#ul1").find('.rate-img-list').append(imgstr);
+//						}
+//					});
+//
+//				});
 				$(".submit-bottom-div").on("click", ".submit-bottom-button1", function() {
 					var business_name = $("#business_name").val();
 					var business_tax = $("#business_tax").val();
@@ -793,8 +783,7 @@
 					var business_linkman = $("#business_linkman").val();
 					var business_linkmantel = $("#business_linkmantel").val();
 					var certificate_type = $('input[type=radio][name=radio2]').val();
-					var business_license_three = '';
-					var business_license_five = '';
+					var business_license= '';
 					var tissue_code = '';
 					var tax_proof = '';
 					var license_proof = '';
@@ -822,17 +811,15 @@
 					}
 
 					var img_ids = [];
-					for(var i = 1; i < 7; i++) {
+					for(var i = 1; i < 6; i++) {
 						img_ids = [];
 						var img_list = $('#ul' + i).find('.rate-img-list').find('li');
 						for(var j = 0; j < img_list.length; j++) {
 							img_ids.push($(img_list[j]).find('img').attr('data-id'));
 						}
-						var img_str = img_ids.join(',');
+						var img_str = img_ids.join(';');
 						if(i == 1)
-							business_license_three = img_str;
-						else if(i == 6)
-							business_license_five = img_str;
+							business_license = img_str;
 						else if(i == 2)
 							tissue_code = img_str;
 						else if(i == 3)
@@ -844,17 +831,14 @@
 					}
 
 					if(certificate_type == '3') {
-						if(business_license_three == "" || business_license_three == null) {
+						if(business_license == "" || business_license == null) {
 							plus.nativeUI.alert('请上传营业执照');
 							return;
 						}
-						if(business_license_five == "" || business_license_five == null) {
-							plus.nativeUI.alert('请上传开票信息');
-							return;
-						}
+					
 					}
 					if(certificate_type == '5') {
-						if(business_license_three == "" || business_license_three == null) {
+						if(business_license == "" || business_license == null) {
 							plus.nativeUI.alert('请上传营业执照');
 							return;
 						}
@@ -887,8 +871,7 @@
 							'business_linkman': business_linkman,
 							'business_linkmantel': business_linkmantel,
 							'certificate_type': certificate_type,
-							'business_license_three': business_license_three,
-							'business_license_five': business_license_five,
+							'business_license_three': business_license,						
 							'tissue_code': tissue_code,
 							'tax_proof': tax_proof,
 							'license_proof': license_proof,
