@@ -1,351 +1,367 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>英航工作室</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>英航工作室</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <style type="text/css">
-    .box {
-      height: 15rem;
-      position: relative;
-      overflow: hidden;
-      background: #FFF;
-      transform: translate3d(0, 0, 0); }
-
-     .box:after {
-	      content: '';
-	      display: block;
-	      left: 0;
-	      top: 0;
-	      width: 100%;
-	      height: 100%;
-	      /*background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));*/
-	      background: url(../../img/hyzx/background.png);
-	      z-index: 5;
-	      transform: translate3d(0, 0, 0); 
-      }
-
-    	 .wave {
-      opacity: .4;
-      position: absolute;
-      top: 3%;
-      left: 50%;
-      background: #0af;
-      width: 800px;
-      height: 800px;
-      margin-left: -400px;
-      margin-top: -600px;
-      transform-origin: 50% 48%;
-      border-radius: 43%;
-      animation: drift 20000ms infinite linear; }
-
-    .wave.three {
-      animation: drift 19500ms infinite linear; }
-
-    .wave.two {
-      animation: drift 22000ms infinite linear;
-      opacity: .1;
-      background: yellow; }
-
-    @keyframes drift {
-      from {
-        transform: rotate(0deg); }
-      from {
-        transform: rotate(360deg); } }
-
-      .user-header {
-        min-height: 12rem;
-      }
-      .shezhi{
-      	position: absolute;
-      	left: 0px;
-      	top: 0px;
-      	z-index: 5;
-      	padding: 1rem 1rem;
-      }
-      
-      .szicon{
-      	height: 1.2rem;
-      	width: 1.2rem;
-      }
-      
-      .hyzx-title{
-      	position: absolute;
-			  left: 5rem;
-			  top: 0;
-			  right: 5rem;
-			  bottom: 0;
-			  text-align: center;
-			  color: #FFFFFF;
-			  font-size: 1rem;
-			  z-index: 5;
-			  overflow: hidden;
-			  white-space: nowrap;
-			  text-overflow: ellipsis;
-			  vertical-align: middle;
-			  padding: 1rem 0rem;
-      }
-      
-      .wdxx{
-      	position: absolute;
-      	right: 0px;
-      	top: 0px;
-      	z-index: 5;
-      	padding: 1rem 1rem;
-      }
-      
-      .user-login-head{
-      	position: absolute;
-			  top: 6rem;
-			  left: 1.5rem;
-			  right: 0;
-			  height: 10rem;
-			  z-index: 10;
-      }
-      
-      .head-img{
-      	height: 4rem;
-      	width: 4rem;
-      }
-      
-      .head-font-wel{
-      	position: absolute;
-      	font-family: "arial rounded mt bold";
-      	font-weight: bold;
-      	font-size: 1.2rem;
-      	color: #ffffff;
-      	top: 0.2rem;
-      	left: 5rem;
-			  right: 0;
-      	z-index: 10;
-      }
-      
-      .head-font-font{
-      	position: absolute;
-      	font-family: "microsoft yahei";
-      	font-size: 0.8rem;
-      	color: #ffffff;
-      	top: 2rem;
-      	left: 5rem;
-			  right: 0;
-      	z-index: 10;
-      }
-      
-      .user-login-button{
-      	position: absolute;
-      	font-family: "microsoft yahei";
-      	font-size: 0.85rem;
-			  top: 10rem;
-			  left: 6.5rem;
-			  right: 1.5rem;
-			  height: 2.5rem;
-			  line-height: 2.5rem;
-			  z-index: 10;
-			  background-color: #f33e35;
-			  text-align: center;
-			  border-radius: 0.4rem;
-      }
-      
-      .zc-class{
-      	background-color: #b63e3e;
-      }
-      
-      .assets-data{
-      	color:#d89998;
-      }
-      
-      .order-img{
-      	height: 1.4rem;
-      	width: 1.4rem;
-      }
-      
-      .sel-icon{
-      	height: 1.6rem !important;
-      	width: 1.4rem !important;
-      	float: left;
-      	margin: 0 auto;
-      	text-align: center; 
-      	position:relative;
-      	left: 40%;
-      }
-      
-      .fk-icon{
-      	height: 1.6rem !important;
-      	width: 1.8rem !important;
-      	float: left;
-      	margin: 0 auto;
-      	text-align: center; 
-      	position:relative;
-      	left: 40%;
-      }
-      
-       .nh-icon{
-      	height: 1.6rem !important;
-      	width: 1.6rem !important;
-      	float: left;
-      	margin: 0 auto;
-      	text-align: center; 
-      	position:relative;
-      	left: 40%;
-      }
-      
-      .kp-icon{
-      	height: 1.6rem !important;
-      	width: 1.6rem !important;
-      	float: left;
-      	margin: 0 auto;
-      	text-align: center; 
-      	position:relative;
-      	left: 40%;
-      }
-      
-      .yck-font-1{
-      	position:relative;
-      	left: 21%;
-      }
-      
-      .yck-font-2{
-      	position:relative;
-      	left: 21%;
-      	color: #666666;
-      	font-family: "arial rounded mt bold";
-      	font-weight: bold;
-      	font-size: 1.45rem;
-      }
-      
-      .yck-font-3{
-      	width: 75%;
-      	position:relative;
-      	left: 21%;
-      	background-color: #e35d4c;
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 2rem;
-      	color: #ffffff;
-      }
-      
-      .yck-font-5{
-      	position:relative;
-      	left: 7%;
-      }
-      
-      .yck-font-6{
-      	position:relative;
-      	left: 7%;
-      	color: #666666;
-      	font-family: "arial rounded mt bold";
-      	font-weight: bold;
-      	font-size: 1.45rem;
-      }
-      
-      .yck-font-7{
-      	width: 75%;
-      	position:relative;
-      	left: 7%;
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 2rem;
-      	color: #e35d4c;
-      	border:1px solid #e35d4c;
-      }
-      
-      .lineheight-cz {
-			  line-height: 1rem;
+		<link rel="stylesheet" href="../../css/style.css">
+		<style type="text/css">
+			.box {
+				height: 15rem;
+				position: relative;
+				overflow: hidden;
+				background: #FFF;
+				transform: translate3d(0, 0, 0);
 			}
 			
-			.lb-font{
-				color:#666666;
+			.box:after {
+				content: '';
+				display: block;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				/*background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));*/
+				background: url(../../img/hyzx/background.png);
+				z-index: 5;
+				transform: translate3d(0, 0, 0);
+			}
+			
+			.wave {
+				opacity: .4;
+				position: absolute;
+				top: 3%;
+				left: 50%;
+				background: #0af;
+				width: 800px;
+				height: 800px;
+				margin-left: -400px;
+				margin-top: -600px;
+				transform-origin: 50% 48%;
+				border-radius: 43%;
+				animation: drift 20000ms infinite linear;
+			}
+			
+			.wave.three {
+				animation: drift 19500ms infinite linear;
+			}
+			
+			.wave.two {
+				animation: drift 22000ms infinite linear;
+				opacity: .1;
+				background: yellow;
+			}
+			
+			@keyframes drift {
+				from {
+					transform: rotate(0deg);
+				}
+				from {
+					transform: rotate(360deg);
+				}
+			}
+			
+			.user-header {
+				min-height: 12rem;
+			}
+			
+			.shezhi {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				z-index: 5;
+				padding: 1rem 1rem;
+			}
+			
+			.szicon {
+				height: 1.2rem;
+				width: 1.2rem;
+			}
+			
+			.hyzx-title {
+				position: absolute;
+				left: 5rem;
+				top: 0;
+				right: 5rem;
+				bottom: 0;
+				text-align: center;
+				color: #FFFFFF;
+				font-size: 1rem;
+				z-index: 5;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				vertical-align: middle;
+				padding: 1rem 0rem;
+			}
+			
+			.wdxx {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				z-index: 5;
+				padding: 1rem 1rem;
+			}
+			
+			.user-login-head {
+				position: absolute;
+				top: 6rem;
+				left: 1.5rem;
+				right: 0;
+				height: 10rem;
+				z-index: 10;
+			}
+			
+			.head-img {
+				height: 4rem;
+				width: 4rem;
+			}
+			
+			.head-font-wel {
+				position: absolute;
+				font-family: "arial rounded mt bold";
+				font-weight: bold;
+				font-size: 1.2rem;
+				color: #ffffff;
+				top: 0.2rem;
+				left: 5rem;
+				right: 0;
+				z-index: 10;
+			}
+			
+			.head-font-font {
+				position: absolute;
+				font-family: "microsoft yahei";
+				font-size: 0.8rem;
+				color: #ffffff;
+				top: 2rem;
+				left: 5rem;
+				right: 0;
+				z-index: 10;
+			}
+			
+			.user-login-button {
+				position: absolute;
+				font-family: "microsoft yahei";
+				font-size: 0.85rem;
+				top: 10rem;
+				left: 6.5rem;
+				right: 1.5rem;
+				height: 2.5rem;
+				line-height: 2.5rem;
+				z-index: 10;
+				background-color: #f33e35;
+				text-align: center;
+				border-radius: 0.4rem;
+			}
+			
+			.zc-class {
+				background-color: #b63e3e;
+			}
+			
+			.assets-data {
+				color: #d89998;
+			}
+			
+			.order-img {
+				height: 1.4rem;
+				width: 1.4rem;
+			}
+			
+			.sel-icon {
+				height: 1.6rem !important;
+				width: 1.4rem !important;
+				float: left;
+				margin: 0 auto;
+				text-align: center;
+				position: relative;
+				left: 40%;
+			}
+			
+			.fk-icon {
+				height: 1.6rem !important;
+				width: 1.8rem !important;
+				float: left;
+				margin: 0 auto;
+				text-align: center;
+				position: relative;
+				left: 40%;
+			}
+			
+			.nh-icon {
+				height: 1.6rem !important;
+				width: 1.6rem !important;
+				float: left;
+				margin: 0 auto;
+				text-align: center;
+				position: relative;
+				left: 40%;
+			}
+			
+			.kp-icon {
+				height: 1.6rem !important;
+				width: 1.6rem !important;
+				float: left;
+				margin: 0 auto;
+				text-align: center;
+				position: relative;
+				left: 40%;
+			}
+			
+			.yck-font-1 {
+				position: relative;
+				left: 21%;
+			}
+			
+			.yck-font-2 {
+				position: relative;
+				left: 21%;
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-weight: bold;
+				font-size: 1.45rem;
+			}
+			
+			.yck-font-3 {
+				width: 75%;
+				position: relative;
+				left: 21%;
+				background-color: #e35d4c;
+				text-align: center;
+				font-size: 1rem;
+				height: 2rem;
+				color: #ffffff;
+			}
+			
+			.yck-font-5 {
+				position: relative;
+				left: 7%;
+			}
+			
+			.yck-font-6 {
+				position: relative;
+				left: 7%;
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-weight: bold;
+				font-size: 1.45rem;
+			}
+			
+			.yck-font-7 {
+				width: 75%;
+				position: relative;
+				left: 7%;
+				text-align: center;
+				font-size: 1rem;
+				height: 2rem;
+				color: #e35d4c;
+				border: 1px solid #e35d4c;
+			}
+			
+			.lineheight-cz {
+				line-height: 1rem;
+			}
+			
+			.lb-font {
+				color: #666666;
 				margin-left: 0.8rem;
 			}
 			
-			.lbm-font{
-				color:#222222;
+			.lbm-font {
+				color: #222222;
 				margin-left: 0.8rem;
 			}
-    </style>
-  </head>
+		</style>
+	</head>
 
-  <body>
-    <div class="user-header box">
-    	<div class="shezhi"><a id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></a></div>
-    	<div class="hyzx-title">我的账户</div>
-    	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>
-<!--      <div class='wave one'></div>
+	<body>
+		<div class="user-header box">
+			<div class="shezhi">
+				<a id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></a>
+			</div>
+			<div class="hyzx-title">我的账户</div>
+			<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>
+			<!--      <div class='wave one'></div>
       <div class='wave two'></div>
       <div class='wave three'></div>-->
-      <!--<a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>-->
-<!--      <div id="login" class="user-login" style="display: none;">
+			<!--<a id="setting" data-view="_www/view/member/setting.html" class="user-setting bbc-icon bbc-icon-setting" style="display: none;"></a>-->
+			<!--      <div id="login" class="user-login" style="display: none;">
         <div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>
         <div>会员登录</div>
       </div>-->
-      <div id="nologin" class="user-login-head" >
-        <!--<div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>-->
-        <div><img class="head-img" src="../../img/hyzx/head-img.png"></div>
-        <span class="head-font-wel">WELCOME</span>
-        <span class="head-font-font">您还不是会员，登录</span>
-      </div>
-      <div id="login"  class="user-login-button">
-      	<span>去登陆</span> 
-      </div>
-      <div id="user_info" class="user-logined action-clickview" style="display: none;" data-view="_www/view/member/userinfo/userinfo.html">
-        <div class="login-avatar"><i class="bbc-icon bbc-icon-member fontB"></i></div>
-        <div>您好，<span id="account"></span></div>
-        <div><span id="grade_name" class="fontS font-yellow"></span></div>
-      </div>
-    </div>
-    <div class="zc-class">
-		  <div class="box-display content-vertical-padded user-assetses font-gray-20">
-		    <div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">￥1.00</em><br><span class="font-white fontS">红包</span></div>
-		    <div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">1张</em><br><span class="font-white fontS">购物券</span></div>
-		    <div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0张</em><br><span class="font-white fontS">优惠券</span></div>
-		    <div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">248</em><br><span class="font-white fontS">积分</span></div>
-		  </div>
-	  </div>
-    <section class="section-white">
-      <div class="section-title user-title">
-        <div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myorder.png" /> <!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--> <span class="lbm-font">我的订单</span></div>
-        <div class="more-link">
-          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">查看全部</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-      </div>
-      <div class="box-display content-vertical-padded user-orders fontS">
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../../img/hyzx/sh-icon.png" /> <!--<i class="bbc-icon bbc-icon-pay">--><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待审核</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="fk-icon" src="../../img/hyzx/fk-icon.png" /><!--<i class="bbc-icon bbc-icon-package">--><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="nh-icon" src="../../img/hyzx/nh-icon.png" /><!--<i class="bbc-icon bbc-icon-logistics">--><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
-        <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="kp-icon" src="../../img/hyzx/kp-icon.png" /><!--<i class="bbc-icon bbc-icon-message-gap">--><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待开票</a>
-        <!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
-      </div>
-    </section>
-    <section class="section-white">
-      <div class="section-title user-title">
-        <div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myyck.png" /> <!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--> <span class="lbm-font">我的预存款</span></div>
-        <div class="more-link">
-          <a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">交易记录</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-      </div>
-      <div class="box-display content-vertical-padded user-orders fontS">
-        <a class="box-item-flex1 action-clickview font-gray-20">
-        	<span class="yck-font-1 font-gray-20">现金预存款</span>
-        	<br />
-        	<span class="yck-font-2">11797.62</span><span class="yck-font-1 font-gray-0"> 元</span>
-        	<br />
-          <div class="lineheight-cz">　</div>
-        	<div class="yck-font-3"><span>充值</span></div>
-        </a>
-        <a class="box-item-flex1 action-clickview">
-        	<span class="yck-font-5">承兑预存款</span>
-        	<br />
-        	<span class="yck-font-6">11797.62</span><span class="yck-font-5 font-gray-0"> 元</span>
-        	<br />
-        	<div class="lineheight-cz">　</div>
-        	<div class="yck-font-7"><span>提现</span></div>
-        </a>
-      </div>
-    </section>
-<!--    <section class="section-white">
+			<div id="nologin" class="user-login-head">
+				<!--<div class="user-login-avatar bbc-icon bbc-icon-user-s"></div>-->
+				<div><img class="head-img" src="../../img/hyzx/head-img.png"></div>
+				<span class="head-font-wel">WELCOME</span>
+				<span class="head-font-font">您还不是会员，登录</span>
+			</div>
+			<div id="login" class="user-login-button">
+				<span>去登陆</span>
+			</div>
+			<div id="user_info" class="user-logined action-clickview" style="display: none;" data-view="_www/view/member/userinfo/userinfo.html">
+				<div class="login-avatar"><i class="bbc-icon bbc-icon-member fontB"></i></div>
+				<div>您好，<span id="account"></span></div>
+				<div><span id="grade_name" class="fontS font-yellow"></span></div>
+			</div>
+		</div>
+		<div class="zc-class">
+			<div class="box-display content-vertical-padded user-assetses font-gray-20">
+				<div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">￥1.00</em><br><span class="font-white fontS">红包</span></div>
+				<div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">1张</em><br><span class="font-white fontS">购物券</span></div>
+				<div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0张</em><br><span class="font-white fontS">优惠券</span></div>
+				<div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">248</em><br><span class="font-white fontS">积分</span></div>
+			</div>
+		</div>
+		<section class="section-white">
+			<div class="section-title user-title">
+				<div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myorder.png" />
+					<!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--><span class="lbm-font">我的订单</span></div>
+				<div class="more-link">
+					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">查看全部</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+			</div>
+			<div class="box-display content-vertical-padded user-orders fontS">
+				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../../img/hyzx/sh-icon.png" />
+					<!--<i class="bbc-icon bbc-icon-pay">--><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待审核</a>
+				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="fk-icon" src="../../img/hyzx/fk-icon.png" />
+					<!--<i class="bbc-icon bbc-icon-package">--><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
+				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="nh-icon" src="../../img/hyzx/nh-icon.png" />
+					<!--<i class="bbc-icon bbc-icon-logistics">--><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
+				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="kp-icon" src="../../img/hyzx/kp-icon.png" />
+					<!--<i class="bbc-icon bbc-icon-message-gap">--><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待开票</a>
+				<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
+			</div>
+		</section>
+		<section class="section-white">
+			<div class="section-title user-title">
+				<div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myyck.png" />
+					<!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--><span class="lbm-font">我的预存款</span></div>
+				<div class="more-link">
+					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">交易记录</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+			</div>
+			<div class="box-display content-vertical-padded user-orders fontS">
+				<a class="box-item-flex1 action-clickview font-gray-20">
+					<span class="yck-font-1 font-gray-20">现金预存款</span>
+					<br />
+					<span class="yck-font-2">11797.62</span><span class="yck-font-1 font-gray-0"> 元</span>
+					<br />
+					<div class="lineheight-cz">　</div>
+					<div class="yck-font-3"><span>充值</span></div>
+				</a>
+				<a class="box-item-flex1 action-clickview">
+					<span class="yck-font-5">承兑预存款</span>
+					<br />
+					<span class="yck-font-6">11797.62</span><span class="yck-font-5 font-gray-0"> 元</span>
+					<br />
+					<div class="lineheight-cz">　</div>
+					<div class="yck-font-7"><span>提现</span></div>
+				</a>
+			</div>
+		</section>
+		<!--    <section class="section-white">
       <div class="section-title user-title">
         <div class="title-txt"><i class="user-icon bbc-icon bbc-icon-assets user-assets"></i> 我的资产</div>
       </div>
@@ -356,38 +372,38 @@
         <div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">0</em><br><span class="font-gray-20 fontS">积分</span></div>
       </div>
     </section>-->
-    <section class="section-white">
-      <ul class="mui-table-view">
-        <li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/wlgl.png" /><span class="lb-font">物流管理</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/fbzy.png" /><span class="lb-font">发布资源</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/lljr.png" /><span class="lb-font">炉料金融</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/rate/rate.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/dzd.png" /><span class="lb-font">对账单</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/kpxx.png" /><span class="lb-font">开票信息</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/shdz.png" /><span class="lb-font">收货地址</span></a>
-        </li>
-        <li data-needlog="true" data-view="_www/view/member/comp/comp.html" class="mui-table-view-cell action-clickview">
-          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/qyrz.png" /><span class="lb-font">企业认证</span></a>
-        </li>
-      </ul>
-    </section>
-        <section class="section-white">
-	      <ul class="mui-table-view">
-	        <li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
-	          <a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">账户设置</span></a>
-	        </li>
-	      </ul>
-    </section>
+		<section class="section-white">
+			<ul class="mui-table-view">
+				<li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/wlgl.png" /><span class="lb-font">物流管理</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/fbzy.png" /><span class="lb-font">发布资源</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/lljr.png" /><span class="lb-font">炉料金融</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/rate/rate.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/dzd.png" /><span class="lb-font">对账单</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/kpxx.png" /><span class="lb-font">开票信息</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/complaint/complaint.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/shdz.png" /><span class="lb-font">收货地址</span></a>
+				</li>
+				<li data-needlog="true" data-view="_www/view/member/comp/comp.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/qyrz.png" /><span class="lb-font">企业认证</span></a>
+				</li>
+			</ul>
+		</section>
+		<section class="section-white">
+			<ul class="mui-table-view">
+				<li data-needlog="true" data-view="_www/view/member/return/returns.html" class="mui-table-view-cell action-clickview">
+					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">账户设置</span></a>
+				</li>
+			</ul>
+		</section>
 		<section style="height:1.6rem;"></section>
 		<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item" data-webview="_www/view/index.html">
@@ -411,134 +427,141 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
-    <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
-    <script src="../../js/template.min.js"></script>
-    <script src="../../config.js"></script>
-    <script src="../../js/app.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      mui.plusReady(function() {
-        window.addEventListener('refresh', fetchMemberData);
-        fetchMemberData();
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.plusReady(function() {
+				window.addEventListener('refresh', fetchMemberData);
+				fetchMemberData();
 
-        $(window).on('tap', '.action-clickview', function() {
-          var state = app.getState();
-          var _this = $(this).data('view');
-          var needlog = $(this).data('needlog');
-          var data = $(this).data('param');
-          if(_this && _this != '') {
-            if(needlog && needlog == true) {
-              if(state.token) {
-                if(data && data != '') {
-                  clicked(_this, data);
-                } else {
-                  clicked(_this);
-                }
-              } else {
-                var faid = plus.webview.currentWebview().id;
-                clicked('_www/view/passport/login.html', {
-                  'faid': faid,
-                  'entrance': faid
-                }, 'slide-in-bottom');
-              }
-            } else {
-              clicked(_this);
-            }
-          }
-        });
+				$(window).on('tap', '.action-clickview', function() {
+					var state = app.getState();
+					var _this = $(this).data('view');
+					var needlog = $(this).data('needlog');
+					var data = $(this).data('param');
+					if(_this && _this != '') {
+						if(needlog && needlog == true) {
+							if(state.token) {
+								if(data && data != '') {
+									clicked(_this, data);
+								} else {
+									clicked(_this);
+								}
+							} else {
+								var faid = plus.webview.currentWebview().id;
+								clicked('_www/view/passport/login.html', {
+									'faid': faid,
+									'entrance': faid
+								}, 'slide-in-bottom');
+							}
+						} else {
+							clicked(_this);
+						}
+					}
+				});
 
-        $('#setting').on('tap', function() {
-          var _this = $(this).data('view');
-          var faid = plus.webview.currentWebview().id;
-          clicked(_this, {
-            'faid': faid
-          });
-        });
+				$('#setting').on('tap', function() {
+					var _this = $(this).data('view');
+					var faid = plus.webview.currentWebview().id;
+					clicked(_this, {
+						'faid': faid
+					});
+				});
 
-        $('#login').on('tap', function() {
-          var faid = plus.webview.currentWebview().id;
-          clicked('_www/view/passport/login.html', {
-            'faid': faid,
-            'entrance': faid
-          }, 'slide-in-bottom');
-        });
+				$('#login').on('tap', function() {
+					var faid = plus.webview.currentWebview().id;
+					clicked('_www/view/passport/login.html', {
+						'faid': faid,
+						'entrance': faid
+					}, 'slide-in-bottom');
+				});
 
-        function fetchMemberData() {
-          var state = app.getState();
-          if(state.token) {
-            //document.getElementById('account').innerText = state.account;
-            document.getElementById('setting').style.display = "block";
-            document.getElementById('login').style.display = "none";
-             document.getElementById('nologin').style.display = "none";
-            document.getElementById('user_info').style.display = "block";
-            
-            
-            var param = {
-              queryData: {
-                'method': config.apimethod.member,
-                'accessToken': state.token
-              },
-              method: 'GET'
-            }
-            $.dataRequest(param, function(rs) {
-              var data = rs.data;
-              document.getElementById('trade_pay_num').innerText = data.wait_pay_num;
-              document.getElementById('trade_send_num').innerText = data.wait_send_goods_num;
-              document.getElementById('trade_receive_num').innerText = data.wait_confirm_goods_num;
-              document.getElementById('trade_rate_num').innerText = data.notrate_num;
-            //  document.getElementById('canceled_num').innerText = data.canceled_num;
-              document.getElementById('voucher').innerText = data.voucher_num;
-              document.getElementById('coupon').innerText = data.coupon_num;
-              document.getElementById('integral').innerText = data.point;
-              document.getElementById('redpackets').innerText = Currency.format(data.hongbaoCount.hongbao_total);
-              //document.getElementById('grade_logo').src = data.gradeInfo.grade_logo;
-              document.getElementById('grade_name').innerText = data.gradeInfo.grade_name;
-              document.getElementById('account').innerText = data.username ? data.username : state.account;
-//            var badges = document.querySelectorAll('.bbc-badge');
-//            for(var i = 0; i < badges.length; i++) {
-//              if(state.token && parseInt(badges[i].innerText) > 0) {
-//                badges[i].style.display = "block";
-//              }
-//            }
-            });
-          } else {
-            document.getElementById('trade_pay_num').innerText = 0;
-            document.getElementById('trade_send_num').innerText = 0;
-            document.getElementById('trade_receive_num').innerText = 0;
-            document.getElementById('trade_rate_num').innerText = 0;
-            //document.getElementById('canceled_num').innerText = 0;
-            document.getElementById('coupon').innerText = 0;
-            document.getElementById('integral').innerText = 0;
-            document.getElementById('setting').style.display = "none";
-            document.getElementById('login').style.display = "block";
-             document.getElementById('nologin').style.display = "block";
-            document.getElementById('user_info').style.display = "none";
-          }
-        }
-      });
+				function fetchMemberData() {
+					var state = app.getState();
+					if(state.token) {
+						//document.getElementById('account').innerText = state.account;
+						document.getElementById('setting').style.display = "block";
+						document.getElementById('login').style.display = "none";
+						document.getElementById('nologin').style.display = "none";
+						document.getElementById('user_info').style.display = "block";
 
-      $('.bbc-tab-item').on('tap', function() {
-        var webview = $(this).data('webview');
-        if(webview) {
-          mui.openWindow({
-            url: webview,
-            id: webview,
-            createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-            show: {
-              autoShow: true, //页面loaded事件发生后自动显示，默认为true
-              aniShow: 'none'
-            },
-            waiting: {
-              autoShow: true //自动显示等待框，默认为true
-            }
-          });
-          var openw = plus.webview.getWebviewById(webview);
-          if(openw) {
-            mui.fire(openw, 'refresh');
-          }
-        }
-      });
-    </script>
-  </body>
+						var param = {
+							queryData: {
+								'method': config.apimethod.member,
+								'accessToken': state.token
+							},
+							method: 'GET'
+						}
+						$.dataRequest(param, function(rs) {
+							var data = rs.data;
+							document.getElementById('trade_pay_num').innerText = data.wait_pay_num;
+							document.getElementById('trade_send_num').innerText = data.wait_send_goods_num;
+							document.getElementById('trade_receive_num').innerText = data.wait_confirm_goods_num;
+							document.getElementById('trade_rate_num').innerText = data.notrate_num;
+							//  document.getElementById('canceled_num').innerText = data.canceled_num;
+							document.getElementById('voucher').innerText = data.voucher_num;
+							document.getElementById('coupon').innerText = data.coupon_num;
+							document.getElementById('integral').innerText = data.point;
+							document.getElementById('redpackets').innerText = Currency.format(data.hongbaoCount.hongbao_total);
+							//document.getElementById('grade_logo').src = data.gradeInfo.grade_logo;
+							document.getElementById('grade_name').innerText = data.gradeInfo.grade_name;
+							document.getElementById('account').innerText = data.username ? data.username : state.account;
+							//            var badges = document.querySelectorAll('.bbc-badge');
+							//            for(var i = 0; i < badges.length; i++) {
+							//              if(state.token && parseInt(badges[i].innerText) > 0) {
+							//                badges[i].style.display = "block";
+							//              }
+							//            }
+						});
+					} else {
+						document.getElementById('trade_pay_num').innerText = 0;
+						document.getElementById('trade_send_num').innerText = 0;
+						document.getElementById('trade_receive_num').innerText = 0;
+						document.getElementById('trade_rate_num').innerText = 0;
+						//document.getElementById('canceled_num').innerText = 0;
+						document.getElementById('coupon').innerText = 0;
+						document.getElementById('integral').innerText = 0;
+						document.getElementById('setting').style.display = "none";
+						document.getElementById('login').style.display = "block";
+						document.getElementById('nologin').style.display = "block";
+						document.getElementById('user_info').style.display = "none";
+					}
+				}
+			});
+
+			$('.bbc-tab-item').on('tap', function() {
+				var webview = $(this).data('webview');
+				if(webview) {
+					mui.openWindow({
+						url: webview,
+						id: webview,
+						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+					var openw = plus.webview.getWebviewById(webview);
+					if(openw) {
+						mui.fire(openw, 'refresh');
+					}
+				}
+			});
+
+			$('.yck-font-3').on('tap', function() {
+
+				var faid = plus.webview.currentWebview().id;
+				clicked('_www/view/member/recharge/recharge.html', {
+					'faid': faid
+				});
+			});
+		</script>
+	</body>
 
 </html>

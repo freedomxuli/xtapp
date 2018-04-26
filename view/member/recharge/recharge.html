@@ -523,6 +523,16 @@
 			.hide {
 				display: none;
 			}
+			
+			.bbc-btn-warning {
+				background: #e35d4c;
+				border-color: #e35d4c;
+				font-size: 1.1rem;
+			}
+			
+			.form-op-section {
+				padding-top: 2rem;
+			}
 		</style>
 
 	</head>
@@ -533,7 +543,7 @@
 			<a class="mui-action-back mui-pull-left back-left back-width">
 				<img class="back_img" src="../../../img/item/back_arrow.png" />
 			</a>
-			<h1 class="mui-title title_span">企业认证</h1>
+			<h1 class="mui-title title_span">预存款充值</h1>
 			<a class="message_size">
 				<img class="message_img" src="../../../img/category/message.png" />
 			</a>
@@ -541,119 +551,45 @@
 		<div class="mui-content">
 			<section class="mui-input-group detail-font">
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司名称</div></label>
-					<input id="business_name" type="text" class="mui-input-clear" placeholder="请输入公司名称" required data-caution="请输入公司名称">
-				</div>
-				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>税号</div></label>
-					<input id="business_tax" type="text" class="mui-input-clear" placeholder="请输入税号" required data-caution="请输入税号">
-				</div>
-				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司法人</div></label>
-					<input id="business_person" type="text" class="mui-input-clear" placeholder="请输入公司法人" required data-caution="请输入公司法人">
-				</div>
-				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司法人</div></label>
-					<div class="goods_info_detail_content" id="gsfr">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>充值方式</div></label>
+					<div class="goods_info_detail_content">
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">中间商</label>
-							<input name="radio1" type="radio" value="middle" checked="checked">
+							<label class="radio-text">现金</label>
+							<input name="radio1" type="radio" value="price" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">终端客户</label>
-							<input name="radio1" value="end" type="radio">
+							<label class="radio-text">承兑</label>
+							<input name="radio1" value="accept" type="radio">
 						</div>
 					</div>
 				</div>
+		</div>
+		</div>
+		<div class="mui-content" style="padding-top:0px;">
+
+			<section class="mui-input-group detail-font">
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人</div></label>
-					<input id="business_linkman" type="text" class="mui-input-clear" placeholder="请输入指定联系人" required data-caution="请输入指定联系人">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>充值金额</div></label>
+					<input id="deposit_num" type="number" class="mui-input-clear" placeholder="请输入充值金额" required data-caution="请输入充值金额">
 				</div>
 				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>指定联系人手机号</div></label>
-					<input id="business_linkmantel" type="text" class="mui-input-clear" placeholder="请输入指定联系人手机号" required data-caution="请输入指定联系人手机号">
+					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important"></span>&nbsp&nbsp备&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp注</div></label>
+					<input id="deposit_memo" type="text" class="mui-input-clear" placeholder="请输入备注" required data-caution="请输入备注">
 				</div>
-				<div class="mui-input-row">
-					<div class="goods_info_detail">
-						<div class="goods_info_detail_memo">附件信息（注意营业执照为必填项，所有证件均需盖公章或者合同章。限使用jpg、就jpeg、png、git、bmp格式，且大小为1M内）</div>
-					</div>
-				</div>
-				<div class="mui-input-row">
-					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传证件</div></label>
-					<div class="goods_info_detail_content" id="sczj">
-						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">三证合一</label>
-							<input name="radio2" type="radio" value="3" checked="checked">
-						</div>
-						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">企业五证</label>
-							<input name="radio2" value="5" type="radio">
-						</div>
-					</div>
-				</div>
+
+			</section>
+
+		</div>
+		<div class="mui-content" style="padding-top:0px;">
+
+			<section class="mui-input-group detail-font">
 
 				<div id="ul1" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
+					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传图片凭证</div>
 					<ul type="1" class="rate-img-list mui-pull-left">
-
-						<!--<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="file:///storage/emulated/0/MagazineUnlock/magazine-unlock-01-2.3.871-_1bd2f4e07cf244cc99af0eceb7618c31.jpg" data-preview-src="" data-preview-group="1" data-id="/images/21/f2/7e/fee13c6c2bb4fa11ad42730dd2061dfb399492d9.jpg" /></li>-->
 					</ul>
 					<div class="goods_info_detail_content">
 						<div id="camera1" class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-
-				</div>
-				<div id="ul6" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>营业执照</div>
-					<ul type="6" class="rate-img-list mui-pull-left">
-
-						<!--<li class="imgDiv"><span class="mui-icon mui-icon-close delete"></span><img src="file:///storage/emulated/0/MagazineUnlock/magazine-unlock-01-2.3.871-_1bd2f4e07cf244cc99af0eceb7618c31.jpg" data-preview-src="" data-preview-group="1" data-id="/images/21/f2/7e/fee13c6c2bb4fa11ad42730dd2061dfb399492d9.jpg" /></li>-->
-					</ul>
-					<div class="goods_info_detail_content">
-						<div id="camera6" class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-
-				</div>
-				<div id="ul2" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>组织机构代码</div>
-					<ul type="2" class="rate-img-list mui-pull-left">
-					</ul>
-					<div class="goods_info_detail_content">
-						<div id="camera2" class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-				</div>
-				<div id="ul3" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>税务登记证</div>
-					<ul type="3" class="rate-img-list mui-pull-left">
-					</ul>
-					<div class="goods_info_detail_content">
-						<div id="camera3" class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-				</div>
-				<div id="ul4" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>开户许可证</div>
-					<ul type="4" class="rate-img-list mui-pull-left">
-					</ul>
-					<div class="goods_info_detail_content">
-						<div id="camera4" class="rate-img-box goods_info_detail_img_padding">
-							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
-						</div>
-					</div>
-				</div>
-				<div id="ul5" class="goods_info_detail">
-					<div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>企业认证授权书</div>
-					<ul type="5" class="rate-img-list mui-pull-left">
-					</ul>
-					<div class="goods_info_detail_content">
-						<div id="camera5" class="rate-img-box goods_info_detail_img_padding">
 							<img class="goods_info_detail_image" src="../../../img/comp/camera.png" />
 						</div>
 					</div>
@@ -662,6 +598,10 @@
 			</section>
 
 		</div>
+
+		<section class="mui-content-padded form-op-section">
+			<button id="tjsh" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交审核</button>
+		</section>
 
 		<div id="choose_img" class="mui-popover mui-popover-bottom mui-popover-action">
 			<ul class="mui-table-view">
@@ -694,237 +634,49 @@
 		<script src="../../../js/mui.previewimage.js"></script>
 
 		<script type="text/javascript">
-			var val_payPlatform = $('input[type=radio][name=radio2]').val()
-			$('#ul2').hide();
-			$('#ul3').hide();
-			$('#ul4').hide();
-			$('#ul5').hide();
-			$('#ul6').hide();
-
-			$('input[type=radio][name=radio2]').change(function() {
-				if(this.value == '3') {
-					$('#ul1').show();
-					$('#ul2').hide();
-					$('#ul3').hide();
-					$('#ul4').hide();
-					$('#ul5').hide();
-					$('#ul6').hide();
-				} else if(this.value == '5') {
-					$('#ul1').hide();
-					$('#ul2').show();
-					$('#ul3').show();
-					$('#ul4').show();
-					$('#ul5').show();
-					$('#ul6').show();
-				}
-			});
 			mui.previewImage();
-			$(".rate-img-list").on("click", ".delete", function() {
-
-				$(this).parent().parent().parent().find('.rate-img-box').show();
-				$(this).parent().remove();
-			});
 
 			mui.plusReady(function() {
 				var mode = plus.webview.currentWebview().mode;
 				var state = app.getState();
 
-				var param = {
-					queryData: {
-						'method': config.apimethod.enterpriseinfo,
-						'accessToken': state.token
-					},
-					method: 'GET'
-				}
-				$.dataRequest(param, function(rs) {
-					var data = rs.data.enterprise;
-					if(data.business_name != "" && data.business_name != null) {
-						$('.submit-bottom-div').append('<div class="submit-bottom-button2">提交认证</div><div class="submit-bottom-button1">变更认证</div>');
+				$("#tjsh").on('tap', function() {
+
+					var recharge_type = $("input[name='radio1']:checked").val();
+					var deposit_num = $("#deposit_num").val();
+					var deposit_memo = $("#deposit_memo").val();
+					var evidence_pic = "";
+					var img_list = $('#ul1').find('.rate-img-list').find('li');
+					if(img_list.length > 0) {
+						evidence_pic = $(img_list[0]).find('img').attr('data-id')
+					}
+					if(deposit_num == "" || deposit_num == null) {
+						plus.nativeUI.alert('请输入充值金额');
+						return;
 					} else {
-						$('.submit-bottom-div').append('<div class="submit-bottom-button1">提交认证</div><div class="submit-bottom-button2">变更认证</div>');
+						if(isNaN(deposit_num)) {
+							plus.nativeUI.alert('充值金额请输入数字');
+							return;
+						}
 					}
-
-					$("#business_name").val(data.business_name);
-					$("#business_tax").val(data.business_tax);
-					$("#business_person").val(data.business_person);
-					$("#business_linkman").val(data.business_linkman);
-					$("#business_linkmantel").val(data.business_linkmantel);
-					$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
-					$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
-					if(data.certificate_type == '3') {
-						$('#ul1').show();
-						$('#ul2').hide();
-						$('#ul3').hide();
-						$('#ul4').hide();
-						$('#ul5').hide();
-						$('#ul6').hide();
-						if(data.business_license != '' && data.business_license != null)
-							$('#camera1').hide();
-						$("#ul1").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="1" data-id="' + data.business_license_imgId + '" /></li>');
-					} else {
-						$('#ul1').hide();
-						$('#ul2').show();
-						$('#ul3').show();
-						$('#ul4').show();
-						$('#ul5').show();
-						$('#ul6').show();
-						if(data.business_license != '' && data.business_license != null)
-							$('#camera6').hide();
-						if(data.tissue_code != '' && data.tissue_code != null)
-							$('#camera2').hide();
-						if(data.tax_proof != '' && data.tax_proof != null)
-							$('#camera3').hide();
-						if(data.license_proof != '' && data.license_proof != null)
-							$('#camera4').hide();
-						if(data.business_impower != '' && data.business_impower != null)
-							$('#camera5').hide();
-						$("#ul6").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="6" data-id="' + data.business_license_imgId+ '" /></li>');
-						$("#ul2").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tissue_code + '" data-preview-src="" data-preview-group="2" data-id="' + data.tissue_code_imgId + '" /></li>');
-						$("#ul3").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tax_proof + '" data-preview-src="" data-preview-group="3" data-id="' + data.tax_proof_imgId + '" /></li>');
-						$("#ul4").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.license_proof + '" data-preview-src="" data-preview-group="4" data-id="' + data.license_proof_imgId + '" /></li>');
-						$("#ul5").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_impower + '" data-preview-src="" data-preview-group="5" data-id="' + data.business_impower_imgId + '" /></li>');
-					}
-				});
-
-				//				$('#tj').on('tap', function() {
-				//					var param = {
-				//						queryData: {
-				//							'method': config.apimethod.enterpriseinfo,
-				//							'accessToken': state.token
-				//						},
-				//						method: 'GET'
-				//					}
-				//					$.dataRequest(param, function(rs) {
-				//						var data = rs.data.enterprise;
-				//						$("#business_name").val(data.business_name);
-				//						$("#business_tax").val(data.business_tax);
-				//						$("#business_person").val(data.business_person);
-				//						$("#business_linkman").val(data.business_linkman);
-				//						$("#business_linkmantel").val(data.business_linkmantel);
-				//						$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
-				//						$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
-				//						if(data.certificate_type == '3') {
-				//							var imgs = data.business_license_three.split(',');
-				//							var imgstr = "";
-				//							for(var i in imgs) {
-				//								imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + imgs[i] + '" data-preview-src="" data-preview-group="1" data-id="' + rs.data.image_id + '" /></li>';
-				//							}
-				//
-				//							$("#ul1").find('.rate-img-list').append(imgstr);
-				//						}
-				//					});
-				//
-				//				});
-				$(".submit-bottom-div").on("click", ".submit-bottom-button1", function() {
-					var business_name = $("#business_name").val();
-					var business_tax = $("#business_tax").val();
-					var business_person = $("#business_person").val();
-					var business_type = $("input[name='radio1']:checked").val();
-					var business_linkman = $("#business_linkman").val();
-					var business_linkmantel = $("#business_linkmantel").val();
-					var certificate_type = $("input[name='radio2']:checked").val();
-					var business_license_three = '';
-					var business_license_five = '';
-					var tissue_code = '';
-					var tax_proof = '';
-					var license_proof = '';
-					var business_impower = '';
-
-					if(business_name == "" || business_name == null) {
-						plus.nativeUI.alert('请输入公司名称');
+					if(evidence_pic == "" || evidence_pic == null) {
+						plus.nativeUI.alert('请上传图片凭证');
 						return;
-					}
-					if(business_tax == "" || business_tax == null) {
-						plus.nativeUI.alert('请输入税号');
-						return;
-					}
-					if(business_person == "" || business_person == null) {
-						plus.nativeUI.alert('请输入公司法人');
-						return;
-					}
-					if(business_linkman == "" || business_linkman == null) {
-						plus.nativeUI.alert('请输入指定联系人');
-						return;
-					}
-					if(business_linkmantel == "" || business_linkmantel == null) {
-						plus.nativeUI.alert('请输入指定联系人手机');
-						return;
-					}
-
-					var img_ids = [];
-					for(var i = 1; i < 7; i++) {
-						img_ids = [];
-						var img_list = $('#ul' + i).find('.rate-img-list').find('li');
-						for(var j = 0; j < img_list.length; j++) {
-							img_ids.push($(img_list[j]).find('img').attr('data-id'));
-						}
-						var img_str = img_ids.join(';');
-						if(i == 1)
-							business_license_three = img_str;
-						else if(i == 2)
-							tissue_code = img_str;
-						else if(i == 3)
-							tax_proof = img_str;
-						else if(i == 4)
-							license_proof = img_str;
-						else if(i == 5)
-							business_impower = img_str;
-						else if(i == 6)
-							business_license_five = img_str;
-					}
-
-					if(certificate_type == '3') {
-						if(business_license_three == "" || business_license_three == null) {
-							plus.nativeUI.alert('请上传营业执照');
-							return;
-						}
-
-					}
-					if(certificate_type == '5') {
-						if(business_license_five == "" || business_license_five == null) {
-							plus.nativeUI.alert('请上传营业执照');
-							return;
-						}
-						if(tissue_code == "" || tissue_code == null) {
-							plus.nativeUI.alert('请上传组织机构证');
-							return;
-						}
-						if(tax_proof == "" || tax_proof == null) {
-							plus.nativeUI.alert('请上传税务登记证');
-							return;
-						}
-						if(license_proof == "" || license_proof == null) {
-							plus.nativeUI.alert('请上传开户许可证');
-							return;
-						}
-						if(business_impower == "" || business_impower == null) {
-							plus.nativeUI.alert('请上传企业认证授权书');
-							return;
-						}
 					}
 
 					var param = {
 						queryData: {
-							'method': config.apimethod.enterpriseauth,
+							'method': config.apimethod.deposit,
 							'accessToken': state.token,
-							'business_name': business_name,
-							'business_tax': business_tax,
-							'business_person': business_person,
-							'business_type': business_type,
-							'business_linkman': business_linkman,
-							'business_linkmantel': business_linkmantel,
-							'certificate_type': certificate_type,
-							'business_license_three': business_license_three,
-							'business_license_five': business_license_five,
-							'tissue_code': tissue_code,
-							'tax_proof': tax_proof,
-							'license_proof': license_proof,
-							'business_impower': business_impower
+							'recharge_type': recharge_type,
+							'deposit_num': deposit_num,
+							'deposit_memo': deposit_memo,
+							'evidence_pic': evidence_pic
 						},
 						method: 'POST'
 					}
 					$.dataRequest(param, function(rs) {
-						mui.toast('认证成功',function(){alert(123)});
+						mui.toast('提交成功成功');
 						clicked('_www/view/member/member.html');
 					});
 				});
