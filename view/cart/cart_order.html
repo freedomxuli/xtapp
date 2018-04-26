@@ -153,6 +153,11 @@
   color: #ea2329 !important;
 }
 
+.space{
+	background-color:#F0EFF5 ;
+	height: 10px;
+}
+
 			/*标题栏*/
 			.mui-bar-backcolor{
       	background-color:#d92e2e;
@@ -450,11 +455,11 @@
         <div class="mui-navbar">
         </div>
         <div class="mui-pages">
-        	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+<!--        	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
 				    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
 				    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
-			   	</header>
+			   	</header>-->
 			   	<div class="address_part">
 			    	<div class="address_part_left">
 			    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
@@ -471,13 +476,13 @@
 			    	</div>
 			   	</div>
 			   	<div class="kind-select">
-		    		<div class="mui-input-row mui-radio mui-left">
+		    		<div data-value='1' class="mui-input-row mui-radio mui-left">
 						<label class="radio-text">现金预存款支付</label>
-						<input name="radio1" type="radio" checked="checked">
+						<input data-value='1' name="radio1" type="radio" checked="checked" value="1">
 					</div>
-					<div class="mui-input-row mui-radio mui-left">
+					<div data-value='2' class="mui-input-row mui-radio mui-left">
 						<label class="radio-text">承兑预存款支付</label>
-						<input name="radio1" type="radio">
+						<input data-value='2' name="radio1" type="radio" value="2">
 					</div>
 		    	</div>
 			   	<div class="goods_detail">
@@ -563,9 +568,9 @@
 			   	</div>
         	</div>
     	  <nav class="mui-bar bbc-bar-tab submit-bottom-div">
-    	  	<div class="submit-bottom-div-flex submit-bottom-div-flex-span">合计<span class="submit-bottom-div-flex-color">￥11797.62</span></div>
+    	  	<div class="submit-bottom-div-flex submit-bottom-div-flex-span">合计<span id="op_all_payment" class="submit-bottom-div-flex-color">￥11797.62</span></div>
     	  	<div class="submit-bottom-div-flex submit-bottom-button1">继续购物</div>
-    	  	<div class="submit-bottom-div-flex submit-bottom-button2">提交订单</div>
+    	  	<div id="create_trade" class="submit-bottom-div-flex submit-bottom-button2">提交订单</div>
 					<!--<div class="submit-bottom-button1">去付款</div>
 					<div class="submit-bottom-button2">取消订单</div>-->
 				</nav>
@@ -578,6 +583,11 @@
         <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
         <h1 class="mui-center mui-title">结算订单</h1>
       </div>
+<!--      <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+      	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
+		    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
+		    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
+      </header>-->
       <div class="mui-page-content">
         <div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-tip">亲，暂无数据～</div></div></div>
       </div>
@@ -647,134 +657,164 @@
   <script src="../../js/app.js"></script>
   
   <script type="text/html" id="checkout_content_new">
-  	<input type="hidden" id="md5" value="<%= md5_cart_info %>">
-  	 <% if(default_address){ %>
-		<div class="address_part">
-    	<div class="address_part_left">
-    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
-    	</div>
-    	<div class="address_part_center">
-    		<div class="address_part_center_top">
-    			<div class="address_part_center_top_left"><%=default_address.name%></div>
-    			<div class="address_part_center_top_right"><%=default_address.mobile%></div>
-    		</div>
-    		<div class="address_part_center_bottom"><%=default_address.area%>-<%=default_address.addr%></div>
-    	</div>
-    	<div class="address_part_right">
-    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
-    	</div>
-   	</div>
-   	<%}else{%>
-    <i class="bbc-icon bbc-icon-location-gap"></i>
-    <div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
-    <input type="hidden" class="op-address" value="">
-    <input type="hidden" name="default_addr_regionid" value="" />
-    <div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
-      <div class="receiver-user">
-        <div id="addr_user" class="receiver-name"></div>
-      </div>
-      <div id="addr_detail" class="add-detail"></div>
-    </div>
-   	<% } %>
-		<div class="kind-select">
-			<input type="hidden" name="pay_type" class="op-pay-type" value="<%=payType.pay_type %>">
-			<div class="mui-input-row mui-radio mui-left">
-				<label class="radio-text">现金预存款支付</label>
-				<input name="radio1" type="radio" checked="checked">
-			</div>
-			<div class="mui-input-row mui-radio mui-left">
-				<label class="radio-text">承兑预存款支付</label>
-				<input name="radio1" type="radio">
-			</div>
-		</div>
-		<% for(var i in cartInfo.resultCartData){ %>
-		<div class="goods_detail">
-   		<div class="goods_shop">
-   			<%=cartInfo.resultCartData[i].shop_name%>
-   		</div>
-   		<% for(var j in cartInfo.resultCartData[i].object){ %>
-   		<div class="goods_memo">
-   			<div class="goods_xq">
-   				<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-<%=cartInfo.resultCartData[i].object[j].pm_name%> <%=cartInfo.resultCartData[i].object[j].guige%>　<%=cartInfo.resultCartData[i].object[j].weight%>吨  
-   			</div>
-   			<div class="goods_address">
-   				<%=cartInfo.resultCartData[i].object[j].storage_name%>
-   			</div>
-   		</div>
-   		<div class="goods_price">
-   			<div class="goods_price_detail">
-   				现金价：￥<%=cartInfo.resultCartData[i].object[j].price.total_price%>　承兑价：￥<%=cartInfo.resultCartData[i].object[j].price_accept.total_price%>
-   			</div>
-   		</div>
-   		<%}%>
-   		<div class="goods_info_detail">
-   			<div class="goods_info_detail_type">开票信息</div>
-   			<div class="goods_info_detail_type">
-   				<div class="goods_info_detail_type_text">增值税发票</div>
-   				<div class="goods_info_detail_type_img">
-   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
-   				</div>
-   			</div>
-   		</div>
-   		<% if(cartInfo.resultCartData[i].couponlist!=null){ %>
-   		<div class="goods_info_detail">
-   			<div class="goods_info_detail_type">优惠券</div>
-   			<div class="goods_info_detail_type">
-   				<div class="goods_info_detail_type_text">不使用</div>
-   				<div class="goods_info_detail_type_img">
-   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
-   				</div>
-   			</div>
-   		</div>
-   		<%}%>
-   		<div class="goods_info_detail">
-	   		<div class="mui-input-row input-div">
-		        <label class="input-text">买家留言：</label>
-		        <div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark"  placeholder="本次交易补充说明"></div>
-		        <!--<input type="text" class="">-->
+  	<div class="mui-scroll-wrapper">
+			<section class="act-address-detail">
+	  	<input type="hidden" id="md5" value="<%= md5_cart_info %>">
+	  	<a href="#address">
+		  	<% if(default_address){ %>
+				<div class="address_part">
+		    	<div class="address_part_left">
+		    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
+		    	</div>
+		    	<div class="address_part_center">
+		    		<div class="address_part_center_top">
+		    			<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
+		    			<input type="hidden" class="op-address" value="<% if(default_address!=null){ %><%= default_address.addr_id %><%}%>">
+	            <input type="hidden" name="default_addr_regionid" value="<%= default_address.area_id %>" />
+		    			<div id="addr_user" class="address_part_center_top_left"><%=default_address.name%></div>
+		    			<div id="addr_mobile" class="address_part_center_top_right"><%=default_address.mobile%></div>
+		    		</div>
+		    		<div id="addr_detail" class="address_part_center_bottom"><%=default_address.area%>-<%=default_address.addr%></div>
+		    	</div>
+		    	<div class="address_part_right">
+		    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
+		    	</div>
+		   	</div>
+		   	<%}else{%>
+		    <i class="bbc-icon bbc-icon-location-gap"></i>
+		    <div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
+		    <input type="hidden" class="op-address" value="">
+		    <input type="hidden" name="default_addr_regionid" value="" />
+		    <div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
+		      <div class="receiver-user">
+		        <div id="addr_user" class="receiver-name"></div>
+		      </div>
+		      <div id="addr_detail" class="add-detail"></div>
 		    </div>
-	    </div>
-   	</div>
-   	<div class="goods_order">
-   		<div class="goods_order_left">
-   			　
-   		</div>
-   		<div class="goods_order_right">
-   			<div class="goods_order_right_detail">
-   				<div class="goods_order_right_memo">
-   					商品数量小计：
-   				</div>
-   				<div class="goods_order_right_price">
-   					<span class="goods_order_right_price_font">共计</span><%=cartInfo.resultCartData[i].cartCount.total_weight%><span class="goods_order_right_price_font">吨</span>
-   				</div>
-   			</div>
-   			<div class="goods_order_right_detail">
-   				<div class="goods_order_right_memo">
-   					运费：
-   				</div>
-   				<div class="goods_order_right_price">
-   					￥<%=cartInfo.resultCartData[i].cartCount.total_weight%>
-   				</div>
-   			</div>
-   			<div class="goods_order_right_detail">
-   				<div class="goods_order_right_memo">
-   					商品现金总金额：
-   				</div>
-   				<div class="goods_order_right_price">
-   					￥<%=cartInfo.resultCartData[i].cartCount.total_fee%>
-   				</div>
-   			</div>
-   			<div class="goods_order_right_detail">
-   				<div class="goods_order_right_memo">
-   					商品承兑总金额：
-   				</div>
-   				<div class="goods_order_right_price">
-   					￥<%=cartInfo.resultCartData[i].cartCount.total_accept_fee%>
-   				</div>
-   			</div>
-   		</div>
-   	</div>
-		<% } %>
+		   	<% } %>
+	   	</a>
+			<div class="kind-select">
+				<input type="hidden" name="pay_type" class="op-pay-type" value="<%=payType.pay_type %>">
+	    	<div data-kind='1' class="mui-input-row mui-radio mui-left">
+					<label data-kind='1' class="radio-text">现金预存款支付</label>
+					<input data-kind='1' name="radio1" type="radio" checked="checked" value="1">
+				</div>
+				<div data-kind='2' class="mui-input-row mui-radio mui-left">
+					<label data-kind='1' class="radio-text">承兑预存款支付</label>
+					<input data-kind='2' name="radio1" type="radio" value="2">
+				</div>
+			</div>
+			<% for(var i in cartInfo.resultCartData){ %>
+			<div class="goods_detail">
+	   		<div class="goods_shop">
+	   			<%=cartInfo.resultCartData[i].shop_name%>
+	   		</div>
+	   		<% for(var j in cartInfo.resultCartData[i].object){ %>
+	   		<div class="goods_memo">
+	   			<div class="goods_xq">
+	   				<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-<%=cartInfo.resultCartData[i].object[j].pm_name%> <%=cartInfo.resultCartData[i].object[j].guige%>　<%=cartInfo.resultCartData[i].object[j].weight%>吨  
+	   			</div>
+	   			<div class="goods_address">
+	   				<%=cartInfo.resultCartData[i].object[j].storage_name%>
+	   			</div>
+	   		</div>
+	   		<div class="goods_price">
+	   			<div class="goods_price_detail">
+	   				现金价：￥<%=cartInfo.resultCartData[i].object[j].price.total_price%>　承兑价：￥<%=cartInfo.resultCartData[i].object[j].price_accept.total_price%>
+	   			</div>
+	   		</div>
+	   		<%}%>
+	<!--   		<div class="goods_info_detail">
+	   			<div class="goods_info_detail_type">开票信息</div>
+	   			<div class="goods_info_detail_type">
+	   				<div class="goods_info_detail_type_text">增值税发票</div>
+	   				<div class="goods_info_detail_type_img">
+	   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
+	   				</div>
+	   			</div>
+	   		</div>-->
+	   		<% if(cartInfo.resultCartData[i].couponlist!=null){ %>
+	   		<div class="goods_info_detail">
+	   			<div class="goods_info_detail_type">优惠券</div>
+	   			<div class="goods_info_detail_type">
+	   				<div class="goods_info_detail_type_text">不使用</div>
+	   				<div class="goods_info_detail_type_img">
+	   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
+	   				</div>
+	   			</div>
+	   		</div>
+	   		<%}%>
+	   		<div class="goods_info_detail">
+		   		<div class="mui-input-row input-div">
+			        <label class="input-text">买家留言：</label>
+			        <div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark"  placeholder="本次交易补充说明"></div>
+			        <!--<input type="text" class="">-->
+			    </div>
+		    </div>
+	   	</div>
+	   	<div class="goods_order">
+	   		<div class="goods_order_left">
+	   			　
+	   		</div>
+	   		<div class="goods_order_right">
+	   			<div class="goods_order_right_detail">
+	   				<div class="goods_order_right_memo">
+	   					商品数量小计：
+	   				</div>
+	   				<div class="goods_order_right_price">
+	   					<span class="goods_order_right_price_font">共计</span><%=cartInfo.resultCartData[i].cartCount.total_weight%><span class="goods_order_right_price_font">吨</span>
+	   				</div>
+	   			</div>
+	   			<div class="goods_order_right_detail">
+	   				<div class="goods_order_right_memo">
+	   					运费：
+	   				</div>
+	   				<div class="goods_order_right_price">
+	   					￥0
+	   				</div>
+	   			</div>
+	   			<div class="goods_order_right_detail">
+	   				<div class="goods_order_right_memo">
+	   					商品现金总金额：
+	   				</div>
+	   				<div class="goods_order_right_price">
+	   					￥<%=cartInfo.resultCartData[i].cartCount.total_fee%>
+	   				</div>
+	   			</div>
+	   			<div class="goods_order_right_detail">
+	   				<div class="goods_order_right_memo">
+	   					商品承兑总金额：
+	   				</div>
+	   				<div class="goods_order_right_price">
+	   					￥<%=cartInfo.resultCartData[i].cartCount.total_accept_fee%>
+	   				</div>
+	   			</div>
+	   		</div>
+	   	</div>
+			<% } %>
+			<div class="space">
+				&nbsp;
+			</div>
+			<section class="mui-input-group integral-use">
+			  <section class="section-white">
+			    <ul class="function-list">
+			      <li class="mui-table-view-cell">
+			        <a href="#invoice" class="mui-navigate-right act-invoice-detail">
+			          <div class="mui-table">
+			            <div class="mui-table-cell mui-col-xs-3">发票信息：</div>
+			            <input type="hidden" id="op_need_invoice" value="0">
+			            <input type="hidden" name="" id="op_invoice_type" value="notuse">
+			            <input type="hidden" id="op_invoice_title" value="" />
+			            <div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
+			          </div>
+			        </a>
+			      </li>
+			    </ul>
+			  </section>
+			</section>
+		</section>
+
+		</div>
   </script>
 
   <script type="text/html" id="checkout_content">
@@ -1072,9 +1112,8 @@
             </div>
             <div class="mui-slider-handle receiver-info default-active" data-region="<%= list[i].region_id %>">
               <div class="receiver-info-item">
-                <div class="receiver-user font-gray-0 content-bottom-padded-mini">
-                  <%= list[i].name %> &nbsp;
-                  <%= list[i].mobile %>
+                <div class="receiver-user font-gray-0 content-bottom-padded-mini" data-name="<%= list[i].name %>" data-mobile="<%= list[i].mobile %>">
+                  <%= list[i].name %>&nbsp;<%= list[i].mobile %>
                 </div>
                 <div class="add-detail">
                   <%= list[i].addrdetail %>
@@ -1293,60 +1332,39 @@
             <div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型</div>
           </div>
           <div id="invoiceType" class="invoice-tab-group content-bottom-padded">
-            <label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>
-            <label <% if(invoice_type=='vat' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'vat') {%>checked<% } %>>增值税发票</label>
-            <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>
+            <!--<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>-->
+            <label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+           <!-- <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>-->
           </div>
         </section>
         <section class="invoice-content">
-          <div class="section-white invoice-content-item" style="display:none;">
-            <div class="section-title">
-              <div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票抬头</div>
-            </div>
-            <div id="titleType" class="invoice-tab-group content-bottom-padded">
-              <label <% if(invoice_title=='individual' ) {%>class="active"<% } %>>
-                <input type="radio" name="invoice[invoice_title]" value="individual" class="mui-hidden op-choose-invoice-title" <% if(invoice_title == 'individual') {%>checked<% } %>>个人
-              </label>
-              <label <% if(invoice_title=='unit' ) {%>class="active"<% } %>>
-                <input type="radio" name="invoice[invoice_title]" value="unit" class="mui-hidden op-choose-invoice-title" <% if(invoice_title == 'unit') {%>checked<% } %>>企业
-              </label>
-            </div>
-            <div class="content-bottom-padded">
-              <!-- <div class="section-title">
-                <div class="title-txt">发票抬头</div>
-              </div> -->
-              <p class="content-horizontal-padded">
-                <input type="text" name="invoice[invoice_content]" value="<%= invoice_content %>" placeholder="请输入抬头">
-              </p>
-              <p class="content-horizontal-padded fontS font-gray-20">订单中的商品由入驻商家销售，发票内容由商家决定，由商家开具寄出。</p>
-            </div>
-          </div>
-          <div class="section-white invoice-content-item" style="display: none;">
+          <div class="section-white invoice-content-item">
             <div class="mui-input-group fontS">
+            	<input id="billingid" type="hidden" name="invoice[invoice_vat][billingid]" class="mui-input-clear" value="<%= invoice_vat[0].billing_id %>">
               <div class="mui-input-row">
-                <label>公司名称</label>
-                <input type="text" name="invoice[invoice_vat][company_name]" class="mui-input-clear" placeholder="请输入公司名称" value="<%= invoice_vat.company_name %>">
+                <label>发票抬头</label>
+                <input id="FPTT" type="text" name="invoice[invoice_vat][title]" class="mui-input-clear" placeholder="请输入发票抬头" value="<%= invoice_vat[0].title %>">
               </div>
               <div class="mui-input-row">
-                <label>纳税人识别号</label>
-                <input type="text" name="invoice[invoice_vat][registration_number]" class="mui-input-clear" placeholder="请输入纳税人识别号" value="<%= invoice_vat.registration_number %>">
+                <label>税号</label>
+                <input id="SH" type="text" name="invoice[invoice_vat][tallage_number]" class="mui-input-clear" placeholder="请输入税号" value="<%= invoice_vat[0].tallage_number %>">
               </div>
               <div class="mui-input-row">
-                <label>公司地址</label>
-                <input type="text" name="invoice[invoice_vat][company_address]" class="mui-input-clear" placeholder="请输入公司地址" value="<%= invoice_vat.company_address %>">
+                <label>电话</label>
+                <input id="DH" type="text" name="invoice[invoice_vat][tel]" class="mui-input-clear" placeholder="请输入电话" value="<%= invoice_vat[0].tel %>">
               </div>
               <div class="mui-input-row">
                 <label>开户银行</label>
-                <input type="text" name="invoice[invoice_vat][bankname]" class="mui-input-clear" placeholder="请输入开户银行" value="<%= invoice_vat.bankname %>">
+                <input id="KHYH" type="text" name="invoice[invoice_vat][open_bank]" class="mui-input-clear" placeholder="请输入开户银行" value="<%= invoice_vat[0].open_bank %>">
               </div>
               <div class="mui-input-row">
                 <label>银行帐户</label>
-                <input type="text" name="invoice[invoice_vat][bankaccount]" class="mui-input-clear" placeholder="请输入开户银行帐号" value="<%= invoice_vat.bankaccount %>">
+                <input id="YHZH" type="text" name="invoice[invoice_vat][bank_account]" class="mui-input-clear" placeholder="请输入开户银行帐号" value="<%= invoice_vat[0].bank_account %>">
               </div>
-              <div class="mui-input-row">
+<!--              <div class="mui-input-row">
                 <label>公司电话</label>
                 <input type="text" name="invoice[invoice_vat][company_phone]" class="mui-input-clear" placeholder="请输入公司电话" value="<%= invoice_vat.company_phone %>">
-              </div>
+              </div>-->
             </div>
             <div class="content-padded fontS font-gray-20">订单中的商品由入驻商家销售，发票内容由商家决定，由商家开具寄出。</div>
           </div>
@@ -1404,6 +1422,10 @@
     mui.plusReady(function() {
       var mode = plus.webview.currentWebview().mode;
       var state = app.getState();
+      var totalPrice=0;
+      var totalAcceptPrice=0;
+      var pricetype = 1;
+      var billId;
       console.log(state.token);
       var param = {
         queryData: {
@@ -1448,27 +1470,46 @@
 
         var checkout = template('checkout_content_new', rs.data);//checkout_content
         $('#settle .mui-page-content').html(checkout);
-        totalPrice();
+        //totalPrice();
+        var totalPrice=rs.data.cartInfo.totalCart.totalPrice; 
+      	var totalAcceptPrice=rs.data.cartInfo.totalCart.totalAcceptPrice;
+        $('#op_all_payment').text("￥"+rs.data.cartInfo.totalCart.totalPrice);
 
         mui('.mui-scroll-wrapper').scroll({
           bounce: false,
           indicators: true //是否显示滚动条
         });
-
+				
+				$('.kind-select').on('tap','.mui-radio',function(){
+					if($(this).data("kind")==1){
+						pricetype = 1;
+						$('#op_all_payment').text("￥"+totalPrice);
+					}
+					else{
+						pricetype = 2;
+						$('#op_all_payment').text("￥"+totalAcceptPrice);
+					}
+				});
+				
         $('#settle').on('tap', '.act-address-detail', function() {
           fetchList();
+        });
+        
+        $('.submit-bottom-button1').on('tap', function() {
+          clicked('_www/view/category/category.html');
         });
 
         $('#address_content').on('tap', '.receiver-info', function() {
           var add_id = $(this).parent().data('id');
           var region_id = $(this).attr('data-region');
           $('.op-address').val(add_id);
-          $('#addr_user').html($(this).find('.receiver-user').text());
+          $('#addr_user').html($(this).find('.receiver-user').data("name"));
+          $('#addr_mobile').html($(this).find('.receiver-user').data("mobile"));
           $('#addr_detail').html($(this).find('.add-detail').text());
           $('input[name="default_addr_regionid"]').val(region_id);
           $('#noadd').hide();
           $('#hasadd').show();
-          totalPrice();
+          //totalPrice();
           mui.back();
         })
 
@@ -1568,9 +1609,23 @@
           if($('#invoice_content').html().trim()) {
             return;
           }
-          var invoice = rs.data.invoice;
-          if(!invoice.invoice_vat) {
-            invoice.invoice_vat = {};
+          var invoice = {};
+          invoice.invoice_vat = [
+          	{
+          		"billing_id": "",
+			        "user_id": "",
+			        "title": "",
+			        "tallage_number": "",
+			        "tel": "",
+			        "open_bank": "",
+			        "bank_account": "",
+			        "def_billing": ""
+          	}
+          ];
+          var userBillings = rs.data.userBillings;
+          if(userBillings.length > 0) {
+          	billId = userBillings[0].billing_id;
+            invoice.invoice_vat = userBillings;
           }
           var html = template('invoice_template', invoice);
           $('#invoice_content').html(html);
@@ -1741,13 +1796,37 @@
 
         $('#invoice').on('tap', '.act-ok', function(e) {
           var radio = $('#invoiceType').find('.active').find('input');
-
+					
           $('#op_invoice_type').val(radio.val());
           $('#op_need_invoice').val(radio.val() == 'notuse' ? 0 : 1);
           $('#op_invoice_name').text(radio.parent('label').text());
-          $('#op_invoice_title').val($("#titleType").find('.active').find('input').val());
 
-          storeCheckoutInfo();
+					var param_billing = {
+		        queryData: {
+		          'method': config.apimethod.billingsave,
+		          'accessToken':state.token,
+		          'billing_id':$('#billingid').val(),
+		          'title':$('#FPTT').val(),
+		          'tallage_number':$('#SH').val(),
+		          'tel':$('#DH').val(),
+		          'open_bank':$('#KHYH').val(),
+		          'bank_account':$('#YHZH').val()
+		        },
+		        method: 'POST'
+		      };
+					$.dataRequest(param_billing, function(r) {
+						var param_billing_new ={
+								queryData: {
+			          'method': config.apimethod.billinggetInfo,
+			          'accessToken':state.token
+			        },
+			        method: 'GET'
+						}
+						$.dataRequest(param_billing_new, function(r) {
+							billId = r.data.list[0].billing_id;
+							storeCheckoutInfo();
+						});
+					});
         })
         .on('tap', '#invoiceType label', function() {
           var index = $(this).index();
@@ -1773,7 +1852,7 @@
           shopContent.find('.op-ziti-name').val($('#op_pick_name').val());
 
           storeCheckoutInfo();
-          totalPrice();
+          //totalPrice();
         });
 
 
@@ -1799,7 +1878,7 @@
         $.dataRequest(param, function(rs) {
           callback && callback(rs);
           mui.back();
-          totalPrice();
+          //totalPrice();
         });
       }
 
@@ -1818,7 +1897,7 @@
         $.dataRequest(param, function(rs) {
           callback && callback(rs);
           mui.back();
-          totalPrice();
+          //totalPrice();
         });
       }
 
@@ -1834,7 +1913,7 @@
         $.dataRequest(param, function(rs) {
           callback && callback(rs);
           mui.back();
-          totalPrice();
+          //totalPrice();
         });
       }
 
@@ -1890,7 +1969,7 @@
             });
             $('#op_all_payment').text(Currency.format(data.allPayment));
 
-            getUserPoint(data.allPayment, data.allPostfee);
+            //getUserPoint(data.allPayment, data.allPostfee);
           });
         }
       }
@@ -1950,7 +2029,7 @@
         if(addr != '') {
           var shipping = $('.op-shipping-id');
           var shippingData = []
-          for(var i = 0; i < shipping.length; i++) {
+/*          for(var i = 0; i < shipping.length; i++) {
             var shippingType = {};
             shippingType.shop_id = $(shipping[i]).parents('a').attr('rel');
             shippingType.type = $(shipping[i]).val();
@@ -1958,13 +2037,16 @@
               shippingType.ziti_id = $(shipping[i]).parent().find('.op-ziti-id').val();
             }
             shippingData.push(shippingType);
-          }
-          shippingData = JSON.stringify(shippingData);
+          }*/
 
           var user_mark = $('.user-mark');
           var mark = [];
           if(user_mark.length > 0) {
             for(var i = 0; i < user_mark.length; i++) {
+            	var shippingType = {};
+            	shippingType.shop_id = $(user_mark[i]).parents('.user-message').attr('rel');
+            	shippingType.type = 'express';
+            	shippingData.push(shippingType);
               var memo = {};
               var memodata = $(user_mark[i]).val()
               if(memodata) {
@@ -1974,15 +2056,17 @@
               }
             }
             mark = JSON.stringify(mark);
+          	shippingData = JSON.stringify(shippingData);
           }
-          var invoice_type = $('#op_invoice_type').val();
+/*          var invoice_type = $('#op_invoice_type').val();
           var invoice_content = '{}';
           var invoice_title = $('#op_invoice_title').val() == 'undefined' ? "" : '"title": "' + $('#op_invoice_title').val() + '",';
           if(invoice_type != "notuse") {
             invoice_content = '{' + invoice_title + ' "content":"' + $('input[name="invoice[invoice_content]"]').val() + '", "company_name":"' + $('input[name="invoice[invoice_vat][company_name]"]').val() + '", "company_address":"' + $('input[name="invoice[invoice_vat][company_address]"]').val() + '", "registration_number":"' + $('input[name="invoice[invoice_vat][registration_number]"]').val() + '", "bankname":"' + $('input[name="invoice[invoice_vat][bankname]"]').val() + '", "bankaccount":"' + $('input[name="invoice[invoice_vat][bankaccount]"]').val() + '", "company_phone":"' + $('input[name="invoice[invoice_vat][company_phone]"]').val() + '"}';
           }
-          invoice_content = JSON.parse(invoice_content);
-          var use_points = $('#for_point').prop('checked') ? $('#for_point').val() : '0';
+          invoice_content = JSON.parse(invoice_content);*/
+          //var use_points = $('#for_point').prop('checked') ? $('#for_point').val() : '0';
+          var use_points = '0';
           var param = {
             queryData: {
               'method': config.apimethod.createtrade,
@@ -1990,18 +2074,20 @@
               'mode': mode,
               'md5_cart_info': $('#md5').val(),
               'addr_id': addr,
-              'payment_type': $('.op-pay-type').val(),
-              'source_from': 'app',
+              'payment_type': 'online',//$('.op-pay-type').val(),
+              //'source_from': 'app',
               'shipping_type': shippingData,
               'mark': mark,
-              'use_points': use_points,
-              'invoice_type': invoice_type,
-              'invoice_content': invoice_content
+              'billId':billId,
+              'pricetype':pricetype,
+              'use_points': use_points
+              /*'invoice_type': invoice_type,
+              'invoice_content': invoice_content*/
             },
             method: 'POST'
           }
           $.dataRequest(param, function(rs) {
-            mui.toast('创建订单成功');
+            mui.toast('创建订单成功,等待审核！');
             if(rs.data.payment_type == 'online') {
               var payid = rs.data.payment_id;
               clicked('_www/view/payment/payment.html', {

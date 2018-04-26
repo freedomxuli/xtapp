@@ -114,6 +114,8 @@ var config = {
         logisticszitilist: 'logistics.ziti.list', //根据收货地区id获取自提点列表
         messagePushRegister:'message.push.register',  //第一次启动的时候注册机器用的接口
         filteritems: 'item.filterItems', //根据搜索条件，列出渐进式的筛选项
-        getcommonsetting: 'common.getsetting' //根据配置名获取配置值
+        getcommonsetting: 'common.getsetting', //根据配置名获取配置值
+        billingsave: 'member.billing.save',//开票信息保存
+        billinggetInfo: 'member.billing.getInfo'//开票信息获取
     }
 }

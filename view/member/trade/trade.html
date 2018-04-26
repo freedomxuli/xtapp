@@ -92,7 +92,7 @@
       
       .mui-scroll> .mui-table-view> .mui-table-view-cell {
         padding: 0;
-        background: #fff;
+        background: #FFFFFF !important;
         margin-bottom: 10px;
       }
       
@@ -270,30 +270,211 @@
         max-width: 100%;
         height: auto;
       }
+      
+      
+      /*标题栏*/
+			.mui-bar-backcolor{
+      	background-color:#d92e2e;
+      	display: flex;  
+      }
+			.child{   
+			    flex:1;    
+			} 
+			
+			.child_1{   
+			    flex:7;    
+			} 
+			
+			.category_img{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+      }
+      
+      .category_size{
+      	line-height: 3rem;
+      	text-align: center;
+      }
+      
+      .category_title{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	margin-left: 0.4rem;
+      	font-size: 0.9rem;
+      }
+      
+      .title_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1.2rem;
+      }
+      
+      .edit_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1rem;
+      	height: 1.2rem;
+      	line-height: 1.2rem;
+      }
+      
+      .search_img{
+      	height: 1.2rem;
+				width: 1.2rem;
+      }
+      .search_size{
+      	line-height: 3.5rem;
+      	text-align: center;
+      }
+      
+      .message_img{
+      	height: 1.2rem;
+				width: 1.2rem;
+				margin-left: 0.8rem;
+      }
+      
+      /*li content*/
+			.content-space{
+				height: 10px;
+				background-color: #f0eff5;
+			}
+			.content-li{
+				list-style-type:none;
+			}
+			.div-content-top{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 0.6rem 0rem 0.6rem 0rem;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.div-content-top-shop{
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				flex: 1;
+				padding-left: 10px;
+			}
+			.div-content-top-img{
+				flex: 1;
+				text-align: center;
+			}
+			.check-right-img{
+				width: 0.4rem !important;
+			}
+			.div-content-top-state{
+				color: #E35D4C;
+				padding-right: 10px;
+			}
+			.div-content-center{
+				padding: 0.6rem 0rem 0.6rem 0rem;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.div-content-center-div
+			{
+				display: flex;
+				flex-direction: row;
+				padding: 0.2rem 0rem 0.2rem 0.4rem;
+			}
+			.div-content-center-left{
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				flex: 2;
+				padding-left: 10px;
+				color: #333333;
+			}
+			.div-content-center-center
+			{
+				font-size: 0.8rem;
+				color: #666666;
+				flex: 1;
+			}
+			.div-content-center-right{
+				flex: 1;
+				font-size: 0.8rem;
+				color: #666666;
+				text-align: end;
+				padding-right:10px ;
+			}
+			.div-content-center-bottom{
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				flex: 2.5;
+				padding-left: 10px;
+				color: #333333;
+			}
+			.div-content-bottom
+			{
+				display: flex;
+				flex-direction: row;
+				padding: 0.6rem 0rem 0.6rem 0rem;
+				align-items: center;
+			}
+			.div-content-bottom-left{
+				color: #333333;
+				flex: 1;
+				padding-left: 10px;
+			}
+			.div-content-bottom-center{
+				color: #E35D4C;
+				flex: 1;
+			}
+			.div-content-bottom-right{
+				flex: 2;
+				display: flex;
+				flex-direction: row;
+			}
+			.div-content-bottom-right-button1{
+				color: #FFFFFF;
+				padding: 0.2rem 0rem 0.2rem 0rem;
+				border-radius: 0.2rem;
+				background-color: #E35D4C;
+				flex: 1;
+				text-align: center;
+			}
+			.div-content-bottom-right-button2{
+				color: #E35D4C;
+				padding: 0.2rem 0rem 0.2rem 0rem;
+				border-radius: 0.2rem;
+				background-color: #FFFFFF;
+				border: 1px solid #E35D4C;
+				flex: 1;
+				text-align: center;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+			.border-div{
+				border: 1px solid #CCCCCC;
+			}
     </style>
   </head>
 
   <body>
-    <header class="page-header">
+    <!--<header class="page-header">
       <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
       <div class="header-title">我的订单</div>
       <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
-    </header>
+    </header>-->
+    <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+    	<div class="child category_size" id="left-content"><img class="category_img" src="../../../img/cart/back.png" /></div>  
+	    <div class="child_1 category_size"><span class="title_span">我的订单</span></div>  
+	    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../../img/category/search.png" /></div>  
+   	</header>
     <div class="container">
       <div id="slider" class="mui-slider mui-fullscreen bbc-tab-bar bbc-pullrefresh-top">
         <div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
           <a class="mui-control-item mui-active" href="#item1mobile">全部</a>
-          <a class="mui-control-item" href="#item2mobile">待付款</a>
-          <a class="mui-control-item" href="#item3mobile">待发货</a>
+          <a class="mui-control-item" href="#item2mobile">待审核</a>
+          <a class="mui-control-item" href="#item3mobile">待付款</a>
           <a class="mui-control-item" href="#item4mobile">待收货</a>
-          <a class="mui-control-item" href="#item5mobile">待评价</a>
+          <a class="mui-control-item" href="#item5mobile">待开票</a>
         </div>
         <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2-5"></div>
         <div class="mui-slider-group">
           <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
             <div id="scroll1" class="mui-scroll-wrapper">
               <div class="mui-scroll" data-count="1">
-                <ul class="mui-table-view" data-type="">
+                <ul class="mui-table-view" data-type="0">
                   <div class="mui-loading">
                     <div class="mui-spinner">
                     </div>
@@ -305,7 +486,7 @@
           <div id="item2mobile" class="mui-slider-item mui-control-content">
             <div id="scroll2" class="mui-scroll-wrapper">
               <div class="mui-scroll" data-count="1">
-                <ul class="mui-table-view" data-type="WAIT_BUYER_PAY">
+                <ul class="mui-table-view" data-type="1"><!--待审核-->
                   <div class="mui-loading">
                     <div class="mui-spinner">
                     </div>
@@ -317,7 +498,7 @@
           <div id="item3mobile" class="mui-slider-item mui-control-content">
             <div id="scroll3" class="mui-scroll-wrapper">
               <div class="mui-scroll" data-count="1">
-                <ul class="mui-table-view" data-type="WAIT_SELLER_SEND_GOODS">
+                <ul class="mui-table-view" data-type="2">
                   <div class="mui-loading">
                     <div class="mui-spinner">
                     </div>
@@ -329,7 +510,7 @@
           <div id="item4mobile" class="mui-slider-item mui-control-content">
             <div id="scroll4" class="mui-scroll-wrapper">
               <div class="mui-scroll" data-count="1">
-                <ul class="mui-table-view" data-type="WAIT_BUYER_CONFIRM_GOODS">
+                <ul class="mui-table-view" data-type="3">
                   <div class="mui-loading">
                     <div class="mui-spinner">
                     </div>
@@ -341,7 +522,7 @@
           <div id="item5mobile" class="mui-slider-item mui-control-content">
             <div id="scroll5" class="mui-scroll-wrapper">
               <div class="mui-scroll" data-count="1">
-                <ul class="mui-table-view" data-type="WAIT_RATE">
+                <ul class="mui-table-view" data-type="6"><!--待开票-->
                   <div class="mui-loading">
                     <div class="mui-spinner">
                     </div>
@@ -383,8 +564,8 @@
 
     <script type="text/html" id="trade_list">
       <% for(var i=0; i<list.length; i++){ %>
-      <li class="mui-table-view-cell">
-        <div class="content-padded">
+      <li class="mui-table-view-cell content-li">
+        <div class="content-padded border-div">
           <div class="mui-table">
             <div class="mui-table-cell mui-col-xs-6">
               <a class="inline-overflow action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= list[i].shop_id %>}'>
@@ -397,19 +578,30 @@
             </div>
           </div>
         </div>
-        <div  class="content-padded function-list bg-gray-0">
-          <a class="mui-navigate-right action-webview" data-webview="_www/view/member/trade/tradedetail.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+        <div>
+          <a class="action-webview" data-webview="_www/view/member/trade/tradedetail.html" data-webparam='{"tid":<%= list[i].tid %>}'>
             <div class="mui-table">
-              <div class="mui-table-cell mui-col-xs-8 checkout-goods-list">
-                <div class="checkout-goods-warp ">
+              <div class="">
+                <div class="div-content-center">
                   <% for(var j=0; j<list[i].order.length; j++){ %>
-                  <div class="thumbnail ">
+      							<div class="div-content-center-div">
+											<div class="div-content-center-left">
+												<%=list[i].order[j].manufacturers_name%> - <%=list[i].order[j].pm_name%> <%=list[i].order[j].guige%>
+											</div>
+											<div class="div-content-center-center">
+												<%=list[i].order[j].total_weight%>吨
+											</div>
+											<div class="div-content-center-center">
+												￥<%=list[i].order[j].price%>/吨
+											</div>
+										</div>
+                  <!--<div class="thumbnail ">
                     <div class="thumb-img ">
                       <img src="<%= list[i].order[j].pic_path %>" alt="">
                     </div>
-                  </div>
+                  </div>-->
 
-                  <% if(list[i].order[j].gift_data){ %>
+<!--                  <% if(list[i].order[j].gift_data){ %>
                   <% for(var n=0; n<list[i].order[j].gift_data.length; n++){ %>
                   <div class="thumbnail">
                     <div class="thumb-img">
@@ -417,15 +609,27 @@
                     </div>
                   </div>
                   <% } %>
+                  <% } %>-->
                   <% } %>
-
-                  <% } %>
+                  <div class="div-content-center-div">
+										<div class="div-content-center-right">
+											运费<%=list[i].post_fee%>元
+										</div>
+									</div>
+									<div class="div-content-center-div">
+										<div class="div-content-center-bottom">
+											付款支付：<%if(list[i].deposit_type == "price"){%>现金预存款<%}else{%>承兑预付款<%}%>
+										</div>
+										<div class="div-content-center-right">
+											调价：-￥<%=list[i].adjust_fee%>
+										</div>
+									</div>
                 </div>
               </div>
-              <div class="mui-table-cell mui-col-xs-2 mui-text-right">
+<!--              <div class="mui-table-cell mui-col-xs-2 mui-text-right">
                 共
                 <%= list[i].totalItem %> 件
-              </div>
+              </div>-->
             </div>
           </a>
         </div>
@@ -436,7 +640,7 @@
               <mark><%= $format_price(list[i].payment) %></mark>
             </div>
             <div class="box-item-flex1 mui-text-right">
-              <% if(list[i].status=="WAIT_BUYER_PAY"){ %>
+              <% if(list[i].status=="WAIT_BUYER_PAY"&&list[i].shenhe_status=="0"){ %>
               <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-pay action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= list[i].tid %>,"type":"trade"}'>
                 去付款
               </a>
@@ -499,7 +703,7 @@
           queryData: {
             'method': config.apimethod.tradelist,
             'accessToken': state.token,
-            'status': '',
+            'status': '0',
             'page_no': config.cpage,
             'page_size': config.pagesize
           },

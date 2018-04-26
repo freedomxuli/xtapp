@@ -46,14 +46,88 @@
           position: relative;
           height: 20rem;
         }
+        
+        /*标题栏*/
+			.mui-bar-backcolor{
+      	background-color:#d92e2e;
+      	display: flex;  
+      }
+			.child{   
+			    flex:1;    
+			} 
+			
+			.child_1{   
+			    flex:7;    
+			} 
+			
+			.category_img{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+      }
+      
+      .category_size{
+      	line-height: 3rem;
+      	text-align: center;
+      }
+      
+      .category_title{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	margin-left: 0.4rem;
+      	font-size: 0.9rem;
+      }
+      
+      .title_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1.2rem;
+      }
+      
+      .edit_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1rem;
+      	height: 1.2rem;
+      	line-height: 1.2rem;
+      }
+      
+      .search_img{
+      	height: 1.2rem;
+				width: 1.2rem;
+      }
+      .search_size{
+      	line-height: 3.5rem;
+      	text-align: center;
+      }
+      
+      .message_img{
+      	height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+      }
+      
+      .section-init{
+      	color: #666666;
+      }
+      #deprice{
+      	color: #E25D4C;
+      }
+      .action-pay{
+      	background-color: #E25D4C;
+      	color: #FFFFFF;
+      }
     </style>
   </head>
 
   <body>
-    <header class="page-header">
-      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <div class="header-title">订单支付</div>
-    </header>
+	  <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
+	    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
+	    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
+   	</header>
     <section class="container">
 
     </section>
@@ -87,7 +161,7 @@
       </section>
       <% } %>
       <section class="section-white section-container">
-        <div class="section-init">应付金额</div>
+        <div class="section-init">&nbsp;应付金额</div>
         <div class="section-init pay-num" data-value="<%= payment.cur_money %>">
           <%= $format_price(payment.cur_money) %>
         </div>
@@ -97,14 +171,14 @@
           <div id="redpackets" class="mui-table-view-cell font-gray-20">
             <a class="mui-navigate-right">
               <div class="box-display">
-                <div class="box-item-flex1"><i class="redpackets-icon"><em class="arrow"></em></i> &nbsp;红包</div>
-                <div class="box-item-flex1 content-right content-horizontal-padded">已抵扣 - <span id="deprice" data-value="">0</span> &nbsp;</div>
+                <div class="box-item-flex1"><!--<i class="redpackets-icon"><em class="arrow"></em></i>-->使用红包</div>
+                <div class="box-item-flex1 content-left content-horizontal-padded">已抵扣 - <span id="deprice" data-value="">0</span> &nbsp;</div>
               </div>
             </a>
           </div>
         </div>
       </section>
-      <section class="section-white pay-style">
+<!--      <section class="section-white pay-style">
         <div class="section-title order-goods-header">
           <div class="title-txt">请选择支付方式</div>
         </div>
@@ -130,9 +204,9 @@
           暂无可用支付方式
         </div>
         <% } %>
-      </section>
+      </section>-->
       <section class="mui-content-padded form-op-section">
-        <button type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-pay" onclick="return false;">确认支付</button>
+        <button type="button" class="mui-btn mui-btn-block action-pay" onclick="return false;">确认支付</button>
       </section>
     </form>
   </script>
@@ -154,7 +228,7 @@
       var payid = plus.webview.currentWebview().payid;
       var tid = plus.webview.currentWebview().tid;
       var type = plus.webview.currentWebview().type;
-      var pay_id, hongbao;
+      var pay_id = 'deposit', hongbao;
       var redpackets_id = '';
       mui.init({
         beforeback: function() {
@@ -190,7 +264,8 @@
           queryData: {
             'method': config.apimethod.createpayment,
             'accessToken': state.token,
-            'tid': tid
+            'tid': tid,
+            'merge':''
           },
           method: 'POST'
         }
@@ -210,9 +285,9 @@
           var tempEl = template('payment', rs.data);
           $('.container').html(tempEl);
           var total = rs.data.payment.cur_money;
-          
+
           $(window).on('tap', '.action-pay', function() {
-            if(!pay_id){
+            /*if(!pay_id){
               var price = +$('#deprice').data('value');
               var oprice = +($('.container').find('.pay-num').data('value'));
               
@@ -221,7 +296,7 @@
                 return
               }
               pay_id = $('input[name="payment"]:checked').val();
-            }
+            }*/
 
             if(redpackets_id ){
               var btnArray = ['取消', '确定'];
@@ -262,8 +337,46 @@
               }, 'div');
               document.querySelector('.mui-popup-input input').type = 'password';
             }else{
-              var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
-              pay(SERVER, pay_id, pid, total);
+            	var btnArray = ['取消', '确定'];
+              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
+                var payPassword = e.value;
+                if(e.index == 1) {
+                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
+                  var vparam = {
+                    queryData: {
+                      'method': config.apimethod.vilidatepaypassword,
+                      'accessToken': state.token,
+                      'pay_password': payPassword
+                    },
+                    method: 'POST'
+                  };
+                  $.dataRequest(vparam, function(rs) {
+                    if(price != oprice) {
+                      pay(SERVER, pay_id, pid, total);
+                    }else{
+                       var vparam = {
+                          queryData: {
+                            'method': config.apimethod.tradepay,
+                            'accessToken': state.token,
+                            'hongbao_ids': redpackets_id,
+                            'payment_id': pid,
+                            'deposit_password': payPassword,
+                            'pay_app_id':pay_id
+                          },
+                          method: 'POST'
+                        };
+                        $.dataRequest(vparam, function(rs) {
+                          clicked('_www/view/payment/paymentsuccess.html', {
+                            'total': total
+                          });
+                        });
+                    }
+                  });
+                }
+              }, 'div');
+              document.querySelector('.mui-popup-input input').type = 'password';
+              /*var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
+              pay(SERVER, pay_id, pid, total);*/
             }
           });
         });
