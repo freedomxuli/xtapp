@@ -516,6 +516,20 @@
 							//              }
 							//            }
 						});
+
+						param = {
+							queryData: {
+								'method': config.apimethod.depositget,
+								'accessToken': state.token
+							},
+							method: 'GET'
+						}
+						$.dataRequest(param, function(rs) {
+							
+							var data = rs.data;
+							$(".yck-font-2").text(data.deposit);
+							$(".yck-font-6").text(data.acceptance_deposit);
+						});
 					} else {
 						document.getElementById('trade_pay_num').innerText = 0;
 						document.getElementById('trade_send_num').innerText = 0;

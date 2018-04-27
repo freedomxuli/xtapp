@@ -116,9 +116,10 @@ var config = {
         filteritems: 'item.filterItems', //根据搜索条件，列出渐进式的筛选项
         getcommonsetting: 'common.getsetting', //根据配置名获取配置值
         billingsave: 'member.billing.save',//开票信息保存
-        billinggetInfo: 'member.billing.getInfo,'//开票信息获取
+        billinggetInfo: 'member.billing.getInfo',//开票信息获取
         enterpriseauth: 'member.enterprise.auth', //企业认证-修改保存
 		enterpriseinfo: 'member.enterprise.info', //企业认证-查询
-		deposit: 'deposit.apply.shenhe' //预存款充值
+		deposit: 'deposit.apply.shenhe',//预存款充值
+		depositget: 'deposit.user.get' //预存款查询
     }
 }

@@ -17,13 +17,12 @@
 		}
 		
 		.mui-input-row img {
-			height: 1.3rem;
 			width: 1rem;
 		}
 		
 		.mui-input-row label {
 			width: 3rem;
-			padding-top: 0.9rem;
+			padding:0.9rem 0 0 0.9rem;
 		}
 		
 		.form-container {
@@ -196,15 +195,14 @@
 						var textCont = $el;
 						var mobile = $('#telnumber').val();
 						//var send_sms_token = plus.webview.currentWebview().signup_token;
-						var send_sms_token="123";
+						//var send_sms_token="123";
 						var smstype = 'signup';
 
 						var param = {
 							queryData: {
 								'method': config.apimethod.usersendSms,
 								'mobile': mobile,
-								'type': smstype,
-								'send_sms_token': send_sms_token
+								'type': smstype
 							},
 							method: 'POST'
 						};

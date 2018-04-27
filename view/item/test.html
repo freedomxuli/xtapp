@@ -1,13 +1,136 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<style>
+			html,
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.flex {
+				display: flex;
+			}
+			
+			.rxcp-left {
+				flex: 1;
+				padding: 10px 3px 0px 10px;
+				position: relative;
+			}
+			
+			.rxcp-right {
+				flex: 1;
+				padding: 10px 10px 0px 3px;
+					position: relative;
+			}
+			
+			.rxcp-middle {
+				flex: 1;
+				padding: 5px 10px;
+				position: relative;
+			}
+			
+			.img-all {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.img-half {
+				width: 100%;
+				height: 50%;
+			}
+			
+			.type-name1 {
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 15px;
+				bottom: 5px;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
+			.type-name2 {
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 10px;
+				bottom: 5px;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
+				.type-name3{
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 10px;
+				top: 36%;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
+		</style>
 	</head>
+
 	<body>
-		<div style="margin-top:0.3rem;background: #E0E768;height:5rem;line-height:5rem;padding-left:0.5rem;display: table-cell; vertical-align: middle;">
-			<img style="width:2rem;height:1em;" src="../../img/item/spxx.png" />
-	
+		<div class="flex">
+			<div class="rxcp-left">
+				<img class="img-all" src="../../img/index/st.png" />
+				<div class="type-name1">
+					生铁
+				</div>
+			</div>
+			<div class="rxcp-right">
+
+				<img class="img-half" src="../../img/index/fg.png" />
+				<div class="type-name3">
+					废钢
+				</div>
+
+				<img class="img-half" src="../../img/index/ztj.png" />
+<div class="type-name2">
+					增碳剂
+				</div>
+			</div>
 		</div>
+
+		<div class="flex">
+			<div class="rxcp-left">
+				<img class="img-all" src="../../img/index/thj.png" />
+<div class="type-name1">
+					钛合金
+				</div>
+			</div>
+			<div class="rxcp-right">
+				<img class="img-all" src="../../img/index/yyj.png" />
+<div class="type-name2">
+					孕育剂
+				</div>
+			</div>
+		</div>
+		<div class="flex">
+			<div class="rxcp-middle" >
+				<img class="img-all" src="../../img/index/qtfl.png" />
+<div class="type-name1" style="bottom:10px">
+					其他辅料
+				</div>
+			</div>
+
+		</div>
+
 	</body>
+
 </html>

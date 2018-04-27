@@ -83,10 +83,84 @@
 		.mui-col-xs-6 {
 			width: 33%;
 		}
+		
+		header.home-header{
+			background-color:rgba(65, 26, 140,0);
+		}
+		
+					
+			.flex {
+				display: flex;
+			}
+			
+			.rxcp-left {
+				flex: 1;
+				padding: 10px 3px 0px 10px;
+				position: relative;
+			}
+			
+			.rxcp-right {
+				flex: 1;
+				padding: 10px 10px 0px 3px;
+					position: relative;
+			}
+			
+			.rxcp-middle {
+				flex: 1;
+				padding: 5px 10px;
+				position: relative;
+			}
+			
+			.img-all {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.img-half {
+				width: 100%;
+				height: 50%;
+			}
+			
+			.type-name1 {
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 15px;
+				bottom: 5px;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
+			.type-name2 {
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 10px;
+				bottom: 5px;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
+				.type-name3{
+				position: absolute;
+				width: 40%;
+				height: 25px;
+				z-index: 2;
+				left: 10px;
+				top: 36%;
+				background: #C9C9C9;
+				color: #ffffff;
+				line-height: 25px;
+				text-align: center;
+			}
 	</style>
 
 	<body>
-		<header class="home-header">
+		<header class="mui-bar mui-bar-transparent home-header">
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
 				<img class="header-icon" src="../img/index/phone.png" />
 			</i>
@@ -94,7 +168,10 @@
 
 				<form onsubmit="return false;">
 					<div class="mui-input-row header-search-form">
-						<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="搜索钢材"></div>
+						<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search" placeholder="搜索钢材">
+					</div>
+					
+				</div>
 				</form>
 			</div>
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
@@ -103,7 +180,7 @@
 			</i>
 			</i>
 			<a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
-		</header>
+		</header>		
 		<div id="title_slider" class="mui-slider">
 			<div class="mui-slider-group mui-slider-loop">
 				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
@@ -154,7 +231,7 @@
 		<section class="section-white">
 			<div style="height:0.69rem;background-color:#FFFFFF;"></div>
 			<div class="box-display menu">
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../img/index/llsc.png" />
+				<a id="llsc" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../img/index/llsc.png" />
 					<div class="menu-name">炉料商城</div>
 				</a>
 				<a id="gxzy" data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="../img/index/gxzy.png" />
@@ -322,6 +399,8 @@
 				</div>
 			</div>
 		</section>
+
+		</section>
 		<section class="section-white">
 			<div class="section-title user-title title">
 				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
@@ -330,29 +409,50 @@
 				<div class="more-link">
 					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 			</div>
-			<div class="box-display" style="margin-top: 0.5rem;margin-left: 0.3rem">
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 12rem;" src="../img/index/st.png" />
+			<div class="flex">
+			<div class="rxcp-left">
+				<img class="img-all" src="../img/index/st.png" />
+				<div class="type-name1">
+					生铁
 				</div>
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 5.8rem;" src="../img/index/fg.png" />
+			</div>
+			<div class="rxcp-right">
 
-					<img style="width: 10.8rem;height: 5.5rem;margin-top: 0.5rem;" src="../img/index/ztj.png" />
+				<img class="img-half" src="../img/index/fg.png" />
+				<div class="type-name3">
+					废钢
+				</div>
+
+				<img class="img-half" src="../img/index/ztj.png" />
+<div class="type-name2">
+					增碳剂
+				</div>
+			</div>
+		</div>
+
+		<div class="flex">
+			<div class="rxcp-left">
+				<img class="img-all" src="../img/index/thj.png" />
+<div class="type-name1">
+					钛合金
+				</div>
+			</div>
+			<div class="rxcp-right">
+				<img class="img-all" src="../img/index/yyj.png" />
+<div class="type-name2">
+					孕育剂
+				</div>
+			</div>
+		</div>
+		<div class="flex">
+			<div class="rxcp-middle" >
+				<img class="img-all" src="../img/index/qtfl.png" />
+<div class="type-name1" style="bottom:10px">
+					其他辅料
 				</div>
 			</div>
 
-			<div class="box-display" style="margin-top: 0.3rem;margin-left: 0.3rem">
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 6rem;" src="../img/index/thj.png" />
-				</div>
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 6rem;" src="../img/index/yyj.png" />
-
-				</div>
-			</div>
-			<div style="margin-top: 0.3rem;margin-left:0.3rem;">
-				<img style="width: 22rem;height: 10rem;" src="../img/index/qtfl.png" />
-			</div>
+		</div>
 		</section>
 		<div style="height:3rem"></div>
 		<!--<div style="height:12rem;background-color:#FFFFFF;">
@@ -698,6 +798,16 @@
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
+			});
+			
+			function test(){
+				mui.alert('欢迎使用Hello MUI', 'Hello MUI', function() {
+					info.innerText = '你刚关闭了警告框';
+				});
+			}
+			
+			document.getElementById('llsc').addEventListener('tap', function() {
+				
 			});
 
 			document.getElementById('llzs').addEventListener('tap', function() {

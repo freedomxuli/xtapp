@@ -27,6 +27,28 @@
 			border-color: #e35d4c;
 			font-size: 1.1rem;
 		}
+		
+		.mui-input-group .mui-input-row:after {
+			left: 0;
+		}
+		
+		.mui-input-row img {
+			width: 1rem;
+		}
+		
+		.mui-input-row label {
+			width: 3rem;
+			padding:0.9rem 0 0 0.9rem;
+		}
+		
+		.form-container {
+			padding-top: 0.5rem;
+		}
+			.btn-vcode{
+			margin: 0;
+			right:5px;
+			color: #666666;
+		}
     </style>
   </head>
 
@@ -43,7 +65,7 @@
     <section class="container">
       <form class="form-container" action="<%url action=topwap_ctl_passport@verifyUsername%>" method="post" id="form_forget">
         <input type="hidden" name="verifycodekey" value="topwap_forgot">
-        <section class="mui-input-group">
+        <!--<section class="mui-input-group">
           <div class="mui-input-row">
             <label>手机号</label>
             <input type="text" id="account" name="username" class="mui-input-clear" placeholder="请输入您的手机号">
@@ -59,7 +81,22 @@
               </div>
             </div>
           </div>
-        </section>
+        </section>-->
+        <section class="mui-input-group">
+					<div class="mui-input-row">
+						<label><img src="../../img/item/name.png" /></label>
+						<input id="telnumber" type="text" value="" class="mui-input-clear mui-input" placeholder="请输入手机号">
+					</div>
+				
+					<div class="form-inline">
+						<div class="mui-input-row form-inline-adaptive">
+							<label><img src="../../img/item/vcode.png" /></label>
+							<input id="vcode" type="text" class="mui-input-clear" placeholder="请输入短信验证码" required data-caution="请输入短信验证码">
+						</div>
+						<div class="form-inline-unadaptive"><button type="button" class="mui-btn mui-btn-block btn-action action-get-vcode btn-vcode" id="action_get_vcode">发送验证码</button></div>
+					</div>
+
+				</section>
         <section class="mui-content-padded form-op-section">
           <button id="find_password" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
         </section>
@@ -117,8 +154,7 @@
           queryData: {
             'method': config.apimethod.usersendSms,
             'mobile': account,
-            'type': 'forgot',
-            'send_sms_token': token
+            'type': 'forgot'
           },
           method: 'POST'
         }

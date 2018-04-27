@@ -2,9 +2,15 @@
 <html lang="en">
 
 	<head>
-		<meta charset="UTF-8" name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<title>求购供应</title>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
 		<link rel="stylesheet" href="../../css/mui.min.css">
 		<link rel="stylesheet" href="../../css/style.css">
 		<script>
@@ -66,12 +72,10 @@
 				padding-top: 1.3rem;
 				line-height: 0px;
 				padding-bottom: 1.6rem;
-				overflow: hidden;
 			}
 			
 			body {
 				line-height: 0px;
-				overflow: hidden;
 			}
 			
 			.flex {
@@ -167,14 +171,74 @@
 				<div class="font-famliy1 flex_child1">库存</div>
 				<div class="font-famliy2 flex_child1">1000</div>
 			</div>
-		</div>
-		<div style="height:0.3rem;"></div>
-		<div style="height:1.6rem;position:fixed;left: 0;bottom: 0;right: 0;z-index: 10;display: flex;color:#FFFFFF;font-size:0.6rem">
-			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #E35D4C;text-align: center;">认购意向</div>
-			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #B7B6B6;text-align: center;">联系卖家</div>
-		</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">商品编号</div>
+				<div class="font-famliy2 flex_child1">B2017014500054</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">发布企业名称</div>
+				<div class="font-famliy2 flex_child1">常州**********有限公司</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">商品名称</div>
+				<div class="font-famliy2 flex_child1">生铁</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">品名</div>
+				<div class="font-famliy2 flex_child1">球铁</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">规格</div>
+				<div class="font-famliy2 flex_child1">Q10</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">交割库</div>
+				<div class="font-famliy2 flex_child1">中途货</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">库存</div>
+				<div class="font-famliy2 flex_child1">1000</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">商品编号</div>
+				<div class="font-famliy2 flex_child1">B2017014500054</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">发布企业名称</div>
+				<div class="font-famliy2 flex_child1">常州**********有限公司</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">商品名称</div>
+				<div class="font-famliy2 flex_child1">生铁</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">品名</div>
+				<div class="font-famliy2 flex_child1">球铁</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">规格</div>
+				<div class="font-famliy2 flex_child1">Q10</div>
+			</div>
+			<div class="row2 flex">
+				<div class="font-famliy1 flex_child1">交割库</div>
+				<div class="font-famliy2 flex_child1">中途货</div>
+			</div>
+			<div class="row1 flex">
+				<div class="font-famliy1 flex_child1">库存</div>
+				<div class="font-famliy2 flex_child1">1000</div>
+			</div>
 		</div>
 
+		<!--<div style="height:1.6rem;position:fixed;left: 0;bottom: 0;right: 0;z-index: 10;display: flex;color:#FFFFFF;font-size:0.6rem">
+			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #E35D4C;text-align: center;">认购意向</div>
+			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #B7B6B6;text-align: center;">联系卖家</div>
+		</div>-->
+		<nav class="mui-bar bbc-bar-tab" style="height:1.6rem;display: flex;color:#FFFFFF;font-size:0.6rem">
+			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #E35D4C;text-align: center;">认购意向</div>
+			<div style="flex:1;height:1.6rem;line-height:1.6rem;background: #B7B6B6;text-align: center;">联系卖家</div>
+		</nav>
+		</div>
+		
 	</body>
 
 </html>
