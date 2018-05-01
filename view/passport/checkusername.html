@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
-    <style>
-    	
-		.mui-input-row label {
-			width: 5rem;
-		}
-		.form-container {
-			padding-top: 0.5rem;
-		}
-		
-		.font-orange {
-			color: #666666;
-		}
-		.bbc-btn-warning {
-			background: #e35d4c;
-			border-color: #e35d4c;
-			font-size: 1.1rem;
-		}
-		
-		.mui-input-group .mui-input-row:after {
-			left: 0;
-		}
-		
-		.mui-input-row img {
-			width: 1rem;
-		}
-		
-		.mui-input-row label {
-			width: 3rem;
-			padding:0.9rem 0 0 0.9rem;
-		}
-		
-		.form-container {
-			padding-top: 0.5rem;
-		}
-			.btn-vcode{
-			margin: 0;
-			right:5px;
-			color: #666666;
-		}
-    </style>
-  </head>
+		<link rel="stylesheet" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+		<style>
+			.mui-input-row label {
+				width: 5rem;
+			}
+			
+			.form-container {
+				padding-top: 0.5rem;
+			}
+			
+			.font-orange {
+				color: #666666;
+			}
+			
+			.bbc-btn-warning {
+				background: #e35d4c;
+				border-color: #e35d4c;
+				font-size: 1.1rem;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				left: 0;
+			}
+			
+			.mui-input-row img {
+				width: 1rem;
+			}
+			
+			.mui-input-row label {
+				width: 3rem;
+				padding: 0.9rem 0 0 0.9rem;
+			}
+			
+			.form-container {
+				padding-top: 0.5rem;
+			}
+			
+			.btn-vcode {
+				margin: 0;
+				right: 5px;
+				color: #666666;
+			}
+		</style>
+	</head>
 
-  <body>
-    	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<a class="mui-action-back mui-pull-left back-left">
 				<img class="back_img" src="../../img/item/back_arrow.png" />
 			</a>
@@ -62,10 +64,10 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</a>
 		</header>
-    <section class="container">
-      <form class="form-container" action="<%url action=topwap_ctl_passport@verifyUsername%>" method="post" id="form_forget">
-        <input type="hidden" name="verifycodekey" value="topwap_forgot">
-        <!--<section class="mui-input-group">
+		<section class="container">
+			<form class="form-container" action="<%url action=topwap_ctl_passport@verifyUsername%>" method="post" id="form_forget">
+				<input type="hidden" name="verifycodekey" value="topwap_forgot">
+				<!--<section class="mui-input-group">
           <div class="mui-input-row">
             <label>手机号</label>
             <input type="text" id="account" name="username" class="mui-input-clear" placeholder="请输入您的手机号">
@@ -82,91 +84,122 @@
             </div>
           </div>
         </section>-->
-        <section class="mui-input-group">
+				<section class="mui-input-group">
 					<div class="mui-input-row">
 						<label><img src="../../img/item/name.png" /></label>
 						<input id="telnumber" type="text" value="" class="mui-input-clear mui-input" placeholder="请输入手机号">
 					</div>
-				
+
 					<div class="form-inline">
 						<div class="mui-input-row form-inline-adaptive">
 							<label><img src="../../img/item/vcode.png" /></label>
-							<input id="vcode" type="text" class="mui-input-clear" placeholder="请输入短信验证码" required data-caution="请输入短信验证码">
+							<input id="vcode" type="number" class="mui-input-clear" placeholder="请输入短信验证码" required data-caution="请输入短信验证码">
 						</div>
 						<div class="form-inline-unadaptive"><button type="button" class="mui-btn mui-btn-block btn-action action-get-vcode btn-vcode" id="action_get_vcode">发送验证码</button></div>
 					</div>
 
 				</section>
-        <section class="mui-content-padded form-op-section">
-          <button id="find_password" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
-        </section>
-      </form>
-    </section>
-    <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
-    <script src="../../js/template.min.js"></script>
-    <script src="../../config.js"></script>
-    <script src="../../js/app.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      var func = "binded";
-      document.getElementById('find_password').addEventListener('tap', function() {
+				<section class="mui-content-padded form-op-section">
+					<button id="find_password" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
+				</section>
+			</form>
+		</section>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.enterfocus.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+			var func = "binded";
+			document.getElementById('find_password').addEventListener('tap', function() {
 
-          var account = $('#account').val();
-          var vcode = $('#vcode').val();
-          if(!account) {
-            mui.alert('请填写用户名');
-            return
-          }
-          if(!vcode) {
-            mui.alert('请填写验证码');
-            return
-          }
+				var account = $('#telnumber').val();
+				var vcode = $('#vcode').val();
+				if(!account) {
+					mui.alert('请填写用户名');
+					return
+				}
+				if(!vcode) {
+					mui.alert('请填写验证码');
+					return
+				}
 
-        var param = {
-          queryData: {
-            'method': config.apimethod.verifyAccount,
-            'account': account,
-            'vcode_type': 'topapi_forgot',
-            'verifycode': vcode
-          },
-          method: 'POST'
-        }
+				var param = {
+					queryData: {
+						'method': config.apimethod.userVerifySms,
+						'mobile': account,
+						'type': 'forgot',
+						'vcode': vcode
+					},
+					method: 'POST'
+				}
+				$.dataRequest(param, function(rs) {
+					var data = rs.data;
+					if(rs.errorcode == '0') {
+						app.createState(account, function() {
+							clicked('_www/view/passport/resetpassword.html');
+						});
+					} else {
+						mui.alert('验证码错误');
+						return;
+					}
+				});
+			});
 
-        $.dataRequest(param, function(rs) {
-          if(rs.data.mobile == null ) {
-            clicked('_www/view/passport/nobind.html');
-          }else{
-            //发送短信
-            //跳转到短信验证页面
-            sendSms(rs.data.mobile,rs.data.verifyAccount_token);
+			function sendSms(account, token) {
+				var param = {
+					queryData: {
+						'method': config.apimethod.usersendSms,
+						'mobile': account,
+						'type': 'forgot'
+					},
+					method: 'POST'
+				}
+				$.dataRequest(param, function(rs) {});
+			}
 
-            clicked('_www/view/member/safe/verificationsms.html',{
-              'actiontype' : 'forgot',
-              'mobile' : rs.data.mobile,
-              'forgot_token' : rs.data.verifyAccount_token
-            });
-          }
-        });
-      });
+			fetchVcode('topapi_forgot', $('#vcode_img'));
+			$('#vcode_img').on('tap', function() {
+				fetchVcode('topapi_forgot', $(this));
+			});
 
-      function sendSms(account, token) {
-        var param = {
-          queryData: {
-            'method': config.apimethod.usersendSms,
-            'mobile': account,
-            'type': 'forgot'
-          },
-          method: 'POST'
-        }
-        $.dataRequest(param, function(rs) {
-        });
-      }
+			document.getElementById('action_get_vcode').addEventListener('tap', function() {
+				if($(this).attr('disabled')) return;
+				var $el = $(this);
+				var textCont = $el;
+				var mobile = $('#telnumber').val();
+				if(!mobile) {
+					mui.alert('请输入手机号');
+					return;
+				}
+				var smstype = 'forgot';
 
-      fetchVcode('topapi_forgot',$('#vcode_img'));
-      $('#vcode_img').on('tap', function() {
-        fetchVcode('topapi_forgot',$(this));
-      });
-    </script>
-  </body>
+				var param = {
+					queryData: {
+						'method': config.apimethod.usersendSms,
+						'mobile': mobile,
+						'type': smstype
+					},
+					method: 'POST'
+				};
+
+				$.dataRequest(param, function(rs) {
+					textCont.html('<i>0</i>');
+					$el.attr('disabled', 'disabled');
+					var cd = new countdown(textCont.find('i'), {
+						start: 120,
+						secondOnly: true,
+						callback: function(e) {
+							$el.removeAttr('disabled');
+							textCont.html('重发验证码');
+						}
+					});
+					mui.toast('发送成功，请查收');
+				});
+			});
+		</script>
+	</body>
 
 </html>

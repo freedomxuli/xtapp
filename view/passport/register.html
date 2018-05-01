@@ -22,7 +22,7 @@
 		
 		.mui-input-row label {
 			width: 3rem;
-			padding:0.9rem 0 0 0.9rem;
+			padding: 0.9rem 0 0 0.9rem;
 		}
 		
 		.form-container {
@@ -42,9 +42,10 @@
 			border-color: #e35d4c;
 			font-size: 1.1rem;
 		}
-		.btn-vcode{
+		
+		.btn-vcode {
 			margin: 0;
-			right:5px;
+			right: 5px;
 			color: #666666;
 		}
 	</style>
@@ -104,6 +105,7 @@
 		</section>
 		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.enterfocus.js"></script>
 		<script src="../../js/template.min.js"></script>
 		<script src="../../config.js"></script>
 		<script src="../../js/app.js"></script>
@@ -130,9 +132,14 @@
 				})
 				$('#register_next').on('tap', function() {
 					var account = $('#telnumber').val();
-				//	var vcode = $('#vcode').val();
+					var vcode = $('#vcode').val();
+					var pwd = $('#password').val();
 					if(!account) {
-						mui.alert('用户名或者手机号不能为空');
+						mui.alert('用户名不能为空');
+						return
+					}
+					if(!pwd) {
+						mui.alert('密码不能为空');
 						return
 					}
 					if(!vcode) {
@@ -143,39 +150,52 @@
 						mui.alert('请阅读并接受会员注册协议');
 						return;
 					}
+
 					var param = {
 						queryData: {
-							'method': config.apimethod.verifyAccount,
-							'account': account,
-							'vcode_type': 'topapi_register',
-							'verifycode': ''
+							'method': config.apimethod.userVerifySms,
+							'mobile': account,
+							'type': 'signup',
+							'vcode': vcode
 						},
 						method: 'POST'
 					}
 					$.dataRequest(param, function(rs) {
 						var data = rs.data;
-						var token = data.verifyAccount_token;
-						alert(token);
-//						if(data.type === 'login_account' || data.type === 'email') {
-//							clicked('_www/view/member/safe/logpasswordset.html', {
-//								'accesstoken': token,
-//								'account': account,
-//								'entrance': entrance
-//							});
-//						} else if(data.type === 'mobile') {
-//
-//							sendSms(account, token);
-//
-//							clicked('_www/view/member/safe/verificationsms.html', {
-//								'accesstoken': token,
-//								'mobile': account,
-//								'actiontype': 'register',
-//								'signup_token': token,
-//								'entrance': entrance
-//							});
-//						}
+						if(data.status == "success") {
+							alert(132);
+							signup(account, pwd);
+						} else {
+							mui.alert('验证码错误');
+							return;
+						}
 					});
 				});
+
+				function singup(account, pwd) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.signup,
+							'account': account,
+							'password': pwd,
+							'password_confirmation': pwd,
+							'deviceid': 'app'
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						if(rs.errorcode == '0') {
+							var data = rs.data;
+							var token = data.accessToken;
+							app.createState(account, token, function() {
+								clicked('_www/view/member/member.html');
+							});
+						} else {
+							mui.alert(rs.msg);
+							return;
+						}
+					});
+				}
 
 				//				var btnVCode = $('#action_get_vcode');
 				//				btnVCode.html('<i>0<i>');
@@ -190,23 +210,23 @@
 				//				});
 
 				document.getElementById('action_get_vcode').addEventListener('tap', function() {
-						if($(this).attr('disabled')) return;
-						var $el = $(this);
-						var textCont = $el;
-						var mobile = $('#telnumber').val();
-						//var send_sms_token = plus.webview.currentWebview().signup_token;
-						//var send_sms_token="123";
-						var smstype = 'signup';
+					if($(this).attr('disabled')) return;
+					var $el = $(this);
+					var textCont = $el;
+					var mobile = $('#telnumber').val();
+					//var send_sms_token = plus.webview.currentWebview().signup_token;
+					//var send_sms_token="123";
+					var smstype = 'signup';
 
-						var param = {
-							queryData: {
-								'method': config.apimethod.usersendSms,
-								'mobile': mobile,
-								'type': smstype
-							},
-							method: 'POST'
-						};
-				
+					var param = {
+						queryData: {
+							'method': config.apimethod.usersendSms,
+							'mobile': mobile,
+							'type': smstype
+						},
+						method: 'POST'
+					};
+
 					$.dataRequest(param, function(rs) {
 						textCont.html('<i>0</i>');
 						$el.attr('disabled', 'disabled');
