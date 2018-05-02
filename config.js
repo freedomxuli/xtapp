@@ -6,6 +6,8 @@ var config = {
     cpage: 1, //分页当前页
     apimethod: { //接口method集合
         home: 'theme.modules', //首页
+        manufacturers:'manufacturers.list',//厂家列表
+        priceguide:'priceguide.getList',//价格指导
         category: 'category.itemCategory', //分类
         vcode: 'user.vcode', //图片验证码
         usersendSms: 'user.sendSms', //注册发送验证码
