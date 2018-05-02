@@ -287,6 +287,8 @@
           var total = rs.data.payment.cur_money;
 
           $(window).on('tap', '.action-pay', function() {
+          	var price = +$('#deprice').data('value');
+            var oprice = +($('.container').find('.pay-num').data('value'));
             /*if(!pay_id){
               var price = +$('#deprice').data('value');
               var oprice = +($('.container').find('.pay-num').data('value'));
@@ -313,25 +315,22 @@
                     method: 'POST'
                   };
                   $.dataRequest(vparam, function(rs) {
-                    if(price != oprice) {
-                      pay(SERVER, pay_id, pid, total);
-                    }else{
-                       var vparam = {
-                          queryData: {
-                            'method': config.apimethod.tradepay,
-                            'accessToken': state.token,
-                            'hongbao_ids': redpackets_id,
-                            'payment_id': pid,
-                            'deposit_password': payPassword
-                          },
-                          method: 'POST'
-                        };
-                        $.dataRequest(vparam, function(rs) {
-                          clicked('_www/view/payment/paymentsuccess.html', {
-                            'total': total
-                          });
-                        });
-                    }
+                  	console.log(JSON.stringify(rs));
+                    var vparam = {
+                      queryData: {
+                        'method': config.apimethod.tradepay,
+                        'accessToken': state.token,
+                        'hongbao_ids': redpackets_id,
+                        'payment_id': pid,
+                        'deposit_password': payPassword
+                      },
+                      method: 'POST'
+                    };
+                    $.dataRequest(vparam, function(rs) {
+                      clicked('_www/view/payment/paymentsuccess.html', {
+                        'total': total
+                      });
+                    });
                   });
                 }
               }, 'div');
@@ -351,26 +350,22 @@
                     method: 'POST'
                   };
                   $.dataRequest(vparam, function(rs) {
-                    if(price != oprice) {
-                      pay(SERVER, pay_id, pid, total);
-                    }else{
-                       var vparam = {
-                          queryData: {
-                            'method': config.apimethod.tradepay,
-                            'accessToken': state.token,
-                            'hongbao_ids': redpackets_id,
-                            'payment_id': pid,
-                            'deposit_password': payPassword,
-                            'pay_app_id':pay_id
-                          },
-                          method: 'POST'
-                        };
-                        $.dataRequest(vparam, function(rs) {
-                          clicked('_www/view/payment/paymentsuccess.html', {
-                            'total': total
-                          });
-                        });
-                    }
+                    var vparam = {
+                      queryData: {
+                        'method': config.apimethod.tradepay,
+                        'accessToken': state.token,
+                        'hongbao_ids': redpackets_id,
+                        'payment_id': pid,
+                        'deposit_password': payPassword,
+                        'pay_app_id':pay_id
+                      },
+                      method: 'POST'
+                    };
+                    $.dataRequest(vparam, function(rs) {
+                      clicked('_www/view/payment/paymentsuccess.html', {
+                        'total': total
+                      });
+                    });
                   });
                 }
               }, 'div');

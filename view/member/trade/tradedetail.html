@@ -291,7 +291,7 @@
           <div class="mui-table">
             <div class="mui-table-cell mui-col-xs-6 font-gray-20">发票信息：</div>
             <div class="mui-table-cell mui-col-xs-6 content-right">
-              <p>无发票</p>
+              <p>增值税发票</p>
             </div>
           </div>
         </li>
@@ -412,6 +412,7 @@
       getPage();
       function getPage() {
         var tid = plus.webview.currentWebview().tid;
+        console.log(tid);
         var param = {
           queryData: {
             'method': config.apimethod.tradeDetail,

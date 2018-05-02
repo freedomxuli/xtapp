@@ -640,10 +640,13 @@
               <mark><%= $format_price(list[i].payment) %></mark>
             </div>
             <div class="box-item-flex1 mui-text-right">
-              <% if(list[i].status=="WAIT_BUYER_PAY"&&list[i].shenhe_status=="0"){ %>
-              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-pay action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= list[i].tid %>,"type":"trade"}'>
-                去付款
-              </a>
+              <% if(list[i].status=="WAIT_BUYER_PAY"){ %>
+              <% if(list[i].shenhe_status=="success"){%>
+              	<a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-pay action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= list[i].tid %>,"type":"trade"}'>
+	                去付款
+	              </a>
+              	<%}%>
+              
               <% if(list[i].cancel_status=="NO_APPLY_CANCEL"){ %>
               <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= list[i].tid %>}'>
                 取消订单

@@ -1424,7 +1424,7 @@
       var state = app.getState();
       var totalPrice=0;
       var totalAcceptPrice=0;
-      var pricetype = 1;
+      var pricetype = "price";
       var billId;
       console.log(state.token);
       var param = {
@@ -1482,11 +1482,11 @@
 				
 				$('.kind-select').on('tap','.mui-radio',function(){
 					if($(this).data("kind")==1){
-						pricetype = 1;
+						pricetype = "price";
 						$('#op_all_payment').text("￥"+totalPrice);
 					}
 					else{
-						pricetype = 2;
+						pricetype = "accept";
 						$('#op_all_payment').text("￥"+totalAcceptPrice);
 					}
 				});
@@ -2090,9 +2090,7 @@
             mui.toast('创建订单成功,等待审核！');
             if(rs.data.payment_type == 'online') {
               var payid = rs.data.payment_id;
-              clicked('_www/view/payment/payment.html', {
-                'payid': payid
-              });
+              clicked('_www/view/member/trade/trade.html');
             } else {
               clicked("_www/view/payment/paymentsuccess.html", {'total': $('#op_all_payment').text().substr(1),'payment_type':'offline'});
             }
