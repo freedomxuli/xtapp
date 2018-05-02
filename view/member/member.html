@@ -310,10 +310,10 @@
 		</div>
 		<div class="zc-class">
 			<div class="box-display content-vertical-padded user-assetses font-gray-20">
-				<div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">￥1.00</em><br><span class="font-white fontS">红包</span></div>
-				<div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">1张</em><br><span class="font-white fontS">购物券</span></div>
+				<div data-needlog="true" data-view="_www/view/member/redpackets/redpackets.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="redpackets">￥0</em><br><span class="font-white fontS">红包</span></div>
+				<div data-needlog="true" data-view="_www/view/member/voucher/voucher.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="voucher">0张</em><br><span class="font-white fontS">购物券</span></div>
 				<div data-needlog="true" data-view="_www/view/member/coupon/coupon.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="coupon">0张</em><br><span class="font-white fontS">优惠券</span></div>
-				<div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">248</em><br><span class="font-white fontS">积分</span></div>
+				<div data-needlog="true" data-view="_www/view/member/point/integral.html" class="box-item-flex1 content-center action-clickview"><em class="assets-data" id="integral">0</em><br><span class="font-white fontS">积分</span></div>
 			</div>
 		</div>
 		<section class="section-white">
@@ -346,7 +346,7 @@
 				<a class="box-item-flex1 action-clickview font-gray-20">
 					<span class="yck-font-1 font-gray-20">现金预存款</span>
 					<br />
-					<span class="yck-font-2">11797.62</span><span class="yck-font-1 font-gray-0"> 元</span>
+					<span class="yck-font-2">0</span><span class="yck-font-1 font-gray-0"> 元</span>
 					<br />
 					<div class="lineheight-cz">　</div>
 					<div class="yck-font-3"><span>充值</span></div>
@@ -354,7 +354,7 @@
 				<a class="box-item-flex1 action-clickview">
 					<span class="yck-font-5">承兑预存款</span>
 					<br />
-					<span class="yck-font-6">11797.62</span><span class="yck-font-5 font-gray-0"> 元</span>
+					<span class="yck-font-6">0</span><span class="yck-font-5 font-gray-0"> 元</span>
 					<br />
 					<div class="lineheight-cz">　</div>
 					<div class="yck-font-7"><span>提现</span></div>
@@ -525,7 +525,7 @@
 							method: 'GET'
 						}
 						$.dataRequest(param, function(rs) {
-							
+
 							var data = rs.data;
 							$(".yck-font-2").text(data.deposit);
 							$(".yck-font-6").text(data.acceptance_deposit);
@@ -569,11 +569,20 @@
 			});
 
 			$('.yck-font-3').on('tap', function() {
+				var state = app.getState();
+				if(state.token) {
+					var faid = plus.webview.currentWebview().id;
+					clicked('_www/view/member/recharge/recharge.html', {
+						'faid': faid
+					});
+				} else {
+					var faid = plus.webview.currentWebview().id;
+					clicked('_www/view/passport/login.html', {
+						'faid': faid,
+						'entrance': faid
+					}, 'slide-in-bottom');
+				}
 
-				var faid = plus.webview.currentWebview().id;
-				clicked('_www/view/member/recharge/recharge.html', {
-					'faid': faid
-				});
 			});
 		</script>
 	</body>

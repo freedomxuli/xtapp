@@ -743,46 +743,47 @@
 					} else {
 						$('.submit-bottom-div').append('<div class="submit-bottom-button1">提交认证</div><div class="submit-bottom-button2">变更认证</div>');
 					}
-
-					$("#business_name").val(data.business_name);
-					$("#business_tax").val(data.business_tax);
-					$("#business_person").val(data.business_person);
-					$("#business_linkman").val(data.business_linkman);
-					$("#business_linkmantel").val(data.business_linkmantel);
-					$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
-					$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
-					if(data.certificate_type == '3') {
-						$('#ul1').show();
-						$('#ul2').hide();
-						$('#ul3').hide();
-						$('#ul4').hide();
-						$('#ul5').hide();
-						$('#ul6').hide();
-						if(data.business_license != '' && data.business_license != null)
-							$('#camera1').hide();
-						$("#ul1").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="1" data-id="' + data.business_license_imgId + '" /></li>');
-					} else {
-						$('#ul1').hide();
-						$('#ul2').show();
-						$('#ul3').show();
-						$('#ul4').show();
-						$('#ul5').show();
-						$('#ul6').show();
-						if(data.business_license != '' && data.business_license != null)
-							$('#camera6').hide();
-						if(data.tissue_code != '' && data.tissue_code != null)
-							$('#camera2').hide();
-						if(data.tax_proof != '' && data.tax_proof != null)
-							$('#camera3').hide();
-						if(data.license_proof != '' && data.license_proof != null)
-							$('#camera4').hide();
-						if(data.business_impower != '' && data.business_impower != null)
-							$('#camera5').hide();
-						$("#ul6").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="6" data-id="' + data.business_license_imgId+ '" /></li>');
-						$("#ul2").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tissue_code + '" data-preview-src="" data-preview-group="2" data-id="' + data.tissue_code_imgId + '" /></li>');
-						$("#ul3").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tax_proof + '" data-preview-src="" data-preview-group="3" data-id="' + data.tax_proof_imgId + '" /></li>');
-						$("#ul4").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.license_proof + '" data-preview-src="" data-preview-group="4" data-id="' + data.license_proof_imgId + '" /></li>');
-						$("#ul5").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_impower + '" data-preview-src="" data-preview-group="5" data-id="' + data.business_impower_imgId + '" /></li>');
+					if(data.business_name != undefined && data.business_name != null) {
+						$("#business_name").val(data.business_name);
+						$("#business_tax").val(data.business_tax);
+						$("#business_person").val(data.business_person);
+						$("#business_linkman").val(data.business_linkman);
+						$("#business_linkmantel").val(data.business_linkmantel);
+						$("input[name='radio1'][value='" + data.business_type + "']").attr("checked", true);
+						$("input[name='radio2'][value='" + data.certificate_type + "']").attr("checked", true);
+						if(data.certificate_type == '3') {
+							$('#ul1').show();
+							$('#ul2').hide();
+							$('#ul3').hide();
+							$('#ul4').hide();
+							$('#ul5').hide();
+							$('#ul6').hide();
+							if(data.business_license != '' && data.business_license != null)
+								$('#camera1').hide();
+							$("#ul1").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="1" data-id="' + data.business_license_imgId + '" /></li>');
+						} else {
+							$('#ul1').hide();
+							$('#ul2').show();
+							$('#ul3').show();
+							$('#ul4').show();
+							$('#ul5').show();
+							$('#ul6').show();
+							if(data.business_license != '' && data.business_license != null)
+								$('#camera6').hide();
+							if(data.tissue_code != '' && data.tissue_code != null)
+								$('#camera2').hide();
+							if(data.tax_proof != '' && data.tax_proof != null)
+								$('#camera3').hide();
+							if(data.license_proof != '' && data.license_proof != null)
+								$('#camera4').hide();
+							if(data.business_impower != '' && data.business_impower != null)
+								$('#camera5').hide();
+							$("#ul6").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_license + '" data-preview-src="" data-preview-group="6" data-id="' + data.business_license_imgId + '" /></li>');
+							$("#ul2").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tissue_code + '" data-preview-src="" data-preview-group="2" data-id="' + data.tissue_code_imgId + '" /></li>');
+							$("#ul3").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.tax_proof + '" data-preview-src="" data-preview-group="3" data-id="' + data.tax_proof_imgId + '" /></li>');
+							$("#ul4").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.license_proof + '" data-preview-src="" data-preview-group="4" data-id="' + data.license_proof_imgId + '" /></li>');
+							$("#ul5").find('.rate-img-list').append('<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + data.business_impower + '" data-preview-src="" data-preview-group="5" data-id="' + data.business_impower_imgId + '" /></li>');
+						}
 					}
 				});
 
@@ -924,10 +925,13 @@
 						method: 'POST'
 					}
 					$.dataRequest(param, function(rs) {
-						mui.toast('认证成功',function(){alert(123)});
+						mui.toast('认证成功', function() {
+							alert(123)
+						});
 						clicked('_www/view/member/member.html');
 					});
 				});
+
 
 				var maxcount = 0;
 				//上传图片

@@ -260,9 +260,17 @@
 		<script type="text/html" id="widget_icons_nav">
 			<section>
 				<ul class="widgets-icons-nav">
-					<% for(var i in pic) { %>
+					<!--<% for(var i in pic) { %>
 					<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'><i><a href="#"><img src="<%= pic[i].imagesrc %>"></a></i><span><%= pic[i].tag %></span></li>
-					<% } %>
+					<% } %>-->
+					<li class="action-webview" data-webview="" data-param='{"tab": ""}'><i><a href="#"><img src="<%= pic[0].imagesrc %>"></a></i><span><%= pic[0].tag %></span></li>
+					<li id="gxzy" class="action-webview" data-webview="_www/view/item/shareresource.html" data-webparam=''><i><a href="#"><img src="<%= pic[1].imagesrc %>"></a></i><span><%= pic[1].tag %></span></li>
+					<li id="lljr" class="action-webview" data-webview="_www/view/item/finance.html" data-webparam=''><i><a href="#"><img src="<%= pic[2].imagesrc %>"></a></i><span><%= pic[2].tag %></span></li>
+					<li id="llzx" class="action-webview" data-webview="_www/view/item/information_list.html" data-webparam=''><i><a href="#"><img src="<%= pic[3].imagesrc %>"></a></i><span><%= pic[3].tag %></span></li>
+					<li id="zxhd" class="action-webview" data-webview="_www/view/item/activity.html" data-webparam=''><i><a href="#"><img src="<%= pic[4].imagesrc %>"></a></i><span><%= pic[4].tag %></span></li>
+					<li id="llzs" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-webparam=''><i><a href="#"><img src="<%= pic[5].imagesrc %>"></a></i><span><%= pic[5].tag %></span></li>
+					<li id="xxwl" class="action-webview" data-webview="_www/view/item/offlinenetwork.html" data-webparam=''><i><a href="#"><img src="<%= pic[6].imagesrc %>"></a></i><span><%= pic[6].tag %></span></li>
+					<li id="qggy" class="action-webview" data-webview="_www/view/item/supply.html" data-webparam=''><i><a href="#"><img src="<%= pic[7].imagesrc %>"></a></i><span><%= pic[7].tag %></span></li>
 				</ul>
 			</section>
 		</script>
