@@ -163,39 +163,14 @@
 					$.dataRequest(param, function(rs) {
 						var data = rs.data;
 						if(data.status == "success") {
-							alert(132);
 							signup(account, pwd);
 						} else {
 							mui.alert('验证码错误');
 							return;
 						}
 					});
-				});
 
-				function singup(account, pwd) {
-					var param = {
-						queryData: {
-							'method': config.apimethod.signup,
-							'account': account,
-							'password': pwd,
-							'password_confirmation': pwd,
-							'deviceid': 'app'
-						},
-						method: 'POST'
-					}
-					$.dataRequest(param, function(rs) {
-						if(rs.errorcode == '0') {
-							var data = rs.data;
-							var token = data.accessToken;
-							app.createState(account, token, function() {
-								clicked('_www/view/member/member.html');
-							});
-						} else {
-							mui.alert(rs.msg);
-							return;
-						}
-					});
-				}
+				});
 
 				//				var btnVCode = $('#action_get_vcode');
 				//				btnVCode.html('<i>0<i>');
@@ -273,6 +248,31 @@
 					}
 					var regisnametemp = template(temp, rs.data);
 					$('.register_multipletype').html(regisnametemp);
+				});
+			}
+
+			function signup(account, pwd) {
+				var param = {
+					queryData: {
+						'method': config.apimethod.signup,
+						'account': account,
+						'password': pwd,
+						'password_confirmation': pwd,
+						'deviceid': 'app'
+					},
+					method: 'POST'
+				}
+				$.dataRequest(param, function(rs) {
+					if(rs.errorcode == '0') {
+						var data = rs.data;
+						var token = data.accessToken;
+						app.createState(account, token, function() {
+							clicked('_www/view/member/member.html');
+						});
+					} else {
+						mui.alert(rs.msg);
+						return;
+					}
 				});
 			}
 

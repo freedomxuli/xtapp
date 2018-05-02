@@ -110,7 +110,7 @@
 		<script src="../../js/template.min.js"></script>
 		<script src="../../config.js"></script>
 		<script src="../../js/app.js"></script>
-		
+
 		<script type="text/javascript" charset="utf-8">
 			var func = "binded";
 			document.getElementById('find_password').addEventListener('tap', function() {
@@ -138,8 +138,8 @@
 				$.dataRequest(param, function(rs) {
 					var data = rs.data;
 					if(rs.errorcode == '0') {
-						app.createState(account, function() {
-							clicked('_www/view/passport/resetpassword.html');
+						clicked('_www/view/passport/resetpassword.html', {
+							'mobile': account
 						});
 					} else {
 						mui.alert('验证码错误');
