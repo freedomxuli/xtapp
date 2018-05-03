@@ -712,7 +712,7 @@
 	   		<% for(var j in cartInfo.resultCartData[i].object){ %>
 	   		<div class="goods_memo">
 	   			<div class="goods_xq">
-	   				<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-<%=cartInfo.resultCartData[i].object[j].pm_name%> <%=cartInfo.resultCartData[i].object[j].guige%>　<%=cartInfo.resultCartData[i].object[j].weight%>吨  
+	   				<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-<%=cartInfo.resultCartData[i].object[j].pm_name%> <%=cartInfo.resultCartData[i].object[j].guige%>　<%=cartInfo.resultCartData[i].object[j].quantity%>吨  
 	   			</div>
 	   			<div class="goods_address">
 	   				<%=cartInfo.resultCartData[i].object[j].storage_name%>
@@ -762,7 +762,7 @@
 	   					商品数量小计：
 	   				</div>
 	   				<div class="goods_order_right_price">
-	   					<span class="goods_order_right_price_font">共计</span><%=cartInfo.resultCartData[i].cartCount.total_weight%><span class="goods_order_right_price_font">吨</span>
+	   					<span class="goods_order_right_price_font">共计</span><%=cartInfo.resultCartData[i].cartCount.itemnum%><span class="goods_order_right_price_font">吨</span>
 	   				</div>
 	   			</div>
 	   			<div class="goods_order_right_detail">

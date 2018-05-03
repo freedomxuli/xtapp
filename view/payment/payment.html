@@ -299,80 +299,95 @@
               }
               pay_id = $('input[name="payment"]:checked').val();
             }*/
-
-            if(redpackets_id ){
-              var btnArray = ['取消', '确定'];
-              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
-                var payPassword = e.value;
-                if(e.index == 1) {
-                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
-                  var vparam = {
-                    queryData: {
-                      'method': config.apimethod.vilidatepaypassword,
-                      'accessToken': state.token,
-                      'pay_password': payPassword
-                    },
-                    method: 'POST'
-                  };
-                  $.dataRequest(vparam, function(rs) {
-                  	console.log(JSON.stringify(rs));
-                    var vparam = {
-                      queryData: {
-                        'method': config.apimethod.tradepay,
-                        'accessToken': state.token,
-                        'hongbao_ids': redpackets_id,
-                        'payment_id': pid,
-                        'deposit_password': payPassword
-                      },
-                      method: 'POST'
-                    };
-                    $.dataRequest(vparam, function(rs) {
-                      clicked('_www/view/payment/paymentsuccess.html', {
-                        'total': total
-                      });
-                    });
-                  });
-                }
-              }, 'div');
-              document.querySelector('.mui-popup-input input').type = 'password';
-            }else{
-            	var btnArray = ['取消', '确定'];
-              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
-                var payPassword = e.value;
-                if(e.index == 1) {
-                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
-                  var vparam = {
-                    queryData: {
-                      'method': config.apimethod.vilidatepaypassword,
-                      'accessToken': state.token,
-                      'pay_password': payPassword
-                    },
-                    method: 'POST'
-                  };
-                  $.dataRequest(vparam, function(rs) {
-                    var vparam = {
-                      queryData: {
-                        'method': config.apimethod.tradepay,
-                        'accessToken': state.token,
-                        'hongbao_ids': redpackets_id,
-                        'payment_id': pid,
-                        'deposit_password': payPassword,
-                        'pay_app_id':pay_id
-                      },
-                      method: 'POST'
-                    };
-                    $.dataRequest(vparam, function(rs) {
-                      clicked('_www/view/payment/paymentsuccess.html', {
-                        'total': total
-                      });
-                    });
-                  });
-                }
-              }, 'div');
-              document.querySelector('.mui-popup-input input').type = 'password';
-              /*var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
-              pay(SERVER, pay_id, pid, total);*/
-            }
+           
+            var param_2 = {
+	            queryData: {
+	              'method': config.apimethod.userconfig,
+	              'accessToken': state.token
+	            },
+	            method: 'GET'
+	          };
+						$.dataRequest(param_2, function(rs2) {
+							if(rs2.data.hasDepositPassword)
+							{
+								if(redpackets_id ){
+		              var btnArray = ['取消', '确定'];
+		              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
+		                var payPassword = e.value;
+		                if(e.index == 1) {
+		                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
+		                  var vparam = {
+		                    queryData: {
+		                      'method': config.apimethod.vilidatepaypassword,
+		                      'accessToken': state.token,
+		                      'pay_password': payPassword
+		                    },
+		                    method: 'POST'
+		                  };
+		                  $.dataRequest(vparam, function(rs) {
+		                  	console.log(JSON.stringify(rs));
+		                    var vparam = {
+		                      queryData: {
+		                        'method': config.apimethod.tradepay,
+		                        'accessToken': state.token,
+		                        'hongbao_ids': redpackets_id,
+		                        'payment_id': pid,
+		                        'deposit_password': payPassword
+		                      },
+		                      method: 'POST'
+		                    };
+		                    $.dataRequest(vparam, function(rs) {
+		                      clicked('_www/view/payment/paymentsuccess.html', {
+		                        'total': total
+		                      });
+		                    });
+		                  });
+		                }
+		              }, 'div');
+		              document.querySelector('.mui-popup-input input').type = 'password';
+		            }else{
+		            	var btnArray = ['取消', '确定'];
+		              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
+		                var payPassword = e.value;
+		                if(e.index == 1) {
+		                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
+		                  var vparam = {
+		                    queryData: {
+		                      'method': config.apimethod.vilidatepaypassword,
+		                      'accessToken': state.token,
+		                      'pay_password': payPassword
+		                    },
+		                    method: 'POST'
+		                  };
+		                  $.dataRequest(vparam, function(rs) {
+		                    var vparam = {
+		                      queryData: {
+		                        'method': config.apimethod.tradepay,
+		                        'accessToken': state.token,
+		                        'hongbao_ids': redpackets_id,
+		                        'payment_id': pid,
+		                        'deposit_password': payPassword,
+		                        'pay_app_id':pay_id
+		                      },
+		                      method: 'POST'
+		                    };
+		                    $.dataRequest(vparam, function(rs) {
+		                      clicked('_www/view/payment/paymentsuccess.html', {
+		                        'total': total
+		                      });
+		                    });
+		                  });
+		                }
+		              }, 'div');
+		              document.querySelector('.mui-popup-input input').type = 'password';
+		              /*var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
+		              pay(SERVER, pay_id, pid, total);*/
+		            }
+							}else{
+								clicked('_www/view/member/safe/paypasswordset.html');
+							}
+						})
+            
           });
         });
       };
