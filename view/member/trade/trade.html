@@ -390,7 +390,7 @@
 				flex: 1;
 			}
 			.div-content-center-right{
-				flex: 1;
+				flex: 1.5;
 				font-size: 0.8rem;
 				color: #666666;
 				text-align: end;
@@ -589,7 +589,7 @@
 												<%=list[i].order[j].manufacturers_name%> - <%=list[i].order[j].pm_name%> <%=list[i].order[j].guige%>
 											</div>
 											<div class="div-content-center-center">
-												<%=list[i].order[j].total_weight%>吨
+												<%=list[i].order[j].num%>吨
 											</div>
 											<div class="div-content-center-center">
 												￥<%=list[i].order[j].price%>/吨
@@ -621,7 +621,7 @@
 											付款支付：<%if(list[i].deposit_type == "price"){%>现金预存款<%}else{%>承兑预付款<%}%>
 										</div>
 										<div class="div-content-center-right">
-											调价：-￥<%=list[i].adjust_fee%>
+											调价：-￥<%=list[i].change_price%>
 										</div>
 									</div>
                 </div>
