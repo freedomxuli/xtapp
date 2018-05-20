@@ -358,11 +358,10 @@
 					<a class="box-item-flex1 content-center"><span>其他辅料</span></a>
 				</div>-->
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<% for(var i in pic) { %>
-					<!--<a class="mui-control-item <%=(i==0)?mui-active:''%>" href="#item<%=i%></a>mobile">
-						<%=pic[i].cat_name%>
-					</a>-->
-					<div></div>
+					<% for(var i in data) { %>
+					<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%= i %></a>mobile">
+						<%=data[i].cat_name%>
+					</a>
 					<%}%>
 
 				</div>
@@ -782,19 +781,6 @@
 			var widgets = template('widget_manufacturers', {});
 			$('#main-content2').append(widgets);
 
-			param = {
-				queryData: {
-					'method': config.apimethod.priceguide
-				},
-				method: 'GET'
-			}
-
-			$.dataRequest(param, function(rs) {
-				widgets = template('widget_priceguide', rs.data);
-				$('#main-content3').append(widgets);
-
-			});
-
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
 				if(webview) {
@@ -825,6 +811,26 @@
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
+				
+					var param = {
+						queryData: {
+							'method': config.apimethod.priceguide
+						},
+						method: 'GET'
+					}
+
+					$.dataRequest(param, function(rs) {
+						widgets = template('widget_priceguide', rs);
+						$('#main-content3').append(widgets);
+
+					});
+
+				document.getElementById('hzcj').addEventListener('tap', function() {
+					mui.openWindow({
+						url: 'item/merchants.html',
+						id: 'hzcj'
+					});				
+				});
 			});
 
 			function test() {
@@ -855,12 +861,7 @@
 					id: 'llzx'
 				});
 			});
-			document.getElementById('hzcj').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/merchants.html',
-					id: 'hzcj'
-				});
-			});
+
 			document.getElementById('zxhd').addEventListener('tap', function() {
 				mui.openWindow({
 					url: 'item/activity.html',
