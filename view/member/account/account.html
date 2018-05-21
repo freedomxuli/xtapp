@@ -530,9 +530,9 @@
 										</div>
 									</div>
 								</div>
-								<div class="bottom-submit" id="kp_ckmx">
+								<!--<div class="bottom-submit" id="kp_ckmx">
 									查看明细
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>
@@ -703,7 +703,10 @@
 			$('#qcpe').on('tap', function() {
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
+					'faid': faid,
+					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
+					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
+					'type':'qcpe'
 				});
 
 			});
@@ -711,7 +714,10 @@
 			$('#qmpe').on('tap', function() {
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
+					'faid': faid,
+					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
+					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
+					'type':'qmpe'
 				});
 
 			});
@@ -719,7 +725,10 @@
 			$('#qmye2').on('tap', function() {
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
+					'faid': faid,
+					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
+					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
+					'type':'bqpe'
 				});
 
 			});
