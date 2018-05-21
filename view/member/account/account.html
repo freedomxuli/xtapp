@@ -351,6 +351,12 @@
 				padding: 0.6rem 0.6rem 0.6rem 0.6rem;
 				border-radius: 0.2rem;
 			}
+			
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
 		</style>
 	</head>
 
@@ -388,11 +394,12 @@
 							<div class="mui-scroll">
 								<div class="top-date-div">
 									<div class="top-date-div-left">
-										<span class="top-date-div-left-date">2018年01月</span>
+										<span class="top-date-div-left-date" id='result'>2018-05</span>
 										<span class="top-date-div-left-span">余额对账</span>
 									</div>
 									<div class="top-date-div-right">
-										<button id='demo6' data-options='{"type":"month"}' class="btn mui-btn mui-btn-block">选择月份 ...</button>
+										<button id='demo6' data-options='{"type":"month"}' class="btn">查询</button>
+
 									</div>
 									<img class="top-date-div-left-img" src="../../../img/account/date.png" />
 								</div>
@@ -403,11 +410,11 @@
 									<div class="center-top-price">
 										<div class="center-top-price-left">
 											<div class="center-top-price-left-name">现金（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="cash1">65822.65</div>
 										</div>
 										<div class="center-top-price-right">
 											<div class="center-top-price-left-name">现金（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="cash2">65822.65</div>
 										</div>
 									</div>
 								</div>
@@ -421,11 +428,11 @@
 									<div class="center-top-price">
 										<div class="center-top-price-left">
 											<div class="center-top-price-left-name">现金（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="cash3">65822.65</div>
 										</div>
 										<div class="center-top-price-right">
 											<div class="center-top-price-left-name">现金（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="cash4">65822.65</div>
 										</div>
 									</div>
 								</div>
@@ -439,11 +446,11 @@
 									<div class="bottom-div-right">
 										<div>
 											<span class="bottom-div-right-text">现金：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash5">0.00</span>
 										</div>
 										<div>
 											<span class="bottom-div-right-text">承兑：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash6">0.00</span>
 										</div>
 									</div>
 								</div>
@@ -454,11 +461,11 @@
 									<div class="bottom-div-right">
 										<div>
 											<span class="bottom-div-right-text">现金：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash7">0.00</span>
 										</div>
 										<div>
 											<span class="bottom-div-right-text">承兑：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash8">0.00</span>
 										</div>
 									</div>
 								</div>
@@ -469,11 +476,11 @@
 									<div class="bottom-div-right">
 										<div>
 											<span class="bottom-div-right-text">现金：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash9">0.00</span>
 										</div>
 										<div>
 											<span class="bottom-div-right-text">承兑：</span>
-											<span class="bottom-div-right-price">0.00</span>
+											<span class="bottom-div-right-price" id="cash10">0.00</span>
 										</div>
 									</div>
 								</div>
@@ -488,7 +495,7 @@
 							<div class="mui-scroll">
 								<div class="top-date-div">
 									<div class="top-date-div-left">
-										<span class="top-date-div-left-date">2018年01月</span>
+										<span class="top-date-div-left-date">2018-05</span>
 										<span class="top-date-div-left-span">余额对账</span>
 									</div>
 									<div class="top-date-div-right">
@@ -548,22 +555,29 @@
 				swipeBack: false, //启用右滑关闭功能
 				statusBarBackground: "#E35D4C"
 			});
+			var state = app.getState();
 			var param = {
 				queryData: {
 					'method': config.apimethod.category
 				},
 				method: 'GET'
 			};
+			var date = new Date();
+			var date = date.getFullYear() + "-" + (date.getMonth()+1);
 
-			$.dataRequest(param, function(rs) {
-				var data = rs.data.categorys;
-				var isvirtualcat = rs.data.is_virtualcat;
-				var control_list = '';
-				var content_list = '';
-				var sec = [],
-					thd = [];
-
-			});
+			$("#result").html(date);
+			var param = {
+				queryData: {
+					'method': config.apimethod.getAccountDeposit,
+					'accessToken': state.token,
+					'start_time': getTime(date + "-01 00:00:00"),
+					'end_time': getTime(date + "-31 23:59:59"),
+					'page_no': 1,
+					'page_size': config.pagesize
+				},
+				method: 'GET'
+			};
+			load(param);
 			mui.init();
 
 			(function($) {
@@ -575,11 +589,68 @@
 					indicators: true, //是否显示滚动条
 					deceleration: deceleration
 				});
-				$.ready(function() {
+
+				var result = $('#result')[0];
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var _self = this;
+						if(_self.picker) {
+							_self.picker.show(function(rs) {
+								result.innerText = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var optionsJson = this.getAttribute('data-options') || '{}';
+							var options = JSON.parse(optionsJson);
+							var id = this.getAttribute('id');
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								result.innerText = rs.text;
+
+								var param = {
+									queryData: {
+										'method': config.apimethod.getAccountDeposit,
+										'accessToken': state.token,
+										'start_time': getTime(rs.text + "-01 00:00:00"),
+										'end_time': getTime(rs.text + "-31 23:59:59"),
+										'page_no': 1,
+										'page_size': config.pagesize
+									},
+									method: 'GET'
+								};
+								load(param);
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+
+					}, false);
 
 				});
 			})(mui);
 			//点击侧滑
+
+			function load(param) {
+				$.dataRequest(param, function(rs) {
+					$("#cash1").html(rs.data.lastSumPrice);
+					$("#cash2").html(rs.data.lastSumAccept);
+					$("#cash3").html(rs.data.currentSumPrice);
+					$("#cash4").html(rs.data.currentSumAccept);
+					$("#cash5").html(rs.data.addPrice);
+					$("#cash6").html(rs.data.addAccept);
+					$("#cash7").html(rs.data.expensePrice);
+					$("#cash8").html(rs.data.expenseAccept);
+					$("#cash9").html(rs.data.cashPrice);
+					$("#cash10").html(rs.data.cashAccept);
+				});
+			}
+
+			function getTime(date) {
+				var date = new Date(date);
+				return Date.parse(date);
+			}
 
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
