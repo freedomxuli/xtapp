@@ -122,6 +122,15 @@ var config = {
         enterpriseauth: 'member.enterprise.auth', //企业认证-修改保存
 		enterpriseinfo: 'member.enterprise.info', //企业认证-查询
 		deposit: 'deposit.apply.shenhe',//预存款充值
-		depositget: 'deposit.user.get' //预存款查询
+		depositget: 'deposit.user.get', //预存款查询
+		getRecord: 'deposit.user.getRecord', //预存款记录
+		orderLogistics:'member.order.orderLogistics',//订单物流
+		orderLogisticsConfirm:'member.batches.confirm',//物流确认
+		orderTickets:'member.order.orderTickets',//开票物流	
+		orderTicketsConfirm:'member.orderTickets.confirm',//开票确认
+		sharedResourceGetFilter:'sharedresource.getFilter', //获取共享资源筛选项
+		sharedResourceGetList:'sharedresource.getList',// 共享资源列表
+		sharedResourceSaveShare:'sharedresource.saveShare',// 共享资源-撮合保存
+		getNetworkList:'network.list'//线下网络
     }
 }

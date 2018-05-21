@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="../../css/mui.picker.css" rel="stylesheet" />
+    <link href="../../css/mui.poppicker.css" rel="stylesheet" />
+  </head>
+
+  <body>
+   <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">委托信息</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../img/category/message.png" />
+			</a>
+			</header>
+    <section class="container">
+      <form class="form-container">
+        <input type="hidden" name="addr_id" id="addr_id" value="">
+        <input type="hidden" name="next_page" id="next_page" value="">
+        <section class="mui-input-group">
+          <input type="hidden" value="" id="addr_id">
+         
+          <div id="showCityPicker" class="mui-input-row">
+            <label>所在地区：</label>
+            <input type="text" value="" id="cityResult" readonly placeholder="请选择地区">
+            <input type="hidden" required value="" id="cityResultId">
+          </div>
+          <div class="mui-input-row">
+            <label>撮合信息：</label>
+            <input id="chxx" type="text" required value="" class="mui-input-clear" placeholder="请填写撮合信息" data-caution="请填写撮合信息">
+          </div>
+           <div class="mui-input-row">
+            <label>联系电话：</label>
+            <input id="lxdh" type="text" required value="" class="mui-input-clear" placeholder="请填写联系电话" data-caution="请填写联系电话">
+          </div>
+        </section>
+       
+        <section class="mui-content-padded form-op-section">
+          <button id="form_submit" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">保存</button>
+        </section>
+      </form>
+    </section>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/mui.picker.js"></script>
+    <script src="../../js/mui.poppicker.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var state = app.getState();
+      mui.init();
+
+      mui.ready(function() {
+        var cityPicker = new mui.PopPicker({
+          layer: 3
+        });
+
+        var param = {
+          queryData: {
+            'method': config.apimethod.arealocation
+          },
+          method: 'POST'
+        }
+        $.dataRequest(param, function(rs) {
+          cityPicker.setData(rs.data.region);
+        });
+
+        var showCityPickerButton = document.getElementById('showCityPicker');
+        var cityResult = document.getElementById('cityResult');
+        var cityResultId = document.getElementById('cityResultId');
+        showCityPickerButton.addEventListener('tap', function(event) {
+          cityPicker.show(function(items) {
+            cityResult.value = (items[0] || {}).value + " " + (items[1] || {}).value + " " + (items[2].value ? (items[2] || {}).value : " ");
+            cityResultId.value = (items[0] || {}).id + "," + (items[1] || {}).id + "," + (items[2].id ? (items[2] || {}).id : "")
+            //返回 false 可以阻止选择框的关闭
+            //return false;
+          });
+        }, false);
+      });
+      var enter_page;
+    
+
+      document.getElementById('form_submit').addEventListener('tap', function() {
+      	  var shareid = plus.webview.currentWebview().shareid;
+        var cityResultId = document.getElementById('cityResultId').value;
+        var lxdh = document.getElementById('lxdh').value;
+         var chxx = document.getElementById('chxx').value;
+
+        var param = {
+          queryData: {
+            'method': config.apimethod.sharedResourceSaveShare,
+          
+            'shared_id': shareid,
+            'area': cityResultId,
+            'memo': chxx,
+            'mobile': lxdh
+          },
+          method: 'POST'
+        }
+
+        $.dataRequest(param, function(rs) {
+          var wa = plus.nativeUI.showWaiting();
+          mui.toast('保存成功');
+          var parent = plus.webview.currentWebview().opener();
+
+            parent.reload(true);
+            parent.addEventListener('loaded', function() {
+              wa.close();
+              mui.back();
+              setTimeout(function(){
+                plus.webview.currentWebview().close();
+              },300)
+            });
+       
+        });
+      });
+    </script>
+  </body>
+
+</html>

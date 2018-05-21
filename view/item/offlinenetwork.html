@@ -35,53 +35,97 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</a>
 		</header>
-		<div class="mui-content">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right">
-						<div class="mui-media-body">
-							<font style="font-size:1rem;color: #444444;">淘炉料华北建材</font>
-							<p class='mui-ellipsis'>联系人：xxx</p>
-							<p class='mui-ellipsis'>电话：022-58032657</p>
-							<p class='mui-ellipsis'>地址：天津市河北胜利路与建国道交口悦海大厦411室</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media margintop">
-					<a class="mui-navigate-right">
-						<div class="mui-media-body">
-							<font style="font-size:1rem;color: #444444;">淘炉料华北建材</font>
-							<p class='mui-ellipsis'>联系人：xxx</p>
-							<p class='mui-ellipsis'>电话：022-58032657</p>
-							<p class='mui-ellipsis'>地址：天津市河北胜利路与建国道交口悦海大厦411室</p>
-						</div>
-					</a>
-				</li>
-
-				<li class="mui-table-view-cell mui-media margintop">
-					<a class="mui-navigate-right">
-						<div class="mui-media-body">
-							<font style="font-size:1rem;color: #444444;">淘炉料华北建材</font>
-							<p class='mui-ellipsis'>联系人：xxx</p>
-							<p class='mui-ellipsis'>电话：022-58032657</p>
-							<p class='mui-ellipsis'>地址：天津市河北胜利路与建国道交口悦海大厦411室</p>
-						</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media margintop">
-					<a class="mui-navigate-right">
-						<div class="mui-media-body">
-							<font style="font-size:1rem;color: #444444;">淘炉料华北建材</font>
-							<p class='mui-ellipsis'>联系人：xxx</p>
-							<p class='mui-ellipsis'>电话：022-58032657</p>
-							<p class='mui-ellipsis'>地址：天津市河北胜利路与建国道交口悦海大厦411室</p>
-						</div>
-					</a>
-				</li>
+		<div id="pullrefresh" class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron" id="ul">
 
 			</ul>
 		</div>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.view.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
+		<script src="../../js/mui.zoom.js"></script>
+		<script src="../../js/mui.previewimage.js"></script>
 
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					/*down: {
+						callback: pulldownRefresh
+					},*/
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			var state = app.getState();
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				count++;
+				setTimeout(function() {
+					var param = {
+						queryData: {
+							'method': config.apimethod.getNetworkList,
+							'page_no': count,
+							'page_size': config.pagesize
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						var list = rs.data.list;
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((list.length <= config.pagesize)); //参数为true代表没有更多数据了。
+						var widgets = template('main-content', rs.data);
+						$('#ul').append(widgets);
+
+					});
+
+				}, 1000);
+			}
+			if(mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+		</script>
+
+		<script type="text/html" id="main-content">
+			<%
+				for(var item in list){
+			%>
+			<li class="mui-table-view-cell mui-media">
+				<a class="mui-navigate-right">
+					<div class="mui-media-body">
+						<font style="font-size:1rem;color: #444444;">
+							<%=list[item].company_name%>
+						</font>
+						<p class='mui-ellipsis'>联系人：</p>
+						<p class='mui-ellipsis'>电话：
+							<%=list[item].tel%>
+						</p>
+						<p class='mui-ellipsis'>地址：
+							<%=list[item].addr%>
+						</p>
+					</div>
+				</a>
+			</li>
+			<%
+				}
+				%>
+		</script>
 	</body>
 
 </html>

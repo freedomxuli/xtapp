@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,142 +9,167 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<link rel="stylesheet" href="../../../css/mui.min.css">
+		<link rel="stylesheet" href="../../../css/style.css">
 		<style type="text/css">
 			/*标题栏*/
-			.mui-bar-backcolor{
-		      	background-color:#d92e2e;
-		      	display: flex;  
-		      }
-			.child{   
-			    flex:1;    
-			} 
 			
-			.child_1{   
-			    flex:7;    
-			} 
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
 			
-			.category_img{
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
 				height: 1rem;
 				width: 0.6rem;
 				line-height: 1rem;
-	      }
-	      
-	      .category_size{
-	      	line-height: 3rem;
-	      	text-align: center;
-	      }
-	      
-	      .category_title{
-	      	color: #ffffff;
-	      	font-family: "微软雅黑";
-	      	margin-left: 0.4rem;
-	      	font-size: 0.9rem;
-	      }
-	      
-	      .title_span{
-	      	color: #ffffff;
-	      	font-family: "微软雅黑";
-	      	text-align: center;
-	      	font-size: 1.2rem;
-	      }
-	      
-	      .edit_span{
-	      	color: #ffffff;
-	      	font-family: "微软雅黑";
-	      	text-align: center;
-	      	font-size: 1rem;
-	      	height: 1.2rem;
-	      	line-height: 1.2rem;
-	      }
-	      
-	      .search_img{
-	      	height: 1.2rem;
-					width: 1.2rem;
-	      }
-	      .search_size{
-	      	line-height: 3.5rem;
-	      	text-align: center;
-	      }
-	      
-	      .message_img{
-	      	height: 1.5rem;
-			width: 1.5rem;
-			margin-left: 0.8rem;
-	      }
-	      .div_nav{
-	      	position:fixed;
-	      	top: 44px;
-	      	height: 44px;
-	      	z-index: 999;
-	      	background-color: #FFFFFF;
-	      	display: flex;
-	      	flex-direction:row ;
-	      	width: 100%;
-	      	border-bottom: 1px #CCCCCC solid;
-	      	align-items: center;
-	      }
-	      .div_nav_label{
-	      	flex: 1;
-	      	font-size: 0.8rem;
-	      	text-align: center;
-	      }
-	      .content-center{
-	      	margin-top: 44px;
-	      }
-	      
-	      /*li-content*/
-	      .li-content{
-	      	display: flex;
-	      	flex-direction:row ;
-	      	width: 100%;
-	      	padding: 0.6rem 0rem 0.6rem 0rem;
-	      	border-bottom:1px solid #CCCCCC ;
-	      }
-	      .li-content-div{
-	      	flex: 1;
-	      	font-size: 0.7rem;
-	      	text-align: center;
-	      	color: #666666;
-	      }
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
+				width: 1.2rem;
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.message_img {
+				height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+			}
+			
+			.div_nav {
+				position: fixed;
+				top: 44px;
+				height: 44px;
+				z-index: 999;
+				background-color: #FFFFFF;
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				border-bottom: 1px #CCCCCC solid;
+				align-items: center;
+			}
+			
+			.div_nav_label {
+				flex: 1;
+				font-size: 0.8rem;
+				text-align: center;
+			}
+			
+			.content-center {
+				margin-top: 44px;
+			}
+			/*li-content*/
+			
+			.li-content {
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				padding: 0.6rem 0rem 0.6rem 0rem;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			
+			.li-content-div {
+				flex: 1;
+				font-size: 0.7rem;
+				text-align: center;
+				color: #666666;
+			}
+			
+			.point {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 		</style>
 	</head>
 
 	<body>
-		<!--下拉刷新容器-->
-    	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-	    	<div class="child category_size" id="left-content"><img class="category_img" src="../../../img/cart/back.png" /></div>  
-		    <div class="child_1 category_size"><span class="title_span">预存款交易记录</span></div>  
-		    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../../img/category/message.png" /></div>  
-	   	</header>
-	   	<div class="div_nav">
-	   		<div class="div_nav_label">
-	   			日期
-	   		</div>
-	   		<div class="div_nav_label">
-	   			类型
-	   		</div>
-	   		<div class="div_nav_label">
-	   			明细
-	   		</div>
-	   		<div class="div_nav_label">
-	   			现金金额
-	   		</div>
-	   		<div class="div_nav_label">
-	   			承兑金额
-	   		</div>
-	   		<div class="div_nav_label">
-	   			状态
-	   		</div>
-	   	</div>
+
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left back-width">
+				<img class="back_img" src="../../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">预存款交易记录</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../../img/category/message.png" />
+			</a>
+		</header>
+		<div class="div_nav">
+			<div class="div_nav_label">
+				日期
+			</div>
+			<div class="div_nav_label">
+				类型
+			</div>
+			<div class="div_nav_label">
+				明细
+			</div>
+			<div class="div_nav_label">
+				现金金额
+			</div>
+			<div class="div_nav_label">
+				承兑金额
+			</div>
+			<div class="div_nav_label">
+				状态
+			</div>
+		</div>
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper content-center">
 			<div class="mui-scroll">
 				<!--数据列表-->
 				<ul class="mui-table-view mui-table-view-chevron">
-					
+
 				</ul>
 			</div>
 		</div>
+		<script src="../../../js/zepto.js"></script>
 		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.view.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
+		<script src="../../../js/mui.zoom.js"></script>
+		<script src="../../../js/mui.previewimage.js"></script>
 		<script>
 			mui.init({
 				pullRefresh: {
@@ -159,24 +183,80 @@
 					}
 				}
 			});
+			var state = app.getState();
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				count++;
 				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'li-content';
-						li.innerHTML = '<div class="li-content-div">20170527</div><div class="li-content-div">交易</div><div class="li-content-div">波峰生铁...</div><div class="li-content-div">-10987.09</div><div class="li-content-div">-10987.09</div><div class="li-content-div">已完成</div>';
-						table.appendChild(li);
+					var param = {
+						queryData: {
+							'method': config.apimethod.getRecord,
+							'accessToken': state.token,
+							'page_no': count,
+							'page_size': 20
+						},
+						method: 'POST'
 					}
-				}, 1500);
+					$.dataRequest(param, function(rs) {
+						var list = rs.data.list;
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((list.length < 20)); //参数为true代表没有更多数据了。
+						var table = document.body.querySelector('.mui-table-view');
+						var cells = document.body.querySelectorAll('.mui-table-view-cell');
+						for(var i = cells.length, len = i + 20; i < len; i++) {
+							var type = "";
+							var price = 0;
+							var accept = 0;
+							var zt = "";
+							switch(list[i].type) {
+								case 'add':
+									type = '充值';
+									break;
+								case 'expense':
+									type = '消费';
+									break;
+								case 'cash':
+									type = '提现';
+									break;
+								case 'rufundend':
+									type = '退款';
+									break;
+
+							}
+							if(list[i].recharge_type = "price")
+								price = list[i].fee;
+							else
+								acceptlist[i].fee;
+								
+							switch(list[i].status) {
+								case 'rechargeing':
+								case 'cashing':
+									zt = '待审核';
+									break;
+								case 'rechargeend':
+								case 'cashend':
+								case 'expense':
+								case 'rufundend':
+									zt = '已完成';
+									break;
+								case 'rechargerefuse':
+								case 'cashrefuse':
+									zt = '已驳回';
+									break;
+								
+							}
+							var li = document.createElement('li');
+							li.className = 'li-content';
+							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].logtime) + '</div><div class="li-content-div">' + type + '</div><div class="li-content-div point">' + list[i].message + '</div><div class="li-content-div">'+price+'</div><div class="li-content-div">'+accept+'</div><div class="li-content-div">'+zt+'</div>';
+							table.appendChild(li);
+						}
+					});
+
+				}, 1000);
 			}
-			if (mui.os.plus) {
+			if(mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
 						mui('#pullrefresh').pullRefresh().pullupLoading();
@@ -188,6 +268,23 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
+
+			function formatDateTime(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
+				var y = date.getFullYear();
+				var m = date.getMonth() + 1;
+				m = m < 10 ? ('0' + m) : m;
+				var d = date.getDate();
+				d = d < 10 ? ('0' + d) : d;
+				var h = date.getHours();
+				h = h < 10 ? ('0' + h) : h;
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				minute = minute < 10 ? ('0' + minute) : minute;
+				second = second < 10 ? ('0' + second) : second;
+				return y + '-' + m + '-' + d;
+			};
 		</script>
 	</body>
 

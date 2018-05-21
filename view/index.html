@@ -213,11 +213,13 @@
 				<img class="header-icon" src="../img/index/phone.png" />
 			</i>
 			<div class="main">
+				<form onsubmit="return false;">
 				<div class="mui-input-row header-search-form search-class">
 					<button id='showUserPicker' class="search-select" type='button'><span id="search-span">全部</span><img class="search-img" src="../img/index/downicon.png" /></button>
 					<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">
 					<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
 				</div>
+				</form>
 			</div>
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
 				<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
@@ -248,7 +250,7 @@
 				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
 				<span class="mui-tab-label">现代商城</span>
 			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
+				<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
 				<span class="mui-icon bbc-icon bbc-icon-share"></span>
 				<span class="mui-tab-label">共享资源</span>
 			</a>
@@ -309,7 +311,7 @@
 					<!--<% for(var i in pic) { %>
 					<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'><i><a href="#"><img src="<%= pic[i].imagesrc %>"></a></i><span><%= pic[i].tag %></span></li>
 					<% } %>-->
-					<li class="action-webview" data-webview="" data-param='{"tab": ""}'><i><a href="#"><img src="<%= pic[0].imagesrc %>"></a></i><span><%= pic[0].tag %></span></li>
+					<li class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'><i><a href="#"><img src="<%= pic[0].imagesrc %>"></a></i><span><%= pic[0].tag %></span></li>
 					<li id="gxzy" class="action-webview" data-webview="_www/view/item/shareresource.html" data-webparam=''><i><a href="#"><img src="<%= pic[1].imagesrc %>"></a></i><span><%= pic[1].tag %></span></li>
 					<li id="lljr" class="action-webview" data-webview="_www/view/item/finance.html" data-webparam=''><i><a href="#"><img src="<%= pic[2].imagesrc %>"></a></i><span><%= pic[2].tag %></span></li>
 					<li id="llzx" class="action-webview" data-webview="_www/view/item/information_list.html" data-webparam=''><i><a href="#"><img src="<%= pic[3].imagesrc %>"></a></i><span><%= pic[3].tag %></span></li>
@@ -329,7 +331,7 @@
 
 						<span class="lbm-font">合作厂家</span></div>
 					<div id="hzcj" class="more-link">
-						<a class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a  class="action-webview" data-webview="_www/view/item/merchants.html"class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div id="hzcj_slider" class="mui-slider">
 					<div class="mui-slider-group mui-slider-loop">
@@ -383,7 +385,7 @@
 
 						<span class="lbm-font">价格指导</span></div>
 					<div class="more-link">
-						<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}' >更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<!--<div class="box-display jgzd-tab">
 					<a class="box-item-flex1 content-center select"><span>生铁</span></a>
@@ -561,7 +563,7 @@
 					<div class="title-txt title-txt-padding">
 						<span class="lbm-font">热销产品</span></div>
 					<div class="more-link">
-						<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-left">
@@ -886,12 +888,12 @@
 
 					});
 
-				document.getElementById('hzcj').addEventListener('tap', function() {
-					mui.openWindow({
-						url: 'item/merchants.html',
-						id: 'hzcj'
-					});				
-				});
+//				document.getElementById('hzcj').addEventListener('tap', function() {
+//					mui.openWindow({
+//						url: 'item/merchants.html',
+//						id: 'hzcj'
+//					});				
+//				});
 			});
 
 			function test() {
@@ -899,10 +901,6 @@
 					info.innerText = '你刚关闭了警告框';
 				});
 			}
-
-			document.getElementById('llsc').addEventListener('tap', function() {
-
-			});
 
 			document.getElementById('llzs').addEventListener('tap', function() {
 				mui.openWindow({

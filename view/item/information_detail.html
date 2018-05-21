@@ -16,7 +16,7 @@
 			
 			.mui-table-view .mui-media-object {
 				width: 100px;
-				min-width:100px;
+				min-width: 100px;
 				height: 100px;
 			}
 			
@@ -60,64 +60,35 @@
 			</a>
 		</header>
 		<div class="mui-content">
+			<div style="text-align:center;margin-top:20px;" id="title">xxx</div>
 			<ul class="mui-table-view" id="ul">
-			
+				<li style="text-align:center;margin-top:20px;" id="content">123</li>
 			</ul>
 		</div>
-		  <script src="../../js/zepto.js"></script>
-  <script src="../../js/mui.min.js"></script>
-  <script src="../../js/template.min.js"></script>
-  <script src="../../config.js"></script>
-  <script src="../../js/app.js"></script>
-  
-  <script>
-  	mui.plusReady(function() {
-      var node_id ='37';
-      var param = {
-        queryData: {
-          'method': config.apimethod.contentlist,
-          'platform': 'wap',
-          'node_id': node_id,
-          'page_no': 1,
-          'page_size': config.pagesize
-        },
-        method: 'GET'
-      }
-     $.dataRequest(param, function(rs) {
-				
-					var result = template('main-content', rs.data);
-					$('#ul').html(result);
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
 
-				});
-    });
-    
-    	$(window).on('tap', '.todetail', function() {
-          	var article_id = $(this).data('article_id');
-					clicked('_www/view/item/information_detail.html', {
+		<script>
+			mui.plusReady(function() {
+				var article_id = plus.webview.currentWebview().article_id;
+				var param = {
+					queryData: {
+						'method': config.apimethod.contentinfo,
 						'article_id': article_id
-					}, '');
-			
-			});
-  </script>
-  <script type="text/html" id="main-content">
-  	<%
-  		for(var i in articleList){
-  	%>
-  	<li class="mui-table-view-cell mui-media">
-					<a class="todetail" data-article_id="<%=articleList[i].article_id%>">
-						<img class="mui-media-object mui-pull-left" src="<%=articleList[i].article_logo%>">
-						<div class="mui-media-body">
-							<%=articleList[i].title%>
-							<p class="mui-ellipsis"><%=articleList[i].content%></p>
-						</div>
-
-					</a>
-					<div class="time"></div>
-				</li>
-				<%
+					},
+					method: 'POST'
 				}
-				%>
-  	</script>
+				$.dataRequest(param, function(rs) {
+
+					$('#title').html(rs.data.title);
+					$('#content').html(rs.data.content);
+				});
+			});
+		</script>
+
 	</body>
 
 </html>
