@@ -291,10 +291,16 @@
 				method: 'GET'
 			};
 			$.dataRequest(param, function(rs) {
-				for(var item in rs.data.list) {
-					rs.data.list[item][0].consign_time = formatDateTime(rs.data.list[item][0].consign_time);
+				var array = [];
+				for(var i in rs.data.list) {
+					for(var j in rs.data.list[i]) {
+						rs.data.list[i][j].consign_time = formatDateTime(rs.data.list[i][j].consign_time);
+						array.push(rs.data.list[i][j]);
+					}
 				}
-				var widgets = template('ddwl', rs.data);
+				var obj = {};
+				obj.list = array;
+				var widgets = template('ddwl', obj);
 				$('#ul1').append(widgets);
 			});
 
@@ -308,8 +314,15 @@
 				method: 'GET'
 			};
 			$.dataRequest(param, function(rs) {
-
-				var widgets = template('kpwl', rs.data);
+				var array = [];
+				for(var i in rs.data.list) {
+					for(var j in rs.data.list[i]) {
+						array.push(rs.data.list[i][j]);
+					}
+				}
+				var obj = {};
+				obj.list = array;
+				var widgets = template('kpwl', obj);
 				$('#ul2').append(widgets);
 			});
 
@@ -356,10 +369,16 @@
 							method: 'GET'
 						};
 						$.dataRequest(param, function(rs) {
-							for(var item in rs.data.list) {
-								rs.data.list[item][0].consign_time = formatDateTime(rs.data.list[item][0].consign_time);
+							var array = [];
+							for(var i in rs.data.list) {
+								for(var j in rs.data.list[i]) {
+									rs.data.list[i][j].consign_time = formatDateTime(rs.data.list[i][j].consign_time);
+									array.push(rs.data.list[i][j]);
+								}
 							}
-							var widgets = template('ddwl', rs.data);
+							var obj = {};
+							obj.list = array;
+							var widgets = template('ddwl', obj);
 							$('#ul1').append(widgets);
 						});
 					} else {
@@ -373,8 +392,15 @@
 							method: 'GET'
 						};
 						$.dataRequest(param, function(rs) {
-
-							var widgets = template('kpwl', rs.data);
+							var array = [];
+							for(var i in rs.data.list) {
+								for(var j in rs.data.list[i]) {
+									array.push(rs.data.list[i][j]);
+								}
+							}
+							var obj = {};
+							obj.list = array;
+							var widgets = template('kpwl', obj);
 							$('#ul2').append(widgets);
 						});
 					}
@@ -406,20 +432,19 @@
 			});
 
 			$(window).on('tap', '.ticket-confirm', function() {
-				var ticket = $(this).data('ticket_id');
-
-				mui.confirm('是否确认收货', '', ['取消', '确认'], function(e) {
+				var ticket_id = $(this).data('ticket_id');
+				mui.confirm('是否确认收票', '', ['取消', '确认'], function(e) {
 					if(e.index == 1) {
 						var param = {
 							queryData: {
-								'method': config.apimethod.orderLogisticsConfirm,
+								'method': config.apimethod.orderTicketsConfirm,
 								'accessToken': state.token,
-								'ticket': batches_id
+								'ticket_id': ticket_id
 							},
 							method: 'POST'
 						};
 						$.dataRequest(param, function(rs) {
-							mui.toast('确认收货成功');
+							mui.toast('确认收票成功');
 							plus.webview.currentWebview().reload();
 						});
 					}
@@ -452,49 +477,49 @@
 				<div class="content-div">
 					<div class="content-div-code">
 						订单编号
-						<%=list[item][0].tid%>
+						<%=list[item].tid%>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							出库单号：
-							<%=list[item][0].batches_id%>
+							<%=list[item].batches_id%>
 						</div>
 						<div class="content-div-center-right">
 							发货时间：
-							<%=list[item][0].consign_time%>
+							<%=list[item].consign_time%>
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							单价（/吨）：￥
-							<%=list[item][0].price%>
+							<%=list[item].price%>
 						</div>
 						<div class="content-div-center-right">
 							重量（吨）：￥
-							<%=list[item][0].remain_num%>
+							<%=list[item].remain_num%>
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							收件人：
-							<%=list[item][0].receiver_name%>
+							<%=list[item].receiver_name%>
 						</div>
 						<div class="content-div-center-right">
 							联系电话：
-							<%=list[item][0].receiver_mobile%>
+							<%=list[item].receiver_mobile%>
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							车牌号：
-							<%=list[item][0].car_mark%>
+							<%=list[item].car_mark%>
 						</div>
 
 						<%
-								if(list[item][0].status=="WAIT_BUYER_CONFIRM_GOODS"){
+								if(list[item].status=="WAIT_BUYER_CONFIRM_GOODS"){
 							%>
 						<div class="content-div-center-right-button">
-							<div class="content-div-center-right-button order-confirm" data-batches_id='<%=list[item][0].batches_id%>' data-tid='<%=list[item][0].tid%>'>
+							<div class="content-div-center-right-button order-confirm" data-batches_id='<%=list[item].batches_id%>' data-tid='<%=list[item].tid%>'>
 								确认收货
 							</div>
 						</div>
@@ -519,41 +544,41 @@
 
 		<script type="text/html" id="kpwl">
 			<%
-	for(var item in list){
+	for(var i in list){
 %>
 			<li>
 				<div class="content-div">
 					<div class="content-div-code">
 						订单编号
-						<%=list[item][0].tid%>
+						<%=list[i].tid%>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							开票金额：￥
-							<%=list[item][0].ticket_money%>
+							<%=list[i].ticket_money%>
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							发票抬头：
-							<%=list[item][0].ticket_title%>
+							<%=list[i].ticket_title%>
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							开票内容：
-							<%=list[item][0].manufacturers_name%>-
-							<%=list[item][0].pm_name%>
-							<%=list[item][0].guige%>
-							<%=list[item][0].price%>/吨
-							<%=list[item][0].ticket_num%>吨
+							<%=list[i].manufacturers_name%>-
+							<%=list[i].pm_name%>
+							<%=list[i].guige%>
+							<%=list[i].price%>/吨
+							<%=list[i].ticket_num%>吨
 						</div>
 					</div>
 					<div class="content-div-center">
 						<div class="content-div-center-left">
 							快递单号：
-							<%=list[item][0].ticket_corp%>
-							<%=list[item][0].ticket_code%>
+							<%=list[i].ticket_corp%>
+							<%=list[i].ticket_code%>
 						</div>
 					</div>
 					<div class="content-div-center">
@@ -561,11 +586,11 @@
 
 						</div>
 						<%
-								if(list[item][0].status=="WAIT_BUYER_CONFIRM_GOODS"){
+								if(list[i].status=="WAIT_BUYER_CONFIRM_TICKET"){
 							%>
 						<div class="content-div-center-right-button">
-							<div class="content-div-center-right-button ticket-confirm" data-ticket_id='<%=list[item][0].ticket_id%>'>
-								确认收货
+							<div class="content-div-center-right-button ticket-confirm" data-ticket_id='<%=list[i].ticket_id%>'>
+								确认收票
 							</div>
 						</div>
 						<%

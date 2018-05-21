@@ -333,15 +333,7 @@
    	</header>
     
      <section class="container mui-row mui-fullscreen category-nav">
-	    <!-- 侧滑导航根容器 -->
-			<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-			  <!-- 主页面容器 -->
-			  <div class="mui-inner-wrap mui-content">
-			    <!-- 主页面标题 -->
-<!--			    <header class="mui-bar mui-bar-nav">
-			      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-			      <h1 class="mui-title">标题</h1>
-			    </header>-->
+
 				<div id="slider" class="mui-slider">
 					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 						<a class="mui-control-item mui-active" href="#item1mobile">
@@ -355,7 +347,7 @@
 					<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
 					<div class="mui-slider-group" id="content-main">
 						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-							<div id="scroll1" class="mui-scroll-wrapper">
+							<div id="scroll1" class="mui-scroll-wrapper" style="height:480px;">
 								<div class="mui-scroll">
 									<div class="top-date-div">
 										<div class="top-date-div-left">
@@ -363,7 +355,7 @@
 											<span class="top-date-div-left-span">余额对账</span>
 										</div>
 										<div class="top-date-div-right">
-											<span class="top-date-div-left-span top-date-div-left-span1">查询</span>
+											<button id='demo6' data-options='{"type":"month"}' class="btn mui-btn mui-btn-block">选择月份 ...</button>
 										</div>
 										<img class="top-date-div-left-img" src="../../../img/account/date.png"/>
 									</div>
@@ -502,43 +494,9 @@
 						</div>
 					</div>
 				</div>
-			  </div>
-			</div>
-		</section>
-<!--    <section class="container mui-row mui-fullscreen category-nav">
-      <div class="mui-col-xs-3">
-        <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical content-bottom-padded-nav">
 
-        </div>
-      </div>
-      <div id="segmentedControlContents" class="mui-col-xs-9 category-nav-content content-bottom-padded-nav">
-<div id="content1" class="mui-control-content">
-	<div class="category-nav-group"><div class="category-nav-header">测试1</div><div id="group11" class="category-nav-list"><button data-catid="12312" class="category-nav-item">测试2</button></div></div>
-</div>
-      </div>
-    </section>-->
-<!--		<nav class="mui-bar bbc-bar-tab">
-			<a class="bbc-tab-item">
-				<span class="mui-icon bbc-icon bbc-icon-home"></span>
-				<span class="mui-tab-label">首页</span>
-			</a>
-			<a class="bbc-tab-item bbc-active" data-webview="_www/view/category/category.html">
-				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
-				<span class="mui-tab-label">现代商城</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
-				<span class="mui-icon bbc-icon bbc-icon-share"></span>
-				<span class="mui-tab-label">共享资源</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
-				<span class="mui-tab-label">购物车</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-				<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
-				<span class="mui-tab-label">我的</span>
-			</a>
-		</nav>-->
+		</section>
+
     <script src="../../../js/zepto.js"></script>
     <script src="../../../js/mui.min.js"></script>
     <script src="../../../js/template.min.js"></script>
@@ -549,6 +507,7 @@
 	<script src="../../../js/mui.picker.min.js"></script>
 	<script src="../../../js/mui.poppicker.js"></script>
     <script>
+
       mui.init({
         swipeBack: false, //启用右滑关闭功能
         statusBarBackground:"#E35D4C"
@@ -567,46 +526,39 @@
         var content_list = '';
         var sec = [],
           thd = [];
-        /*for(var i = 0; i < data.length; i++) {
-          if(isvirtualcat){
-            control_list += '<a class="mui-control-item" href="#content' + i + '">' + data[i].virtual_cat_name + '</a>';
-          }else{
-            control_list += '<a class="mui-control-item" href="#content' + i + '">' + data[i].cat_name + '</a>';
-          }
-          content_list += '<div id="content' + i + '" class="mui-control-content"></div>'
-          sec.push(data[i].lv2);
-        }
-        $('#segmentedControls').html(control_list);
-        $('#segmentedControlContents').html(content_list);
 
-        for(var i = 0; i < sec.length; i++) {
-          var content_group = '';
-          for(var j = 0; j < sec[i].length; j++) {
-            if(isvirtualcat){
-              content_group += '<div class="category-nav-group"><div class="category-nav-header">' + sec[i][j].virtual_cat_name + '</div><div id="group' + sec[i][j].virtual_cat_id + '" class="category-nav-list"></div></div>';
-            }else{
-              content_group += '<div class="category-nav-group"><div class="category-nav-header">' + sec[i][j].cat_name + '</div><div id="group' + sec[i][j].cat_id + '" class="category-nav-list"></div></div>';
-            }
-            thd.push(sec[i][j].lv3);
-          }
-          $('#content' + i).html(content_group);
-        }
-
-        for(var i = 0; i < thd.length; i++) {
-          for(var j = 0; j < thd[i].length; j++) {
-            if(isvirtualcat){
-              var content_item = '<button data-virtualcatid="' + thd[i][j].virtual_cat_id + '" class="category-nav-item" data-url="' + thd[i][j].url.webview + '" data-webparam=' + JSON.stringify(thd[i][j].url.webparam) + '>' + thd[i][j].virtual_cat_name + '</button>';
-              $('#group' + thd[i][j].virtual_parent_id).append(content_item);
-            }else{
-              var content_item = '<button data-catid="' + thd[i][j].cat_id + '" class="category-nav-item">' + thd[i][j].cat_name + '</button>';
-              $('#group' + thd[i][j].parent_id).append(content_item);
-            }
-          }
-        }*/
       });
       mui.init();
         
       (function($){ 
+      	
+      	var btn= $('#month');
+      		btn.addEventListener('tap', function() {
+						var _self = this;
+						if(_self.picker) {
+							_self.picker.show(function (rs) {
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var optionsJson = this.getAttribute('data-options') || '{}';
+							var options = JSON.parse(optionsJson);
+							var id = this.getAttribute('id');
+							/*
+							 * 首次显示时实例化组件
+							 * 示例为了简洁，将 options 放在了按钮的 dom 上
+							 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+							 */
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+						
+					}, false);
+      	
 				//阻尼系数
 				var deceleration = mui.os.ios?0.003:0.0009;
 				$('.mui-scroll-wrapper').scroll({
