@@ -76,11 +76,13 @@
 						"bank_account": "",
 						"def_billing": ""
 					}];
+					console.log(JSON.stringify(rs));
 					var userBillings = rs.data.userBillings;
 					if(userBillings.length > 0) {
 						billId = userBillings[0].billing_id;
 						invoice.invoice_vat = userBillings;
 					}
+					console.log(JSON.stringify(invoice));
 					var html = template('invoice_template', invoice);
 					$('#invoice_content').html(html);
 				});

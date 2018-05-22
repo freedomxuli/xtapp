@@ -614,35 +614,46 @@
                   <div class="div-content-center-div">
                   						<div class="div-content-center-bottom">
 											订单状态：<%
-												if(list[i].status=="WAIT_BUYER_PAY")
-												{
+												if(list[i].shenhe_status=="0"){
 													%>
-														<span>待付款</span>
+														<span>待审核</span>
 													<%
-												}else if(list[i].status=="WAIT_SELLER_SEND_GOODS")
+												}else if(list[i].shenhe_status=="success")
 												{
+													if(list[i].status=="WAIT_BUYER_PAY")
+													{
+														%>
+															<span>待付款</span>
+														<%
+													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS")
+													{
+														%>
+															<span>待发货</span>
+														<%
+													}else if(list[i].status=="SEND_PART")
+													{
+														%>
+															<span>部分发货</span>
+														<%
+													}else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS")
+													{
+														%>
+															<span>待收货</span>
+														<%
+													}else if(list[i].status=="TRADE_FINISHED")
+													{
+														%>
+															<span>已完成</span>
+														<%
+													}else if(list[i].status=="TRADE_CLOSED_BY_SYSTEM")
+													{
+														%>
+															<span>已关闭</span>
+														<%
+													}
+												}else{
 													%>
-														<span>待发货</span>
-													<%
-												}else if(list[i].status=="SEND_PART")
-												{
-													%>
-														<span>部分发货</span>
-													<%
-												}else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS")
-												{
-													%>
-														<span>待收货</span>
-													<%
-												}else if(list[i].status=="TRADE_FINISHED")
-												{
-													%>
-														<span>已完成</span>
-													<%
-												}else if(list[i].status=="TRADE_CLOSED_BY_SYSTEM")
-												{
-													%>
-														<span>已关闭</span>
+														<span>审核拒绝</span>
 													<%
 												}
 												%>
