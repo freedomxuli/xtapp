@@ -612,6 +612,41 @@
                   <% } %>-->
                   <% } %>
                   <div class="div-content-center-div">
+                  						<div class="div-content-center-bottom">
+											订单状态：<%
+												if(list[i].status=="WAIT_BUYER_PAY")
+												{
+													%>
+														<span>待付款</span>
+													<%
+												}else if(list[i].status=="WAIT_SELLER_SEND_GOODS")
+												{
+													%>
+														<span>待发货</span>
+													<%
+												}else if(list[i].status=="SEND_PART")
+												{
+													%>
+														<span>部分发货</span>
+													<%
+												}else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS")
+												{
+													%>
+														<span>待收货</span>
+													<%
+												}else if(list[i].status=="TRADE_FINISHED")
+												{
+													%>
+														<span>已完成</span>
+													<%
+												}else if(list[i].status=="TRADE_CLOSED_BY_SYSTEM")
+												{
+													%>
+														<span>已关闭</span>
+													<%
+												}
+												%>
+										</div>
 										<div class="div-content-center-right">
 											运费<%=list[i].post_fee%>元
 										</div>
@@ -658,18 +693,18 @@
               </a>
               <% }else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS"){ %>
               <% if(list[i].cancel_status=='NO_APPLY_CANCEL' && list[i].pay_type=="online"){ %>
-              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-confirm" data-tid='<%= list[i].tid %>'>
+<!--              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm trade-confirm" data-tid='<%= list[i].tid %>'>
                 确认收货
-              </a>
+              </a>-->
               <% } %>
-              <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm show_logistics" data-logistics_data="<%= $json_string(list[i].delivery) %>">
+<!--              <a class="mui-btn mui-btn-outlined bbc-btn-outlined bbc-btn-sm show_logistics" data-logistics_data="<%= $json_string(list[i].delivery) %>">
                 查看物流
-              </a>
+              </a>-->
               <% } %>
               <% if(list[i].is_buyer_rate){ %>
-              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm action-webview" data-webview="_www/view/member/trade/traderate.html" data-webparam='{"tid":<%= list[i].tid %>}'>
+<!--              <a class="mui-btn mui-btn-warning bbc-btn-warning bbc-btn-sm action-webview" data-webview="_www/view/member/trade/traderate.html" data-webparam='{"tid":<%= list[i].tid %>}'>
                 去评价
-              </a>
+              </a>-->
               <% } %>
             </div>
           </div>
