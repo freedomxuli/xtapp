@@ -134,6 +134,7 @@ var config = {
 		sharedResourceGetFilter:'sharedresource.getFilter', //获取共享资源筛选项
 		sharedResourceGetList:'sharedresource.getList',// 共享资源列表
 		sharedResourceSaveShare:'sharedresource.saveShare',// 共享资源-撮合保存
-		getNetworkList:'network.list'//线下网络
+		getNetworkList:'network.list',//线下网络
+		getAccountDeposit:'accountCheck.deposit' //余额对账
     }
 }
