@@ -229,13 +229,14 @@
 			.content-outer{
 				display: flex;
 				flex-direction: row;
+				align-items:center;
 			}
 			.content-inner-left{
 				flex: 3;
 				padding-left: 20px;
 			}
 			.content-inner-right{
-				flex: 1;
+				flex: 0.8;
 				text-align: center;
 				color: #E35D4C;
 				height: 6rem;
@@ -261,6 +262,7 @@
 				font-family: "arial rounded mt bold";
 				height: 2rem;
 				line-height: 2rem;
+				text-align: left;
 			}
 			.content-inner-left-middle-item{
 				color: #666666;
@@ -282,10 +284,10 @@
 				line-height: 2.5rem;
 			}
 			.content-inner-left-bottom-item2{
-				flex:1.3;
+				flex:1;
 				color: #E35D4C;
 				font-family: "arial rounded mt bold";
-				font-size: 1.1rem;
+				font-size: 0.8rem;
 				font-weight: bold;
 				vertical-align:text-bottom;
 				height: 2.5rem;
@@ -314,6 +316,7 @@
 				list-style-type: none;
 				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
 				border-bottom: 1px solid #d0d0d0;
+				font-size: 0.8rem;
 			}
 			.nav-active{
 				background-color: #ffffff;
@@ -321,18 +324,19 @@
 			}
 			.left-side-content-detail{
 				flex: 2;
-				height: 100%;
-				overflow-y: scroll;
+				overflow-y: scroll !important;
 			}
 			.left-side-content-detail-li{
 				list-style-type: none;
-				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				font-size:0.9rem;
+				padding: 1rem 1.4rem 1rem 1.4rem;
 			}
 			.left-side-content-detail-list ul{
 				width: 100%;
 				display: flex;
 				flex-direction: row;
 				flex-wrap:wrap;
+				
 			}
 			.left-side-content-detail-list li{
 				flex: 1;
@@ -356,7 +360,7 @@
 				font-family: "微软雅黑";
 				line-height: 60px;
 			}
-			* { touch-action: none; } 
+			/** { touch-action: none; } */
     </style>
   </head>
 
@@ -582,7 +586,7 @@
 
 						</div>
 						<div class="select-box">
-							<div class="select-items1" id="showPlacePicker"><span>产家/产地</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items1" id="showPlacePicker"><span>厂家/产地</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showNamePicker">品名 <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showSizePicker">规格 <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showJgPicker"><span>交割库</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
@@ -674,6 +678,7 @@
 		        indicators: true, //是否显示滚动条
 		        deceleration: deceleration
 		    });
+		    
 			});
       },2000);
 			
@@ -846,7 +851,7 @@
 				var showPlacePickerButton = document.getElementById('showPlacePicker');
 				showPlacePickerButton.addEventListener('tap', function(event) {
 					placePicker.show(function(items) {
-						$("#showPlacePicker span").html(JSON.stringify(items[0].text));
+						$("#showPlacePicker span").html(items[0].text);
 						cd_id = JSON.stringify(items[0].value);
 						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
 						//返回 false 可以阻止选择框的关闭
@@ -877,7 +882,7 @@
 				var showJgPickerButton = document.getElementById('showJgPicker');
 				showJgPickerButton.addEventListener('tap', function(event) {
 					JgPicker.show(function(items) {
-						$("#showJgPicker span").html(JSON.stringify(items[0].text));
+						$("#showJgPicker span").html(items[0].text);
 						jgk_id = JSON.stringify(items[0].value);
 						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
 						//返回 false 可以阻止选择框的关闭
@@ -1115,6 +1120,7 @@
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
 	      		rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
 	      	}
+	      	console.log(JSON.stringify(rs.data));
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
 					//阻尼系数
@@ -1294,9 +1300,7 @@
       	
 				result = template('filters_left_content', left_content_obj);
 				$('.left-side-content-detail').html(result);
-				/*mui('.left-side-content-detail').scroll({
-					deceleration: 0.0001 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-				});*/
+				//mui('.left-side-content-detail').scroll(); 
       }
       
       function OrderDenno(item_id,cat_id)
@@ -1543,6 +1547,9 @@
 										</div>
 										<div class="content-inner-left-top-item">
 											<%=list[i].guige%>
+										</div>
+										<div class="content-inner-left-top-item">
+											<%=list[i].storage_name%>
 										</div>
 									</div>
 									<div class="content-inner-left-middle">
