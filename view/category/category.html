@@ -113,11 +113,18 @@
 			.mui-col-xs-1{
 				width: 11.8%;
 			}
-			
-			#sliderSegmentedControl .mui-active{
+			.category-nav .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
 				border-bottom:2px solid #e35d4c !important;
+				color: #e35d4c !important;
+			}
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{
+				border-top: 0;border-left: 0;border-right: 0;border-bottom:1px solid #e35d4c !important;
 			}
 			
+			/*#sliderSegmentedControl .mui-active{
+				border-bottom:2px solid #e35d4c !important;
+			}
+			*/
 			/*新css*/
 			.mui-bar~.mui-content .mui-fullscreen {
 				top: 44px;
@@ -582,13 +589,14 @@
 			      <h1 class="mui-title">标题</h1>
 			    </header>-->
 					<div id="slider" class="mui-slider">
-						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-
+						<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+						</div>
 						</div>
 						<div class="select-box">
 							<div class="select-items1" id="showPlacePicker"><span>厂家/产地</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
-							<div class="select-items" id="showNamePicker">品名 <img class="xb_class" src="../../img/category/xb.png"/></div>
-							<div class="select-items" id="showSizePicker">规格 <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showNamePicker"><span>品名</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showSizePicker"><span>规格</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 							<div class="select-items" id="showJgPicker"><span>交割库</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 						</div>
 						<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
@@ -654,8 +662,8 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
+		<script src="../../js/mui.min.js"></script>
     <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
@@ -680,7 +688,7 @@
 		    });
 		    
 			});
-      },2000);
+      },1000);
 			
       var search_data = "";
       var fl_id = "";
@@ -693,9 +701,13 @@
       var fl_obj = new Object();
       var page_obj = new Object();
       var fl_sort_obj = new Object();
+      var cat_all_obj = new Object();
+      var pm_list = new Object();
+      var gg_list = new Object();
       var current_page_sort = 0;
       var child_data;
       var NamePicker = new mui.PopPicker();
+      var SizePicker = new mui.PopPicker();
       
       var param = {
         queryData: {
@@ -739,8 +751,10 @@
       		
       		for(var i = 0;i < rs.data.lv1Cats[left_kind_id].lv2.length;i++)
       		{
+      			pm_list[rs.data.lv1Cats[left_kind_id].lv2[i].cat_id] = rs.data.lv1Cats[left_kind_id].lv2[i].cat_name;
       			for(var j = 0;j < rs.data.lv1Cats[left_kind_id].lv2[i].lv3.length;j++)
       			{
+      				gg_list[rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id] = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_name;
       				if(!fl_zl_obj.hasOwnProperty(rs.data.lv1Cats[left_kind_id].lv2[i].parent_id))
       					fl_zl_obj[rs.data.lv1Cats[left_kind_id].lv2[i].parent_id] = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id;
 	      			var path = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_path;
@@ -829,75 +843,105 @@
       	}
       	
       	result = template('filters_top_list', top_kind_obj);
-				$('#sliderSegmentedControl').html(result);
+				$('#sliderSegmentedControl .mui-scroll').html(result);
 				
 				
 				result = template('filters_content_tab', top_kind_obj);
 				$('#content-main').html(result);
 				
-				//产地列表
-				var pp_list = [];
-				
-				for(var m_id in rs.data.manufacturers)
-				{
-					var m_obj = {
-						value:rs.data.manufacturers[m_id].manufacturers_id,
-						text:rs.data.manufacturers[m_id].manufacturers_name
-					};
-					pp_list.push(m_obj);
-				}
-				var placePicker = new mui.PopPicker();
-				placePicker.setData(pp_list);
-				var showPlacePickerButton = document.getElementById('showPlacePicker');
-				showPlacePickerButton.addEventListener('tap', function(event) {
-					placePicker.show(function(items) {
-						$("#showPlacePicker span").html(items[0].text);
-						cd_id = JSON.stringify(items[0].value);
-						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
-						//返回 false 可以阻止选择框的关闭
-						//return false;
-					});
-				}, false);
-				
-				//品名列表
-				child_data = rs.data.lv2Cats;
-				GetProList(NamePicker,rs.data.lv2Cats,fl_id);
-				
-				//规格列表
-				GetGGList(pro_name_id);
-				
-				//交割库列表
-				var jg_list = [];
-				
-				for(var s_id in rs.data.storage)
-				{
-					var s_obj = {
-						value:rs.data.storage[s_id].storage_id,
-						text:rs.data.storage[s_id].storage_name
-					};
-					jg_list.push(s_obj);
-				}
-				var JgPicker = new mui.PopPicker(); 
-				JgPicker.setData(jg_list);
-				var showJgPickerButton = document.getElementById('showJgPicker');
-				showJgPickerButton.addEventListener('tap', function(event) {
-					JgPicker.show(function(items) {
-						$("#showJgPicker span").html(items[0].text);
-						jgk_id = JSON.stringify(items[0].value);
-						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
-						//返回 false 可以阻止选择框的关闭
-						//return false;
-					});
-				}, false);
-				
+				console.log("大类："+rs.data.cat_id);
+				var arr_1 = [];
 				for(var top_kind_id in rs.data.lv1Cats)
       	{
-      		GetContentList(top_kind_id,fl_zl_obj[top_kind_id],'',cd_id,jgk_id,1);
+      		arr_1.push(top_kind_id);
       	}
-      	
+      	startContent(arr_1[0],0);
+      	function startContent(start_id,start_num)
+      	{
+      		if(start_num<arr_1.length)
+      		{
+      			var param_dl = {
+			        queryData: {
+			          'method': config.apimethod.filteritems,
+			          'lv1Cat':start_id,
+			          'lv2Cat':''
+			        },
+			        method: 'GET'
+			      };
+			      $.dataRequest(param_dl, function(rs1) {
+			      	console.log("获取："+rs1.data.cat_id);
+			      	cat_all_obj[start_id]=rs1.data.cat_id;
+			      	GetContentList(start_id,pro_name_id,gg_id,cd_id,jgk_id,1,rs1.data.cat_id);
+			      	var start_num_new = start_num + 1;
+			      	startContent(arr_1[start_num_new],start_num_new);
+			      });
+      		}
+      	}
+				
+				//mui.trigger(document.getElementById("sliderSegmentedControl"), 'tap');
+				
+				setTimeout(function(){
+					console.log("集合："+JSON.stringify(cat_all_obj));
+					
+					//产地列表
+					var pp_list = [];
+					
+					for(var m_id in rs.data.manufacturers)
+					{
+						var m_obj = {
+							value:rs.data.manufacturers[m_id].manufacturers_id,
+							text:rs.data.manufacturers[m_id].manufacturers_name
+						};
+						pp_list.push(m_obj);
+					}
+					var placePicker = new mui.PopPicker();
+					placePicker.setData(pp_list);
+					var showPlacePickerButton = document.getElementById('showPlacePicker');
+					showPlacePickerButton.addEventListener('tap', function(event) {
+						placePicker.show(function(items) {
+							$("#showPlacePicker span").html(items[0].text);
+							cd_id = JSON.stringify(items[0].value);
+							GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					//品名列表
+					child_data = rs.data.lv2Cats;
+					GetProList(NamePicker,rs.data.lv2Cats,fl_id);
+					
+					//规格列表
+					GetGGList(pro_name_id);
+					
+					//交割库列表
+					var jg_list = [];
+					
+					for(var s_id in rs.data.storage)
+					{
+						var s_obj = {
+							value:rs.data.storage[s_id].storage_id,
+							text:rs.data.storage[s_id].storage_name
+						};
+						jg_list.push(s_obj);
+					}
+					var JgPicker = new mui.PopPicker(); 
+					JgPicker.setData(jg_list);
+					var showJgPickerButton = document.getElementById('showJgPicker');
+					showJgPickerButton.addEventListener('tap', function(event) {
+						JgPicker.show(function(items) {
+							$("#showJgPicker span").html(items[0].text);
+							jgk_id = JSON.stringify(items[0].value);
+							GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+				},1000)
+				
       });
       
-      mui.init();
+      //mui.init();
         
       (function($){ 
 /*      	var supportsPassive = false;
@@ -931,7 +975,7 @@
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
 											GetContentListNew(index,ul,self);
-										}, 1000);
+										}, 1100);
 									}
 								}
 							});
@@ -942,74 +986,24 @@
 								 	 current_page_sort--;
 							     fl_id = fl_sort_obj[current_page_sort];
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
-							     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+							     GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
 						document.getElementById("content-main").addEventListener("swipeleft",function(event){
-								 if(current_page_sort<fl_sort_obj.length)
+								 var objKeys=Object.keys(fl_sort_obj);
+								 console.log(JSON.stringify(fl_sort_obj));
+								 if(current_page_sort<objKeys.length-1)
 								 {
 								 	 current_page_sort++;
 							     fl_id = fl_sort_obj[current_page_sort];
+							     var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
-							     GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+							     GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
-						//#sliderSegmentedControl .mui-active
-						/*var createFragment = function(ul, index, count, reverse) {
-							var fragment = document.createDocumentFragment();
-							var ulment = document.getElementById("content-ul" + index);
-							var li;
-							for (var i = 0; i < count; i++) {
-								var html = '<li class="content-li">'+
-														'<div class="content-space"> </div>'+
-														'<div class="content-outer">'+
-															'<div class="content-inner-left">'+
-																'<div class="content-inner-left-top">'+
-																	'<div class="content-inner-left-top-item">'+
-																		'新兴生铁'+
-																	'</div>'+
-																	'<div class="content-inner-left-top-item">'+
-																		'球铁'+
-																	'</div>'+
-																	'<div class="content-inner-left-top-item">'+
-																		'Q10'+
-																	'</div>'+
-																	'<div class="content-inner-left-top-item">'+
-																		'中途库'+
-																	'</div>'+
-																'</div>'+
-																'<div class="content-inner-left-middle">'+
-																	'<div class="content-inner-left-middle-item">'+
-																		'1000　吨'+
-																	'</div>'+
-																'</div>'+
-																'<div class="content-inner-left-bottom">'+
-																	'<div class="content-inner-left-bottom-item1">'+
-																		'现金价：'+
-																	'</div>'+
-																	'<div class="content-inner-left-bottom-item2">'+
-																		'￥3200'+
-																	'</div>'+
-																	'<div class="content-inner-left-bottom-item1">'+
-																		'承兑价：'+
-																	'</div>'+
-																	'<div class="content-inner-left-bottom-item2">'+
-																		'￥3230'+
-																	'</div>'+
-																'</div>'+
-															'</div>'+
-															'<div class="content-inner-right">'+
-																'<div class="content-inner-right-word">下单</div>'+
-															'</div>'+
-														'</div>'+
-													'</li>';
-								//li = document.create
-								//fragment.append(html);
-								ulment.insertAdjacentHTML('afterend', html);
-							}
-							return fragment;
-						};*/
-					},100);
+					},1100);
 					
 					document.getElementById("content-main").style.height = (document.documentElement.clientHeight-170)+"px";
 					document.getElementById("left-side").style.height = (document.documentElement.clientHeight-90)+"px";
@@ -1064,13 +1058,21 @@
 			$("#left-side-submit").on('tap',function(event){
 				var cid1 = $('.left-side-content-detail .left-side-content-detail-active').data("cid");
 				var fl_id1 = pm_obj[cid1].split(',')[0];
-				GetContentList(fl_id1,cid1,'','','',1);
+				//需要调整
+				pro_name_id = pm_obj[cid1].split(',')[1];
+				gg_id = "";
+				$("#showNamePicker span").html(pm_list[pro_name_id]);
+				$("#showSizePicker span").html("规格");
+				GetContentList(fl_id1,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id1]);
 				mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
 					if(fl_sort_obj[index] == fl_id1) 
 					{ 
 						current_page_sort = index;
 						mui('#slider').slider().gotoItem(index);
 						fl_id = fl_sort_obj[index];
+						var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
 					} 
 				});
@@ -1084,24 +1086,32 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
-						GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1);
+						pro_name_id = "";
+						gg_id = "";
+						$("#showNamePicker span").html("品名");
+						$("#showSizePicker span").html("规格");
+						GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+						//GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1,cat_all_obj[fl_id]);
 					} 
 				});
 			}); 
 			
-			function GetContentList(fl_new_id,gg_new_id,guige,cd_new_id,jgk_new_id,page_new)
+			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
 			{
+				var gg_name = "";
+				/*if(guige)
+					gg_name = gg_list[guige];*/
 				var param1 = {
 	        queryData: {
 	          'method': config.apimethod.goodslist,
 	          'lv1Cat':'',
-	          'lv2Cat':'',
-	          'cat_id':gg_new_id,
+	          'lv2Cat':pm_id,
+	          'cat_id':cat_all_id,
 	          'shop_id':'',
 	          'search':'',
 	          'all':'',
 	          'pm':'',
-	          'gg':'',
+	          'gg':gg_name,
 	          'cj':'',
 	          'jgk':'',
 	          'page_no':page_new,
@@ -1110,10 +1120,11 @@
 	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
 	          'guige':'',
 	          'manufacturers_id':cd_new_id,
-	          'storage_id':jgk_id
+	          'storage_id':jgk_new_id
 	        },
 	        method: 'GET'
 	      };
+	      console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	for(var i = 0;i < rs.data.list.length;i++)
 	      	{
@@ -1123,6 +1134,7 @@
 	      	console.log(JSON.stringify(rs.data));
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
+					//$('#item'+fl_new_id+'mobile').click(); 
 					//阻尼系数
 /*					var deceleration = mui.os.ios?0.003:0.0001;
 					$('.mui-scroll-wrapper').scroll({
@@ -1192,7 +1204,12 @@
 				var showNamePickerButton = document.getElementById('showNamePicker');
 				showNamePickerButton.addEventListener('tap', function(event) {
 					NamePickerNew.show(function(items) {
-						
+						$("#showNamePicker span").html(items[0].text);
+						$("#showSizePicker span").html("规格");
+						pro_name_id = items[0].value;
+						gg_id = "";
+						GetGGList(items[0].value);
+						GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 					});
 				}, false);
       }
@@ -1207,14 +1224,15 @@
 						value:search_data.props[0].prop_value[i].prop_index,
 						text:search_data.props[0].prop_value[i].prop_value
 					};
-					gg_list.push(p_obj); 
+					gg_list.push(p_obj);
 				}
-				var SizePicker = new mui.PopPicker(); 
-				SizePicker.setData(gg_list);
+				SizePicker.setData(gg_list); 
 				var showSizePickerButton = document.getElementById('showSizePicker');
 				showSizePickerButton.addEventListener('tap', function(event) {
 					SizePicker.show(function(items) {
-						gg_id = items[0].value;
+						gg_id = items[0].text; 
+						$("#showSizePicker span").html(items[0].text);
+						GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 						//PlaceResult.innerText = JSON.stringify(items[0]);
 						//返回 false 可以阻止选择框的关闭
 						//return false;
@@ -1479,12 +1497,12 @@
     			if(lv1Cats[i].is_select==0)
     			{
     				%>
-    				<a class="mui-control-item" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+    				<a id="#item<%=lv1Cats[i].cat_id%>mobile" class="mui-control-item" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
     				<%
     			}else
     			{
 						%>
-						<a class="mui-control-item mui-active" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+						<a id="#item<%=lv1Cats[i].cat_id%>mobile" class="mui-control-item mui-active" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
 						<%
     			}
     		}
