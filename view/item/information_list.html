@@ -31,7 +31,7 @@
 			}
 			
 			.mui-table-view li {
-				height: 120px;
+				height: 150px;
 			}
 			
 			.mui-media-body {
@@ -84,7 +84,9 @@
         method: 'GET'
       }
      $.dataRequest(param, function(rs) {
-				
+				for(var i in rs.data.articleList){
+					rs.data.articleList[i].modified=formatDateTime(rs.data.articleList[i].modified);
+				}
 					var result = template('main-content', rs.data);
 					$('#ul').html(result);
 
@@ -98,6 +100,23 @@
 					}, '');
 			
 			});
+			
+			function formatDateTime(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
+				var y = date.getFullYear();
+				var m = date.getMonth() + 1;
+				m = m < 10 ? ('0' + m) : m;
+				var d = date.getDate();
+				d = d < 10 ? ('0' + d) : d;
+				var h = date.getHours();
+				h = h < 10 ? ('0' + h) : h;
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				minute = minute < 10 ? ('0' + minute) : minute;
+				second = second < 10 ? ('0' + second) : second;
+				return y + '-' + m + '-' + d + ' ' + h+ ':' + minute;
+			};
   </script>
   <script type="text/html" id="main-content">
   	<%
@@ -112,7 +131,7 @@
 						</div>
 
 					</a>
-					<div class="time"></div>
+					<div class="time"><%=articleList[i].modified%></div>
 				</li>
 				<%
 				}

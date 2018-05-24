@@ -87,7 +87,7 @@
 		}
 		
 		header.home-header {
-			background-color: rgba(65, 26, 140, 0);
+			background-color: rgba(217, 46, 46, 0);
 		}
 		
 		.flex {
@@ -170,55 +170,64 @@
 			background: none;
 			border-bottom: 2px solid #E35D4C;
 		}
-		.search-class{
+		
+		.search-class {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 			align-content: center;
 		}
-		.search-input{
-			flex:5;
+		
+		.search-input {
+			flex: 5;
 			border-top-left-radius: 0px !important;
 			border-bottom-left-radius: 0px !important;
 			border-bottom-right-radius: 3px !important;
 			border-top-right-radius: 3px !important;
-			border:0px;
-			background: rgba(255,255,255,0.2) !important;
+			border: 0px;
+			background: rgba(255, 255, 255, 0.2) !important;
 			/*opacity: 0.2;*/
-			color:#FFFFFF !important;
+			color: #FFFFFF !important;
 		}
-		.search-select{
+		
+		.search-select {
 			flex: 1;
 			height: 2rem !important;
 			padding: 7px 10px 10px 10px !important;
-			border:0px;
+			border: 0px;
 			border-top-left-radius: 3px !important;
 			border-bottom-left-radius: 3px !important;
 			border-bottom-right-radius: 0px !important;
 			border-top-right-radius: 0px !important;
-			background: rgba(255,255,255,0.2) !important;
-			color:#FFFFFF !important;
+			background: rgba(255, 255, 255, 0.2) !important;
+			color: #FFFFFF !important;
 		}
-		.search-img{
-			width:0.8rem;
+		
+		.search-img {
+			width: 0.8rem;
+			margin-bottom: 2px;
+			margin-left: 3px;
 		}
-		.search-input::-webkit-input-placeholder{
-			color:#FFFFFF !important;
+		
+		.search-input::-webkit-input-placeholder {
+			color: #FFFFFF !important;
 		}
+input::-ms-input-placeholder{text-align: left;}
+input::-webkit-input-placeholder{text-align: left;}
 	</style>
 
 	<body>
-		<header class="mui-bar mui-bar-transparent home-header">
-			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
-				<img class="header-icon" src="../img/index/phone.png" />
+		<header id="head-search" class="mui-bar mui-bar-transparent home-header">
+			<i class="search-hide icon-func bbc-icon">
+				<a href="#picture"><img class="header-icon" src="../img/index/phone.png" /></a>
 			</i>
 			<div class="main">
 				<form onsubmit="return false;">
-				<div class="mui-input-row header-search-form search-class">
-					<button id='showUserPicker' class="search-select" type='button'><span id="search-span">全部</span><img class="search-img" src="../img/index/downicon.png" /></button>
-					<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">
-					<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
-				</div>
+					<div class="mui-input-row header-search-form search-class">
+						<button id='showUserPicker' class="search-select" type='button'><span id="search-span">全部</span><img class="search-img" src="../img/index/downicon.png" /></button>
+						<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">
+						<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
+					</div>
 				</form>
 			</div>
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
@@ -226,7 +235,7 @@
 				<img class="header-icon" src="../img/index/message.png" />
 			</i>
 			</i>
-			<a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
+			<a href="#" class="txt-func search-cancel" style="display:none;color:white">取消</a>
 		</header>
 		<div id="main-content1">
 
@@ -241,6 +250,19 @@
 
 		</div>
 
+		<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a id="telephone">服务热线：0519-86558808</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#picture"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+
 		<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item bbc-active">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
@@ -250,7 +272,7 @@
 				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
 				<span class="mui-tab-label">现货商城</span>
 			</a>
-				<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
+			<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
 				<span class="mui-icon bbc-icon bbc-icon-share"></span>
 				<span class="mui-tab-label">共享资源</span>
 			</a>
@@ -277,20 +299,20 @@
 				<div class="mui-slider-group mui-slider-loop">
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a class="action-webview" data-webview="<%= pic[pic.length-1].webview %>" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
 							<img src="<%= pic[pic.length-1].imagesrc %>">
 						</a>
 					</div>
 					<% for(var i in pic) { %>
 					<div class="mui-slider-item">
-						<a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[i].webparam) %>'>
 							<img src="<%= pic[i].imagesrc %>">
 						</a>
 					</div>
 					<% } %>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a class="action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[0].webparam) %>'>
 							<img src="<%= pic[0].imagesrc %>">
 						</a>
 					</div>
@@ -331,7 +353,7 @@
 
 						<span class="lbm-font">合作厂家</span></div>
 					<div id="hzcj" class="more-link">
-						<a  class="action-webview" data-webview="_www/view/item/merchants.html"class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a class="action-webview" data-webview="_www/view/item/merchants.html" class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div id="hzcj_slider" class="mui-slider">
 					<div class="mui-slider-group mui-slider-loop">
@@ -339,35 +361,79 @@
 						<div class="mui-slider-item mui-slider-item-duplicate">
 							<ul class="mui-table-view mui-grid-view">
 								<li class="mui-table-view-cell mui-media mui-col-xs-6">
-									<a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
-										<li class="mui-table-view-cell mui-media mui-col-xs-6">
-											<a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
-												<li class="mui-table-view-cell mui-media mui-col-xs-6">
-													<a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-1].manufacturers_logo%>" />
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-1].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-1].manufacturers_logo%>" /></a>
+								</li>
 							</ul>
 						</div>
+						<%
+							for(var i=0;i<data.length;i=i+3){
+								%>
 						<div class="mui-slider-item">
 							<ul class="mui-table-view mui-grid-view">
 								<li class="mui-table-view-cell mui-media mui-col-xs-6">
-									<a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
-										<li class="mui-table-view-cell mui-media mui-col-xs-6">
-											<a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
-												<li class="mui-table-view-cell mui-media mui-col-xs-6">
-													<a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
-													</a>
+									<a href="#"><img class="mui-media-object" src="<%=data[i].manufacturers_logo%>" />
+									</a>
+								</li>
+								<%
+										if((i+1)>=data.length){
+									%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[1].manufacturers_logo%>" /></a>
+								</li>
+								<%
+								}
+								else{
+									%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[i+1].manufacturers_logo%>" /></a>
+								</li>
+								<%
+									if((i+2)>=data.length){
+										%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" /></a>
+								</li>
+								<%
+								}
+											else{
+												%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[i+2].manufacturers_logo%>" /></a>
+								</li>
+								<%
+											}
+									}
+								%>
+
 							</ul>
 						</div>
+						<%
+							}
+						%>
 
 						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
 						<div class="mui-slider-item mui-slider-item-duplicate">
 							<ul class="mui-table-view mui-grid-view">
 								<li class="mui-table-view-cell mui-media mui-col-xs-6">
-									<a href="#"><img class="mui-media-object" src="../img/index/ztgt.png">
-										<li class="mui-table-view-cell mui-media mui-col-xs-6">
-											<a href="#"><img class="mui-media-object" src="../img/index/bgjt.png">
-												<li class="mui-table-view-cell mui-media mui-col-xs-6">
-													<a href="#"><img class="mui-media-object" src="../img/index/xxzg.png">
-													</a>
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" />
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[1].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6">
+									<a href="#"><img class="mui-media-object" src="<%=data[2].manufacturers_logo%>" /></a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -385,7 +451,7 @@
 
 						<span class="lbm-font">价格指导</span></div>
 					<div class="more-link">
-						<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}' >更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}'>更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<!--<div class="box-display jgzd-tab">
 					<a class="box-item-flex1 content-center select"><span>生铁</span></a>
@@ -397,17 +463,18 @@
 				</div>-->
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<% for(var i in data) { %>
-					<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%= i %></a>mobile">
+					<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" onclick="test()" href="#item<%=i%>mobile">
 						<%=data[i].cat_name%>
 					</a>
 					<%}%>
 
 				</div>
+
 			</section>
+
 			<section>
-				<div class="mui-slider">
+				<div class="mui-slider" id="jgzd-content">
 					<div class="mui-slider-group mui-slider-loop">
-						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
 						<div class="mui-slider-item">
 							<ul class="mui-table-view mui-grid-view">
 								<li class="mui-media jgzd-right">
@@ -418,21 +485,21 @@
 											<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
 													</div>
 													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/zhang.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">1500</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+0 0.00%</div>
 													</div>
 												</div>
 											</div>
 											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁1</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
 														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
 													</div>
@@ -489,27 +556,27 @@
 											<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
 													</div>
 													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/zhang.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
 													</div>
 												</div>
 											</div>
 											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">沧州中铁</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q16</div>
 													</div>
 													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.5rem;float:left;margin-top:0.6rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
 														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
 													</div>
 												</div>
@@ -519,28 +586,28 @@
 											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
 													</div>
 													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #509c2f;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/die.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
 													</div>
 												</div>
 											</div>
 											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 												<div class="box-display ">
 													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">江苏永钢</div>
 														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q8</div>
 													</div>
 													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/zhang.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
 													</div>
 												</div>
 											</div>
@@ -563,49 +630,83 @@
 					<div class="title-txt title-txt-padding">
 						<span class="lbm-font">热销产品</span></div>
 					<div class="more-link">
-						<a data-needlog="true" class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-left">
-						<img class="img-all" src="../img/index/st.png" />
+						<%
+							if(pic.length>0){
+						%>
+						<img class="img-all" src="<%=pic[0].imagesrc%>" />
 						<div class="type-name1">
 							生铁
 						</div>
+						<%
+						}
+						%>
 					</div>
 					<div class="rxcp-right">
-
-						<img class="img-half" src="../img/index/fg.png" />
+						<%
+							if(pic.length>1){
+						%>
+						<img class="img-half" src="<%=pic[1].imagesrc%>" />
 						<div class="type-name3">
 							废钢
 						</div>
-
-						<img class="img-half" src="../img/index/ztj.png" />
+						<%
+						}
+						%>
+						<%
+							if(pic.length>2){
+						%>
+						<img class="img-half" src="<%=pic[2].imagesrc%>" />
 						<div class="type-name2">
 							增碳剂
 						</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
 				<div class="flex">
 					<div class="rxcp-left">
-						<img class="img-all" src="../img/index/thj.png" />
+						<%
+							if(pic.length>3){
+						%>
+						<img class="img-all" src=".<%=pic[3].imagesrc%>" />
 						<div class="type-name1">
 							钛合金
 						</div>
+						<%
+						}
+						%>
 					</div>
 					<div class="rxcp-right">
-						<img class="img-all" src="../img/index/yyj.png" />
+						<%
+							if(pic.length>4){
+						%>
+						<img class="img-all" src="<%=pic[4].imagesrc%>" />
 						<div class="type-name2">
 							孕育剂
 						</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-middle">
-						<img class="img-all" src="../img/index/qtfl.png" />
+						<%
+							if(pic.length>4){
+						%>
+						<img class="img-all" src="<%=pic[5].imagesrc%>" />
 						<div class="type-name1" style="bottom:10px">
 							其他辅料
 						</div>
+						<%
+						}
+						%>
 					</div>
 
 				</div>
@@ -776,22 +877,26 @@
 			gallery.slider({
 				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 			});
-			//showUserPicker
+
 			var searchPicker = new mui.PopPicker();
 			searchPicker.setData([{
 				value: '全部',
 				text: '全部'
 			}, {
-				value: '产品1',
-				text: '产品1'
+				value: '品名',
+				text: '品名'
 			}, {
-				value: '产品3',
-				text: '产品3'
+				value: '规格',
+				text: '规格'
 			}, {
-				value: '产品4',
-				text: '产品4'
+				value: '交割库',
+				text: '交割库'
+			},
+			 {
+				value: '厂家/产地',
+				text: '厂家/产地'
 			}]);
-			
+
 			var showUserPickerButton = document.getElementById('showUserPicker');
 			showUserPickerButton.addEventListener('tap', function(event) {
 				searchPicker.show(function(items) {
@@ -827,7 +932,7 @@
 								indicators: false
 							});
 						} else if(data[i].widget == "user_defined") {
-							var widgets = template('widget_rxcp', {});
+							var widgets = template('widget_rxcp', data[i].params);
 							$('#main-content4').append(widgets);
 
 						}
@@ -841,8 +946,28 @@
 				});
 			});
 
-			var widgets = template('widget_manufacturers', {});
-			$('#main-content2').append(widgets);
+			var param = {
+				queryData: {
+					'method': config.apimethod.manufacturers
+				},
+				method: 'GET'
+			}
+
+			$.dataRequest(param, function(rs) {
+				var obj = {};
+				var arry = [];
+				for(var i in rs.data) {
+					arry.push(rs.data[i]);
+				}
+				obj.data = arry;
+				var widgets = template('widget_manufacturers', obj);
+				$('#main-content2').append(widgets);
+
+				var gallery = mui("#hzcj_slider");
+				gallery.slider({
+					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
+			});
 
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
@@ -874,33 +999,31 @@
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
-				
-					var param = {
-						queryData: {
-							'method': config.apimethod.priceguide
-						},
-						method: 'GET'
-					}
 
-					$.dataRequest(param, function(rs) {
-						widgets = template('widget_priceguide', rs);
-						$('#main-content3').append(widgets);
+				var param = {
+					queryData: {
+						'method': config.apimethod.priceguide
+					},
+					method: 'GET'
+				}
 
-					});
+				$.dataRequest(param, function(rs) {
+					widgets = template('widget_priceguide', rs);
+					$('#main-content3').append(widgets);
 
-//				document.getElementById('hzcj').addEventListener('tap', function() {
-//					mui.openWindow({
-//						url: 'item/merchants.html',
-//						id: 'hzcj'
-//					});				
-//				});
+				});
+
 			});
 
-			function test() {
-				mui.alert('欢迎使用Hello MUI', 'Hello MUI', function() {
-					info.innerText = '你刚关闭了警告框';
-				});
-			}
+			document.getElementById("telephone").addEventListener('tap', function() {
+				var btnArray = ['拨打', '取消'];
+				var phone = "0519-86558808";
+				//				mui.confirm('是否拨打' + phone + '?', '提示', btnArray, function(e) {
+				//					if(e.index == 0) {
+				plus.device.dial(phone, false);
+				//	}
+				//});
+			});
 
 			document.getElementById('llzs').addEventListener('tap', function() {
 				mui.openWindow({

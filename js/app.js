@@ -153,6 +153,9 @@ var toSearch = function(el, wv, shop) {
     $('body').append('<div id="search_panel" class="search-modal"><div id="history_list" class="mui-scroll-wrapper"><div class="mui-scroll"></div></div></div>');
     mui('#history_list').scroll();
     $('.search-cancel').show().siblings('.search-hide').hide();
+// var obj = document.getElementById("head-search");
+//obj.style.backgroundColor= "rgba(217, 46, 46, 1)";
+
     if(hlist != null) {
       var list = hlist.split(",");
       list = list.splice(0, list.length - 1);
