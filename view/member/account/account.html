@@ -324,7 +324,7 @@
 			}
 			
 			.bottom-div-right {
-				flex: 1;
+				flex: 2;
 			}
 			
 			.bottom-div-left {
@@ -357,18 +357,15 @@
 				padding: 8px;
 				margin: 3px;
 			}
+			
+			.search {
+				font-size: 15px;
+				color: #666666;
+			}
 		</style>
 	</head>
 
 	<body>
-		<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
-      <div class="main">
-        <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
-        </form>
-      </div>
-      <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
-      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>-->
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<div class="child category_size" id="left-content"><img class="category_img" src="../../../img/cart/back.png" /></div>
 			<div class="child_1 category_size"><span class="title_span">对账单</span></div>
@@ -398,10 +395,10 @@
 										<span class="top-date-div-left-span">余额对账</span>
 									</div>
 									<div class="top-date-div-right">
-										<button id='demo6' data-options='{"type":"month"}' class="btn">查询</button>
-
+										<!--<button id='demo6' data-options='{"type":"month"}' class="btn">查询</button>-->
+										<div data-options='{"type":"month"}' class="btn search" data-type="ye">查询</div>
 									</div>
-									<img class="top-date-div-left-img" src="../../../img/account/date.png" />
+									<img data-options='{"type":"month"}' data-type="ye" class="top-date-div-left-img btn" src="../../../img/account/date.png" />
 								</div>
 								<div class="center-top-div">
 									<div class="center-top-name">
@@ -413,7 +410,7 @@
 											<div class="center-top-price-left-price" id="cash1">65822.65</div>
 										</div>
 										<div class="center-top-price-right">
-											<div class="center-top-price-left-name">现金（元）</div>
+											<div class="center-top-price-left-name">承兑（元）</div>
 											<div class="center-top-price-left-price" id="cash2">65822.65</div>
 										</div>
 									</div>
@@ -431,7 +428,7 @@
 											<div class="center-top-price-left-price" id="cash3">65822.65</div>
 										</div>
 										<div class="center-top-price-right">
-											<div class="center-top-price-left-name">现金（元）</div>
+											<div class="center-top-price-left-name">承兑（元）</div>
 											<div class="center-top-price-left-price" id="cash4">65822.65</div>
 										</div>
 									</div>
@@ -495,13 +492,14 @@
 							<div class="mui-scroll">
 								<div class="top-date-div">
 									<div class="top-date-div-left">
-										<span class="top-date-div-left-date">2018-05</span>
+										<span class="top-date-div-left-date" id='result2'>2018-05</span>
 										<span class="top-date-div-left-span">余额对账</span>
 									</div>
 									<div class="top-date-div-right">
-										<span class="top-date-div-left-span top-date-div-left-span1">查询</span>
+										<!--<button id='demo6' data-options='{"type":"month"}' class="btn">查询</button>-->
+										<div data-options='{"type":"month"}' class="btn search" data-type="kp">查询</div>
 									</div>
-									<img class="top-date-div-left-img" src="../../../img/account/date.png" />
+									<img data-options='{"type":"month"}' data-type="kp" class="top-date-div-left-img btn" src="../../../img/account/date.png" />
 								</div>
 								<div class="center-top-div">
 									<div class="center-top-name">
@@ -511,22 +509,22 @@
 									<div class="center-top-price">
 										<div class="center-top-price-left">
 											<div class="center-top-price-left-name">票额（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="qcpe_price">65822.65</div>
 										</div>
 										<div class="center-top-price-right">
 											<div class="center-top-price-left-name">票额（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="qmpe_price">65822.65</div>
 										</div>
 									</div>
 								</div>
 								<div class="center-top-div">
 									<div class="center-bottom-name" id="qmye2">
-										期末余额
+										本期票额
 									</div>
 									<div class="center-top-price">
 										<div class="center-top-price-left1">
 											<div class="center-top-price-left-name">票额（元）</div>
-											<div class="center-top-price-left-price">65822.65</div>
+											<div class="center-top-price-left-price" id="bqpe_price">65822.65</div>
 										</div>
 									</div>
 								</div>
@@ -563,9 +561,11 @@
 				method: 'GET'
 			};
 			var date = new Date();
-			var date = date.getFullYear() + "-" + (date.getMonth()+1);
+			var date = getNowFormatDate(date);
 
 			$("#result").html(date);
+			$("#result2").html(date);
+
 			var param = {
 				queryData: {
 					'method': config.apimethod.getAccountDeposit,
@@ -578,6 +578,20 @@
 				method: 'GET'
 			};
 			load(param);
+
+			param = {
+				queryData: {
+					'method': config.apimethod.getAccountTickets,
+					'accessToken': state.token,
+					'start_time': getTime(date + "-01 00:00:00"),
+					'end_time': getTime(date + "-31 23:59:59"),
+					'page_no': 1,
+					'page_size': config.pagesize
+				},
+				method: 'GET'
+			};
+			load_kpdz(param);
+
 			mui.init();
 
 			(function($) {
@@ -591,6 +605,7 @@
 				});
 
 				var result = $('#result')[0];
+				var result2 = $('#result2')[0];
 				var btns = $('.btn');
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
@@ -605,22 +620,39 @@
 							var optionsJson = this.getAttribute('data-options') || '{}';
 							var options = JSON.parse(optionsJson);
 							var id = this.getAttribute('id');
+							var type = this.getAttribute('data-type');
 							_self.picker = new $.DtPicker(options);
 							_self.picker.show(function(rs) {
-								result.innerText = rs.text;
+								if(type == "ye") {
+									result.innerText = getNowFormatDate(new Date(rs.text + "-01"));
+									var param = {
+										queryData: {
+											'method': config.apimethod.getAccountDeposit,
+											'accessToken': state.token,
+											'start_time': getTime(rs.text + "-01 00:00:00"),
+											'end_time': getTime(rs.text + "-31 23:59:59"),
+											'page_no': 1,
+											'page_size': config.pagesize
+										},
+										method: 'GET'
+									};
+									load(param);
+								} else {
+									result2.innerText = getNowFormatDate(new Date(rs.text + "-01"));
+									var param = {
+										queryData: {
+											'method': config.apimethod.getAccountTickets,
+											'accessToken': state.token,
+											'start_time': getTime(rs.text + "-01 00:00:00"),
+											'end_time': getTime(rs.text + "-31 23:59:59"),
+											'page_no': 1,
+											'page_size': config.pagesize
+										},
+										method: 'GET'
+									};
 
-								var param = {
-									queryData: {
-										'method': config.apimethod.getAccountDeposit,
-										'accessToken': state.token,
-										'start_time': getTime(rs.text + "-01 00:00:00"),
-										'end_time': getTime(rs.text + "-31 23:59:59"),
-										'page_no': 1,
-										'page_size': config.pagesize
-									},
-									method: 'GET'
-								};
-								load(param);
+									load_kpdz(param);
+								}
 								_self.picker.dispose();
 								_self.picker = null;
 							});
@@ -634,22 +666,65 @@
 
 			function load(param) {
 				$.dataRequest(param, function(rs) {
-					$("#cash1").html(rs.data.lastSumPrice);
-					$("#cash2").html(rs.data.lastSumAccept);
-					$("#cash3").html(rs.data.currentSumPrice);
-					$("#cash4").html(rs.data.currentSumAccept);
-					$("#cash5").html(rs.data.addPrice);
-					$("#cash6").html(rs.data.addAccept);
-					$("#cash7").html(rs.data.expensePrice);
-					$("#cash8").html(rs.data.expenseAccept);
-					$("#cash9").html(rs.data.cashPrice);
-					$("#cash10").html(rs.data.cashAccept);
+					$("#cash1").html(rs.data.lastSumPrice == null ? '0.00' : returnFloat(rs.data.lastSumPrice));
+					$("#cash2").html(rs.data.lastSumAccept == null ? '0.00' : rs.data.lastSumAccept);
+					$("#cash3").html(rs.data.currentSumPrice == null ? '0.00' : returnFloat(rs.data.currentSumPrice));
+					$("#cash4").html(rs.data.currentSumAccept == null ? '0.00' : returnFloat(rs.data.currentSumAccept));
+					$("#cash5").html(rs.data.addPrice == null ? '0.00' : returnFloat(rs.data.addPrice));
+					$("#cash6").html(rs.data.addAccept == null ? '0.00' : returnFloat(rs.data.addAccept));
+					$("#cash7").html(rs.data.expensePrice == null ? '0.00' : returnFloat(rs.data.expensePrice));
+					$("#cash8").html(rs.data.expenseAccept == null ? '0.00' : returnFloat(rs.data.expenseAccept));
+					$("#cash9").html(rs.data.cashPrice == null ? '0.00' : returnFloat(rs.data.cashPrice));
+					$("#cash10").html(rs.data.cashAccept == null ? '0.00' : returnFloat(rs.data.cashAccept));
 				});
+			}
+
+			function load_kpdz(param) {
+				$.dataRequest(param, function(rs) {
+					$("#qcpe_price").html(rs.data.qichuNoCount == null ? '0.00' : returnFloat(rs.data.qichuNoCount));
+					$("#qmpe_price").html(rs.data.qimoNoCount == null ? '0.00' : returnFloat(rs.data.qimoNoCount));
+					$("#bqpe_price").html(rs.data.benqiCount == null ? '0.00' : returnFloat(rs.data.benqiCount));
+
+				});
+			}
+
+			function returnFloat(value) {
+				var value = Math.round(parseFloat(value) * 100) / 100;
+				var xsd = value.toString().split(".");
+				if(xsd.length == 1) {
+					value = value.toString() + ".00";
+					return value;
+				}
+				if(xsd.length > 1) {
+					if(xsd[1].length < 2) {
+						value = value.toString() + "0";
+					}
+					return value;
+				}
 			}
 
 			function getTime(date) {
 				var date = new Date(date);
-				return Date.parse(date);
+				return Date.parse(date) / 1000;
+			}
+
+			function getNowFormatDate(day) {
+				//var day = new Date(date);
+				var Year = 0;
+				var Month = 0;
+				var Day = 0;
+				var CurrentDate = "";
+
+				Year = day.getFullYear(); //ie火狐下都可以 
+				Month = day.getMonth() + 1;
+				Day = day.getDate();
+				CurrentDate += Year + "-";
+				if(Month >= 10) {
+					CurrentDate += Month;
+				} else {
+					CurrentDate += "0" + Month;
+				}
+				return CurrentDate;
 			}
 
 			$('.bbc-tab-item').on('tap', function() {
@@ -704,9 +779,9 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
-					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
-					'type':'qcpe'
+					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+					'type': 'qcpe'
 				});
 
 			});
@@ -715,9 +790,9 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
-					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
-					'type':'qmpe'
+					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+					'type': 'qmpe'
 				});
 
 			});
@@ -726,9 +801,9 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime':'1522512000',//开始时间-每个月1号的0:0:0的时间戳
-					'endtime':'1525103999',//结束时间-每个月最后一天的23:59:59的时间戳
-					'type':'bqpe'
+					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+					'type': 'bqpe'
 				});
 
 			});
