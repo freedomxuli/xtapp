@@ -20,7 +20,485 @@
 			.mui-slider-indicator.mui-segmented-control {
 				background-color: #ffffff !important;
 			}
-		
+			
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 0;
+				margin-right: 10px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item img {
+				height: 5rem;
+			}
+			
+			.mui-ios .mui-navbar .mui-bar .mui-title {
+				position: static;
+			}
+			
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				/*min-height: 100%;*/
+				/*background-color: #fff;*/
+			}
+			
+			.mui-page-content .mui-input-group:before {
+				height: 0;
+			}
+			
+			.mui-pages {
+				top: 3rem;
+				bottom: 3.7rem;
+				min-height: auto;
+				overflow-y: auto;
+			}
+			
+			.mui-page,
+			.mui-pages .mui-page-content .mui-page {
+				display: none;
+			}
+			
+			.mui-pages .mui-page {
+				background-color: #efeff4;
+				display: block;
+			}
+			
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 3rem;
+				background-color: #fff;
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			
+			.mui-android .mui-navbar-inner.mui-navbar-left,
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				width: auto;
+			}
+			
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			/*.mui-fullscreen {
+      position: fixed;
+      z-index: 20;
+      background-color: #000;
+      }
+      .mui-ios .mui-navbar .mui-bar .mui-title {
+      position: static;
+      }*/
+			
+			.mui-scroll-wrapper.has-btn {
+				bottom: 3rem;
+			}
+			
+			.body-padding-mini .action-bar-mini {
+				position: absolute;
+			}
+			
+			.mui-bar .mui-btn-link {
+				color: #ea2329 !important;
+			}
+			
+			.space {
+				background-color: #F0EFF5;
+				height: 10px;
+			}
+			/*标题栏*/
+			
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
+			
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
+				width: 1.2rem;
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.message_img {
+				height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+			}
+			/*地址块*/
+			
+			.address_part {
+				display: flex;
+				flex-direction: row;
+				background-color: #ffffff;
+				align-items: center;
+			}
+			
+			.address_part_left {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.address_part_center {
+				flex: 3;
+			}
+			
+			.address_part_center_top {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				padding: 15px 0px 0px 0px;
+			}
+			
+			.address_part_center_top_left {
+				flex: 1;
+				color: #666666;
+				font-family: "微软雅黑";
+			}
+			
+			.address_part_center_top_right {
+				flex: 1;
+				color: #666666;
+				font-family: "微软雅黑";
+				text-align: right;
+			}
+			
+			.address_part_center_bottom {
+				color: #666666;
+				font-family: "微软雅黑";
+				font-size: 0.9rem;
+				padding: 5px 0px 15px 0px;
+			}
+			
+			.address_part_right {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.check-right-img {
+				width: 0.4rem;
+			}
+			/*付款选择*/
+			
+			.kind-select {
+				margin-top: 10px;
+				background-color: #ffffff !important;
+				display: flex;
+				flex-direction: row;
+				z-index: 10000;
+				align-items: center;
+			}
+			
+			.kind-text {
+				color: #666666;
+				font-family: "微软雅黑";
+				flex: 1;
+				font-size: 0.6rem;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+			}
+			
+			.mui-radio input[type="radio"]:checked:before,
+			.mui-checkbox input[type="checkbox"]:checked:before {
+				color: #E35D4C;
+			}
+			
+			.radio-text {
+				color: #666666;
+				font-size: 0.8rem;
+			}
+			/*物品详情*/
+			
+			.goods_detail {
+				margin-top: 10px;
+				background-color: #ffffff;
+			}
+			
+			.goods_shop {
+				color: #666666;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+				border-bottom: 1px solid #e3e3e5;
+			}
+			
+			.goods_memo {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.goods_xq {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 5;
+				padding: 0.6rem 0px 0.3rem 1.2rem;
+			}
+			
+			.goods_address {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 1;
+				text-align: center;
+			}
+			
+			.goods_price {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #e3e3e5;
+			}
+			
+			.goods_price_detail {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 5;
+				padding: 0.3rem 0px 0.6rem 1.2rem;
+			}
+			/*价格详情*/
+			
+			.goods_order {
+				display: flex;
+				flex-direction: row;
+				background-color: #ffffff;
+			}
+			
+			.goods_order_left {
+				flex: 1;
+			}
+			
+			.goods_order_right {
+				flex: 1.5;
+			}
+			
+			.goods_order_right_detail {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.goods_order_right_memo {
+				flex: 1;
+				color: #222222;
+				font-size: 0.8rem;
+				font-family: "微软雅黑";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			
+			.goods_order_right_price {
+				flex: 1;
+				color: #e25d4c;
+				font-weight: bold;
+				font-size: 0.9rem;
+				font-family: "arial rounded mt bold";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			
+			.goods_order_right_price_font {
+				color: #222222;
+			}
+			
+			.goods_order_right_price1 {
+				flex: 1;
+				color: #e25d4c;
+				font-size: 1.2rem;
+				font-family: "arial rounded mt bold";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			/*支付信息*/
+			
+			.goods_info {
+				margin-top: 10px;
+				background-color: #ffffff;
+			}
+			
+			.goods_info_detail {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+				border: 1px solid #e3e3e5;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.goods_info_detail_type {
+				flex: 1;
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			
+			.goods_info_detail_type_text {
+				flex: 2;
+				text-align: end;
+			}
+			
+			.goods_info_detail_type_img {
+				flex: 1;
+				text-align: end;
+				padding: 0px 15px 0px 0px;
+			}
+			
+			.input-div {
+				display: flex;
+				flex: row;
+				align-items: center;
+			}
+			
+			.input-text {
+				flex: 1;
+				padding: 0 !important;
+			}
+			
+			.input-write {
+				flex: 3;
+				padding: 0 !important;
+				height: auto !important;
+			}
+			/*底部样式*/
+			
+			.submit-bottom-div {
+				background-color: #ffffff;
+				border-top: 1px solid #e3e3e6;
+				display: flex;
+				flex: row;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			
+			.submit-bottom-button1 {
+				background-color: #8c8c8c;
+				color: #ffffff;
+				padding: 10px 0px 10px 0px;
+			}
+			
+			.submit-bottom-button2 {
+				background-color: #e25d4c;
+				color: #ffffff;
+				padding: 10px 0px 10px 0px;
+			}
+			
+			.submit-bottom-div-flex {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.submit-bottom-div-flex-span {
+				font-size: 0.8rem;
+			}
+			
+			.submit-bottom-div-flex-color {
+				color: #e25d4c;
+				font-weight: bold;
+			}
 		</style>
 	</head>
 
@@ -34,7 +512,55 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</a>
 		</header>
-		<div  id="invoice_content">
+		<div id="invoice_content">
+			<div class="mui-scroll-wrapper has-btn">
+				<div class="mui-scroll">
+					<section class="section-white">
+						<div class="section-title">
+							<div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型</div>
+						</div>
+						<div id="invoiceType" class="invoice-tab-group content-bottom-padded">
+							<!--<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>-->
+							<label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+							<!-- <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>-->
+						</div>
+					</section>
+					<section class="invoice-content">
+						<div class="section-white invoice-content-item">
+							<div class="mui-input-group fontS">
+								<input id="billingid" type="hidden" class="mui-input-clear" value="">
+								<div class="mui-input-row">
+									<label>发票抬头</label>
+									<input id="FPTT" type="text" class="mui-input-clear" placeholder="请输入发票抬头" value="">
+								</div>
+								<div class="mui-input-row">
+									<label>税号</label>
+									<input id="SH" type="text" class="mui-input-clear" placeholder="请输入税号" value="">
+								</div>
+								<div class="mui-input-row">
+									<label>电话</label>
+									<input id="DH" type="text" class="mui-input-clear" placeholder="请输入电话" value="">
+								</div>
+								<div class="mui-input-row">
+									<label>开户银行</label>
+									<input id="KHYH" type="text" class="mui-input-clear" placeholder="请输入开户银行" value="">
+								</div>
+								<div class="mui-input-row">
+									<label>银行帐户</label>
+									<input id="YHZH" type="text" class="mui-input-clear" placeholder="请输入开户银行帐号" value="">
+								</div>
+
+							</div>
+							<div class="content-padded fontS font-gray-20">订单中的商品由入驻商家销售，发票内容由商家决定，由商家开具寄出。</div>
+						</div>
+						<div class="invoice-content-item" style="display: none;"></div>
+					</section>
+					<footer class="action-bar-mini">
+						<button type="button" class="action-bar-op-btn  mui-left act-ok">确定</button>
+					</footer>
+				</div>
+
+			</div>
 
 		</div>
 
@@ -50,42 +576,78 @@
 		<script src="../../libs/echarts-all.js"></script>
 
 		<script>
+			var state = app.getState();
 			mui.plusReady(function() {
 				var mode = 'cart';
-				var state = app.getState();
+				
 				var totalPrice = 0;
 				var totalAcceptPrice = 0;
 				var pricetype = "price";
 				var billId;
 				var param = {
 					queryData: {
-						'method': config.apimethod.checkout,
-						'accessToken': state.token,
-						'mode': mode
+						'method': config.apimethod.billinggetInfo,
+						'accessToken': state.token
 					}
 				}
 				$.dataRequest(param, function(rs) {
-					var invoice = {};
-					invoice.invoice_vat = [{
-						"billing_id": "",
-						"user_id": "",
-						"title": "",
-						"tallage_number": "",
-						"tel": "",
-						"open_bank": "",
-						"bank_account": "",
-						"def_billing": ""
-					}];
-					console.log(JSON.stringify(rs));
-					var userBillings = rs.data.userBillings;
-					if(userBillings.length > 0) {
-						billId = userBillings[0].billing_id;
-						invoice.invoice_vat = userBillings;
-					}
-					console.log(JSON.stringify(invoice));
-					var html = template('invoice_template', invoice);
-					$('#invoice_content').html(html);
+					var data = rs.data.list;
+					$("#billingid").val(data[0].billingid);
+					$("#FPTT").val(data[0].title);
+					$("#SH").val(data[0].tallage_number);
+					$("#DH").val(data[0].tel);
+					$("#KHYH").val(data[0].open_bank);
+					$("#YHZH").val(data[0].bank_account);
 				});
+			});
+
+			$('.act-ok').on('tap', function() {
+				var billingid = $("#billingid").val();
+				var title = $("#FPTT").val();
+				var tallage_number = $("#SH").val();
+				var tel = $("#DH").val();
+				var open_bank = $("#KHYH").val();
+				var bank_account = $("#YHZH").val();
+				if(!title) {
+					mui.alert('发票抬头不能为空');
+					return
+				}
+				if(!tallage_number) {
+					mui.alert('税号不能为空');
+					return
+				}
+				if(!tel) {
+					mui.alert('电话不能为空');
+					return
+				}
+				if(!open_bank) {
+					mui.alert('开户银行不能为空');
+					return
+				}
+				if(!bank_account) {
+					mui.alert('银行账户不能为空');
+					return
+				}
+
+				var param = {
+					queryData: {
+						'method': config.apimethod.billingsave,
+						'accessToken': state.token,
+						'billingid': billingid,
+						'title': title,
+						'tallage_number': tallage_number,
+						'tel': tel,
+						'open_bank': open_bank,
+						'bank_account': bank_account
+					},
+					method: 'POST'
+				}
+				$.dataRequest(param, function(rs) {
+					mui.toast('保存成功', function() {
+					});
+					clicked('_www/view/member/member.html');
+				});
+
 			});
 		</script>
 
@@ -135,7 +697,11 @@
 						</div>
 						<div class="invoice-content-item" style="display: none;"></div>
 					</section>
+					<nav class="mui-bar bbc-bar-tab submit-bottom-div">
+						<div id="tj" class="submit-bottom-button1">提交认证</div>
+					</nav>
 				</div>
+
 			</div>
 
 		</script>

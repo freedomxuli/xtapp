@@ -212,8 +212,28 @@
 		.search-input::-webkit-input-placeholder {
 			color: #FFFFFF !important;
 		}
-input::-ms-input-placeholder{text-align: left;}
-input::-webkit-input-placeholder{text-align: left;}
+		
+		input::-ms-input-placeholder {
+			text-align: left;
+		}
+		
+		input::-webkit-input-placeholder {
+			text-align: left;
+		}
+		
+		.mui-control-content {
+			/*background-color: white;*/
+			min-height: 215px;
+		}
+		
+		.mui-control-content .mui-loading {
+			margin-top: 50px;
+		}
+		
+		.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+			border-top: none;
+			border-bottom: none;
+		}
 	</style>
 
 	<body>
@@ -244,7 +264,28 @@ input::-webkit-input-placeholder{text-align: left;}
 
 		</div>
 		<div id="main-content3">
+	
+				<div class="section-title user-title title section-white">
+					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+					<div class="title-txt title-txt-padding">
 
+						<span class="lbm-font">价格指导</span></div>
+					<div class="more-link">
+						<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}'>更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+				</div>
+		
+
+				<div id="slider3" class="mui-slider">
+					<div id="sliderSegmentedControl" class=" section-white mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
+					</div>
+					<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>
+					<div class="mui-slider-group" id="sliderSegmentedControl2" style="margin-top:10px;">
+						<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							123
+						</div>
+					</div>
+	
+			</div>
 		</div>
 		<div id="main-content4">
 
@@ -443,41 +484,22 @@ input::-webkit-input-placeholder{text-align: left;}
 			</section>
 		</script>
 
-		<script type="text/html" id="widget_priceguide">
-			<section class="section-white">
-				<div class="section-title user-title title">
-					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-					<div class="title-txt title-txt-padding">
+		<script type="text/html" id="priceguide1">
+			<% for(var i in data) { %>
+			<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%=i%>mobile">
+				<%=data[i].cat_name%>
+			</a>
+			<%}%>
+		</script>
 
-						<span class="lbm-font">价格指导</span></div>
-					<div class="more-link">
-						<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}'>更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<!--<div class="box-display jgzd-tab">
-					<a class="box-item-flex1 content-center select"><span>生铁</span></a>
-					<a class="box-item-flex1 content-center"><span>废钢</span></a>
-					<a class="box-item-flex1 content-center"><span>增碳剂</span></a>
-					<a class="box-item-flex1 content-center"><span>铁合金</span></a>
-					<a class="box-item-flex1 content-center"><span>孕育剂</span></a>
-					<a class="box-item-flex1 content-center"><span>其他辅料</span></a>
-				</div>-->
-				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<% for(var i in data) { %>
-					<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" onclick="test()" href="#item<%=i%>mobile">
-						<%=data[i].cat_name%>
-					</a>
-					<%}%>
+		<script type="text/html" id="priceguide2">
 
-				</div>
-
-			</section>
-
-			<section>
-				<div class="mui-slider" id="jgzd-content">
-					<div class="mui-slider-group mui-slider-loop">
-						<div class="mui-slider-item">
-							<ul class="mui-table-view mui-grid-view">
-								<li class="mui-media jgzd-right">
+			<div id="item0mobile" class="mui-slider-item mui-control-content mui-active">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div id="jgzd-slider" class="mui-slider">
+							<div class="mui-slider-group mui-slider-loop">
+								<div class="mui-slider-item mui-slider-item-duplicate">
 									<div style="position:relative">
 										<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
 										<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
@@ -491,78 +513,7 @@ input::-webkit-input-placeholder{text-align: left;}
 													</div>
 													<div class="box-item-flex1">
 														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">1500</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+0 0.00%</div>
-													</div>
-												</div>
-											</div>
-											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-												<div class="box-display ">
-													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁1</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-													</div>
-													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.5rem;float:left;margin-top:0.6rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-												<div class="box-display ">
-													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-													</div>
-													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #509c2f;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/die.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
-													</div>
-												</div>
-											</div>
-											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-												<div class="box-display ">
-													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-													</div>
-													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="../img/index/zhang.png" /></div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-
-						<div class="mui-slider-item mui-slider-item-duplicate">
-							<ul class="mui-table-view mui-grid-view">
-								<li class="mui-media jgzd-right">
-									<div style="position:relative">
-										<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
-										<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
-										<div class="box-display" style="height:6rem;">
-											<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-												<div class="box-display ">
-													<div class="box-item-flex1" style="padding-left: 0.5rem;">
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
-													</div>
-													<div class="box-item-flex1">
-														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
-														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.6rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/die.png" /></div>
 														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
 													</div>
 												</div>
@@ -613,13 +564,116 @@ input::-webkit-input-placeholder{text-align: left;}
 											</div>
 										</div>
 									</div>
-								</li>
-							</ul>
+								</div>
+
+								<div class="mui-slider-item">
+									<div style="position:relative">
+										<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+										<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+										<div class="box-display" style="height:6rem;">
+											<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+												<div class="box-display ">
+													<div class="box-item-flex1" style="padding-left: 0.5rem;">
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
+													</div>
+													<div class="box-item-flex1">
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">1500</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
+													</div>
+												</div>
+											</div>
+											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+												<div class="box-display ">
+													<div class="box-item-flex1" style="padding-left: 0.5rem;">
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">沧州中铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q16</div>
+													</div>
+													<div class="box-item-flex1">
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3000</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+												<div class="box-display ">
+													<div class="box-item-flex1" style="padding-left: 0.5rem;">
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">中天钢铁</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q10</div>
+													</div>
+													<div class="box-item-flex1">
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">1000</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
+													</div>
+												</div>
+											</div>
+											<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+												<div class="box-display ">
+													<div class="box-item-flex1" style="padding-left: 0.5rem;">
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">江苏永钢</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Q8</div>
+													</div>
+													<div class="box-item-flex1">
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">05-24 00:00</div>
+														<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3000</span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
+														<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="item1mobile" class="mui-slider-item mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-loading">
+							<div class="mui-spinner">
+
+							</div>
 						</div>
 					</div>
 				</div>
 
-			</section>
+			</div>
+			<div id="item2mobile" class="mui-slider-item mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-loading">
+							<div class="mui-spinner">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div id="item3mobile" class="mui-slider-item mui-control-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-loading">
+							<div class="mui-spinner">
+	
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 		</script>
 
 		<script type="text/html" id="widget_rxcp">
@@ -714,164 +768,9 @@ input::-webkit-input-placeholder{text-align: left;}
 			<div style="height:3rem"></div>
 		</script>
 
-		<script type="text/html" id="widget_single_pic">
-			<section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
-				<img src="<%= imagesrc %>">
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_double_pics">
-			<section class="widgets-double-pics">
-				<div class="pics-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-					<a><img src="<%= pic[0].imagesrc %>"></a>
-				</div>
-				<div class="pics-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-					<a><img src="<%= pic[1].imagesrc %>"></a>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_floor_one">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-inline">
-					<div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-						<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
-					</div>
-					<div class="showarea-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-						<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-					</div>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_floor_two">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-group">
-					<div class="showarea-item-ingroup">
-						<div class="item-ingroup-top action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-							<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
-						</div>
-						<div class="item-ingroup-bottom">
-							<div class="ingroup-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-								<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-							</div>
-							<div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
-								<a href="#"><img src="<%= pic[2].imagesrc %>"></a>
-							</div>
-						</div>
-					</div>
-					<div class="showarea-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
-						<a href="#"><img src="<%= pic[3].imagesrc %>"></a>
-					</div>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_floor_three">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-group">
-					<div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-						<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
-					</div>
-					<div class="showarea-item-ingroup">
-						<div class="item-ingroup-top action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-							<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-						</div>
-						<div class="item-ingroup-bottom">
-							<div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
-								<a href="#"><img src="<%= pic[2].imagesrc %>"></a>
-							</div>
-							<div class="ingroup-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
-								<a href="#"><img src="<%= pic[3].imagesrc %>"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_category_nav">
-			<section class="widgets-category-nav section-white">
-				<div class="section-title">
-					<div class="title-txt">商品分类</div>
-					<div class="more-link action-webview" data-webview="_www/view/category/category.html">查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<ul class="category-nav-list">
-					<% for(var i in pic) { %>
-					<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
-						<div class="nav-items">
-							<div class="category-nav-txt">
-								<div>
-									<p class="category-name">
-										<%= pic[i].categoryname %>
-									</p>
-									<p class="category-sub-des">
-										<%= pic[i].linkinfo %>
-									</p>
-								</div>
-							</div>
-							<div class="category-thumb-img">
-								<a href="#"><img src="<%= pic[i].imagesrc %>" alt=""></a>
-							</div>
-						</div>
-					</li>
-					<% } %>
-				</ul>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_goods_like">
-			<section class="widgets-goods-like">
-				<div class="widgets-goods-like-header">
-					<span>猜你喜欢</span>
-				</div>
-				<div class="mui-table-view">
-					<ul class="pro-list-grid">
-						<% for(var i in pic) { %>
-						<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
-							<div class="thumbnail">
-								<div class="thumb-img">
-									<a href="#"><img src="<%= object[i].imagesrc %>" alt=""></a>
-								</div>
-								<div class="caption">
-									<h1 class="goods-title"><span class="tag"><%= pic[i].promotion %></span><%= pic[i].title %></h1>
-									<div class="price">
-										<div class="amount CNY">
-											<%= pic[i].price %>
-										</div>
-										<div class="purchased">已有
-											<%= pic[i].num %>人购买</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<% } %>
-					</ul>
-				</div>
-			</section>
-		</script>
-
 		<script type="text/javascript">
 			mui.init({
-				swipeBack: true //启用右滑关闭功能
+				swipeBack: false //启用右滑关闭功能
 			});
 			var gallery = mui('#title_slider');
 			gallery.slider({
@@ -880,22 +779,23 @@ input::-webkit-input-placeholder{text-align: left;}
 
 			var searchPicker = new mui.PopPicker();
 			searchPicker.setData([{
-				value: '全部',
-				text: '全部'
-			}, {
-				value: '品名',
-				text: '品名'
-			}, {
-				value: '规格',
-				text: '规格'
-			}, {
-				value: '交割库',
-				text: '交割库'
-			},
-			 {
-				value: '厂家/产地',
-				text: '厂家/产地'
-			}]);
+					value: '全部',
+					text: '全部'
+				}, {
+					value: '品名',
+					text: '品名'
+				}, {
+					value: '规格',
+					text: '规格'
+				}, {
+					value: '交割库',
+					text: '交割库'
+				},
+				{
+					value: '厂家/产地',
+					text: '厂家/产地'
+				}
+			]);
 
 			var showUserPickerButton = document.getElementById('showUserPicker');
 			showUserPickerButton.addEventListener('tap', function(event) {
@@ -969,6 +869,29 @@ input::-webkit-input-placeholder{text-align: left;}
 				});
 			});
 
+			param = {
+				queryData: {
+					'method': config.apimethod.priceguide
+				},
+				method: 'GET'
+			}
+
+			$.dataRequest(param, function(rs) {
+				widgets = template('priceguide1', rs);
+				$('#sliderSegmentedControl').append(widgets);
+
+				widgets = template('priceguide2', rs);
+				$('#sliderSegmentedControl2').html(widgets);
+
+			});
+			setTimeout(function() {
+				//mui('#slider3').slider().setStopped(true);
+				var gallery = mui("#jgzd-slider");
+				gallery.slider({
+					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
+			}, 1000)
+
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
 				if(webview) {
@@ -999,19 +922,6 @@ input::-webkit-input-placeholder{text-align: left;}
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
-
-				var param = {
-					queryData: {
-						'method': config.apimethod.priceguide
-					},
-					method: 'GET'
-				}
-
-				$.dataRequest(param, function(rs) {
-					widgets = template('widget_priceguide', rs);
-					$('#main-content3').append(widgets);
-
-				});
 
 			});
 

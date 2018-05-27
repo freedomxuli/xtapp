@@ -292,7 +292,7 @@
 			.submit-bottom-button1 {
 				flex: 1;
 				text-align: center;
-				font-size: 0.8rem;
+				font-size: 1.2rem;
 				color: #FFFFFF;
 				background-color: #E35D4C;
 				padding: 0.8rem 0rem 0.8rem 0rem;
@@ -306,7 +306,7 @@
 			.submit-bottom-button2 {
 				flex: 1;
 				text-align: center;
-				font-size: 0.8rem;
+				font-size: 1.2rem;
 				color: #FFFFFF;
 				background-color: #b7b6b6;
 				padding: 0.8rem 0rem 0.8rem 0rem;
@@ -739,9 +739,9 @@
 				$.dataRequest(param, function(rs) {
 					var data = rs.data.enterprise;
 					if(data.business_name != "" && data.business_name != null) {
-						$('.submit-bottom-div').append('<div class="submit-bottom-button2">提交认证</div><div class="submit-bottom-button1">变更认证</div>');
+						$('.submit-bottom-div').append('<div class="submit-bottom-button1">变更认证</div>');
 					} else {
-						$('.submit-bottom-div').append('<div class="submit-bottom-button1">提交认证</div><div class="submit-bottom-button2">变更认证</div>');
+						$('.submit-bottom-div').append('<div class="submit-bottom-button1">提交认证</div>');
 					}
 					if(data.business_name != undefined && data.business_name != null) {
 						$("#business_name").val(data.business_name);

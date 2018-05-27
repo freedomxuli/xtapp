@@ -425,7 +425,8 @@
 						};
 						$.dataRequest(param, function(rs) {
 							mui.toast('确认收货成功');
-							plus.webview.currentWebview().reload();
+							$("#" + batches_id).hide();
+							$("#" + batches_id).parent().append('<div class="compete">已完成</div>');
 						});
 					}
 				});
@@ -445,10 +446,13 @@
 						};
 						$.dataRequest(param, function(rs) {
 							mui.toast('确认收票成功');
-							plus.webview.currentWebview().reload();
+							$("#" + ticket_id).hide();
+							$("#" + ticket_id).parent().append('<div class="compete">已完成</div>');
+							//plus.webview.currentWebview().reload();
 						});
 					}
 				});
+
 			});
 
 			function formatDateTime(timeStamp) {
@@ -518,7 +522,7 @@
 						<%
 								if(list[item].status=="WAIT_BUYER_CONFIRM_GOODS"){
 							%>
-						<div class="content-div-center-right-button">
+						<div class="content-div-center-right-button" id="<%=list[item].batches_id%>">
 							<div class="content-div-center-right-button order-confirm" data-batches_id='<%=list[item].batches_id%>' data-tid='<%=list[item].tid%>'>
 								确认收货
 							</div>
@@ -588,7 +592,7 @@
 						<%
 								if(list[i].status=="WAIT_BUYER_CONFIRM_TICKET"){
 							%>
-						<div class="content-div-center-right-button">
+						<div class="content-div-center-right-button" id="<%=list[i].ticket_id%>">
 							<div class="content-div-center-right-button ticket-confirm" data-ticket_id='<%=list[i].ticket_id%>'>
 								确认收票
 							</div>

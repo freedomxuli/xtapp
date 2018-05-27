@@ -493,7 +493,7 @@
 								<div class="top-date-div">
 									<div class="top-date-div-left">
 										<span class="top-date-div-left-date" id='result2'>2018-05</span>
-										<span class="top-date-div-left-span">余额对账</span>
+										<span class="top-date-div-left-span">开票对账</span>
 									</div>
 									<div class="top-date-div-right">
 										<!--<button id='demo6' data-options='{"type":"month"}' class="btn">查询</button>-->
@@ -751,26 +751,28 @@
 				}
 			});
 
-			$('#qcye').on('tap', function() {
-
+//			$('#qcye').on('tap', function() {
+//
+//				var faid = plus.webview.currentWebview().id;
+//				clicked('_www/view/member/account/accountdetail.html', {
+//					'faid': faid
+//				});
+//
+//			});
+//
+//			$('#qmye').on('tap', function() {
+//				var faid = plus.webview.currentWebview().id;
+//				clicked('_www/view/member/account/accountdetail.html', {
+//					'faid': faid
+//				});
+//
+//			});
+				$('#ye_ckmx').on('tap', function() {
 				var faid = plus.webview.currentWebview().id;
-				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
-				});
-
-			});
-
-			$('#qmye').on('tap', function() {
-				var faid = plus.webview.currentWebview().id;
-				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
-				});
-
-			});
-			$('#ye_ckmx').on('tap', function() {
-				var faid = plus.webview.currentWebview().id;
-				clicked('_www/view/member/account/accountdetail.html', {
-					'faid': faid
+				clicked('_www/view/member/account/depositdetail.html', {
+					'faid': faid,
+					'starttime': getTime($('#result').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': getTime($('#result').text() + "-31 23:59:59") //结束时间-每个月最后一天的23:59:59的时间戳
 				});
 
 			});
