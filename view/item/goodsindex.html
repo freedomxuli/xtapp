@@ -31,8 +31,9 @@
 			
 			.chart {
 				height: 200px;
-				margin: 0px;
-				padding: 0px;
+				width:320px;
+			
+				padding-left:10px;
 			}
 			
 			h5 {
@@ -548,7 +549,7 @@
 													<div style="flex:1;text-align: right;color:#a1a1a1">2018/01/16 10:28</div>
 												</div>
 											</li>
-<li class="content-li">
+											<li class="content-li">
 												<div class="content-outer" style="height: 3rem;line-height: 3rem;">
 													<div style="flex:1;font-size: 1rem">新兴生铁 球铁</div>
 													<div style="flex:1;text-align: right;color:#E35D4C">
@@ -726,83 +727,192 @@
 		<script src="../../js/mui.pullToRefresh.material.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
-		<script src="../../libs/echarts-all.js"></script>
+
+		<script src="../../libs/echarts.js"></script>
 
 		<script>
-			var getOption = function(chartType) {
-				var chartOption ={
-					legend: {
-						data: ['球铁', '铸铁', '炼钢铁']
+			var param = {
+				queryData: {
+					'method': config.apimethod.getCurve,
+					'cat_id': '6'
+				},
+				method: 'GET'
+			}
+
+
+				var myChart = echarts.init(document.getElementById('lineChart'));
+				option = {
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: {
+							lineStyle: {
+								color: '#ccd6eb'
+							}
+						},
+						backgroundColor: 'rgba(255,255,255,1)',
+						padding: [5, 10],
+						textStyle: {
+							color: '#414141',
+						},
+						extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
 					},
-					grid: {
-						x: 35,
-						x2: 10,
-						y: 30,
-						y2: 25,
-						height: 120
-					},
-					toolbox: {
-						show: false,
-						feature: {
-							mark: {
-								show: true
-							},
-							dataView: {
-								show: true,
-								readOnly: false
-							},
-							magicType: {
-								show: true,
-								type: ['line', 'bar']
-							},
-							restore: {
-								show: true
-							},
-							saveAsImage: {
-								show: true
+					xAxis: {
+						type: 'category',
+						data: ["04-01","04-02","04-03","04-04","04-05","04-06","04-07","04-08","04-09","04-10","04-11","04-12","04-13","04-14","04-15","04-16","04-17","04-18","04-19","04-20","04-21","04-22","04-23","04-24","04-25","04-26","04-27","04-28","04-29","04-30","05-01","05-02","05-03","05-04","05-05","05-06","05-07","05-08","05-09","05-10","05-11","05-12","05-13","05-14","05-15","05-16","05-17","05-18","05-19","05-20","05-21","05-22","05-23","05-24","05-25","05-26","05-27","05-28","05-29"],
+						boundaryGap: false,
+						splitLine: {
+							show: true,
+							interval: 'auto',
+							lineStyle: {
+								color: ['none']
+							}
+						},
+						axisTick: {
+							show: false
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#666666'
+							}
+						},
+						axisLabel: {
+							margin: 10,
+							textStyle: {
+								fontSize: 14
 							}
 						}
 					},
-					calculable: false,
-					xAxis: [{
-						type: 'category',
-						data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-					}],
-					yAxis: [{
+					yAxis: {
 						type: 'value',
-						splitArea: {
-							show: true
-						}
-					}],
-					series: [{
-							name: '球铁',
-							type: chartType,
-							data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-						}, {
-							name: '铸铁',
-							type: chartType,
-							data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+						splitLine: {
+							lineStyle: {
+								color: ['#D4DFF5']
+							}
 						},
-						{
-							name: '炼钢铁',
-							type: chartType,
-							data: [4, 6, 9.0, 2, 4, 5, 175.6, 182.2, 48.7, 18.8, 6.0, 3]
+						axisTick: {
+							show: false
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#666666'
+							}
+						},
+						axisLabel: {
+							margin: 10,
+							textStyle: {
+								fontSize: 14
+							}
+						},
+						scale: true,
+						min: 1850,
+					},
+					series: [{
+						name: '生铁',
+						type: 'line',
+						smooth: true,
+						showSymbol: false,
+						symbol: 'circle',
+						symbolSize: 6,
+						data: [2000,2000,3000,3000,3000,3000,3000,2600,2700,2700,2000,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900],
+						areaStyle: {
+							normal: {
+								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+									offset: 0,
+									color: 'rgba(232, 240, 245,1)'
+								}, {
+									offset: 1,
+									color: 'rgba(232, 240, 245,1)'
+								}], false)
+							}
+						},
+						itemStyle: {
+							normal: {
+								color: '#46759f'
+							}
+						},
+						lineStyle: {
+							normal: {
+								width: 1
+							}
 						}
-					]
+					}]
 				};
-				return chartOption;
-			};
-			var byId = function(id) {
-				return document.getElementById(id);
-			};
-
-			var lineChart = echarts.init(byId('lineChart'));
-			lineChart.setOption(getOption('line'));
-
-			document.getElementById("echarts").addEventListener('tap', function() {
-				var url = this.getAttribute('data-url');
-				plus.runtime.openURL(url);
-			}, false);
+				myChart.setOption(option);
+			
+			//			var getOption = function(chartType) {
+			//				var chartOption ={
+			//					legend: {
+			//						data: ['球铁', '铸铁', '炼钢铁']
+			//					},
+			//					grid: {
+			//						x: 35,
+			//						x2: 10,
+			//						y: 30,
+			//						y2: 25,
+			//						height: 120
+			//					},
+			//					toolbox: {
+			//						show: false,
+			//						feature: {
+			//							mark: {
+			//								show: true
+			//							},
+			//							dataView: {
+			//								show: true,
+			//								readOnly: false
+			//							},
+			//							magicType: {
+			//								show: true,
+			//								type: ['line', 'bar']
+			//							},
+			//							restore: {
+			//								show: true
+			//							},
+			//							saveAsImage: {
+			//								show: true
+			//							}
+			//						}
+			//					},
+			//					calculable: false,
+			//					xAxis: [{
+			//						type: 'category',
+			//						data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+			//					}],
+			//					yAxis: [{
+			//						type: 'value',
+			//						splitArea: {
+			//							show: true
+			//						}
+			//					}],
+			//					series: [{
+			//							name: '球铁',
+			//							type: chartType,
+			//							data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+			//						}, {
+			//							name: '铸铁',
+			//							type: chartType,
+			//							data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+			//						},
+			//						{
+			//							name: '炼钢铁',
+			//							type: chartType,
+			//							data: [4, 6, 9.0, 2, 4, 5, 175.6, 182.2, 48.7, 18.8, 6.0, 3]
+			//						}
+			//					]
+			//				};
+			//				return chartOption;
+			//			};
+			//			var byId = function(id) {
+			//				return document.getElementById(id);
+			//			};
+			//
+			//			var lineChart = echarts.init(byId('lineChart'));
+			//			lineChart.setOption(getOption('line'));
+			//
+			//			document.getElementById("echarts").addEventListener('tap', function() {
+			//				var url = this.getAttribute('data-url');
+			//				plus.runtime.openURL(url);
+			//			}, false);
 		</script>
 	</body>
 
