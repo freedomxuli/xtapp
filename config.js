@@ -57,6 +57,7 @@ var config = {
         usercoupon: 'member.coupon.list', //会员优惠券
         uservoucher: 'member.voucher.list', //会员优惠券
         cartlist: 'cart.get', //购物车列表
+        cartnum:'cart.count',//底部购物车
         cartadd: 'cart.add', //添加商品到购物车
         cartdel: 'cart.del', //删除购物车中的商品
         cartupdate: 'cart.update', //更新购物车

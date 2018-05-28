@@ -9062,3 +9062,7 @@ input[type="search"].header-search {
 	height: 1.5rem;
 	width: 1.5rem;
 }
+
+.cart_bottom_num_abs{ 
+	background-color: #FFFFFF;color: #FFFFFF;font-size: 0.8rem;border-radius: 1.8rem;padding: 0.1rem 0.3rem; 0.1rem 0.3rem;position: fixed;margin-top: 0.2rem;margin-right: 1.5rem;z-index: 99999;
+}
