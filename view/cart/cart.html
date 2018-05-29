@@ -115,6 +115,7 @@
 			}
 			.check-title{
 				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
 				color: #666666;
 			}
 			.check-right-img{
@@ -131,7 +132,7 @@
 			.check-content-left{
 				flex: 2;
 				color:#333333;
-				font-size: 0.9rem;
+				font-size: 0.8rem;
 				font-family: "微软雅黑";
 			}
 			.check-content-right{
@@ -166,6 +167,7 @@
 				border-top: 1px solid #e3e3e6;
 				display: flex;
 				flex: row;
+				height: 3rem;
 			}
 			.submit-bottom-left{
 				flex:4.5;
@@ -187,6 +189,7 @@
 				flex: 1;
 				margin: 0 auto;
 				font-size: 0.6rem;
+				text-align: left;
 				color:#666666;
 			}
 			.submit-bottom-flex-2{
@@ -195,8 +198,8 @@
 				color:#666666;
 			}
 			.submit-bottom-flex-3{
-				flex:4;
-				font-size: 0.6rem;
+				flex:5;
+				font-size: 0.8rem;
 				color:#666666;
 			}
 			.submit-bottom-flex-3-price{
@@ -208,6 +211,9 @@
 			}
 			.action-bar-op-item{
 				padding: 1rem;
+			}
+			.editing{
+				color: #FFFFFF !important;
 			}
     </style>
   </head>
@@ -358,7 +364,7 @@
 					  <label class="submit-bottom">
 					  	<div class="submit-bottom-flex-1">全选</div>
 					  	<div class="submit-bottom-flex-2">
-					  		<div>合计<span class="hj-num">1</span></div>
+					  		<div>合计<span class="hj-num">1</span>件</div>
 					  		<div><span class="hj-weight">2.3690</span>吨</div>
 					  	</div>
 					  	<div class="submit-bottom-flex-3">
@@ -410,7 +416,7 @@
       </div>
     </div>
     <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
+    <script src="../../js/mui.js"></script>
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
@@ -437,13 +443,13 @@
 									</div>
 									<div class="content-price">
 										<div class="content-price-left">
-											<div class="content-price-left-text">现金价：￥<%=resultCartData[shop].object[obj_id].price.total_price%></div>
-											<div class="content-price-left-text">承兑价：￥<%=resultCartData[shop].object[obj_id].price_accept.total_price%></div>
+											<div class="content-price-left-text">现金价：￥<%=resultCartData[shop].object[obj_id].price.price%></div>
+											<div class="content-price-left-text">承兑价：￥<%=resultCartData[shop].object[obj_id].price_accept.price%></div>
 										</div>
 										<div class="content-price-right">
 											<div class="mui-numbox bbc-numbox" data-numbox-min="1" data-numbox-max="10000">
 					              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-					              <input class="action-modify mui-input-numbox" pattern="\d*" type="number" value="<%=resultCartData[shop].object[obj_id].quantity%>">
+					              <input class="action-modify mui-input-numbox" type="number" value="<%=resultCartData[shop].object[obj_id].quantity%>">
 					              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 					            </div>
 										</div>
@@ -795,7 +801,7 @@
         var isPromotionSelect = true;
         $('#cart_edit').on('tap', function() {
           if($(this).hasClass('editing')) {
-            $(this).removeClass('editing').text('编辑');
+            $(this).removeClass('editing').html('<span class="edit_span">编辑</span>');
             $('#edit_on').hide();
             $('#edit_off').show();
             $('.mui-numbox').show();
@@ -904,7 +910,7 @@
             }
           })
           .on('change', '.action-modify', function() {
-            $(this).parents('li').data('quantity', parseInt($(this).val()));
+            $(this).parents('li').data('quantity', parseFloat($(this).val()));
             if($('.cart-main').hasClass('checkout-action')) {
               updateItem();
             }
@@ -992,7 +998,7 @@
           if(flag) {
             $('input[type="checkbox"]').prop('checked', false);
           }
-          console.log(cartParam);
+          console.log("更新数据:"+cartParam);
           var param = {
             queryData: {
               'method': config.apimethod.cartupdate,

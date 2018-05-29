@@ -141,18 +141,22 @@ var fetchVcode = function(vtype,vimg) {
 }
 
 var getcartnumabs = function(token){
-	var param = {
-    queryData: {
-      'method': config.apimethod.cartnum,
-      'accessToken': token
-    },
-    method: 'POST'
-  }
-  $.dataRequest(param, function(rs) {
-    var data = rs.data;
-    document.getElementsByClassName("cart_bottom_num_abs")[0].style.backgroundColor = "red";
-    document.getElementsByClassName("cart_bottom_num_abs")[0].innerText = data.number;
-  });
+	console.log("获取token:"+token);
+	if(token)
+	{
+		var param = {
+	    queryData: {
+	      'method': config.apimethod.cartnum,
+	      'accessToken': token
+	    },
+	    method: 'POST'
+	  }
+	  $.dataRequest(param, function(rs) {
+	    var data = rs.data;
+	    document.getElementsByClassName("cart_bottom_num_abs")[0].style.backgroundColor = "red";
+	    document.getElementsByClassName("cart_bottom_num_abs")[0].innerText = data.number;
+	  });
+	}
 };
 
 var isEmptyObject = function(obj) {
@@ -404,6 +408,8 @@ var Currency = {
           });
           return owner.createState(loginInfo.account, data.accessToken, callback);
         } else {
+        	console.log("报错方法"+config.server + config.apiname);
+        	console.log("报错信息"+response.msg);
           return callback(response.msg);
         }
       },

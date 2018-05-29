@@ -62,6 +62,7 @@ var config = {
 		cartadd: 'cart.add', //添加商品到购物车
 		cartdel: 'cart.del', //删除购物车中的商品
 		cartupdate: 'cart.update', //更新购物车
+		cartnum:'cart.count',//购物车数量
 		shop: 'shop.index', //店铺首页信息
 		checkout: 'cart.checkout', //结算页信息
 		checkoutpoint: 'cart.user.point', //结算使用积分

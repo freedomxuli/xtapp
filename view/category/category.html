@@ -671,6 +671,11 @@
 		<script src="../../js/mui.pullToRefresh.material.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+		<script src="../../js/jquery.fly.min.js"></script>
     <script>
       mui.init({
         statusBarBackground:"#E35D4C",
@@ -852,7 +857,7 @@
 				result = template('filters_content_tab', top_kind_obj);
 				$('#content-main').html(result);
 				
-				console.log("大类："+rs.data.cat_id);
+				//console.log("大类："+rs.data.cat_id);
 				var arr_1 = [];
 				for(var top_kind_id in rs.data.lv1Cats)
       	{
@@ -872,7 +877,7 @@
 			        method: 'GET'
 			      };
 			      $.dataRequest(param_dl, function(rs1) {
-			      	console.log("获取："+rs1.data.cat_id);
+			      	//console.log("获取："+rs1.data.cat_id);
 			      	cat_all_obj[start_id]=rs1.data.cat_id;
 			      	GetContentList(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
 			      	var start_num_new = start_num + 1;
@@ -884,7 +889,7 @@
 				//mui.trigger(document.getElementById("sliderSegmentedControl"), 'tap');
 				
 				setTimeout(function(){
-					console.log("集合："+JSON.stringify(cat_all_obj));
+					//console.log("集合："+JSON.stringify(cat_all_obj));
 					
 					//产地列表
 					var pp_list = [];
@@ -1001,7 +1006,7 @@
 						});
 						document.getElementById("content-main").addEventListener("swipeleft",function(event){
 								 var objKeys=Object.keys(fl_sort_obj);
-								 console.log(JSON.stringify(fl_sort_obj));
+								 //console.log(JSON.stringify(fl_sort_obj));
 								 document.getElementById("showNamePicker").childNodes[0].innerHTML = "品名";
 								 document.getElementById("showSizePicker").childNodes[0].innerHTML = "规格";
 								 pro_name_id = "";
@@ -1135,14 +1140,14 @@
 	        },
 	        method: 'GET'
 	      };
-	      console.log(JSON.stringify(param1));
+	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	for(var i = 0;i < rs.data.list.length;i++)
 	      	{
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
 	      		rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
 	      	}
-	      	console.log(JSON.stringify(rs.data));
+	      	//console.log(JSON.stringify(rs.data));
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
 					//$('#item'+fl_new_id+'mobile').click(); 
@@ -1365,8 +1370,28 @@
 				//mui('.left-side-content-detail').scroll(); 
       }
       
+      function addFly(event) {
+			    var offset = jQuery('.bbc-icon-cart-empty').offset(), flyer = jQuery('<img class="u-flyer" style="z-index:9999999;width: 2rem;" src="../../img/widgets_02_05.png"/>');
+			    flyer.fly({
+			        start: {
+			            left: event.pageX-40,
+			            top: event.pageY-20
+			        },
+			        end: {
+			            left: offset.left,
+			            top: offset.top
+			            /*width: 24,
+			            height: 24,*/
+			        },
+			        onEnd: function() {
+			        	flyer.remove();
+			        }
+			    });
+			}
+      
       function OrderDenno(item_id,cat_id)
 			{
+				addFly(event);
 				var state = app.getState();
 				if(state.token)
 				{
@@ -1402,7 +1427,8 @@
 	          	
 	          	$.dataRequest(param_order, function(r) {
 	          		if(!isEmptyObject(r.data)) {
-	          			var btnArray = ['否', '是'];
+      						getcartnumabs(state.token);
+	          			/*var btnArray = ['否', '是'];
 	                mui.confirm('是否前往购物车？', '提示', btnArray, function(e) {
 	                    if (e.index == 1) {
 	                        var webview = "_www/view/cart/cart.html";
@@ -1423,7 +1449,7 @@
 									          mui.fire(openw, 'refresh');
 									        }
 	                    } 
-	                });
+	                });*/
 	          			
 	          		}else
 	          		{

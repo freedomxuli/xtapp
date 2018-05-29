@@ -7781,7 +7781,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			}
 			self.holder = holder;
 			options = options || {};
-			options.step = parseInt(options.step || 1);
+			options.step = parseFloat(options.step || 1);
 			self.options = options;
 			self.input = $.qsa(inputClassSelector, self.holder)[0];
 			self.plus = $.qsa(plusClassSelector, self.holder)[0];
@@ -7795,18 +7795,18 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		initEvent: function() {
 			var self = this;
 			self.plus.addEventListener(tapEventName, function(event) {
-				var val = parseInt(self.input.value) + self.options.step;
+				var val = parseFloat(self.input.value) + self.options.step;
 				self.input.value = val.toString();
 				$.trigger(self.input, changeEventName, null);
 			});
 			self.minus.addEventListener(tapEventName, function(event) {
-				var val = parseInt(self.input.value) - self.options.step;
+				var val = parseFloat(self.input.value) - self.options.step;
 				self.input.value = val.toString();
 				$.trigger(self.input, changeEventName, null);
 			});
 			self.input.addEventListener(changeEventName, function(event) {
 				self.checkValue();
-				var val = parseInt(self.input.value);
+				var val = parseFloat(self.input.value);
 				//触发顶层容器
 				$.trigger(self.holder, changeEventName, {
 					value: val
@@ -7818,7 +7818,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 		 **/
 		getValue: function() {
 			var self = this;
-			return parseInt(self.input.value);
+			return parseFloat(self.input.value);
 		},
 		/**
 		 * 验证当前值是法合法
@@ -7830,14 +7830,14 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				self.input.value = self.options.min || 0;
 				self.minus.disabled = self.options.min != null;
 			} else {
-				var val = parseInt(val);
-				if (self.options.max != null && !isNaN(self.options.max) && val >= parseInt(self.options.max)) {
+				var val = parseFloat(val);
+				if (self.options.max != null && !isNaN(self.options.max) && val >= parseFloat(self.options.max)) {
 					val = self.options.max;
 					self.plus.disabled = true;
 				} else {
 					self.plus.disabled = false;
 				}
-				if (self.options.min != null && !isNaN(self.options.min) && val <= parseInt(self.options.min)) {
+				if (self.options.min != null && !isNaN(self.options.min) && val <= parseFloat(self.options.min)) {
 					val = self.options.min;
 					self.minus.disabled = true;
 				} else {
