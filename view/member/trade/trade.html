@@ -446,6 +446,10 @@
 			.border-div{
 				border: 1px solid #CCCCCC;
 			}
+			
+			.context-bold{
+				font-weight:bold;
+			}
     </style>
   </head>
 
@@ -563,7 +567,10 @@
     <script src="../../../js/app.js"></script>
 
     <script type="text/html" id="trade_list">
-      <% for(var i=0; i<list.length; i++){ %>
+      <% for(var i=0; i<list.length; i++){ 
+      	if((list[i].status=="WAIT_BUYER_PAY"&&list[i].shenhe_status=="success")||list[i].status!="WAIT_BUYER_PAY")
+      	{
+      	%>
       <li class="mui-table-view-cell content-li">
         <div class="content-padded border-div">
           <div class="mui-table">
@@ -585,7 +592,7 @@
                 <div class="div-content-center">
                   <% for(var j=0; j<list[i].order.length; j++){ %>
       							<div class="div-content-center-div">
-											<div class="div-content-center-left">
+											<div class="div-content-center-left context-bold">
 												<%=list[i].order[j].manufacturers_name%> - <%=list[i].order[j].pm_name%> <%=list[i].order[j].guige%>
 											</div>
 											<div class="div-content-center-center">
@@ -667,7 +674,7 @@
 											付款支付：<%if(list[i].deposit_type == "price"){%>现金预存款<%}else{%>承兑预付款<%}%>
 										</div>
 										<div class="div-content-center-right">
-											调价：-￥<%=list[i].change_price%>
+											调价：￥<%=list[i].change_price%>
 										</div>
 									</div>
                 </div>
@@ -681,8 +688,8 @@
         </div>
         <div class="content-padded">
           <div class="box-display">
-            <div class="box-item-flex1">
-              实付金额：
+            <div class="box-item-flex1 context-bold">
+              实付总金额：
               <mark><%= $format_price(list[i].payment) %></mark>
             </div>
             <div class="box-item-flex1 mui-text-right">
@@ -721,7 +728,8 @@
           </div>
         </div>
       </li>
-      <% } %>
+      <% } 
+      	}%>
     </script>
 
     <script type="text/javascript" charset="utf-8">

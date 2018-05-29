@@ -581,13 +581,13 @@
 				<div class="mui-input-row">
 					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传证件</div></label>
 					<div class="goods_info_detail_content" id="sczj">
-						<div class="mui-input-row mui-radio mui-left">
+						<!--<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">三证合一</label>
-							<input name="radio2" type="radio" value="3" checked="checked">
-						</div>
+							<input name="radio2" type="radio" value="3" >
+						</div>-->
 						<div class="mui-input-row mui-radio mui-left">
 							<label class="radio-text">企业五证</label>
-							<input name="radio2" value="5" type="radio">
+							<input name="radio2" value="5" type="radio" checked="checked">
 						</div>
 					</div>
 				</div>
@@ -695,11 +695,7 @@
 
 		<script type="text/javascript">
 			var val_payPlatform = $('input[type=radio][name=radio2]').val()
-			$('#ul2').hide();
-			$('#ul3').hide();
-			$('#ul4').hide();
-			$('#ul5').hide();
-			$('#ul6').hide();
+			$('#ul1').hide();
 
 			$('input[type=radio][name=radio2]').change(function() {
 				if(this.value == '3') {

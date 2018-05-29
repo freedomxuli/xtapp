@@ -1,184 +1,196 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <style type="text/css">
-        .mui-popover{
-            display: none;
-            position: fixed;
-            width: 80%;
-            height: 24rem;
-            left: 50%;
-            top: 50%;
-            z-index: 9999;
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -ms-transform: translateX(-50%) translateY(-50%);
-            transform: translate(-50%) translateY(-50%);
-            background-color: #FFF;
-        }
-        .mui-popover-arrow{
-            display: none;
-        }
-        .mui-popover .mui-scroll-wrapper {
-          margin: 0;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
-        .mui-popover .mui-scroll-wrapper .mui-scroll {
-          margin: 0;
-          padding: 0;
-        }
-        .mui-popover .mui-input-group::before, .mui-popover .mui-input-group::after {
-          height: 0;
-        }
-        .mui-popover .mui-input-group .mui-input-row:last-child::after {
-          height: 0;
-        }
-        .redpackets-wrapper {
-          position: relative;
-          height: 20rem;
-        }
-        
-        /*标题栏*/
-			.mui-bar-backcolor{
-      	background-color:#d92e2e;
-      	display: flex;  
-      }
-			.child{   
-			    flex:1;    
-			} 
+		<link rel="stylesheet" href="../../css/style.css">
+		<style type="text/css">
+			.mui-popover {
+				display: none;
+				position: fixed;
+				width: 80%;
+				height: 24rem;
+				left: 50%;
+				top: 50%;
+				z-index: 9999;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-ms-transform: translateX(-50%) translateY(-50%);
+				transform: translate(-50%) translateY(-50%);
+				background-color: #FFF;
+			}
 			
-			.child_1{   
-			    flex:7;    
-			} 
+			.mui-popover-arrow {
+				display: none;
+			}
 			
-			.category_img{
+			.mui-popover .mui-scroll-wrapper {
+				margin: 0;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+			
+			.mui-popover .mui-scroll-wrapper .mui-scroll {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.mui-popover .mui-input-group::before,
+			.mui-popover .mui-input-group::after {
+				height: 0;
+			}
+			
+			.mui-popover .mui-input-group .mui-input-row:last-child::after {
+				height: 0;
+			}
+			
+			.redpackets-wrapper {
+				position: relative;
+				height: 20rem;
+			}
+			/*标题栏*/
+			
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
+			
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
 				height: 1rem;
 				width: 0.6rem;
 				line-height: 1rem;
-      }
-      
-      .category_size{
-      	line-height: 3rem;
-      	text-align: center;
-      }
-      
-      .category_title{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	margin-left: 0.4rem;
-      	font-size: 0.9rem;
-      }
-      
-      .title_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1.2rem;
-      }
-      
-      .edit_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 1.2rem;
-      	line-height: 1.2rem;
-      }
-      
-      .search_img{
-      	height: 1.2rem;
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
 				width: 1.2rem;
-      }
-      .search_size{
-      	line-height: 3.5rem;
-      	text-align: center;
-      }
-      
-      .message_img{
-      	height: 1.5rem;
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.message_img {
+				height: 1.5rem;
 				width: 1.5rem;
 				margin-left: 0.8rem;
-      }
-      
-      .section-init{
-      	color: #666666;
-      }
-      #deprice{
-      	color: #E25D4C;
-      }
-      .action-pay{
-      	background-color: #E25D4C;
-      	color: #FFFFFF;
-      }
-    </style>
-  </head>
+			}
+			
+			.section-init {
+				color: #666666;
+			}
+			
+			#deprice {
+				color: #E25D4C;
+			}
+			
+			.action-pay {
+				background-color: #E25D4C;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
 
-  <body>
-	  <header class="mui-bar mui-bar-nav mui-bar-backcolor">
-    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
-	    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
-	    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
-   	</header>
-    <section class="container">
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>
+			<div class="child_1 category_size"><span class="title_span">订单结算</span></div>
+			<div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>
+		</header>
+		<section class="container">
 
-    </section>
-  </body>
-  <div id="popover" class="mui-popover">
-    <div class="redpackets-wrapper">
-      <div class="mui-scroll-wrapper" style="padding: 0; margin: 0;">
-        <div class="mui-scroll redpackets-list font-gray-20">
+		</section>
+	</body>
+	<div id="popover" class="mui-popover">
+		<div class="redpackets-wrapper">
+			<div class="mui-scroll-wrapper" style="padding: 0; margin: 0;">
+				<div class="mui-scroll redpackets-list font-gray-20">
 
-        </div>
-      </div>
-    </div>
-    <div class="content-padded"><button id="redpackets_check" class="mui-btn mui-btn-danger mui-btn-block bbc-btn-warning">确定</button></div>
-  </div>
-  <script src="../../js/zepto.js"></script>
-  <script src="../../js/mui.min.js"></script>
-  <script src="../../js/template.min.js"></script>
-  <script src="../../config.js"></script>
-  <script src="../../js/app.js"></script>
+				</div>
+			</div>
+		</div>
+		<div class="content-padded"><button id="redpackets_check" class="mui-btn mui-btn-danger mui-btn-block bbc-btn-warning">确定</button></div>
+	</div>
+	<script src="../../js/zepto.js"></script>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/template.min.js"></script>
+	<script src="../../config.js"></script>
+	<script src="../../js/app.js"></script>
 
-  <script type="text/html" id="payment">
-    <form class="form-container no-header-padded">
-      <% if(type=='trade'){ %>
-      <section class="section-white section-container pay-order-info">
-        <i class="bbc-icon bbc-icon-right bbc-icon-full-cricle"></i>
-        <div class="pay-order-info">
-          <div class="order-status">订单提交成功，请您尽快付款</div>
-          <p>请您在提交订单后尽快完成支付,</p>
-          <p>以免被取消订单</p>
-        </div>
-      </section>
-      <% } %>
-      <section class="section-white section-container">
-        <div class="section-init">&nbsp;应付金额</div>
-        <div class="section-init pay-num" data-value="<%= payment.cur_money %>">
-          <%= $format_price(payment.cur_money) %>
-        </div>
-      </section>
-      <section class="section-white">
-        <div class="mui-table-view">
-          <div id="redpackets" class="mui-table-view-cell font-gray-20">
-            <a class="mui-navigate-right">
-              <div class="box-display">
-                <div class="box-item-flex1"><!--<i class="redpackets-icon"><em class="arrow"></em></i>-->使用红包</div>
-                <div class="box-item-flex1 content-left content-horizontal-padded">已抵扣 - <span id="deprice" data-value="">0</span> &nbsp;</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-<!--      <section class="section-white pay-style">
+	<script type="text/html" id="payment">
+		<form class="form-container no-header-padded">
+			<% if(type=='trade'){ %>
+			<section class="section-white section-container pay-order-info">
+				<i class="bbc-icon bbc-icon-right bbc-icon-full-cricle"></i>
+				<div class="pay-order-info">
+					<div class="order-status">订单提交成功，请您尽快付款</div>
+					<p>请您在提交订单后尽快完成支付,</p>
+					<p>以免被取消订单</p>
+				</div>
+			</section>
+			<% } %>
+			<section class="section-white section-container">
+				<div class="section-init">&nbsp;应付金额</div>
+				<div class="section-init pay-num" data-value="<%= payment.cur_money %>">
+					<%= $format_price(payment.cur_money) %>
+				</div>
+			</section>
+			<section class="section-white">
+				<div class="mui-table-view">
+					<div id="redpackets" class="mui-table-view-cell font-gray-20">
+						<a class="mui-navigate-right">
+							<div class="box-display">
+								<div class="box-item-flex1">
+									<!--<i class="redpackets-icon"><em class="arrow"></em></i>-->使用红包</div>
+								<div class="box-item-flex1 content-left content-horizontal-padded">已抵扣 - <span id="deprice" data-value="">0</span> &nbsp;</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<!--      <section class="section-white pay-style">
         <div class="section-title order-goods-header">
           <div class="title-txt">请选择支付方式</div>
         </div>
@@ -205,346 +217,350 @@
         </div>
         <% } %>
       </section>-->
-      <section class="mui-content-padded form-op-section">
-        <button type="button" class="mui-btn mui-btn-block action-pay" onclick="return false;">确认支付</button>
-      </section>
-    </form>
-  </script>
+			<section class="mui-content-padded form-op-section">
+				<button type="button" class="mui-btn mui-btn-block action-pay" onclick="return false;">确认支付</button>
+			</section>
+		</form>
+	</script>
 
-  <script type="text/html" id="redpackets_content">
-    <div class="mui-input-group">
-    <% for(var i in list){ %>
-      <div class="mui-input-row mui-checkbox bbc-checkbox">
-        <label><i class="redpackets-icon"><em class="arrow"></em></i> <%= $format_price(list[i].money)%></label>
-        <input name="checkbox1" value="<%= list[i].id %>" type="checkbox" data-value="<%= list[i].money %>" <% if($int_price(paynum) < $int_price(list[i].money)){ %>disabled<% } %>>
-      </div>
-    <% } %>
-    </div>
-  </script>
+	<script type="text/html" id="redpackets_content">
+		<div class="mui-input-group">
+			<% for(var i in list){ %>
+			<div class="mui-input-row mui-checkbox bbc-checkbox">
+				<label><i class="redpackets-icon"><em class="arrow"></em></i> <%= $format_price(list[i].money)%></label>
+				<input name="checkbox1" value="<%= list[i].id %>" type="checkbox" data-value="<%= list[i].money %>" <% if($int_price(paynum) < $int_price(list[i].money)){ %>disabled
+				<% } %>>
+			</div>
+			<% } %>
+		</div>
+	</script>
 
-  <script>
-    var state = app.getState();
-    mui.plusReady(function() {
-      var payid = plus.webview.currentWebview().payid;
-      var tid = plus.webview.currentWebview().tid;
-      var type = plus.webview.currentWebview().type;
-      var pay_id = 'deposit', hongbao;
-      var redpackets_id = '';
-      mui.init({
-        beforeback: function() {
-          var fw = plus.webview.currentWebview().opener();
-          var ffw = fw.opener();
-          if(fw.id!='_www/view/member/trade/trade.html'){
-            ffw.reload(true);
-            ffw.addEventListener('loaded',function(){
-              plus.webview.close(fw);
-              setTimeout(function(){
-                //返回true，继续页面关闭逻辑
-                return false;
-              },200);
-            });
-          }else{
-            //返回true，继续页面关闭逻辑
-            return true;
-          }
-        }
-      });
+	<script>
+		var state = app.getState();
+		mui.plusReady(function() {
+			var payid = plus.webview.currentWebview().payid;
+			var tid = plus.webview.currentWebview().tid;
+			var type = plus.webview.currentWebview().type;
+			var pay_id = 'deposit',
+				hongbao;
+			var redpackets_id = '';
+			mui.init({
+				beforeback: function() {
+					var fw = plus.webview.currentWebview().opener();
+					var ffw = fw.opener();
+					if(fw.id != '_www/view/member/trade/trade.html') {
+						ffw.reload(true);
+						ffw.addEventListener('loaded', function() {
+							plus.webview.close(fw);
+							setTimeout(function() {
+								//返回true，继续页面关闭逻辑
+								return false;
+							}, 200);
+						});
+					} else {
+						//返回true，继续页面关闭逻辑
+						return true;
+					}
+				}
+			});
 
-      var param = {
-        queryData: {
-          'method': config.apimethod.payment,
-          'accessToken': state.token,
-          'payment_id': payid
-        },
-        method: 'GET'
-      }
+			var param = {
+				queryData: {
+					'method': config.apimethod.payment,
+					'accessToken': state.token,
+					'payment_id': payid
+				},
+				method: 'GET'
+			}
 
-      if(tid && type == 'trade') {
-        var create = {
-          queryData: {
-            'method': config.apimethod.createpayment,
-            'accessToken': state.token,
-            'tid': tid,
-            'merge':''
-          },
-          method: 'POST'
-        }
+			if(tid && type == 'trade') {
+				var create = {
+					queryData: {
+						'method': config.apimethod.createpayment,
+						'accessToken': state.token,
+						'tid': tid,
+						'merge': ''
+					},
+					method: 'POST'
+				}
 
-        $.dataRequest(create, function(rs) {
-          param.queryData.payment_id = rs.data.payment_id;
-          payid = rs.data.payment_id;
-          fetchPayment(rs.data.payment_id);
-        });
-      } else {
-        fetchPayment(payid);
-      }
+				$.dataRequest(create, function(rs) {
+					param.queryData.payment_id = rs.data.payment_id;
+					payid = rs.data.payment_id;
+					fetchPayment(rs.data.payment_id);
+				});
+			} else {
+				fetchPayment(payid);
+			}
 
-      function fetchPayment(pid,total) {
-        $.dataRequest(param, function(rs) {
-          var data = rs.data;
-          var tempEl = template('payment', rs.data);
-          $('.container').html(tempEl);
-          var total = rs.data.payment.cur_money;
+			function fetchPayment(pid, total) {
+				$.dataRequest(param, function(rs) {
+					var data = rs.data;
+					var tempEl = template('payment', rs.data);
+					$('.container').html(tempEl);
+					var total = rs.data.payment.cur_money;
 
-          $(window).on('tap', '.action-pay', function() {
-          	var price = +$('#deprice').data('value');
-            var oprice = +($('.container').find('.pay-num').data('value'));
-            /*if(!pay_id){
-              var price = +$('#deprice').data('value');
-              var oprice = +($('.container').find('.pay-num').data('value'));
-              
-              if(price!=oprice && $('input[name="payment"]:checked').length == 0) {
-                mui.alert('请选择支付方式');
-                return
-              }
-              pay_id = $('input[name="payment"]:checked').val();
-            }*/
-           
-            var param_2 = {
-	            queryData: {
-	              'method': config.apimethod.userconfig,
-	              'accessToken': state.token
-	            },
-	            method: 'GET'
-	          };
+					$(window).on('tap', '.action-pay', function() {
+						var price = +$('#deprice').data('value');
+						var oprice = +($('.container').find('.pay-num').data('value'));
+						/*if(!pay_id){
+						  var price = +$('#deprice').data('value');
+						  var oprice = +($('.container').find('.pay-num').data('value'));
+						  
+						  if(price!=oprice && $('input[name="payment"]:checked').length == 0) {
+						    mui.alert('请选择支付方式');
+						    return
+						  }
+						  pay_id = $('input[name="payment"]:checked').val();
+						}*/
+
+						var param_2 = {
+							queryData: {
+								'method': config.apimethod.userconfig,
+								'accessToken': state.token
+							},
+							method: 'GET'
+						};
 						$.dataRequest(param_2, function(rs2) {
-							if(rs2.data.hasDepositPassword)
-							{
-								if(redpackets_id ){
-		              var btnArray = ['取消', '确定'];
-		              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
-		                var payPassword = e.value;
-		                if(e.index == 1) {
-		                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
-		                  var vparam = {
-		                    queryData: {
-		                      'method': config.apimethod.vilidatepaypassword,
-		                      'accessToken': state.token,
-		                      'pay_password': payPassword
-		                    },
-		                    method: 'POST'
-		                  };
-		                  $.dataRequest(vparam, function(rs) {
-		                  	console.log(JSON.stringify(rs));
-		                    var vparam = {
-		                      queryData: {
-		                        'method': config.apimethod.tradepay,
-		                        'accessToken': state.token,
-		                        'hongbao_ids': redpackets_id,
-		                        'payment_id': pid,
-		                        'deposit_password': payPassword
-		                      },
-		                      method: 'POST'
-		                    };
-		                    $.dataRequest(vparam, function(rs) {
-		                      clicked('_www/view/payment/paymentsuccess.html', {
-		                        'total': total
-		                      });
-		                    });
-		                  });
-		                }
-		              }, 'div');
-		              document.querySelector('.mui-popup-input input').type = 'password';
-		            }else{
-		            	var btnArray = ['取消', '确定'];
-		              mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
-		                var payPassword = e.value;
-		                if(e.index == 1) {
-		                  var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids='+ redpackets_id +'&deposit_password='+ e.value + '&pay_app_id=' + pay_id;
-		                  var vparam = {
-		                    queryData: {
-		                      'method': config.apimethod.vilidatepaypassword,
-		                      'accessToken': state.token,
-		                      'pay_password': payPassword
-		                    },
-		                    method: 'POST'
-		                  };
-		                  $.dataRequest(vparam, function(rs) {
-		                    var vparam = {
-		                      queryData: {
-		                        'method': config.apimethod.tradepay,
-		                        'accessToken': state.token,
-		                        'hongbao_ids': redpackets_id,
-		                        'payment_id': pid,
-		                        'deposit_password': payPassword,
-		                        'pay_app_id':pay_id
-		                      },
-		                      method: 'POST'
-		                    };
-		                    $.dataRequest(vparam, function(rs) {
-		                      clicked('_www/view/payment/paymentsuccess.html', {
-		                        'total': total
-		                      });
-		                    });
-		                  });
-		                }
-		              }, 'div');
-		              document.querySelector('.mui-popup-input input').type = 'password';
-		              /*var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
-		              pay(SERVER, pay_id, pid, total);*/
-		            }
-							}else{
+							if(rs2.data.hasDepositPassword) {
+								if(redpackets_id) {
+									var btnArray = ['取消', '确定'];
+									mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
+										var payPassword = e.value;
+										if(e.index == 1) {
+											var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids=' + redpackets_id + '&deposit_password=' + e.value + '&pay_app_id=' + pay_id;
+											var vparam = {
+												queryData: {
+													'method': config.apimethod.vilidatepaypassword,
+													'accessToken': state.token,
+													'pay_password': payPassword
+												},
+												method: 'POST'
+											};
+											$.dataRequest(vparam, function(rs) {
+												console.log(JSON.stringify(rs));
+												var vparam = {
+													queryData: {
+														'method': config.apimethod.tradepay,
+														'accessToken': state.token,
+														'hongbao_ids': redpackets_id,
+														'payment_id': pid,
+														'deposit_password': payPassword
+													},
+													method: 'POST'
+												};
+												$.dataRequest(vparam, function(rs) {
+													clicked('_www/view/payment/paymentsuccess.html', {
+														'total': total
+													});
+												});
+											});
+										}
+									}, 'div');
+									document.querySelector('.mui-popup-input input').type = 'password';
+								} else {
+									var btnArray = ['取消', '确定'];
+									mui.prompt('请输入支付密码：', '请输入支付密码', '', btnArray, function(e) {
+										var payPassword = e.value;
+										if(e.index == 1) {
+											var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&hongbao_ids=' + redpackets_id + '&deposit_password=' + e.value + '&pay_app_id=' + pay_id;
+											var vparam = {
+												queryData: {
+													'method': config.apimethod.vilidatepaypassword,
+													'accessToken': state.token,
+													'pay_password': payPassword
+												},
+												method: 'POST'
+											};
+											$.dataRequest(vparam, function(rs) {
+												var vparam = {
+													queryData: {
+														'method': config.apimethod.tradepay,
+														'accessToken': state.token,
+														'hongbao_ids': redpackets_id,
+														'payment_id': pid,
+														'deposit_password': payPassword,
+														'pay_app_id': pay_id
+													},
+													method: 'POST'
+												};
+												$.dataRequest(vparam, function(rs) {
+													clicked('_www/view/payment/paymentsuccess.html', {
+														'total': total
+													});
+												});
+											});
+										}
+									}, 'div');
+									document.querySelector('.mui-popup-input input').type = 'password';
+									/*var SERVER = config.server + config.apiname + '?format=json&v=' + config.apiversion + '&accessToken=' + state.token + '&payment_id=' + pid + '&method=' + config.apimethod.tradepay + '&pay_app_id=' + pay_id;
+									pay(SERVER, pay_id, pid, total);*/
+								}
+							} else {
 								clicked('_www/view/member/safe/paypasswordset.html');
 							}
 						})
-            
-          });
-        });
-      };
 
-      var pays={};
-      // 1. 获取支付通道
-      // 获取支付通道
-      plus.payment.getChannels(function(channels) {
-        for(var i in channels){
-          channel = channels[i];
-          pays[channel.id]=channel;
-        }
-        checkServices(channel)
-      }, function(e) {
-        mui.alert("获取支付通道失败：" + e.message);
-      });
+					});
+				});
+			};
 
-      // 检测是否安装支付服务
-      function checkServices(pc){
-        if(!pc.serviceReady){
-          var txt=null;
-          switch(pc.id){
-            case "alipay":
-            txt="检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？";
-            break;
-            default:
-            txt="系统未安装“"+pc.description+"”服务，无法完成支付，是否立即安装？";
-            break;
-          }
-          plus.nativeUI.confirm(txt,function(e){
-            if(e.index==0){
-              pc.installService();
-            }
-          },pc.description);
-        }
-      }
+			var pays = {};
+			// 1. 获取支付通道
+			// 获取支付通道
+			plus.payment.getChannels(function(channels) {
+				for(var i in channels) {
+					channel = channels[i];
+					pays[channel.id] = channel;
+				}
+				checkServices(channel)
+			}, function(e) {
+				mui.alert("获取支付通道失败：" + e.message);
+			});
 
-      // 2. 发起支付请求
-      function pay(server, id, pid, total) {
-        // 从服务器请求支付订单
-        var PAYSERVER = '';
-        if(id == 'alipayApp' || id == "wxpayApp") {
-          PAYSERVER = server;
-        } else {
-          plus.nativeUI.alert("不支持此支付通道！", null, "抱歉!");
-          return;
-        }
-        w=plus.nativeUI.showWaiting();
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-          switch(xhr.readyState) {
-            case 4:
-              w.close();w=null;
-              if(xhr.status == 200) {
-                id = id.substring(0,id.length-3);
-                plus.payment.request(pays[id], xhr.responseText, function(result) {
-                  clicked('_www/view/payment/paymentsuccess.html', {
-                    'total': total
-                  });
-                }, function(error) {
-                  plus.nativeUI.alert("支付失败：" + error.code);
-                });
-              } else {
-                alert("获取订单信息失败！");
-              }
-              break;
-            default:
-              break;
-          }
-        }
-        xhr.open('GET', PAYSERVER);
-        xhr.send();
-      }
+			// 检测是否安装支付服务
+			function checkServices(pc) {
+				if(!pc.serviceReady) {
+					var txt = null;
+					switch(pc.id) {
+						case "alipay":
+							txt = "检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？";
+							break;
+						default:
+							txt = "系统未安装“" + pc.description + "”服务，无法完成支付，是否立即安装？";
+							break;
+					}
+					plus.nativeUI.confirm(txt, function(e) {
+						if(e.index == 0) {
+							pc.installService();
+						}
+					}, pc.description);
+				}
+			}
 
-      //刷新本页面
-      window.addEventListener('repage', function(){
-        plus.webview.currentWebview().reload(true);
-      });
+			// 2. 发起支付请求
+			function pay(server, id, pid, total) {
+				// 从服务器请求支付订单
+				var PAYSERVER = '';
+				if(id == 'alipayApp' || id == "wxpayApp") {
+					PAYSERVER = server;
+				} else {
+					plus.nativeUI.alert("不支持此支付通道！", null, "抱歉!");
+					return;
+				}
+				w = plus.nativeUI.showWaiting();
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					switch(xhr.readyState) {
+						case 4:
+							w.close();
+							w = null;
+							if(xhr.status == 200) {
+								id = id.substring(0, id.length - 3);
+								plus.payment.request(pays[id], xhr.responseText, function(result) {
+									clicked('_www/view/payment/paymentsuccess.html', {
+										'total': total
+									});
+								}, function(error) {
+									plus.nativeUI.alert("支付失败：" + error.code);
+								});
+							} else {
+								alert("获取订单信息失败！");
+							}
+							break;
+						default:
+							break;
+					}
+				}
+				xhr.open('GET', PAYSERVER);
+				xhr.send();
+			}
 
-      $('.container').on('tap', '#redpackets', function(e){
-        e.detail.gesture.preventDefault();
-        var state = app.getState();
-        var param = {
-          queryData: {
-            'method': config.apimethod.redparkets,
-            'accessToken': state.token,
-            'status': 'active',
-            'page_no': config.cpage,
-            'page_size': config.pagesize
-          },
-          method: 'GET'
-        }
+			//刷新本页面
+			window.addEventListener('repage', function() {
+				plus.webview.currentWebview().reload(true);
+			});
 
-        $.dataRequest(param, function(rs){
-          var data = rs.data;
-          mui('.mui-scroll-wrapper').scroll({indicators: false});
-          mui('#popover').popover('show');
-          if(!isEmptyObject(data)){
-            data.paynum = $('.container').find('.pay-num').data('value');
-            var templ =  template('redpackets_content',data);
-            $('.redpackets-list').html(templ);
-            if(redpackets_id){
-              var list = $('.redpackets-list').find('input');
-              var ids = redpackets_id.split(',');
-              for(var i=0; i<ids.length; i++){
-                for (var j=0; j<list.length; j++) {
-                   if(ids[i]==$(list[j]).val()){
-                     $(list[j]).prop('checked',true);
-                   }
-                }
-              }
-            }
-          }else{
-            $('.redpackets-list').parent().parent().append('<div class="nodata-wrapper bg-white"><div class="nodata-layout"><div class="nodata-tip content-bottom-padded">无可用红包</div></div></div>');
-          }
-        });
-      });
+			$('.container').on('tap', '#redpackets', function(e) {
+				e.detail.gesture.preventDefault();
+				var state = app.getState();
+				var param = {
+					queryData: {
+						'method': config.apimethod.redparkets,
+						'accessToken': state.token,
+						'status': 'active',
+						'page_no': config.cpage,
+						'page_size': config.pagesize
+					},
+					method: 'GET'
+				}
 
-      $('#redpackets_check').on('tap', function(){
-        var ids = $('.redpackets-list').find('input:checked');
-        if(ids.length!=0){
-          var idstrs = [];
-          var price = 0;
-          for (var i=0; i<ids.length; i++) {
-            idstrs.push($(ids[i]).val());
-            price = price+(+$(ids[i]).data('value'));
-          }
-          redpackets_id = idstrs.join(',');
-          oprice = +($('.container').find('.pay-num').data('value'));
-          if(oprice<price){
-            mui.alert('红包面额不能超过支付金额');
-            return;
-          }
-          if(oprice==price){
-            $('.container').find('.pay-style').hide();
-          }else{
-            $('.container').find('.pay-style').show();
-          }
-          hongbao = price;
-          $('#deprice').text(Currency.format(price));
-          $('#deprice').data('value',price);
-          $('.pay-num').text(Currency.format(oprice-price));
-          mui('#popover').popover('hide');
-        }else{
-          if(oprice==price){
-            $('.container').find('.pay-style').hide();
-          }else{
-            $('.container').find('.pay-style').show();
-          }
-          redpackets_id = '';
-          $('#deprice').text('0');
-          $('#deprice').data('value','0');
-          $('.container').find('.pay-num').text(Currency.format($('.container').find('.pay-num').data('value')));
-          mui('#popover').popover('hide');
-        }
-      });
-    });
-  </script>
+				$.dataRequest(param, function(rs) {
+					var data = rs.data;
+					mui('.mui-scroll-wrapper').scroll({
+						indicators: false
+					});
+					mui('#popover').popover('show');
+					if(!isEmptyObject(data)) {
+						data.paynum = $('.container').find('.pay-num').data('value');
+						var templ = template('redpackets_content', data);
+						$('.redpackets-list').html(templ);
+						if(redpackets_id) {
+							var list = $('.redpackets-list').find('input');
+							var ids = redpackets_id.split(',');
+							for(var i = 0; i < ids.length; i++) {
+								for(var j = 0; j < list.length; j++) {
+									if(ids[i] == $(list[j]).val()) {
+										$(list[j]).prop('checked', true);
+									}
+								}
+							}
+						}
+					} else {
+						$('.redpackets-list').parent().parent().append('<div class="nodata-wrapper bg-white"><div class="nodata-layout"><div class="nodata-tip content-bottom-padded">无可用红包</div></div></div>');
+					}
+				});
+			});
+
+			$('#redpackets_check').on('tap', function() {
+				var ids = $('.redpackets-list').find('input:checked');
+				if(ids.length != 0) {
+					var idstrs = [];
+					var price = 0;
+					for(var i = 0; i < ids.length; i++) {
+						idstrs.push($(ids[i]).val());
+						price = price + (+$(ids[i]).data('value'));
+					}
+					redpackets_id = idstrs.join(',');
+					var oprice = +($('.container').find('.pay-num').data('value'));
+					if(oprice < price) {
+						mui.alert('红包面额不能超过支付金额');
+						return;
+					}
+					if(oprice == price) {
+						$('.container').find('.pay-style').hide();
+					} else {
+						$('.container').find('.pay-style').show();
+					}
+					hongbao = price;
+					$('#deprice').text(Currency.format(price));
+					$('#deprice').data('value', price);
+					$('.pay-num').text(Currency.format(oprice - price));
+					mui('#popover').popover('hide');
+				} else {
+					if(oprice == price) {
+						$('.container').find('.pay-style').hide();
+					} else {
+						$('.container').find('.pay-style').show();
+					}
+					redpackets_id = '';
+					$('#deprice').text('0');
+					$('#deprice').data('value', '0');
+					$('.container').find('.pay-num').text(Currency.format($('.container').find('.pay-num').data('value')));
+					mui('#popover').popover('hide');
+				}
+			});
+		});
+	</script>
 
 </html>
