@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>Shopex Onex B2B2C</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Shopex Onex B2B2C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<link rel="stylesheet" href="../../css/style.css">
-		<link href="../../css/mui.picker.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <link href="../../css/mui.picker.min.css" rel="stylesheet" />
 		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
-		<style>
-			.mui-row.mui-fullscreen>[class*="mui-col-"] {
-				height: 100%;
-			}
-			
-			.mui-col-xs-3,
-			.mui-control-content1 {
-				overflow-y: auto;
-				height: 100%;
-			}
-			/*      .mui-segmented-control .mui-control-item {
+    <style>
+      .mui-row.mui-fullscreen>[class*="mui-col-"] {
+        height: 100%;
+      }
+      
+      .mui-col-xs-3,
+      .mui-control-content1 {
+        overflow-y: auto;
+        height: 100%;
+      }
+      
+/*      .mui-segmented-control .mui-control-item {
         line-height: 50px;
         width: 100%;
       }
@@ -29,100 +31,105 @@
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
       }*/
+      .mui-slider-indicator.mui-segmented-control{
+     		background-color: #ffffff !important;
+      }
+      
+      .mui-bar-backcolor{
+      	background-color:#d92e2e;
+      	display: flex;  
+      }
+      
+      .child{   
+			    flex:1;    
+			} 
 			
-			.mui-slider-indicator.mui-segmented-control {
-				background-color: #ffffff !important;
-			}
+			.child_1{   
+			    flex:3;    
+			} 
 			
-			.mui-bar-backcolor {
-				background-color: #d92e2e;
-				display: flex;
-			}
-			
-			.child {
-				flex: 1;
-			}
-			
-			.child_1 {
-				flex: 3;
-			}
-			
-			.category_img {
+			.category_img{
 				height: 0.8rem;
 				width: 1.1rem;
-			}
-			
-			.category_size {
-				line-height: 3rem;
-				text-align: center;
-			}
-			
-			.category_title {
-				color: #ffffff;
-				font-family: "微软雅黑";
-				margin-left: 0.4rem;
-				font-size: 0.9rem;
-			}
-			
-			.title_span {
-				color: #ffffff;
-				font-family: "微软雅黑";
-				text-align: center;
-				font-size: 1.2rem;
-			}
-			
-			.search_img {
-				height: 1.2rem;
+      }
+      
+      .category_size{
+      	line-height: 3rem;
+      	text-align: center;
+      }
+      
+      .category_title{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	margin-left: 0.4rem;
+      	font-size: 0.9rem;
+      }
+      
+      .title_span{
+      	color: #ffffff;
+      	font-family: "微软雅黑";
+      	text-align: center;
+      	font-size: 1.2rem;
+      }
+      
+      .search_img{
+      	height: 1.2rem;
 				width: 1.2rem;
-			}
-			
-			.message_img {
-				height: 1.5rem;
+      }
+      
+      .message_img{
+      	height: 1.5rem;
 				width: 1.5rem;
 				margin-left: 0.8rem;
-			}
-			
-			.search_size {
-				line-height: 3.5rem;
-				text-align: center;
-			}
-			
-			.mui-control-content {
-				/*background-color: white;*/
+      }
+      
+      .search_size{
+      	line-height: 3.5rem;
+      	text-align: center;
+      }
+      
+      .mui-control-content {
+				background-color: white;
 				min-height: 215px;
 			}
-			
 			.mui-control-content .mui-loading {
 				margin-top: 50px;
 			}
 			
-			.mui-slider-progress-bar {
-				background-color: #e35d4c !important;
+			.mui-slider-progress-bar{
+				background-color:#e35d4c !important;
 			}
 			
-			.mui-scroll-wrapper {
-				overflow-y: scroll;
+			.mui-scroll-wrapper{
+				overflow-y:scroll !important;
 			}
 			
-			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+			.mui-fullscreen .mui-segmented-control~ .mui-slider-group
+			{
 				position: relative;
-				top: 0;
+				top:0;
 			}
 			
-			.mui-col-xs-1 {
+			.mui-col-xs-1{
 				width: 11.8%;
 			}
-			
-			#sliderSegmentedControl .mui-active {
-				border-bottom: 2px solid #e35d4c !important;
+			.category-nav .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{
+				border-bottom:2px solid #e35d4c !important;
+				color: #e35d4c !important;
 			}
-			/*新css*/
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{
+				border-top: 0;border-left: 0;border-right: 0;border-bottom:1px solid #e35d4c !important;
+			}
 			
+			/*#sliderSegmentedControl .mui-active{
+				border-bottom:2px solid #e35d4c !important;
+			}
+			*/
+			/*新css*/
 			.mui-bar~.mui-content .mui-fullscreen {
 				top: 44px;
 				height: auto;
 			}
-			
 			.mui-pull-top-tips {
 				position: absolute;
 				top: -20px;
@@ -132,11 +139,9 @@
 				height: 40px;
 				border-radius: 100%;
 			}
-			
 			.mui-bar~.mui-pull-top-tips {
 				top: 24px;
 			}
-			
 			.mui-pull-top-wrapper {
 				width: 42px;
 				height: 42px;
@@ -149,28 +154,24 @@
 				box-shadow: 0 4px 10px #bbb;
 				overflow: hidden;
 			}
-			
 			.mui-pull-top-tips.mui-transitioning {
 				-webkit-transition-duration: 200ms;
 				transition-duration: 200ms;
 			}
-			
 			.mui-pull-top-tips .mui-pull-loading {
 				/*-webkit-backface-visibility: hidden;
 				-webkit-transition-duration: 400ms;
 				transition-duration: 400ms;*/
+				
 				margin: 0;
 			}
-			
 			.mui-pull-top-wrapper .mui-icon,
 			.mui-pull-top-wrapper .mui-spinner {
 				margin-top: 7px;
 			}
-			
 			.mui-pull-top-wrapper .mui-icon.mui-reverse {
 				/*-webkit-transform: rotate(180deg) translateZ(0);*/
 			}
-			
 			.mui-pull-bottom-tips {
 				text-align: center;
 				background-color: #efeff4;
@@ -178,7 +179,6 @@
 				line-height: 40px;
 				color: #777;
 			}
-			
 			.mui-pull-top-canvas {
 				overflow: hidden;
 				background-color: #fafafa;
@@ -188,17 +188,15 @@
 				height: 40px;
 				margin: 0 auto;
 			}
-			
 			.mui-pull-top-canvas canvas {
 				width: 40px;
 			}
-			
 			.mui-slider-indicator.mui-segmented-control {
 				background-color: #efeff4;
 			}
-			/*select-box*/
 			
-			.select-box {
+			/*select-box*/
+			.select-box{
 				display: flex;
 				flex-direction: row;
 				height: 40px;
@@ -208,161 +206,146 @@
 				border-top: 1px solid #e3e3e6;
 			}
 			
-			.select-items {
-				flex: 1;
+			.select-items{
+				flex:1;
 				border-right: 1px solid #e3e3e6;
 				color: #333333;
 				font-family: "微软雅黑";
 			}
 			
-			.select-items1 {
-				flex: 1.5;
+			.select-items1{
+				flex:1.5;
 				border-right: 1px solid #e3e3e6;
 				color: #333333;
 				font-family: "微软雅黑";
 			}
 			
-			.xb_class {
+			.xb_class{
 				width: 0.6rem;
 				padding-bottom: 0.2rem;
 			}
+			
 			/*li content*/
-			
-			.content-li {
-				list-style-type: none;
-				background-color: #FFFFFF;
+			.content-li{
+				list-style-type:none;
 			}
-			
-			.content-space {
+			.content-space{
 				height: 10px;
 				background-color: #f0eff5;
 			}
-			
-			.content-outer {
+			.content-outer{
 				display: flex;
 				flex-direction: row;
+				align-items:center;
 			}
-			
-			.content-inner-left {
+			.content-inner-left{
 				flex: 3;
 				padding-left: 20px;
 			}
-			
-			.content-inner-right {
-				flex: 1;
+			.content-inner-right{
+				flex: 0.8;
 				text-align: center;
 				color: #E35D4C;
 				height: 6rem;
-				vertical-align: text-bottom;
+				vertical-align:text-bottom;
 				margin-right: 0.5rem;
 			}
-			
-			.content-inner-right-word {
+			.content-inner-right-word{
 				padding: 0.2rem 0.4rem 0.2rem 0.4rem;
 				border: 1px solid #E35D4C;
 				border-radius: 5px;
 				font-size: 1rem;
 				font-family: "微软雅黑";
-				vertical-align: text-bottom;
-				position: relative;
-				top: 50%;
+				vertical-align:text-bottom;position: relative;
+      	top: 50%;
 			}
-			
-			.content-inner-left-top {
+			.content-inner-left-top{
 				display: flex;
 				flex-direction: row;
 			}
-			
-			.content-inner-left-top-item {
-				flex: 1;
+			.content-inner-left-top-item{
+				flex:1;
 				color: #222222;
 				font-family: "arial rounded mt bold";
 				height: 2rem;
 				line-height: 2rem;
+				text-align: left;
 			}
-			
-			.content-inner-left-middle-item {
+			.content-inner-left-middle-item{
 				color: #666666;
 				font-size: 0.8rem;
 				font-family: "microsoft yahei";
 				height: 1.5rem;
 				line-height: 1.5rem;
 			}
-			
-			.content-inner-left-bottom {
+			.content-inner-left-bottom{
 				display: flex;
 				flex-direction: row;
 			}
-			
-			.content-inner-left-bottom-item1 {
-				flex: 1;
+			.content-inner-left-bottom-item1{
+				flex:1;
 				color: #666666;
 				font-family: "microsoft yahei";
-				vertical-align: text-bottom;
+				vertical-align:text-bottom;
 				height: 2.5rem;
 				line-height: 2.5rem;
 			}
-			
-			.content-inner-left-bottom-item2 {
-				flex: 1.3;
+			.content-inner-left-bottom-item2{
+				flex:1;
 				color: #E35D4C;
 				font-family: "arial rounded mt bold";
-				font-size: 1.2rem;
+				font-size: 0.8rem;
 				font-weight: bold;
-				vertical-align: text-bottom;
+				vertical-align:text-bottom;
 				height: 2.5rem;
 				line-height: 2.5rem;
 			}
-			/*侧滑css*/
 			
-			.mui-off-canvas-left,
-			.mui-off-canvas-right {
-				width: 90%;
+			/*侧滑css*/
+			.mui-off-canvas-left, .mui-off-canvas-right{
+				width:90%;
 				min-height: 70%;
 				background-color: #ffffff;
 				display: flex;
 				flex-direction: column;
 			}
-			
-			.left-side-content {
+			.left-side-content{
 				flex: 10;
 				display: flex;
+				flex-flow: row;
 			}
-			
-			.left-side-content-nav {
+			.left-side-content-nav{
 				flex: 1;
 				background-color: #F7F7F7;
 			}
-			
-			.left-side-content-nav li {
-				color: #222222;
+			.left-side-content-nav li{
+				color:#222222;
 				list-style-type: none;
 				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
 				border-bottom: 1px solid #d0d0d0;
+				font-size: 0.8rem;
 			}
-			
-			.nav-active {
+			.nav-active{
 				background-color: #ffffff;
-				color: #E35D4C !important;
+				color:#E35D4C !important;
 			}
-			
-			.left-side-content-detail {
+			.left-side-content-detail{
 				flex: 2;
+				overflow-y: scroll !important;
 			}
-			
-			.left-side-content-detail-li {
+			.left-side-content-detail-li{
 				list-style-type: none;
-				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				font-size:0.9rem;
+				padding: 1rem 1.4rem 1rem 1.4rem;
 			}
-			
-			.left-side-content-detail-list ul {
+			.left-side-content-detail-list ul{
 				width: 100%;
 				display: flex;
 				flex-direction: row;
-				flex-wrap: wrap;
+				flex-wrap:wrap;
+				
 			}
-			
-			.left-side-content-detail-list li {
+			.left-side-content-detail-list li{
 				flex: 1;
 				width: 45%;
 				min-width: 45%;
@@ -372,25 +355,24 @@
 				text-align: left;
 				line-height: 1.2rem;
 			}
-			
-			.left-side-content-detail-active {
-				color: #E35D4C;
+			.left-side-content-detail-active{
+				color:#E35D4C;
 			}
-			
-			.left-side-submit {
+			.left-side-submit{
 				flex: 1;
 				text-align: center;
-				background-color: #E35D4C;
+				background-color:#E35D4C ;
 				color: #ffffff;
 				font-size: 1.2rem;
 				font-family: "微软雅黑";
 				line-height: 60px;
 			}
-		</style>
-	</head>
+			/** { touch-action: none; } */
+    </style>
+  </head>
 
-	<body>
-		<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
+  <body>
+<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
       <div class="main">
         <form onsubmit="return false;">
           <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
@@ -398,134 +380,244 @@
       </div>
       <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
       <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>-->
-		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-			<!--	      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left">分类</a>
+  		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+<!--	      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left">分类</a>
 	      <h1 class="mui-title">标题</h1>-->
-			<!--	    <div class="shezhi"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
+<!--	    <div class="shezhi"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
     	<div class="hyzx-title">我的账户</div>
     	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>-->
-			<div class="child category_size" id="left-content"></div>
-			<div class="child_1 category_size"><span class="title_span">共享资源</span></div>
-			<div class="child search_size"><img class="search_img" src="../../img/category/search.png" /><img class="message_img" src="../../img/category/message.png" /></div>
-		</header>
-
-		<section class="container mui-row mui-fullscreen category-nav">
-			<!-- 侧滑导航根容器 -->
-			<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
-				<!-- 菜单容器 -->
-				<aside class="mui-off-canvas-left" id="left-side">
-					<div class="left-side-content">
-						<div class="left-side-content-nav">
-							<ul>
+	    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/category/category.png" /><span class="category_title">分类</span></div>  
+		    <div class="child_1 category_size"><span class="title_span">共享资源</span></div>  
+		    <div class="child search_size"><img class="search_img" src="../../img/category/search.png" /><img class="message_img" src="../../img/category/message.png" /></div>  
+	   </header>
+    
+     <section class="container mui-row mui-fullscreen category-nav">
+	    <!-- 侧滑导航根容器 -->
+			<div class="mui-off-canvas-wrap mui-slide-in">
+			  <!-- 菜单容器 -->
+			  <aside class="mui-off-canvas-left" id="left-side">
+			    <div class="left-side-content">
+			    	<div class="left-side-content-nav">
+<!--							<ul>
 								<li class="nav-active">生铁</li>
 								<li>废钢</li>
 								<li>增碳剂</li>
 								<li>铁合金</li>
 								<li>孕育剂</li>
 								<li>其他辅料</li>
-							</ul>
-						</div>
-						<div class="left-side-content-detail">
-							<ul>
-								<li class="left-side-content-detail-li">
-									<div class="left-side-content-detail-nav">
-										球铁
-									</div>
-									<div class="left-side-content-detail-list">
-										<ul>
-											<li class="left-side-content-detail-active">
-												Q8
-											</li>
-											<li>
-												Q10
-											</li>
-											<li>
-												Q12
-											</li>
-											<li>
-												Q16
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="left-side-content-detail-li">
-									<div class="left-side-content-detail-nav">
-										铸铁
-									</div>
-									<div class="left-side-content-detail-list">
-										<ul>
-											<li>
-												低锰八角
-											</li>
-											<li>
-												中锰八角
-											</li>
-											<li>
-												低锰方块
-											</li>
-											<li>
-												中锰方块
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="left-side-content-detail-li">
-									<div class="left-side-content-detail-nav">
-										炼钢铁
-									</div>
-									<div class="left-side-content-detail-list">
-										<ul>
-											<li>
-												L7
-											</li>
-											<li>
-												L8
-											</li>
-											<li>
-												L10
-											</li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="left-side-submit" id="left-side-submit">确定</div>
-				</aside>
-				<!-- 主页面容器 -->
-				<div class="mui-inner-wrap mui-content">
-					<!-- 主页面标题 -->
-					<!--			    <header class="mui-bar mui-bar-nav">
+							</ul>-->
+			    	</div>
+			    	<div class="left-side-content-detail" id="left-side-content-detail">
+			    		<ul>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					球铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li class="left-side-content-detail-active">
+			    							Q8
+			    						</li>
+			    						<li>
+			    							Q10
+			    						</li>
+			    						<li>
+			    							Q12
+			    						</li>
+			    						<li>
+			    							Q16
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					铸铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li><li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    									    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li><li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    									    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li><li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    									    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li>
+			    						<li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    						<li>
+			    							中锰方块
+			    						</li><li>
+			    							低锰八角
+			    						</li>
+			    						<li>
+			    							中锰八角
+			    						</li>
+			    						<li>
+			    							低锰方块
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    			<li class="left-side-content-detail-li">
+			    				<div class="left-side-content-detail-nav">
+			    					炼钢铁
+			    				</div>
+			    				<div class="left-side-content-detail-list">
+			    					<ul>
+			    						<li>
+			    							L7
+			    						</li>
+			    						<li>
+			    							L8
+			    						</li>
+			    						<li>
+			    							L10
+			    						</li>
+			    					</ul>
+			    				</div>
+			    			</li>
+			    		</ul>
+			    	</div>
+			    </div>
+			    <div class="left-side-submit" id="left-side-submit">确定</div>
+			  </aside>
+			  <!-- 主页面容器 -->
+			  <div class="mui-inner-wrap mui-content">
+			    <!-- 主页面标题 -->
+<!--			    <header class="mui-bar mui-bar-nav">
 			      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 			      <h1 class="mui-title">标题</h1>
 			    </header>-->
 					<div id="slider" class="mui-slider">
-
+						<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+						</div>
+						</div>
 						<div class="select-box">
-							<div class="select-items1" id="showPlacePicker"><span>产家/产地</span> <img class="xb_class" src="../../img/category/xb.png" /></div>
-							<div class="select-items" id="showNamePicker"><span>品名</span> <img class="xb_class" src="../../img/category/xb.png" /></div>
-							<div class="select-items" id="showSizePicker"><span>规格</span> <img class="xb_class" src="../../img/category/xb.png" /></div>
-							<div class="select-items" id="showJgPicker"><span>交割库</span> <img class="xb_class" src="../../img/category/xb.png" /></div>
+							<div class="select-items1" id="showPlacePicker"><span>厂家/产地</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showNamePicker"><span>品名</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showSizePicker"><span>规格</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
+							<div class="select-items" id="showJgPicker"><span>交割库</span> <img class="xb_class" src="../../img/category/xb.png"/></div>
 						</div>
 						<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
 						<div class="mui-slider-group" id="content-main">
-							<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+							<div id="item10mobile" class="mui-slider-item mui-control-content mui-active">
 								<div id="scroll1" class="mui-scroll-wrapper">
 									<div class="mui-scroll">
-										<ul class="mui-table-view" id="ul">
-
+										<ul class="mui-table-view">
+											<li class="mui-table-view-cell">
+												第1个选项卡子项-1
+											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
-				</div>
-			</div>
+			  </div>
 			</div>
 		</section>
-		<!--    <section class="container mui-row mui-fullscreen category-nav">
+<!--    <section class="container mui-row mui-fullscreen category-nav">
       <div class="mui-col-xs-3">
         <div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical content-bottom-padded-nav">
 
@@ -537,6 +629,17 @@
 </div>
       </div>
     </section>-->
+    <!--<div class="left-side-content-nav">
+			<ul>
+				<li class="nav-active">生铁</li>
+				<li>废钢</li>
+				<li>增碳剂</li>
+				<li>铁合金</li>
+				<li>孕育剂</li>
+				<li>其他辅料</li>
+			</ul>
+		</div>-->
+
 		<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item" data-webview="_www/view/index.html">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
@@ -559,182 +662,518 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
-		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/template.min.js"></script>
-		<script src="../../config.js"></script>
-		<script src="../../js/app.js"></script>
-		<script src="../../js/mui.pullToRefresh.js"></script>
+    <script src="../../js/zepto.js"></script>
+    <script src="../../js/template.min.js"></script>
+    <script src="../../config.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/mui.pullToRefresh.js"></script>
 		<script src="../../js/mui.pullToRefresh.material.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
-		<script>
-			mui.init({
-				swipeBack: false, //启用右滑关闭功能
-				statusBarBackground: "#E35D4C"
+    <script>
+      mui.init({
+        statusBarBackground:"#E35D4C",
+        swipeBack:false
+      });
+      var wid = "";
+      setTimeout(function(){
+      	mui.plusReady(function() {
+      	wid = plus.webview.currentWebview().id;
+		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
+		    mui('.mui-scroll-wrapper').scroll({
+		        bounce: false,
+		        indicators: true, //是否显示滚动条
+		        deceleration: deceleration
+		    });
+		    
 			});
-			var param = {
-				queryData: {
-					'method': config.apimethod.sharedResourceGetFilter,
-					'cat_id': ''
-				},
-				method: 'GET'
-			};
-			var cd_id = "";
-			var pm_id = "";
-			var gg_id = "";
-			var jg_id = "";
-			GetContentList(cd_id, pm_id, gg_id, jg_id, 1);
-			$.dataRequest(param, function(rs) {
-
-				//产地列表
-				var pp_list = [];
-
-				for(var m_id in rs.data.manufacturers_name) {
-					var m_obj = {
-						value: rs.data.manufacturers_name[m_id],
-						text: rs.data.manufacturers_name[m_id]
-					};
-					pp_list.push(m_obj);
-				}
-				var placePicker = new mui.PopPicker();
-				placePicker.setData(pp_list);
-				var showPlacePickerButton = document.getElementById('showPlacePicker');
-				showPlacePickerButton.addEventListener('tap', function(event) {
-					placePicker.show(function(items) {
-						$("#showPlacePicker span").html(JSON.stringify(items[0].text));
-						cd_id = items[0].value;
-						$('#ul').empty();
-						GetContentList(cd_id, pm_id, gg_id, jg_id, 1);
-
-					});
-				}, false);
-
-				//品名列表
-				pm_list = [];
-				for(var m_id in rs.data.pm_name) {
-					var m_obj = {
-						value: rs.data.pm_name[m_id],
-						text: rs.data.pm_name[m_id]
-					};
-					pm_list.push(m_obj);
-				}
-				var namePicker = new mui.PopPicker();
-				namePicker.setData(pm_list);
-				var showNamePickerButton = document.getElementById('showNamePicker');
-				showNamePickerButton.addEventListener('tap', function(event) {
-					namePicker.show(function(items) {
-						$("#showNamePicker span").html(JSON.stringify(items[0].text));
-						pm_id = items[0].value;
-						$('#ul').empty();
-						GetContentList(cd_id, pm_id, gg_id, jg_id, 1);
-
-					});
-				}, false);
-
-				//规格列表
-				gg_list = [];
-				for(var m_id in rs.data.guige) {
-					var m_obj = {
-						value: rs.data.guige[m_id],
-						text: rs.data.guige[m_id]
-					};
-					gg_list.push(m_obj);
-				}
-				var sizePicker = new mui.PopPicker();
-				sizePicker.setData(gg_list);
-				var showSizePickerButton = document.getElementById('showSizePicker');
-				showSizePickerButton.addEventListener('tap', function(event) {
-					sizePicker.show(function(items) {
-						$("#showSizePicker span").html(JSON.stringify(items[0].text));
-						gg_id = items[0].value;
-						$('#ul').empty();
-						GetContentList(cd_id, pm_id, gg_id, jg_id, 1);
-
-					});
-				}, false);
-
-				//交割库列表
-				jg_list = [];
-				for(var m_id in rs.data.storage_name) {
-					var m_obj = {
-						value: rs.data.storage_name[m_id],
-						text: rs.data.storage_name[m_id]
-					};
-					jg_list.push(m_obj);
-				}
-				var jgPicker = new mui.PopPicker();
-				jgPicker.setData(jg_list);
-				var showJgPickerButton = document.getElementById('showJgPicker');
-				showJgPickerButton.addEventListener('tap', function(event) {
-					jgPicker.show(function(items) {
-						$("#showJgPicker span").html(JSON.stringify(items[0].text));
-						jg_id = items[0].value;
-						$('#ul').empty();
-						GetContentList(cd_id, pm_id, gg_id, jg_id, 1);
-
-					});
-				}, false);
-			});
-			mui.init();
-
-			(function($) {
-				//阻尼系数
-				var deceleration = mui.os.ios ? 0.003 : 0.0009;
-				$('.mui-scroll-wrapper').scroll({
-					bounce: false,
-					indicators: true, //是否显示滚动条
-					deceleration: deceleration
+      },1000);
+			
+      var search_data = "";
+      var fl_id = "";
+      var cd_id = "";
+      var pro_name_id = "";
+      var gg_id = "";
+      var gg_text = "";
+      var jgk_id = "";
+      var pm_obj = new Object();
+      var fl_zl_obj = new Object();
+      var fl_obj = new Object();
+      var page_obj = new Object();
+      var fl_sort_obj = new Object();
+      var cat_all_obj = new Object();
+      var pm_list = new Object();
+      var gg_list = new Object();
+      var current_page_sort = 0;
+      var child_data;
+      var NamePicker = new mui.PopPicker();
+      var SizePicker = new mui.PopPicker();
+      
+      var param = {
+        queryData: {
+          'method': config.apimethod.filteritems,
+          'lv1Cat':'',
+          'lv2Cat':''
+        },
+        method: 'GET'
+      };
+      $.dataRequest(param, function(rs) {
+      	search_data = rs.data;
+      	//构造左侧大类列表
+      	var left_kind_obj;
+      	var left_kind_list = [];
+      	var left_kind_num = 0;
+      	var fl_sort = 0;
+      	for(var left_kind_id in rs.data.lv1Cats)
+      	{
+      		fl_sort_obj[fl_sort] = left_kind_id;
+      		fl_sort++;
+      		page_obj[left_kind_id] = 1;
+      		if(left_kind_num==0)
+      		{
+      			fl_id = rs.data.lv1Cats[left_kind_id].cat_id;
+      			var obj = {
+	      			cat_id:rs.data.lv1Cats[left_kind_id].cat_id,
+	      			cat_name:rs.data.lv1Cats[left_kind_id].cat_name,
+	      			is_select:1
+	      		}
+      			left_kind_list.push(obj);
+      			left_kind_num++;
+      		}else
+      		{
+      			var obj = {
+	      			cat_id:rs.data.lv1Cats[left_kind_id].cat_id,
+	      			cat_name:rs.data.lv1Cats[left_kind_id].cat_name,
+	      			is_select:0
+	      		}
+      			left_kind_list.push(obj);
+      		}
+      		
+      		for(var i = 0;i < rs.data.lv1Cats[left_kind_id].lv2.length;i++)
+      		{
+      			pm_list[rs.data.lv1Cats[left_kind_id].lv2[i].cat_id] = rs.data.lv1Cats[left_kind_id].lv2[i].cat_name;
+      			for(var j = 0;j < rs.data.lv1Cats[left_kind_id].lv2[i].lv3.length;j++)
+      			{
+      				gg_list[rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id] = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_name;
+      				if(!fl_zl_obj.hasOwnProperty(rs.data.lv1Cats[left_kind_id].lv2[i].parent_id))
+      					fl_zl_obj[rs.data.lv1Cats[left_kind_id].lv2[i].parent_id] = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id;
+	      			var path = rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_path;
+	      			pm_obj[rs.data.lv1Cats[left_kind_id].lv2[i].lv3[j].cat_id] = path.substring(1,path.length-1); 
+      			}
+      		}  			
+      	}
+      	left_kind_obj = {
+      		lv1Cats:left_kind_list
+      	};
+      	fl_obj = left_kind_obj;
+				var result = template('filters_left_list', left_kind_obj);
+				$('.left-side-content-nav').html(result);
+				
+				//根据大类id构造左侧小类
+				var left_content_obj;
+      	var left_content_list = [];
+      	var left_content_num = 0;
+      	for(var i = 0;i < rs.data.lv1Cats[fl_id].lv2.length;i++)
+      	{
+      		/*if(i==0)
+      			pro_name_id = rs.data.lv1Cats[fl_id].lv2[i].cat_id;*/
+      		var left_content_small_list = [];
+      		var left_content_small_num = 0;
+      		for(var j = 0;j < rs.data.lv1Cats[fl_id].lv2[i].lv3.length;j++)
+      		{
+      			if(left_content_num==0)
+      			{
+      				gg_id = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id;
+      				var obj_s = {
+		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			is_select:1
+		      		}
+      				left_content_small_list.push(obj_s);
+      				left_content_num++;
+      			}else
+      			{
+      				var obj_s = {
+		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			is_select:0
+		      		}
+      				left_content_small_list.push(obj_s);
+      			}
+      		}
+      		var obj = {
+      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].cat_id,
+      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].cat_name,
+      			lv3:left_content_small_list
+      		}
+      		left_content_list.push(obj);
+      	}
+      	left_content_obj = {
+      		lv1Cats:left_content_list
+      	};
+      	
+				result = template('filters_left_content', left_content_obj);
+				$('.left-side-content-detail').html(result);
+				
+				//构造头部列表
+				var top_kind_obj;
+      	var top_kind_list = [];
+      	for(var top_kind_id in rs.data.lv1Cats)
+      	{
+      		if(fl_id==top_kind_id)
+      		{
+      			var obj = {
+      				cat_id:rs.data.lv1Cats[top_kind_id].cat_id,
+	      			cat_name:rs.data.lv1Cats[top_kind_id].cat_name,
+	      			is_select:1
+      			}
+      			top_kind_list.push(obj);
+      		}else
+      		{
+      			var obj = {
+      				cat_id:rs.data.lv1Cats[top_kind_id].cat_id,
+	      			cat_name:rs.data.lv1Cats[top_kind_id].cat_name,
+	      			is_select:0
+      			}
+      			top_kind_list.push(obj);
+      		}
+      	}
+      	top_kind_obj = {
+      		lv1Cats:top_kind_list
+      	}
+      	
+      	result = template('filters_top_list', top_kind_obj);
+				$('#sliderSegmentedControl .mui-scroll').html(result);
+				
+				
+				result = template('filters_content_tab', top_kind_obj);
+				$('#content-main').html(result);
+				
+				console.log("大类："+rs.data.cat_id);
+				var arr_1 = [];
+				for(var top_kind_id in rs.data.lv1Cats)
+      	{
+      		arr_1.push(top_kind_id);
+      	}
+      	startContent(arr_1[0],0);
+      	function startContent(start_id,start_num)
+      	{
+      		if(start_num<arr_1.length)
+      		{
+      			var param_dl = {
+			        queryData: {
+			          'method': config.apimethod.filteritems,
+			          'lv1Cat':start_id,
+			          'lv2Cat':''
+			        },
+			        method: 'GET'
+			      };
+			      $.dataRequest(param_dl, function(rs1) {
+			      	console.log("获取："+rs1.data.cat_id);
+			      	cat_all_obj[start_id]=rs1.data.cat_id;
+			      	GetContentList(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
+			      	var start_num_new = start_num + 1;
+			      	startContent(arr_1[start_num_new],start_num_new);
+			      });
+      		}
+      	}
+				
+		//mui.trigger(document.getElementById("sliderSegmentedControl"), 'tap');
+		
+		var param_search = {
+			queryData: {
+				'method': config.apimethod.sharedResourceGetFilter,
+				'cat_id': ''
+			},
+			method: 'GET'
+		};
+		$.dataRequest(param_search, function(rs) {
+			//产地列表
+			var pp_list = [];
+	
+			for(var m_id in rs.data.manufacturers_name) {
+				var m_obj = {
+					value: rs.data.manufacturers_name[m_id],
+					text: rs.data.manufacturers_name[m_id]
+				};
+				pp_list.push(m_obj);
+			}
+			console.log(JSON.stringify(pp_list));
+			var placePicker = new mui.PopPicker();
+			placePicker.setData(pp_list);
+			var showPlacePickerButton = document.getElementById('showPlacePicker');
+			showPlacePickerButton.addEventListener('tap', function(event) {
+				placePicker.show(function(items) {
+					$("#showPlacePicker span").html(items[0].text);
+					cd_id = items[0].value;
+					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 				});
-				$.ready(function() {
-					//循环初始化所有下拉刷新，上拉加载。
-					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
-						$(pullRefreshEl).pullToRefresh({
-							down: {
-								callback: function() {
-									var self = this;
-									setTimeout(function() {
-										var ul = self.element.querySelector('.mui-table-view');
-										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
-										self.endPullDownToRefresh();
-									}, 1000);
+			}, false);
+	
+			//交割库列表
+			jg_list = [];
+			for(var m_id in rs.data.storage_name) {
+				var m_obj = {
+					value: rs.data.storage_name[m_id],
+					text: rs.data.storage_name[m_id]
+				};
+				jg_list.push(m_obj);
+			}
+			var jgPicker = new mui.PopPicker();
+			jgPicker.setData(jg_list);
+			var showJgPickerButton = document.getElementById('showJgPicker');
+			showJgPickerButton.addEventListener('tap', function(event) {
+				jgPicker.show(function(items) {
+					$("#showJgPicker span").html(items[0].text);
+					jgk_id = items[0].value;
+					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+				});
+			}, false);
+		});
+		
+		
+		setTimeout(function(){
+			console.log("集合："+JSON.stringify(cat_all_obj));
+			
+			//产地列表
+/*			var pp_list = [];
+			
+			for(var m_id in rs.data.manufacturers)
+			{
+				var m_obj = {
+					value:rs.data.manufacturers[m_id].manufacturers_id,
+					text:rs.data.manufacturers[m_id].manufacturers_name
+				};
+				pp_list.push(m_obj);
+			}
+			var placePicker = new mui.PopPicker();
+			placePicker.setData(pp_list);
+			var showPlacePickerButton = document.getElementById('showPlacePicker');
+			showPlacePickerButton.addEventListener('tap', function(event) {
+				placePicker.show(function(items) {
+					$("#showPlacePicker span").html(items[0].text);
+					cd_id = JSON.stringify(items[0].value);
+					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+					//返回 false 可以阻止选择框的关闭
+					//return false;
+				});
+			}, false);*/
+			
+			//品名列表
+			child_data = rs.data.lv2Cats;
+			GetProList(NamePicker,rs.data.lv2Cats,fl_id);
+			
+			//规格列表
+			GetGGList(pro_name_id);
+			
+			//交割库列表
+/*			var jg_list = [];
+			
+			for(var s_id in rs.data.storage)
+			{
+				var s_obj = {
+					value:rs.data.storage[s_id].storage_id,
+					text:rs.data.storage[s_id].storage_name
+				};
+				jg_list.push(s_obj);
+			}
+			var JgPicker = new mui.PopPicker(); 
+			JgPicker.setData(jg_list);
+			var showJgPickerButton = document.getElementById('showJgPicker');
+			showJgPickerButton.addEventListener('tap', function(event) {
+				JgPicker.show(function(items) {
+					$("#showJgPicker span").html(items[0].text);
+					jgk_id = JSON.stringify(items[0].value);
+					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+					//返回 false 可以阻止选择框的关闭
+					//return false;
+				});
+			}, false);*/
+		},1000)
+				
+      });
+      
+      //mui.init();
+        
+      (function($){ 
+/*      	var supportsPassive = false;
+				try {
+				  var opts = Object.defineProperty({}, 'passive', {
+				    get: function() {
+				      supportsPassive = true;
+				    }
+				  });
+				  window.addEventListener("test", null, opts);
+				} catch (e) {}
+				// Use our detect's results. 
+				// passive applied if supported, capture will be false either way.
+				elem.addEventListener(
+				  'touchstart',
+				  fn,
+				  supportsPassive ? { passive: true } : false
+				);*/ 
+				$.ready(function() { 
+					
+					setTimeout(function(){
+						//$('.mui-scroll-wrapper').scroll();
+						//循环初始化所有下拉刷新，上拉加载。
+						$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+							$(pullRefreshEl).pullToRefresh({
+								up: {
+									callback: function() {
+										var self = this;
+										setTimeout(function() {
+											var ul = self.element.querySelector('.mui-table-view');
+											/*ul.appendChild(createFragment(ul, index, config.pagesize));
+											self.endPullUpToRefresh();*/
+											GetContentListNew(index,ul,self);
+										}, 1100);
+									}
 								}
-							},
-							up: {
-								callback: function() {
-									var self = this;
-									setTimeout(function() {
-										var ul = self.element.querySelector('.mui-table-view');
-										createFragment(ul, index, 5);
-										self.endPullUpToRefresh();
-									}, 1000);
-								}
-							}
+							});
 						});
-					});
-					var createFragment = function(ul, index, count, reverse) {
-
-						var length = ul.querySelectorAll('li').length;
-						if(length % config.pagesize != 0)
-							GetContentList(cd_id, pm_id, gg_id, jg_id, count);
-						else
-							ul.endPullUpToRefresh();
-						document.getElementById("content-main").style.height = (document.documentElement.clientHeight - 170) + "px";
-						document.getElementById("left-side").style.height = (document.documentElement.clientHeight - 90) + "px";
-					}
+						document.getElementById("content-main").addEventListener("swiperight",function(event){
+								 document.getElementById("showNamePicker").childNodes[0].innerHTML = "品名";
+								 document.getElementById("showSizePicker").childNodes[0].innerHTML = "规格";
+								 pro_name_id = "";
+								 gg_text = "";
+								 if(current_page_sort!=0)
+								 {
+								 	 current_page_sort--;
+							     fl_id = fl_sort_obj[current_page_sort];
+							     var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+								 }
+						});
+						document.getElementById("content-main").addEventListener("swipeleft",function(event){
+								 var objKeys=Object.keys(fl_sort_obj);
+								 console.log(JSON.stringify(fl_sort_obj));
+								 document.getElementById("showNamePicker").childNodes[0].innerHTML = "品名";
+								 document.getElementById("showSizePicker").childNodes[0].innerHTML = "规格";
+								 pro_name_id = "";
+								 gg_text = "";
+								 if(current_page_sort<objKeys.length-1)
+								 {
+								 	 current_page_sort++;
+							     fl_id = fl_sort_obj[current_page_sort];
+							     var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+								 }
+						});
+					},1100);
+					
+					document.getElementById("content-main").style.height = (document.documentElement.clientHeight-170)+"px";
+					document.getElementById("left-side").style.height = (document.documentElement.clientHeight-90)+"px";
 				});
 			})(mui);
-
-			function GetContentList(cd, pm, gg, jg, page_new) {
-
+			//点击侧滑
+			//mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			var leftcontent = document.getElementById("left-content");
+			leftcontent.addEventListener("tap",function(event){
+				mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			}, false);
+			
+			var leftsubmit = document.getElementById("left-side-submit");
+			leftsubmit.addEventListener("tap",function(event){
+				mui('.mui-off-canvas-wrap').offCanvas().toggle();
+			}, false);
+			
+    	$('.bbc-tab-item').on('tap', function() {
+	        var webview = $(this).data('webview');
+	        if(webview) {
+	          if(webview) {
+	            mui.openWindow({
+	              url: webview,
+	              id: webview,
+	              createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+	              show: {
+	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+	                aniShow: 'none'
+	              },
+	              waiting: {
+	                autoShow: true //自动显示等待框，默认为true
+	              }
+	            });
+	            var openw = plus.webview.getWebviewById(webview);
+	            if(openw) {
+	              mui.fire(openw, 'refresh');
+	            }
+	          }
+	        }
+	     });
+	     
+	    $(".left-side-content-nav").on('tap','li', function (event) {
+				ChangeLeftMenu($(this).data('cid'));
+				ChangeLeftContent($(this).data('cid'),gg_id);
+			});
+			
+			$(".left-side-content-detail").on('tap','.left-side-content-detail-list li',function(event){
+				gg_id = $(this).data('cid');
+				ChangeLeftContent(fl_id,gg_id);
+			});
+			
+			$("#left-side-submit").on('tap',function(event){
+				var cid1 = $('.left-side-content-detail .left-side-content-detail-active').data("cid");
+				var fl_id1 = pm_obj[cid1].split(',')[0];
+				//需要调整
+				pro_name_id = pm_obj[cid1].split(',')[1];
+				gg_text = gg_list[cid1];
+				$("#showNamePicker span").html(pm_list[pro_name_id]); 
+				$("#showSizePicker span").html(gg_text);
+				GetContentList(fl_id1,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id1]);
+				mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
+					if(fl_sort_obj[index] == fl_id1) 
+					{ 
+						current_page_sort = index;
+						mui('#slider').slider().gotoItem(index);
+						fl_id = fl_sort_obj[index];
+						var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+					} 
+				});
+			});
+			
+			mui("#sliderSegmentedControl").on('tap','.mui-control-item',function(){
+				var fl_id1 = $(this).data("cid");
+			 	mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
+					if(fl_sort_obj[index] == fl_id1) 
+					{ 
+						current_page_sort = index;
+						fl_id = fl_sort_obj[index];
+						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						pro_name_id = "";
+						gg_text = "";
+						$("#showNamePicker span").html("品名");
+						$("#showSizePicker span").html("规格");
+						GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+						//GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1,cat_all_obj[fl_id]);
+					} 
+				});
+			}); 
+			
+			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
+			{
+				console.log(cd_new_id);
+				var pm = "";
+				if(pm_id)
+					pm = pm_list[pm_id];
 				var param1 = {
 					queryData: {
 						'method': config.apimethod.sharedResourceGetList,
-						'cat_id': '',
-						'manufacturers_name': cd,
+						'cat_id': fl_new_id,
+						'manufacturers_name': cd_new_id,
 						'pm_name': pm,
-						'guige': gg,
-						'storage_name': jg,
+						'guige': guige,
+						'storage_name': jgk_new_id,
 						'page_no': page_new,
 						'page_size': config.pagesize
 					},
@@ -746,62 +1185,310 @@
 						rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
 					}
 					var result = template('filters_center_list', rs.data);
-					$('#ul').html(result);
+					$('#item'+fl_new_id+'mobile ul').html(result);
 
 				});
 			}
-
-			//点击侧滑
-			//mui('.mui-off-canvas-wrap').offCanvas().toggle();
-			var leftcontent = document.getElementById("left-content");
-			leftcontent.addEventListener("tap", function(event) {
-				mui('.mui-off-canvas-wrap').offCanvas().toggle();
-			}, false);
-			var leftsubmit = document.getElementById("left-side-submit");
-			leftsubmit.addEventListener("tap", function(event) {
-				mui('.mui-off-canvas-wrap').offCanvas().toggle();
-			}, false);
-
-			$('.bbc-tab-item').on('tap', function() {
-				var webview = $(this).data('webview');
-				if(webview) {
-					if(webview) {
-						mui.openWindow({
-							url: webview,
-							id: webview,
-							createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-							show: {
-								autoShow: true, //页面loaded事件发生后自动显示，默认为true
-								aniShow: 'none'
-							},
-							waiting: {
-								autoShow: true //自动显示等待框，默认为true
-							}
-						});
-						var openw = plus.webview.getWebviewById(webview);
-						if(openw) {
-							mui.fire(openw, 'refresh');
-						}
+			
+			function GetContentListNew(page_index,ul_obj,self_obj)
+			{
+				var param1 = {
+		        queryData: {
+		          'method': config.apimethod.goodslist,
+		          'lv1Cat':'',
+		          'lv2Cat':'',
+		          'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
+		          'shop_id':'',
+		          'search':'',
+		          'all':'',
+		          'pm':'',
+		          'gg':'',
+		          'cj':'',
+		          'jgk':'',
+		          'page_no':(parseInt(page_obj[fl_sort_obj[page_index]])+1),
+		          'page_size':config.pagesize,
+		          'orderBy':'',
+		          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
+		          'guige':'',
+		          'manufacturers_id':'', 
+		          'storage_id':''
+		        },
+		        method: 'GET'
+		      };
+		      $.dataRequest(param1, function(rs) {
+		      	var resultnew = template('filters_center_list', rs.data);
+						//$('#item'+fl_sort_obj[page_index]+'mobile ul').html(result);
+						page_obj[fl_sort_obj[page_index]] = page_obj[fl_sort_obj[page_index]] + 1;
+						
+						var fragment = document.createDocumentFragment();
+						var ulment = document.getElementById("content-ul" + page_index);
+						
+						ulment.insertAdjacentHTML('afterend', resultnew);
+						
+						ul_obj.appendChild(fragment);
+						self_obj.endPullUpToRefresh();
+		      });
+			}
+      
+      //构造品名combobox
+      function GetProList(NamePickerNew,objs,fl)
+      {
+      	var pm_list = [];
+				for(var l_id in objs)
+				{
+					if(objs[l_id].lv1catid == fl)
+					{
+						var l_obj = {
+							value:objs[l_id].lv2catid,
+							text:objs[l_id].lv2catname
+						};
+						pm_list.push(l_obj);
 					}
 				}
-			});
-
-			$(window).on('tap', '.ch', function() {
-				var shareid = $(this).data('shareid');
-				var state = app.getState();
-				if(state.token) {
-	clicked('_www/view/item/resourcedetail.html', {
-						'shareid': shareid
-					}, '');
-				} else {
-					clicked('_www/view/item/resourcedetail.html', {
-						'shareid': shareid
-					}, 'slide-in-bottom');
+				NamePickerNew.setData(pm_list);
+				var showNamePickerButton = document.getElementById('showNamePicker');
+				showNamePickerButton.addEventListener('tap', function(event) {
+					NamePickerNew.show(function(items) {
+						$("#showNamePicker span").html(items[0].text);
+						$("#showSizePicker span").html("规格");
+						pro_name_id = items[0].value;
+						gg_text = "";
+						GetGGList(items[0].value);
+						GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+					});
+				}, false);
+      }
+      
+      //构造规格combobox
+      function GetGGList(search_pro_id)
+      {
+	      var param_gg = {
+	        queryData: {
+	          'method': config.apimethod.filteritems,
+	          'lv1Cat':'',
+	          'lv2Cat':search_pro_id
+	        },
+	        method: 'GET'
+	      };
+	      $.dataRequest(param_gg, function(rs) {
+	      	var ggids = rs.data.cat_id;
+	      	var gg_ids = ggids.split(',');
+	      	var gg_array = [];
+	      	for(var i = 0;i<gg_ids.length;i++)
+	      	{
+	      		var gg_obj = {
+	      			value:gg_ids[i],
+	      			text:gg_list[gg_ids[i]]
+	      		};
+	      		gg_array.push(gg_obj);
+	      	}
+	      	SizePicker.setData(gg_array); 
+	      	var showSizePickerButton = document.getElementById('showSizePicker');
+					showSizePickerButton.addEventListener('tap', function(event) {
+						SizePicker.show(function(items) {
+							gg_text = items[0].text; 
+							$("#showSizePicker span").html(items[0].text);
+							GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+							//PlaceResult.innerText = JSON.stringify(items[0]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+	      });
+      	/*var gg_list = [];
+				for(var i = 0;i < search_data.props[0].prop_value.length; i++)
+				{
+					var p_obj = {
+						value:search_data.props[0].prop_value[i].prop_index,
+						text:search_data.props[0].prop_value[i].prop_value
+					};
+					gg_list.push(p_obj);
 				}
-			});
-
-
-			/*var controls = document.getElementById("segmentedControls");
+				SizePicker.setData(gg_list); 
+				var showSizePickerButton = document.getElementById('showSizePicker');
+				showSizePickerButton.addEventListener('tap', function(event) {
+					SizePicker.show(function(items) {
+						gg_id = items[0].text; 
+						$("#showSizePicker span").html(items[0].text);
+						GetContentList(fl_id,pro_name_id,gg_id,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+						//PlaceResult.innerText = JSON.stringify(items[0]);
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);*/
+      }
+      
+      function ChangeLeftMenu(change_left_id)
+      {
+      	//构造左侧大类列表
+      	var left_kind_obj;
+      	var left_kind_list = [];
+      	for(var left_kind_id in search_data.lv1Cats)
+      	{
+      		if(change_left_id==search_data.lv1Cats[left_kind_id].cat_id)
+      		{
+      			fl_id = search_data.lv1Cats[left_kind_id].cat_id;
+      			var obj = {
+	      			cat_id:search_data.lv1Cats[left_kind_id].cat_id,
+	      			cat_name:search_data.lv1Cats[left_kind_id].cat_name,
+	      			is_select:1
+	      		}
+      			left_kind_list.push(obj);
+      		}else
+      		{
+      			var obj = {
+	      			cat_id:search_data.lv1Cats[left_kind_id].cat_id,
+	      			cat_name:search_data.lv1Cats[left_kind_id].cat_name,
+	      			is_select:0
+	      		}
+      			left_kind_list.push(obj);
+      		}
+      	}
+      	left_kind_obj = {
+      		lv1Cats:left_kind_list
+      	};
+				var result = template('filters_left_list', left_kind_obj);
+				$('.left-side-content-nav').html(result);
+      }
+      
+      function ChangeLeftContent(change_left_id,change_left_sid)
+      {
+      	//根据大类id构造左侧小类
+				var left_content_obj;
+      	var left_content_list = [];
+      	for(var i = 0;i < search_data.lv1Cats[change_left_id].lv2.length;i++)
+      	{
+      		if(i==0)
+      			pro_name_id = search_data.lv1Cats[change_left_id].lv2[i].cat_id;
+      		var left_content_small_list = [];
+      		var left_content_small_num = 0;
+      		for(var j = 0;j < search_data.lv1Cats[change_left_id].lv2[i].lv3.length;j++)
+      		{
+      			if(change_left_sid==search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_id)
+      			{
+      				gg_id = search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_id;
+      				var obj_s = {
+		      			cat_id:search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_name,
+		      			is_select:1
+		      		}
+      				left_content_small_list.push(obj_s);
+      			}else
+      			{
+      				var obj_s = {
+		      			cat_id:search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:search_data.lv1Cats[change_left_id].lv2[i].lv3[j].cat_name,
+		      			is_select:0
+		      		}
+      				left_content_small_list.push(obj_s);
+      			}
+      		}
+      		var obj = {
+      			cat_id:search_data.lv1Cats[change_left_id].lv2[i].cat_id,
+      			cat_name:search_data.lv1Cats[change_left_id].lv2[i].cat_name,
+      			lv3:left_content_small_list
+      		}
+      		left_content_list.push(obj);
+      	}
+      	left_content_obj = {
+      		lv1Cats:left_content_list
+      	};
+      	
+				result = template('filters_left_content', left_content_obj);
+				$('.left-side-content-detail').html(result);
+				//mui('.left-side-content-detail').scroll(); 
+      }
+      
+      function OrderDenno(item_id,cat_id)
+			{
+				var state = app.getState();
+				if(state.token)
+				{
+					var param_detail = {
+		        queryData: {
+		          'method': config.apimethod.goodsdetail,
+		          'item_id':item_id,
+		          'fields':''
+		        },
+		        method: 'GET'
+		      };
+					$.dataRequest(param_detail, function(rs) {
+	          if(!isEmptyObject(rs.data)) {
+	          	var sku_id;
+	          	for(var id in rs.data.item.sku)
+	          	{
+	          		sku_id = id;
+	          	}
+	          	
+	          	var param_order = {
+				        queryData: {
+				          'method': config.apimethod.cartadd,
+				          'accessToken':state.token,
+				          'quantity':1,
+				          'sku_id':rs.data.item.sku[sku_id].sku_id,
+				          'package_sku_ids':'',
+				          'package_id':'',
+				          'obj_type':'item',
+				          'mode':'cart'
+				        },
+				        method: 'GET'
+				      };
+	          	
+	          	$.dataRequest(param_order, function(r) {
+	          		if(!isEmptyObject(r.data)) {
+	          			var btnArray = ['否', '是'];
+	                mui.confirm('是否前往购物车？', '提示', btnArray, function(e) {
+	                    if (e.index == 1) {
+	                        var webview = "_www/view/cart/cart.html";
+													mui.openWindow({
+									          url: webview,
+									          id: webview,
+									          createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+									          show: {
+									            autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									            aniShow: 'none'
+									          },
+									          waiting: {
+									            autoShow: true //自动显示等待框，默认为true
+									          }
+									        });
+									        var openw = plus.webview.getWebviewById(webview);
+									        if(openw) {
+									          mui.fire(openw, 'refresh');
+									        }
+	                    } 
+	                });
+	          			
+	          		}else
+	          		{
+	          			mui.alert("下单失败！");
+	            		return;
+	          		}
+	          	})
+	          } else {
+	            mui.alert("下单失败！");
+	            return;
+	          }
+	        });
+				}else
+				{
+					clicked('_www/view/passport/login.html', {'entrance':wid}, 'slide-in-bottom');
+				}
+			}
+		$(window).on('tap', '.ch', function() {
+			var shareid = $(this).data('shareid');
+			var state = app.getState();
+			if(state.token) {
+			clicked('_www/view/item/resourcedetail.html', {
+					'shareid': shareid
+				}, '');
+			} else {
+				clicked('_www/view/item/resourcedetail.html', {
+					'shareid': shareid
+				}, 'slide-in-bottom');
+			}
+		});
+        /*var controls = document.getElementById("segmentedControls");
         var contents = document.getElementById("segmentedControlContents");
         //默认选中第一个
         controls.querySelector('.mui-control-item').classList.add('mui-active');
@@ -833,63 +1520,177 @@
           });
         }
       });*/
-		</script>
-
-		<script type="text/html" id="filters_center_list">
-			<%
+    </script>
+    
+		<script type="text/html" id="filters_left_list">
+				<ul>
+					<%
+						for(var i = 0;i < lv1Cats.length; i++)
+						{
+							if(lv1Cats[i].is_select == 0)
+							{%>
+								<li data-cid="<%=lv1Cats[i].cat_id%>"><%=lv1Cats[i].cat_name%></li>
+								<%
+							}else
+							{
+								%>
+								<li data-cid="<%=lv1Cats[i].cat_id%>" class="nav-active"><%=lv1Cats[i].cat_name%></li>
+								<%
+							}
+						}
+					%>
+				</ul>
+    </script>
+    
+    <script type="text/html" id="filters_left_content">
+    	<ul>
+    	<%
+    		for(var i = 0;i < lv1Cats.length;i++)
+    		{%>
+    			<li class="left-side-content-detail-li">
+						<div class="left-side-content-detail-nav">
+    					<%=lv1Cats[i].cat_name%>
+    				</div>
+    				<div class="left-side-content-detail-list">
+		    			<ul>
+		    			<%
+			    			for(var j = 0;j < lv1Cats[i].lv3.length;j++)
+								{
+									if(lv1Cats[i].lv3[j].is_select == 0)
+									{%>
+										<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>">
+		    							<%=lv1Cats[i].lv3[j].cat_name%>
+		    						</li>
+		    						<%
+									}else
+									{
+										%>
+										<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>" class="left-side-content-detail-active">
+		    							<%=lv1Cats[i].lv3[j].cat_name%>
+		    						</li>
+		    						<%
+									}
+								}
+							%>
+							</ul>
+						</div>
+    			</li>
+    			<%
+    		}
+    	%>
+    	</ul>
+    </script>
+    
+    <script type="text/html" id="filters_top_list">
+    	<%
+    		for(var i = 0;i < lv1Cats.length; i++)
+    		{
+    			if(lv1Cats[i].is_select==0)
+    			{
+    				%>
+    				<a id="#item<%=lv1Cats[i].cat_id%>mobile" class="mui-control-item" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+    				<%
+    			}else
+    			{
+						%>
+						<a id="#item<%=lv1Cats[i].cat_id%>mobile" class="mui-control-item mui-active" data-cid="<%=lv1Cats[i].cat_id%>" href="#item<%=lv1Cats[i].cat_id%>mobile"><%=lv1Cats[i].cat_name%></a>
+						<%
+    			}
+    		}
+    	%>
+    </script>
+    
+    <script type="text/html" id="filters_content_tab">
+    	<%
+    		for(var i = 0;i < lv1Cats.length; i++)
+    		{
+    			if(lv1Cats[i].is_select==0)
+    			{
+    				%>
+    					<div id="item<%=lv1Cats[i].cat_id%>mobile" class="mui-slider-item mui-control-content">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view" id="content-ul<%=i%>">
+				
+										</ul>
+									</div>
+								</div>
+							</div>
+    				<%
+    			}else
+    			{
+    				%>
+    					<div id="item<%=lv1Cats[i].cat_id%>mobile" class="mui-slider-item mui-control-content mui-active">
+								<div class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+										<ul class="mui-table-view" id="content-ul<%=i%>">
+												
+										</ul>
+									</div>
+								</div>
+							</div>
+    				<%
+    			}
+    		}
+    	%>
+    </script>
+    
+    <script type="text/html" id="filters_center_list">
+    	<%
     		for(var i = 0;i < list.length;i++)
     		{
     			%>
-			<li class="content-li">
-				<div class="content-space"> </div>
-				<div class="content-outer">
-					<div class="content-inner-left">
-						<div class="content-inner-left-top">
-							<!--										<div class="content-inner-left-top-item">
+	    			<li class="content-li">
+							<div class="content-space"> </div>
+							<div class="content-outer">
+								<div class="content-inner-left">
+									<div class="content-inner-left-top">
+<!--										<div class="content-inner-left-top-item">
 											
 										</div>-->
-							<div class="content-inner-left-top-item">
-								<%=list[i].manufacturers_name%>
+										<div class="content-inner-left-top-item">
+											<%=list[i].manufacturers_name%>
+										</div>
+										<div class="content-inner-left-top-item">
+											<%=list[i].pm_name%>
+										</div>
+										<div class="content-inner-left-top-item">
+											<%=list[i].guige%>
+										</div>
+										<div class="content-inner-left-top-item">
+											<%=list[i].storage_name%>
+										</div>
+									</div>
+									<div class="content-inner-left-middle">
+										<div class="content-inner-left-middle-item">
+											<%=list[i].store%>　吨
+										</div>
+									</div>
+									<div class="content-inner-left-bottom">
+										<div class="content-inner-left-bottom-item1">
+											现金价：
+										</div>
+										<div class="content-inner-left-bottom-item2">
+											￥<%=list[i].price%>
+										</div>
+										<div class="content-inner-left-bottom-item1">
+											承兑价：
+										</div>
+										<div class="content-inner-left-bottom-item2">
+											￥<%=list[i].price_accept%>
+										</div>
+									</div>
+								</div>
+								<div class="content-inner-right ch" data-shareid='<%=list[i].shared_id%>'>
+									<div class="content-inner-right-word">撮合</div> 
+								</div>
 							</div>
-							<div class="content-inner-left-top-item">
-								<%=list[i].pm_name%>
-							</div>
-							<div class="content-inner-left-top-item">
-								<%=list[i].guige%>
-							</div>
-						</div>
-						<div class="content-inner-left-middle">
-							<div class="content-inner-left-middle-item">
-								<%=list[i].store%>　吨
-							</div>
-						</div>
-						<div class="content-inner-left-bottom">
-							<div class="content-inner-left-bottom-item1">
-								现金价：
-							</div>
-							<div class="content-inner-left-bottom-item2">
-								￥
-								<%=list[i].price%>
-							</div>
-							<div class="content-inner-left-bottom-item1">
-								承兑价：
-							</div>
-							<div class="content-inner-left-bottom-item2">
-								￥
-								<%=list[i].price_accept%>
-							</div>
-						</div>
-					</div>
-					<div class="content-inner-right ch" data-shareid='<%=list[i].shared_id%>'>
-						<div class="content-inner-right-word ">撮合</div>
-					</div>
-				</div>
-			</li>
-			<%
+						</li>
+    			<%
     		}
     	%>
-
-		</script>
-	</body>
+			
+    </script>
+  </body>
 
 </html>

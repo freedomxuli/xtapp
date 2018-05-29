@@ -140,6 +140,21 @@ var fetchVcode = function(vtype,vimg) {
   });
 }
 
+var getcartnumabs = function(token){
+	var param = {
+    queryData: {
+      'method': config.apimethod.cartnum,
+      'accessToken': token
+    },
+    method: 'POST'
+  }
+  $.dataRequest(param, function(rs) {
+    var data = rs.data;
+    document.getElementsByClassName("cart_bottom_num_abs")[0].style.backgroundColor = "red";
+    document.getElementsByClassName("cart_bottom_num_abs")[0].innerText = data.number;
+  });
+};
+
 var isEmptyObject = function(obj) {
   for(var key in obj) {
     return false;
