@@ -455,6 +455,21 @@
 			.container {
 				padding-top: 20rem;
 			}
+			.jgzs_div{
+				display: flex;
+				flex-direction: row;
+			}
+			.jgzs_span{
+				flex: 1;
+			}
+			.jgzs_cate{
+				flex: 1;
+				display: flex;
+				flex-direction: row;
+			}
+			.jgzs_cate_span{
+				flex: 1;
+			}
 		</style>
 	</head>
 
@@ -470,7 +485,14 @@
 		</header>
 		<div class="mui-content chart_height">
 			<div class="mui-content-padded">
-				<h5>价格指数</h5>
+				<div class="jgzs_div">
+					<div class="jgzs_span">
+						<h5>价格指数</h5>
+					</div>
+					<div class="jgzs_cate">
+						
+					</div>
+				</div>
 				<div class="chart" id="lineChart"></div>
 			</div>
 		</div>
@@ -733,111 +755,128 @@
 		<script>
 			var param = {
 				queryData: {
+					'method': config.apimethod.getPm
+				},
+				method: 'GET'
+			}
+			$.dataRequest(param, function(rs) {
+				var html = "";
+				for(var i = 0;i < rs.data.length;i++)
+				{
+					html += "<div class='jgzs_cate_span' data-index='"+rs.data[i].cat_id+"'>"+
+								"<span>·</span>"+rs.data[i].cat_name
+							"</div>";
+				}
+				document.getElementsByClassName("jgzs_cate")[0].innerHTML = html;
+			})
+			
+			var param = {
+				queryData: {
 					'method': config.apimethod.getCurve,
-					'cat_id': '6'
+					'cat_id': ''
 				},
 				method: 'GET'
 			}
 
 
-				var myChart = echarts.init(document.getElementById('lineChart'));
-				option = {
-					tooltip: {
-						trigger: 'axis',
-						axisPointer: {
-							lineStyle: {
-								color: '#ccd6eb'
-							}
-						},
-						backgroundColor: 'rgba(255,255,255,1)',
-						padding: [5, 10],
-						textStyle: {
-							color: '#414141',
-						},
-						extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
-					},
-					xAxis: {
-						type: 'category',
-						data: ["04-01","04-02","04-03","04-04","04-05","04-06","04-07","04-08","04-09","04-10","04-11","04-12","04-13","04-14","04-15","04-16","04-17","04-18","04-19","04-20","04-21","04-22","04-23","04-24","04-25","04-26","04-27","04-28","04-29","04-30","05-01","05-02","05-03","05-04","05-05","05-06","05-07","05-08","05-09","05-10","05-11","05-12","05-13","05-14","05-15","05-16","05-17","05-18","05-19","05-20","05-21","05-22","05-23","05-24","05-25","05-26","05-27","05-28","05-29"],
-						boundaryGap: false,
-						splitLine: {
-							show: true,
-							interval: 'auto',
-							lineStyle: {
-								color: ['none']
-							}
-						},
-						axisTick: {
-							show: false
-						},
-						axisLine: {
-							lineStyle: {
-								color: '#666666'
-							}
-						},
-						axisLabel: {
-							margin: 10,
-							textStyle: {
-								fontSize: 14
-							}
-						}
-					},
-					yAxis: {
-						type: 'value',
-						splitLine: {
-							lineStyle: {
-								color: ['#D4DFF5']
-							}
-						},
-						axisTick: {
-							show: false
-						},
-						axisLine: {
-							lineStyle: {
-								color: '#666666'
-							}
-						},
-						axisLabel: {
-							margin: 10,
-							textStyle: {
-								fontSize: 14
-							}
-						},
-						scale: true,
-						min: 1850,
-					},
-					series: [{
-						name: '生铁',
-						type: 'line',
-						smooth: true,
-						showSymbol: false,
-						symbol: 'circle',
-						symbolSize: 6,
-						data: [2000,2000,3000,3000,3000,3000,3000,2600,2700,2700,2000,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900],
-						areaStyle: {
-							normal: {
-								color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-									offset: 0,
-									color: 'rgba(232, 240, 245,1)'
-								}, {
-									offset: 1,
-									color: 'rgba(232, 240, 245,1)'
-								}], false)
-							}
-						},
-						itemStyle: {
-							normal: {
-								color: '#46759f'
-							}
-						},
+			var myChart = echarts.init(document.getElementById('lineChart'));
+			option = {
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
 						lineStyle: {
-							normal: {
-								width: 1
-							}
+							color: '#ccd6eb'
 						}
-					}]
-				};
-				myChart.setOption(option);
+					},
+					backgroundColor: 'rgba(255,255,255,1)',
+					padding: [5, 10],
+					textStyle: {
+						color: '#414141',
+					},
+					extraCssText: 'box-shadow: 0 0 5px rgba(0,0,0,0.3)'
+				},
+				xAxis: {
+					type: 'category',
+					data: ["04-01","04-02","04-03","04-04","04-05","04-06","04-07","04-08","04-09","04-10","04-11","04-12","04-13","04-14","04-15","04-16","04-17","04-18","04-19","04-20","04-21","04-22","04-23","04-24","04-25","04-26","04-27","04-28","04-29","04-30","05-01","05-02","05-03","05-04","05-05","05-06","05-07","05-08","05-09","05-10","05-11","05-12","05-13","05-14","05-15","05-16","05-17","05-18","05-19","05-20","05-21","05-22","05-23","05-24","05-25","05-26","05-27","05-28","05-29"],
+					boundaryGap: false,
+					splitLine: {
+						show: true,
+						interval: 'auto',
+						lineStyle: {
+							color: ['none']
+						}
+					},
+					axisTick: {
+						show: false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#666666'
+						}
+					},
+					axisLabel: {
+						margin: 10,
+						textStyle: {
+							fontSize: 14
+						}
+					}
+				},
+				yAxis: {
+					type: 'value',
+					splitLine: {
+						lineStyle: {
+							color: ['#D4DFF5']
+						}
+					},
+					axisTick: {
+						show: false
+					},
+					axisLine: {
+						lineStyle: {
+							color: '#666666'
+						}
+					},
+					axisLabel: {
+						margin: 10,
+						textStyle: {
+							fontSize: 14
+						}
+					},
+					scale: true,
+					min: 1850,
+				},
+				series: [{
+					name: '生铁',
+					type: 'line',
+					smooth: true,
+					showSymbol: false,
+					symbol: 'circle',
+					symbolSize: 6,
+					data: [2000,2000,3000,3000,3000,3000,3000,2600,2700,2700,2000,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900],
+					areaStyle: {
+						normal: {
+							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: 'rgba(232, 240, 245,1)'
+							}, {
+								offset: 1,
+								color: 'rgba(232, 240, 245,1)'
+							}], false)
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#46759f'
+						}
+					},
+					lineStyle: {
+						normal: {
+							width: 1
+						}
+					}
+				}]
+			};
+			myChart.setOption(option);
 			
 			//			var getOption = function(chartType) {
 			//				var chartOption ={
