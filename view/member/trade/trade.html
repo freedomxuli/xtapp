@@ -568,8 +568,6 @@
 
     <script type="text/html" id="trade_list">
       <% for(var i=0; i<list.length; i++){ 
-      	if((list[i].status=="WAIT_BUYER_PAY"&&list[i].shenhe_status=="success")||list[i].status!="WAIT_BUYER_PAY")
-      	{
       	%>
       <li class="mui-table-view-cell content-li">
         <div class="content-padded border-div">
@@ -728,7 +726,7 @@
           </div>
         </div>
       </li>
-      <% } 
+      <% 
       	}%>
     </script>
 
