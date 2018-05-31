@@ -207,6 +207,7 @@
 				border-radius: 5px;
 				background-color: #E35D4C;
 				padding: 0.1rem 0.2rem 0.1rem 0.2rem;
+				margin-left: 5px;
 			}
 			
 			.compete {
@@ -280,6 +281,7 @@
 		<script src="../../../js/mui.previewimage.js"></script>
 		<script>
 			mui.init();
+
 			var state = app.getState();
 			var param = {
 				queryData: {
@@ -295,6 +297,7 @@
 				for(var i in rs.data.list) {
 					for(var j in rs.data.list[i]) {
 						rs.data.list[i][j].consign_time = formatDateTime(rs.data.list[i][j].consign_time);
+						rs.data.list[i][j].remain_num = parseFloat(rs.data.list[i][j].remain_num);
 						array.push(rs.data.list[i][j]);
 					}
 				}
@@ -327,6 +330,7 @@
 			});
 
 			(function($) {
+
 				//阻尼系数
 				var deceleration = mui.os.ios ? 0.003 : 0.0009;
 				$('.mui-scroll-wrapper').scroll({
@@ -335,6 +339,7 @@
 					deceleration: deceleration
 				});
 				$.ready(function() {
+
 					//循环初始化所有下拉刷新，上拉加载。
 					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 						$(pullRefreshEl).pullToRefresh({
@@ -373,6 +378,7 @@
 							for(var i in rs.data.list) {
 								for(var j in rs.data.list[i]) {
 									rs.data.list[i][j].consign_time = formatDateTime(rs.data.list[i][j].consign_time);
+									rs.data.list[i][j].remain_num = parseFloat(rs.data.list[i][j].remain_num);
 									array.push(rs.data.list[i][j]);
 								}
 							}
@@ -455,6 +461,22 @@
 
 			});
 
+			$(window).on('tap', '.order-deliver', function() {
+				var batches_id = $(this).data('batches_id');
+				var oid = $(this).data('oid');
+				var remain = $(this).data('remain');
+				clicked('_www/view/member/distribution/deliver.html', {
+					'batches_id': batches_id,
+					'oid': oid,
+					'remain': remain
+				}, '');
+
+			});
+			
+			function refresh(){
+				 location.reload();
+			}
+
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
@@ -536,6 +558,15 @@
 						</div>
 						<%
 							}
+				if(list[item].remain_num>0){
+								%>
+						<div class="content-div-center-right-button">
+							<div class="content-div-center-right-button order-deliver" data-batches_id='<%=list[item].batches_id%>' data-oid='<%=list[item].oid%>' data-remain='<%=list[item].remain_num%>'>
+								终止发货
+							</div>
+						</div>
+						<%
+						}
 							%>
 
 					</div>
@@ -557,7 +588,7 @@
 						订单编号
 						<%=list[i].tid%>
 					</div>
-					<div class="content-div-center" style="border-bottom: 0px;"> 
+					<div class="content-div-center" style="border-bottom: 0px;">
 						<div class="content-div-center-left">
 							开票金额：￥
 							<%=list[i].ticket_money%>

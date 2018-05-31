@@ -139,6 +139,7 @@ var config = {
 		sharedResourceSaveShare: 'sharedresource.saveShare', // 共享资源-撮合保存
 		getNetworkList: 'network.list', //线下网络
 		getAccountDeposit: 'accountCheck.deposit', //余额对账
-		getAccountTickets: 'accountCheck.tickets' //开票对账
+		getAccountTickets: 'accountCheck.tickets', //开票对账
+		deliver:'member.stop.deliver'//订单物流提前终止发货
 	}
 }
