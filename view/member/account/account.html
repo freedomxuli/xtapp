@@ -468,6 +468,21 @@
 								</div>
 								<div class="bottom-div">
 									<div class="bottom-div-left">
+										本期退款
+									</div>
+									<div class="bottom-div-right">
+										<div>
+											<span class="bottom-div-right-text">现金：</span>
+											<span class="bottom-div-right-price" id="cash11">0.00</span>
+										</div>
+										<div>
+											<span class="bottom-div-right-text">承兑：</span>
+											<span class="bottom-div-right-price" id="cash12">0.00</span>
+										</div>
+									</div>
+								</div>
+								<div class="bottom-div">
+									<div class="bottom-div-left">
 										本期提现
 									</div>
 									<div class="bottom-div-right">
@@ -503,8 +518,8 @@
 								</div>
 								<div class="center-top-div">
 									<div class="center-top-name">
-										<div class="center-top-name-list" id="qcpe">期初票额</div>
-										<div class="center-top-name-list" id="qmpe">期末票额</div>
+										<div class="center-top-name-list" id="qcpe">期初未开票额</div>
+										<div class="center-top-name-list" id="qmpe">期末未开票额</div>
 									</div>
 									<div class="center-top-price">
 										<div class="center-top-price-left">
@@ -519,7 +534,7 @@
 								</div>
 								<div class="center-top-div">
 									<div class="center-bottom-name" id="qmye2">
-										本期票额
+										本期开票金额
 									</div>
 									<div class="center-top-price">
 										<div class="center-top-price-left1">
@@ -676,6 +691,8 @@
 					$("#cash8").html(rs.data.expenseAccept == null ? '0.00' : returnFloat(rs.data.expenseAccept));
 					$("#cash9").html(rs.data.cashPrice == null ? '0.00' : returnFloat(rs.data.cashPrice));
 					$("#cash10").html(rs.data.cashAccept == null ? '0.00' : returnFloat(rs.data.cashAccept));
+					$("#cash11").html(rs.data.rufundendPrice == null ? '0.00' : returnFloat(rs.data.rufundendPrice));
+					$("#cash12").html(rs.data.rufundendAccept == null ? '0.00' : returnFloat(rs.data.rufundendAccept));
 				});
 			}
 
@@ -781,8 +798,8 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
-					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+					'starttime': getTime($('#result2').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': getTime($('#result2').text() + "-31 23:59:59"), //结束时间-每个月最后一天的23:59:59的时间戳
 					'type': 'qcpe'
 				});
 
@@ -792,8 +809,8 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
-					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+				'starttime': getTime($('#result2').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': getTime($('#result2').text() + "-31 23:59:59"), //结束时间-每个月最后一天的23:59:59的时间戳
 					'type': 'qmpe'
 				});
 
@@ -803,8 +820,8 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-					'starttime': '1522512000', //开始时间-每个月1号的0:0:0的时间戳
-					'endtime': '1525103999', //结束时间-每个月最后一天的23:59:59的时间戳
+					'starttime': getTime($('#result2').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': getTime($('#result2').text() + "-31 23:59:59"), //结束时间-每个月最后一天的23:59:59的时间戳
 					'type': 'bqpe'
 				});
 
