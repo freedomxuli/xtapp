@@ -1,138 +1,138 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css" />
-    <style type="text/css">
-      .mui-segmented-control.mui-scroll-wrapper {
-        height: 5rem;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
-        height: 5rem;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-control-item {
-        padding: 0;
-        margin-right: 10px;
-      }
-
-      .mui-segmented-control.mui-scroll-wrapper .mui-control-item img {
-        height: 5rem;
-      }
-
-      .mui-ios .mui-navbar .mui-bar .mui-title {
-        position: static;
-      }
-
-      .mui-views,
-      .mui-view,
-      .mui-pages,
-      .mui-page,
-      .mui-page-content {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        /*min-height: 100%;*/
-        /*background-color: #fff;*/
-      }
-
-      .mui-page-content .mui-input-group:before {
-        height: 0;
-      }
-
-      .mui-pages {
-        top: 3rem;
-        bottom:3.7rem;
-        min-height: auto;
-        overflow-y: auto;
-      }
-
-      .mui-page,
-      .mui-pages .mui-page-content .mui-page {
-        display: none;
-      }
-
-      .mui-pages .mui-page {
-        background-color: #efeff4;
-        display: block;
-      }
-
-      .mui-page.mui-transitioning {
-        -webkit-transition: -webkit-transform 300ms ease;
-        transition: transform 300ms ease;
-      }
-
-      .mui-page-left {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-      }
-
-      .mui-ios .mui-page-left {
-        -webkit-transform: translate3d(-20%, 0, 0);
-        transform: translate3d(-20%, 0, 0);
-      }
-
-      .mui-navbar {
-        position: fixed;
-        right: 0;
-        left: 0;
-        z-index: 10;
-        height: 3rem;
-        background-color: #fff;
-      }
-
-      .mui-navbar .mui-bar {
-        position: absolute;
-        background: transparent;
-        text-align: center;
-      }
-
-      .mui-android .mui-navbar-inner.mui-navbar-left,
-      .mui-ios .mui-navbar-left .mui-left,
-      .mui-ios .mui-navbar-left .mui-center,
-      .mui-ios .mui-navbar-left .mui-right {
-        opacity: 0;
-      }
-
-      .mui-navbar .mui-btn-nav {
-        -webkit-transition: none;
-        transition: none;
-        -webkit-transition-duration: .0s;
-        transition-duration: .0s;
-      }
-
-      .mui-navbar .mui-bar .mui-title {
-        display: inline-block;
-        width: auto;
-      }
-
-      .mui-page-shadow {
-        position: absolute;
-        right: 100%;
-        top: 0;
-        width: 16px;
-        height: 100%;
-        z-index: -1;
-        background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
-        background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
-      }
-
-      .mui-navbar-inner.mui-transitioning,
-      .mui-navbar-inner .mui-transitioning {
-        -webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
-        transition: opacity 300ms ease, transform 300ms ease;
-      }
-      /*.mui-fullscreen {
+		<link rel="stylesheet" href="../../css/style.css" />
+		<style type="text/css">
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				height: 5rem;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 0;
+				margin-right: 10px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item img {
+				height: 5rem;
+			}
+			
+			.mui-ios .mui-navbar .mui-bar .mui-title {
+				position: static;
+			}
+			
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				/*min-height: 100%;*/
+				/*background-color: #fff;*/
+			}
+			
+			.mui-page-content .mui-input-group:before {
+				height: 0;
+			}
+			
+			.mui-pages {
+				top: 3rem;
+				bottom: 3.7rem;
+				min-height: auto;
+				overflow-y: auto;
+			}
+			
+			.mui-page,
+			.mui-pages .mui-page-content .mui-page {
+				display: none;
+			}
+			
+			.mui-pages .mui-page {
+				background-color: #efeff4;
+				display: block;
+			}
+			
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 3rem;
+				background-color: #fff;
+			}
+			
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			
+			.mui-android .mui-navbar-inner.mui-navbar-left,
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				width: auto;
+			}
+			
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			/*.mui-fullscreen {
       position: fixed;
       z-index: 20;
       background-color: #000;
@@ -140,480 +140,562 @@
       .mui-ios .mui-navbar .mui-bar .mui-title {
       position: static;
       }*/
-
-.mui-scroll-wrapper.has-btn {
-  bottom: 3rem;
-}
-
-.body-padding-mini .action-bar-mini {
-  position: absolute;
-}
-
-.mui-bar .mui-btn-link {
-  color: #ea2329 !important;
-}
-
-.space{
-	background-color:#F0EFF5 ;
-	height: 10px;
-}
-
+			
+			.mui-scroll-wrapper.has-btn {
+				bottom: 3rem;
+			}
+			
+			.body-padding-mini .action-bar-mini {
+				position: absolute;
+			}
+			
+			.mui-bar .mui-btn-link {
+				color: #ea2329 !important;
+			}
+			
+			.space {
+				background-color: #F0EFF5;
+				height: 10px;
+			}
 			/*标题栏*/
-			.mui-bar-backcolor{
-      	background-color:#d92e2e;
-      	display: flex;  
-      }
-			.child{   
-			    flex:1;    
-			} 
 			
-			.child_1{   
-			    flex:7;    
-			} 
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
 			
-			.category_img{
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
 				height: 1rem;
 				width: 0.6rem;
 				line-height: 1rem;
-      }
-      
-      .category_size{
-      	line-height: 3rem;
-      	text-align: center;
-      }
-      
-      .category_title{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	margin-left: 0.4rem;
-      	font-size: 0.9rem;
-      }
-      
-      .title_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1.2rem;
-      }
-      
-      .edit_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 1.2rem;
-      	line-height: 1.2rem;
-      }
-      
-      .search_img{
-      	height: 1.2rem;
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
 				width: 1.2rem;
-      }
-      .search_size{
-      	line-height: 3.5rem;
-      	text-align: center;
-      }
-      
-      .message_img{
-      	height: 1.5rem;
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.message_img {
+				height: 1.5rem;
 				width: 1.5rem;
 				margin-left: 0.8rem;
-      }
-      
-	    /*地址块*/
-	    .address_part{
-	    	display: flex;
-	     	flex-direction: row;
-	     	background-color: #ffffff;
-	     	align-items: center;
-	    }
-	    .address_part_left{
-	    	flex: 1;
-	    	text-align: center;
-	    }
-	    .address_part_center{
-	    	flex: 3;
-	    }
-	    .address_part_center_top{
-	    	display: flex;
-	    	flex-direction: row;
-	    	justify-content: center;
-	    	padding: 15px 0px 0px 0px;
-	    }
-	    .address_part_center_top_left{
-	    	flex: 1;
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    }
-	    .address_part_center_top_right{
-	    	flex: 1;
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    	text-align: right;
-	    }
-	    .address_part_center_bottom{
-	    	color: #666666;
-	    	font-family: "微软雅黑";
-	    	font-size: 0.9rem;
-	    	padding: 5px 0px 15px 0px;
-	    }
-	    .address_part_right{
-	    	flex: 1;
-	    	text-align: center;
-	    }
-	    .check-right-img{
-			width: 0.4rem;
-		}
-		/*付款选择*/
-	    .kind-select{
-	    	margin-top:10px ;
-	     	background-color: #ffffff !important;
-	     	display: flex;
-	     	flex-direction: row;
-	     	z-index: 10000;
-	     	align-items: center;
-	    }
-	    .kind-text{
-	    	color:#666666;
-	    	font-family: "微软雅黑";
-	    	flex: 1;
-	    	font-size: 0.6rem;
-	    	padding: 0.6rem 0px 0.6rem 1.2rem;
-	    }
-	    .mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
-	    	color: #E35D4C;
-	    }
-	    .radio-text{
-	    	color: #666666;
-	    	font-size: 0.8rem;
-	    }
-		/*物品详情*/
-		.goods_detail{
-			margin-top:10px ;
-     		background-color: #ffffff;
-		}
-		.goods_shop{
-			color: #666666;
-			padding: 0.6rem 0px 0.6rem 1.2rem;
-			border-bottom:1px solid #e3e3e5;
-		}
-		.goods_memo{
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-		.goods_xq{
-			color: #666666;
-			font-family: "arial rounded mt bold";
-			font-size: 0.8rem;
-			flex: 5;
-			padding: 0.6rem 0px 0.3rem 1.2rem;
-		}
-		.goods_address{
-			color: #666666;
-			font-family: "arial rounded mt bold";
-			font-size: 0.8rem;
-			flex: 1;
-			text-align: center;
-		}
-		.goods_price{
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			border-bottom:1px solid #e3e3e5;
-		}
-		.goods_price_detail{
-			color: #666666;
-			font-family: "arial rounded mt bold";
-			font-size: 0.8rem;
-			flex: 5;
-			padding: 0.3rem 0px 0.6rem 1.2rem;
-		}
-		/*价格详情*/
-		.goods_order{
-			display: flex;
-			flex-direction: row;
-			background-color: #ffffff;
-		}
-		.goods_order_left{
-			flex: 1;
-		}
-		.goods_order_right{
-			flex: 1.5;
-		}
-		.goods_order_right_detail{
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-		.goods_order_right_memo{
-			flex: 1;
-			color: #222222;
-			font-size: 0.8rem;
-			font-family: "微软雅黑";
-			padding: 0.4rem 0rem 0.2rem 0rem;
-		}
-		.goods_order_right_price{
-			flex: 1;
-			color: #e25d4c;
-			font-weight: bold;
-			font-size: 0.9rem;
-			font-family: "arial rounded mt bold";
-			padding: 0.4rem 0rem 0.2rem 0rem;
-		}
-		.goods_order_right_price_font{
-			color: #222222;
-		}
-		.goods_order_right_price1{
-			flex: 1;
-			color: #e25d4c;
-			font-size: 1.2rem;
-			font-family: "arial rounded mt bold";
-			padding: 0.4rem 0rem 0.2rem 0rem;
-		}
-		/*支付信息*/
-		.goods_info{
-			margin-top:10px ;
-     		background-color: #ffffff;
-		}
-		.goods_info_detail{
-			color: #666666;
-			font-family: "arial rounded mt bold";
-			font-size: 0.8rem;
-			padding: 0.6rem 0px 0.6rem 1.2rem;
-			border: 1px solid #e3e3e5;
-			display: flex;
-			flex-direction: row;
-		}
-		.goods_info_detail_type{
-			flex: 1;
-			display: flex;
-			flex-direction: row;
-			align-items: flex-end;
-		}
-		.goods_info_detail_type_text{
-			flex: 2;
-			text-align: end;
-		}
-		.goods_info_detail_type_img{
-			flex: 1;
-			text-align: end;
-			padding: 0px 15px 0px 0px;
-		}
-		.input-div{
-			display: flex;
-			flex: row;
-			align-items: center;
-		}
-		.input-text{
-			flex: 1;
-			padding: 0 !important;
-		}
-		.input-write{
-			flex: 3;
-			padding: 0 !important;
-			height: auto !important;
-		}
-		/*底部样式*/
-		.submit-bottom-div{
-			background-color: #ffffff;
-			border-top: 1px solid #e3e3e6;
-			display: flex;
-			flex: row;
-			align-items: center;
-			justify-content: flex-end;
-		}
-		.submit-bottom-button1{
-			background-color: #8c8c8c;
-			color: #ffffff;
-			padding: 10px 0px 10px 0px;
-		}
-		.submit-bottom-button2{
-			background-color: #e25d4c;
-			color: #ffffff;
-			padding: 10px 0px 10px 0px;
-		}
-		.submit-bottom-div-flex{
-			flex: 1;
-			text-align: center;
-		}
-		.submit-bottom-div-flex-span{
-			font-size: 0.8rem ;
-		}
-		.submit-bottom-div-flex-color{
-			color:#e25d4c;
-			font-weight: bold;
-		}
-    </style>
+			}
+			/*地址块*/
+			
+			.address_part {
+				display: flex;
+				flex-direction: row;
+				background-color: #ffffff;
+				align-items: center;
+			}
+			
+			.address_part_left {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.address_part_center {
+				flex: 3;
+			}
+			
+			.address_part_center_top {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				padding: 15px 0px 0px 0px;
+			}
+			
+			.address_part_center_top_left {
+				flex: 1;
+				color: #666666;
+				font-family: "微软雅黑";
+			}
+			
+			.address_part_center_top_right {
+				flex: 1;
+				color: #666666;
+				font-family: "微软雅黑";
+				text-align: right;
+			}
+			
+			.address_part_center_bottom {
+				color: #666666;
+				font-family: "微软雅黑";
+				font-size: 0.9rem;
+				padding: 5px 0px 15px 0px;
+			}
+			
+			.address_part_right {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.check-right-img {
+				width: 0.4rem;
+			}
+			/*付款选择*/
+			
+			.kind-select {
+				margin-top: 10px;
+				background-color: #ffffff !important;
+				display: flex;
+				flex-direction: row;
+				z-index: 10000;
+				align-items: center;
+			}
+			
+			.kind-text {
+				color: #666666;
+				font-family: "微软雅黑";
+				flex: 1;
+				font-size: 0.6rem;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+			}
+			
+			.mui-radio input[type="radio"]:checked:before,
+			.mui-checkbox input[type="checkbox"]:checked:before {
+				color: #E35D4C;
+			}
+			
+			.radio-text {
+				color: #666666;
+				font-size: 0.8rem;
+			}
+			/*物品详情*/
+			
+			.goods_detail {
+				margin-top: 10px;
+				background-color: #ffffff;
+			}
+			
+			.goods_shop {
+				color: #666666;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+				border-bottom: 1px solid #e3e3e5;
+			}
+			
+			.goods_memo {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.goods_xq {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 5;
+				padding: 0.6rem 0px 0.3rem 1.2rem;
+			}
+			
+			.goods_address {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 1;
+				text-align: center;
+			}
+			
+			.goods_price {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #e3e3e5;
+			}
+			
+			.goods_price_detail {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				flex: 5;
+				padding: 0.3rem 0px 0.6rem 1.2rem;
+			}
+			/*价格详情*/
+			
+			.goods_order {
+				display: flex;
+				flex-direction: row;
+				background-color: #ffffff;
+			}
+			
+			.goods_order_left {
+				flex: 1;
+			}
+			
+			.goods_order_right {
+				flex: 1.5;
+			}
+			
+			.goods_order_right_detail {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			
+			.goods_order_right_memo {
+				flex: 1;
+				color: #222222;
+				font-size: 0.8rem;
+				font-family: "微软雅黑";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			
+			.goods_order_right_price {
+				flex: 1;
+				color: #e25d4c;
+				font-weight: bold;
+				font-size: 0.9rem;
+				font-family: "arial rounded mt bold";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			
+			.goods_order_right_price_font {
+				color: #222222;
+			}
+			
+			.goods_order_right_price1 {
+				flex: 1;
+				color: #e25d4c;
+				font-size: 1.2rem;
+				font-family: "arial rounded mt bold";
+				padding: 0.4rem 0rem 0.2rem 0rem;
+			}
+			/*支付信息*/
+			
+			.goods_info {
+				margin-top: 10px;
+				background-color: #ffffff;
+			}
+			
+			.goods_info_detail {
+				color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				padding: 0.6rem 0px 0.6rem 1.2rem;
+				border-bottom: 1px solid #e3e3e5;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.goods_info_detail_type {
+				flex: 1;
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+			}
+			
+			.goods_info_detail_type_text {
+				flex: 2;
+				text-align: end;
+			}
+			
+			.goods_info_detail_type_img {
+				flex: 1;
+				text-align: end;
+				padding: 0px 15px 0px 0px;
+			}
+			
+			.input-div {
+				display: flex;
+				flex: row;
+				align-items: center;
+			}
+			
+			.input-text {
+				flex: 1;
+				padding: 0 !important;
+			}
+			
+			.input-write {
+				flex: 3;
+				padding: 0 !important;
+				height: auto !important;
+			}
+			/*底部样式*/
+			
+			.submit-bottom-div {
+				background-color: #ffffff;
+				border-top: 1px solid #e3e3e6;
+				display: flex;
+				flex: row;
+				align-items: center;
+				justify-content: flex-end;
+			}
+			
+			.submit-bottom-button1 {
+				background-color: #8c8c8c;
+				color: #ffffff;
+				padding: 10px 0px 10px 0px;
+			}
+			
+			.submit-bottom-button2 {
+				background-color: #e25d4c;
+				color: #ffffff;
+				padding: 10px 0px 10px 0px;
+			}
+			
+			.submit-bottom-div-flex {
+				flex: 1;
+				text-align: center;
+			}
+			
+			.submit-bottom-div-flex-span {
+				font-size: 0.8rem;
+			}
+			
+			.submit-bottom-div-flex-color {
+				color: #e25d4c;
+				font-weight: bold;
+			}
+			
+			.head-font {
+				color: #ffffff;
+				font-size: 1.2rem;
+			}
+			.wait_part_left_img{
+				width:1.7rem;
+			}
+		</style>
 
-  </head>
+	</head>
 
-  <body class="body-padding-mini">
-    <!--页面主结构开始-->
-    <div id="app" class="mui-views">
-      <div class="mui-view">
-        <div class="mui-navbar">
-        </div>
-        <div class="mui-pages">
+	<body class="body-padding-mini">
+		<!--页面主结构开始-->
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
 
-    	  <nav class="mui-bar bbc-bar-tab submit-bottom-div">
-    	  	<div class="submit-bottom-div-flex submit-bottom-div-flex-span">合计<span id="op_all_payment" class="submit-bottom-div-flex-color">￥11797.62</span></div>
-    	  	<div class="submit-bottom-div-flex submit-bottom-button1">继续购物</div>
-    	  	<div id="create_trade" class="submit-bottom-div-flex submit-bottom-button2">提交订单</div>
-					<!--<div class="submit-bottom-button1">去付款</div>
+					<nav class="mui-bar bbc-bar-tab submit-bottom-div">
+						<div class="submit-bottom-div-flex submit-bottom-div-flex-span">合计<span id="op_all_payment" class="submit-bottom-div-flex-color"></span></div>
+						<div class="submit-bottom-div-flex submit-bottom-button1">继续购物</div>
+						<div id="create_trade" class="submit-bottom-div-flex submit-bottom-button2">提交订单</div>
+						<!--<div class="submit-bottom-button1">去付款</div>
 					<div class="submit-bottom-button2">取消订单</div>-->
-				</nav>
-      </div>
-    </div>
-    <!--页面主结构结束-->
+					</nav>
+				</div>
+			</div>
+			<!--页面主结构结束-->
 
-    <div id="settle" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">订单结算</h1>
-      </div>
-<!--      <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<div id="settle" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center" style="background: #d92e2e;">
+					<a class="mui-action-back mui-pull-left back-left">
+						<img class="back_img" src="../../img/item/back_arrow.png" />
+					</a>
+					<h1 class="mui-center mui-title head-font">订单结算</h1>
+					<a class="message_size">
+						<img class="message_img" src="../../img/category/message.png" />
+					</a>
+				</div>
+				<!--      <header class="mui-bar mui-bar-nav mui-bar-backcolor">
       	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
 		    <div class="child_1 category_size"><span class="title_span">订单结算</span></div>  
 		    <div id="cart_edit" class="child search_size"><img class="message_img" src="../../img/category/message.png" /></div>  
       </header>-->
-      <div class="mui-page-content">
-        <div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-tip">亲，暂无数据～</div></div></div>
-      </div>
-    </div>
-
-    <div id="address" class="mui-page lazyload">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title" style="margin-left: 25px !important;">选择收货地址</h1>
-        <button id="address_add" class="mui-btn mui-btn-link mui-pull-right">添加</button>
-      </div>
-      <div class="mui-page-content" id="address_content">
-      </div>
-    </div>
-
-    <div id="goods" class="mui-page lazyload">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">商品清单</h1>
-      </div>
-      <div class="mui-page-content" id="goods_content">
-      </div>
-    </div>
-
-    <div id="pick" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">选择自提点</h1>
-      </div>
-      <div class="mui-page-content" id="pick_content">
-      </div>
-    </div>
-
-    <div id="coupon" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">使用优惠券</h1>
-      </div>
-      <div class="mui-page-content" id="coupons_content">
-      </div>
-    </div>
-
-    <div id="invoice" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">发票信息</h1>
-      </div>
-      <div class="mui-page-content" id="invoice_content">
-      </div>
-    </div>
-
-    <div id="voucher" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">使用优惠券</h1>
-      </div>
-      <div class="mui-page-content" id="voucher_content">
-      </div>
-    </div>
-  </body>
-
-  <script src="../../js/zepto.js"></script>
-  <script src="../../js/mui.min.js"></script>
-  <script src="../../js/mui.view.js"></script>
-  <script src="../../js/template.min.js"></script>
-  <script src="../../config.js"></script>
-  <script src="../../js/app.js"></script>
-  
-  <script type="text/html" id="checkout_content_new">
-  	<div class="mui-scroll-wrapper">
-			<section class="act-address-detail">
-	  	<input type="hidden" id="md5" value="<%= md5_cart_info %>">
-	  	<a href="#address">
-		  	<% if(default_address){ %>
-				<div class="address_part">
-		    	<div class="address_part_left">
-		    		<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
-		    	</div>
-		    	<div class="address_part_center">
-		    		<div class="address_part_center_top">
-		    			<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
-		    			<input type="hidden" class="op-address" value="<% if(default_address!=null){ %><%= default_address.addr_id %><%}%>">
-	            <input type="hidden" name="default_addr_regionid" value="<%= default_address.area_id %>" />
-		    			<div id="addr_user" class="address_part_center_top_left"><%=default_address.name%></div>
-		    			<div id="addr_mobile" class="address_part_center_top_right"><%=default_address.mobile%></div>
-		    		</div>
-		    		<div id="addr_detail" class="address_part_center_bottom"><%=default_address.area%>-<%=default_address.addr%></div>
-		    	</div>
-		    	<div class="address_part_right">
-		    		<img class="check-right-img" src="../../img/orderdetail/right.png" />
-		    	</div>
-		   	</div>
-		   	<%}else{%>
-		    <i class="bbc-icon bbc-icon-location-gap"></i>
-		    <div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
-		    <input type="hidden" class="op-address" value="">
-		    <input type="hidden" name="default_addr_regionid" value="" />
-		    <div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
-		      <div class="receiver-user">
-		        <div id="addr_user" class="receiver-name"></div>
-		      </div>
-		      <div id="addr_detail" class="add-detail"></div>
-		    </div>
-		   	<% } %>
-	   	</a>
-			<div class="kind-select">
-				<input type="hidden" name="pay_type" class="op-pay-type" value="<%=payType.pay_type %>">
-	    	<div data-kind='1' class="mui-input-row mui-radio mui-left">
-					<label data-kind='1' class="radio-text">现金预存款支付</label>
-					<input data-kind='1' name="radio1" type="radio" checked="checked" value="1">
-				</div>
-				<div data-kind='2' class="mui-input-row mui-radio mui-left">
-					<label data-kind='1' class="radio-text">承兑预存款支付</label>
-					<input data-kind='2' name="radio1" type="radio" value="2">
+				<div class="mui-page-content">
+					<div class="nodata-wrapper">
+						<div class="nodata-layout">
+							<div class="nodata-tip">亲，暂无数据～</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<% for(var i in cartInfo.resultCartData){ %>
-			<div class="goods_detail">
-	   		<div class="goods_shop">
-	   			<%=cartInfo.resultCartData[i].shop_name%>
-	   		</div>
-	   		<% for(var j in cartInfo.resultCartData[i].object){ %>
-	   		<div class="goods_memo">
-	   			<div class="goods_xq">
-	   				<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-<%=cartInfo.resultCartData[i].object[j].pm_name%> <%=cartInfo.resultCartData[i].object[j].guige%>　<%=cartInfo.resultCartData[i].object[j].quantity%>吨  
-	   			</div>
-	   			<div class="goods_address">
-	   				<%=cartInfo.resultCartData[i].object[j].storage_name%>
-	   			</div>
-	   		</div>
-	   		<div class="goods_price">
-	   			<div class="goods_price_detail">
-	   				现金价：￥<%=cartInfo.resultCartData[i].object[j].price.total_price%>　承兑价：￥<%=cartInfo.resultCartData[i].object[j].price_accept.total_price%>
-	   			</div>
-	   		</div>
-	   		<%}%>
-	<!--   		<div class="goods_info_detail">
+
+			<div id="address" class="mui-page lazyload">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+					<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+					<h1 class="mui-center mui-title" style="margin-left: 25px !important;">选择收货地址</h1>
+					<button id="address_add" class="mui-btn mui-btn-link mui-pull-right">添加</button>
+				</div>
+				<div class="mui-page-content" id="address_content">
+				</div>
+			</div>
+
+			<div id="goods" class="mui-page lazyload">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+					<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+					<h1 class="mui-center mui-title">商品清单</h1>
+				</div>
+				<div class="mui-page-content" id="goods_content">
+				</div>
+			</div>
+
+			<div id="pick" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+					<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+					<h1 class="mui-center mui-title">选择自提点</h1>
+				</div>
+				<div class="mui-page-content" id="pick_content">
+				</div>
+			</div>
+
+			<div id="coupon" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+					<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+					<h1 class="mui-center mui-title">使用优惠券</h1>
+				</div>
+				<div class="mui-page-content" id="coupons_content">
+				</div>
+			</div>
+
+			<div id="invoice" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center" style="background: #d92e2e;">
+					<a class="mui-action-back mui-pull-left back-left">
+						<img class="back_img" src="../../img/item/back_arrow.png" />
+					</a>
+					<h1 class="mui-center mui-title head-font">发票信息</h1>
+					<a class="message_size">
+						<img class="message_img" src="../../img/category/message.png" />
+					</a>
+				</div>
+				<div class="mui-page-content" id="invoice_content">
+				</div>
+			</div>
+
+			<div id="voucher" class="mui-page">
+				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+					<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+					<h1 class="mui-center mui-title">使用优惠券</h1>
+				</div>
+				<div class="mui-page-content" id="voucher_content">
+				</div>
+			</div>
+	</body>
+
+	<script src="../../js/zepto.js"></script>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/mui.view.js"></script>
+	<script src="../../js/template.min.js"></script>
+	<script src="../../config.js"></script>
+	<script src="../../js/app.js"></script>
+
+	<script type="text/html" id="checkout_content_new">
+		<div class="mui-scroll-wrapper">
+			<section class="act-address-detail">
+				<input type="hidden" id="md5" value="<%= md5_cart_info %>">
+				<a href="#address">
+					<% if(default_address){ %>
+					<div class="address_part">
+						<div class="address_part_left">
+							<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
+						</div>
+						<div class="address_part_center">
+							<div class="address_part_center_top">
+								<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"
+									<% }else{ %>style="display: none;"
+									<% } %>>请设置您的地址</div>
+								<input type="hidden" class="op-address" value="<% if(default_address!=null){ %><%= default_address.addr_id %><%}%>">
+								<input type="hidden" name="default_addr_regionid" value="<%= default_address.area_id %>" />
+								<div id="addr_user" class="address_part_center_top_left">
+									<%=default_address.name%>
+								</div>
+								<div id="addr_mobile" class="address_part_center_top_right">
+									<%=default_address.mobile%>
+								</div>
+							</div>
+							<div id="addr_detail" class="address_part_center_bottom">
+								<%=default_address.area%>-
+								<%=default_address.addr%>
+							</div>
+						</div>
+						<div class="address_part_right">
+							<img class="check-right-img" src="../../img/orderdetail/right.png" />
+						</div>
+					</div>
+					<%}else{%>
+					<i class="bbc-icon bbc-icon-location-gap"></i>
+					<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"
+						<% }else{ %>style="display: none;"
+						<% } %>>请设置您的地址</div>
+					<input type="hidden" class="op-address" value="">
+					<input type="hidden" name="default_addr_regionid" value="" />
+					<div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
+						<div class="receiver-user">
+							<div id="addr_user" class="receiver-name"></div>
+						</div>
+						<div id="addr_detail" class="add-detail"></div>
+					</div>
+					<% } %>
+				</a>
+				<div class="kind-select">
+					<input type="hidden" name="pay_type" class="op-pay-type" value="<%=payType.pay_type %>">
+					<div data-kind='1' class="mui-input-row mui-radio mui-left">
+						<label data-kind='1' class="radio-text">现金预存款支付</label>
+						<input data-kind='1' name="radio1" type="radio" checked="checked" value="1">
+					</div>
+					<div data-kind='2' class="mui-input-row mui-radio mui-left">
+						<label data-kind='1' class="radio-text">承兑预存款支付</label>
+						<input data-kind='2' name="radio1" type="radio" value="2">
+					</div>
+				</div>
+				<% for(var i in cartInfo.resultCartData){ %>
+				<div class="goods_detail">
+					<div class="goods_shop">
+						<%=cartInfo.resultCartData[i].shop_name%>
+					</div>
+					<% for(var j in cartInfo.resultCartData[i].object){ %>
+					<div class="goods_memo">
+						<div class="goods_xq">
+							<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-
+							<%=cartInfo.resultCartData[i].object[j].pm_name%>
+							<%=cartInfo.resultCartData[i].object[j].guige%>
+							<%=cartInfo.resultCartData[i].object[j].quantity%>吨
+						</div>
+						<div class="goods_address">
+							<%=cartInfo.resultCartData[i].object[j].storage_name%>
+						</div>
+					</div>
+					<div class="goods_price">
+						<div class="goods_price_detail">
+							现金价：￥
+							<%=cartInfo.resultCartData[i].object[j].price.total_price%>　承兑价：￥
+							<%=cartInfo.resultCartData[i].object[j].price_accept.total_price%>
+						</div>
+					</div>
+					<%}%>
+					<div class="goods_info_detail">
 	   			<div class="goods_info_detail_type">开票信息</div>
 	   			<div class="goods_info_detail_type">
 	   				<div class="goods_info_detail_type_text">增值税发票</div>
@@ -621,576 +703,588 @@
 	   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
 	   				</div>
 	   			</div>
-	   		</div>-->
-	   		<% if(cartInfo.resultCartData[i].couponlist!=null){ %>
-	   		<div class="goods_info_detail">
-	   			<div class="goods_info_detail_type">优惠券</div>
-	   			<div class="goods_info_detail_type">
-	   				<div class="goods_info_detail_type_text">不使用</div>
-	   				<div class="goods_info_detail_type_img">
-	   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
-	   				</div>
-	   			</div>
 	   		</div>
-	   		<%}%>
-	   		<div class="goods_info_detail">
-		   		<div class="mui-input-row input-div">
-			        <label class="input-text">买家留言：</label>
-			        <div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark"  placeholder="本次交易补充说明"></div>
-			        <!--<input type="text" class="">-->
-			    </div>
-		    </div>
-	   	</div>
-	   	<div class="goods_order">
-	   		<div class="goods_order_left">
-	   			　
-	   		</div>
-	   		<div class="goods_order_right">
-	   			<div class="goods_order_right_detail">
-	   				<div class="goods_order_right_memo">
-	   					商品数量小计：
-	   				</div>
-	   				<div class="goods_order_right_price">
-	   					<span class="goods_order_right_price_font">共计</span><%=cartInfo.resultCartData[i].cartCount.itemnum%><span class="goods_order_right_price_font">吨</span>
-	   				</div>
-	   			</div>
-	   			<div class="goods_order_right_detail">
-	   				<div class="goods_order_right_memo">
-	   					运费：
-	   				</div>
-	   				<div class="goods_order_right_price">
-	   					￥0
-	   				</div>
-	   			</div>
-	   			<div class="goods_order_right_detail">
-	   				<div class="goods_order_right_memo">
-	   					商品现金总金额：
-	   				</div>
-	   				<div class="goods_order_right_price">
-	   					￥<%=cartInfo.resultCartData[i].cartCount.total_fee%>
-	   				</div>
-	   			</div>
-	   			<div class="goods_order_right_detail">
-	   				<div class="goods_order_right_memo">
-	   					商品承兑总金额：
-	   				</div>
-	   				<div class="goods_order_right_price">
-	   					￥<%=cartInfo.resultCartData[i].cartCount.total_accept_fee%>
-	   				</div>
-	   			</div>
-	   		</div>
-	   	</div>
-			<% } %>
-			<div class="space">
-				&nbsp;
-			</div>
-			<section class="mui-input-group integral-use">
-			  <section class="section-white">
-			    <ul class="function-list">
-			      <li class="mui-table-view-cell">
-			        <a href="#invoice" class="mui-navigate-right act-invoice-detail">
-			          <div class="mui-table">
-			            <div class="mui-table-cell mui-col-xs-3">发票信息：</div>
-			            <input type="hidden" id="op_need_invoice" value="0">
-			            <input type="hidden" name="" id="op_invoice_type" value="notuse">
-			            <input type="hidden" id="op_invoice_title" value="" />
-			            <div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
-			          </div>
-			        </a>
-			      </li>
-			    </ul>
-			  </section>
+					<% if(cartInfo.resultCartData[i].couponlist!=null){ %>
+					<div class="goods_info_detail">
+						<div class="goods_info_detail_type">优惠券</div>
+						<div class="goods_info_detail_type">
+							<div class="goods_info_detail_type_text">不使用</div>
+							<div class="goods_info_detail_type_img">
+								<img class="check-right-img" src="../../img/orderdetail/right.png" />
+							</div>
+						</div>
+					</div>
+					<%}%>
+					<div class="goods_info_detail">
+						<div class="mui-input-row input-div">
+							<label class="input-text">买家留言：</label>
+							<div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark" placeholder="本次交易补充说明"></div>
+							<!--<input type="text" class="">-->
+						</div>
+					</div>
+				</div>
+				<div class="goods_order">
+					<div class="goods_order_left">
+
+					</div>
+					<div class="goods_order_right">
+						<div class="goods_order_right_detail">
+							<div class="goods_order_right_memo">
+								商品数量小计：
+							</div>
+							<div class="goods_order_right_price">
+								<span class="goods_order_right_price_font">共计</span>
+								<%=cartInfo.resultCartData[i].cartCount.itemnum%><span class="goods_order_right_price_font">吨</span>
+							</div>
+						</div>
+						<div class="goods_order_right_detail">
+							<div class="goods_order_right_memo">
+								运费：
+							</div>
+							<div class="goods_order_right_price">
+								￥0
+							</div>
+						</div>
+						<div class="goods_order_right_detail">
+							<div class="goods_order_right_memo">
+								商品现金总金额：
+							</div>
+							<div class="goods_order_right_price">
+								￥
+								<%=cartInfo.resultCartData[i].cartCount.total_fee%>
+							</div>
+						</div>
+						<div class="goods_order_right_detail">
+							<div class="goods_order_right_memo">
+								商品承兑总金额：
+							</div>
+							<div class="goods_order_right_price">
+								￥
+								<%=cartInfo.resultCartData[i].cartCount.total_accept_fee%>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% } %>
+				<div class="space">
+					&nbsp;
+				</div>
+				<section class="mui-input-group integral-use">
+					<section class="section-white">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#invoice" class="mui-navigate-right act-invoice-detail">
+									<div class="mui-table">
+										<div class="mui-table-cell mui-col-xs-3">发票信息：</div>
+										<input type="hidden" id="op_need_invoice" value="0">
+										<input type="hidden" name="" id="op_invoice_type" value="notuse">
+										<input type="hidden" id="op_invoice_title" value="" />
+										<div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</section>
 			</section>
-		</section>
 
 		</div>
-  </script>
+	</script>
 
-  <script type="text/html" id="checkout_content">
-    <input type="hidden" id="md5" value="<%= md5_cart_info %>">
-    <div class="mui-scroll-wrapper has-footer">
-      <div class="mui-scroll">
-        <section class="section-white act-address-detail">
-          <ul>
-            <li class="mui-table-view-cell">
-              <a href="#address">
-                <div class="receiver-info mui-navigate-right">
-                  <% if(default_address){ %>
-                  <i class="bbc-icon bbc-icon-location-gap"></i>
-                  <div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
-                  <input type="hidden" class="op-address" value="<% if(default_address!=null){ %><%= default_address.addr_id %><%}%>">
-                  <input type="hidden" name="default_addr_regionid" value="<%= default_address.area_id %>" />
-                  <div id="hasadd" class="receiver-info-item has-arrow" <% if(default_address==null){ %> style="display: none;"<% }else{ %>style="display: block;"<% } %>>
-                    <div class="receiver-user">
-                      <div id="addr_user" class="receiver-name">
-                        <% if(default_address!=null){ %>
-                          <%= default_address.name %>&nbsp;
-                          <%= default_address.mobile %>
-                        <% } %>
-                      </div>
-                    </div>
-                    <div id="addr_detail" class="add-detail">
-                      <% if(default_address!=null){ %>
-                        <%= default_address.area %>
-                        <%= default_address.addr %>
-                      <% } %>
-                    </div>
-                  </div>
-                  <%}else{%>
-                    <i class="bbc-icon bbc-icon-location-gap"></i>
-                    <div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"<% }else{ %>style="display: none;"<% } %>>请设置您的地址</div>
-                    <input type="hidden" class="op-address" value="">
-                    <input type="hidden" name="default_addr_regionid" value="" />
-                    <div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
-                      <div class="receiver-user">
-                        <div id="addr_user" class="receiver-name"></div>
-                      </div>
-                      <div id="addr_detail" class="add-detail"></div>
-                    </div>
-                  <% } %>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="mui-input-group payment" id="op_payment">
-          <section class="section-white">
-            <ul class="function-list">
-              <li class="mui-table-view-cell">
-                <a href="#payment" class="mui-navigate-right">
-                  <div class="mui-table">
-                    <input type="hidden" name="pay_type" class="op-pay-type" value="<%= payType.pay_type %>">
-                    <div class="mui-table-cell mui-col-xs-3 fontS">支付方式：</div>
-                    <div class="mui-table-cell mui-col-xs-9 mui-text-right op-pay-name">
-                      <%= payType.name %>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </section>
-        <% for(var i=0; i<cartInfo.resultCartData.length; i++){ %>
-        <section class="section-white checkout">
-          <div class="section-title">
-            <div class="title-txt fontS">
-              <div class="action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= cartInfo.resultCartData[i].shop_id %>}'>
-                <%= cartInfo.resultCartData[i].shop_name %> <i class="mui-icon mui-icon-arrowright"></i>
-              </div>
-            </div>
-          </div>
-          <ul class="mui-table-view function-list op-shop-info" data-shop-id="<%= cartInfo.resultCartData[i].shop_id %>" id="op_shop_<%= cartInfo.resultCartData[i].shop_id %>">
-            <li class="mui-table-view-cell act-goods-detail" data-response="<%= $json_string(cartInfo.resultCartData[i]) %>">
-              <a href="#goods" class="mui-navigate-right">
-                <div class="mui-table">
-                  <div class="mui-table-cell mui-col-xs-8">
-                    <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-                      <div class="mui-scroll">
-                        <% for(var j=0; j<cartInfo.resultCartData[i].items.length; j++){ %>
-                        <% if(cartInfo.resultCartData[i].items[j].obj_type == 'package'){ %>
-                        <% for(var n=0; n<cartInfo.resultCartData[i].items[j].skuList.length; n++){ %>
-                        <div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].skuList[n].image_default_id %>" alt=""></div>
-                        <% } %>
-                        <% }else{ %>
-                        <div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].image_default_id %>" alt=""></div>
-                        <% if(cartInfo.resultCartData[i].items[j].gift != null){ %>
-                        <% for(var m=0; m<cartInfo.resultCartData[i].items[j].gift.length; m++){ %>
-                        <div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].gift[m].image_default_id %>" alt=""></div>
-                        <% } %>
-                        <% } %>
-                        <% } %>
-                        <% } %>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mui-table-cell mui-col-xs-2 mui-text-right">共
-                    <%= cartInfo.resultCartData[i].totalItem %>件</div>
-                </div>
-              </a>
-            </li>
-            <li class="mui-table-view-cell">
-              <a href="#shipping" rel="<%= cartInfo.resultCartData[i].shop_id %>" data-ziti="<%= $json_string(cartInfo.resultCartData[i].ziti) %>" class="act-shipping-detail mui-navigate-right">
-                <div class="mui-table">
-                  <div class="mui-table-cell mui-col-xs-3">配送方式:</div>
-                  <div class="mui-table-cell mui-col-xs-9 mui-text-right">
-                    <input type="hidden" name="shipping[<%= cartInfo.resultCartData[i].shop_id %>][shipping_type]" class="op-shipping-id" value="<%= cartInfo.resultCartData[i].shipping.shipping_type %>">
-                    <input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_id]" class="op-ziti-id" value="">
-                    <input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_addr]" class="op-ziti-addr" value="">
-                    <input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_name]" class="op-ziti-name" value="">
-                    <p class="op-shipping-name">快递配送</p>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <% if(cartInfo.resultCartData[i].couponlist!=null){ %>
-            <li class="mui-table-view-cell">
-              <a href="#coupon" rel="<%= cartInfo.resultCartData[i].shop_id %>" class="mui-navigate-right act-coupons-detail" data-response="<%= $json_string(cartInfo.resultCartData[i]) %>">
-                <div class="mui-table">
-                  <div class="mui-table-cell mui-col-xs-4">优惠券：</div>
-                  <input type="hidden" value="-1" class="op-coupon-code">
-                  <div class="mui-table-cell mui-col-xs-4 mui-text-right op-coupon-name">不使用优惠券</div>
-                </div>
-              </a>
-            </li>
-            <% } %>
-            <li class="mui-table-view-cell">
-              <div class="mui-table">
-                <div class="mui-table-cell mui-col-xs-3">买家留言：</div>
-                <div class="mui-table-cell mui-col-xs-7">
-                  <div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark" name="mark" placeholder="买家留言"></div>
-                </div>
-              </div>
-            </li>
-            <li class="mui-table-view-cell">
-              <div class="mui-table">
-                <div class="mui-table-cell mui-col-xs-6"></div>
-                <div class="mui-table-cell mui-col-xs-6">
-                  <dl class="checkout-fee">
-                    <dt>合计：</dt>
-                    <dd class="op-total total">
-                    <%= $format_price(cartInfo.resultCartData[i].cartCount.total_fee) %>
-                    </dd>
-                    <dt>减免：</dt>
-                    <dd>-
-                    <span class="op-discount"><%= $format_price(cartInfo.resultCartData[i].cartCount.total_discount) %></span>
-                    </dd>
-                    <dt>运费：</dt>
-                    <dd class="op-post">
-                    <%= $format_price(cartInfo.resultCartData[i].cartCount.post_fee) %>
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </section>
-        <% } %>
-        <section class="mui-input-group integral-use">
-          <section class="section-white">
-            <ul class="function-list">
-              <li class="mui-table-view-cell">
-                <a href="#invoice" class="mui-navigate-right act-invoice-detail">
-                  <div class="mui-table">
-                    <div class="mui-table-cell mui-col-xs-3">发票信息：</div>
-                    <input type="hidden" id="op_need_invoice" value="0">
-                    <input type="hidden" name="" id="op_invoice_type" value="notuse">
-                    <input type="hidden" id="op_invoice_title" value="" />
-                    <div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </section>
+	<script type="text/html" id="checkout_content">
+		<input type="hidden" id="md5" value="<%= md5_cart_info %>">
+		<div class="mui-scroll-wrapper has-footer">
+			<div class="mui-scroll">
+				<section class="section-white act-address-detail">
+					<ul>
+						<li class="mui-table-view-cell">
+							<a href="#address">
+								<div class="receiver-info mui-navigate-right">
+									<% if(default_address){ %>
+									<i class="bbc-icon bbc-icon-location-gap"></i>
+									<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"
+										<% }else{ %>style="display: none;"
+										<% } %>>请设置您的地址</div>
+									<input type="hidden" class="op-address" value="<% if(default_address!=null){ %><%= default_address.addr_id %><%}%>">
+									<input type="hidden" name="default_addr_regionid" value="<%= default_address.area_id %>" />
+									<div id="hasadd" class="receiver-info-item has-arrow" <% if(default_address==null){ %> style="display: none;"
+										<% }else{ %>style="display: block;"
+										<% } %>>
+										<div class="receiver-user">
+											<div id="addr_user" class="receiver-name">
+												<% if(default_address!=null){ %>
+												<%= default_address.name %>&nbsp;
+												<%= default_address.mobile %>
+												<% } %>
+											</div>
+										</div>
+										<div id="addr_detail" class="add-detail">
+											<% if(default_address!=null){ %>
+											<%= default_address.area %>
+											<%= default_address.addr %>
+											<% } %>
+										</div>
+									</div>
+									<%}else{%>
+									<i class="bbc-icon bbc-icon-location-gap"></i>
+									<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"
+										<% }else{ %>style="display: none;"
+										<% } %>>请设置您的地址</div>
+									<input type="hidden" class="op-address" value="">
+									<input type="hidden" name="default_addr_regionid" value="" />
+									<div id="hasadd" class="receiver-info-item has-arrow" style="display: none;">
+										<div class="receiver-user">
+											<div id="addr_user" class="receiver-name"></div>
+										</div>
+										<div id="addr_detail" class="add-detail"></div>
+									</div>
+									<% } %>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section class="mui-input-group payment" id="op_payment">
+					<section class="section-white">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#payment" class="mui-navigate-right">
+									<div class="mui-table">
+										<input type="hidden" name="pay_type" class="op-pay-type" value="<%= payType.pay_type %>">
+										<div class="mui-table-cell mui-col-xs-3 fontS">支付方式：</div>
+										<div class="mui-table-cell mui-col-xs-9 mui-text-right op-pay-name">
+											<%= payType.name %>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</section>
+				<% for(var i=0; i<cartInfo.resultCartData.length; i++){ %>
+				<section class="section-white checkout">
+					<div class="section-title">
+						<div class="title-txt fontS">
+							<div class="action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= cartInfo.resultCartData[i].shop_id %>}'>
+								<%= cartInfo.resultCartData[i].shop_name %> <i class="mui-icon mui-icon-arrowright"></i>
+							</div>
+						</div>
+					</div>
+					<ul class="mui-table-view function-list op-shop-info" data-shop-id="<%= cartInfo.resultCartData[i].shop_id %>" id="op_shop_<%= cartInfo.resultCartData[i].shop_id %>">
+						<li class="mui-table-view-cell act-goods-detail" data-response="<%= $json_string(cartInfo.resultCartData[i]) %>">
+							<a href="#goods" class="mui-navigate-right">
+								<div class="mui-table">
+									<div class="mui-table-cell mui-col-xs-8">
+										<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+											<div class="mui-scroll">
+												<% for(var j=0; j<cartInfo.resultCartData[i].items.length; j++){ %>
+												<% if(cartInfo.resultCartData[i].items[j].obj_type == 'package'){ %>
+												<% for(var n=0; n<cartInfo.resultCartData[i].items[j].skuList.length; n++){ %>
+												<div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].skuList[n].image_default_id %>" alt=""></div>
+												<% } %>
+												<% }else{ %>
+												<div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].image_default_id %>" alt=""></div>
+												<% if(cartInfo.resultCartData[i].items[j].gift != null){ %>
+												<% for(var m=0; m<cartInfo.resultCartData[i].items[j].gift.length; m++){ %>
+												<div class="mui-control-item"><img src="<%= cartInfo.resultCartData[i].items[j].gift[m].image_default_id %>" alt=""></div>
+												<% } %>
+												<% } %>
+												<% } %>
+												<% } %>
+											</div>
+										</div>
+									</div>
+									<div class="mui-table-cell mui-col-xs-2 mui-text-right">共
+										<%= cartInfo.resultCartData[i].totalItem %>件</div>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a href="#shipping" rel="<%= cartInfo.resultCartData[i].shop_id %>" data-ziti="<%= $json_string(cartInfo.resultCartData[i].ziti) %>" class="act-shipping-detail mui-navigate-right">
+								<div class="mui-table">
+									<div class="mui-table-cell mui-col-xs-3">配送方式:</div>
+									<div class="mui-table-cell mui-col-xs-9 mui-text-right">
+										<input type="hidden" name="shipping[<%= cartInfo.resultCartData[i].shop_id %>][shipping_type]" class="op-shipping-id" value="<%= cartInfo.resultCartData[i].shipping.shipping_type %>">
+										<input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_id]" class="op-ziti-id" value="">
+										<input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_addr]" class="op-ziti-addr" value="">
+										<input type="hidden" name="ziti[<%= cartInfo.resultCartData[i].shop_id %>][ziti_name]" class="op-ziti-name" value="">
+										<p class="op-shipping-name">快递配送</p>
+									</div>
+								</div>
+							</a>
+						</li>
+						<% if(cartInfo.resultCartData[i].couponlist!=null){ %>
+						<li class="mui-table-view-cell">
+							<a href="#coupon" rel="<%= cartInfo.resultCartData[i].shop_id %>" class="mui-navigate-right act-coupons-detail" data-response="<%= $json_string(cartInfo.resultCartData[i]) %>">
+								<div class="mui-table">
+									<div class="mui-table-cell mui-col-xs-4">优惠券：</div>
+									<input type="hidden" value="-1" class="op-coupon-code">
+									<div class="mui-table-cell mui-col-xs-4 mui-text-right op-coupon-name">不使用优惠券</div>
+								</div>
+							</a>
+						</li>
+						<% } %>
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-col-xs-3">买家留言：</div>
+								<div class="mui-table-cell mui-col-xs-7">
+									<div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark" name="mark" placeholder="买家留言"></div>
+								</div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell mui-col-xs-6"></div>
+								<div class="mui-table-cell mui-col-xs-6">
+									<dl class="checkout-fee">
+										<dt>合计：</dt>
+										<dd class="op-total total">
+											<%= $format_price(cartInfo.resultCartData[i].cartCount.total_fee) %>
+										</dd>
+										<dt>减免：</dt>
+										<dd>-
+											<span class="op-discount"><%= $format_price(cartInfo.resultCartData[i].cartCount.total_discount) %></span>
+										</dd>
+										<dt>运费：</dt>
+										<dd class="op-post">
+											<%= $format_price(cartInfo.resultCartData[i].cartCount.post_fee) %>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<% } %>
+				<section class="mui-input-group integral-use">
+					<section class="section-white">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#invoice" class="mui-navigate-right act-invoice-detail">
+									<div class="mui-table">
+										<div class="mui-table-cell mui-col-xs-3">发票信息：</div>
+										<input type="hidden" id="op_need_invoice" value="0">
+										<input type="hidden" name="" id="op_invoice_type" value="notuse">
+										<input type="hidden" id="op_invoice_title" value="" />
+										<div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</section>
 
-        <% if(userPoint && userPoint.open_point_deduction==1){ %>
-        <section class="mui-input-group integral-use">
-          <div class="mui-input-row mui-checkbox mui-left bbc-checkbox">
-            <input id="for_point" value="" type="checkbox">
-            <label for="for_point">积分抵扣：<span class="canuser-point">可用积分：<em id="op_left_point">0</em>, 抵扣 <em id="op_deduct_point">0</em></span></label>
-          </div>
-        </section>
-        <% } %>
-        <section class="mui-input-group integral-use">
-             <section class="section-white">
-              <ul class="function-list">
-                <li class="mui-table-view-cell" >
-                  <a href="#voucher" class="mui-navigate-right act-voucher-detail " data-catitemPrice="<%= $json_string(cartInfo.catItemPrice) %>">
-                    <div class="mui-table">
-                      <div class="mui-table-cell shopex-col-xs-3">购物券：</div>
-                      <div class="mui-table-cell mui-col-xs-9 mui-text-right op-voucher-name" id="op_voucher_name">不使用</div>
-                      <input type="hidden" name="voucherid" class="op-voucher-code">
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </section>
-        </section>
+				<% if(userPoint && userPoint.open_point_deduction==1){ %>
+				<section class="mui-input-group integral-use">
+					<div class="mui-input-row mui-checkbox mui-left bbc-checkbox">
+						<input id="for_point" value="" type="checkbox">
+						<label for="for_point">积分抵扣：<span class="canuser-point">可用积分：<em id="op_left_point">0</em>, 抵扣 <em id="op_deduct_point">0</em></span></label>
+					</div>
+				</section>
+				<% } %>
+				<section class="mui-input-group integral-use">
+					<section class="section-white">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#voucher" class="mui-navigate-right act-voucher-detail " data-catitemPrice="<%= $json_string(cartInfo.catItemPrice) %>">
+									<div class="mui-table">
+										<div class="mui-table-cell shopex-col-xs-3">购物券：</div>
+										<div class="mui-table-cell mui-col-xs-9 mui-text-right op-voucher-name" id="op_voucher_name">不使用</div>
+										<input type="hidden" name="voucherid" class="op-voucher-code">
+									</div>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</section>
 
-      </div>
-    </div>
-    <section class="action-bar-mini">
-      <div class="action-bar-op-item">
-        <div class="action-bar-op-info cart-list-total">
-          <div class="font-gray-40 fontS">合计: <mark class="fontm" id="op_all_payment"><%= $format_price(total.allPayment) %></mark></div>
-        </div>
-        <div id="create_trade" class="action-bar-op-btn">结算</div>
-      </div>
-    </section>
-    <div id="payment" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">支付方式</h1>
-      </div>
-      <div class="mui-page-content">
-        <form id="form_delivery">
-          <div class="mui-input-group">
-            <div class="mui-input-row mui-radio bbc-radio <% if(payType.pay_type == " online "){ %>active<% } %>">
-              <label for="for_payment_online"><%= payType.name %></label>
-              <input type="radio" id="for_payment_online" name="payment_type" class="op-choose-payment" value="online" <% if(payType.pay_type=="online" ){ %>checked
-              <% } %>>
-            </div>
-            <div class="mui-input-row mui-radio bbc-radio <{if $payType.pay_type == 'offline'}>active<{/if}>">
-              <% if(isSelfShop && ifOpenOffline){ %>
-              <label for="for_payment_offline">货到付款</label>
-              <input type="radio" id="for_payment_offline" name="payment_type" class="op-choose-payment" value="offline" <% if(payType.pay_type=="offline" ){ %>checked
-              <% } %>>
-              <% } %>
-            </div>
-          </div>
-          <footer class="action-bar-mini">
-            <button type="button" class="action-bar-op-btn mui-left mui-action-back act-ok">确定</button>
-          </footer>
-        </form>
-      </div>
-    </div>
+			</div>
+		</div>
+		<section class="action-bar-mini">
+			<div class="action-bar-op-item">
+				<div class="action-bar-op-info cart-list-total">
+					<div class="font-gray-40 fontS">合计: <mark class="fontm" id="op_all_payment"><%= $format_price(total.allPayment) %></mark></div>
+				</div>
+				<div id="create_trade" class="action-bar-op-btn">结算</div>
+			</div>
+		</section>
+		<div id="payment" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+				<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+				<h1 class="mui-center mui-title">支付方式</h1>
+			</div>
+			<div class="mui-page-content">
+				<form id="form_delivery">
+					<div class="mui-input-group">
+						<div class="mui-input-row mui-radio bbc-radio <% if(payType.pay_type == " online "){ %>active<% } %>">
+							<label for="for_payment_online"><%= payType.name %></label>
+							<input type="radio" id="for_payment_online" name="payment_type" class="op-choose-payment" value="online" <% if(payType.pay_type=="online" ){ %>checked
+							<% } %>>
+						</div>
+						<div class="mui-input-row mui-radio bbc-radio <{if $payType.pay_type == 'offline'}>active<{/if}>">
+							<% if(isSelfShop && ifOpenOffline){ %>
+							<label for="for_payment_offline">货到付款</label>
+							<input type="radio" id="for_payment_offline" name="payment_type" class="op-choose-payment" value="offline" <% if(payType.pay_type=="offline" ){ %>checked
+							<% } %>>
+							<% } %>
+						</div>
+					</div>
+					<footer class="action-bar-mini">
+						<button type="button" class="action-bar-op-btn mui-left mui-action-back act-ok">确定</button>
+					</footer>
+				</form>
+			</div>
+		</div>
 
-    <div id="shipping" class="mui-page">
-      <div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
-        <i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
-        <h1 class="mui-center mui-title">配送方式</h1>
-      </div>
-      <div class="mui-page-content">
-        <form id="form_delivery">
-          <div class="mui-input-group">
-            <div class="mui-input-row mui-radio bbc-radio active">
-              <label for="for_shipping_ps">快递配送</label>
-              <input type="radio" id="for_shipping_ps" name="shipping-type" class="op-shipping-type" value="express" checked>
-            </div>
-            <div class="mui-input-row mui-radio bbc-radio shipping-ziti" style="display: none;">
-              <label for="for_shipping_zt">上门自提</label>
-              <input type="radio" id="for_shipping_zt" name="shipping-type" class="op-shipping-type" value="ziti">
-            </div>
-          </div>
-          <div id="ziti" class="mui-input-group" style="display: none;">
-            <ul class="function-list">
-              <li class="mui-table-view-cell">
-                <a href="#pick" class="mui-navigate-right act-pick-detail">
-                  <div class="mui-table">
-                    <input type="hidden" name="ziti[ziti_id]" id="op_pick_id">
-                    <input type="hidden" name="ziti[ziti_addr]" id="op_pick_addr">
-                    <input type="hidden" name="ziti[ziti_name]" id="op_pick_name">
-                    <div class="mui-table-cell">自提地点</div>
-                    <div class="mui-table-cell mui-text-right" id="op_choosen_pick">
-                     请选择自提点
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <footer class="action-bar-mini">
-            <button type="button" class="action-bar-op-btn mui-left mui-action-back act-ok">确定</button>
-          </footer>
-        </form>
-      </div>
-    </div>
-  </script>
+		<div id="shipping" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center">
+				<i class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left bbc-icon bbc-icon-back"></i>
+				<h1 class="mui-center mui-title">配送方式</h1>
+			</div>
+			<div class="mui-page-content">
+				<form id="form_delivery">
+					<div class="mui-input-group">
+						<div class="mui-input-row mui-radio bbc-radio active">
+							<label for="for_shipping_ps">快递配送</label>
+							<input type="radio" id="for_shipping_ps" name="shipping-type" class="op-shipping-type" value="express" checked>
+						</div>
+						<div class="mui-input-row mui-radio bbc-radio shipping-ziti" style="display: none;">
+							<label for="for_shipping_zt">上门自提</label>
+							<input type="radio" id="for_shipping_zt" name="shipping-type" class="op-shipping-type" value="ziti">
+						</div>
+					</div>
+					<div id="ziti" class="mui-input-group" style="display: none;">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#pick" class="mui-navigate-right act-pick-detail">
+									<div class="mui-table">
+										<input type="hidden" name="ziti[ziti_id]" id="op_pick_id">
+										<input type="hidden" name="ziti[ziti_addr]" id="op_pick_addr">
+										<input type="hidden" name="ziti[ziti_name]" id="op_pick_name">
+										<div class="mui-table-cell">自提地点</div>
+										<div class="mui-table-cell mui-text-right" id="op_choosen_pick">
+											请选择自提点
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<footer class="action-bar-mini">
+						<button type="button" class="action-bar-op-btn mui-left mui-action-back act-ok">确定</button>
+					</footer>
+				</form>
+			</div>
+		</div>
+	</script>
 
-  <script type="text/html" id="address_template">
-    <div class="mui-scroll-wrapper">
-      <div class="mui-scroll">
-        <ul class="section-white mui-table-view receiver-add-list">
-          <% if(list){ %>
-          <% for(var i in list) { %>
-          <li class="mui-table-view-cell" data-id="<%= list[i].addr_id %>" data-val="<%= $json_string(list[i]) %>">
-            <div class="mui-slider-right mui-disabled">
-              <a class="mui-btn mui-btn-grey action-set-default" data-action='确认设为默认吗？'>设为默认</a>
-              <a class="mui-btn mui-btn-yellow action-edit">编辑</a>
-              <a class="mui-btn mui-btn-red action-del" data-action='确认删除该地址吗？'>删除</a>
-            </div>
-            <div class="mui-slider-handle receiver-info default-active" data-region="<%= list[i].region_id %>">
-              <div class="receiver-info-item">
-                <div class="receiver-user font-gray-0 content-bottom-padded-mini" data-name="<%= list[i].name %>" data-mobile="<%= list[i].mobile %>">
-                  <%= list[i].name %>&nbsp;<%= list[i].mobile %>
-                </div>
-                <div class="add-detail">
-                  <%= list[i].addrdetail %>
-                </div>
-              </div>
-              <% if(list[i].def_addr=='1'){ %>
-              <div class="default-sign"><i class="bbc-icon bbc-icon-checked"></i>默认</div>
-              <% } %>
-            </div>
-          </li>
-          <% } %>
-          <% } %>
-        </ul>
-      </div>
-    </div>
-  </script>
+	<script type="text/html" id="address_template">
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="section-white mui-table-view receiver-add-list">
+					<% if(list){ %>
+					<% for(var i in list) { %>
+					<li class="mui-table-view-cell" data-id="<%= list[i].addr_id %>" data-val="<%= $json_string(list[i]) %>">
+						<div class="mui-slider-right mui-disabled">
+							<a class="mui-btn mui-btn-grey action-set-default" data-action='确认设为默认吗？'>设为默认</a>
+							<a class="mui-btn mui-btn-yellow action-edit">编辑</a>
+							<a class="mui-btn mui-btn-red action-del" data-action='确认删除该地址吗？'>删除</a>
+						</div>
+						<div class="mui-slider-handle receiver-info default-active" data-region="<%= list[i].region_id %>">
+							<div class="receiver-info-item">
+								<div class="receiver-user font-gray-0 content-bottom-padded-mini" data-name="<%= list[i].name %>" data-mobile="<%= list[i].mobile %>">
+									<%= list[i].name %>&nbsp;
+									<%= list[i].mobile %>
+								</div>
+								<div class="add-detail">
+									<%= list[i].addrdetail %>
+								</div>
+							</div>
+							<% if(list[i].def_addr=='1'){ %>
+							<div class="default-sign"><i class="bbc-icon bbc-icon-checked"></i>默认</div>
+							<% } %>
+						</div>
+					</li>
+					<% } %>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</script>
 
-  <script type="text/html" id="goods_template">
-    <div class="mui-scroll-wrapper">
-      <div class="mui-scroll">
-        <div class="section-white">
-          <% for(var i=0; i<items.length; i++) { %>
-          <ul class="order-goods-list content-bottom-padded-mini">
-            <% if(items[i].obj_type == 'item'){ %>
-            <li>
-              <div class="thumbnail">
-                <div class="thumb-detail">
-                  <div class="thumb-img">
-                    <a href="#"><img src="<%= items[i].image_default_id %>" alt=""></a>
-                  </div>
-                  <div class="caption action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].item_id%>}'>
-                    <div class="order-goods-info">
-                      <div class="order-goods-top">
-                        <div class="order-goods-title">
-                          <a href="#">
-                            <%= items[i].title %>
-                          </a>
-                        </div>
-                        <div class="order-goods-sku">
-                          <%= items[i].spec_info %>
-                        </div>
-                      </div>
-                      <div class="order-goods-price">
-                        <mark><%= $format_price(items[i].price.price) %></mark>
-                      </div>
-                    </div>
-                    <div class="order-goods-num content-right">x
-                      <%= items[i].quantity %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% if(items[i].gift != null){ %>
-              <div class="box-display gift-view">
-                <div>赠品：</div>
-                <div class="box-item-flex1">
-                  <% for(var j=0; j<items[i].gift.length; j++){ %>
-                  <div class="box-display action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].gift[j].item_id %>}'>
-                    <div class="gifts-info">
-                      <%= items[i].gift[j].title %>
-                    </div>
-                    <div class="gifts-num"> x
-                      <%= items[i].gift[j].gift_num %>
-                    </div>
-                  </div>
-                  <% } %>
-                </div>
-              </div>
-              <% } %>
-            </li>
-            <% } %>
-            <% if( items[i].obj_type == 'package' ){ %>
-            <li>
-              <div class="fontS font-gray-40 content-bottom-padded"><span class="tag tag-outline">组合</span> <%= items[i].title%></div>
-              <ul class="order-goods-list">
-                <% for(var k=0; k<items[i].skuList.length; k++){ %>
-                <li>
-                  <div class="thumbnail">
-                    <div class="thumb-img"> <img src="<%= items[i].skuList[k].image_default_id %>" alt=""> </div>
-                    <div class="caption action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].skuList[k].item_id %>}'>
-                      <div class="order-goods-info">
-                        <div class="order-goods-top">
-                          <div class="order-goods-title">
-                            <a href="#">
-                              <%= items[i].skuList[k].title %>
-                            </a>
-                          </div>
-                          <div class="order-goods-sku">
-                            <%= items[i].skuList[k].spec_info %>
-                          </div>
-                        </div>
-                        <div class="order-goods-price">
-                          <mark><%= $format_price(items[i].skuList[k].price.price) %></mark>
-                        </div>
-                      </div>
-                      <div class="order-goods-num content-right">x
-                        <%= items[i].quantity %>
-                      </div>
-                    </div>
-                  </li>
-                  <% } %>
-                </ul>
-              </li>
-            <% } %>
-          </ul>
-        <% } %>
-      </div>
-    </div>
-  </div>
-  </script>
+	<script type="text/html" id="goods_template">
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="section-white">
+					<% for(var i=0; i<items.length; i++) { %>
+					<ul class="order-goods-list content-bottom-padded-mini">
+						<% if(items[i].obj_type == 'item'){ %>
+						<li>
+							<div class="thumbnail">
+								<div class="thumb-detail">
+									<div class="thumb-img">
+										<a href="#"><img src="<%= items[i].image_default_id %>" alt=""></a>
+									</div>
+									<div class="caption action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].item_id%>}'>
+										<div class="order-goods-info">
+											<div class="order-goods-top">
+												<div class="order-goods-title">
+													<a href="#">
+														<%= items[i].title %>
+													</a>
+												</div>
+												<div class="order-goods-sku">
+													<%= items[i].spec_info %>
+												</div>
+											</div>
+											<div class="order-goods-price">
+												<mark><%= $format_price(items[i].price.price) %></mark>
+											</div>
+										</div>
+										<div class="order-goods-num content-right">x
+											<%= items[i].quantity %>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% if(items[i].gift != null){ %>
+							<div class="box-display gift-view">
+								<div>赠品：</div>
+								<div class="box-item-flex1">
+									<% for(var j=0; j<items[i].gift.length; j++){ %>
+									<div class="box-display action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].gift[j].item_id %>}'>
+										<div class="gifts-info">
+											<%= items[i].gift[j].title %>
+										</div>
+										<div class="gifts-num"> x
+											<%= items[i].gift[j].gift_num %>
+										</div>
+									</div>
+									<% } %>
+								</div>
+							</div>
+							<% } %>
+						</li>
+						<% } %>
+						<% if( items[i].obj_type == 'package' ){ %>
+						<li>
+							<div class="fontS font-gray-40 content-bottom-padded"><span class="tag tag-outline">组合</span>
+								<%= items[i].title%>
+							</div>
+							<ul class="order-goods-list">
+								<% for(var k=0; k<items[i].skuList.length; k++){ %>
+								<li>
+									<div class="thumbnail">
+										<div class="thumb-img"> <img src="<%= items[i].skuList[k].image_default_id %>" alt=""> </div>
+										<div class="caption action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": <%= items[i].skuList[k].item_id %>}'>
+											<div class="order-goods-info">
+												<div class="order-goods-top">
+													<div class="order-goods-title">
+														<a href="#">
+															<%= items[i].skuList[k].title %>
+														</a>
+													</div>
+													<div class="order-goods-sku">
+														<%= items[i].skuList[k].spec_info %>
+													</div>
+												</div>
+												<div class="order-goods-price">
+													<mark><%= $format_price(items[i].skuList[k].price.price) %></mark>
+												</div>
+											</div>
+											<div class="order-goods-num content-right">x
+												<%= items[i].quantity %>
+											</div>
+										</div>
+								</li>
+								<% } %>
+							</ul>
+						</li>
+						<% } %>
+					</ul>
+					<% } %>
+					</div>
+				</div>
+			</div>
+	</script>
 
-  <script type="text/html" id="shipping_template">
-    <form action="<{url action=topwap_ctl_cart_checkout@index}>" method="post" id="form_shipping" data-async="false">
-      <div class="mui-input-group">
-        <% dtyList.forEach(function(dty){ %>
-        <div class="mui-input-row mui-radio bbc-radio <% if(dty.isDefault){ %>active<% } %>">
-          <label for="for_<%= dty.shipping_type %>">
+	<script type="text/html" id="shipping_template">
+		<form action="<{url action=topwap_ctl_cart_checkout@index}>" method="post" id="form_shipping" data-async="false">
+			<div class="mui-input-group">
+				<% dtyList.forEach(function(dty){ %>
+				<div class="mui-input-row mui-radio bbc-radio <% if(dty.isDefault){ %>active<% } %>">
+					<label for="for_<%= dty.shipping_type %>">
             <%= dty.name %>
           </label>
-          <input type="radio" id="for_<%= dty.shipping_type %>" name="shipping[<%= shop_id %>][shipping_type]" class="op-shipping-type" value="<%= dty.shipping_type %>" <% if(dty.isDefault){ %>checked
-          <% } %>>
-        </div>
-        <% }) %>
-      </div>
-      <div id="ziti" class="section-white" style="display: none;">
-        <ul class="function-list">
-          <li class="mui-table-view-cell">
-            <a href="#pick" class="mui-navigate-right act-pick-detail">
-              <div class="mui-table">
-                <!--<input type="hidden" name="ziti[<%= shop_id %>][ziti_addr]" value="<%= ziti_addr %>" id="op_pick_addr">
+					<input type="radio" id="for_<%= dty.shipping_type %>" name="shipping[<%= shop_id %>][shipping_type]" class="op-shipping-type" value="<%= dty.shipping_type %>" <% if(dty.isDefault){ %>checked
+					<% } %>>
+				</div>
+				<% }) %>
+			</div>
+			<div id="ziti" class="section-white" style="display: none;">
+				<ul class="function-list">
+					<li class="mui-table-view-cell">
+						<a href="#pick" class="mui-navigate-right act-pick-detail">
+							<div class="mui-table">
+								<!--<input type="hidden" name="ziti[<%= shop_id %>][ziti_addr]" value="<%= ziti_addr %>" id="op_pick_addr">
                 <input type="hidden" name="ziti[<%= shop_id %>][ziti_name]" id="op_pick_name">-->
-                <div class="mui-table-cell">自提地点</div>
-                <div class="mui-table-cell mui-text-right" id="op_choosen_pick">
-                  <%= ziti_addr ? ziti_name : '请选择自提点' %>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <footer class="action-bar-mini">
-        <button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
-      </footer>
-    </form>
-  </script>
+								<div class="mui-table-cell">自提地点</div>
+								<div class="mui-table-cell mui-text-right" id="op_choosen_pick">
+									<%= ziti_addr ? ziti_name : '请选择自提点' %>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<footer class="action-bar-mini">
+				<button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
+			</footer>
+		</form>
+	</script>
 
-  <script type="text/html" id="pick_template">
-    <div class="mui-scroll-wrapper has-btn">
-      <div class="mui-scroll">
-        <section class="section-white">
-          <div class="mui-input-group">
-            <% if(list){ %>
-            <% for(var i in list) { %>
-            <div class="mui-input-row mui-radio bbc-radio op-pick-handle" data-id="<%= list[i].id %>" data-addr="<%= list[i].name %>">
-              <label for="for_ziti<%= list[i].id %>">
+	<script type="text/html" id="pick_template">
+		<div class="mui-scroll-wrapper has-btn">
+			<div class="mui-scroll">
+				<section class="section-white">
+					<div class="mui-input-group">
+						<% if(list){ %>
+						<% for(var i in list) { %>
+						<div class="mui-input-row mui-radio bbc-radio op-pick-handle" data-id="<%= list[i].id %>" data-addr="<%= list[i].name %>">
+							<label for="for_ziti<%= list[i].id %>">
                 <p><%= list[i].name %></p>
                 <p class="ziti-ads fontS font-gray-20">
                   地址：<%= list[i].area %> <%= list[i].addr %>
                 </p>
               </label>
-              <input type="radio" name="ziti" id="for_ziti<%= list[i].id %>" value="<%= list[i].id %>">
-            </div>
-            <% } %>
-            <% } %>
-          </div>
-        </section>
-      </div>
-    </div>
-    <footer class="action-bar-mini">
-      <button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
-    </footer>
-  </script>
+							<input type="radio" name="ziti" id="for_ziti<%= list[i].id %>" value="<%= list[i].id %>">
+						</div>
+						<% } %>
+						<% } %>
+					</div>
+				</section>
+			</div>
+		</div>
+		<footer class="action-bar-mini">
+			<button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
+		</footer>
+	</script>
 
-  <script type="text/html" id="coupons_template">
-    <div class="mui-scroll-wrapper has-btn">
-      <div class="mui-scroll">
-        <section class="op-coupon-list" data-shop-id="<%= shop_id %>">
-          <div class="mui-input-group">
-            <div class="mui-input-row mui-radio bbc-radio mui-left">
-              <label for="for_nocoupon">
+	<script type="text/html" id="coupons_template">
+		<div class="mui-scroll-wrapper has-btn">
+			<div class="mui-scroll">
+				<section class="op-coupon-list" data-shop-id="<%= shop_id %>">
+					<div class="mui-input-group">
+						<div class="mui-input-row mui-radio bbc-radio mui-left">
+							<label for="for_nocoupon">
                 <p class="fontS font-gray-20">不使用优惠券</p>
               </label>
-              <input type="radio" name="coupon[<%= shop_id %>][coupon_code]" id="for_nocoupon" value="-1">
-              <input type="hidden" name="coupon[<%= shop_id %>][coupon_name]" value="不使用优惠券">
-            </div>
-            <% for(var i=0; i<couponlist.length; i++) { %>
-            <div class="mui-input-row mui-radio bbc-radio mui-left">
-              <label for="for_coupon_<%= i %>">
+							<input type="radio" name="coupon[<%= shop_id %>][coupon_code]" id="for_nocoupon" value="-1">
+							<input type="hidden" name="coupon[<%= shop_id %>][coupon_name]" value="不使用优惠券">
+						</div>
+						<% for(var i=0; i<couponlist.length; i++) { %>
+						<div class="mui-input-row mui-radio bbc-radio mui-left">
+							<label for="for_coupon_<%= i %>">
                 <div class="box-display coupon-item-init" style="width: 100%;">
                   <div data-denomination="coupon" class="box-item-flex1 coupon-item-denomination"><em>¥</em><%= $int_price(couponlist[i].deduct_money) %></div>
                   <div class="box-item-flex1">
@@ -1200,86 +1294,86 @@
                 </div>
                 <div class="coupon-item-time-range"><%= $timestamp_To_Date(couponlist[i].start_time) %> ~ <%= $timestamp_To_Date(couponlist[i].end_time) %></div>
               </label>
-              <input type="radio" name="coupon[<%= shop_id %>][coupon_code]" id="for_coupon_<%= i %>" value="<%= couponlist[i].coupon_code %>">
-              <input type="hidden" name="coupon[<%= shop_id %>][coupon_name]" value="<%= couponlist[i].coupon_name %>">
-            </div>
-            <% } %>
-          </div>
-        </section>
-      </div>
-    </div>
-    <footer class="action-bar-mini">
-      <button type="button" class="action-bar-op-btn mui-left act-ok">确定</button>
-    </footer>
-  </script>
+							<input type="radio" name="coupon[<%= shop_id %>][coupon_code]" id="for_coupon_<%= i %>" value="<%= couponlist[i].coupon_code %>">
+							<input type="hidden" name="coupon[<%= shop_id %>][coupon_name]" value="<%= couponlist[i].coupon_name %>">
+						</div>
+						<% } %>
+					</div>
+				</section>
+			</div>
+		</div>
+		<footer class="action-bar-mini">
+			<button type="button" class="action-bar-op-btn mui-left act-ok">确定</button>
+		</footer>
+	</script>
 
-  <script type="text/html" id="invoice_template">
-    <div class="mui-scroll-wrapper has-btn">
-      <div class="mui-scroll">
-        <section class="section-white">
-          <div class="section-title">
-            <div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型</div>
-          </div>
-          <div id="invoiceType" class="invoice-tab-group content-bottom-padded">
-            <!--<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>-->
-            <label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
-           <!-- <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>-->
-          </div>
-        </section>
-        <section class="invoice-content">
-          <div class="section-white invoice-content-item">
-            <div class="mui-input-group fontS">
-            	<input id="billingid" type="hidden" name="invoice[invoice_vat][billingid]" class="mui-input-clear" value="<%= invoice_vat[0].billing_id %>">
-              <div class="mui-input-row">
-                <label>发票抬头</label>
-                <input id="FPTT" type="text" name="invoice[invoice_vat][title]" class="mui-input-clear" placeholder="请输入发票抬头" value="<%= invoice_vat[0].title %>">
-              </div>
-              <div class="mui-input-row">
-                <label>税号</label>
-                <input id="SH" type="text" name="invoice[invoice_vat][tallage_number]" class="mui-input-clear" placeholder="请输入税号" value="<%= invoice_vat[0].tallage_number %>">
-              </div>
-              <div class="mui-input-row">
-                <label>电话</label>
-                <input id="DH" type="text" name="invoice[invoice_vat][tel]" class="mui-input-clear" placeholder="请输入电话" value="<%= invoice_vat[0].tel %>">
-              </div>
-              <div class="mui-input-row">
-                <label>开户银行</label>
-                <input id="KHYH" type="text" name="invoice[invoice_vat][open_bank]" class="mui-input-clear" placeholder="请输入开户银行" value="<%= invoice_vat[0].open_bank %>">
-              </div>
-              <div class="mui-input-row">
-                <label>银行帐户</label>
-                <input id="YHZH" type="text" name="invoice[invoice_vat][bank_account]" class="mui-input-clear" placeholder="请输入开户银行帐号" value="<%= invoice_vat[0].bank_account %>">
-              </div>
-<!--              <div class="mui-input-row">
+	<script type="text/html" id="invoice_template">
+		<div class="mui-scroll-wrapper has-btn">
+			<div class="mui-scroll">
+				<section class="section-white">
+					<div class="section-title">
+						<div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型</div>
+					</div>
+					<div id="invoiceType" class="invoice-tab-group content-bottom-padded">
+						<!--<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>-->
+						<label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+						<!-- <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>-->
+					</div>
+				</section>
+				<section class="invoice-content">
+					<div class="section-white invoice-content-item">
+						<div class="mui-input-group fontS">
+							<input id="billingid" type="hidden" name="invoice[invoice_vat][billingid]" class="mui-input-clear" value="<%= invoice_vat[0].billing_id %>">
+							<div class="mui-input-row">
+								<label>发票抬头</label>
+								<input id="FPTT" type="text" name="invoice[invoice_vat][title]" class="mui-input-clear" placeholder="请输入发票抬头" value="<%= invoice_vat[0].title %>">
+							</div>
+							<div class="mui-input-row">
+								<label>税号</label>
+								<input id="SH" type="text" name="invoice[invoice_vat][tallage_number]" class="mui-input-clear" placeholder="请输入税号" value="<%= invoice_vat[0].tallage_number %>">
+							</div>
+							<div class="mui-input-row">
+								<label>电话</label>
+								<input id="DH" type="text" name="invoice[invoice_vat][tel]" class="mui-input-clear" placeholder="请输入电话" value="<%= invoice_vat[0].tel %>">
+							</div>
+							<div class="mui-input-row">
+								<label>开户银行</label>
+								<input id="KHYH" type="text" name="invoice[invoice_vat][open_bank]" class="mui-input-clear" placeholder="请输入开户银行" value="<%= invoice_vat[0].open_bank %>">
+							</div>
+							<div class="mui-input-row">
+								<label>银行帐户</label>
+								<input id="YHZH" type="text" name="invoice[invoice_vat][bank_account]" class="mui-input-clear" placeholder="请输入开户银行帐号" value="<%= invoice_vat[0].bank_account %>">
+							</div>
+							<!--              <div class="mui-input-row">
                 <label>公司电话</label>
                 <input type="text" name="invoice[invoice_vat][company_phone]" class="mui-input-clear" placeholder="请输入公司电话" value="<%= invoice_vat.company_phone %>">
               </div>-->
-            </div>
-            <div class="content-padded fontS font-gray-20">订单中的商品由入驻商家销售，发票内容由商家决定，由商家开具寄出。</div>
-          </div>
-          <div class="invoice-content-item" style="display: none;"></div>
-        </section>
-      </div>
-    </div>
-    <footer class="action-bar-mini">
-      <button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
-    </footer>
-  </script>
+						</div>
+						<div class="content-padded fontS font-gray-20">订单中的商品由入驻商家销售，发票内容由商家决定，由商家开具寄出。</div>
+					</div>
+					<div class="invoice-content-item" style="display: none;"></div>
+				</section>
+			</div>
+		</div>
+		<footer class="action-bar-mini">
+			<button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
+		</footer>
+	</script>
 
-  <script type="text/html" id="voucher_template">
-    <div class="mui-scroll-wrapper has-btn">
-      <div class="mui-scroll">
-        <section class="op-voucher-list voucher-list">
-          <div class="mui-input-group">
-            <div class="mui-input-row mui-radio bbc-radio mui-left">
-              <label for="for_nocoupon">
+	<script type="text/html" id="voucher_template">
+		<div class="mui-scroll-wrapper has-btn">
+			<div class="mui-scroll">
+				<section class="op-voucher-list voucher-list">
+					<div class="mui-input-group">
+						<div class="mui-input-row mui-radio bbc-radio mui-left">
+							<label for="for_nocoupon">
                 <p class="fontS font-gray-20">不使用购物券</p>
               </label>
-              <input type="radio" name="voucher[voucher_code]" id="for_nocoupon" value="-1" checked>
-            </div>
-          	 <% for(var i=0; i<list.length; i++) { %>
-            <div class="mui-input-row mui-radio bbc-radio mui-left">
-              <label for="for_voucher_<%= i %>">
+							<input type="radio" name="voucher[voucher_code]" id="for_nocoupon" value="-1" checked>
+						</div>
+						<% for(var i=0; i<list.length; i++) { %>
+						<div class="mui-input-row mui-radio bbc-radio mui-left">
+							<label for="for_voucher_<%= i %>">
                 <div class="box-display voucher-item-init" style="width: 100%;">
                   <div class="box-item-flex1">
                   <div data-denomination="voucher" class="voucher-item-denomination"><em>¥</em><%= list[i].deduct_money %></div>
@@ -1291,709 +1385,711 @@
                 </div>
                 <div class="coupon-item-time-range"><%= list[i].start_time %> ~ <%= list[i].end_time %></div>
               </label>
-              <% if(list[i].checked) {%>
-            		<input type="radio" name="voucher[voucher_code]" id="for_voucher_<%= i %>" data-money="<%= list[i].deduct_money %>" value="<%= list[i].voucher_code %>" checked >
-            	  <% }else{ %>
-            		<input type="radio" name="voucher[voucher_code]" id="for_voucher_<%= i %>" data-money="<%= list[i].deduct_money %>" value="<%= list[i].voucher_code %>" >
-            	  <% }%>
-            </div>
-            <% } %>
-          </div>
-        </section>
-      </div>
-    </div>
-    <footer class="action-bar-mini">
-      <button type="button" class="action-bar-op-btn mui-left act-ok">确定</button>
-    </footer>
-  </script>
+							<% if(list[i].checked) {%>
+							<input type="radio" name="voucher[voucher_code]" id="for_voucher_<%= i %>" data-money="<%= list[i].deduct_money %>" value="<%= list[i].voucher_code %>" checked>
+							<% }else{ %>
+							<input type="radio" name="voucher[voucher_code]" id="for_voucher_<%= i %>" data-money="<%= list[i].deduct_money %>" value="<%= list[i].voucher_code %>">
+							<% }%>
+						</div>
+						<% } %>
+					</div>
+				</section>
+			</div>
+		</div>
+		<footer class="action-bar-mini">
+			<button type="button" class="action-bar-op-btn mui-left act-ok">确定</button>
+		</footer>
+	</script>
 
-  <script type="text/javascript">
-    mui.plusReady(function() {
-      var mode = plus.webview.currentWebview().mode;
-      var state = app.getState();
-      var totalPrice=0;
-      var totalAcceptPrice=0;
-      var pricetype = "price";
-      var billId;
-      console.log(state.token);
-      var param = {
-        queryData: {
-          'method': config.apimethod.checkout,
-          'accessToken': state.token,
-          'mode': mode
-        }
-      }
-      $.dataRequest(param, function(rs) {
+	<script type="text/javascript">
+		mui.plusReady(function() {
+			var mode = plus.webview.currentWebview().mode;
+			var state = app.getState();
+			var totalPrice = 0;
+			var totalAcceptPrice = 0;
+			var pricetype = "price";
+			var billId;
+			console.log(state.token);
+			var param = {
+				queryData: {
+					'method': config.apimethod.checkout,
+					'accessToken': state.token,
+					'mode': mode
+				}
+			}
+			$.dataRequest(param, function(rs) {
 
-        (function($) {
-          $.init({
-            swipeBack: true //启用右滑关闭功能
-          });
+				(function($) {
+					$.init({
+						swipeBack: true //启用右滑关闭功能
+					});
 
-          var viewList = $('#app').view({
-            defaultPage: '#settle'
-          });
-          //初始化单页的区域滚动
-          $('.mui-scroll-wrapper').scroll();
+					var viewList = $('#app').view({
+						defaultPage: '#settle'
+					});
+					//初始化单页的区域滚动
+					$('.mui-scroll-wrapper').scroll();
 
-          var view = viewList.view;
+					var view = viewList.view;
 
-          //处理view的后退与webview后退
-          var oldBack = $.back;
-          $.back = function() {
-            if(viewList.canBack()) { //如果view可以后退，则执行view的后退
-              viewList.back();
-            } else { //执行webview后退
-              oldBack();
-            }
-          };
-        })(mui);
+					//处理view的后退与webview后退
+					var oldBack = $.back;
+					$.back = function() {
+						if(viewList.canBack()) { //如果view可以后退，则执行view的后退
+							viewList.back();
+						} else { //执行webview后退
+							oldBack();
+						}
+					};
+				})(mui);
 
-        if( isEmptyObject(rs.data) ) {
-          mui.toast('无结算商品');
-          setTimeout(function() {
-            mui.back();
-          }, 2000);
-          return ;
-        }
+				if(isEmptyObject(rs.data)) {
+					mui.toast('无结算商品');
+					setTimeout(function() {
+						mui.back();
+					}, 2000);
+					return;
+				}
 
-        var checkout = template('checkout_content_new', rs.data);//checkout_content
-        $('#settle .mui-page-content').html(checkout);
-        //totalPrice();
-        var totalPrice=rs.data.cartInfo.totalCart.totalPrice; 
-      	var totalAcceptPrice=rs.data.cartInfo.totalCart.totalAcceptPrice;
-        $('#op_all_payment').text("￥"+rs.data.cartInfo.totalCart.totalPrice);
+				var checkout = template('checkout_content_new', rs.data); //checkout_content
+				$('#settle .mui-page-content').html(checkout);
+				//totalPrice();
+				var totalPrice = rs.data.cartInfo.totalCart.totalPrice;
+				var totalAcceptPrice = rs.data.cartInfo.totalCart.totalAcceptPrice;
+				$('#op_all_payment').text("￥" + rs.data.cartInfo.totalCart.totalPrice);
 
-        mui('.mui-scroll-wrapper').scroll({
-          bounce: false,
-          indicators: true //是否显示滚动条
-        });
-				
-				$('.kind-select').on('tap','.mui-radio',function(){
-					if($(this).data("kind")==1){
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true //是否显示滚动条
+				});
+
+				$('.kind-select').on('tap', '.mui-radio', function() {
+					if($(this).data("kind") == 1) {
 						pricetype = "price";
-						$('#op_all_payment').text("￥"+totalPrice);
-					}
-					else{
+						$('#op_all_payment').text("￥" + totalPrice);
+					} else {
 						pricetype = "accept";
-						$('#op_all_payment').text("￥"+totalAcceptPrice);
+						$('#op_all_payment').text("￥" + totalAcceptPrice);
 					}
 				});
-				
-        $('#settle').on('tap', '.act-address-detail', function() {
-          fetchList();
-        });
-        
-        $('.submit-bottom-button1').on('tap', function() {
-          clicked('_www/view/category/category.html');
-        });
 
-        $('#address_content').on('tap', '.receiver-info', function() {
-          var add_id = $(this).parent().data('id');
-          var region_id = $(this).attr('data-region');
-          $('.op-address').val(add_id);
-          $('#addr_user').html($(this).find('.receiver-user').data("name"));
-          $('#addr_mobile').html($(this).find('.receiver-user').data("mobile"));
-          $('#addr_detail').html($(this).find('.add-detail').text());
-          $('input[name="default_addr_regionid"]').val(region_id);
-          $('#noadd').hide();
-          $('#hasadd').show();
-          //totalPrice();
-          mui.back();
-        })
+				$('#settle').on('tap', '.act-address-detail', function() {
+					fetchList();
+				});
 
-        function fetchList() {
-          var param = {
-            queryData: {
-              'method': config.apimethod.addresslist,
-              'accessToken': state.token
-            },
-            method: 'GET'
-          }
-          $.dataRequest(param, function(rs) {
-            var data = rs.data;
-            var list = template('address_template', data);
-            $('#address_content').html(list);
-            $('#address_content li').each(function(index, element) {
-              var id = $(element).data('id');
-              if($('.op-address').val() == id) {
-                $(element).addClass('active');
-              }
-            });
-            mui('#address_content .mui-scroll-wrapper').scroll();
+				$('.submit-bottom-button1').on('tap', function() {
+					clicked('_www/view/category/category.html');
+				});
 
-            if($('#address_content li').length == 0 || $('#address_content').find('.active').length == 0) {
-              $('#noadd').show();
-              $('#hasadd').hide();
-              $('input.op-address').val('');
-            }
-          });
-        }
+				$('#address_content').on('tap', '.receiver-info', function() {
+					var add_id = $(this).parent().data('id');
+					var region_id = $(this).attr('data-region');
+					$('.op-address').val(add_id);
+					$('#addr_user').html($(this).find('.receiver-user').data("name"));
+					$('#addr_mobile').html($(this).find('.receiver-user').data("mobile"));
+					$('#addr_detail').html($(this).find('.add-detail').text());
+					$('input[name="default_addr_regionid"]').val(region_id);
+					$('#noadd').hide();
+					$('#hasadd').show();
+					//totalPrice();
+					mui.back();
+				})
 
-        $('#address_content').on('tap', '.action-set-default', function() {
-          var id = $(this).parents('.mui-table-view-cell').data('id');
-          var param = {
-            queryData: {
-              'method': config.apimethod.setdefaultadd,
-              'accessToken': state.token,
-              'addr_id': id
-            },
-            method: 'POST'
-          }
-          $.dataRequest(param, function(rs) {
-            mui.toast('设置成功');
-            setTimeout(function() {
-              fetchList()
-            }, 1000);
-          });
-        });
+				function fetchList() {
+					var param = {
+						queryData: {
+							'method': config.apimethod.addresslist,
+							'accessToken': state.token
+						},
+						method: 'GET'
+					}
+					$.dataRequest(param, function(rs) {
+						var data = rs.data;
+						var list = template('address_template', data);
+						$('#address_content').html(list);
+						$('#address_content li').each(function(index, element) {
+							var id = $(element).data('id');
+							if($('.op-address').val() == id) {
+								$(element).addClass('active');
+							}
+						});
+						mui('#address_content .mui-scroll-wrapper').scroll();
 
-        $('#address_content').on('tap', '.action-edit', function() {
-          var data = $(this).parents('.mui-table-view-cell').data('val');
-          clicked('_www/view/member/userinfo/address_add.html', {
-            'data': data,
-            'enterpage': 'checkout'
-          });
-        });
-
-        $('#address_content').on('tap', '.action-del', function() {
-          var id = $(this).parents('.mui-table-view-cell').data('id');
-          var param = {
-            queryData: {
-              'method': config.apimethod.adddel,
-              'accessToken': state.token,
-              'addr_id': id
-            },
-            method: 'POST'
-          }
-          mui.confirm('确认删除该收货地址吗？', '', ['取消', '确认'], function(e) {
-            if(e.index == 1) {
-              $.dataRequest(param, function(rs) {
-                fetchList()
-              });
-            }
-          });
-        });
-
-        document.getElementById('address_add').addEventListener('tap', function() {
-          clicked('_www/view/member/userinfo/address_add.html', {'enterpage': 'checkout'});
-        });
-
-        $('#settle').on('tap', '.act-goods-detail', function(e) {
-          var data = $(this).data('response');
-          var html = template('goods_template', data);
-          $('#goods_content').html(html);
-          mui('#goods_content .mui-scroll-wrapper').scroll();
-        });
-
-        $('#settle .act-coupons-detail').on('tap', function(e) {
-          var data = $(this).data('response');
-          var html = template('coupons_template', data);
-          $('#coupons_content').html(html)
-            .find('input[value="' + $(this).find('.op-coupon-code').val() + '"]').prop('checked', true);
-          mui('#coupons_content .mui-scroll-wrapper').scroll();
-        });
-
-        $('#settle .act-invoice-detail').on('tap', function(e) {
-          if($('#invoice_content').html().trim()) {
-            return;
-          }
-          var invoice = {};
-          invoice.invoice_vat = [
-          	{
-          		"billing_id": "",
-			        "user_id": "",
-			        "title": "",
-			        "tallage_number": "",
-			        "tel": "",
-			        "open_bank": "",
-			        "bank_account": "",
-			        "def_billing": ""
-          	}
-          ];
-          var userBillings = rs.data.userBillings;
-          if(userBillings.length > 0) {
-          	billId = userBillings[0].billing_id;
-            invoice.invoice_vat = userBillings;
-          }
-          var html = template('invoice_template', invoice);
-          $('#invoice_content').html(html);
-          mui('#invoice_content .mui-scroll-wrapper').scroll();
-
-          $('#invoiceType .op-choose-invoice[value="' + $('#op_invoice_type').val() + '"]').prop('checked', true).parent().trigger('tap');
-        });
-        var shop = 0;
-        $('#settle .act-shipping-detail').on('tap', function(e) {
-          shop = this.rel;
-          var addr = $('.op-address').val();
-          var ziti = $(this).attr('data-ziti');
-          if(!addr) {
-            mui.toast('请先填写收货地址');
-            e.stopPropagation();
-            return;
-          }
-          if(ziti == 'true') {
-            $('#shipping .shipping-ziti').show();
-          } else {
-            $('#shipping .shipping-ziti').hide();
-            $('#ziti').hide();
-          }
-        });
-
-        $('#shipping .act-pick-detail').on('tap', function(){
-           var param = {
-            queryData: {
-              'method': config.apimethod.logisticszitilist,
-              'accessToken': state.token,
-              'area_id': $('input[name="default_addr_regionid"]').val()
-            },
-            method: 'GET'
-          }
-          $.dataRequest(param, function(rs) {
-            var data = rs.data;
-            var list = template('pick_template', data);
-            $('#pick_content').html(list)
-            .find('input[type=radio]').change(function(e) {
-              $(this).parents('.op-pick-handle').addClass('active').siblings('.active').removeClass('active');
-            })
-            .filter('[value="' + $('#op_pick_addr').val() + '"]').prop('checked', true);
-            mui('#pick_content .mui-scroll-wrapper').scroll();
-            $('#pick .act-ok').on('tap', function(e) {
-              var radio = $('#pick input[type=radio]:checked');
-              if(radio.length <= 0) {
-                mui.alert('请选择自提点');
-                return false;
-              }
-              var parent = radio.parents('.op-pick-handle');
-              $('#op_pick_addr').val(radio.val());
-              $('#op_pick_id').val(parent.data('id'));
-              $('#op_pick_name').val(parent.data('addr'));
-              $('#op_choosen_pick').text(parent.data('addr'));
-            });
-          });
-         });
-
-         $('#settle .act-voucher-detail').on('tap', function(e) {
-         	var param = {
-	            queryData: {
-	              'method': config.apimethod.cartGetVoucher,
-	              'accessToken': state.token,
-	              'catItemPrice': $(this).attr('data-catitemPrice'),
-	              'voucher_code':$(this).find('.op-voucher-code').val()
-	            },
-	            method: 'POST'
-	         }
-	          $.dataRequest(param, function(rs) {
-	          	var data = rs.data;
-	          	var html = template('voucher_template', data);
-			    $('#voucher_content').html(html);
-			    mui('#voucher_content .mui-scroll-wrapper').scroll();
-	          });
-        });
-
-        $('#shipping').on('click', '.shopex-radio', function() {
-          $(this).addClass('active').siblings('.active').removeClass('active');
-
-          var value = $(this).find('input:checked').val();
-          if (value == 'ziti') {
-            $('#ziti').show();
-          } else {
-            $('#ziti').hide();
-          }
-        });
-
-        $('.act-delivery').on('tap', function() {
-          storeCheckoutInfo();
-        });
-
-        $('#payment').on('tap', '.mui-radio', function() {
-          $(this).addClass('active').siblings('.active').removeClass('active');
-        });
-
-        $('#shipping').on('click', '.mui-radio', function() {
-          $(this).addClass('active').siblings('.active').removeClass('active');
-
-          var value = $(this).find('input:checked').val();
-          if(value == 'ziti') {
-            $('#ziti').show();
-          } else {
-            $('#ziti').hide();
-          }
-        });
-
-        $('#goods .act-back-clean').on('tap', function(e) {
-          $('#goods_content').empty();
-        });
-
-        $('#shipping .act-back-clean').on('tap', function(e) {
-          $('#shipping_content').empty();
-        });
-
-        $('#coupon .act-back-clean').on('tap', function(e) {
-          $('#coupons_content').empty();
-        });
-
-        $('#payment .act-ok').on('tap', function(e) {
-          // if(!$('#payment .op-choose-payment:checked').length) {
-          //   mui.alert('请选择支付方式！');
-          //   return false;
-          // }
-          var radio = $(this.form).find('.op-choose-payment:checked');
-          var label = radio.prev('label');
-
-          $('#settle .op-pay-type').val(radio.val());
-          $('#settle .op-pay-name').text(label.text());
-
-          storeCheckoutInfo();
-        });
-
-        $('#coupon').on('tap', '.act-ok', function(e) {
-          var radio = $('#coupon input[type=radio]:checked');
-          var shopId = radio.parents('.op-coupon-list').data('shopId');
-          var coupon_handle = $('.op-shop-info[data-shop-id="' + shopId + '"]');
-
-          if(radio.val() != -1) {
-            useCoupon($('.op-coupon-list'), function() {
-              coupon_handle.find('.op-coupon-code').val(radio.val());
-              coupon_handle.find('.op-coupon-name').text(radio.siblings('input[type=hidden]').val());
-
-              storeCheckoutInfo();
-            });
-          } else {
-            cancelCoupon(shopId, function() {
-              coupon_handle.find('.op-coupon-code').val(radio.val());
-              coupon_handle.find('.op-coupon-name').text(radio.siblings('input[type=hidden]').val());
-
-              storeCheckoutInfo();
-            })
-          }
-          $('input[name="voucherid"]').val('');
-          $("#op_voucher_name").html("不使用");
-        });
-
-        $('#voucher').on('tap', '.act-ok', function(e) {
-          var radio = $('#voucher input[type="radio"]:checked');
-          var voucher_code = radio.val();
-    		  var desc = voucher_code == '-1' ? "不使用" : "共抵扣¥" + radio.attr('data-money');
-
-	        useVoucher($('.op-voucher-list'), function() {
-	          	$("#op_voucher_name").html(desc);
-	  			  $('input[name="voucherid"]').val(voucher_code);
-	            storeCheckoutInfo();
-	        });
-        });
-
-        $('#invoice').on('tap', '.act-ok', function(e) {
-          var radio = $('#invoiceType').find('.active').find('input');
-					
-          $('#op_invoice_type').val(radio.val());
-          $('#op_need_invoice').val(radio.val() == 'notuse' ? 0 : 1);
-          $('#op_invoice_name').text(radio.parent('label').text());
-
-					var param_billing = {
-		        queryData: {
-		          'method': config.apimethod.billingsave,
-		          'accessToken':state.token,
-		          'billing_id':$('#billingid').val(),
-		          'title':$('#FPTT').val(),
-		          'tallage_number':$('#SH').val(),
-		          'tel':$('#DH').val(),
-		          'open_bank':$('#KHYH').val(),
-		          'bank_account':$('#YHZH').val()
-		        },
-		        method: 'POST'
-		      };
-					$.dataRequest(param_billing, function(r) {
-						var param_billing_new ={
-								queryData: {
-			          'method': config.apimethod.billinggetInfo,
-			          'accessToken':state.token
-			        },
-			        method: 'GET'
+						if($('#address_content li').length == 0 || $('#address_content').find('.active').length == 0) {
+							$('#noadd').show();
+							$('#hasadd').hide();
+							$('input.op-address').val('');
 						}
-						$.dataRequest(param_billing_new, function(r) {
-							billId = r.data.list[0].billing_id;
-							storeCheckoutInfo();
+					});
+				}
+
+				$('#address_content').on('tap', '.action-set-default', function() {
+					var id = $(this).parents('.mui-table-view-cell').data('id');
+					var param = {
+						queryData: {
+							'method': config.apimethod.setdefaultadd,
+							'accessToken': state.token,
+							'addr_id': id
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						mui.toast('设置成功');
+						setTimeout(function() {
+							fetchList()
+						}, 1000);
+					});
+				});
+
+				$('#address_content').on('tap', '.action-edit', function() {
+					var data = $(this).parents('.mui-table-view-cell').data('val');
+					clicked('_www/view/member/userinfo/address_add.html', {
+						'data': data,
+						'enterpage': 'checkout'
+					});
+				});
+
+				$('#address_content').on('tap', '.action-del', function() {
+					var id = $(this).parents('.mui-table-view-cell').data('id');
+					var param = {
+						queryData: {
+							'method': config.apimethod.adddel,
+							'accessToken': state.token,
+							'addr_id': id
+						},
+						method: 'POST'
+					}
+					mui.confirm('确认删除该收货地址吗？', '', ['取消', '确认'], function(e) {
+						if(e.index == 1) {
+							$.dataRequest(param, function(rs) {
+								fetchList()
+							});
+						}
+					});
+				});
+
+				document.getElementById('address_add').addEventListener('tap', function() {
+					clicked('_www/view/member/userinfo/address_add.html', {
+						'enterpage': 'checkout'
+					});
+				});
+
+				$('#settle').on('tap', '.act-goods-detail', function(e) {
+					var data = $(this).data('response');
+					var html = template('goods_template', data);
+					$('#goods_content').html(html);
+					mui('#goods_content .mui-scroll-wrapper').scroll();
+				});
+
+				$('#settle .act-coupons-detail').on('tap', function(e) {
+					var data = $(this).data('response');
+					var html = template('coupons_template', data);
+					$('#coupons_content').html(html)
+						.find('input[value="' + $(this).find('.op-coupon-code').val() + '"]').prop('checked', true);
+					mui('#coupons_content .mui-scroll-wrapper').scroll();
+				});
+
+				$('#settle .act-invoice-detail').on('tap', function(e) {
+					if($('#invoice_content').html().trim()) {
+						return;
+					}
+					var invoice = {};
+					invoice.invoice_vat = [{
+						"billing_id": "",
+						"user_id": "",
+						"title": "",
+						"tallage_number": "",
+						"tel": "",
+						"open_bank": "",
+						"bank_account": "",
+						"def_billing": ""
+					}];
+					var userBillings = rs.data.userBillings;
+					if(userBillings.length > 0) {
+						//billId = userBillings[0].billing_id;
+
+						invoice.invoice_vat = userBillings;
+					}
+					var html = template('invoice_template', invoice);
+					$('#invoice_content').html(html);
+					mui('#invoice_content .mui-scroll-wrapper').scroll();
+
+					$('#invoiceType .op-choose-invoice[value="' + $('#op_invoice_type').val() + '"]').prop('checked', true).parent().trigger('tap');
+				});
+				var shop = 0;
+				$('#settle .act-shipping-detail').on('tap', function(e) {
+					shop = this.rel;
+					var addr = $('.op-address').val();
+					var ziti = $(this).attr('data-ziti');
+					if(!addr) {
+						mui.toast('请先填写收货地址');
+						e.stopPropagation();
+						return;
+					}
+					if(ziti == 'true') {
+						$('#shipping .shipping-ziti').show();
+					} else {
+						$('#shipping .shipping-ziti').hide();
+						$('#ziti').hide();
+					}
+				});
+
+				$('#shipping .act-pick-detail').on('tap', function() {
+					var param = {
+						queryData: {
+							'method': config.apimethod.logisticszitilist,
+							'accessToken': state.token,
+							'area_id': $('input[name="default_addr_regionid"]').val()
+						},
+						method: 'GET'
+					}
+					$.dataRequest(param, function(rs) {
+						var data = rs.data;
+						var list = template('pick_template', data);
+						$('#pick_content').html(list)
+							.find('input[type=radio]').change(function(e) {
+								$(this).parents('.op-pick-handle').addClass('active').siblings('.active').removeClass('active');
+							})
+							.filter('[value="' + $('#op_pick_addr').val() + '"]').prop('checked', true);
+						mui('#pick_content .mui-scroll-wrapper').scroll();
+						$('#pick .act-ok').on('tap', function(e) {
+							var radio = $('#pick input[type=radio]:checked');
+							if(radio.length <= 0) {
+								mui.alert('请选择自提点');
+								return false;
+							}
+							var parent = radio.parents('.op-pick-handle');
+							$('#op_pick_addr').val(radio.val());
+							$('#op_pick_id').val(parent.data('id'));
+							$('#op_pick_name').val(parent.data('addr'));
+							$('#op_choosen_pick').text(parent.data('addr'));
 						});
 					});
-        })
-        .on('tap', '#invoiceType label', function() {
-          var index = $(this).index();
-          var items = $('.invoice-content').find('.invoice-content-item');
-          $(this).addClass('active').siblings('.active').removeClass('active');
-          $(items[index]).show().siblings().hide();
-        })
-        .on('tap', '#titleType label', function() {
-          $(this).addClass('active').siblings().removeClass('active');
-        });
+				});
 
-        $('#shipping').find('.act-ok').on('tap', function(e) {
-          var shopContent = $('#op_shop_' + shop);
-          var radio = $('.op-shipping-type:checked');
-          if(radio.val() == 'ziti' && $('#op_pick_addr').val() == '') {
-            mui.alert('请选择自提点！');
-            return false;
-          }
-          shopContent.find('.op-shipping-id').val(radio.val());
-          shopContent.find('.op-shipping-name').text(radio.val() == 'ziti' ? '自提:' + $('#op_pick_name').val() : radio.prev('label').text());
-          shopContent.find('.op-ziti-id').val($('#op_pick_id').val());
-          shopContent.find('.op-ziti-addr').val($('#op_pick_addr').val());
-          shopContent.find('.op-ziti-name').val($('#op_pick_name').val());
+				$('#settle .act-voucher-detail').on('tap', function(e) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.cartGetVoucher,
+							'accessToken': state.token,
+							'catItemPrice': $(this).attr('data-catitemPrice'),
+							'voucher_code': $(this).find('.op-voucher-code').val()
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						var data = rs.data;
+						var html = template('voucher_template', data);
+						$('#voucher_content').html(html);
+						mui('#voucher_content .mui-scroll-wrapper').scroll();
+					});
+				});
 
-          storeCheckoutInfo();
-          //totalPrice();
-        });
+				$('#shipping').on('click', '.shopex-radio', function() {
+					$(this).addClass('active').siblings('.active').removeClass('active');
 
+					var value = $(this).find('input:checked').val();
+					if(value == 'ziti') {
+						$('#ziti').show();
+					} else {
+						$('#ziti').hide();
+					}
+				});
 
-      $('#form_settle button[type=submit]').click(function() {
-        $('#invoice').appendTo(this.form);
-      });
+				$('.act-delivery').on('tap', function() {
+					storeCheckoutInfo();
+				});
 
-      function adjustScroller(id) {
-        $(id).find('.mui-scroll-wrapper').css('margin-bottom', '4rem');
-      }
+				$('#payment').on('tap', '.mui-radio', function() {
+					$(this).addClass('active').siblings('.active').removeClass('active');
+				});
 
-      function useCoupon(element, callback) {
-        var param = {
-          queryData: {
-            'method': config.apimethod.usecoupon,
-            'accessToken': state.token,
-            'coupon_code': element.find('input:checked').val(),
-            'platform': 'app',
-            'mode': mode
-          },
-          method: 'POST'
-        }
-        $.dataRequest(param, function(rs) {
-          callback && callback(rs);
-          mui.back();
-          //totalPrice();
-        });
-      }
+				$('#shipping').on('click', '.mui-radio', function() {
+					$(this).addClass('active').siblings('.active').removeClass('active');
 
-      function useVoucher(element, callback) {
-        var param = {
-          queryData: {
-            'method': config.apimethod.useVoucher,
-            'accessToken': state.token,
-            'voucher_code': element.find('input:checked').val(),
-            'platform': 'app',
-            'mode': mode
-          },
-          method: 'POST'
-        }
+					var value = $(this).find('input:checked').val();
+					if(value == 'ziti') {
+						$('#ziti').show();
+					} else {
+						$('#ziti').hide();
+					}
+				});
 
-        $.dataRequest(param, function(rs) {
-          callback && callback(rs);
-          mui.back();
-          //totalPrice();
-        });
-      }
+				$('#goods .act-back-clean').on('tap', function(e) {
+					$('#goods_content').empty();
+				});
 
-      function cancelCoupon(shopid, callback) {
-        var param = {
-          queryData: {
-            'method': config.apimethod.cancelcoupon,
-            'accessToken': state.token,
-            '': shopid
-          },
-          method: 'POST'
-        }
-        $.dataRequest(param, function(rs) {
-          callback && callback(rs);
-          mui.back();
-          //totalPrice();
-        });
-      }
+				$('#shipping .act-back-clean').on('tap', function(e) {
+					$('#shipping_content').empty();
+				});
 
-      function storeCheckoutInfo() {
-        localStorage.setItem('_checkout_params', JSON.stringify($('#form_settle').serializeArray()));
-      }
+				$('#coupon .act-back-clean').on('tap', function(e) {
+					$('#coupons_content').empty();
+				});
 
-      function storeInvoiceInfo() {
-        var element = $('#invoice');
-        return {
-          need_invoice: 1,
-          invoice_type: element.find('input[name="invoice[invoice_type]"]:checked').val(),
-          invoice_title: element.find('input[name="invoice[invoice_title]"]:checked').val(),
-          invoice_content: element.find('input[name="invoice[invoice_content]"]').val(),
-          invoice_vat: {
-            company_name: element.find('input[name="invoice[invoice_vat][company_name]"]').val(),
-            registration_number: element.find('input[name="invoice[invoice_vat][registration_number]"]').val(),
-            company_address: element.find('input[name="invoice[invoice_vat][company_address]"]').val(),
-            bankname: element.find('input[name="invoice[invoice_vat][bankname]"]').val(),
-            bankaccount: element.find('input[name="invoice[invoice_vat][bankaccount]"]').val(),
-            company_phone: element.find('input[name="invoice[invoice_vat][company_phone]"]').val()
-          }
-        };
-      }
+				$('#payment .act-ok').on('tap', function(e) {
+					// if(!$('#payment .op-choose-payment:checked').length) {
+					//   mui.alert('请选择支付方式！');
+					//   return false;
+					// }
+					var radio = $(this.form).find('.op-choose-payment:checked');
+					var label = radio.prev('label');
 
-      function totalPrice() {
-        var add = $('.op-address').val();
-        if(add && add != '') {
-          var param = {
-            queryData: {
-              'method': config.apimethod.checkouttotal,
-              'accessToken': state.token,
-              'addr_id': $('.op-address').val(),
-              'shipping': $('.op-shipping-id').val(),
-              'mode': mode
-            },
-            method: 'POST'
-          }
+					$('#settle .op-pay-type').val(radio.val());
+					$('#settle .op-pay-name').text(label.text());
 
-          $.dataRequest(param, function(rs) {
-            var data = rs.data.total;
-            log(data.catItemPrice)
-            if(data && data.catItemPrice != null) {
-        
-        		$('.act-voucher-detail').attr('data-catitemprice', data.catItemPrice);
-       
-       		}
-            $('.op-shop-info').each(function() {
-              var id = $(this).data('shopId');
-              $(this).find('.op-total').text(Currency.format(data.shop[id].total_fee));
-              $(this).find('.op-discount').text(Currency.format(data.shop[id].discount_fee));
-              $(this).find('.op-post').text(Currency.format(data.shop[id].post_fee));
-            });
-            $('#op_all_payment').text(Currency.format(data.allPayment));
+					storeCheckoutInfo();
+				});
 
-            //getUserPoint(data.allPayment, data.allPostfee);
-          });
-        }
-      }
+				$('#coupon').on('tap', '.act-ok', function(e) {
+					var radio = $('#coupon input[type=radio]:checked');
+					var shopId = radio.parents('.op-coupon-list').data('shopId');
+					var coupon_handle = $('.op-shop-info[data-shop-id="' + shopId + '"]');
 
-      function getUserPoint(totalPrice, postFee) {
-        var param = {
-          queryData: {
-            'method': config.apimethod.checkoutpoint,
-            'accessToken': state.token,
-            'total_price': totalPrice,
-            'post_fee': postFee
-          },
-          method: 'POST'
-        }
-        $.dataRequest(param, function(rs) {
-          $('#for_point').prop('checked', false);
-          if(rs.data.open_point_deduction == "1" && rs.data.points > 0 && rs.data.point_deduction_max != 0) { //积分可用
-            $('.canuser-point').show();
-            var propertion = rs.data.point_deduction_rate; //换算比率
-            var maxpoints = rs.data.point_deduction_max; //最大积分
-            var points = rs.data.points; //总积分
-            var totalPricePoints = totalPrice * propertion;
-            var canUserPoints = 0;
-            if(maxpoints <= points) {
-              canUserPoints = maxpoints;
-            } else {
-              canUserPoints = points;
-            }
-            if(canUserPoints > totalPricePoints) {
-              canUserPoints = totalPricePoints;
-            }
-            var deduct_point = canUserPoints / propertion;
-            $('#op_left_point').text(canUserPoints);
-            $('#for_point').val(canUserPoints);
-            $('#op_deduct_point').text(Currency.format(deduct_point));
-          } else { //积分不可用
-            $('#for_point').prop('disabled', true);
-          }
+					if(radio.val() != -1) {
+						useCoupon($('.op-coupon-list'), function() {
+							coupon_handle.find('.op-coupon-code').val(radio.val());
+							coupon_handle.find('.op-coupon-name').text(radio.siblings('input[type=hidden]').val());
 
-          $('#for_point').off('change').on('change', function() {
-            if(this.checked) {
-              $(this).val(canUserPoints);
-              if(deduct_point) {
-                $('#op_all_payment').text(Currency.format(totalPrice - deduct_point));
-              }
-            } else {
-              $('#op_all_payment').text(Currency.format(totalPrice));
-            }
-          });
+							storeCheckoutInfo();
+						});
+					} else {
+						cancelCoupon(shopId, function() {
+							coupon_handle.find('.op-coupon-code').val(radio.val());
+							coupon_handle.find('.op-coupon-name').text(radio.siblings('input[type=hidden]').val());
 
-        });
-      }
+							storeCheckoutInfo();
+						})
+					}
+					$('input[name="voucherid"]').val('');
+					$("#op_voucher_name").html("不使用");
+				});
 
-      $('#create_trade').on('tap', function() {
-        var addr = $('.op-address').val();
+				$('#voucher').on('tap', '.act-ok', function(e) {
+					var radio = $('#voucher input[type="radio"]:checked');
+					var voucher_code = radio.val();
+					var desc = voucher_code == '-1' ? "不使用" : "共抵扣¥" + radio.attr('data-money');
 
-        if(addr != '') {
-          var shipping = $('.op-shipping-id');
-          var shippingData = []
-/*          for(var i = 0; i < shipping.length; i++) {
-            var shippingType = {};
-            shippingType.shop_id = $(shipping[i]).parents('a').attr('rel');
-            shippingType.type = $(shipping[i]).val();
-            if(shippingType.type == 'ziti') {
-              shippingType.ziti_id = $(shipping[i]).parent().find('.op-ziti-id').val();
-            }
-            shippingData.push(shippingType);
-          }*/
+					useVoucher($('.op-voucher-list'), function() {
+						$("#op_voucher_name").html(desc);
+						$('input[name="voucherid"]').val(voucher_code);
+						storeCheckoutInfo();
+					});
+				});
 
-          var user_mark = $('.user-mark');
-          var mark = [];
-          if(user_mark.length > 0) {
-            for(var i = 0; i < user_mark.length; i++) {
-            	var shippingType = {};
-            	shippingType.shop_id = $(user_mark[i]).parents('.user-message').attr('rel');
-            	shippingType.type = 'express';
-            	shippingData.push(shippingType);
-              var memo = {};
-              var memodata = $(user_mark[i]).val()
-              if(memodata) {
-                memo.shop_id = $(user_mark[i]).parents('.user-message').attr('rel');
-                memo.memo = $(user_mark[i]).val()
-                mark.push(memo);
-              }
-            }
-            mark = JSON.stringify(mark);
-          	shippingData = JSON.stringify(shippingData);
-          }
-/*          var invoice_type = $('#op_invoice_type').val();
-          var invoice_content = '{}';
-          var invoice_title = $('#op_invoice_title').val() == 'undefined' ? "" : '"title": "' + $('#op_invoice_title').val() + '",';
-          if(invoice_type != "notuse") {
-            invoice_content = '{' + invoice_title + ' "content":"' + $('input[name="invoice[invoice_content]"]').val() + '", "company_name":"' + $('input[name="invoice[invoice_vat][company_name]"]').val() + '", "company_address":"' + $('input[name="invoice[invoice_vat][company_address]"]').val() + '", "registration_number":"' + $('input[name="invoice[invoice_vat][registration_number]"]').val() + '", "bankname":"' + $('input[name="invoice[invoice_vat][bankname]"]').val() + '", "bankaccount":"' + $('input[name="invoice[invoice_vat][bankaccount]"]').val() + '", "company_phone":"' + $('input[name="invoice[invoice_vat][company_phone]"]').val() + '"}';
-          }
-          invoice_content = JSON.parse(invoice_content);*/
-          //var use_points = $('#for_point').prop('checked') ? $('#for_point').val() : '0';
-          var use_points = '0';
-          var param = {
-            queryData: {
-              'method': config.apimethod.createtrade,
-              'accessToken': state.token,
-              'mode': mode,
-              'md5_cart_info': $('#md5').val(),
-              'addr_id': addr,
-              'payment_type': 'online',//$('.op-pay-type').val(),
-              //'source_from': 'app',
-              'shipping_type': shippingData,
-              'mark': mark,
-              'billId':billId,
-              'pricetype':pricetype,
-              'use_points': use_points
-              /*'invoice_type': invoice_type,
-              'invoice_content': invoice_content*/
-            },
-            method: 'POST'
-          }
-          $.dataRequest(param, function(rs) {
-            mui.toast('创建订单成功,等待审核！');
-            if(rs.data.payment_type == 'online') {
-              var payid = rs.data.payment_id;
-              clicked('_www/view/member/trade/trade.html');
-            } else {
-              clicked("_www/view/payment/paymentsuccess.html", {'total': $('#op_all_payment').text().substr(1),'payment_type':'offline'});
-            }
-          });
-        } else {
-          mui.alert('请选择收货地址');
-        }
-      });
+				$('#invoice').on('tap', '.act-ok', function(e) {
+						var radio = $('#invoiceType').find('.active').find('input');
 
-      window.addEventListener('reloadAddreddList', function(){
-        fetchList();
-      })
-      });
-    });
-  </script>
+						$('#op_invoice_type').val(radio.val());
+						$('#op_need_invoice').val(radio.val() == 'notuse' ? 0 : 1);
+						$('#op_invoice_name').text(radio.parent('label').text());
+
+						var param_billing = {
+							queryData: {
+								'method': config.apimethod.billingsave,
+								'accessToken': state.token,
+								'billing_id': $('#billingid').val(),
+								'title': $('#FPTT').val(),
+								'tallage_number': $('#SH').val(),
+								'tel': $('#DH').val(),
+								'open_bank': $('#KHYH').val(),
+								'bank_account': $('#YHZH').val()
+							},
+							method: 'POST'
+						};
+						$.dataRequest(param_billing, function(r) {
+							var param_billing_new = {
+								queryData: {
+									'method': config.apimethod.billinggetInfo,
+									'accessToken': state.token
+								},
+								method: 'GET'
+							}
+							$.dataRequest(param_billing_new, function(r) {
+								billId = r.data.list[0].billing_id;
+								storeCheckoutInfo();
+							});
+						});
+					})
+					.on('tap', '#invoiceType label', function() {
+						var index = $(this).index();
+						var items = $('.invoice-content').find('.invoice-content-item');
+						$(this).addClass('active').siblings('.active').removeClass('active');
+						$(items[index]).show().siblings().hide();
+					})
+					.on('tap', '#titleType label', function() {
+						$(this).addClass('active').siblings().removeClass('active');
+					});
+
+				$('#shipping').find('.act-ok').on('tap', function(e) {
+					var shopContent = $('#op_shop_' + shop);
+					var radio = $('.op-shipping-type:checked');
+					if(radio.val() == 'ziti' && $('#op_pick_addr').val() == '') {
+						mui.alert('请选择自提点！');
+						return false;
+					}
+					shopContent.find('.op-shipping-id').val(radio.val());
+					shopContent.find('.op-shipping-name').text(radio.val() == 'ziti' ? '自提:' + $('#op_pick_name').val() : radio.prev('label').text());
+					shopContent.find('.op-ziti-id').val($('#op_pick_id').val());
+					shopContent.find('.op-ziti-addr').val($('#op_pick_addr').val());
+					shopContent.find('.op-ziti-name').val($('#op_pick_name').val());
+
+					storeCheckoutInfo();
+					//totalPrice();
+				});
+
+				$('#form_settle button[type=submit]').click(function() {
+					$('#invoice').appendTo(this.form);
+				});
+
+				function adjustScroller(id) {
+					$(id).find('.mui-scroll-wrapper').css('margin-bottom', '4rem');
+				}
+
+				function useCoupon(element, callback) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.usecoupon,
+							'accessToken': state.token,
+							'coupon_code': element.find('input:checked').val(),
+							'platform': 'app',
+							'mode': mode
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						callback && callback(rs);
+						mui.back();
+						//totalPrice();
+					});
+				}
+
+				function useVoucher(element, callback) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.useVoucher,
+							'accessToken': state.token,
+							'voucher_code': element.find('input:checked').val(),
+							'platform': 'app',
+							'mode': mode
+						},
+						method: 'POST'
+					}
+
+					$.dataRequest(param, function(rs) {
+						callback && callback(rs);
+						mui.back();
+						//totalPrice();
+					});
+				}
+
+				function cancelCoupon(shopid, callback) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.cancelcoupon,
+							'accessToken': state.token,
+							'': shopid
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						callback && callback(rs);
+						mui.back();
+						//totalPrice();
+					});
+				}
+
+				function storeCheckoutInfo() {
+					localStorage.setItem('_checkout_params', JSON.stringify($('#form_settle').serializeArray()));
+				}
+
+				function storeInvoiceInfo() {
+					var element = $('#invoice');
+					return {
+						need_invoice: 1,
+						invoice_type: element.find('input[name="invoice[invoice_type]"]:checked').val(),
+						invoice_title: element.find('input[name="invoice[invoice_title]"]:checked').val(),
+						invoice_content: element.find('input[name="invoice[invoice_content]"]').val(),
+						invoice_vat: {
+							company_name: element.find('input[name="invoice[invoice_vat][company_name]"]').val(),
+							registration_number: element.find('input[name="invoice[invoice_vat][registration_number]"]').val(),
+							company_address: element.find('input[name="invoice[invoice_vat][company_address]"]').val(),
+							bankname: element.find('input[name="invoice[invoice_vat][bankname]"]').val(),
+							bankaccount: element.find('input[name="invoice[invoice_vat][bankaccount]"]').val(),
+							company_phone: element.find('input[name="invoice[invoice_vat][company_phone]"]').val()
+						}
+					};
+				}
+
+				function totalPrice() {
+					var add = $('.op-address').val();
+					if(add && add != '') {
+						var param = {
+							queryData: {
+								'method': config.apimethod.checkouttotal,
+								'accessToken': state.token,
+								'addr_id': $('.op-address').val(),
+								'shipping': $('.op-shipping-id').val(),
+								'mode': mode
+							},
+							method: 'POST'
+						}
+
+						$.dataRequest(param, function(rs) {
+							var data = rs.data.total;
+							log(data.catItemPrice)
+							if(data && data.catItemPrice != null) {
+
+								$('.act-voucher-detail').attr('data-catitemprice', data.catItemPrice);
+
+							}
+							$('.op-shop-info').each(function() {
+								var id = $(this).data('shopId');
+								$(this).find('.op-total').text(Currency.format(data.shop[id].total_fee));
+								$(this).find('.op-discount').text(Currency.format(data.shop[id].discount_fee));
+								$(this).find('.op-post').text(Currency.format(data.shop[id].post_fee));
+							});
+							$('#op_all_payment').text(Currency.format(data.allPayment));
+
+							//getUserPoint(data.allPayment, data.allPostfee);
+						});
+					}
+				}
+
+				function getUserPoint(totalPrice, postFee) {
+					var param = {
+						queryData: {
+							'method': config.apimethod.checkoutpoint,
+							'accessToken': state.token,
+							'total_price': totalPrice,
+							'post_fee': postFee
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						$('#for_point').prop('checked', false);
+						if(rs.data.open_point_deduction == "1" && rs.data.points > 0 && rs.data.point_deduction_max != 0) { //积分可用
+							$('.canuser-point').show();
+							var propertion = rs.data.point_deduction_rate; //换算比率
+							var maxpoints = rs.data.point_deduction_max; //最大积分
+							var points = rs.data.points; //总积分
+							var totalPricePoints = totalPrice * propertion;
+							var canUserPoints = 0;
+							if(maxpoints <= points) {
+								canUserPoints = maxpoints;
+							} else {
+								canUserPoints = points;
+							}
+							if(canUserPoints > totalPricePoints) {
+								canUserPoints = totalPricePoints;
+							}
+							var deduct_point = canUserPoints / propertion;
+							$('#op_left_point').text(canUserPoints);
+							$('#for_point').val(canUserPoints);
+							$('#op_deduct_point').text(Currency.format(deduct_point));
+						} else { //积分不可用
+							$('#for_point').prop('disabled', true);
+						}
+
+						$('#for_point').off('change').on('change', function() {
+							if(this.checked) {
+								$(this).val(canUserPoints);
+								if(deduct_point) {
+									$('#op_all_payment').text(Currency.format(totalPrice - deduct_point));
+								}
+							} else {
+								$('#op_all_payment').text(Currency.format(totalPrice));
+							}
+						});
+
+					});
+				}
+
+				$('#create_trade').on('tap', function() {
+					var addr = $('.op-address').val();
+
+					if(addr != '') {
+						var shipping = $('.op-shipping-id');
+						var shippingData = []
+						/*          for(var i = 0; i < shipping.length; i++) {
+						            var shippingType = {};
+						            shippingType.shop_id = $(shipping[i]).parents('a').attr('rel');
+						            shippingType.type = $(shipping[i]).val();
+						            if(shippingType.type == 'ziti') {
+						              shippingType.ziti_id = $(shipping[i]).parent().find('.op-ziti-id').val();
+						            }
+						            shippingData.push(shippingType);
+						          }*/
+
+						var user_mark = $('.user-mark');
+						var mark = [];
+						if(user_mark.length > 0) {
+							for(var i = 0; i < user_mark.length; i++) {
+								var shippingType = {};
+								shippingType.shop_id = $(user_mark[i]).parents('.user-message').attr('rel');
+								shippingType.type = 'express';
+								shippingData.push(shippingType);
+								var memo = {};
+								var memodata = $(user_mark[i]).val()
+								if(memodata) {
+									memo.shop_id = $(user_mark[i]).parents('.user-message').attr('rel');
+									memo.memo = $(user_mark[i]).val()
+									mark.push(memo);
+								}
+							}
+							mark = JSON.stringify(mark);
+							shippingData = JSON.stringify(shippingData);
+						}
+						/*          var invoice_type = $('#op_invoice_type').val();
+						          var invoice_content = '{}';
+						          var invoice_title = $('#op_invoice_title').val() == 'undefined' ? "" : '"title": "' + $('#op_invoice_title').val() + '",';
+						          if(invoice_type != "notuse") {
+						            invoice_content = '{' + invoice_title + ' "content":"' + $('input[name="invoice[invoice_content]"]').val() + '", "company_name":"' + $('input[name="invoice[invoice_vat][company_name]"]').val() + '", "company_address":"' + $('input[name="invoice[invoice_vat][company_address]"]').val() + '", "registration_number":"' + $('input[name="invoice[invoice_vat][registration_number]"]').val() + '", "bankname":"' + $('input[name="invoice[invoice_vat][bankname]"]').val() + '", "bankaccount":"' + $('input[name="invoice[invoice_vat][bankaccount]"]').val() + '", "company_phone":"' + $('input[name="invoice[invoice_vat][company_phone]"]').val() + '"}';
+						          }
+						          invoice_content = JSON.parse(invoice_content);*/
+						//var use_points = $('#for_point').prop('checked') ? $('#for_point').val() : '0';
+						var use_points = '0';
+						var param = {
+							queryData: {
+								'method': config.apimethod.createtrade,
+								'accessToken': state.token,
+								'mode': mode,
+								'md5_cart_info': $('#md5').val(),
+								'addr_id': addr,
+								'payment_type': 'online', //$('.op-pay-type').val(),
+								//'source_from': 'app',
+								'shipping_type': shippingData,
+								'mark': mark,
+								'billId': billId,
+								'pricetype': pricetype,
+								'use_points': use_points
+								/*'invoice_type': invoice_type,
+								'invoice_content': invoice_content*/
+							},
+							method: 'POST'
+						}
+						$.dataRequest(param, function(rs) {
+							mui.toast('创建订单成功,等待审核！');
+							if(rs.data.payment_type == 'online') {
+								var payid = rs.data.payment_id;
+								clicked('_www/view/member/trade/trade.html');
+							} else {
+								clicked("_www/view/payment/paymentsuccess.html", {
+									'total': $('#op_all_payment').text().substr(1),
+									'payment_type': 'offline'
+								});
+							}
+						});
+					} else {
+						mui.alert('请选择收货地址');
+					}
+				});
+
+				window.addEventListener('reloadAddreddList', function() {
+					fetchList();
+				})
+			});
+		});
+	</script>
 
 </html>

@@ -472,9 +472,9 @@
 				}, '');
 
 			});
-			
-			function refresh(){
-				 location.reload();
+
+			function refresh() {
+				location.reload();
 			}
 
 			function formatDateTime(timeStamp) {
@@ -540,8 +540,19 @@
 							车牌号：
 							<%=list[item].car_mark%>
 						</div>
-
+</div>
+<div class="content-div-center" style="border:0px;">
+	<div class="content-div-center-left">
+	</div>
 						<%
+							if(list[item].stop_status=="stop_success"){
+								%>
+								<div class="compete">
+							终止发货成功
+						</div>
+								<%
+							}
+							else{
 								if(list[item].status=="WAIT_BUYER_CONFIRM_GOODS"){
 							%>
 						<div class="content-div-center-right-button" id="<%=list[item].batches_id%>">
@@ -558,7 +569,14 @@
 						</div>
 						<%
 							}
-				if(list[item].remain_num>0){
+							if(list[item].stop_status=="stop_apply"){
+								%>
+						<div class="compete">
+							终止发货申请中...
+						</div>
+						<%
+							}
+			else if(list[item].remain_num>0){
 								%>
 						<div class="content-div-center-right-button">
 							<div class="content-div-center-right-button order-deliver" data-batches_id='<%=list[item].batches_id%>' data-oid='<%=list[item].oid%>' data-remain='<%=list[item].remain_num%>'>
@@ -567,8 +585,10 @@
 						</div>
 						<%
 						}
+					}
 							%>
 
+					</div>
 					</div>
 				</div>
 			</li>
@@ -610,14 +630,14 @@
 							<%=list[i].ticket_num%>吨
 						</div>
 					</div>
-					<div class="content-div-center" style="border-bottom: 0px;">
+					<div class="content-div-center" >
 						<div class="content-div-center-left">
 							快递单号：
 							<%=list[i].ticket_corp%>
 							<%=list[i].ticket_code%>
 						</div>
 					</div>
-					<div class="content-div-center">
+					<div class="content-div-center" style="border-bottom: 0px;">
 						<div class="content-div-center-left">
 
 						</div>
