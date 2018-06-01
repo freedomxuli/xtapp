@@ -387,8 +387,8 @@
     	<div class="hyzx-title">我的账户</div>
     	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>-->
 	    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/category/category.png" /><span class="category_title">分类</span></div>  
-		    <div class="child_1 category_size"><span class="title_span">共享资源</span></div>  
-		    <div class="child search_size"><img class="search_img" src="../../img/category/search.png" /><img class="message_img" src="../../img/category/message.png" /></div>  
+		    <div class="child_1 category_size"><span class="title_span">共享资源</span></div>
+		    <div class="child search_size"><!--<img class="search_img" src="../../img/category/search.png" />--><img class="message_img" src="../../img/category/message.png" /></div>  
 	   </header>
     
      <section class="container mui-row mui-fullscreen category-nav">
@@ -654,7 +654,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+				<span class="mui-icon bbc-icon bbc-icon-cart-empty"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -719,6 +719,8 @@
         method: 'GET'
       };
       $.dataRequest(param, function(rs) {
+  		  var state = app.getState(); 
+      	getcartnumabs(state.token);
       	search_data = rs.data;
       	//构造左侧大类列表
       	var left_kind_obj;
@@ -965,7 +967,7 @@
 			GetProList(NamePicker,rs.data.lv2Cats,fl_id);
 			
 			//规格列表
-			GetGGList(pro_name_id);
+			//GetGGList(pro_name_id);
 			
 			//交割库列表
 /*			var jg_list = [];
@@ -1649,17 +1651,17 @@
 											
 										</div>-->
 										<div class="content-inner-left-top-item">
-											<%=list[i].manufacturers_name%>
+											<%=list[i].manufacturers_name%>　<%=list[i].pm_name%>　<%=list[i].guige%>　<%=list[i].storage_name%>
 										</div>
-										<div class="content-inner-left-top-item">
+<!--										<div class="content-inner-left-top-item">
 											<%=list[i].pm_name%>
 										</div>
-										<div class="content-inner-left-top-item">
+										<div class="content-inner-left-top-item2">
 											<%=list[i].guige%>
 										</div>
 										<div class="content-inner-left-top-item">
 											<%=list[i].storage_name%>
-										</div>
+										</div>-->
 									</div>
 									<div class="content-inner-left-middle">
 										<div class="content-inner-left-middle-item">

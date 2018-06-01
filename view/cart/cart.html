@@ -168,6 +168,7 @@
 				display: flex;
 				flex: row;
 				height: 3rem;
+				bottom:3rem;
 			}
 			.submit-bottom-left{
 				flex:4.5;
@@ -199,7 +200,7 @@
 			}
 			.submit-bottom-flex-3{
 				flex:5;
-				font-size: 0.8rem;
+				font-size: 0.6rem;
 				color:#666666;
 			}
 			.submit-bottom-flex-3-price{
@@ -225,7 +226,7 @@
     </header>-->
     <header class="mui-bar mui-bar-nav mui-bar-backcolor">
     	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
-	    <div class="child_1 category_size"><span class="title_span">购物车</span></div>  
+	    <div class="child_1 category_size"><span class="title_span">购物车<span class="cart_top_num"></span></span></div>  
 	    <div id="cart_edit" class="child category_size"><span class="edit_span">编辑</span></div>  
    	</header>
     <div class="cart-main checkout-action ">
@@ -382,6 +383,28 @@
 				<div class="action-bar-op-item content-right">
           <div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
         </div>
+			</nav>
+			<nav class="mui-bar bbc-bar-tab">
+				<a class="bbc-tab-item" data-webview="_www/view/index.html">
+					<span class="mui-icon bbc-icon bbc-icon-home"></span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+					<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+					<span class="mui-tab-label">现货商城</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
+					<span class="mui-icon bbc-icon bbc-icon-share"></span>
+					<span class="mui-tab-label">共享资源</span>
+				</a>
+				<a class="bbc-tab-item bbc-active" data-webview="_www/view/cart/cart.html">
+					<span class="mui-icon bbc-icon bbc-icon-cart-empty"><span class="cart_bottom_num_abs"></span></span>
+					<span class="mui-tab-label">购物车</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+					<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+					<span class="mui-tab-label">我的</span>
+				</a>
 			</nav>
 			
 <!--			<nav class="mui-bar bbc-bar-tab">
@@ -719,6 +742,8 @@
               method: 'GET'
             }
             $.dataRequest(param, function(rs) {
+            	getcartnumabs(state.token);
+            	getcarttopnumabs(state.token);
             	console.log(JSON.stringify(rs.data));
               if(!isEmptyObject(rs.data)) {
               	if(rs.data.resultCartData!=null)
@@ -930,7 +955,10 @@
           var btnArray = ['否', '是'];
           mui.confirm('是否删除所选商品？', '提示', btnArray, function(e) {
             if(e.index == 1) {
-              updateCart(data)
+              updateCart(data);
+              var state = app.getState();
+              getcartnumabs(state.token);
+            	getcarttopnumabs(state.token);
             } else {
               return
             }
@@ -1080,7 +1108,7 @@
         
       });
 
-/*      $('.bbc-tab-item').on('tap', function() {
+      $('.bbc-tab-item').on('tap', function() {
         var webview = $(this).data('webview');
         if(webview) {
           mui.openWindow({
@@ -1100,7 +1128,7 @@
             mui.fire(openw,'refresh');
           }
         }
-      });*/
+      });
     </script>
   </body>
 

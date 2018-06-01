@@ -87,7 +87,14 @@
 		}
 		
 		header.home-header {
+			/*background-color: rgba(217, 46, 46, 0);*/
+		}
+		header.head-color{
 			background-color: rgba(217, 46, 46, 0);
+		}
+		
+		header.home-color1 {
+			background-color: #d92e2e !important;
 		}
 		
 		.flex {
@@ -171,6 +178,14 @@
 			border-bottom: 2px solid #E35D4C;
 		}
 		
+		.header-search{
+			padding-left: 0rem !important;
+		}
+		
+		.search-class1 {
+			background-color:#d92e2e !important;
+		}
+		
 		.search-class {
 			display: flex;
 			flex-direction: row;
@@ -209,6 +224,18 @@
 			margin-left: 3px;
 		}
 		
+		.search-img2{
+			height: 1rem;
+			margin-left: 0.2rem;
+		}
+		
+		.search-fgf-img{
+			height: 1rem;
+			width: 0.1rem;
+			color: #FFFFFF;
+			margin-left: 0.2rem;
+		}
+		
 		.search-input::-webkit-input-placeholder {
 			color: #FFFFFF !important;
 		}
@@ -237,23 +264,27 @@
 	</style>
 
 	<body>
-		<header id="head-search" class="mui-bar mui-bar-transparent home-header">
+		<header id="head-search" class="mui-bar mui-bar-transparent home-header head-color">
 			<i class="search-hide icon-func bbc-icon">
 				<a href="#picture"><img class="header-icon" src="../img/index/phone.png" /></a>
 			</i>
 			<div class="main">
 				<form onsubmit="return false;">
 					<div class="mui-input-row header-search-form search-class">
-						<button id='showUserPicker' class="search-select" type='button'><span id="search-span">全部</span><img class="search-img" src="../img/index/downicon.png" /></button>
-						<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">
+						<button id='showUserPicker' class="search-select" type='button'>
+							<span id="search-span">全部</span>
+							<img class="search-img" src="../img/index/downicon.png" />
+							<img class="search-fgf-img" src="../img/index/fgf.png" />
+							<img class="search-img2" src="../img/index/search.png" />
+						</button>
+						<!--<img class="search-fgf-img" src="../img/index/fgf.png" />-->
+						<input type="search" onfocus="toSearch(this,'_www/view/category/categorysearch.html')" class="header-search search-input" placeholder="搜索钢材">
 						<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
 					</div>
 				</form>
 			</div>
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
-				<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
 				<img class="header-icon" src="../img/index/message.png" />
-			</i>
 			</i>
 			<a href="#" class="txt-func search-cancel" style="display:none;color:white">取消</a>
 		</header>
