@@ -72,6 +72,70 @@
       	font-size: 1.2rem;
       }
       
+      .header-icon {
+				width: 1.6rem;
+				height: 1.6rem;
+				vertical-align: middle
+			}
+			
+			.search-img {
+				width: 0.8rem;
+				margin-bottom: 2px;
+				margin-left: 3px;
+			}
+			
+			.search-img2{
+				height: 1rem;
+				margin-left: 0.2rem;
+			}
+			
+			.search-fgf-img{
+				height: 1rem;
+				width: 0.1rem;
+				color: #FFFFFF;
+				margin-left: 0.2rem;
+			}
+			
+			.search-input::-webkit-input-placeholder {
+				color: #FFFFFF !important;
+			}
+			
+			.header-search{
+				padding-left: 0rem !important;
+			}
+			
+			.search-input {
+				flex: 5;
+				border-top-left-radius: 0px !important;
+				border-bottom-left-radius: 0px !important;
+				border-bottom-right-radius: 3px !important;
+				border-top-right-radius: 3px !important;
+				border: 0px;
+				background: rgba(255, 255, 255, 0.2) !important;
+				/*opacity: 0.2;*/
+				color: #FFFFFF !important;
+			}
+      
+      .search-select {
+				flex: 1;
+				height: 2rem !important;
+				padding: 7px 10px 10px 10px !important;
+				border: 0px;
+				border-top-left-radius: 3px !important;
+				border-bottom-left-radius: 3px !important;
+				border-bottom-right-radius: 0px !important;
+				border-top-right-radius: 0px !important;
+				background: rgba(255, 255, 255, 0.2) !important;
+				color: #FFFFFF !important;
+			}
+			
+			.search-class {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				align-content: center;
+			}
+      
       .search_img{
       	height: 1.2rem;
 				width: 1.2rem;
@@ -372,24 +436,31 @@
   </head>
 
   <body>
-<!--      <div class="header-logo"><img src="../../img/logo.png"></div>
-      <div class="main">
-        <form onsubmit="return false;">
-          <div class="mui-input-row header-search-form"><input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="寻找感兴趣的商品"></div>
-        </form>
-      </div>
-      <i class="search-hide icon-func bbc-icon bbc-icon-qrcode action-webview" data-webview="_www/view/qrcode/barcode_scan.html"></i>
-      <a href="#" class="txt-func search-cancel" style="display:none;">取消</a>-->
-  		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-<!--	      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left">分类</a>
-	      <h1 class="mui-title">标题</h1>-->
-<!--	    <div class="shezhi"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
-    	<div class="hyzx-title">我的账户</div>
-    	<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>-->
+	  <form onsubmit="return false;">
+  		<header id="head-title" class="mui-bar mui-bar-nav mui-bar-backcolor">
 	    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/category/category.png" /><span class="category_title">分类</span></div>  
-		    <div class="child_1 category_size"><span class="title_span">共享资源</span></div>
+		    <div class="child_1 category_size"><span class="title_span">共享资源</span></div>  
 		    <div class="child search_size"><!--<img class="search_img" src="../../img/category/search.png" />--><img class="message_img" src="../../img/category/message.png" /></div>  
-	   </header>
+	    </header>
+  		<header id="head-search" class="mui-bar mui-bar-transparent home-header" style="background-color: #d92e2e;">
+				<div class="main" style="flex: 6;">
+					<form onsubmit="return false;">
+						<div class="mui-input-row header-search-form search-class">
+							<button id='showUserPicker' class="search-select" type='button'>
+								<span id="search-span">全部</span>
+								<img class="search-img" src="../../img/index/downicon.png" />
+								<img class="search-fgf-img" src="../../img/index/fgf.png" />
+								<img class="search-img2" src="../../img/index/search.png" />
+							</button>
+							<!--<img class="search-fgf-img" src="../img/index/fgf.png" />-->
+							<input type="search" onfocus="toSearchByPage(this)" class="header-search search-input" placeholder="">
+							<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
+						</div>
+					</form>
+				</div>
+				<a href="#" class="txt-func search-cancel" style="display:block;color:white;flex: 1;">取消</a>
+			</header>
+	  </form>
     
      <section class="container mui-row mui-fullscreen category-nav">
 	    <!-- 侧滑导航根容器 -->
@@ -671,12 +742,18 @@
 		<script src="../../js/mui.pullToRefresh.material.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
     <script>
       mui.init({
         statusBarBackground:"#E35D4C",
         swipeBack:false
       });
       var wid = "";
+      var keyword = "";
+      var keykind = "";
       setTimeout(function(){
       	mui.plusReady(function() {
       	wid = plus.webview.currentWebview().id;
@@ -686,9 +763,48 @@
 		        indicators: true, //是否显示滚动条
 		        deceleration: deceleration
 		    });
-		    
 			});
       },1000);
+      
+      
+		  $("#head-title").show();
+	  	$("#head-search").hide();
+	  	jQuery(".search-cancel").click(function(){
+	  		$("#head-title").show();
+	  		$("#head-search").hide();
+	  	});
+	  	jQuery(".search_img").click(function(){
+	  		$("#head-title").hide();
+	  		$("#head-search").show();
+	  	});
+	  	
+	  	var searchPicker = new mui.PopPicker();
+			searchPicker.setData([{
+					value: '全部',
+					text: '全部'
+				}, {
+					value: '品名',
+					text: '品名'
+				}, {
+					value: '规格',
+					text: '规格'
+				}, {
+					value: '交割库',
+					text: '交割库'
+				},
+				{
+					value: '厂家/产地',
+					text: '厂家/产地'
+				}
+			]);
+
+			var showUserPickerButton = document.getElementById('showUserPicker');
+			showUserPickerButton.addEventListener('tap', function(event) {
+				searchPicker.show(function(items) {
+					$('#search-span').html(items[0].text);
+					keykind = items[0].text;
+				});
+			}, false);
 			
       var search_data = "";
       var fl_id = "";
@@ -1162,9 +1278,23 @@
 				});
 			}); 
 			
+			var toSearchByPage = function(el) {
+				var form = $(el).parents('form');
+			  $(form).submit(function() {
+			    if(el.value != '') {
+			      keykind = $('#search-span').html();
+			      keyword = el.value;
+			      GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+			    }else{
+			    	mui.toast("请输入关键词");
+			    }
+			    el.blur();
+			  });
+			}
+			
 			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
 			{
-				console.log(cd_new_id);
+				
 				var pm = "";
 				if(pm_id)
 					pm = pm_list[pm_id];

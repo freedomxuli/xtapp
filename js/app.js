@@ -287,6 +287,127 @@ var toSearch = function(el, wv, shop) {
   });
 }
 
+var toSearchByMy = function(el, wv, shop,manufacturers_id,cat_id) {
+  if($('.search-modal').length == 0) {
+    var hlist = localStorage.getItem('_history');
+    $('body').append('<div id="search_panel" class="search-modal"><div id="history_list" class="mui-scroll-wrapper"><div class="mui-scroll"></div></div></div>');
+    mui('#history_list').scroll();
+    $('.search-cancel').show().siblings('.search-hide').hide();
+    //$('.header-search-form').parents('#head-search').removeClass('home-header');
+    //$('.header-search-form').parents('#head-search').addClass('home-header1');
+    $('#head-search').removeClass('home-color');
+    $('#head-search').addClass('home-color1');
+/*		var obj = document.getElementById("head-search");
+		obj.style.backgroundColor= "#d92e2e";*/
+    if(hlist != null) {
+      var list = hlist.split(",");
+      list = list.splice(0, list.length - 1);
+      var element = ''
+      element += '<div class="mui-content-padded theme-border-bottom"><div class="title-txt">历史搜索</div></div><ul class="mui-table-view font-gray-40 history-list">';
+      for(var i = list.length - 1; i > -1; i--) {
+        element += ('<li class="mui-table-view-cell">' + list[i] + '</li>');
+      }
+      element += '</ul><div class="content-padded content-center"><button id="clear_history" class="mui-btn">清除历史搜索</button></div>';
+      $('#search_panel .mui-scroll').html(element);
+    }
+
+    $('.history-list li').on('tap', function() {
+      var key = $(this).text();
+      var keyword = {
+        'keyword': key
+      }
+      clicked(wv,{
+      	'category':$("#search-span").html(),
+	    	'keyword':key,
+	    	'manufacturers_id':manufacturers_id,
+	    	'cat_id':cat_id
+	    });
+      /*if(!shop) {
+        clicked(wv,{
+        	'manufacturers_id':manufacturers_id,
+        	'storage_id':storage_id
+        });
+      } else {
+        $.extend(shop, keyword);
+        clicked(wv, shop);
+      }*/
+      $('#search_panel').remove();
+    });
+
+    $('#clear_history').on('tap', function() {
+      mui.confirm('确定清除搜索记录？', '', ['取消', '确认'], function(e) {
+        if(e.index == 1) {
+          localStorage.removeItem('_history');
+          $('#search_panel .mui-scroll').empty();
+        }
+      });
+    });
+
+    $('.search-cancel').on('tap', function() {
+      $('#search_panel').remove();
+      $(this).hide().siblings('.search-hide').show();
+      $('#head-search').removeClass('home-color1');
+      $('#head-search').addClass('home-color');
+      el.blur();
+    });
+  }
+
+  var form = $(el).parents('form');
+  $(form).submit(function() {
+    $('.search-cancel').hide().siblings('.search-hide').show();
+    if(el.value != '') {
+      var hlist = localStorage.getItem('_history');
+      if(hlist != null) {
+        var list = hlist.split(",");
+        list = list.splice(0, list.length - 1);
+        var flag = true;
+        for(var i = 0; i < list.length; i++) {
+          if(list[i] == el.value) {
+            flag = false;
+          }
+        }
+        if(flag == true) {
+          if(list.length > 12) {
+            list = list.splice(1, list.length - 1);
+            var storage = '';
+            for(var i = 0; i < list.length; i++) {
+              storage += (list[i] + ',');
+            }
+            storage += (el.value + ',');
+            localStorage.setItem('_history', storage);
+          } else {
+            hlist += (el.value + ',');
+            localStorage.setItem('_history', hlist);
+          }
+        }
+      } else {
+        localStorage.setItem('_history', el.value + ',');
+      }
+    }
+    var keyword = {
+      'keyword': el.value
+    }
+    clicked(wv,{
+    	'category':$("#search-span").html(),
+    	'keyword':el.value,
+    	'manufacturers_id':manufacturers_id,
+    	'cat_id':cat_id
+    });
+    /*if(!shop) {
+      clicked(wv, keyword,{
+        	'manufacturers_id':manufacturers_id,
+        	'storage_id':storage_id
+        });
+    } else {
+      $.extend(shop, keyword);
+      clicked(wv, shop);
+    }*/
+    $('#search_panel').remove();
+    el.blur();
+    el.value = '';
+  });
+}
+
 var Currency = {
   spec: {
     "decimals": 2,
