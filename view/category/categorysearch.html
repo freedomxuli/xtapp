@@ -794,6 +794,11 @@
       var SizePicker = new mui.PopPicker();
       
       mui.plusReady(function() {
+      	
+		  	cd_id = plus.webview.currentWebview().manufacturers_id;
+		  	fl_id = plus.webview.currentWebview().cat_id;
+		  	keyword = plus.webview.currentWebview().keyword;
+		  	keykind = plus.webview.currentWebview().category;
       	$("#head-title").hide();
       	$("#head-search").show();
       	jQuery(".search-cancel").click(function(){
@@ -837,10 +842,8 @@
 						keykind = items[0].text;
 					});
 				}, false);
-      	cd_id = plus.webview.currentWebview().manufacturers_id;
-      	fl_id = plus.webview.currentWebview().cat_id;
-      	keyword = plus.webview.currentWebview().keyword;
-      	keykind = plus.webview.currentWebview().category;
+				$('#search-span').html(keykind);
+				$(".search-input").val(keyword);
       	
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
 		    mui('.mui-scroll-wrapper').scroll({
