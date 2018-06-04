@@ -140,6 +140,7 @@ var config = {
 		getNetworkList: 'network.list', //线下网络
 		getAccountDeposit: 'accountCheck.deposit', //余额对账
 		getAccountTickets: 'accountCheck.tickets', //开票对账
-		deliver:'member.stop.deliver'//订单物流提前终止发货
+		deliver:'member.stop.deliver',//订单物流提前终止发货
+	    buyAndApply:'buy.and.apply'//求购供应-登记
 	}
 }

@@ -583,7 +583,51 @@
               <i class="bbc-icon bbc-icon-forward font-gray-40"></i>
             </div>
             <div class="mui-table-cell mui-col-xs-4 mui-text-right">
-              <mark><%= list[i].status_desc %></mark>
+            	<%
+												if(list[i].shenhe_status=="0"){
+													%>
+														<mark>待审核</mark>
+													<%
+												}else if(list[i].shenhe_status=="success")
+												{
+													if(list[i].status=="WAIT_BUYER_PAY")
+													{
+														%>
+															<mark>待付款</mark>
+														<%
+													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS")
+													{
+														%>
+															<mark>待发货</mark>
+														<%
+													}else if(list[i].status=="SEND_PART")
+													{
+														%>
+															<mark>部分发货</mark>
+														<%
+													}else if(list[i].status=="WAIT_BUYER_CONFIRM_GOODS")
+													{
+														%>
+															<mark>待收货</mark>
+														<%
+													}else if(list[i].status=="TRADE_FINISHED")
+													{
+														%>
+															<mark>已完成</mark>
+														<%
+													}else if(list[i].status=="TRADE_CLOSED_BY_SYSTEM")
+													{
+														%>
+															<mark>已关闭</mark>
+														<%
+													}
+												}else{
+													%>
+														<mark>审核拒绝</mark>
+													<%
+												}
+												%>
+          <!--    <mark><%= list[i].status_desc %></mark>-->
             </div>
           </div>
         </div>
@@ -621,7 +665,7 @@
                   <% } %>-->
                   <% } %>
                   <div class="div-content-center-div">
-                  						<div class="div-content-center-bottom">
+                  						<!--<div class="div-content-center-bottom">
 											订单状态：<%
 												if(list[i].shenhe_status=="0"){
 													%>
@@ -666,7 +710,7 @@
 													<%
 												}
 												%>
-										</div>
+										</div>-->
 										<div class="div-content-center-right">
 											运费<%=list[i].post_fee%>元
 										</div>

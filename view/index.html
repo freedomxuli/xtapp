@@ -302,8 +302,8 @@
 				<div class="title-txt title-txt-padding">
 
 					<span class="lbm-font">价格指导</span></div>
-				<div class="more-link">
-					<a data-needlog="true" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-param='{"tab": ""}'>更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
+					<a data-needlog="true"  class="action-clickview font-gray-40"  style="margin-right:-10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 			</div>
 
 			<div id="slider3" class="mui-slider">
@@ -412,7 +412,7 @@
 					<li id="zxhd" class="action-webview" data-webview="_www/view/item/activity.html" data-webparam=''><i><a href="#"><img src="<%= pic[4].imagesrc %>"></a></i><span><%= pic[4].tag %></span></li>
 					<li id="llzs" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-webparam=''><i><a href="#"><img src="<%= pic[5].imagesrc %>"></a></i><span><%= pic[5].tag %></span></li>
 					<li id="xxwl" class="action-webview" data-webview="_www/view/item/offlinenetwork.html" data-webparam=''><i><a href="#"><img src="<%= pic[6].imagesrc %>"></a></i><span><%= pic[6].tag %></span></li>
-					<li id="qggy" class="action-webview" data-webview="_www/view/item/supply.html" data-webparam=''><i><a href="#"><img src="<%= pic[7].imagesrc %>"></a></i><span><%= pic[7].tag %></span></li>
+					<li id="qggy" class="action-webview" data-webview="_www/view/item/supplynew.html" data-webparam=''><i><a href="#"><img src="<%= pic[7].imagesrc %>"></a></i><span><%= pic[7].tag %></span></li>
 				</ul>
 			</section>
 		</script>
@@ -424,8 +424,8 @@
 					<div class="title-txt title-txt-padding">
 
 						<span class="lbm-font">合作厂家</span></div>
-					<div id="hzcj" class="more-link">
-						<a class="action-webview" data-webview="_www/view/item/merchants.html" class="action-clickview font-gray-40" style="padding-left:10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+					<div id="hzcj" class="more-link action-webview" data-webview="_www/view/item/merchants.html">
+						<a  class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div id="hzcj_slider" class="mui-slider">
 					<div class="mui-slider-group mui-slider-loop">
@@ -986,15 +986,15 @@
 					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
 					<div class="title-txt title-txt-padding">
 						<span class="lbm-font">热销产品</span></div>
-					<div class="more-link">
-						<a data-needlog="true" class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+					<div class="more-link action-webview" data-webview="_www/view/category/category.html">
+						<a data-needlog="true" class="action-clickview font-gray-40"  style="margin-right:-10px"  data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-left">
 						<%
 							if(pic.length>0){
 						%>
-						<img class="img-all" src="<%=pic[0].imagesrc%>" />
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}' src="<%=pic[0].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}'>
 							生铁
 						</div>
@@ -1006,7 +1006,7 @@
 						<%
 							if(pic.length>1){
 						%>
-						<img class="img-half" src="<%=pic[1].imagesrc%>"/>
+						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>"/>
 						<div class="type-name3 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' style="margin-top:10px;">
 							废钢
 						</div>
@@ -1016,7 +1016,7 @@
 						<%
 							if(pic.length>2){
 						%>
-						<img class="img-half" src="<%=pic[2].imagesrc%>" />
+						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}' src="<%=pic[2].imagesrc%>" />
 						<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}'>
 							增碳剂
 						</div>
@@ -1031,7 +1031,7 @@
 						<%
 							if(pic.length>3){
 						%>
-						<img class="img-all" src=".<%=pic[3].imagesrc%>" />
+						<img class="img-all action-webview"data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}'>
 							钛合金
 						</div>
@@ -1043,7 +1043,7 @@
 						<%
 							if(pic.length>4){
 						%>
-						<img class="img-all" src="<%=pic[4].imagesrc%>" />
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>" />
 						<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
 							孕育剂
 						</div>
@@ -1055,9 +1055,9 @@
 				<div class="flex">
 					<div class="rxcp-middle">
 						<%
-							if(pic.length>4){
+							if(pic.length>5){
 						%>
-						<img class="img-all" src="<%=pic[5].imagesrc%>"/>
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>"/>
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' style="bottom:10px">
 							其他辅料
 						</div>

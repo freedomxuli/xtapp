@@ -185,13 +185,15 @@
 				}
 			});
 			var state = app.getState();
-			console.log(state.token);
+		
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
 				count++;
+					console.log(starttime);
+					console.log(endtime);
 				setTimeout(function() {
 					var param = {
 						queryData: {

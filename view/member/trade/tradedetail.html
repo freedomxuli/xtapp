@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../../css/style.css">
-  </head>
+		<link rel="stylesheet" href="../../../css/style.css">
+	</head>
 
-  <body class="body-padding-mini">
-    <header class="mui-bar mui-bar-nav mui-bar-backcolor">
+	<body class="body-padding-mini">
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<a class="mui-action-back mui-pull-left back-left">
 				<img class="back_img" src="../../../img/item/back_arrow.png" />
 			</a>
@@ -21,431 +21,459 @@
 				<img class="message_img" src="../../../img/category/message.png" />
 			</a>
 		</header>
-    <section class="container">
+		<section class="container">
 
-    </section>
-  </body>
+		</section>
+	</body>
 
-  <script src="../../../js/zepto.js"></script>
-  <script src="../../../js/mui.min.js"></script>
-  <script src="../../../js/template.min.js"></script>
-  <script src="../../../config.js"></script>
-  <script src="../../../js/app.js"></script>
+	<script src="../../../js/zepto.js"></script>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/template.min.js"></script>
+	<script src="../../../config.js"></script>
+	<script src="../../../js/app.js"></script>
 
-  <script type="text/html" id="trade_detail">
-    <section class="section-white section-container order-detail-info">
-      <i class="bbc-icon bbc-icon-package"></i>
-      <div class="detail-info-txt">
-        <div class="detail-status">
-          <%= status_desc %>
-        </div>
-        <p>订单号：
-          <%= tid %>
-        </p>
-        <p>创建时间：
-          <%= $timestamp_To_Time(created_time) %>
-        </p>
-        <% if(pay_time){ %>
-        <p>支付时间：
-          <%= $timestamp_To_Time(pay_time) %>
-        </p>
-        <% } %>
-      </div>
-    </section>
-    <section class="section-white section-container receiver-info">
-      <i class="bbc-icon bbc-icon-location-gap"></i>
-      <div class="receiver-info-item">
-        <div class="receiver-user">
-          <div class="receiver-name">
-            <%= receiver_name %>&nbsp;
-            <%= receiver_mobile %>
-          </div>
-        </div>
-        <div class="add-detail">
-          <%= receiver_state %>
-          <%= receiver_city %>
-          <%= receiver_district %>&nbsp;
-          <%= receiver_address %>
-        </div>
-      </div>
-    </section>
-    <% if(logi){ %>
-    <section class="section-white">
-      <ul class="mui-table-view">
-        <li class="mui-table-view-cell show_logistics  font-gray-20" data-logistics_data="<%= $json_string(logi) %>">
-          <a class="mui-navigate-right"><i class="bbc-icon bbc-icon-logistics-gap fontm"></i> &nbsp;&nbsp;&nbsp;&nbsp;物流信息
-          </a>
-        </li>
-      </ul>
-    </section>
-    <% } %>
-    <section class="section-white cart-list order-goods">
-      <div class="section-title order-goods-header action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= shop_id %>}'>
-        <div class="title-txt fontS content-horizontal-padded font-gray-20">
-          <%= shopname %> <i class="mui-icon mui-icon-arrowright"></i>
-        </div>
-      </div>
-      <% for(var i=0; i<orders.length; i++) { %>
-      <ul class="order-goods-list">
-        <li>
-          <div class="thumbnail">
-            <div class="thumb-detail">
-              <div class="thumb-img action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= orders[i].item_id%>}'>
-                <a href="#"><img src="<%= orders[i].pic_path %>" alt=""></a>
-              </div>
-              <div class="box-item-flex1">
-                <div class="caption">
-                  <div class="order-goods-info box">
-                    <div class="order-goods-top box-item-flex1">
-                      <div class="order-goods-title action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= orders[i].item_id%>}'>
-                        <a class="font-gray-0">
-                          <%= orders[i].title %>
-                        </a>
-                      </div>
-                      <div class="order-goods-sku">
-                        <%= orders[i].spec_nature_info %>
-                      </div>
-                    </div>
-                    <div class="order-goods-num content-right">x
-                      <%= orders[i].num %>
-                    </div>
-                  </div>
-                </div>
-                <div class="order-goods-price">
-                  <mark><%= $format_price(orders[i].price) %></mark>
-                  <div class="order-goods-num-control">
-                    <% if(orders[i].status=="WAIT_SELLER_SEND_GOODS" && pay_type=="online"){ %>
+	<script type="text/html" id="trade_detail">
+		<section class="section-white section-container order-detail-info">
+			<i class="bbc-icon bbc-icon-package"></i>
+			<div class="detail-info-txt">
+				<div class="detail-status">
+					<%= status_desc %>
+				</div>
+				<p>订单号：
+					<%= tid %>
+				</p>
+				<p>创建时间：
+					<%= $timestamp_To_Time(created_time) %>
+				</p>
+				<% if(pay_time){ %>
+				<p>支付时间：
+					<%= $timestamp_To_Time(pay_time) %>
+				</p>
+				<% } %>
+			</div>
+		</section>
+		<section class="section-white section-container receiver-info">
+			<i class="bbc-icon bbc-icon-location-gap"></i>
+			<div class="receiver-info-item">
+				<div class="receiver-user">
+					<div class="receiver-name">
+						<%= receiver_name %>&nbsp;
+						<%= receiver_mobile %>
+					</div>
+				</div>
+				<div class="add-detail">
+					<%= receiver_state %>
+					<%= receiver_city %>
+					<%= receiver_district %>&nbsp;
+					<%= receiver_address %>
+				</div>
+			</div>
+		</section>
+		<% if(logi){ %>
+		<section class="section-white">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell show_logistics  font-gray-20" data-logistics_data="<%= $json_string(logi) %>">
+					<a class="mui-navigate-right"><i class="bbc-icon bbc-icon-logistics-gap fontm"></i> &nbsp;&nbsp;&nbsp;&nbsp;物流信息
+					</a>
+				</li>
+			</ul>
+		</section>
+		<% } %>
+		<section class="section-white cart-list order-goods">
+			<div class="section-title order-goods-header action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= shop_id %>}'>
+				<div class="title-txt fontS content-horizontal-padded font-gray-20">
+					<%= shopname %> <i class="mui-icon mui-icon-arrowright"></i>
+				</div>
+			</div>
+			<% for(var i=0; i<orders.length; i++) { %>
+			<ul class="order-goods-list">
+				<li>
+					<div class="thumbnail">
+						<div class="thumb-detail">
+							<div class="thumb-img action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= orders[i].item_id%>}'>
+								<a href="#"><img src="<%= orders[i].pic_path %>" alt=""></a>
+							</div>
+							<div class="box-item-flex1">
+								<div class="caption">
+									<div class="order-goods-info box">
+										<div class="order-goods-top box-item-flex1">
+											<div class="order-goods-title action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= orders[i].item_id%>}'>
+												<a class="font-gray-0">
+													<%= orders[i].title %>
+												</a>
+											</div>
+											<div class="order-goods-sku">
+												<%= orders[i].spec_nature_info %>
+											</div>
+										</div>
+										<div class="order-goods-num content-right">x
+											<%= orders[i].num %>
+										</div>
+									</div>
+								</div>
+								<div class="order-goods-price">
+									<mark><%= $format_price(orders[i].price) %></mark>
+									<div class="order-goods-num-control">
+										<% if(orders[i].status=="WAIT_SELLER_SEND_GOODS" && pay_type=="online"){ %>
 
-                    <% if(orders[i].aftersales_status=="WAIT_SELLER_AGREE"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后处理中</a>
-                    <% }else if(orders[i].aftersales_status=="SUCCESS"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款完成</a>
-                    <% }else if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>卖家拒绝退款</a>
-                    <% }else if(orders[i].aftersales_status=="CLOSED"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款关闭</a>
-                    <% }else if(orders[i].aftersales_status=="REFUNDING"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款中</a>
-                    <% } %>
-                    <% }else if(orders[i].status=="TRADE_FINISHED" || orders[i].status=="WAIT_BUYER_CONFIRM_GOODS"){ %>
+										<% if(orders[i].aftersales_status=="WAIT_SELLER_AGREE"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后处理中</a>
+										<% }else if(orders[i].aftersales_status=="SUCCESS"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款完成</a>
+										<% }else if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>卖家拒绝退款</a>
+										<% }else if(orders[i].aftersales_status=="CLOSED"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款关闭</a>
+										<% }else if(orders[i].aftersales_status=="REFUNDING"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款中</a>
+										<% } %>
+										<% }else if(orders[i].status=="TRADE_FINISHED" || orders[i].status=="WAIT_BUYER_CONFIRM_GOODS"){ %>
 
-                    <% if(orders[i].aftersales_status=="WAIT_SELLER_AGREE"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后处理中</a>
-                    <% }else if(orders[i].aftersales_status=="WAIT_BUYER_RETURN_GOODS"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>已同意,请退货</a>
-                    <% }else if(orders[i].aftersales_status=="WAIT_SELLER_CONFIRM_GOODS"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>待卖家确认收货</a>
-                    <% }else if(orders[i].aftersales_status=="SUCCESS"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款完成</a>
-                    <% }else if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后驳回</a>
-                    <% }else if(orders[i].aftersales_status=="SELLER_SEND_GOODS"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>换货完成</a>
-                    <% }else if(orders[i].aftersales_status=="CLOSED"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款关闭</a>
-                    <% }else if(orders[i].aftersales_status=="REFUNDING"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款中</a>
-                    <% }else{ %>
-                    <% if(orders[i].status=='TRADE_FINISHED'){ %>
-                    <% if(orders[i].refund_enabled && orders[i].changing_enabled){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请退换货</a>
-                    <% } %>
-                    <% if(orders[i].refund_enabled && !orders[i].changing_enabled){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请退货</a>
-                    <% } %>
-                    <% if(!orders[i].refund_enabled && orders[i].changing_enabled){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请换货</a>
-                    <% } %>
-                    <% } %>
-                    <% } %>
-                    <% } %>
+										<% if(orders[i].aftersales_status=="WAIT_SELLER_AGREE"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后处理中</a>
+										<% }else if(orders[i].aftersales_status=="WAIT_BUYER_RETURN_GOODS"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>已同意,请退货</a>
+										<% }else if(orders[i].aftersales_status=="WAIT_SELLER_CONFIRM_GOODS"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>待卖家确认收货</a>
+										<% }else if(orders[i].aftersales_status=="SUCCESS"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款完成</a>
+										<% }else if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>售后驳回</a>
+										<% }else if(orders[i].aftersales_status=="SELLER_SEND_GOODS"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>换货完成</a>
+										<% }else if(orders[i].aftersales_status=="CLOSED"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款关闭</a>
+										<% }else if(orders[i].aftersales_status=="REFUNDING"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/detail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>退款中</a>
+										<% }else{ %>
+										<% if(orders[i].status=='TRADE_FINISHED'){ %>
+										<% if(orders[i].refund_enabled && orders[i].changing_enabled){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请退换货</a>
+										<% } %>
+										<% if(orders[i].refund_enabled && !orders[i].changing_enabled){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请退货</a>
+										<% } %>
+										<% if(!orders[i].refund_enabled && orders[i].changing_enabled){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>申请换货</a>
+										<% } %>
+										<% } %>
+										<% } %>
+										<% } %>
 
-                    <% if(orders[i].complaints_status=='NOT_COMPLAINTS'){ %>
-                    <% if(orders[i].aftersales_status=='SELLER_REFUSE_BUYER'){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉商家</a>
-                    <% } %>
-                    <% }else if(orders[i].complaints_status=='WAIT_SYS_AGREE'){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉处理中</a>
-                    <% }else if(orders[i].complaints_status=='FINISHED'){ %>
-                    <% if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>再次申请退换货</a>
-                    <% } %>
-                    <% }else if(orders[i].complaints_status=='BUYER_CLOSED'){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉已撤销</a>
-                    <% }else if(orders[i].complaints_status=='CLOSED'){ %>
-                    <a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉已关闭</a>
-                    <% } %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% if(orders[i].gift_data != null){ %>
-          <div class="box-display gift-view">
-            <div>赠品：</div>
-            <div class="box-item-flex1">
-              <% for(var j=0; j<orders[i].gift_data.length; j++){ %>
-              <div class="box-display">
-                <div class="gifts-info">
-                  <%= orders[i].gift_data[j].title %>
-                </div>
-                <div class="gifts-num"> x
-                  <%= orders[i].gift_data[j].gift_num %>
-                </div>
-              </div>
-              <% } %>
-            </div>
-          </div>
-          <% } %>
-        </li>
-      </ul>
-      <% } %>
-      <div class="order-goods-footer content-padded">
-        <div class="mui-table">
-          <div class="mui-table-cell mui-col-xs-6"></div>
-          <div class="mui-table-cell mui-col-xs-6">
-            <dl class="checkout-fee">
-              <dt>合计：</dt>
-              <dd class="total">
-                <%= $format_price(payment) %>
-              </dd>
-              <dt>减免：</dt>
-              <dd>-
-                <%= $format_price(discount_fee) %>
-              </dd>
-              <dt>红包抵扣：</dt>
-              <dd>-
-                <%= $format_price(hongbao_fee) %>
-              </dd>
-              <dt>积分抵扣：</dt>
-              <dd>-
-                <%= $format_price(points_fee) %>
-              </dd>
-              <dt>运费：</dt>
-              <dd>
-                <%= $format_price(post_fee) %>
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </section>
+										<% if(orders[i].complaints_status=='NOT_COMPLAINTS'){ %>
+										<% if(orders[i].aftersales_status=='SELLER_REFUSE_BUYER'){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉商家</a>
+										<% } %>
+										<% }else if(orders[i].complaints_status=='WAIT_SYS_AGREE'){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉处理中</a>
+										<% }else if(orders[i].complaints_status=='FINISHED'){ %>
+										<% if(orders[i].aftersales_status=="SELLER_REFUSE_BUYER"){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/return/returnsform.html" data-webparam='{"oid":<%= orders[i].oid %>}'>再次申请退换货</a>
+										<% } %>
+										<% }else if(orders[i].complaints_status=='BUYER_CLOSED'){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉已撤销</a>
+										<% }else if(orders[i].complaints_status=='CLOSED'){ %>
+										<a class="mui-btn mui-btn-warning mui-btn-outlined bbc-btn-outlined bbc-btn-sm action-webview" data-webview="_www/view/member/complaint/complaintdetail.html" data-webparam='{"oid":<%= orders[i].oid %>}'>投诉已关闭</a>
+										<% } %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% if(orders[i].gift_data != null){ %>
+					<div class="box-display gift-view">
+						<div>赠品：</div>
+						<div class="box-item-flex1">
+							<% for(var j=0; j<orders[i].gift_data.length; j++){ %>
+							<div class="box-display">
+								<div class="gifts-info">
+									<%= orders[i].gift_data[j].title %>
+								</div>
+								<div class="gifts-num"> x
+									<%= orders[i].gift_data[j].gift_num %>
+								</div>
+							</div>
+							<% } %>
+						</div>
+					</div>
+					<% } %>
+				</li>
+			</ul>
+			<% } %>
+			<div class="order-goods-footer content-padded">
+				<div class="mui-table">
+					<div class="mui-table-cell mui-col-xs-6"></div>
+					<div class="mui-table-cell mui-col-xs-6">
+						<dl class="checkout-fee">
+							<dt>合计：</dt>
+							<dd class="total">
+								<%= $format_price(payment) %>
+							</dd>
+							<dt>减免：</dt>
+							<dd>-
+								<%= $format_price(discount_fee) %>
+							</dd>
+							<dt>红包抵扣：</dt>
+							<dd>-
+								<%= $format_price(hongbao_fee) %>
+							</dd>
+							<dt>积分抵扣：</dt>
+							<dd>-
+								<%= $format_price(points_fee) %>
+							</dd>
+							<dt>运费：</dt>
+							<dd>
+								<%= $format_price(post_fee) %>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="section-white">
-      <ul class="mui-table-view fontS">
-        <% if(pay_type=="online"){ %>
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">支付方式：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">在线支付</div>
-          </div>
-        </li>
-        <% }else{ %>
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">支付方式：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">货到付款</div>
-          </div>
-        </li>
-        <% } %>
+		<section class="section-white">
+			<ul class="mui-table-view fontS">
+				<% if(pay_type=="online"){ %>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">支付方式：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">在线支付</div>
+					</div>
+				</li>
+				<% }else{ %>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">支付方式：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">货到付款</div>
+					</div>
+				</li>
+				<% } %>
 
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">配送方式：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">
-              <p>
-                <%= shipping_type_name %>
-              </p>
-            </div>
-          </div>
-        </li>
-        <% if(ziti_addr){ %>
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">提货地址：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">
-              <p>
-                <%= ziti_addr %>
-              </p>
-            </div>
-          </div>
-        </li>
-        <% } %>
-        <% if(!need_invoice){ %>
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">发票信息：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">
-              <p>增值税发票</p>
-            </div>
-          </div>
-        </li>
-        <% } %>
-        <% if(trade_memo){ %>
-        <li class="mui-table-view-cell">
-          <div class="mui-table">
-            <div class="mui-table-cell mui-col-xs-6 font-gray-20">订单备注信息：</div>
-            <div class="mui-table-cell mui-col-xs-6 content-right">
-              <p>
-                <%= trade_memo %>
-              </p>
-            </div>
-          </div>
-        </li>
-        <% } %>
-      </ul>
-    </section>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">配送方式：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">
+							<p>
+								<%= shipping_type_name %>
+							</p>
+						</div>
+					</div>
+				</li>
+				<% if(ziti_addr){ %>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">提货地址：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">
+							<p>
+								<%= ziti_addr %>
+							</p>
+						</div>
+					</div>
+				</li>
+				<% } %>
+				<% if(!need_invoice){ %>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">发票信息：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">
+							<p>增值税发票</p>
+						</div>
+					</div>
+				</li>
+				<% } %>
+				<% if(trade_memo){ %>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">订单备注信息：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">
+							<p>
+								<%= trade_memo %>
+							</p>
+						</div>
+					</div>
+				</li>
+				<% } %>
+			</ul>
+		</section>
 
-    <% if(need_invoice==1){ %>
-    <section class="section-white section-container receiver-info">
-      <div class="receiver-info-item">
-        <div class="receiver-user">
-          <div class="receiver-name">发票类型：</div>
-          <div class="receiver-phone">
-            <% if(invoice_type=='normal'){ %>普通发票
-            <% }else if(invoice_type=='vat'){ %>增值税发票
-            <% } %>
-          </div>
-        </div>
-        <% if(invoice_type=='normal'){ %>
-        <div class="add-detail">
-          <% if(invoice_name=='individual'){ %> 个人
-          <% }else{ %> 公司
-          <% } %>(
-          <%= invoice_main %>)
-        </div>
-        <% }else{ %>
-        <div class="mui-table">
-          <dl class="checkout-fee">
-            <dt>公司名：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.company_name %>
-            </dd>
-            <dt>公司登记号：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.registration_number %>
-            </dd>
-            <dt>公司地址：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.company_address %>
-            </dd>
-            <dt>公司电话：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.company_phone %>
-            </dd>
-            <dt>银行开户名：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.bankname %>
-            </dd>
-            <dt>银行账号：</dt>
-            <dd>&nbsp;
-              <%= invoice_vat_main.bankaccount %>
-            </dd>
-          </dl>
-        </div>
-        <% } %>
-      </div>
-    </section>
-    <% } %>
+		<% if(need_invoice==1){ %>
+		<section class="section-white section-container receiver-info">
+			<div class="receiver-info-item">
+				<div class="receiver-user">
+					<div class="receiver-name">发票类型：</div>
+					<div class="receiver-phone">
+						<% if(invoice_type=='normal'){ %>普通发票
+						<% }else if(invoice_type=='vat'){ %>增值税发票
+						<% } %>
+					</div>
+				</div>
+				<% if(invoice_type=='normal'){ %>
+				<div class="add-detail">
+					<% if(invoice_name=='individual'){ %> 个人
+					<% }else{ %> 公司
+					<% } %>(
+					<%= invoice_main %>)
+				</div>
+				<% }else{ %>
+				<div class="mui-table">
+					<dl class="checkout-fee">
+						<dt>公司名：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.company_name %>
+						</dd>
+						<dt>公司登记号：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.registration_number %>
+						</dd>
+						<dt>公司地址：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.company_address %>
+						</dd>
+						<dt>公司电话：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.company_phone %>
+						</dd>
+						<dt>银行开户名：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.bankname %>
+						</dd>
+						<dt>银行账号：</dt>
+						<dd>&nbsp;
+							<%= invoice_vat_main.bankaccount %>
+						</dd>
+					</dl>
+				</div>
+				<% } %>
+			</div>
+		</section>
+		<% } %>
 
-    <% if(is_buyer_rate){ %>
-    <section class="action-bar-mini op-group">
-      <div class="op-group-item action-webview" data-webview="_www/view/member/trade/traderate.html" data-webparam='{"tid":<%= tid %>}'>去评价</div>
-    </section>
-    <% }else{ %>
+		<% if(is_buyer_rate){ %>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item action-webview" data-webview="_www/view/member/trade/traderate.html" data-webparam='{"tid":<%= tid %>}'>去评价</div>
+		</section>
+		<% }else{ %>
 
-    <% if(status=="WAIT_BUYER_PAY"){ %>
-    <% if(pay_type=="online"){ %>
-    <section class="action-bar-mini op-group">
-      <div class="op-group-item col-half action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
-      <div class="op-group-item col-half action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= tid %>,"type":"trade"}'>去支付</div>
-    </section>
-    <% } %>
-    <% } else if(status=="WAIT_SELLER_SEND_GOODS" && cancel_status=="NO_APPLY_CANCEL"){ %>
-    <section class="action-bar-mini op-group">
-      <div class="op-group-item action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
-    </section>
-    <% } else if(status=="WAIT_BUYER_CONFIRM_GOODS" && pay_type=="online"){ %>
-    <section class="action-bar-mini op-group">
-        <div class="op-group-item col-half trade-confirm" data-tid='<%= tid %>'>确认收货</a></div>
-    </section>
-    <% } %>
+		<% if(status=="WAIT_BUYER_PAY"){ %>
+		<% if(pay_type=="online"){ %>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item col-half action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
+			<div class="op-group-item col-half action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= tid %>,"type":"trade"}'>去支付</div>
+		</section>
+		<% } %>
+		<% } else if(status=="WAIT_SELLER_SEND_GOODS" && cancel_status=="NO_APPLY_CANCEL"){ %>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
+		</section>
+		<% } else if(status=="WAIT_BUYER_CONFIRM_GOODS" && pay_type=="online"){ %>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item col-half trade-confirm" data-tid='<%= tid %>'>确认收货</a>
+			</div>
+		</section>
+		<% } %>
 
-    <% if(cancel_status !="NO_APPLY_CANCEL" && cancel_status !="FAILS" ){ %>
-    <section class="action-bar-mini op-group">
-      <div class="op-group-item action-webview" data-webview="_www/view/member/trade/canceleddetail.html" data-webparam='{"cancel_id":<%= cancelInfo.cancel_id %>}'>查看取消详情</a></div>
-    </section>
-    <% } %>
-    <% } %>
+		<% if(cancel_status !="NO_APPLY_CANCEL" && cancel_status !="FAILS" ){ %>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item action-webview" data-webview="_www/view/member/trade/canceleddetail.html" data-webparam='{"cancel_id":<%= cancelInfo.cancel_id %>}'>查看取消详情</a>
+			</div>
+		</section>
+		<% } %>
+		<% } %>
 
-  </script>
+	</script>
 
-  <script type="text/javascript">
-    mui.plusReady(function() {
-      var state = app.getState();
-      mui.init({
-        beforeback: function() {
-          var fw = plus.webview.currentWebview().opener();
-          fw.reload(true);
-          fw.addEventListener('loaded',function(){
-            //返回true，继续页面关闭逻辑
-            return true;
-          });
-        }
-      });
+	<script type="text/javascript">
+		mui.plusReady(function() {
+			var state = app.getState();
+			mui.init({
+				beforeback: function() {
+					var fw = plus.webview.currentWebview().opener();
+					fw.reload(true);
+					fw.addEventListener('loaded', function() {
+						//返回true，继续页面关闭逻辑
+						return true;
+					});
+				}
+			});
 
-      getPage();
-      function getPage() {
-        var tid = plus.webview.currentWebview().tid;
-        console.log(tid);
-        var param = {
-          queryData: {
-            'method': config.apimethod.tradeDetail,
-            'accessToken': state.token,
-            'tid': tid
-          },
-          method: 'GET'
-        }
+			getPage();
 
-        $.dataRequest(param, function(rs) {
-          var result = template('trade_detail', rs.data);
-          console.log(JSON.stringify(rs.data))
-          $('.container').html(result);
-        });
+			function getPage() {
+				var tid = plus.webview.currentWebview().tid;
+				console.log(tid);
+				var param = {
+					queryData: {
+						'method': config.apimethod.tradeDetail,
+						'accessToken': state.token,
+						'tid': tid
+					},
+					method: 'GET'
+				}
 
-      }
+				$.dataRequest(param, function(rs) {
+					if(rs.data.shenhe_status == "0") {
+						rs.data.status_desc = "待审核";
+					} else if(rs.data.shenhe_status == "success") {
+						if(rs.data.status == "WAIT_BUYER_PAY") {
+							rs.data.status_desc = "待付款";
 
-      $(window).on('tap', '.trade-confirm', function() {
-        var tid = $(this).data('tid');
-        mui.confirm('是否确认已收到货', '', ['取消', '确认'], function(e) {
-          if(e.index == 1) {
-            var param = {
-              queryData: {
-                'method': config.apimethod.tradeconfirm,
-                'accessToken': state.token,
-                'tid': tid
-              },
-              method: 'POST'
-            }
+						} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS") {
+							rs.data.status_desc = "待发货";
 
-            $.dataRequest(param, function(rs) {
-              if(rs.data.status == 'success') {
-                getPage()
-              }
-            });
-          } else {
-            return false;
-          }
-        })
-      }, false);
+						} else if(rs.data.status == "SEND_PART") {
+							rs.data.status_desc = "部分发货";
 
-      $(window).on('tap', '.show_logistics', function() {
-        var logistics_data = $(this).data('logistics_data');
-        clicked('_www/view/member/logistics.html', {
-          'logistics_data': logistics_data,
-        });
-      });
-    });
-  </script>
+						} else if(rs.data.status == "WAIT_BUYER_CONFIRM_GOODS") {
+							rs.data.status_desc = "待收货";
+
+						} else if(rs.data.status == "TRADE_FINISHED") {
+							rs.data.status_desc = "已完成";
+
+						} else if(rs.data.status == "TRADE_CLOSED_BY_SYSTEM") {
+							rs.data.status_desc = "已关闭";
+
+						}
+					} else {
+						rs.data.status_desc = "审核拒绝";
+					}
+					var result = template('trade_detail', rs.data);
+					console.log(JSON.stringify(rs.data))
+					$('.container').html(result);
+				});
+
+			}
+
+			$(window).on('tap', '.trade-confirm', function() {
+				var tid = $(this).data('tid');
+				mui.confirm('是否确认已收到货', '', ['取消', '确认'], function(e) {
+					if(e.index == 1) {
+						var param = {
+							queryData: {
+								'method': config.apimethod.tradeconfirm,
+								'accessToken': state.token,
+								'tid': tid
+							},
+							method: 'POST'
+						}
+
+						$.dataRequest(param, function(rs) {
+							if(rs.data.status == 'success') {
+								getPage()
+							}
+						});
+					} else {
+						return false;
+					}
+				})
+			}, false);
+
+			$(window).on('tap', '.show_logistics', function() {
+				var logistics_data = $(this).data('logistics_data');
+				clicked('_www/view/member/logistics.html', {
+					'logistics_data': logistics_data,
+				});
+			});
+		});
+	</script>
 
 </html>

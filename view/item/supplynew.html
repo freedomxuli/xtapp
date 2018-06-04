@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../../css/style.css">
+		<link href="../../css/mui.picker.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
+		<style>
+			.mui-radio input[type="radio"]:checked:before,
+			.mui-checkbox input[type="checkbox"]:checked:before {
+				color: #E35D4C;
+			}
+			
+			.mui-radio.mui-left input[type="radio"],
+			.mui-checkbox.mui-left input[type="checkbox"] {
+				left: 0px;
+			}
+			
+			.mui-radio.mui-left label,
+			.mui-checkbox.mui-left label {
+				padding-left: 30px;
+			}
+			
+			.mui-input-row label {
+				width: 7rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<a class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</a>
+			<h1 class="mui-title title_span">求购供应</h1>
+			<a class="message_size">
+				<img class="message_img" src="../../img/category/message.png" />
+			</a>
+		</header>
+		<section class="container">
+			<form class="form-container">
+				<input type="hidden" name="addr_id" id="addr_id" value="">
+				<input type="hidden" name="next_page" id="next_page" value="">
+				<section class="mui-input-group">
+					<div class="mui-input-row">
+						<label>选择类型：</label>
+						<div class="mui-input-row mui-radio mui-left">
+							<label class="radio-text">我要找货</label>
+							<input name="radio1" type="radio" value="find" checked="checked">
+						</div>
+						<div class="mui-input-row mui-radio mui-left">
+							<label class="radio-text">我要供货</label>
+							<input name="radio1" value="supply" type="radio">
+						</div>
+					</div>
+					<div class="mui-input-row">
+						<label>联系电话：</label>
+						<input id="lxdh" type="number" required value="" class="mui-input-clear" placeholder="请填写联系电话" data-caution="请填写联系电话">
+					</div>
+				</section>
+
+				<section class="mui-content-padded form-op-section">
+					<button id="form_submit" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">提交</button>
+				</section>
+			</form>
+		</section>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.picker.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/template.min.js"></script>
+		<script src="../../config.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var state = app.getState();
+
+			document.getElementById('form_submit').addEventListener('tap', function() {
+				var type = $("input[name='radio1']:checked").val();
+				var mobile = document.getElementById('lxdh').value;
+
+				var param = {
+					queryData: {
+						'method': config.apimethod.buyAndApply,
+						'type': type,
+						'mobile': mobile
+					},
+					method: 'POST'
+				}
+
+				$.dataRequest(param, function(rs) {
+					var wa = plus.nativeUI.showWaiting();
+					mui.toast('提交成功');
+					var parent = plus.webview.currentWebview().opener();
+
+					parent.reload(true);
+					parent.addEventListener('loaded', function() {
+						wa.close();
+						mui.back();
+						setTimeout(function() {
+							plus.webview.currentWebview().close();
+						}, 300)
+					});
+
+				});
+			});
+		</script>
+	</body>
+
+</html>
