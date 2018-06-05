@@ -114,9 +114,6 @@
 				text-align: center;
 				color: #666666;
 			}
-			.flex2 {
-				flex: 1.3;
-			}
 			
 			.point {
 				overflow: hidden;
@@ -139,16 +136,22 @@
 		</header>
 		<div class="div_nav">
 			<div class="div_nav_label">
-				订单号
+				开票时间
 			</div>
-			<div class="div_nav_label flex2">
+			<div class="div_nav_label">
+				票号
+			</div>
+			<div class="div_nav_label">
 				商品
 			</div>
 			<div class="div_nav_label">
-				数量（吨）
+				单价
+			</div>
+			<div class="div_nav_label" style="flex:1.2rem">
+				开票数量(吨)
 			</div>
 			<div class="div_nav_label">
-				金额
+				开票金额
 			</div>
 		</div>
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper content-center">
@@ -174,8 +177,8 @@
 			mui.plusReady(function() {
 				starttime = plus.webview.currentWebview().starttime;
 				endtime = plus.webview.currentWebview().endtime;
-				type = plus.webview.currentWebview().type;
 			});
+			
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
@@ -189,85 +192,40 @@
 				}
 			});
 			var state = app.getState();
-			console.log(state.token);
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
 				count++;
-				console.log(starttime);
-				console.log(endtime);
 				setTimeout(function() {
 					var param = {
 						queryData: {
-							'method': config.apimethod.getqcwk,
+							'method': config.apimethod.getbqyk,
 							'accessToken': state.token,
-							'start_time':starttime,
-							'end_time':endtime,
+							'start_time': starttime,
+							'end_time': endtime,
 							'page_no': count,
-							'page_size': 10
+							'page_size': config.pagesize
 						},
 						method: 'POST'
 					}
-					if(type=='qmpe')
-					{
-						param = {
-							queryData: {
-								'method': config.apimethod.getqmwk,
-								'accessToken': state.token,
-								'start_time':starttime,
-								'end_time':endtime,
-								'page_no': count,
-								'page_size': 10
-							},
-							method: 'POST'
-						}
-					}else if(type=='bqpe')
-					{
-						param = {
-							queryData: {
-								'method': config.apimethod.getbqyk,
-								'accessToken': state.token,
-								'start_time':starttime,
-								'end_time':endtime,
-								'page_no': count,
-								'page_size': 10
-							},
-							method: 'POST'
-						}
-					}
 					$.dataRequest(param, function(rs) {
-						console.log(JSON.stringify(rs));
-						if(!rs.data.list)
-						{
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count < 1));
-						}else
-						{
-							var list = rs.data.list;
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count*10+list.length >= rs.data.count)); //参数为true代表没有更多数据了。
-							var table = document.body.querySelector('.mui-table-view');
-							var cells = document.body.querySelectorAll('.mui-table-view-cell');
-							for(var i = cells.length, len = i + 10; i < len; i++) {
-								var type = "";
-								var price = 0;
-								var accept = 0;
-								var zt = "";
-								
-								var li = document.createElement('li');
-								li.className = 'li-content';
-//								if(type=='qcpe'||type=='qmpe')
-//									li.innerHTML = '<div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div">' + list[i].manufacturers_name + '</div><div class="li-content-div point">' + list[i].num + '</div><div class="li-content-div point">' + list[i].price + '</div>';
-//								else if(type=='bqpe')
-									li.innerHTML = '<div class="li-content-div">' + list[i].tid + '</div><div class="li-content-div flex2">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige +'</div><div class="li-content-div point">' + list[i].num + '</div><div class="li-content-div point">￥' + list[i].payment + '</div>';
-								table.appendChild(li);
-							}
+						var list = rs.data.list;
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((count*config.pagesize+list.length>=rs.data.count)); //参数为true代表没有更多数据了。
+						var table = document.body.querySelector('.mui-table-view');
+						var cells = document.body.querySelectorAll('.mui-table-view-cell');
+						for(var i = cells.length, len = i + config.pagesize; i < len; i++) {
+				           var sp=list[i].manufacturers_name+'-'+list[i].pm_name+list[i].guige;
+							var li = document.createElement('li');
+							li.className = 'li-content';
+							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].consign_time) + '</div><div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div point">' + sp + '</div><div class="li-content-div">￥'+list[i].price+'</div><div class="li-content-div">'+list[i].ticket_num+'</div><div class="li-content-div">￥'+list[i].ticket_money+'</div>';
+							table.appendChild(li);
 						}
 					});
 
 				}, 1000);
 			}
-			
 			if(mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
@@ -295,7 +253,7 @@
 				var second = date.getSeconds();
 				minute = minute < 10 ? ('0' + minute) : minute;
 				second = second < 10 ? ('0' + second) : second;
-				return y + '-' + m + '-' + d;
+				return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
 			};
 		</script>
 	</body>

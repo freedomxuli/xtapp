@@ -296,7 +296,7 @@
 			</ul>
 		</section>
 
-		<% if(need_invoice==1){ %>
+		<!--<% if(need_invoice==1){ %>
 		<section class="section-white section-container receiver-info">
 			<div class="receiver-info-item">
 				<div class="receiver-user">
@@ -346,7 +346,7 @@
 				<% } %>
 			</div>
 		</section>
-		<% } %>
+		<% } %>-->
 
 		<% if(is_buyer_rate){ %>
 		<section class="action-bar-mini op-group">
@@ -372,12 +372,7 @@
 		</section>
 		<% } %>
 
-		<% if(cancel_status !="NO_APPLY_CANCEL" && cancel_status !="FAILS" ){ %>
-		<section class="action-bar-mini op-group">
-			<div class="op-group-item action-webview" data-webview="_www/view/member/trade/canceleddetail.html" data-webparam='{"cancel_id":<%= cancelInfo.cancel_id %>}'>查看取消详情</a>
-			</div>
-		</section>
-		<% } %>
+	
 		<% } %>
 
 	</script>
