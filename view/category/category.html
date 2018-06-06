@@ -734,7 +734,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -1533,7 +1533,7 @@
       }
       
       function addFly(event) {
-			    var offset = jQuery('.bbc-icon-cart-empty').offset(), flyer = jQuery('<img class="u-flyer" style="z-index:9999999;width: 2rem;" src="../../img/widgets_02_05.png"/>');
+			    var offset = jQuery('.icon-cart').offset(), flyer = jQuery('<img class="u-flyer" style="z-index:9999999;width: 2rem;" src="../../img/widgets_02_05.png"/>');
 			    flyer.fly({
 			        start: {
 			            left: event.pageX-40,
