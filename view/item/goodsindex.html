@@ -477,6 +477,8 @@
 			.jgzs_cate_span {
 				flex: 1;
 			}
+			
+	
 		</style>
 	</head>
 
@@ -516,8 +518,9 @@
 			      <h1 class="mui-title">标题</h1>
 			    </header>-->
 					<div id="slider" class="mui-slider">
-						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-
+							<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<div class="mui-scroll">
+						</div>
 						</div>
 
 						<div class="mui-slider-group" id="sliderSegmentedControl2">
@@ -765,7 +768,7 @@
 			$.dataRequest(param, function(rs) {
 	console.log(JSON.stringify(rs)); 
 				var widgets = template('priceguide1', rs);
-				$('#sliderSegmentedControl').append(widgets);
+				$('#sliderSegmentedControl .mui-scroll').append(widgets);
 
 				widgets = template('priceguide2', rs);
 				$('#sliderSegmentedControl2').html(widgets);
