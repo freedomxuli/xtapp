@@ -584,6 +584,12 @@
             </div>
             <div class="mui-table-cell mui-col-xs-4 mui-text-right">
             	<%
+            		if(list[i].status=="TRADE_CLOSED_BY_SYSTEM"){
+            			%>
+            				<mark>已关闭</mark>
+            			<%
+            		}
+            		else{           			            		
 												if(list[i].shenhe_status=="0"){
 													%>
 														<mark>待审核</mark>
@@ -625,6 +631,7 @@
 													%>
 														<mark>审核拒绝</mark>
 													<%
+												}
 												}
 												%>
           <!--    <mark><%= list[i].status_desc %></mark>-->

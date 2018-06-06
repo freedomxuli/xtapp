@@ -55,7 +55,7 @@
 				<img class="message_img" src="../../../img/category/message.png" />
 			</a>
 			</header>
-			<section class="container">
+			<!--<section class="container">
 				<form class="form-container">
 					<input type="hidden" name="key" value="topwap_signup">
 					<section class="mui-input-group">
@@ -72,11 +72,11 @@
 						</div>
 </section>
 						<section class="mui-content-padded form-op-section">
-							<button id="register_next" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">下一步</button>
+							<button id="bind_finished" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">确定</button>
 						</section>
 				</form>
-				</section>
-				<!--<section class="container">
+				</section>-->
+				<section class="container">
       <form class="form-container">
         <section class="mui-content-padded">
           验证码已送至您的手机：<span id="txt_mobile"></span>
@@ -94,7 +94,7 @@
           <button id="bind_finished" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">完成</button>
         </section>
       </form>
-    </section>-->
+    </section>
 				<script src="../../../js/zepto.js"></script>
 				<script src="../../../js/mui.min.js"></script>
 				<script src="../../../js/template.min.js"></script>
@@ -110,13 +110,13 @@
 						var actionmethod = "";
 						document.getElementById('txt_mobile').innerHTML = mobile.substring(0, 3) + '****' + mobile.substring(7);
 
-						if(actiontype == "bindphone" || actiontype == "bindnewphone") {
-							document.getElementById('bind_finished').innerHTML = "完成";
-							document.getElementsByClassName('header-title')[0].innerHTML = "手机验证";
-						} else {
-							document.getElementById('bind_finished').innerHTML = "下一步";
-							document.getElementsByClassName('header-title')[0].innerHTML = "修改密码";
-						}
+//						if(actiontype == "bindphone" || actiontype == "bindnewphone") {
+//							document.getElementById('bind_finished').innerHTML = "完成";
+//							document.getElementsByClassName('header-title')[0].innerHTML = "手机验证";
+//						} else {
+//							document.getElementById('bind_finished').innerHTML = "下一步";
+//							document.getElementsByClassName('header-title')[0].innerHTML = "修改密码";
+//						}
 						var btnVCode = $('#action_get_vcode');
 						btnVCode.html('<i>0<i>');
 						var countDown = new countdown(btnVCode.find('i'), {
@@ -128,6 +128,7 @@
 								cd.stop();
 							}
 						});
+
 						document.getElementById('bind_finished').addEventListener('tap', function() {
 							var vcode = document.getElementById('vcode').value;
 							if(vcode == "") {

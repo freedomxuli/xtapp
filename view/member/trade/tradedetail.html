@@ -80,7 +80,7 @@
 		</section>
 		<% } %>
 		<section class="section-white cart-list order-goods">
-			<div class="section-title order-goods-header action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid":<%= shop_id %>}'>
+			<div class="section-title order-goods-header action-webview">
 				<div class="title-txt fontS content-horizontal-padded font-gray-20">
 					<%= shopname %> <i class="mui-icon mui-icon-arrowright"></i>
 				</div>
@@ -354,8 +354,15 @@
 		</section>
 		<% }else{ %>
 
-		<% if(status=="WAIT_BUYER_PAY"){ %>
-		<% if(pay_type=="online"){ %>
+		<% if(status=="WAIT_BUYER_PAY"){ 
+			if(shenhe_status=="refuse"){
+				%>
+		<section class="action-bar-mini op-group">
+			<div class="op-group-item action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
+		</section>
+		<%
+			}
+	  else if(pay_type=="online"){ %>
 		<section class="action-bar-mini op-group">
 			<div class="op-group-item col-half action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
 			<div class="op-group-item col-half action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= tid %>,"type":"trade"}'>去支付</div>
@@ -372,7 +379,6 @@
 		</section>
 		<% } %>
 
-	
 		<% } %>
 
 	</script>
@@ -406,30 +412,37 @@
 				}
 
 				$.dataRequest(param, function(rs) {
-					if(rs.data.shenhe_status == "0") {
-						rs.data.status_desc = "待审核";
-					} else if(rs.data.shenhe_status == "success") {
-						if(rs.data.status == "WAIT_BUYER_PAY") {
-							rs.data.status_desc = "待付款";
 
-						} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS") {
-							rs.data.status_desc = "待发货";
-
-						} else if(rs.data.status == "SEND_PART") {
-							rs.data.status_desc = "部分发货";
-
-						} else if(rs.data.status == "WAIT_BUYER_CONFIRM_GOODS") {
-							rs.data.status_desc = "待收货";
-
-						} else if(rs.data.status == "TRADE_FINISHED") {
-							rs.data.status_desc = "已完成";
-
-						} else if(rs.data.status == "TRADE_CLOSED_BY_SYSTEM") {
-							rs.data.status_desc = "已关闭";
-
-						}
+					if(rs.data.status == "TRADE_CLOSED_BY_SYSTEM") {
+						rs.data.status_desc = "已关闭";
 					} else {
-						rs.data.status_desc = "审核拒绝";
+						if(rs.data.shenhe_status == "0") {
+							rs.data.status_desc = "待审核";
+						} else if(rs.data.shenhe_status == "success") {
+
+							if(rs.data.status == "WAIT_BUYER_PAY") {
+								rs.data.status_desc = "待付款";
+
+							} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS") {
+								rs.data.status_desc = "待发货";
+
+							} else if(rs.data.status == "SEND_PART") {
+								rs.data.status_desc = "部分发货";
+
+							} else if(rs.data.status == "WAIT_BUYER_CONFIRM_GOODS") {
+								rs.data.status_desc = "待收货";
+
+							} else if(rs.data.status == "TRADE_FINISHED") {
+								rs.data.status_desc = "已完成";
+
+							} else if(rs.data.status == "TRADE_CLOSED_BY_SYSTEM") {
+								rs.data.status_desc = "已关闭";
+
+							}
+						} else {
+
+							rs.data.status_desc = "审核拒绝";
+						}
 					}
 					var result = template('trade_detail', rs.data);
 					console.log(JSON.stringify(rs.data))

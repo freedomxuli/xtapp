@@ -120,10 +120,12 @@
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
+			
+		
 		</style>
 	</head>
 
-	<body>
+	<body id="main">
 
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<a class="mui-action-back mui-pull-left back-left back-width">
@@ -162,6 +164,7 @@
 				</ul>
 			</div>
 		</div>
+		
 		<script src="../../../js/zepto.js"></script>
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/mui.view.js"></script>
@@ -170,7 +173,19 @@
 		<script src="../../../js/app.js"></script>
 		<script src="../../../js/mui.zoom.js"></script>
 		<script src="../../../js/mui.previewimage.js"></script>
+		
+		<script type="text/html" id="tip">
+		<div id="middlePopover<%=num%>" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<%=text%>
+			</div>
+
+		</div>
+		</script>
+		
 		<script>
+
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
@@ -183,6 +198,7 @@
 					}
 				}
 			});
+			mui('body').on('tap','a',function(){document.location.href=this.href;});
 			var state = app.getState();
 			var count = 0;
 			/**
@@ -196,20 +212,23 @@
 							'method': config.apimethod.getRecord,
 							'accessToken': state.token,
 							'page_no': count,
-							'page_size': 20
+							'page_size': config.pagesize
 						},
 						method: 'POST'
 					}
 					$.dataRequest(param, function(rs) {
 						var list = rs.data.list;
-						mui('#pullrefresh').pullRefresh().endPullupToRefresh((list.length < 20)); //参数为true代表没有更多数据了。
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count - 1) * config.pagesize + list.length > rs.data.count)); //参数为true代表没有更多数据了。
 						var table = document.body.querySelector('.mui-table-view');
 						var cells = document.body.querySelectorAll('.mui-table-view-cell');
-						for(var i = cells.length, len = i + 20; i < len; i++) {
+						for(var i = cells.length, len = i + config.pagesize; i < len; i++) {
 							var type = "";
 							var price = 0;
 							var accept = 0;
 							var zt = "";
+							var msg = "";
+							if(list[i].message != null)
+								msg = list[i].message;
 							switch(list[i].type) {
 								case 'add':
 									type = '充值';
@@ -225,11 +244,11 @@
 									break;
 
 							}
-							if(list[i].recharge_type = "price")
+							if(list[i].recharge_type == "price")
 								price = list[i].fee;
 							else
-								acceptlist[i].fee;
-								
+								accept = list[i].fee;
+
 							switch(list[i].status) {
 								case 'rechargeing':
 								case 'cashing':
@@ -245,12 +264,18 @@
 								case 'cashrefuse':
 									zt = '已驳回';
 									break;
-								
+
 							}
 							var li = document.createElement('li');
 							li.className = 'li-content';
-							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].logtime) + '</div><div class="li-content-div">' + type + '</div><div class="li-content-div point">' + list[i].message + '</div><div class="li-content-div">'+price+'</div><div class="li-content-div">'+accept+'</div><div class="li-content-div">'+zt+'</div>';
+							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].logtime) + '</div><div class="li-content-div">' + type + '</div><div class="li-content-div point"><a class="li-content-div " href="#middlePopover'+((count - 1) * config.pagesize+i)+'">' + msg + '</a></div><div class="li-content-div">' + price + '</div><div class="li-content-div">' + accept + '</div><div class="li-content-div">' + zt + '</div>';
 							table.appendChild(li);
+							
+							var obj={};
+							obj.num=(count - 1) * config.pagesize+i;
+							obj.text=msg;
+							var widgets = template('tip', obj);
+							$('#main').append(widgets);
 						}
 					});
 

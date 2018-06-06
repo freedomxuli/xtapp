@@ -185,15 +185,15 @@
 				}
 			});
 			var state = app.getState();
-		
+
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
 				count++;
-					console.log(starttime);
-					console.log(endtime);
+				console.log(starttime);
+				console.log(endtime);
 				setTimeout(function() {
 					var param = {
 						queryData: {
@@ -213,7 +213,7 @@
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count < 1));
 						} else {
 							var list = rs.data.detailData;
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count*config.pagesize+list.length >= rs.data.count)); //参数为true代表没有更多数据了。
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1) * config.pagesize + list.length >= rs.data.count)); //参数为true代表没有更多数据了。
 							var table = document.body.querySelector('.mui-table-view');
 							var cells = document.body.querySelectorAll('.mui-table-view-cell');
 							for(var i = 0; i < list.length; i++) {
@@ -225,22 +225,22 @@
 									case 'add':
 										type = '充值';
 										fee = "收入";
-										sr = "￥"+list[i].fee;
+										sr = "￥" + list[i].fee;
 										break;
 									case 'expense':
 										type = '采购';
 										fee = "支出";
-										zc = "￥"+list[i].fee;
+										zc = "￥" + list[i].fee;
 										break;
 									case 'cash':
 										type = '提现';
 										fee = "支出";
-										zc = "￥"+list[i].fee;
+										zc = "￥" + list[i].fee;
 										break;
 									case 'rufundend':
 										type = '退款';
 										fee = "收入";
-										sr = "￥"+list[i].fee;
+										sr = "￥" + list[i].fee;
 										break;
 
 								}
