@@ -9057,7 +9057,7 @@ input[type="search"].header-search {
 	-webkit-font-smoothing: antialiased;
 	font-size: 24px;
 	 margin-left: -10px;
-    margin-right: -10px;
+    margin-right: -10px; 
     padding-left: 15px;
     padding-right: 15px;
 }
