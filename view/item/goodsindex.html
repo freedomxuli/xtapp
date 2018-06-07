@@ -84,11 +84,11 @@
         line-height: 50px;
         width: 100%;
       }*/
-      
-      .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
-        background-color: #fff;
-        	color: #e35d4c !important;
-      }
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+				color: #e35d4c !important;
+			}
 			
 			.mui-slider-indicator.mui-segmented-control {
 				background-color: #ffffff !important;
@@ -694,26 +694,28 @@
 					var arry = [];
 					for(var j in rs.data[i].priceTrend) {
 						rs.data[i].priceTrend[j].created_time = formatDateTime(rs.data[i].priceTrend[j].created_time);
-						if(rs.data[i].priceTrend[j].priceResult==0){
-							rs.data[i].priceTrend[j].width=0.7;
-							rs.data[i].priceTrend[j].height=0.25;
-							rs.data[i].priceTrend[j].top=5;
-							rs.data[i].priceTrend[j].color='666666';
-								rs.data[i].priceTrend[j].pic='ping';
-						}
-						else if(rs.data[i].priceTrend[j].priceResult>0){
-							rs.data[i].priceTrend[j].width=0.6;
-							rs.data[i].priceTrend[j].height=0.7;
-							rs.data[i].priceTrend[j].top=1;
-							rs.data[i].priceTrend[j].color='E35D4C';
-							rs.data[i].priceTrend[j].pic='zhang';
-						}
-						else{
-							rs.data[i].priceTrend[j].width=0.6;
-							rs.data[i].priceTrend[j].height=0.7;
-							rs.data[i].priceTrend[j].top=1;
-							rs.data[i].priceTrend[j].color='509c2f';
-								rs.data[i].priceTrend[j].pic='die';
+						if(rs.data[i].priceTrend[j].priceResult == 0) {
+							rs.data[i].priceTrend[j].width = 0.7;
+							rs.data[i].priceTrend[j].height = 0.25;
+							rs.data[i].priceTrend[j].top = 5;
+							rs.data[i].priceTrend[j].color = '666666';
+							rs.data[i].priceTrend[j].pic = 'ping';
+
+						} else if(rs.data[i].priceTrend[j].priceResult > 0) {
+							rs.data[i].priceTrend[j].width = 0.6;
+							rs.data[i].priceTrend[j].height = 0.7;
+							rs.data[i].priceTrend[j].top = 1;
+							rs.data[i].priceTrend[j].color = 'E35D4C';
+							rs.data[i].priceTrend[j].pic = 'zhang';
+							rs.data[i].priceTrend[j].priceResult = '+' + rs.data[i].priceTrend[j].priceResult;
+
+						} else {
+							rs.data[i].priceTrend[j].width = 0.6;
+							rs.data[i].priceTrend[j].height = 0.7;
+							rs.data[i].priceTrend[j].top = 1;
+							rs.data[i].priceTrend[j].color = '509c2f';
+							rs.data[i].priceTrend[j].pic = 'die';
+							rs.data[i].priceTrend[j].priceResult = '-' + rs.data[i].priceTrend[j].priceResult;
 						}
 						arry.push(rs.data[i].priceTrend[j]);
 					}
@@ -782,13 +784,15 @@
 							<div class="content-outer" style="height: 3rem;line-height: 3rem;">
 								<div style="flex:1;font-size: 1rem">
 									<%=data[i].manufacturers_name%>&nbsp;
-									<font style="font-size:0.9rem"><%=data[i].pm_name%></font>
+									<font style="font-size:0.9rem">
+										<%=data[i].pm_name%>
+									</font>
 								</div>
 								<div style="flex:1;text-align: right;color:#<%=data[i].color%>">
 									<font style="font-size:1.2rem;">
 										<%=data[i].current_price%>
-									</font><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;margin-bottom: <%=data[i].top%>px;" src="../../img/item/<%=data[i].pic%>.png" /> &nbsp; +
-									<%=data[i].priceResult%> 
+									</font><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;margin-bottom: <%=data[i].top%>px;" src="../../img/item/<%=data[i].pic%>.png" /> &nbsp;
+									<%=data[i].priceResult%>
 									<%=data[i].priceResultRate%>%</div>
 							</div>
 							<div class="content-outer" style="height: 2rem;font-size: 0.8rem;">
