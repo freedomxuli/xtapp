@@ -307,8 +307,10 @@
 			</div>
 
 			<div id="slider3" class="mui-slider">
-				<div id="sliderSegmentedControl" class=" section-white mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-negative">
-				</div>
+			<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<div class="mui-scroll">
+							</div>
+						</div>
 				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
 				<div class="mui-slider-group" id="sliderSegmentedControl2" style="margin-top:10px;">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
@@ -540,7 +542,7 @@
 									%>
 							<div class="mui-slider-item mui-slider-item-duplicate">
 								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" class="turnleft" src="../img/index/left.png" /></div>
 									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
 									<div class="box-display" style="height:6rem;">
 										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
@@ -1184,7 +1186,7 @@
 			$.dataRequest(param, function(rs) {
 
 				widgets = template('priceguide1', rs);
-				$('#sliderSegmentedControl').append(widgets);
+				$('#sliderSegmentedControl .mui-scroll').html(widgets);
 
 				widgets = template('priceguide2', rs);
 				$('#sliderSegmentedControl2').html(widgets);
@@ -1242,7 +1244,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				}, false);
 
 			});
-
+			
 			document.getElementById("telephone").addEventListener('tap', function() {
 				var btnArray = ['拨打', '取消'];
 				var phone = "0519-86558808";

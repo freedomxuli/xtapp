@@ -83,11 +83,12 @@
 			/*      .mui-segmented-control .mui-control-item {
         line-height: 50px;
         width: 100%;
-      }
+      }*/
       
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
-      }*/
+        	color: #e35d4c !important;
+      }
 			
 			.mui-slider-indicator.mui-segmented-control {
 				background-color: #ffffff !important;
@@ -148,7 +149,7 @@
 			
 			.mui-control-content {
 				background-color: white;
-				min-height: 300px;
+				min-height: 210px;
 			}
 			
 			.mui-control-content .mui-loading {
@@ -160,7 +161,7 @@
 			}
 			
 			.mui-scroll-wrapper {
-				overflow-y: scroll;
+				overflow-y: scroll !important;
 			}
 			
 			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
@@ -477,8 +478,6 @@
 			.jgzs_cate_span {
 				flex: 1;
 			}
-			
-	
 		</style>
 	</head>
 
@@ -507,32 +506,20 @@
 		</div>
 		<div class="content-space"></div>
 		<div class="jgzd">价格指导</div>
-		<section class="container mui-row mui-fullscreen category-nav">
-			<!-- 侧滑导航根容器 -->
-			<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
 
-				<div class="mui-inner-wrap mui-content">
-					<!-- 主页面标题 -->
-					<!--			    <header class="mui-bar mui-bar-nav">
-			      <a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-			      <h1 class="mui-title">标题</h1>
-			    </header>-->
-					<div id="slider" class="mui-slider">
-							<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-						<div class="mui-scroll">
-						</div>
-						</div>
-
-						<div class="mui-slider-group" id="sliderSegmentedControl2">
-							<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-
-							</div>
-						</div>
-
-					</div>
+		<div id="slider" class="mui-slider">
+			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<div class="mui-scroll">
 				</div>
 			</div>
-		</section>
+
+			<div class="mui-slider-group" id="sliderSegmentedControl2">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+
+				</div>
+			</div>
+
+		</div>
 		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/template.min.js"></script>
@@ -549,6 +536,11 @@
 			var jQuery = jQuery.noConflict();
 		</script>
 		<script>
+			mui.init({
+				statusBarBackground: "#E35D4C",
+				swipeBack: false
+			});
+
 			var param = {
 				queryData: {
 					'method': config.apimethod.getPm
@@ -683,81 +675,6 @@
 				}
 			})
 
-			//			var getOption = function(chartType) {
-			//				var chartOption ={
-			//					legend: {
-			//						data: ['球铁', '铸铁', '炼钢铁']
-			//					},
-			//					grid: {
-			//						x: 35,
-			//						x2: 10,
-			//						y: 30,
-			//						y2: 25,
-			//						height: 120
-			//					},
-			//					toolbox: {
-			//						show: false,
-			//						feature: {
-			//							mark: {
-			//								show: true
-			//							},
-			//							dataView: {
-			//								show: true,
-			//								readOnly: false
-			//							},
-			//							magicType: {
-			//								show: true,
-			//								type: ['line', 'bar']
-			//							},
-			//							restore: {
-			//								show: true
-			//							},
-			//							saveAsImage: {
-			//								show: true
-			//							}
-			//						}
-			//					},
-			//					calculable: false,
-			//					xAxis: [{
-			//						type: 'category',
-			//						data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
-			//					}],
-			//					yAxis: [{
-			//						type: 'value',
-			//						splitArea: {
-			//							show: true
-			//						}
-			//					}],
-			//					series: [{
-			//							name: '球铁',
-			//							type: chartType,
-			//							data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-			//						}, {
-			//							name: '铸铁',
-			//							type: chartType,
-			//							data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-			//						},
-			//						{
-			//							name: '炼钢铁',
-			//							type: chartType,
-			//							data: [4, 6, 9.0, 2, 4, 5, 175.6, 182.2, 48.7, 18.8, 6.0, 3]
-			//						}
-			//					]
-			//				};
-			//				return chartOption;
-			//			};
-			//			var byId = function(id) {
-			//				return document.getElementById(id);
-			//			};
-			//
-			//			var lineChart = echarts.init(byId('lineChart'));
-			//			lineChart.setOption(getOption('line'));
-			//
-			//			document.getElementById("echarts").addEventListener('tap', function() {
-			//				var url = this.getAttribute('data-url');
-			//				plus.runtime.openURL(url);
-			//			}, false);
-
 			param = {
 				queryData: {
 					'method': config.apimethod.priceguide
@@ -766,7 +683,7 @@
 			}
 
 			$.dataRequest(param, function(rs) {
-	console.log(JSON.stringify(rs)); 
+				console.log(JSON.stringify(rs));
 				var widgets = template('priceguide1', rs);
 				$('#sliderSegmentedControl .mui-scroll').append(widgets);
 
@@ -777,16 +694,37 @@
 					var arry = [];
 					for(var j in rs.data[i].priceTrend) {
 						rs.data[i].priceTrend[j].created_time = formatDateTime(rs.data[i].priceTrend[j].created_time);
+						if(rs.data[i].priceTrend[j].priceResult==0){
+							rs.data[i].priceTrend[j].width=0.7;
+							rs.data[i].priceTrend[j].height=0.25;
+							rs.data[i].priceTrend[j].top=5;
+							rs.data[i].priceTrend[j].color='666666';
+								rs.data[i].priceTrend[j].pic='ping';
+						}
+						else if(rs.data[i].priceTrend[j].priceResult>0){
+							rs.data[i].priceTrend[j].width=0.6;
+							rs.data[i].priceTrend[j].height=0.7;
+							rs.data[i].priceTrend[j].top=1;
+							rs.data[i].priceTrend[j].color='E35D4C';
+							rs.data[i].priceTrend[j].pic='zhang';
+						}
+						else{
+							rs.data[i].priceTrend[j].width=0.6;
+							rs.data[i].priceTrend[j].height=0.7;
+							rs.data[i].priceTrend[j].top=1;
+							rs.data[i].priceTrend[j].color='509c2f';
+								rs.data[i].priceTrend[j].pic='die';
+						}
 						arry.push(rs.data[i].priceTrend[j]);
 					}
 					obj.data = arry;
-					console.log(JSON.stringify(obj)); 
+					console.log(JSON.stringify(obj));
 					widgets = template('priceguide3', obj);
 					$('#item' + i + 'mobile').html(widgets);
 				}
 
 			});
-			
+
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
@@ -801,7 +739,7 @@
 				var second = date.getSeconds();
 				minute = minute < 10 ? ('0' + minute) : minute;
 				second = second < 10 ? ('0' + second) : second;
-				return y + '/' + m + '/' + d+' '+h+':'+minute;
+				return y + '/' + m + '/' + d + ' ' + h + ':' + minute;
 			};
 		</script>
 		<script type="text/html" id="title-list">
@@ -842,13 +780,23 @@
 								%>
 						<li class="content-li">
 							<div class="content-outer" style="height: 3rem;line-height: 3rem;">
-								<div style="flex:1;font-size: 1rem"><%=data[i].manufacturers_name%> <%=data[i].pm_name%></div>
-								<div style="flex:1;text-align: right;color:#666666">
-									<font style="font-size:1.2rem;"><%=data[i].current_price%></font><img style="width:0.7rem;height:0.25rem;margin-bottom: 5px;" src="../../img/item/ping.png" />  &nbsp; +<%=data[i].priceResult%> &nbsp; <%=data[i].priceResultRate%>%</div>
+								<div style="flex:1;font-size: 1rem">
+									<%=data[i].manufacturers_name%>&nbsp;
+									<font style="font-size:0.9rem"><%=data[i].pm_name%></font>
+								</div>
+								<div style="flex:1;text-align: right;color:#<%=data[i].color%>">
+									<font style="font-size:1.2rem;">
+										<%=data[i].current_price%>
+									</font><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;margin-bottom: <%=data[i].top%>px;" src="../../img/item/<%=data[i].pic%>.png" /> &nbsp; +
+									<%=data[i].priceResult%> 
+									<%=data[i].priceResultRate%>%</div>
 							</div>
 							<div class="content-outer" style="height: 2rem;font-size: 0.8rem;">
-								<div style="flex:1;color:#666666"><%=data[i].guige%> </div>
-								<div style="flex:1;text-align: right;color:#a1a1a1"><%=data[i].created_time%></div>
+								<div style="flex:1;color:#666666">
+									<%=data[i].guige%> </div>
+								<div style="flex:1;text-align: right;color:#a1a1a1">
+									<%=data[i].created_time%>
+								</div>
 							</div>
 						</li>
 						<%
