@@ -307,7 +307,7 @@
       <div class="op-item goods-op-faverite collect-goods">
         <div class="op-item-init"><i class="bbc-icon bbc-icon-star-empty"></i><span>收藏</span></div>
       </div>
-      <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/quickcart.html">
+      <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/cart.html">
         <div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span>购物车</span></div>
       </div>
       <% if( item.valid && item.realStore>0 ){ %>
@@ -383,6 +383,7 @@
   <script>
     mui.plusReady(function() {
       var state = app.getState();
+      //getcartnumabs(state.token);
       var favorite_items = app.getFavoriteItems();
       var favorite_shop = app.getFavoriteShop();
       var goods_id = plus.webview.currentWebview().itemid;
