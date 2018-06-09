@@ -293,6 +293,7 @@ var toSearchByMy = function(el, wv, shop,manufacturers_id,cat_id) {
     $('body').append('<div id="search_panel" class="search-modal"><div id="history_list" class="mui-scroll-wrapper"><div class="mui-scroll"></div></div></div>');
     mui('#history_list').scroll();
     $('.search-cancel').show().siblings('.search-hide').hide();
+    $('.img-back').show();
     //$('.header-search-form').parents('#head-search').removeClass('home-header');
     //$('.header-search-form').parents('#head-search').addClass('home-header1');
     $('#head-search').removeClass('home-color');
@@ -344,8 +345,18 @@ var toSearchByMy = function(el, wv, shop,manufacturers_id,cat_id) {
     });
 
     $('.search-cancel').on('tap', function() {
+    	$('.search-input').val('');
+      //$('#search_panel').remove();
+      //$(this).hide().siblings('.search-hide').show();
+      //$('#head-search').removeClass('home-color1');
+      //$('#head-search').addClass('home-color');
+      el.blur();
+    });
+    
+    $('.img-back').on('tap', function() {
+    	$('.img-back').hide();
       $('#search_panel').remove();
-      $(this).hide().siblings('.search-hide').show();
+      $('.search-cancel').hide().siblings('.search-hide').show();
       $('#head-search').removeClass('home-color1');
       $('#head-search').addClass('home-color');
       el.blur();

@@ -335,6 +335,7 @@
 				height: 2rem;
 				line-height: 2rem;
 				text-align: left;
+				font-size: 0.8rem;
 			}
 			/*.content-inner-left-top-item{
 				flex:2;
@@ -854,9 +855,9 @@
       	var fl_sort = 0;
       	for(var left_kind_id in rs.data.lv1Cats)
       	{
-      		fl_sort_obj[fl_sort] = left_kind_id;
+      		fl_sort_obj[fl_sort] = left_kind_id.substr(2);
       		fl_sort++;
-      		page_obj[left_kind_id] = 1;
+      		page_obj[left_kind_id.substr(2)] = 1;
       		if(left_kind_num==0)
       		{
       			fl_id = rs.data.lv1Cats[left_kind_id].cat_id;
@@ -901,20 +902,20 @@
 				var left_content_obj;
       	var left_content_list = [];
       	var left_content_num = 0;
-      	for(var i = 0;i < rs.data.lv1Cats[fl_id].lv2.length;i++)
+      	for(var i = 0;i < rs.data.lv1Cats["c_"+fl_id].lv2.length;i++)
       	{
       		/*if(i==0)
       			pro_name_id = rs.data.lv1Cats[fl_id].lv2[i].cat_id;*/
       		var left_content_small_list = [];
       		var left_content_small_num = 0;
-      		for(var j = 0;j < rs.data.lv1Cats[fl_id].lv2[i].lv3.length;j++)
+      		for(var j = 0;j < rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3.length;j++)
       		{
       			if(left_content_num==0)
       			{
-      				gg_id = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id;
+      				gg_id = rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id;
       				var obj_s = {
-		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 		      			is_select:1
 		      		}
       				left_content_small_list.push(obj_s);
@@ -922,16 +923,16 @@
       			}else
       			{
       				var obj_s = {
-		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 		      			is_select:0
 		      		}
       				left_content_small_list.push(obj_s);
       			}
       		}
       		var obj = {
-      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].cat_id,
-      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].cat_name,
+      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_id,
+      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_name,
       			lv3:left_content_small_list
       		}
       		left_content_list.push(obj);
@@ -948,7 +949,7 @@
       	var top_kind_list = [];
       	for(var top_kind_id in rs.data.lv1Cats)
       	{
-      		if(fl_id==top_kind_id)
+      		if("c_"+fl_id==top_kind_id)
       		{
       			var obj = {
       				cat_id:rs.data.lv1Cats[top_kind_id].cat_id,
@@ -981,7 +982,7 @@
 				var arr_1 = [];
 				for(var top_kind_id in rs.data.lv1Cats)
       	{
-      		arr_1.push(top_kind_id);
+      		arr_1.push(top_kind_id.substr(2));
       	}
       	startContent(arr_1[0],0);
       	function startContent(start_id,start_num)
@@ -1102,7 +1103,7 @@
 											var ul = self.element.querySelector('.mui-table-view');
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
-											GetContentListNew(index,ul,self);
+											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
 										}, 1100);
 									}
 								}
@@ -1186,12 +1187,12 @@
 	     
 	    $(".left-side-content-nav").on('tap','li', function (event) {
 				ChangeLeftMenu($(this).data('cid'));
-				ChangeLeftContent($(this).data('cid'),gg_id);
+				ChangeLeftContent("c_"+$(this).data('cid'),gg_id);
 			});
 			
 			$(".left-side-content-detail").on('tap','.left-side-content-detail-list li',function(event){
 				gg_id = $(this).data('cid');
-				ChangeLeftContent(fl_id,gg_id);
+				ChangeLeftContent("c_"+fl_id,gg_id);
 			});
 			
 			$("#left-side-submit").on('tap',function(event){
@@ -1213,6 +1214,7 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						GetGGList(pro_name_id);
 					} 
 				});
 			});
@@ -1304,6 +1306,9 @@
 	      };
 	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
+	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
+	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
+	      	page_obj[fl_new_id] = 1;
 	      	for(var i = 0;i < rs.data.list.length;i++)
 	      	{
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
@@ -1323,31 +1328,61 @@
 	      });
 			}
 			
-			function GetContentListNew(page_index,ul_obj,self_obj)
+			function GetContentListNew(page_index,ul_obj,self_obj,pm_id,guige,cd_new_id,jgk_new_id)
 			{
+				var search = "";
+				var all = "";
+				var pm = "";
+				var gg = "";
+				var cj = "";
+				var jgk = "";
+				if(keykind!="")
+				{
+					switch(keykind)
+					{
+						case "全部":
+							search = "all";
+							all = keyword;
+						break;
+						case "品名":
+							pm = keyword;
+						break;
+						case "规格":
+							gg = keyword;
+						break;
+						case "厂家/产地":
+							cj = keyword;
+						break;
+						case "交割库":
+							jgk = keyword;
+						break;
+					}
+				}
 				var param1 = {
 	        queryData: {
 	          'method': config.apimethod.goodslist,
 	          'lv1Cat':'',
-	          'lv2Cat':'',
-	          'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
+	          'lv2Cat':pm_id,
+	          //'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
+	          'cat_id':cat_all_obj[fl_sort_obj[page_index]],
 	          'shop_id':'',
-	          'search':'',
-	          'all':'',
-	          'pm':'',
-	          'gg':'',
-	          'cj':'',
-	          'jgk':'',
+	          'search':search,
+	          'all':all,
+	          'pm':pm,
+	          'gg':gg,
+	          'cj':cj,
+	          'jgk':jgk,
 	          'page_no':(parseInt(page_obj[fl_sort_obj[page_index]])+1),
 	          'page_size':config.pagesize,
 	          'orderBy':'',
 	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
-	          'guige':'',
-	          'manufacturers_id':'', 
-	          'storage_id':''
+	          'guige':guige,
+	          'manufacturers_id':cd_new_id,
+	          'storage_id':jgk_new_id
 	        },
 	        method: 'GET'
 	      };
+	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	var resultnew = template('filters_center_list', rs.data);
 					//$('#item'+fl_sort_obj[page_index]+'mobile ul').html(result);
