@@ -756,7 +756,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -787,6 +787,8 @@
       var keykind = "";
       setTimeout(function(){
       	mui.plusReady(function() {
+  		  var state = app.getState();
+      	getcartnumabs(state.token);
       	wid = plus.webview.currentWebview().id;
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
 		    mui('.mui-scroll-wrapper').scroll({
@@ -866,8 +868,6 @@
         method: 'GET'
       };
       $.dataRequest(param, function(rs) {
-  		  var state = app.getState(); 
-      	getcartnumabs(state.token);
       	search_data = rs.data;
       	//构造左侧大类列表
       	var left_kind_obj;

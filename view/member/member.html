@@ -413,7 +413,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</div>
 			<div class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</div>
 			<div class="bbc-tab-item bbc-active" data-webview="_www/view/member/member.html">
@@ -432,6 +432,7 @@
 				window.addEventListener('refresh', fetchMemberData);
 				if(state.token)
 				fetchMemberData();
+      			getcartnumabs(state.token);
 
 				$(window).on('tap', '.action-clickview', function() {
 					var state = app.getState();
