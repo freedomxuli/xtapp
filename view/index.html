@@ -20,14 +20,14 @@
 			vertical-align: middle
 		}
 		
-		.img-back{
+		.img-back {
 			height: 1rem;
 			width: 0.6rem;
 			line-height: 1rem;
 			display: none;
 		}
 		
-		.img-padding{
+		.img-padding {
 			margin: 0rem 0.5rem 0rem 0.5rem;
 		}
 		
@@ -273,6 +273,22 @@
 			border-top: none;
 			border-bottom: none;
 		}
+		
+		.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+			padding: 0 15px !important;
+		}
+		.box-display{
+			display: flex;
+		}
+		.box-item-flex1{
+			flex:1;
+		}
+		.pm_name{
+			height:2rem;font-size:0.8rem;line-height: 2rem;
+		}
+		.guige{
+			height:2rem;font-size:0.7rem;line-height: 2rem;font-family:'arial rounded mt bold';
+		}
 	</style>
 
 	<body>
@@ -307,22 +323,18 @@
 		<div id="main-content2">
 
 		</div>
-		<div id="main-content3">
+		<div id="main-jgzd">
+			
+		</div>
+		<div id="main-content3"> 
 
-			<div class="section-title user-title title section-white">
-				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-				<div class="title-txt title-txt-padding">
-
-					<span class="lbm-font">价格指导</span></div>
-				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
-					<a data-needlog="true"  class="action-clickview font-gray-40"  style="margin-right:-10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-			</div>
+			
 
 			<div id="slider3" class="mui-slider">
-			<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-							<div class="mui-scroll">
-							</div>
-						</div>
+				<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+					</div>
+				</div>
 				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
 				<div class="mui-slider-group" id="sliderSegmentedControl2" style="margin-top:10px;">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
@@ -439,7 +451,7 @@
 
 						<span class="lbm-font">合作厂家</span></div>
 					<div id="hzcj" class="more-link action-webview" data-webview="_www/view/item/merchants.html">
-						<a  class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div id="hzcj_slider" class="mui-slider">
 					<div class="mui-slider-group mui-slider-loop">
@@ -529,6 +541,17 @@
 			</section>
 		</script>
 
+		<script type="text/javascript" id="priceguide0">
+			<div class="section-title user-title title section-white">
+				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+				<div class="title-txt title-txt-padding">
+
+					<span class="lbm-font">价格指导</span></div>
+				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
+					<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+			</div>
+		</script>
+		
 		<script type="text/html" id="priceguide1">
 			<% for(var i in data) { %>
 			<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%=i%>mobile">
@@ -554,7 +577,7 @@
 									%>
 							<div class="mui-slider-item mui-slider-item-duplicate">
 								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" class="turnleft" src="../img/index/left.png" /></div>
+									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
 									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
 									<div class="box-display" style="height:6rem;">
 										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
@@ -563,10 +586,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[data.length-4].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[data.length-4].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[data.length-4].guige%>
 													</div>
 												</div>
@@ -574,8 +597,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[data.length-4].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+												<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
 														<%=data[data.length-4].priceResult%>
 														<%=data[data.length-4].priceResultRate%>
 													</div>
@@ -588,10 +611,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[data.length-4+1].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[data.length-4+1].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[data.length-4+1].guige%>
 													</div>
 												</div>
@@ -599,8 +622,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[data.length-4+1].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
 														<%=data[data.length-4+1].priceResult%>
 														<%=data[data.length-4+1].priceResultRate%>
 													</div>
@@ -616,10 +639,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[data.length-4+2].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[data.length-4+2].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[data.length-4+2].guige%>
 													</div>
 												</div>
@@ -627,8 +650,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[data.length-4+2].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+												<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
 														<%=data[data.length-4+2].priceResult%>
 														<%=data[data.length-4+2].priceResultRate%>
 													</div>
@@ -642,10 +665,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[data.length-4+3].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[data.length-4+3].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[data.length-4+3].guige%>
 													</div>
 												</div>
@@ -653,8 +676,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[data.length-4+3].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:<%=data[data.length-4+3].width%>rem;height:<%=data[data.length-4+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+3].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+3].color%>;">
 														<%=data[data.length-4+3].priceResult%>
 														<%=data[data.length-4+3].priceResultRate%>
 													</div>
@@ -674,7 +697,7 @@
 		%>
 							<div class="mui-slider-item">
 								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+									<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
 									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
 									<div class="box-display" style="height:6rem;">
 										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
@@ -683,10 +706,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[i].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[i].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[i].guige%>
 													</div>
 												</div>
@@ -694,8 +717,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[i].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i].current_price%></span><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i].color%>;">
 														<%=data[i].priceResult%>
 														<%=data[i].priceResultRate%>
 													</div>
@@ -712,10 +735,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[i+1].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[i+1].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[i+1].guige%>
 													</div>
 												</div>
@@ -723,8 +746,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[i+1].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+1].current_price%></span><img style="width:<%=data[i+1].width%>rem;height:<%=data[i+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+1].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+1].color%>;">
 														<%=data[i+1].priceResult%>
 														<%=data[i+1].priceResultRate%>
 													</div>
@@ -735,25 +758,25 @@
 													}
 													else{
 														%>
-											<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+										<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 											<div class="box-display ">
 												<div class="box-item-flex1" style="padding-left: 0.5rem;">
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
+
 													</div>
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
+
 													</div>
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														
+
 													</div>
 												</div>
 												<div class="box-item-flex1">
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														
+
 													</div>
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">																						
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
 													</div>
 												</div>
 											</div>
@@ -773,10 +796,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[i+2].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[i+2].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[i+2].guige%>
 													</div>
 												</div>
@@ -784,8 +807,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[i+2].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+2].current_price%></span><img style="width:<%=data[i+2].width%>rem;height:<%=data[i+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+2].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+2].color%>;">
 														<%=data[i+2].priceResult%>
 														<%=data[i+2].priceResultRate%>
 													</div>
@@ -800,21 +823,21 @@
 											<div class="box-display ">
 												<div class="box-item-flex1" style="padding-left: 0.5rem;">
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
+
 													</div>
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
+
 													</div>
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														
+
 													</div>
 												</div>
 												<div class="box-item-flex1">
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														
+
 													</div>
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">																						
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
 													</div>
 												</div>
 											</div>
@@ -832,10 +855,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[i+3].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[i+3].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[i+3].guige%>
 													</div>
 												</div>
@@ -843,8 +866,8 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[i+3].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+												<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+3].current_price%></span><img style="width:<%=data[i+3].width%>rem;height:<%=data[i+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+3].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+3].color%>;">
 														<%=data[i+3].priceResult%>
 														<%=data[i+3].priceResultRate%>
 													</div>
@@ -856,7 +879,7 @@
 													else{
 														%>
 										<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											
+
 										</div>
 										<%
 													}
@@ -880,10 +903,10 @@
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[0].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[0].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[0].guige%>
 													</div>
 												</div>
@@ -891,24 +914,24 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[0].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[0].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[0].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[0].current_price%></span><img style="width:<%=data[0].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[0].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[0].color%>;">
 														<%=data[0].priceResult%>
 														<%=data[0].priceResultRate%>
 													</div>
 												</div>
 											</div>
-										</div>		
+										</div>
 										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 											<div class="box-display ">
 												<div class="box-item-flex1" style="padding-left: 0.5rem;">
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[1].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[1].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[1].guige%>
 													</div>
 												</div>
@@ -916,27 +939,27 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[1].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[1].current_price%></span><img style="width:<%=data[1].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[1].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
 														<%=data[1].priceResult%>
 														<%=data[1].priceResultRate%>
 													</div>
 												</div>
 											</div>
-										</div>										
+										</div>
 									</div>
 									<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-										
+
 										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
 											<div class="box-display ">
 												<div class="box-item-flex1" style="padding-left: 0.5rem;">
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[2].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[2].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[2].guige%>
 													</div>
 												</div>
@@ -944,25 +967,25 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[2].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[2].current_price%></span><img style="width:<%=data[2].width%>rem;height:<%=data[2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[2].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
 														<%=data[2].priceResult%>
 														<%=data[2].priceResultRate%>
 													</div>
 												</div>
 											</div>
 										</div>
-										
+
 										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 											<div class="box-display ">
 												<div class="box-item-flex1" style="padding-left: 0.5rem;">
 													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
 														<%=data[3].manufacturers_name%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+													<div class="pm_name">
 														<%=data[3].pm_name%>
 													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+													<div class="guige">
 														<%=data[3].guige%>
 													</div>
 												</div>
@@ -970,15 +993,15 @@
 													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
 														<%=data[3].created_time%>
 													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[3].current_price%></span><img style="width:<%=data[3].width%>rem;height:<%=data[3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[3].pic%>.png" /></div>
+													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
 														<%=data[3].priceResult%>
 														<%=data[3].priceResultRate%>
 													</div>
 												</div>
 											</div>
 										</div>
-										
+
 									</div>
 								</div>
 							</div>
@@ -1001,7 +1024,7 @@
 					<div class="title-txt title-txt-padding">
 						<span class="lbm-font">热销产品</span></div>
 					<div class="more-link action-webview" data-webview="_www/view/category/category.html">
-						<a data-needlog="true" class="action-clickview font-gray-40"  style="margin-right:-10px"  data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-left">
@@ -1020,7 +1043,7 @@
 						<%
 							if(pic.length>1){
 						%>
-						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>"/>
+						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>" />
 						<div class="type-name3 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' style="margin-top:10px;">
 							废钢
 						</div>
@@ -1045,7 +1068,7 @@
 						<%
 							if(pic.length>3){
 						%>
-						<img class="img-all action-webview"data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}'>
 							钛合金
 						</div>
@@ -1071,7 +1094,7 @@
 						<%
 							if(pic.length>5){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>"/>
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' style="bottom:10px">
 							其他辅料
 						</div>
@@ -1174,7 +1197,12 @@
 				var obj = {};
 				var arry = [];
 				for(var i in rs.data) {
-					rs.data[i].webparam = {"category": "","keyword": "","manufacturers_id": rs.data[i].manufacturers_id,"cat_id": ""};
+					rs.data[i].webparam = {
+						"category": "",
+						"keyword": "",
+						"manufacturers_id": rs.data[i].manufacturers_id,
+						"cat_id": ""
+					};
 					arry.push(rs.data[i]);
 				}
 				obj.data = arry;
@@ -1187,6 +1215,12 @@
 					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 				});
 			});
+			
+			setTimeout(function(){
+				var widgets = template('priceguide0', {});
+				$('#main-jgzd').append(widgets);
+			},1000)
+				
 
 			param = {
 				queryData: {
@@ -1206,7 +1240,23 @@
 					var obj = {};
 					var arry = [];
 					for(var j in rs.data[i].priceTrend) {
-rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].created_time);
+						rs.data[i].priceTrend[j].created_time = formatDateTime(rs.data[i].priceTrend[j].created_time);
+							if(rs.data[i].priceTrend[j].priceResult == 0) {
+							rs.data[i].priceTrend[j].width = 1;
+							rs.data[i].priceTrend[j].height = 0.4;
+							rs.data[i].priceTrend[j].color = '666666';
+							rs.data[i].priceTrend[j].pic = 'ping';
+						} else if(rs.data[i].priceTrend[j].priceResult > 0) {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = 'E35D4C';
+							rs.data[i].priceTrend[j].pic = 'zhang';
+						} else {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = '509c2f';
+							rs.data[i].priceTrend[j].pic = 'die';
+						}
 						arry.push(rs.data[i].priceTrend[j]);
 					}
 					obj.data = arry;
@@ -1214,7 +1264,9 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 					widgets = template('priceguide3', obj);
 					$('#item' + i + 'mobile').html(widgets);
 				}
-
+$(".left-arrow").click(function(){
+  alert(123);
+});
 			});
 			setTimeout(function() {
 				//mui('#slider3').slider().setStopped(true);
@@ -1256,7 +1308,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				}, false);
 
 			});
-			
+
 			document.getElementById("telephone").addEventListener('tap', function() {
 				var btnArray = ['拨打', '取消'];
 				var phone = "0519-86558808";
@@ -1310,8 +1362,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 					id: 'qggy'
 				});
 			});
-			
-			
+
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
@@ -1326,7 +1377,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				var second = date.getSeconds();
 				minute = minute < 10 ? ('0' + minute) : minute;
 				second = second < 10 ? ('0' + second) : second;
-				return m + '-' + d +' '+h+':'+minute;
+				return m + '-' + d + ' ' + h + ':' + minute;
 			};
 		</script>
 	</body>
