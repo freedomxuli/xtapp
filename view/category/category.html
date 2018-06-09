@@ -31,6 +31,10 @@
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
       }*/
+      .mui-segmented-control.mui-scroll-wrapper .mui-control-item
+			{
+				padding: 0 15px !important;
+			}
       .mui-slider-indicator.mui-segmented-control{
      		background-color: #ffffff !important;
       }
@@ -39,6 +43,16 @@
       	background-color:#d92e2e;
       	display: flex;  
       }
+      
+      .img-back{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+			}
+			
+			.img-padding{
+				margin: 0rem 0.5rem 0rem 0.5rem;
+			}
       
       .child{   
 			    flex:1;    
@@ -395,7 +409,7 @@
 			.left-side-content-nav li{
 				color:#222222;
 				list-style-type: none;
-				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				padding: 1rem 0.6rem 1rem 0.6rem;
 				border-bottom: 1px solid #d0d0d0;
 				font-size: 0.8rem;
 			}
@@ -404,13 +418,20 @@
 				color:#E35D4C !important;
 			}
 			.left-side-content-detail{
-				flex: 2;
+				flex: 3;
 				overflow-y: scroll !important;
 			}
 			.left-side-content-detail-li{
 				list-style-type: none;
-				font-size:0.9rem;
-				padding: 1rem 1.4rem 1rem 1.4rem;
+				padding: 1rem 1rem 1rem 1rem;
+			}
+			.left-side-content-detail-nav 
+			{
+				font-size: 1rem;
+			}
+			.left-side-content-detail-list
+			{
+				font-size: 0.7rem !important;
 			}
 			.left-side-content-detail-list ul{
 				width: 100%;
@@ -456,6 +477,7 @@
 				<div class="main" style="flex: 6;">
 					<form onsubmit="return false;">
 						<div class="mui-input-row header-search-form search-class">
+							<img class="img-back img-padding" src="../../img/index/back.png" />
 							<button id='showUserPicker' class="search-select" type='button'>
 								<span id="search-span">全部</span>
 								<img class="search-img" src="../../img/index/downicon.png" />
@@ -463,7 +485,7 @@
 								<img class="search-img2" src="../../img/index/search.png" />
 							</button>
 							<!--<img class="search-fgf-img" src="../img/index/fgf.png" />-->
-							<input type="search" onfocus="toSearchByPage(this)" class="header-search search-input" placeholder="">
+							<input type="search" onfocus="toSearchByShop(this,'_www/view/category/categorysearch.html')" class="header-search search-input" placeholder="">
 							<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
 						</div>
 					</form>
@@ -687,7 +709,7 @@
 									<div class="mui-scroll">
 										<ul class="mui-table-view">
 											<li class="mui-table-view-cell">
-												第1个选项卡子项-1
+												
 											</li>
 										</ul>
 									</div>
@@ -779,13 +801,15 @@
       
 		  $("#head-title").show();
 	  	$("#head-search").hide();
-	  	jQuery(".search-cancel").click(function(){
+	  	/*jQuery(".search-cancel").click(function(){
 	  		$("#head-title").show();
 	  		$("#head-search").hide();
-	  	});
+	  	});*/
 	  	jQuery(".search_img").click(function(){
 	  		$("#head-title").hide();
 	  		$("#head-search").show();
+	  		$(".search-input").focus();
+	  		//toSearchByMy(this,'_www/view/category/categorysearch.html','','','');
 	  	});
 	  	
 	  	var searchPicker = new mui.PopPicker();
@@ -1122,6 +1146,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1140,6 +1165,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1214,6 +1240,7 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						GetGGList(pro_name_id);
 					} 
 				});
@@ -1237,7 +1264,121 @@
 				});
 			}); 
 			
-			var toSearchByPage = function(el) {
+			var toSearchByShop = function(el,wv) {
+			  if($('.search-modal').length == 0) {
+			    var hlist = localStorage.getItem('_history');
+			    $('body').append('<div id="search_panel" class="search-modal"><div id="history_list" class="mui-scroll-wrapper"><div class="mui-scroll"></div></div></div>');
+			    mui('#history_list').scroll();
+			    if(hlist != null) {
+			      var list = hlist.split(",");
+			      list = list.splice(0, list.length - 1);
+			      var element = ''
+			      element += '<div class="mui-content-padded theme-border-bottom"><div class="title-txt">历史搜索</div></div><ul class="mui-table-view font-gray-40 history-list">';
+			      for(var i = list.length - 1; i > -1; i--) {
+			        element += ('<li class="mui-table-view-cell">' + list[i] + '</li>');
+			      }
+			      element += '</ul><div class="content-padded content-center"><button id="clear_history" class="mui-btn">清除历史搜索</button></div>';
+			      $('#search_panel .mui-scroll').html(element);
+			    }
+			
+			    $('.history-list li').on('tap', function() {
+			      var key = $(this).text();
+			      var keyword = {
+			        'keyword': key
+			      }
+			      clicked(wv,{
+			      	'category':$("#search-span").html(),
+				    	'keyword':key,
+				    	'manufacturers_id':'',
+				    	'cat_id':''
+				    });
+			      $('#search_panel').remove();
+			    });
+			
+			    $('#clear_history').on('tap', function() {
+			      mui.confirm('确定清除搜索记录？', '', ['取消', '确认'], function(e) {
+			        if(e.index == 1) {
+			          localStorage.removeItem('_history');
+			          $('#search_panel .mui-scroll').empty();
+			        }
+			      });
+			    });
+			
+			    $('.search-cancel').on('tap', function() {
+			    	$('.search-input').val('');
+			      //$('#search_panel').remove();
+			      //$(this).hide().siblings('.search-hide').show();
+			      //$('#head-search').removeClass('home-color1');
+			      //$('#head-search').addClass('home-color');
+			      el.blur();
+			    });
+			    
+			    $('.img-back').on('tap', function() {
+			      $('#search_panel').remove();
+			      $("#head-title").show();
+	  				$("#head-search").hide();
+			      el.blur();
+			    });
+			  }
+			
+			  var form = $(el).parents('form');
+			  $(form).submit(function() {
+			    if(el.value != '') {
+			      var hlist = localStorage.getItem('_history');
+			      if(hlist != null) {
+			        var list = hlist.split(",");
+			        list = list.splice(0, list.length - 1);
+			        var flag = true;
+			        for(var i = 0; i < list.length; i++) {
+			          if(list[i] == el.value) {
+			            flag = false;
+			          }
+			        }
+			        if(flag == true) {
+			          if(list.length > 12) {
+			            list = list.splice(1, list.length - 1);
+			            var storage = '';
+			            for(var i = 0; i < list.length; i++) {
+			              storage += (list[i] + ',');
+			            }
+			            storage += (el.value + ',');
+			            localStorage.setItem('_history', storage);
+			          } else {
+			            hlist += (el.value + ',');
+			            localStorage.setItem('_history', hlist);
+			          }
+			        }
+			      } else {
+			        localStorage.setItem('_history', el.value + ',');
+			      }
+			    }
+			    var keyword = {
+			      'keyword': el.value
+			    }
+			    clicked(wv,{
+			    	'category':$("#search-span").html(),
+			    	'keyword':el.value,
+			    	'manufacturers_id':'',
+			    	'cat_id':''
+			    });
+			    /*if(!shop) {
+			      clicked(wv, keyword,{
+			        	'manufacturers_id':manufacturers_id,
+			        	'storage_id':storage_id
+			        });
+			    } else {
+			      $.extend(shop, keyword);
+			      clicked(wv, shop);
+			    }*/
+			    $('#search_panel').remove();
+			    $("#head-title").show();
+	  			$("#head-search").hide();
+			    el.blur();
+			    el.value = '';
+			  });
+			}
+			
+			/*var toSearchByPage = function(el) {
 				var form = $(el).parents('form');
 			  $(form).submit(function() {
 			    if(el.value != '') {
@@ -1249,7 +1390,7 @@
 			    }
 			    el.blur();
 			  });
-			}
+			}*/
 			
 			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
 			{
