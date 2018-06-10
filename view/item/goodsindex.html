@@ -546,10 +546,11 @@
 				swipeBack: false
 			});
 			var screen = window.screen.width * window.devicePixelRatio;
-			if(screen == 720)
-				$("#sliderSegmentedControl2").css("height", "210px");
-			else
-				$("#sliderSegmentedControl2").css("height", "288px");
+			$("#sliderSegmentedControl2").css("height", (document.documentElement.clientHeight-365)+"px");
+//			if(screen == 720)
+//				$("#sliderSegmentedControl2").css("height", "210px");
+//			else
+//				$("#sliderSegmentedControl2").css("height", "288px");
 			var param = {
 				queryData: {
 					'method': config.apimethod.getPm
@@ -715,12 +716,16 @@
 							rs.data[i].priceTrend[j].top = 1;
 							rs.data[i].priceTrend[j].color = 'E35D4C';
 							rs.data[i].priceTrend[j].pic = 'zhang';
+							rs.data[i].priceTrend[j].priceResult='+'+rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResultRate='+'+rs.data[i].priceTrend[j].priceResultRate;
 						} else {
 							rs.data[i].priceTrend[j].width = 0.6;
 							rs.data[i].priceTrend[j].height = 0.7;
 							rs.data[i].priceTrend[j].top = 1;
 							rs.data[i].priceTrend[j].color = '509c2f';
 							rs.data[i].priceTrend[j].pic = 'die';
+							rs.data[i].priceTrend[j].priceResult='- '+Math.abs(rs.data[i].priceTrend[j].priceResult);
+							rs.data[i].priceTrend[j].priceResultRate='- '+Math.abs(rs.data[i].priceTrend[j].priceResultRate);
 						}
 						arry.push(rs.data[i].priceTrend[j]);
 					}

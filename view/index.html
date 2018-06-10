@@ -1295,7 +1295,7 @@
 							if(pic.length>4){
 						%>
 						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>" />
-						<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
 							孕育剂
 						</div>
 						<%
@@ -1471,12 +1471,15 @@
 							rs.data[i].priceTrend[j].height = 0.6;
 							rs.data[i].priceTrend[j].color = 'E35D4C';
 							rs.data[i].priceTrend[j].pic = 'zhang';
+					        rs.data[i].priceTrend[j].priceResult='+'+rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResultRate='+'+rs.data[i].priceTrend[j].priceResultRate;
 						} else {
 							rs.data[i].priceTrend[j].width = 0.8;
 							rs.data[i].priceTrend[j].height = 0.6;
 							rs.data[i].priceTrend[j].color = '509c2f';
 							rs.data[i].priceTrend[j].pic = 'die';
 						}
+						rs.data[i].priceTrend[j].priceResultRate=rs.data[i].priceTrend[j].priceResultRate+'%';
 						rs.data[i].priceTrend[j].num = i;
 						arry.push(rs.data[i].priceTrend[j]);
 					}
