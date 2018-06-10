@@ -831,33 +831,36 @@
       		keykind = "";
       		keyword = "";
       	});
-      	var searchPicker = new mui.PopPicker();
-				searchPicker.setData([{
-						value: '全部',
-						text: '全部'
-					}, {
-						value: '品名',
-						text: '品名'
-					}, {
-						value: '规格',
-						text: '规格'
-					}, {
-						value: '交割库',
-						text: '交割库'
-					},
-					{
-						value: '厂家/产地',
-						text: '厂家/产地'
-					}
-				]);
-	
-				var showUserPickerButton = document.getElementById('showUserPicker');
-				showUserPickerButton.addEventListener('tap', function(event) {
-					searchPicker.show(function(items) {
-						$('#search-span').html(items[0].text);
-						keykind = items[0].text;
-					});
-				}, false);
+      	
+      	setTimeout(function(){
+	      	var searchPicker = new mui.PopPicker();
+					searchPicker.setData([{
+							value: '全部',
+							text: '全部'
+						}, {
+							value: '品名',
+							text: '品名'
+						}, {
+							value: '规格',
+							text: '规格'
+						}, {
+							value: '交割库',
+							text: '交割库'
+						},
+						{
+							value: '厂家/产地',
+							text: '厂家/产地'
+						}
+					]);
+		
+					var showUserPickerButton = document.getElementById('showUserPicker');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						searchPicker.show(function(items) {
+							$('#search-span').html(items[0].text);
+							keykind = items[0].text;
+						});
+					}, false);
+				},1000);
 				$('#search-span').html(keykind);
 				$(".search-input").val(keyword);
       	
@@ -1261,7 +1264,6 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
-						SizePicker.setData([]);
 						GetGGList(pro_name_id);
 					} 
 				});
@@ -1275,6 +1277,7 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						pro_name_id = "";
 						gg_text = "";
 						$("#showNamePicker span").html("品名");
