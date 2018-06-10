@@ -1445,7 +1445,7 @@
 	        },
 	        method: 'GET'
 	      };
-	      //console.log(JSON.stringify(param1));
+	      console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
 	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
@@ -1965,7 +1965,7 @@
 <!--										<div class="content-inner-left-top-item">
 											
 										</div>-->
-										<div class="content-inner-left-top-item">
+										<div class="content-inner-left-top-item action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= list[i].item_id%>}'>
 											<%=list[i].manufacturers_name%>　<%=list[i].pm_name%>　<%=list[i].guige%>　<%=list[i].storage_name%>
 										</div>
 <!--										<div class="content-inner-left-top-item">

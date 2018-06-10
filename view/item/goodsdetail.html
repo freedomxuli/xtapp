@@ -690,6 +690,9 @@
               clicked('_www/view/cart/checkout.html', {
                 'mode': mode
               });
+              /*clicked('_www/view/cart/cart_order.html', {
+		            'mode': 'cart'
+		          });*/
             } else {
               mui.toast('成功添加到购物车')
               $('.action-addtocart').removeClass('selected-action');
@@ -729,9 +732,13 @@
             method: 'GET'
           }
           $.dataRequest(param, function(rs) {
-            clicked('_www/view/cart/checkout.html', {
+          	console.log(JSON.stringify(rs));
+            /*clicked('_www/view/cart/checkout.html', {
               'mode': 'fastbuy'
-            });
+            });*/
+           	clicked('_www/view/cart/cart_order.html', {
+	            'mode': 'fastbuy'
+	          });
           });
         });
         $('.action-addtocart').on('tap', function() {
