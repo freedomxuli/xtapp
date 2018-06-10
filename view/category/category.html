@@ -1240,7 +1240,6 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
-						SizePicker.setData([]);
 						GetGGList(pro_name_id);
 					} 
 				});
@@ -1254,6 +1253,7 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						pro_name_id = "";
 						gg_text = "";
 						$("#showNamePicker span").html("品名");
@@ -1445,7 +1445,7 @@
 	        },
 	        method: 'GET'
 	      };
-	      //console.log(JSON.stringify(param1));
+	      console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
 	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
@@ -1965,7 +1965,7 @@
 <!--										<div class="content-inner-left-top-item">
 											
 										</div>-->
-										<div class="content-inner-left-top-item">
+										<div class="content-inner-left-top-item action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= list[i].item_id%>}'>
 											<%=list[i].manufacturers_name%>　<%=list[i].pm_name%>　<%=list[i].guige%>　<%=list[i].storage_name%>
 										</div>
 <!--										<div class="content-inner-left-top-item">

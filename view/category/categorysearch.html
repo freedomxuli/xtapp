@@ -831,6 +831,7 @@
       		keykind = "";
       		keyword = "";
       	});
+      	
       	var searchPicker = new mui.PopPicker();
 				searchPicker.setData([{
 						value: '全部',
@@ -1261,7 +1262,6 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
-						SizePicker.setData([]);
 						GetGGList(pro_name_id);
 					} 
 				});
@@ -1275,6 +1275,7 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						pro_name_id = "";
 						gg_text = "";
 						$("#showNamePicker span").html("品名");
@@ -1873,7 +1874,7 @@
 <!--										<div class="content-inner-left-top-item">
 											
 										</div>-->
-										<div class="content-inner-left-top-item">
+										<div class="content-inner-left-top-item action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= list[i].item_id%>}'>
 											<%=list[i].manufacturers_name%>　<%=list[i].pm_name%>　<%=list[i].guige%>　<%=list[i].storage_name%>
 										</div>
 <!--										<div class="content-inner-left-top-item">
