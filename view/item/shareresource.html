@@ -31,6 +31,10 @@
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
       }*/
+      .mui-segmented-control.mui-scroll-wrapper .mui-control-item
+			{
+				padding: 0 15px !important;
+			}
       .mui-slider-indicator.mui-segmented-control{
      		background-color: #ffffff !important;
       }
@@ -39,6 +43,16 @@
       	background-color:#d92e2e;
       	display: flex;  
       }
+      
+      .img-back{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+			}
+			
+			.img-padding{
+				margin: 0rem 0.5rem 0rem 0.5rem;
+			}
       
       .child{   
 			    flex:1;    
@@ -326,6 +340,7 @@
 			.content-inner-left-top{
 				display: flex;
 				flex-direction: row;
+				width:100%;
 			}
 			.content-inner-left-top-item{
 				flex:1;
@@ -334,7 +349,16 @@
 				height: 2rem;
 				line-height: 2rem;
 				text-align: left;
+				font-size: 0.8rem;
 			}
+			/*.content-inner-left-top-item{
+				flex:2;
+				color: #222222;
+				font-family: "arial rounded mt bold";
+				height: 2rem;
+				line-height: 2rem;
+				text-align: center;
+			}*/
 			.content-inner-left-middle-item{
 				color: #666666;
 				font-size: 0.8rem;
@@ -385,7 +409,7 @@
 			.left-side-content-nav li{
 				color:#222222;
 				list-style-type: none;
-				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				padding: 1rem 0.6rem 1rem 0.6rem;
 				border-bottom: 1px solid #d0d0d0;
 				font-size: 0.8rem;
 			}
@@ -394,13 +418,20 @@
 				color:#E35D4C !important;
 			}
 			.left-side-content-detail{
-				flex: 2;
+				flex: 3;
 				overflow-y: scroll !important;
 			}
 			.left-side-content-detail-li{
 				list-style-type: none;
-				font-size:0.9rem;
-				padding: 1rem 1.4rem 1rem 1.4rem;
+				padding: 1rem 1rem 1rem 1rem;
+			}
+			.left-side-content-detail-nav 
+			{
+				font-size: 1rem;
+			}
+			.left-side-content-detail-list
+			{
+				font-size: 0.7rem !important;
 			}
 			.left-side-content-detail-list ul{
 				width: 100%;
@@ -677,7 +708,7 @@
 									<div class="mui-scroll">
 										<ul class="mui-table-view">
 											<li class="mui-table-view-cell">
-												第1个选项卡子项-1
+												
 											</li>
 										</ul>
 									</div>
@@ -725,7 +756,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
@@ -756,6 +787,8 @@
       var keykind = "";
       setTimeout(function(){
       	mui.plusReady(function() {
+  		  var state = app.getState();
+      	getcartnumabs(state.token);
       	wid = plus.webview.currentWebview().id;
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
 		    mui('.mui-scroll-wrapper').scroll({
@@ -835,8 +868,6 @@
         method: 'GET'
       };
       $.dataRequest(param, function(rs) {
-  		  var state = app.getState(); 
-      	getcartnumabs(state.token);
       	search_data = rs.data;
       	//构造左侧大类列表
       	var left_kind_obj;
@@ -845,9 +876,9 @@
       	var fl_sort = 0;
       	for(var left_kind_id in rs.data.lv1Cats)
       	{
-      		fl_sort_obj[fl_sort] = left_kind_id;
+      		fl_sort_obj[fl_sort] = left_kind_id.substr(2);
       		fl_sort++;
-      		page_obj[left_kind_id] = 1;
+      		page_obj[left_kind_id.substr(2)] = 1;
       		if(left_kind_num==0)
       		{
       			fl_id = rs.data.lv1Cats[left_kind_id].cat_id;
@@ -892,20 +923,20 @@
 				var left_content_obj;
       	var left_content_list = [];
       	var left_content_num = 0;
-      	for(var i = 0;i < rs.data.lv1Cats[fl_id].lv2.length;i++)
+      	for(var i = 0;i < rs.data.lv1Cats["c_"+fl_id].lv2.length;i++)
       	{
       		/*if(i==0)
       			pro_name_id = rs.data.lv1Cats[fl_id].lv2[i].cat_id;*/
       		var left_content_small_list = [];
       		var left_content_small_num = 0;
-      		for(var j = 0;j < rs.data.lv1Cats[fl_id].lv2[i].lv3.length;j++)
+      		for(var j = 0;j < rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3.length;j++)
       		{
       			if(left_content_num==0)
       			{
-      				gg_id = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id;
+      				gg_id = rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id;
       				var obj_s = {
-		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 		      			is_select:1
 		      		}
       				left_content_small_list.push(obj_s);
@@ -913,16 +944,16 @@
       			}else
       			{
       				var obj_s = {
-		      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-		      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+		      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+		      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 		      			is_select:0
 		      		}
       				left_content_small_list.push(obj_s);
       			}
       		}
       		var obj = {
-      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].cat_id,
-      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].cat_name,
+      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_id,
+      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_name,
       			lv3:left_content_small_list
       		}
       		left_content_list.push(obj);
@@ -939,7 +970,7 @@
       	var top_kind_list = [];
       	for(var top_kind_id in rs.data.lv1Cats)
       	{
-      		if(fl_id==top_kind_id)
+      		if("c_"+fl_id==top_kind_id)
       		{
       			var obj = {
       				cat_id:rs.data.lv1Cats[top_kind_id].cat_id,
@@ -972,7 +1003,7 @@
 				var arr_1 = [];
 				for(var top_kind_id in rs.data.lv1Cats)
       	{
-      		arr_1.push(top_kind_id);
+      		arr_1.push(top_kind_id.substr(2));
       	}
       	startContent(arr_1[0],0);
       	function startContent(start_id,start_num)
@@ -1145,7 +1176,8 @@
 											var ul = self.element.querySelector('.mui-table-view');
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
-											GetContentListNew(index,ul,self);
+											//GetContentListNew(index,ul,self);
+											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
 										}, 1100);
 									}
 								}
@@ -1164,6 +1196,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1182,6 +1215,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1229,12 +1263,12 @@
 	     
 	    $(".left-side-content-nav").on('tap','li', function (event) {
 				ChangeLeftMenu($(this).data('cid'));
-				ChangeLeftContent($(this).data('cid'),gg_id);
+				ChangeLeftContent("c_"+$(this).data('cid'),gg_id);
 			});
 			
 			$(".left-side-content-detail").on('tap','.left-side-content-detail-list li',function(event){
 				gg_id = $(this).data('cid');
-				ChangeLeftContent(fl_id,gg_id);
+				ChangeLeftContent("c_"+fl_id,gg_id);
 			});
 			
 			$("#left-side-submit").on('tap',function(event){
@@ -1256,6 +1290,7 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						GetGGList(pro_name_id);
 					} 
 				});
 			});
@@ -1268,6 +1303,7 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						pro_name_id = "";
 						gg_text = "";
 						$("#showNamePicker span").html("品名");
@@ -1312,6 +1348,9 @@
 					method: 'GET'
 				};
 				$.dataRequest(param1, function(rs) {
+					jQuery('#item'+fl_new_id+'mobile ul').empty();
+	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
+	      	page_obj[fl_new_id] = 1;
 					for(var i = 0; i < rs.data.list.length; i++) {
 						rs.data.list[i].price = parseInt(rs.data.list[i].price);
 						rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
@@ -1322,33 +1361,30 @@
 				});
 			}
 			
-			function GetContentListNew(page_index,ul_obj,self_obj)
+			function GetContentListNew(page_index,ul_obj,self_obj,pm_id,guige,cd_new_id,jgk_new_id)
 			{
+				var pm = "";
+				if(pm_id)
+					pm = pm_list[pm_id];
 				var param1 = {
-		        queryData: {
-		          'method': config.apimethod.goodslist,
-		          'lv1Cat':'',
-		          'lv2Cat':'',
-		          'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
-		          'shop_id':'',
-		          'search':'',
-		          'all':'',
-		          'pm':'',
-		          'gg':'',
-		          'cj':'',
-		          'jgk':'',
-		          'page_no':(parseInt(page_obj[fl_sort_obj[page_index]])+1),
-		          'page_size':config.pagesize,
-		          'orderBy':'',
-		          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
-		          'guige':'',
-		          'manufacturers_id':'', 
-		          'storage_id':''
-		        },
-		        method: 'GET'
-		      };
-		      $.dataRequest(param1, function(rs) {
-		      	var resultnew = template('filters_center_list', rs.data);
+					queryData: {
+						'method': config.apimethod.sharedResourceGetList,
+						'cat_id': fl_sort_obj[page_index],
+						'manufacturers_name': cd_new_id,
+						'pm_name': pm,
+						'guige': guige,
+						'storage_name': jgk_new_id,
+						'page_no': (parseInt(page_obj[fl_sort_obj[page_index]])+1),
+						'page_size': config.pagesize
+					},
+					method: 'GET'
+				};
+				console.log(JSON.stringify(param1));
+	      $.dataRequest(param1, function(rs) {
+	      	console.log(jQuery("#content-ul" + page_index).find('li').length+jQuery("#content-ul" + page_index).siblings('li').length);
+	      	if(jQuery("#content-ul" + page_index).find('li').length+jQuery("#content-ul" + page_index).siblings('li').length<rs.data.count)
+	      	{
+	      		var resultnew = template('filters_center_list', rs.data);
 						//$('#item'+fl_sort_obj[page_index]+'mobile ul').html(result);
 						page_obj[fl_sort_obj[page_index]] = page_obj[fl_sort_obj[page_index]] + 1;
 						
@@ -1358,8 +1394,25 @@
 						ulment.insertAdjacentHTML('afterend', resultnew);
 						
 						ul_obj.appendChild(fragment);
-						self_obj.endPullUpToRefresh();
-		      });
+	      	}
+					self_obj.endPullUpToRefresh();
+	      });
+			}
+			
+			function siblingElems(elem){
+        var nodes=[ ];
+        var _elem=elem;
+	       while((elem=elem.previousSibling)){
+          if(elem.nodeType==1){
+            nodes.push(elem);
+          }
+	       }
+	       	var elem=_elem;
+		      while((elem=elem.nextSibling)){
+	          if(elem.nodeType==1){
+	            nodes.push(elem);
+	          }
+		      }
 			}
       
       //构造品名combobox

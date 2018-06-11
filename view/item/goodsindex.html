@@ -12,6 +12,7 @@
 
 		<link href="../../css/mui.picker.min.css" rel="stylesheet" />
 		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
+
 		<style>
 			html {
 				background-color: #FFFFFF;
@@ -88,6 +89,10 @@
 			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
 				background-color: #fff;
 				color: #e35d4c !important;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 0 15px !important;
 			}
 			
 			.mui-slider-indicator.mui-segmented-control {
@@ -483,13 +488,13 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
-			<a class="mui-action-back mui-pull-left back-left">
+			<div class="mui-action-back mui-pull-left back-left">
 				<img class="back_img" src="../../img/item/back_arrow.png" />
-			</a>
+			</div>
 			<h1 class="mui-title title_span">炉料指数</h1>
-			<a class="message_size">
+			<div class="message_size">
 				<img class="message_img" src="../../img/category/message.png" />
-			</a>
+			</div>
 		</header>
 		<div class="mui-content chart_height">
 			<div class="mui-content-padded">
@@ -513,10 +518,10 @@
 				</div>
 			</div>
 
-			<div class="mui-slider-group" id="sliderSegmentedControl2">
+			<div class="mui-slider-group" id="sliderSegmentedControl2" style="height:210px">
 				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 
-				</div>
+				</div> 
 			</div>
 
 		</div>
@@ -540,7 +545,12 @@
 				statusBarBackground: "#E35D4C",
 				swipeBack: false
 			});
-
+			var screen = window.screen.width * window.devicePixelRatio;
+			$("#sliderSegmentedControl2").css("height", (document.documentElement.clientHeight-365)+"px");
+//			if(screen == 720)
+//				$("#sliderSegmentedControl2").css("height", "210px");
+//			else
+//				$("#sliderSegmentedControl2").css("height", "288px");
 			var param = {
 				queryData: {
 					'method': config.apimethod.getPm
@@ -700,22 +710,22 @@
 							rs.data[i].priceTrend[j].top = 5;
 							rs.data[i].priceTrend[j].color = '666666';
 							rs.data[i].priceTrend[j].pic = 'ping';
-
 						} else if(rs.data[i].priceTrend[j].priceResult > 0) {
 							rs.data[i].priceTrend[j].width = 0.6;
 							rs.data[i].priceTrend[j].height = 0.7;
 							rs.data[i].priceTrend[j].top = 1;
 							rs.data[i].priceTrend[j].color = 'E35D4C';
 							rs.data[i].priceTrend[j].pic = 'zhang';
-							rs.data[i].priceTrend[j].priceResult = '+' + rs.data[i].priceTrend[j].priceResult;
-
+							rs.data[i].priceTrend[j].priceResult='+'+rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResultRate='+'+rs.data[i].priceTrend[j].priceResultRate;
 						} else {
 							rs.data[i].priceTrend[j].width = 0.6;
 							rs.data[i].priceTrend[j].height = 0.7;
 							rs.data[i].priceTrend[j].top = 1;
 							rs.data[i].priceTrend[j].color = '509c2f';
 							rs.data[i].priceTrend[j].pic = 'die';
-							rs.data[i].priceTrend[j].priceResult = '-' + rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResult='- '+Math.abs(rs.data[i].priceTrend[j].priceResult);
+							rs.data[i].priceTrend[j].priceResultRate='- '+Math.abs(rs.data[i].priceTrend[j].priceResultRate);
 						}
 						arry.push(rs.data[i].priceTrend[j]);
 					}
@@ -780,7 +790,7 @@
 						<%
 							for(var i in data){
 								%>
-						<li class="content-li">
+						<li class="content-li action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i].item_id%>"}'>
 							<div class="content-outer" style="height: 3rem;line-height: 3rem;">
 								<div style="flex:1;font-size: 1rem">
 									<%=data[i].manufacturers_name%>&nbsp;

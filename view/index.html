@@ -20,6 +20,17 @@
 			vertical-align: middle
 		}
 		
+		.img-back {
+			height: 1rem;
+			width: 0.6rem;
+			line-height: 1rem;
+			display: none;
+		}
+		
+		.img-padding {
+			margin: 0rem 0.5rem 0rem 0.5rem;
+		}
+		
 		.sel-icon {
 			height: 3rem !important;
 			width: 3rem !important;
@@ -262,6 +273,31 @@
 			border-top: none;
 			border-bottom: none;
 		}
+		
+		.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+			padding: 0 15px !important;
+		}
+		
+		.box-display {
+			display: flex;
+		}
+		
+		.box-item-flex1 {
+			flex: 1;
+		}
+		
+		.pm_name {
+			height: 2rem;
+			font-size: 0.8rem;
+			line-height: 2rem;
+		}
+		
+		.guige {
+			height: 2rem;
+			font-size: 0.7rem;
+			line-height: 2rem;
+			font-family: 'arial rounded mt bold';
+		}
 	</style>
 
 	<body>
@@ -272,6 +308,7 @@
 			<div class="main">
 				<form onsubmit="return false;">
 					<div class="mui-input-row header-search-form search-class">
+						<img class="img-back img-padding" src="../img/index/back.png" />
 						<button id='showUserPicker' class="search-select" type='button'>
 							<span id="search-span">全部</span>
 							<img class="search-img" src="../img/index/downicon.png" />
@@ -279,7 +316,7 @@
 							<img class="search-img2" src="../img/index/search.png" />
 						</button>
 						<!--<img class="search-fgf-img" src="../img/index/fgf.png" />-->
-						<input type="search" onfocus="toSearchByMy(this,'_www/view/category/categorysearch.html','','','')" class="header-search search-input" placeholder="搜索钢材">
+						<input type="search" onfocus="toSearchByMy(this,'_www/view/category/categorysearch.html','','','')" class="header-search search-input" placeholder="搜索炉料">
 						<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
 					</div>
 				</form>
@@ -295,22 +332,16 @@
 		<div id="main-content2">
 
 		</div>
+		<div id="main-jgzd">
+
+		</div>
 		<div id="main-content3">
 
-			<div class="section-title user-title title section-white">
-				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-				<div class="title-txt title-txt-padding">
-
-					<span class="lbm-font">价格指导</span></div>
-				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
-					<a data-needlog="true"  class="action-clickview font-gray-40"  style="margin-right:-10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-			</div>
-
-			<div id="slider3" class="mui-slider">
-			<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-							<div class="mui-scroll">
-							</div>
-						</div>
+			<div id="slider_jgzd" class="mui-slider">
+				<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+					</div>
+				</div>
 				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
 				<div class="mui-slider-group" id="sliderSegmentedControl2" style="margin-top:10px;">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
@@ -409,7 +440,7 @@
 					<% } %>-->
 					<li class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'><i><a href="#"><img src="<%= pic[0].imagesrc %>"></a></i><span><%= pic[0].tag %></span></li>
 					<li id="gxzy" class="action-webview" data-webview="_www/view/item/shareresource.html" data-webparam=''><i><a href="#"><img src="<%= pic[1].imagesrc %>"></a></i><span><%= pic[1].tag %></span></li>
-					<li id="lljr" class="action-webview" data-webview="_www/view/item/finance.html" data-webparam=''><i><a href="#"><img src="<%= pic[2].imagesrc %>"></a></i><span><%= pic[2].tag %></span></li>
+					<li id="lljr" class="action-webview" data-webview="_www/view/item/financenew.html" data-webparam=''><i><a href="#"><img src="<%= pic[2].imagesrc %>"></a></i><span><%= pic[2].tag %></span></li>
 					<li id="llzx" class="action-webview" data-webview="_www/view/item/information_list.html" data-webparam=''><i><a href="#"><img src="<%= pic[3].imagesrc %>"></a></i><span><%= pic[3].tag %></span></li>
 					<li id="zxhd" class="action-webview" data-webview="_www/view/item/activity.html" data-webparam=''><i><a href="#"><img src="<%= pic[4].imagesrc %>"></a></i><span><%= pic[4].tag %></span></li>
 					<li id="llzs" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-webparam=''><i><a href="#"><img src="<%= pic[5].imagesrc %>"></a></i><span><%= pic[5].tag %></span></li>
@@ -427,7 +458,7 @@
 
 						<span class="lbm-font">合作厂家</span></div>
 					<div id="hzcj" class="more-link action-webview" data-webview="_www/view/item/merchants.html">
-						<a  class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div id="hzcj_slider" class="mui-slider">
 					<div class="mui-slider-group mui-slider-loop">
@@ -517,6 +548,17 @@
 			</section>
 		</script>
 
+		<script type="text/javascript" id="priceguide0">
+			<div class="section-title user-title title section-white">
+				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+				<div class="title-txt title-txt-padding">
+
+					<span class="lbm-font">价格指导</span></div>
+				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
+					<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+			</div>
+		</script>
+
 		<script type="text/html" id="priceguide1">
 			<% for(var i in data) { %>
 			<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%=i%>mobile">
@@ -527,457 +569,663 @@
 
 		<script type="text/html" id="priceguide2">
 			<% for(var i in data) { %>
-			<div id="item<%=i%>mobile" class="mui-slider-item mui-control-content <%= (i==0) ? 'mui-active' : ' ' %>"></div>
+			<div id="item<%=i%>mobile" class="mui-slider-item mui-control-content <%= (i==0) ? 'mui-active' : ' ' %>">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-slider jgzd-slider<%=i%>">
+							<div class="mui-slider-group mui-slider-loop" id="sider<%=i%>">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<%}%>
 		</script>
 
 		<script type="text/html" id="priceguide3">
 
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<div class="mui-slider jgzd-slider">
-						<div class="mui-slider-group mui-slider-loop">
-							<%
+			<%
 								if(data.length>4){
+									if(data.length%4==0){
 									%>
-							<div class="mui-slider-item mui-slider-item-duplicate">
-								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" class="turnleft" src="../img/index/left.png" /></div>
-									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
-									<div class="box-display" style="height:6rem;">
-										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[data.length-4].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[data.length-4].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[data.length-4].priceResult%>
-														<%=data[data.length-4].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+1].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+1].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[data.length-4+1].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[data.length-4+1].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[data.length-4+1].priceResult%>
-														<%=data[data.length-4+1].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
 									</div>
-									<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+2].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+2].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[data.length-4+2].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[data.length-4+2].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[data.length-4+2].priceResult%>
-														<%=data[data.length-4+2].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+3].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[data.length-4+3].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[data.length-4+3].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[data.length-4+3].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[data.length-4+3].priceResult%>
-														<%=data[data.length-4+3].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
 									</div>
 								</div>
 							</div>
-							<%
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:<%=data[data.length-4+3].width%>rem;height:<%=data[data.length-4+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+3].color%>;">
+										<%=data[data.length-4+3].priceResult%>
+										<%=data[data.length-4+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==1){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==2){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==3){
+				%> %>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
 								}
 							%>
 
-							<%
+			<% 
 	for(var i=0;i<data.length;i=i+4){
 		%>
-							<div class="mui-slider-item">
-								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
-									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
-									<div class="box-display" style="height:6rem;">
-										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[i].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[i].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[i].priceResult%>
-														<%=data[i].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<%
-													if((i+1)<data.length){
-														%>
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+1].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+1].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[i+1].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[i+1].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[i+1].priceResult%>
-														<%=data[i+1].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										<%
-													}
-													else{
-														%>
-											<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">																						
-													</div>
-												</div>
-											</div>
-										</div>
-										<%
-													}
-												%>
-
+			<div class="mui-slider-item">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i].manufacturers_name%>
 									</div>
-									<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-										<%
-													if((i+2)<data.length){
-														%>
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+2].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+2].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[i+2].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[i+2].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[i+2].priceResult%>
-														<%=data[i+2].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										<%
-													}
-													else{
-														%>
-										<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-													
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">																						
-													</div>
-												</div>
-											</div>
-										</div>
-										<%
-													}
-												%>
-
-										<%
-													if((i+3)<data.length){
-														%>
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+3].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[i+3].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[i+3].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[i+3].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[i+3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[i+3].priceResult%>
-														<%=data[i+3].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										<%
-													}
-													else{
-														%>
-										<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											
-										</div>
-										<%
-													}
-												%>
+									<div class="pm_name">
+										<%=data[i].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i].current_price%></span><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i].color%>;">
+										<%=data[i].priceResult%>
+										<%=data[i].priceResultRate%>
 									</div>
 								</div>
 							</div>
-							<%
+						</div>
+
+						<%
+													if((i+1)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+1].current_price%></span><img style="width:<%=data[i+1].width%>rem;height:<%=data[i+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+1].color%>;">
+										<%=data[i+1].priceResult%>
+										<%=data[i+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+												%>
+
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+						<%
+													if((i+2)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+2].current_price%></span><img style="width:<%=data[i+2].width%>rem;height:<%=data[i+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+2].color%>;">
+										<%=data[i+2].priceResult%>
+										<%=data[i+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+												%>
+
+						<%
+													if((i+3)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+3].current_price%></span><img style="width:<%=data[i+3].width%>rem;height:<%=data[i+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+3].color%>;">
+										<%=data[i+3].priceResult%>
+										<%=data[i+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+						<%
+													}
+												%>
+					</div>
+				</div>
+			</div>
+			<%
 	}
 
 								if(data.length>4){
 									%>
-							<div class="mui-slider-item mui-slider-item-duplicate">
-								<div style="position:relative">
-									<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
-									<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
-									<div class="box-display" style="height:6rem;">
-										<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[0].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[0].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[0].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[0].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[0].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[0].priceResult%>
-														<%=data[0].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>		
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[1].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[1].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[1].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[1].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[1].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[1].priceResult%>
-														<%=data[1].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>										
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[0].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[0].manufacturers_name%>
 									</div>
-									<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-										
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[2].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[2].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[2].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[2].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[2].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[2].priceResult%>
-														<%=data[2].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-											<div class="box-display ">
-												<div class="box-item-flex1" style="padding-left: 0.5rem;">
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[3].manufacturers_name%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
-														<%=data[3].pm_name%>
-													</div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
-														<%=data[3].guige%>
-													</div>
-												</div>
-												<div class="box-item-flex1">
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
-														<%=data[3].created_time%>
-													</div>
-													<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left"><%=data[3].current_price%></span><img style="width:1rem;height:0.4rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/ping.png" /></div>
-													<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
-														<%=data[3].priceResult%>
-														<%=data[3].priceResultRate%>
-													</div>
-												</div>
-											</div>
-										</div>
-										
+									<div class="pm_name">
+										<%=data[0].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[0].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[0].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[0].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[0].current_price%></span><img style="width:<%=data[0].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[0].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[0].color%>;">
+										<%=data[0].priceResult%>
+										<%=data[0].priceResultRate%>
 									</div>
 								</div>
 							</div>
-							<%
-								}
-							%>
-
 						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[1].current_price%></span><img style="width:<%=data[1].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[1].priceResult%>
+										<%=data[1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[2].current_price%></span><img style="width:<%=data[2].width%>rem;height:<%=data[2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[2].priceResult%>
+										<%=data[2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[3].current_price%></span><img style="width:<%=data[3].width%>rem;height:<%=data[3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[3].priceResult%>
+										<%=data[3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
+			<%
+								}
+							%>
 
 		</script>
 
@@ -989,7 +1237,7 @@
 					<div class="title-txt title-txt-padding">
 						<span class="lbm-font">热销产品</span></div>
 					<div class="more-link action-webview" data-webview="_www/view/category/category.html">
-						<a data-needlog="true" class="action-clickview font-gray-40"  style="margin-right:-10px"  data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
 				<div class="flex">
 					<div class="rxcp-left">
@@ -1008,7 +1256,7 @@
 						<%
 							if(pic.length>1){
 						%>
-						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>"/>
+						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>" />
 						<div class="type-name3 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' style="margin-top:10px;">
 							废钢
 						</div>
@@ -1033,7 +1281,7 @@
 						<%
 							if(pic.length>3){
 						%>
-						<img class="img-all action-webview"data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}'>
 							钛合金
 						</div>
@@ -1046,7 +1294,7 @@
 							if(pic.length>4){
 						%>
 						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>" />
-						<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
 							孕育剂
 						</div>
 						<%
@@ -1059,7 +1307,7 @@
 						<%
 							if(pic.length>5){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>"/>
+						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>" />
 						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' style="bottom:10px">
 							其他辅料
 						</div>
@@ -1081,36 +1329,38 @@
 			gallery.slider({
 				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 			});
-
-			var searchPicker = new mui.PopPicker();
-			searchPicker.setData([{
-					value: '全部',
-					text: '全部'
-				}, {
-					value: '品名',
-					text: '品名'
-				}, {
-					value: '规格',
-					text: '规格'
-				}, {
-					value: '交割库',
-					text: '交割库'
-				},
-				{
-					value: '厂家/产地',
-					text: '厂家/产地'
-				}
-			]);
-
-			var showUserPickerButton = document.getElementById('showUserPicker');
-			showUserPickerButton.addEventListener('tap', function(event) {
-				searchPicker.show(function(items) {
-					$('#search-span').html(items[0].text);
-					//userResult.innerText = JSON.stringify(items[0]);
-					//返回 false 可以阻止选择框的关闭
-					//return false;
-				});
-			}, false);
+			var state = app.getState();
+			getcartnumabs(state.token);
+			setTimeout(function() {
+				var searchPicker = new mui.PopPicker();
+				searchPicker.setData([{
+						value: '全部',
+						text: '全部'
+					}, {
+						value: '品名',
+						text: '品名'
+					}, {
+						value: '规格',
+						text: '规格'
+					}, {
+						value: '交割库',
+						text: '交割库'
+					},
+					{
+						value: '厂家/产地',
+						text: '厂家/产地'
+					}
+				]);
+				var showUserPickerButton = document.getElementById('showUserPicker');
+				showUserPickerButton.addEventListener('tap', function(event) {
+					searchPicker.show(function(items) {
+						$('#search-span').html(items[0].text);
+						//userResult.innerText = JSON.stringify(items[0]);
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+			}, 500);
 
 			var param = {
 				queryData: {
@@ -1162,7 +1412,12 @@
 				var obj = {};
 				var arry = [];
 				for(var i in rs.data) {
-					rs.data[i].webparam = {"category": "","keyword": "","manufacturers_id": rs.data[i].manufacturers_id,"cat_id": ""};
+					rs.data[i].webparam = {
+						"category": "",
+						"keyword": "",
+						"manufacturers_id": rs.data[i].manufacturers_id,
+						"cat_id": ""
+					};
 					arry.push(rs.data[i]);
 				}
 				obj.data = arry;
@@ -1176,6 +1431,11 @@
 				});
 			});
 
+			setTimeout(function() {
+				var widgets = template('priceguide0', {});
+				$('#main-jgzd').append(widgets);
+			}, 1000)
+
 			param = {
 				queryData: {
 					'method': config.apimethod.priceguide
@@ -1183,6 +1443,12 @@
 				method: 'GET'
 			}
 
+			var slideNumber = 0;
+
+			document.getElementById('slider_jgzd').addEventListener('slide', function(e) {
+				slideNumber = e.detail.slideNumber
+			});
+			var jgzdData = [];
 			$.dataRequest(param, function(rs) {
 
 				widgets = template('priceguide1', rs);
@@ -1194,23 +1460,72 @@
 					var obj = {};
 					var arry = [];
 					for(var j in rs.data[i].priceTrend) {
-rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].created_time);
+						rs.data[i].priceTrend[j].created_time = formatDateTime(rs.data[i].priceTrend[j].created_time);
+						if(rs.data[i].priceTrend[j].priceResult == 0) {
+							rs.data[i].priceTrend[j].width = 1;
+							rs.data[i].priceTrend[j].height = 0.4;
+							rs.data[i].priceTrend[j].color = '666666';
+							rs.data[i].priceTrend[j].pic = 'ping';
+						} else if(rs.data[i].priceTrend[j].priceResult > 0) {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = 'E35D4C';
+							rs.data[i].priceTrend[j].pic = 'zhang';
+							rs.data[i].priceTrend[j].priceResult = '+' + rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResultRate = '+' + rs.data[i].priceTrend[j].priceResultRate;
+						} else {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = '509c2f';
+							rs.data[i].priceTrend[j].pic = 'die';
+						}
+						rs.data[i].priceTrend[j].priceResultRate = rs.data[i].priceTrend[j].priceResultRate + '%';
+						rs.data[i].priceTrend[j].num = i;
 						arry.push(rs.data[i].priceTrend[j]);
 					}
+					jgzdData.push(arry.length);
 					obj.data = arry;
-					console.log(JSON.stringify(obj));
-					widgets = template('priceguide3', obj);
-					$('#item' + i + 'mobile').html(widgets);
-				}
 
+					widgets = template('priceguide3', obj);
+
+					$('#sider' + i).html(widgets);
+				}
 			});
 			setTimeout(function() {
 				//mui('#slider3').slider().setStopped(true);
-				var gallery = mui(".jgzd-slider");
-				gallery.slider({
-					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
-				});
+				for(var i in jgzdData) {
+					var gallery = mui(".jgzd-slider" + i);
+					gallery.slider({
+						interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+					});
+				}
 			}, 1000)
+			var itemNum = 0;
+			var page = 0;
+
+			setTimeout(function() {
+				//alert(jgzdData[slideNumber])
+				if(jgzdData[slideNumber] > 0)
+					page = parseInt(jgzdData[slideNumber] / 4);
+
+				$(".left-arrow").click(function() {
+					itemNum--;
+					if(itemNum < 0)
+						itemNum = page;
+					var gallery = mui(".jgzd-slider" + slideNumber);
+					gallery.slider().gotoItem(itemNum);
+
+				});
+
+				$(".right-arrow").click(function() {
+					itemNum++;
+					if(itemNum > page)
+						itemNum = 0;
+					var gallery = mui(".jgzd-slider" + slideNumber);
+					gallery.slider().gotoItem(itemNum);
+
+				});
+			}, 2000)
 
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
@@ -1218,7 +1533,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 					mui.openWindow({
 						url: webview,
 						id: webview,
-						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 						show: {
 							autoShow: true, //页面loaded事件发生后自动显示，默认为true
 							aniShow: 'none'
@@ -1244,7 +1559,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				}, false);
 
 			});
-			
+
 			document.getElementById("telephone").addEventListener('tap', function() {
 				var btnArray = ['拨打', '取消'];
 				var phone = "0519-86558808";
@@ -1255,51 +1570,50 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				//});
 			});
 
-			document.getElementById('llzs').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/goodsindex.html',
-					id: 'llzs'
-				});
-			});
-			document.getElementById('gxzy').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/shareresource.html',
-					id: 'gxzy'
-				});
-			});
-			document.getElementById('llzx').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/information_list.html',
-					id: 'llzx'
-				});
-			});
+//			document.getElementById('llzs').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/goodsindex.html',
+//					id: 'llzs'
+//				});
+//			});
+//			document.getElementById('gxzy').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/shareresource.html',
+//					id: 'gxzy'
+//				});
+//			});
+//			document.getElementById('llzx').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/information_list.html',
+//					id: 'llzx'
+//				});
+//			});
+//
+//			document.getElementById('zxhd').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/activity.html',
+//					id: 'zxhd'
+//				});
+//			});
+//			document.getElementById('lljr').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/finance.html',
+//					id: 'lljr'
+//				});
+//			});
+//			document.getElementById('xxwl').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/offlinenetwork.html',
+//					id: 'xxwl'
+//				});
+//			});
+//			document.getElementById('qggy').addEventListener('tap', function() {
+//				mui.openWindow({
+//					url: 'item/supply.html',
+//					id: 'qggy'
+//				});
+//			});
 
-			document.getElementById('zxhd').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/activity.html',
-					id: 'zxhd'
-				});
-			});
-			document.getElementById('lljr').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/finance.html',
-					id: 'lljr'
-				});
-			});
-			document.getElementById('xxwl').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/offlinenetwork.html',
-					id: 'xxwl'
-				});
-			});
-			document.getElementById('qggy').addEventListener('tap', function() {
-				mui.openWindow({
-					url: 'item/supply.html',
-					id: 'qggy'
-				});
-			});
-			
-			
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
@@ -1314,7 +1628,7 @@ rs.data[i].priceTrend[j].created_time=formatDateTime(rs.data[i].priceTrend[j].cr
 				var second = date.getSeconds();
 				minute = minute < 10 ? ('0' + minute) : minute;
 				second = second < 10 ? ('0' + second) : second;
-				return m + '-' + d +' '+h+':'+minute;
+				return m + '-' + d + ' ' + h + ':' + minute;
 			};
 		</script>
 	</body>

@@ -53,7 +53,7 @@
     </div>
     <div class="action-bar">
       <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/quickcart.html">
-        <div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span>购物车</span></div>
+        <div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span class="cart_bottom_num_abs"></span><span>购物车</span></div>
       </div>
       <div class="op-item op-btn goods-op-cart action-addtocart">
         <a>加入购物车</a>
@@ -110,6 +110,7 @@
   <script>
     mui.plusReady(function() {
       var state = app.getState();
+      getcartnumabs(state.token);
       var package_id = plus.webview.currentWebview().packageid;
       var param = {
         queryData: {

@@ -12,10 +12,15 @@
   </head>
 
   <body class="body-padding-mini">
-    <header id="header" class="mui-bar mui-bar-transparent">
-      <i class="header-left icon-func bbc-icon bbc-icon-back mui-action-back"></i>
-      <a href="#minimenu" class="header-right icon-func bbc-icon bbc-icon-more-vertical btn-mini-menu"></a>
-    </header>
+   	<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<div class="mui-action-back mui-pull-left back-left back-width">
+				<img class="back_img" src="../../img/item/back_arrow.png" />
+			</div>
+			<h1 class="mui-title title_span">商品详情</h1>
+			<div class="message_size">
+				<img class="message_img" src="../../img/category/message.png" />
+			</div>
+		</header>
     <div id="minimenu" class="bbc-mini-menu mui-popover">
       <div class="mui-popover-arrow"></div>
       <div>
@@ -307,7 +312,7 @@
       <div class="op-item goods-op-faverite collect-goods">
         <div class="op-item-init"><i class="bbc-icon bbc-icon-star-empty"></i><span>收藏</span></div>
       </div>
-      <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/quickcart.html">
+      <div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/cart.html">
         <div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span>购物车</span></div>
       </div>
       <% if( item.valid && item.realStore>0 ){ %>
@@ -383,6 +388,7 @@
   <script>
     mui.plusReady(function() {
       var state = app.getState();
+      //getcartnumabs(state.token);
       var favorite_items = app.getFavoriteItems();
       var favorite_shop = app.getFavoriteShop();
       var goods_id = plus.webview.currentWebview().itemid;
@@ -684,6 +690,9 @@
               clicked('_www/view/cart/checkout.html', {
                 'mode': mode
               });
+              /*clicked('_www/view/cart/cart_order.html', {
+		            'mode': 'cart'
+		          });*/
             } else {
               mui.toast('成功添加到购物车')
               $('.action-addtocart').removeClass('selected-action');
@@ -723,9 +732,13 @@
             method: 'GET'
           }
           $.dataRequest(param, function(rs) {
-            clicked('_www/view/cart/checkout.html', {
+          	console.log(JSON.stringify(rs));
+            /*clicked('_www/view/cart/checkout.html', {
               'mode': 'fastbuy'
-            });
+            });*/
+           	clicked('_www/view/cart/cart_order.html', {
+	            'mode': 'fastbuy'
+	          });
           });
         });
         $('.action-addtocart').on('tap', function() {

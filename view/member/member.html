@@ -289,7 +289,7 @@
 		<header class="mui-bar mui-bar-transparent home-header">
 
 			<div class="shezhi">
-				<a id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></a>
+				<div id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
 			</div>
 			<div class="hyzx-title">我的账户</div>
 			<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>
@@ -325,18 +325,18 @@
 					<div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myorder.png" />
 						<!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--><span class="lbm-font">我的订单</span></div>
 					<div class="more-link">
-						<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">查看全部</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<span data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">查看全部　<i class="bbc-icon bbc-icon-forward"></i></span></div>
 				</div>
 				<div class="box-display content-vertical-padded user-orders fontS">
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../../img/hyzx/sh-icon.png" />
-						<!--<i class="bbc-icon bbc-icon-pay">--><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待审核</a>
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="fk-icon" src="../../img/hyzx/fk-icon.png" />
-						<!--<i class="bbc-icon bbc-icon-package">--><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</a>
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="nh-icon" src="../../img/hyzx/nh-icon.png" />
-						<!--<i class="bbc-icon bbc-icon-logistics">--><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</a>
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="kp-icon" src="../../img/hyzx/kp-icon.png" />
-						<!--<i class="bbc-icon bbc-icon-message-gap">--><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待开票</a>
-					<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
+					<div data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "pay"}' class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="../../img/hyzx/sh-icon.png" />
+						<!--<i class="bbc-icon bbc-icon-pay">--><span id="trade_pay_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待审核</div>
+					<div data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "send"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="fk-icon" src="../../img/hyzx/fk-icon.png" />
+						<!--<i class="bbc-icon bbc-icon-package">--><span id="trade_send_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待付款</div>
+					<div data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "receive"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="nh-icon" src="../../img/hyzx/nh-icon.png" />
+						<!--<i class="bbc-icon bbc-icon-logistics">--><span id="trade_receive_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待收货</div>
+					<div data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": "rate"}' class="box-item-flex1 content-center action-clickview font-gray-20"><img class="kp-icon" src="../../img/hyzx/kp-icon.png" />
+						<!--<i class="bbc-icon bbc-icon-message-gap">--><span id="trade_rate_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>待开票</div>
+					<!--<div data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</div>-->
 				</div>
 			</section>
 			<section class="section-white">
@@ -344,56 +344,56 @@
 					<div class="title-txt"> <img class="order-img user-order bbc-icon-list" src="../../img/hyzx/myyck.png" />
 						<!--<i class="user-icon bbc-icon bbc-icon-list user-order"></i>--><span class="lbm-font">我的预存款</span></div>
 					<div class="more-link">
-						<a data-needlog="true" data-view="_www/view/member/payrecord/payrecord.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">交易记录</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
+						<span data-needlog="true" data-view="_www/view/member/payrecord/payrecord.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">交易记录　<i class="bbc-icon bbc-icon-forward"></i></span></div>
 				</div>
 				<div class="box-display content-vertical-padded user-orders fontS">
-					<a class="box-item-flex1 action-clickview font-gray-20">
+					<div class="box-item-flex1 action-clickview font-gray-20">
 						<span class="yck-font-1 font-gray-20">现金预存款</span>
 						<br />
 						<span class="yck-font-2">0</span><span class="yck-font-1 font-gray-0"> 元</span>
 						<br />
 						<div class="lineheight-cz">　</div>
 						<div class="yck-font-3"><span>充值</span></div>
-					</a>
-					<a class="box-item-flex1 action-clickview">
+					</div>
+					<div class="box-item-flex1 action-clickview">
 						<span class="yck-font-5">承兑预存款</span>
 						<br />
 						<span class="yck-font-6">0</span><span class="yck-font-5 font-gray-0"> 元</span>
 						<br />
 						<div class="lineheight-cz">　</div>
 						<div class="yck-font-7"><span>提现</span></div>
-					</a>
+					</div>
 				</div>
 			</section>
 			<section class="section-white">
 				<ul class="mui-table-view">
 					<li data-needlog="true" data-view="_www/view/member/distribution/distribution.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/wlgl.png" /><span class="lb-font">物流管理</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/wlgl.png" /><span class="lb-font">物流管理</span></div>
 					</li>
 					<!--<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
-					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/fbzy.png" /><span class="lb-font">发布资源</span></a>
+					<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/fbzy.png" /><span class="lb-font">发布资源</span></div>
 				</li>-->
 					<!--<li data-needlog="true" data-view="_www/view/member/favorite/favorite.html" class="mui-table-view-cell action-clickview">
-					<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/lljr.png" /><span class="lb-font">炉料金融</span></a>
+					<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/lljr.png" /><span class="lb-font">炉料金融</span></div>
 				</li>-->
 					<li data-needlog="true" data-view="_www/view/member/account/account.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/dzd.png" /><span class="lb-font">对账单</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/dzd.png" /><span class="lb-font">对账单</span></div>
 					</li>
 					<li data-needlog="true" data-view="_www/view/member/invoice.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/kpxx.png" /><span class="lb-font">开票信息</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/kpxx.png" /><span class="lb-font">开票信息</span></div>
 					</li>
 					<li data-needlog="true" data-view="_www/view/member/userinfo/address.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/shdz.png" /><span class="lb-font">收货地址</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/shdz.png" /><span class="lb-font">收货地址</span></div>
 					</li>
 					<li data-needlog="true" data-view="_www/view/member/comp/comp.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/qyrz.png" /><span class="lb-font">企业认证</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/qyrz.png" /><span class="lb-font">企业认证</span></div>
 					</li>
 				</ul>
 			</section>
 			<section class="section-white">
 				<ul class="mui-table-view">
 					<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
-						<a class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">安全中心</span></a>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">安全中心</span></div>
 					</li>
 				</ul>
 			</section>
@@ -413,7 +413,7 @@
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item bbc-active" data-webview="_www/view/member/member.html">
@@ -432,6 +432,7 @@
 				window.addEventListener('refresh', fetchMemberData);
 				if(state.token)
 				fetchMemberData();
+      			getcartnumabs(state.token);
 
 				$(window).on('tap', '.action-clickview', function() {
 					var state = app.getState();
@@ -542,27 +543,29 @@
 				}
 			}
 
-			$('.bbc-tab-item').on('tap', function() {
-				var webview = $(this).data('webview');
-				if(webview) {
-					mui.openWindow({
-						url: webview,
-						id: webview,
-						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-						show: {
-							autoShow: true, //页面loaded事件发生后自动显示，默认为true
-							aniShow: 'none'
-						},
-						waiting: {
-							autoShow: true //自动显示等待框，默认为true
-						}
-					});
-					var openw = plus.webview.getWebviewById(webview);
-					if(openw) {
-						mui.fire(openw, 'refresh');
-					}
-				}
-			});
+	    	$('.bbc-tab-item').on('tap', function() {
+		        var webview = $(this).data('webview');
+		        if(webview) {
+		          if(webview) {
+		            mui.openWindow({
+		              url: webview,
+		              id: webview,
+		              createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		              show: {
+		                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+		                aniShow: 'none'
+		              },
+		              waiting: {
+		                autoShow: true //自动显示等待框，默认为true
+		              }
+		            });
+		            var openw = plus.webview.getWebviewById(webview);
+		            if(openw) {
+		              mui.fire(openw, 'refresh');
+		            }
+		          }
+		        }
+		     });
 
 			$('.yck-font-3').on('tap', function() {
 				var state = app.getState();

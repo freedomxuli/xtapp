@@ -418,6 +418,13 @@
 				flex-direction: row;
 			}
 			
+			.fpxx{
+					color: #666666;
+				font-family: "arial rounded mt bold";
+				font-size: 0.8rem;
+				padding-left:0.2rem;
+			}
+			
 			.goods_info_detail_type {
 				flex: 1;
 				display: flex;
@@ -522,13 +529,13 @@
 
 			<div id="settle" class="mui-page">
 				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center" style="background: #d92e2e;">
-					<a class="mui-action-back mui-pull-left back-left">
+					<div class="mui-action-back mui-pull-left back-left">
 						<img class="back_img" src="../../img/item/back_arrow.png" />
-					</a>
+					</div>
 					<h1 class="mui-center mui-title head-font">订单结算</h1>
-					<a class="message_size">
+					<div class="message_size">
 						<img class="message_img" src="../../img/category/message.png" />
-					</a>
+					</div>
 				</div>
 				<!--      <header class="mui-bar mui-bar-nav mui-bar-backcolor">
       	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
@@ -583,13 +590,13 @@
 
 			<div id="invoice" class="mui-page">
 				<div class="mui-navbar-inner mui-bar mui-bar-nav mui-navbar-center" style="background: #d92e2e;">
-					<a class="mui-action-back mui-pull-left back-left">
+					<div class="mui-action-back mui-pull-left back-left">
 						<img class="back_img" src="../../img/item/back_arrow.png" />
-					</a>
+					</div>
 					<h1 class="mui-center mui-title head-font">发票信息</h1>
-					<a class="message_size">
+					<div class="message_size">
 						<img class="message_img" src="../../img/category/message.png" />
-					</a>
+					</div>
 				</div>
 				<div class="mui-page-content" id="invoice_content">
 				</div>
@@ -678,7 +685,7 @@
 					</div>
 					<% for(var j in cartInfo.resultCartData[i].object){ %>
 					<div class="goods_memo">
-						<div class="goods_xq">
+						<div class="goods_xq" style="color:#000000;font-size: 0.9rem;">
 							<%=cartInfo.resultCartData[i].object[j].manufacturers_name%>-
 							<%=cartInfo.resultCartData[i].object[j].pm_name%>
 							<%=cartInfo.resultCartData[i].object[j].guige%>
@@ -716,6 +723,24 @@
 						</div>
 					</div>
 					<%}%>
+					
+							<section class="mui-input-group integral-use">
+					<section class="section-white">
+						<ul class="function-list">
+							<li class="mui-table-view-cell">
+								<a href="#invoice" class="mui-navigate-right act-invoice-detail">
+									<div class="mui-table">
+										<div class="mui-table-cell mui-col-xs-3 fpxx">发票信息：</div>
+										<input type="hidden" id="op_need_invoice" value="0">
+										<input type="hidden" name="" id="op_invoice_type" value="notuse">
+										<input type="hidden" id="op_invoice_title" value="" />
+										<div class="mui-table-cell mui-col-xs-9 mui-text-right " id="op_invoice_name">不需要发票</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</section>
+				</section>
 					<div class="goods_info_detail">
 						<div class="mui-input-row input-div">
 							<label class="input-text">买家留言：</label>
@@ -767,26 +792,7 @@
 					</div>
 				</div>
 				<% } %>
-				<div class="space">
-					&nbsp;
-				</div>
-				<section class="mui-input-group integral-use">
-					<section class="section-white">
-						<ul class="function-list">
-							<li class="mui-table-view-cell">
-								<a href="#invoice" class="mui-navigate-right act-invoice-detail">
-									<div class="mui-table">
-										<div class="mui-table-cell mui-col-xs-3">发票信息：</div>
-										<input type="hidden" id="op_need_invoice" value="0">
-										<input type="hidden" name="" id="op_invoice_type" value="notuse">
-										<input type="hidden" id="op_invoice_title" value="" />
-										<div class="mui-table-cell mui-col-xs-9 mui-text-right" id="op_invoice_name">不需要发票</div>
-									</div>
-								</a>
-							</li>
-						</ul>
-					</section>
-				</section>
+				
 			</section>
 
 		</div>

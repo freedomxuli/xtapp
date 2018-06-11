@@ -31,14 +31,28 @@
       .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
         background-color: #fff;
       }*/
+      .mui-segmented-control.mui-scroll-wrapper .mui-control-item
+			{
+				padding: 0 15px !important;
+			}
       .mui-slider-indicator.mui-segmented-control{
      		background-color: #ffffff !important;
       }
       
       .mui-bar-backcolor{
       	background-color:#d92e2e;
-      	display: flex !important;
+      	display: flex;  
       }
+      
+      .img-back{
+				height: 1rem;
+				width: 0.6rem;
+				line-height: 1rem;
+			}
+			
+			.img-padding{
+				margin: 0rem 0.5rem 0rem 0.5rem;
+			}
       
       .child{   
 			    flex:1;    
@@ -72,15 +86,7 @@
       	font-size: 1.2rem;
       }
       
-      /*.head-color{
-				background-color: #d92e2e !important;
-			}*/
-			
-			/*header.home-color1 {
-				background-color: #d92e2e !important;
-			}*/
-			
-			.header-icon {
+      .header-icon {
 				width: 1.6rem;
 				height: 1.6rem;
 				vertical-align: middle
@@ -343,6 +349,7 @@
 				height: 2rem;
 				line-height: 2rem;
 				text-align: left;
+				font-size: 0.8rem;
 			}
 			/*.content-inner-left-top-item{
 				flex:2;
@@ -402,7 +409,7 @@
 			.left-side-content-nav li{
 				color:#222222;
 				list-style-type: none;
-				padding: 1.2rem 1.4rem 1.2rem 1.4rem;
+				padding: 1rem 0.6rem 1rem 0.6rem;
 				border-bottom: 1px solid #d0d0d0;
 				font-size: 0.8rem;
 			}
@@ -411,13 +418,20 @@
 				color:#E35D4C !important;
 			}
 			.left-side-content-detail{
-				flex: 2;
+				flex: 3;
 				overflow-y: scroll !important;
 			}
 			.left-side-content-detail-li{
 				list-style-type: none;
-				font-size:0.9rem;
-				padding: 1rem 1.4rem 1rem 1.4rem;
+				padding: 1rem 1rem 1rem 1rem;
+			}
+			.left-side-content-detail-nav 
+			{
+				font-size: 1rem;
+			}
+			.left-side-content-detail-list
+			{
+				font-size: 0.7rem !important;
 			}
 			.left-side-content-detail-list ul{
 				width: 100%;
@@ -463,6 +477,7 @@
 				<div class="main" style="flex: 6;">
 					<form onsubmit="return false;">
 						<div class="mui-input-row header-search-form search-class">
+							<span>　</span>
 							<button id='showUserPicker' class="search-select" type='button'>
 								<span id="search-span">全部</span>
 								<img class="search-img" src="../../img/index/downicon.png" />
@@ -694,7 +709,7 @@
 									<div class="mui-scroll">
 										<ul class="mui-table-view">
 											<li class="mui-table-view-cell">
-												第1个选项卡子项-1
+												
 											</li>
 										</ul>
 									</div>
@@ -802,11 +817,12 @@
       	$("#head-title").hide();
       	$("#head-search").show();
       	jQuery(".search-cancel").click(function(){
-      		$("#head-title").show();
-      		$("#head-search").hide();
+      		/*$("#head-title").show();
+      		$("#head-search").hide();*/
       		$(".search-input").val("");
       		keykind = "";
       		keyword = "";
+      		GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
       	});
       	jQuery(".search_img").click(function(){
       		$("#head-title").hide();
@@ -815,6 +831,7 @@
       		keykind = "";
       		keyword = "";
       	});
+      	
       	var searchPicker = new mui.PopPicker();
 				searchPicker.setData([{
 						value: '全部',
@@ -881,9 +898,9 @@
 	      	var fl_sort = 0;
 	      	for(var left_kind_id in rs.data.lv1Cats)
 	      	{
-	      		fl_sort_obj[fl_sort] = left_kind_id;
+	      		fl_sort_obj[fl_sort] = left_kind_id.substr(2);
 	      		fl_sort++;
-	      		page_obj[left_kind_id] = 1;
+	      		page_obj[left_kind_id.substr(2)] = 1;
 	      		if(left_kind_num==0)
 	      		{
 	      			if(!fl_id)
@@ -929,20 +946,20 @@
 					var left_content_obj;
 	      	var left_content_list = [];
 	      	var left_content_num = 0;
-	      	for(var i = 0;i < rs.data.lv1Cats[fl_id].lv2.length;i++)
+	      	for(var i = 0;i < rs.data.lv1Cats["c_"+fl_id].lv2.length;i++)
 	      	{
 	      		/*if(i==0)
 	      			pro_name_id = rs.data.lv1Cats[fl_id].lv2[i].cat_id;*/
 	      		var left_content_small_list = [];
 	      		var left_content_small_num = 0;
-	      		for(var j = 0;j < rs.data.lv1Cats[fl_id].lv2[i].lv3.length;j++)
+	      		for(var j = 0;j < rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3.length;j++)
 	      		{
 	      			if(left_content_num==0)
 	      			{
-	      				gg_id = rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id;
+	      				gg_id = rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id;
 	      				var obj_s = {
-			      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-			      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+			      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+			      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 			      			is_select:1
 			      		}
 	      				left_content_small_list.push(obj_s);
@@ -950,16 +967,16 @@
 	      			}else
 	      			{
 	      				var obj_s = {
-			      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_id,
-			      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].lv3[j].cat_name,
+			      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_id,
+			      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].lv3[j].cat_name,
 			      			is_select:0
 			      		}
 	      				left_content_small_list.push(obj_s);
 	      			}
 	      		}
 	      		var obj = {
-	      			cat_id:rs.data.lv1Cats[fl_id].lv2[i].cat_id,
-	      			cat_name:rs.data.lv1Cats[fl_id].lv2[i].cat_name,
+	      			cat_id:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_id,
+	      			cat_name:rs.data.lv1Cats["c_"+fl_id].lv2[i].cat_name,
 	      			lv3:left_content_small_list
 	      		}
 	      		left_content_list.push(obj);
@@ -976,7 +993,7 @@
 	      	var top_kind_list = [];
 	      	for(var top_kind_id in rs.data.lv1Cats)
 	      	{
-	      		if(fl_id==top_kind_id)
+	      		if("c_"+fl_id==top_kind_id)
 	      		{
 	      			var obj = {
 	      				cat_id:rs.data.lv1Cats[top_kind_id].cat_id,
@@ -1009,7 +1026,7 @@
 					var arr_1 = [];
 					for(var top_kind_id in rs.data.lv1Cats)
 	      	{
-	      		arr_1.push(top_kind_id);
+	      		arr_1.push(top_kind_id.substr(2));
 	      	}
 	      	startContent(arr_1[0],0);
 	      	function startContent(start_id,start_num)
@@ -1131,7 +1148,7 @@
 											var ul = self.element.querySelector('.mui-table-view');
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
-											GetContentListNew(index,ul,self);
+											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
 										}, 1100);
 									}
 								}
@@ -1150,6 +1167,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1168,6 +1186,7 @@
 									 lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 							     document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 							     GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+							     SizePicker.setData([]);
 							     GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								 }
 						});
@@ -1216,12 +1235,12 @@
 	     
 	    $(".left-side-content-nav").on('tap','li', function (event) {
 				ChangeLeftMenu($(this).data('cid'));
-				ChangeLeftContent($(this).data('cid'),gg_id);
+				ChangeLeftContent("c_"+$(this).data('cid'),gg_id);
 			});
 			
 			$(".left-side-content-detail").on('tap','.left-side-content-detail-list li',function(event){
 				gg_id = $(this).data('cid');
-				ChangeLeftContent(fl_id,gg_id);
+				ChangeLeftContent("c_"+fl_id,gg_id);
 			});
 			
 			$("#left-side-submit").on('tap',function(event){
@@ -1243,6 +1262,7 @@
 						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
 				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						GetGGList(pro_name_id);
 					} 
 				});
 			});
@@ -1255,6 +1275,7 @@
 						current_page_sort = index;
 						fl_id = fl_sort_obj[index];
 						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						SizePicker.setData([]);
 						pro_name_id = "";
 						gg_text = "";
 						$("#showNamePicker span").html("品名");
@@ -1335,6 +1356,9 @@
 	      };
 	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
+	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
+	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
+	      	page_obj[fl_new_id] = 1;
 	      	for(var i = 0;i < rs.data.list.length;i++)
 	      	{
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
@@ -1354,31 +1378,61 @@
 	      });
 			}
 			
-			function GetContentListNew(page_index,ul_obj,self_obj)
+			function GetContentListNew(page_index,ul_obj,self_obj,pm_id,guige,cd_new_id,jgk_new_id)
 			{
+				var search = "";
+				var all = "";
+				var pm = "";
+				var gg = "";
+				var cj = "";
+				var jgk = "";
+				if(keykind!="")
+				{
+					switch(keykind)
+					{
+						case "全部":
+							search = "all";
+							all = keyword;
+						break;
+						case "品名":
+							pm = keyword;
+						break;
+						case "规格":
+							gg = keyword;
+						break;
+						case "厂家/产地":
+							cj = keyword;
+						break;
+						case "交割库":
+							jgk = keyword;
+						break;
+					}
+				}
 				var param1 = {
 	        queryData: {
 	          'method': config.apimethod.goodslist,
 	          'lv1Cat':'',
-	          'lv2Cat':'',
-	          'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
+	          'lv2Cat':pm_id,
+	          //'cat_id':fl_zl_obj[fl_sort_obj[page_index]],
+	          'cat_id':cat_all_obj[fl_sort_obj[page_index]],
 	          'shop_id':'',
-	          'search':'',
-	          'all':'',
-	          'pm':'',
-	          'gg':'',
-	          'cj':'',
-	          'jgk':'',
+	          'search':search,
+	          'all':all,
+	          'pm':pm,
+	          'gg':gg,
+	          'cj':cj,
+	          'jgk':jgk,
 	          'page_no':(parseInt(page_obj[fl_sort_obj[page_index]])+1),
 	          'page_size':config.pagesize,
 	          'orderBy':'',
 	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
-	          'guige':'',
-	          'manufacturers_id':'', 
-	          'storage_id':''
+	          'guige':guige,
+	          'manufacturers_id':cd_new_id,
+	          'storage_id':jgk_new_id
 	        },
 	        method: 'GET'
 	      };
+	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	var resultnew = template('filters_center_list', rs.data);
 					//$('#item'+fl_sort_obj[page_index]+'mobile ul').html(result);
@@ -1820,7 +1874,7 @@
 <!--										<div class="content-inner-left-top-item">
 											
 										</div>-->
-										<div class="content-inner-left-top-item">
+										<div class="content-inner-left-top-item action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%= list[i].item_id%>}'>
 											<%=list[i].manufacturers_name%>　<%=list[i].pm_name%>　<%=list[i].guige%>　<%=list[i].storage_name%>
 										</div>
 <!--										<div class="content-inner-left-top-item">
