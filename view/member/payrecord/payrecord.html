@@ -120,8 +120,6 @@
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
-			
-		
 		</style>
 	</head>
 
@@ -164,7 +162,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<script src="../../../js/zepto.js"></script>
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/mui.view.js"></script>
@@ -173,19 +171,18 @@
 		<script src="../../../js/app.js"></script>
 		<script src="../../../js/mui.zoom.js"></script>
 		<script src="../../../js/mui.previewimage.js"></script>
-		
+
 		<script type="text/html" id="tip">
-		<div id="middlePopover<%=num%>" class="mui-popover">
-			<div class="mui-popover-arrow"></div>
-			<div class="mui-scroll-wrapper">
-				<%=text%>
+			<div id="middlePopover<%=num%>" class="mui-popover">
+				<div class="mui-popover-arrow"></div>
+				<div class="mui-scroll-wrapper">
+					<%=text%>
+				</div>
+
 			</div>
-
-		</div>
 		</script>
-		
-		<script>
 
+		<script>
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
@@ -198,7 +195,9 @@
 					}
 				}
 			});
-			mui('body').on('tap','a',function(){document.location.href=this.href;});
+			mui('body').on('tap', 'a', function() {
+				document.location.href = this.href;
+			});
 			var state = app.getState();
 			var count = 0;
 			/**
@@ -268,15 +267,23 @@
 							}
 							var li = document.createElement('li');
 							li.className = 'li-content';
-							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].logtime) + '</div><div class="li-content-div">' + type + '</div><div class="li-content-div point"><a class="li-content-div " href="#middlePopover'+((count - 1) * config.pagesize+i)+'">' + msg + '</a></div><div class="li-content-div">' + price + '</div><div class="li-content-div">' + accept + '</div><div class="li-content-div">' + zt + '</div>';
+							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].logtime) + '</div><div class="li-content-div">' + type + '</div><div class="li-content-div point"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + msg + '</span></div><div class="li-content-div">' + price + '</div><div class="li-content-div">' + accept + '</div><div class="li-content-div">' + zt + '</div>';
 							table.appendChild(li);
-							
-							var obj={};
-							obj.num=(count - 1) * config.pagesize+i;
-							obj.text=msg;
+
+							var obj = {};
+							obj.num = (count - 1) * config.pagesize + i;
+							obj.text = msg;
 							var widgets = template('tip', obj);
 							$('#main').append(widgets);
 						}
+
+						$(window).on('tap', '.mx', function() {
+
+							var id = $(this).attr('id');
+							var href = $(this).attr('href');
+							mui("#" + href).popover('show', document.getElementById(id));
+						});
+
 					});
 
 				}, 1000);

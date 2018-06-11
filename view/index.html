@@ -143,11 +143,11 @@
 		
 		.type-name1 {
 			position: absolute;
-			width: 40%;
+			width: 4rem;
 			height: 25px;
 			z-index: 2;
-			left: 15px;
-			bottom: 5px;
+			left: 0.4rem;
+			bottom: 0.8rem;
 			background: #C9C9C9;
 			color: #ffffff;
 			line-height: 25px;
@@ -156,11 +156,11 @@
 		
 		.type-name2 {
 			position: absolute;
-			width: 40%;
+			width: 5rem;
 			height: 25px;
 			z-index: 2;
-			left: 10px;
-			bottom: 5px;
+			left: 0.8rem;
+			bottom: 0.8rem;
 			background: #C9C9C9;
 			color: #ffffff;
 			line-height: 25px;
@@ -1239,62 +1239,67 @@
 					<div class="more-link action-webview" data-webview="_www/view/category/category.html">
 						<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
-				<div class="flex">
-					<div class="rxcp-left">
+
+				<div style="display:flex;padding:3px 6px;">
+					<div style="flex:1;margin-right:3px;position:relative;">
 						<%
 							if(pic.length>0){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}' src="<%=pic[0].imagesrc%>" />
-						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}'>
+						<img style="width:100%;height:95%" src="../img/index/st.png" class="action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}' src="<%=pic[0].imagesrc%>" />
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}' src="<%=pic[0].imagesrc%>">
 							生铁
 						</div>
 						<%
 						}
 						%>
 					</div>
-					<div class="rxcp-right">
-						<%
+					<div style="flex:1;margin-left:3px;display:flex;flex-direction: column;">
+						<div style="flex:1;position:relative;">
+							<%
 							if(pic.length>1){
 						%>
-						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>" />
-						<div class="type-name3 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' style="margin-top:10px;">
-							废钢
-						</div>
-						<%
+							<img style="width:100%;height:100%" class="action-webview" src="../img/index/fg.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>"/>
+							<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>">
+								废钢
+							</div>
+							<%
 						}
 						%>
-						<%
+						</div>
+						<div style="flex:1;position:relative;">
+							<%
 							if(pic.length>2){
 						%>
-						<img class="img-half action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}' src="<%=pic[2].imagesrc%>" />
-						<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}'>
-							增碳剂
-						</div>
-						<%
+							<img style="width:100%;height:100%" class="action-webview" src="../img/index/ztj.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}' src="<%=pic[2].imagesrc%>"/>
+							<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}' src="<%=pic[2].imagesrc%>">
+								增碳剂
+							</div>
+							<%
 						}
 						%>
+						</div>
 					</div>
 				</div>
 
-				<div class="flex">
-					<div class="rxcp-left">
+				<div style="display:flex;padding:0px 6px;">
+					<div style="flex:1;margin-right:3px;position:relative;">
 						<%
 							if(pic.length>3){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>" />
-						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}'>
+						<img style="width:100%;height:100%" class="action-webview" src="../img/index/thj.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>"/>
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>">
 							钛合金
 						</div>
 						<%
 						}
 						%>
 					</div>
-					<div class="rxcp-right">
+					<div style="flex:1;margin-left:3px;position:relative;">
 						<%
 							if(pic.length>4){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>" />
-						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}'>
+						<img style="width:100%;height:100%" src="../img/index/yyj.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>"/>
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[4].imagesrc%>">
 							孕育剂
 						</div>
 						<%
@@ -1302,21 +1307,23 @@
 						%>
 					</div>
 				</div>
-				<div class="flex">
-					<div class="rxcp-middle">
-						<%
+
+				<div style="display:flex;padding:3px 6px;position:relative;">
+					<%
 							if(pic.length>5){
 						%>
-						<img class="img-all action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>" />
-						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' style="bottom:10px">
-							其他辅料
-						</div>
-						<%
+					<img style="width:100%;height:100%" class="action-webview" src="../img/index/qtfl.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>"/>
+					<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[5].imagesrc%>">
+						其他辅料
+					</div>
+					<%
 						}
 						%>
-					</div>
-
 				</div>
+
+				
+
+				
 			</section>
 			<div style="height:3rem"></div>
 		</script>
@@ -1570,49 +1577,49 @@
 				//});
 			});
 
-//			document.getElementById('llzs').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/goodsindex.html',
-//					id: 'llzs'
-//				});
-//			});
-//			document.getElementById('gxzy').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/shareresource.html',
-//					id: 'gxzy'
-//				});
-//			});
-//			document.getElementById('llzx').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/information_list.html',
-//					id: 'llzx'
-//				});
-//			});
-//
-//			document.getElementById('zxhd').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/activity.html',
-//					id: 'zxhd'
-//				});
-//			});
-//			document.getElementById('lljr').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/finance.html',
-//					id: 'lljr'
-//				});
-//			});
-//			document.getElementById('xxwl').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/offlinenetwork.html',
-//					id: 'xxwl'
-//				});
-//			});
-//			document.getElementById('qggy').addEventListener('tap', function() {
-//				mui.openWindow({
-//					url: 'item/supply.html',
-//					id: 'qggy'
-//				});
-//			});
+			//			document.getElementById('llzs').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/goodsindex.html',
+			//					id: 'llzs'
+			//				});
+			//			});
+			//			document.getElementById('gxzy').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/shareresource.html',
+			//					id: 'gxzy'
+			//				});
+			//			});
+			//			document.getElementById('llzx').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/information_list.html',
+			//					id: 'llzx'
+			//				});
+			//			});
+			//
+			//			document.getElementById('zxhd').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/activity.html',
+			//					id: 'zxhd'
+			//				});
+			//			});
+			//			document.getElementById('lljr').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/finance.html',
+			//					id: 'lljr'
+			//				});
+			//			});
+			//			document.getElementById('xxwl').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/offlinenetwork.html',
+			//					id: 'xxwl'
+			//				});
+			//			});
+			//			document.getElementById('qggy').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/supply.html',
+			//					id: 'qggy'
+			//				});
+			//			});
 
 			function formatDateTime(timeStamp) {
 				var date = new Date();

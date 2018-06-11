@@ -289,6 +289,7 @@
 				}
 
 				$.dataRequest(create, function(rs) {
+				
 					param.queryData.payment_id = rs.data.payment_id;
 					payid = rs.data.payment_id;
 					fetchPayment(rs.data.payment_id);
@@ -299,6 +300,7 @@
 
 			function fetchPayment(pid, total) {
 				$.dataRequest(param, function(rs) {
+						console.log(JSON.stringify(rs.data))
 					var data = rs.data;
 					var tempEl = template('payment', rs.data);
 					$('.container').html(tempEl);
