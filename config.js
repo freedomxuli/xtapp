@@ -127,6 +127,7 @@ var config = {
 		deposit: 'deposit.apply.shenhe', //预存款充值
 		depositget: 'deposit.user.get', //预存款查询
 		getRecord: 'deposit.user.getRecord', //预存款记录
+		cashApply: 'deposit.user.cashApply', //预存款提现申请
 		getqcwk: 'accountCheck.tickets.qichu_no', //期初未开记录
 		getqmwk: 'accountCheck.tickets.qimo_no', //期末未开记录
 		getbqyk: 'accountCheck.tickets.benqi_already', //本期已开记录

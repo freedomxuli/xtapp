@@ -583,6 +583,23 @@
 				}
 
 			});
+			
+			$('.yck-font-7').on('tap', function() {
+				var state = app.getState();
+				if(state.token) {
+					var faid = plus.webview.currentWebview().id;
+					clicked('_www/view/member/recharge/cashapply.html', {
+						'faid': faid
+					});
+				} else {
+					var faid = plus.webview.currentWebview().id;
+					clicked('_www/view/passport/login.html', {
+						'faid': faid,
+						'entrance': faid
+					}, 'slide-in-bottom');
+				}
+
+			});
 		</script>
 	</body>
 
