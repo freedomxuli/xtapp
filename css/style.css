@@ -2349,7 +2349,7 @@ select:focus {
 
 .mui-input-group .mui-input-row:after {
 	position: absolute;
-	left: 15px;
+	left: 0;
 	right: 0;
 	bottom: 0;
 	height: 1px;
