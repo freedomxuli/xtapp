@@ -2094,7 +2094,7 @@
 							mui.toast('创建订单成功,等待审核！');
 							if(rs.data.payment_type == 'online') {
 								var payid = rs.data.payment_id;
-								clicked('_www/view/member/trade/trade.html');
+								clicked('_www/view/member/trade/trade.html',{'enterpage':'cart_order'});
 							} else {
 								clicked("_www/view/payment/paymentsuccess.html", {
 									'total': $('#op_all_payment').text().substr(1),
