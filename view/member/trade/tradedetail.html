@@ -207,11 +207,11 @@
 						<dl class="checkout-fee">
 							<dt>合计：</dt>
 							<dd class="total">
-								<%= $format_price(payment) %>
+								<%= $format_price(total_fee) %>
 							</dd>
-							<dt>减免：</dt>
-							<dd>-
-								<%= $format_price(discount_fee) %>
+							<dt>调价：</dt>
+							<dd>
+								<%= $format_price(change_price) %>
 							</dd>
 							<dt>红包抵扣：</dt>
 							<dd>-
@@ -233,6 +233,16 @@
 
 		<section class="section-white">
 			<ul class="mui-table-view fontS">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-6 font-gray-20">实付总金额：</div>
+						<div class="mui-table-cell mui-col-xs-6 content-right">
+							<p>
+								<%= $format_price(payment) %>
+							</p>
+						</div>
+					</div>
+				</li>
 				<% if(pay_type=="online"){ %>
 				<li class="mui-table-view-cell">
 					<div class="mui-table">
