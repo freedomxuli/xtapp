@@ -1107,7 +1107,13 @@ function preateClear() {
           } else if(data.errorcode == 30001) {
             $('body').append(error_page);
           } else {
-            mui.alert(data.msg);
+          	if(data.msg=='请先进行企业认证'){
+          		mui.alert(data.msg,'提示','去认证',function(){
+          			clicked('_www/view/member/comp/comp.html');
+          		});
+          	}else{
+          		mui.alert(data.msg);
+          	}
           }
         } else {
           if($.isFunction(renderCallback)) {
