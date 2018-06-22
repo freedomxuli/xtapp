@@ -653,7 +653,25 @@
 						</div>
 					</div>
 					<%}else{%>
-					<i class="bbc-icon bbc-icon-location-gap"></i>
+						<div class="address_part">
+						<div class="address_part_left">
+							<img class="wait_part_left_img" src="../../img/orderdetail/address.png" />
+						</div>
+						<div class="address_part_center">
+							<div class="address_part_center_top">
+								<div id="noadd" class="receiver-info-item">请设置您的地址</div>
+								<input type="hidden" class="op-address" value="">
+								<input type="hidden" name="default_addr_regionid" value="" />
+								<div id="addr_user" class="address_part_center_top_left"></div>
+								<div id="addr_mobile" class="address_part_center_top_right"></div>
+							</div>
+							<div id="addr_detail" class="address_part_center_bottom"></div>
+						</div>
+						<div class="address_part_right">
+							<img class="check-right-img" src="../../img/orderdetail/right.png" />
+						</div>
+					</div>
+					<!--<i class="bbc-icon bbc-icon-location-gap"></i>
 					<div id="noadd" class="receiver-info-item" <% if(default_address==null){ %> style="display: block;"
 						<% }else{ %>style="display: none;"
 						<% } %>>请设置您的地址</div>
@@ -664,7 +682,7 @@
 							<div id="addr_user" class="receiver-name"></div>
 						</div>
 						<div id="addr_detail" class="add-detail"></div>
-					</div>
+					</div>-->
 					<% } %>
 				</a>
 				<div class="kind-select">
@@ -1514,6 +1532,7 @@
 					$('input[name="default_addr_regionid"]').val(region_id);
 					$('#noadd').hide();
 					$('#hasadd').show();
+					console.log(1);
 					//totalPrice();
 					mui.back();
 				})
