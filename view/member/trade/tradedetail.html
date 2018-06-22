@@ -433,10 +433,11 @@
 							if(rs.data.status == "WAIT_BUYER_PAY") {
 								rs.data.status_desc = "待付款";
 
-							} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS") {
+							} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS" && rs.data.cancel_status=="NO_APPLY_CANCEL") {
 								rs.data.status_desc = "待发货";
-
-							} else if(rs.data.status == "SEND_PART") {
+							} else if(rs.data.status == "WAIT_SELLER_SEND_GOODS" && rs.data.cancel_status=="WAIT_PROCESS") {
+								rs.data.status_desc = "取消订单，待审核";
+							}else if(rs.data.status == "SEND_PART") {
 								rs.data.status_desc = "部分发货";
 
 							} else if(rs.data.status == "WAIT_BUYER_CONFIRM_GOODS") {
