@@ -45,6 +45,12 @@
 	<script src="../../js/app.js"></script>
 	<script type="text/javascript">
 		mui.plusReady(function() {
+			//支付成功后，点击返回应该是到我的订单页面
+			document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+			    e.preventDefault();
+			    e.stopPropagation();
+			    clicked('_www/view/member/trade/trade.html',{'enterpage':'paymentsuccess'});
+			},true);
 			mui.init({
 				beforeback: function() {
 					var fw = plus.webview.currentWebview().opener();

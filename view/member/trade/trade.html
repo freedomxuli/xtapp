@@ -801,6 +801,13 @@
 						    //为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
 						    clicked('_www/view/cart/cart.html',{'enter_page':'trade'});
 						},true);
+        }else if(enter_page=='paymentsuccess'){
+        	document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+						    e.preventDefault();
+						    e.stopPropagation();
+						    //为了防止页面一直在我的订单和支付成功页面跳转退不出去，这时候跳转到我的账户
+						    clicked('_www/view/member/member.html');
+						},true);
         }
         mui.init({
           beforeback: function() {
