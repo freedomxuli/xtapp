@@ -350,15 +350,15 @@
 					<div class="box-item-flex1 action-clickview font-gray-20">
 						<span class="yck-font-1 font-gray-20">现金预存款</span>
 						<br />
-						<span class="yck-font-2">0</span><span class="yck-font-1 font-gray-0"> 元</span>
+						<span class="yck-font-2">0.00</span><span class="yck-font-1 font-gray-0"> 元</span>
 						<br />
 						<div class="lineheight-cz">　</div>
 						<div class="yck-font-3"><span>充值</span></div>
 					</div>
 					<div class="box-item-flex1 action-clickview">
-						<span class="yck-font-5">承兑预存款</span>
+						<span class="yck-font-5 font-gray-20">承兑预存款</span>
 						<br />
-						<span class="yck-font-6">0</span><span class="yck-font-5 font-gray-0"> 元</span>
+						<span class="yck-font-6">0.00</span><span class="yck-font-5 font-gray-0"> 元</span>
 						<br />
 						<div class="lineheight-cz">　</div>
 						<div class="yck-font-7"><span>提现</span></div>
@@ -525,8 +525,12 @@
 					$.dataRequest(param, function(rs) {
 
 						var data = rs.data;
-						$(".yck-font-2").text(data.deposit);
-						$(".yck-font-6").text(data.acceptance_deposit);
+						if(data.deposit){
+							$(".yck-font-2").text(data.deposit);
+						}
+						if(data.acceptance_deposit){
+							$(".yck-font-6").text(data.acceptance_deposit);
+						}
 					});
 				} else {
 					document.getElementById('trade_pay_num').innerText = 0;
