@@ -221,6 +221,10 @@
 						var table = document.body.querySelector('.mui-table-view');
 						var cells = document.body.querySelectorAll('.mui-table-view-cell');
 						for(var i = cells.length, len = i + config.pagesize; i < len; i++) {
+							//当首次条数不足10条时
+							if(i>=list.length){
+								break;
+							}
 							var type = "";
 							var price = 0;
 							var accept = 0;
