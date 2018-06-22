@@ -7781,7 +7781,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			}
 			self.holder = holder;
 			options = options || {};
-			options.step = parseFloat(options.step || 0.01);
+			options.step = parseFloat(options.step || 1);
 			self.options = options;
 			self.input = $.qsa(inputClassSelector, self.holder)[0];
 			self.plus = $.qsa(plusClassSelector, self.holder)[0];
