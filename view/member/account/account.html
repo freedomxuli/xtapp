@@ -100,7 +100,7 @@
 			
 			.mui-control-content {
 				background-color: #F0EFF5;
-				min-height: 1000px !important;
+				min-height: 1rem;
 			}
 			
 			.mui-control-content .mui-loading {
@@ -506,7 +506,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="item2mobile" class="mui-slider-item mui-control-content" style="position: absolute;">
 						<div class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<div class="top-date-div">
@@ -568,6 +568,27 @@
 		<script src="../../../js/mui.picker.min.js"></script>
 		<script src="../../../js/mui.poppicker.js"></script>
 		<script>
+			mui.plusReady(function(){
+				var fenbian=parseInt(plus.screen.resolutionHeight*plus.screen.scale);
+				var scroll1=document.getElementById('scroll1');
+				var content=document.getElementsByClassName('mui-control-content')[0];
+				var scrollheights;
+				
+				if(fenbian=='2208'){//iphone 6plus
+					scrollheights='39rem';
+				}else if(fenbian=='1920'){//魅族 mx4
+					scrollheights='33rem';
+				}else if(fenbian =='2029'){//小米MIX 2
+					scrollheights='37.2rem';
+				}else if(fenbian=='1280'){ //魅蓝E3
+					scrollheights='30rem';
+				}else{
+					scrollheights='35rem';
+				}
+				// TODO  其他机型
+				scroll1.style.height=scrollheights;
+				content.style.minHeight=scrollheights;
+			});
 			mui.init({
 				swipeBack: false, //启用右滑关闭功能
 				statusBarBackground: "#E35D4C"
