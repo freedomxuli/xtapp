@@ -115,7 +115,7 @@
 				color: #666666;
 			}
 			.flex2 {
-				flex: 1.3;
+				flex: 1.5;
 			}
 			
 			.point {
@@ -126,7 +126,7 @@
 		</style>
 	</head>
 
-	<body>
+	<body id="main">
 
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<div class="mui-action-back mui-pull-left back-left back-width">
@@ -138,7 +138,7 @@
 			</div>
 		</header>
 		<div class="div_nav">
-			<div class="div_nav_label">
+			<div class="div_nav_label flex2">
 				订单号
 			</div>
 			<div class="div_nav_label flex2">
@@ -167,6 +167,15 @@
 		<script src="../../../js/app.js"></script>
 		<script src="../../../js/mui.zoom.js"></script>
 		<script src="../../../js/mui.previewimage.js"></script>
+		<script type="text/html" id="tip">
+			<div id="middlePopover<%=num%>" class="mui-popover">
+				<div class="mui-popover-arrow"></div>
+				<div class="mui-scroll-wrapper">
+					<%=text%>
+				</div>
+
+			</div>
+		</script>
 		<script>
 			var starttime = "";
 			var endtime = "";
@@ -249,6 +258,10 @@
 							var table = document.body.querySelector('.mui-table-view');
 							var cells = document.body.querySelectorAll('.mui-table-view-cell');
 							for(var i = cells.length, len = i + 10; i < len; i++) {
+								//当首次条数不足10条时
+								if(i>=list.length){
+									break;
+								}
 								var type = "";
 								var price = 0;
 								var accept = 0;
@@ -259,9 +272,20 @@
 //								if(type=='qcpe'||type=='qmpe')
 //									li.innerHTML = '<div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div">' + list[i].manufacturers_name + '</div><div class="li-content-div point">' + list[i].num + '</div><div class="li-content-div point">' + list[i].price + '</div>';
 //								else if(type=='bqpe')
-									li.innerHTML = '<div class="li-content-div">' + list[i].tid + '</div><div class="li-content-div flex2">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige +'</div><div class="li-content-div point">' + list[i].num + '</div><div class="li-content-div point">￥' + list[i].payment + '</div>';
+								li.innerHTML = '<div class="li-content-div flex2">' + list[i].tid + '</div><div class="li-content-div flex2"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige + '</span></div><div class="li-content-div">' + list[i].num + '</div><div class="li-content-div">￥' + list[i].payment + '</div>';
 								table.appendChild(li);
+								var obj = {};
+								obj.num = (count - 1) * config.pagesize + i;
+								obj.text = list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige ;
+								var widgets = template('tip', obj);
+								$('#main').append(widgets);
 							}
+							
+							$(window).on('tap', '.mx', function() {
+								var id = $(this).attr('id');
+								var href = $(this).attr('href');
+								mui("#" + href).popover('show', document.getElementById(id));
+							});
 						}
 					});
 
