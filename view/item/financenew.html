@@ -14,13 +14,38 @@
 			document.documentElement.style.fontSize = document.documentElement.clientWidth / 1125 * 50 + 'px';
 		</script>
 		<style type="text/css">
+			.mui-slider-progress-bar {
+				background-color: #e35d4c !important;
+			}
+			.mui-control-item.mui-active{
+				color: #ea2329 !important;
+			}
 			header.home-header {
 				background-color: rgba(182, 62, 62, 0);
 			}
 			.img_pos{
 				position: absolute;
-				left: 0.6rem;
+				left: 0.8rem;
 				line-height: 2.8rem;
+			}
+			.box-container{
+				display: flex;
+				height: 10rem;
+			}
+			.box-info{
+				flex: 1;
+			}
+			.info_content{
+				margin-top: 1.5rem;
+				margin-left: 0.5rem;
+				color: #333;
+			}
+			.box-img{
+				flex: 1;
+			}
+			.box-img img{
+				margin-top: 1.5rem;
+				width: 88% !important;
 			}
 		</style>
 	</head>
@@ -36,9 +61,60 @@
 			</div>
 		</header>
 		<div class="mui-content" > 
-			<img width="100%" style="margin-top:-3.5rem" src="../../img/lljr.jpg" />
+			<img width="100%"  src="../../img/lljr.jpg" />
+			<div id="slider" class="mui-slider" style="margin-top: 0.6rem;background: #fff;margin-bottom: 7rem;border-bottom:0px none;">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted bar-color">
+					<a class="mui-control-item" href="#item1mobile">
+						代订融
+					</a>
+					<a class="mui-control-item" href="#item2mobile">
+						分批融
+					</a>
+					<a class="mui-control-item" href="#item3mobile">
+						库存融
+					</a>
+				</div>
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div class="box-container">
+							<div class="box-info">
+								<p class="info_content">
+									淘炉料代客户垫资采购货物，解决客户迫切采购需求。
+								</p>
+							</div>
+							<div class="box-img">
+								<img  src="../../img/td1.png" />
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="box-container">
+							<div class="box-info">
+								<p class="info_content">
+									淘炉料根据客户委托备货，客户可分批付款提货。
+								</p>
+							</div>
+							<div class="box-img">
+								<img src="../../img/td2.png" />
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="box-container">
+							<div class="box-info">
+								<p class="info_content">
+									客户质押货物，淘炉料提供融资服务。
+								</p>
+							</div>
+							<div class="box-img">
+								<img  src="../../img/td3.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
 	</body> 
 
 </html> 
