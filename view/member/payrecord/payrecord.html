@@ -173,12 +173,18 @@
 		<script src="../../../js/mui.previewimage.js"></script>
 
 		<script type="text/html" id="tip">
-			<div id="middlePopover<%=num%>" class="mui-popover">
-				<div class="mui-popover-arrow"></div>
-				<div class="mui-scroll-wrapper">
-					<%=text%>
-				</div>
-
+			<div id="middlePopover<%=num%>" class="mui-popover mui-popover-bottom mui-popover-action">
+				<ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <%=text%>
+			      </li>
+			    </ul>
+			    <!-- 取消菜单 -->
+			    <ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <a href="#middlePopover<%=num%>"><b>取消</b></a>
+			      </li>
+			    </ul>
 			</div>
 		</script>
 
