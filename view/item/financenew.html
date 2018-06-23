@@ -13,11 +13,21 @@
 		<script>
 			document.documentElement.style.fontSize = document.documentElement.clientWidth / 1125 * 50 + 'px';
 		</script>
+		<style type="text/css">
+			header.home-header {
+				background-color: rgba(182, 62, 62, 0);
+			}
+			.img_pos{
+				position: absolute;
+				left: 0.6rem;
+				line-height: 2.8rem;
+			}
+		</style>
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav mui-bar-backcolor" >
-			<div class="mui-action-back mui-pull-left back-left">
+		<header class="mui-bar mui-bar-transparent home-header">
+			<div class="mui-action-back img_pos">
 				<img class="back_img" src="../../img/item/back_arrow.png" />
 			</div>
 			<h1 class="mui-title title_span">炉料金融</h1>
