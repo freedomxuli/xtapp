@@ -140,7 +140,7 @@
 		</style>
 	</head>
 
-	<body>
+	<body id="main">
 
 		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
 			<div class="mui-action-back mui-pull-left back-left back-width">
@@ -187,6 +187,15 @@
 		<script src="../../../js/app.js"></script>
 		<script src="../../../js/mui.zoom.js"></script>
 		<script src="../../../js/mui.previewimage.js"></script>
+		<script type="text/html" id="tip">
+			<div id="middlePopover<%=num%>" class="mui-popover">
+				<div class="mui-popover-arrow"></div>
+				<div class="mui-scroll-wrapper">
+					<%=text%>
+				</div>
+
+			</div>
+		</script>
 		<script>
 			var starttime = "";
 			var endtime = "";
@@ -233,12 +242,29 @@
 						var table = document.body.querySelector('.mui-table-view');
 						var cells = document.body.querySelectorAll('.mui-table-view-cell');
 						for(var i = cells.length, len = i + config.pagesize; i < len; i++) {
+							//当首次条数不足10条时
+							if(i>=list.length){
+								break;
+							}
 				           var sp=list[i].manufacturers_name+'-'+list[i].pm_name+list[i].guige;
 							var li = document.createElement('li');
 							li.className = 'li-content';
-							li.innerHTML = '<div class="li-content-div"><span class="li-content-timed">' + formatDateTimeD(list[i].consign_time) + '</span><span class="li-content-timet">'+ formatDateTimeT(list[i].consign_time)+'</span></div><div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div point">' + sp + '</div><div class="li-content-div">￥'+list[i].price+'</div><div class="li-content-div">'+list[i].ticket_num+'</div><div class="li-content-div">￥'+list[i].ticket_money+'</div>';
+							li.innerHTML = '<div class="li-content-div"><span class="li-content-timed">' + formatDateTimeD(list[i].consign_time) + '</span><span class="li-content-timet">'+ formatDateTimeT(list[i].consign_time)+'</span></div><div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div point"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + sp + '</span></div><div class="li-content-div">￥'+list[i].price+'</div><div class="li-content-div">'+list[i].ticket_num+'</div><div class="li-content-div">￥'+list[i].ticket_money+'</div>';
 							table.appendChild(li);
+							
+							var obj = {};
+							obj.num = (count - 1) * config.pagesize + i;
+							obj.text = sp;
+							var widgets = template('tip', obj);
+							$('#main').append(widgets);
 						}
+						
+						$(window).on('tap', '.mx', function() {
+
+							var id = $(this).attr('id');
+							var href = $(this).attr('href');
+							mui("#" + href).popover('show', document.getElementById(id));
+						});
 					});
 
 				}, 1000);
@@ -264,7 +290,6 @@
 				m = m < 10 ? ('0' + m) : m;
 				var d = date.getDate();
 				d = d < 10 ? ('0' + d) : d;
-				console.log(y + '-' + m + '-' + d);
 				return y + '-' + m + '-' + d;
 				
 			};
