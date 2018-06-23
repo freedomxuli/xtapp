@@ -104,8 +104,9 @@
 				display: flex;
 				flex-direction: row;
 				width: 100%;
-				padding: 0.6rem 0rem 0.6rem 0rem;
+				/*padding: 0.6rem 0rem 0.6rem 0rem;*/
 				border-bottom: 1px solid #CCCCCC;
+				
 			}
 			
 			.li-content-div {
@@ -113,8 +114,24 @@
 				font-size: 0.7rem;
 				text-align: center;
 				color: #666666;
+				height: 2.6rem;
+				line-height: 2.6rem;
 			}
-			
+			.li-content-timet{
+				display: inline-block;
+				float: left;
+				height: 1.3rem;
+				line-height: 1.3rem;
+				margin-left: 0.2rem;
+				margin-bottom: 0.2rem;
+			}
+			.li-content-timed{
+				margin-top: 0.2rem;
+				display: inline-block;
+				float: left;
+				height: 1.3rem;
+				line-height: 1.3rem;
+			}
 			.point {
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -219,7 +236,7 @@
 				           var sp=list[i].manufacturers_name+'-'+list[i].pm_name+list[i].guige;
 							var li = document.createElement('li');
 							li.className = 'li-content';
-							li.innerHTML = '<div class="li-content-div">' + formatDateTime(list[i].consign_time) + '</div><div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div point">' + sp + '</div><div class="li-content-div">￥'+list[i].price+'</div><div class="li-content-div">'+list[i].ticket_num+'</div><div class="li-content-div">￥'+list[i].ticket_money+'</div>';
+							li.innerHTML = '<div class="li-content-div"><span class="li-content-timed">' + formatDateTimeD(list[i].consign_time) + '</span><span class="li-content-timet">'+ formatDateTimeT(list[i].consign_time)+'</span></div><div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div point">' + sp + '</div><div class="li-content-div">￥'+list[i].price+'</div><div class="li-content-div">'+list[i].ticket_num+'</div><div class="li-content-div">￥'+list[i].ticket_money+'</div>';
 							table.appendChild(li);
 						}
 					});
@@ -239,7 +256,7 @@
 				});
 			}
 
-			function formatDateTime(timeStamp) {
+			function formatDateTimeD(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
 				var y = date.getFullYear();
@@ -247,13 +264,20 @@
 				m = m < 10 ? ('0' + m) : m;
 				var d = date.getDate();
 				d = d < 10 ? ('0' + d) : d;
+				console.log(y + '-' + m + '-' + d);
+				return y + '-' + m + '-' + d;
+				
+			};
+			function formatDateTimeT(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
 				var h = date.getHours();
 				h = h < 10 ? ('0' + h) : h;
 				var minute = date.getMinutes();
 				var second = date.getSeconds();
 				minute = minute < 10 ? ('0' + minute) : minute;
 				second = second < 10 ? ('0' + second) : second;
-				return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+				return h+':'+minute+':'+second;
 			};
 		</script>
 	</body>
