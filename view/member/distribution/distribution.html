@@ -357,7 +357,11 @@
 										self.endPullUpToRefresh();
 									}, 1000);
 								}
-							}
+							},
+							down: {
+								style:'circle',
+								callback: refresh
+							},
 						});
 					});
 				});
