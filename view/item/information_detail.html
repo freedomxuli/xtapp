@@ -10,41 +10,19 @@
 		<link rel="stylesheet" href="../../css/mui.min.css">
 		<link rel="stylesheet" href="../../css/style.css">
 		<style>
-			.mui-content {
-				background-color: #FFFFFF;
+			.mui-content{
+				background: #fff;
 			}
-			
-			.mui-table-view .mui-media-object {
-				width: 100px;
-				min-width: 100px;
-				height: 100px;
+			#title{
+				margin: 1rem 0.4rem 0 0.9rem;
+				font-size: 1.5rem;
 			}
-			
-			.mui-ellipsis {
-				white-space: initial;
-				margin-top: 10px;
-				font-size: 1rem;
+			.time{
+				color: #666;
+				margin: 0.5rem 0 1rem 0.9rem;
 			}
-			
-			p {
-				height: 50px;
-			}
-			
-			.mui-table-view li {
-				height: 120px;
-			}
-			
-			.mui-media-body {
-				font-size: 1rem;
-			}
-			
-			.time {
-				font-size: 0.8rem;
-				color: #666666;
-				width: 200px;
-				padding: 2px;
-				height: 20px;
-				margin-top: 5px;
+			#content{
+				margin: 0 0.4rem 1rem 0.9rem;
 			}
 		</style>
 	</head>
@@ -60,10 +38,10 @@
 			</div>
 		</header>
 		<div class="mui-content">
-			<div style="text-align:center;margin-top:20px;" id="title">xxx</div>
+			<div  id="title"></div>
 			<ul class="mui-table-view" id="ul">
-				<li style="text-align:center;margin-top:20px;" id="content">123</li>
-			</ul>
+				<li class="time"></li>
+				<li  id="content"></li>
 		</div>
 		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
@@ -82,11 +60,29 @@
 					method: 'POST'
 				}
 				$.dataRequest(param, function(rs) {
-
+					$('.time').html(formatDateTime(rs.data.modified));
 					$('#title').html(rs.data.title);
 					$('#content').html(rs.data.content);
 				});
 			});
+			
+			
+			function formatDateTime(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
+				var y = date.getFullYear();
+				var m = date.getMonth() + 1;
+				m = m < 10 ? ('0' + m) : m;
+				var d = date.getDate();
+				d = d < 10 ? ('0' + d) : d;
+				var h = date.getHours();
+				h = h < 10 ? ('0' + h) : h;
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				minute = minute < 10 ? ('0' + minute) : minute;
+				second = second < 10 ? ('0' + second) : second;
+				return y + '-' + m + '-' + d + ' ' + h + ':' + minute;
+			};
 		</script>
 
 	</body>
