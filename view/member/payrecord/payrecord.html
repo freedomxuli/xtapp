@@ -120,6 +120,35 @@
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
+			.mui-table-view-tip
+			{
+			    position: relative;
+			
+			    padding-left: 0;
+			
+			    list-style: none;
+			
+			    background-color: #fff;
+			    
+			    margin: 0.3rem 0.5rem;
+			    
+			    border-radius: 0.5rem;
+			}
+			.mui-table-view-cell-tip
+			{
+			    position: relative;
+			
+			    overflow: hidden;
+			
+			    padding: 11px 15px;
+			
+			    -webkit-touch-callout: none;
+			    
+			    text-align: center;
+			    
+			    color:#007aff;
+			}
+			
 		</style>
 	</head>
 
@@ -174,14 +203,14 @@
 
 		<script type="text/html" id="tip">
 			<div id="middlePopover<%=num%>" class="mui-popover mui-popover-bottom mui-popover-action">
-				<ul class="mui-table-view">
-			      <li class="mui-table-view-cell">
+				<ul class="mui-table-view-tip">
+			      <li class="mui-table-view-cell-tip">
 			        <%=text%>
 			      </li>
 			    </ul>
 			    <!-- 取消菜单 -->
-			    <ul class="mui-table-view">
-			      <li class="mui-table-view-cell">
+			    <ul class="mui-table-view-tip">
+			      <li class="mui-table-view-cell-tip popver_close">
 			        <a href="#middlePopover<%=num%>"><b>取消</b></a>
 			      </li>
 			    </ul>
@@ -203,6 +232,10 @@
 			});
 			mui('body').on('tap', 'a', function() {
 				document.location.href = this.href;
+			});
+			mui('body').on('tap','.popver_close',function(){
+				console.log(1);
+				mui('.mui-popover-bottom').popover('hide');
 			});
 			var state = app.getState();
 			var count = 0;
