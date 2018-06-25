@@ -22,16 +22,17 @@
 			
 			.mui-ellipsis {
 				white-space: initial;
-				margin-top: 10px;
+				margin-top: 0.7rem;
 				font-size: 1rem;
 			}
 			
 			p {
-				height: 50px;
+				height: 3.5rem;
+				line-height: 180%;
 			}
 			
 			.mui-table-view li {
-				height: 150px;
+				height: 10rem;
 			}
 			
 			.mui-media-body {
@@ -62,8 +63,8 @@
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron" id="ul">
-
+				<ul class="mui-table-view" id="ul">
+				
 				</ul>
 			</div>
 		</div>
@@ -154,7 +155,7 @@
 			<%
   		for(var i in articleList){
   	%>
-			<li class="mui-table-view-cell mui-media">
+			<li class="mui-table-view-cell mui-media" style="padding-right: 16px !important;">
 				<a class="todetail" data-article_id="<%=articleList[i].article_id%>">
 					<img class="mui-media-object mui-pull-left" src="<%=articleList[i].article_logo%>">
 					<div class="mui-media-body">
