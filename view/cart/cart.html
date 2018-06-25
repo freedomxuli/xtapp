@@ -718,22 +718,26 @@
 			//document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
 			
 			
-			mui(document).on('tap', '#left-content', function() {
-				mui.back();
-			});
+//			mui(document).on('tap', '#left-content', function() {
+//				mui.back();
+//			});
 			
 			
 			/*以下是原有的*/
       mui.plusReady(function() {
-      	var enter_page = plus.webview.currentWebview().enterpage;
+      	var enter_page = plus.webview.currentWebview().enter_page;
 				//如果是从我的订单页面进入的，点击返回的时候 则跳转到商城。mgm
         if(enter_page=='trade'){
-        	document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+        	document.querySelector('#left-content').addEventListener('tap',function(e){
 						    e.preventDefault();
 						    e.stopPropagation();
 						    //为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
 						    clicked('_www/view/category/category.html');
 						},true);
+        }else{
+        	document.querySelector('#left-content').addEventListener('tap',function(){
+						   mui.back();
+						});
         }
         var wid = plus.webview.currentWebview().id;
         window.addEventListener('refresh',fetchList);
