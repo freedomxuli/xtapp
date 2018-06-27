@@ -859,7 +859,8 @@
 						keykind = items[0].text;
 					});
 				}, false);
-				$('#search-span').html(keykind);
+				if(keykind)
+					$('#search-span').html(keykind);
 				$(".search-input").val(keyword);
       	
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
@@ -1050,6 +1051,32 @@
 				      });
 	      		}
 	      	}
+	      	
+	      	setTimeout(function(){
+	      		GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+	      		mui.each(document.querySelectorAll('#sliderSegmentedControl .mui-control-item'),function(index,itme){ 
+							if(fl_sort_obj[index] == fl_id) 
+							{ 
+								current_page_sort = index;
+								mui('#slider').slider().gotoItem(index);
+								fl_id = fl_sort_obj[index];
+								var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+								lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+						    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+							} 
+						});
+	      	},3000);
+	      			  	/*if(fl_sort_obj[index] == fl_id1) 
+					{ 
+						current_page_sort = index;
+						mui('#slider').slider().gotoItem(index);
+						fl_id = fl_sort_obj[index];
+						var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+						lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+				    document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+						GetProList(NamePicker,child_data,fl_sort_obj[index]);
+						GetGGList(pro_name_id);
+					}*/
 					
 					//mui.trigger(document.getElementById("sliderSegmentedControl"), 'tap');
 					
@@ -1110,8 +1137,24 @@
 								//return false;
 							});
 						}, false);
+
 					},1000)
-					
+/*					setTimeout(function(){
+						for(var index in fl_sort_obj)
+		      	{
+		      		if(fl_sort_obj[index] == plus.webview.currentWebview().cat_id)
+		      		{
+		      			current_page_sort = index;
+								fl_id = plus.webview.currentWebview().cat_id;
+								var lastActiveElem = document.querySelector('#sliderSegmentedControl .mui-active');
+						 		lastActiveElem&&lastActiveElem.classList.remove('mui-active');
+						 		document.getElementById('#item'+fl_id+'mobile').classList.add('mui-active');
+						    GetProList(NamePicker,child_data,fl_sort_obj[current_page_sort]);
+						    SizePicker.setData([]);
+						    GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+		      		}
+		      	}
+					},5000);*/
 	     });
 			});
 			
@@ -1354,7 +1397,7 @@
 	        },
 	        method: 'GET'
 	      };
-	      //console.log(JSON.stringify(param1));
+	      console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
 	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
