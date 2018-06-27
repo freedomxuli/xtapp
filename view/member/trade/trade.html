@@ -602,7 +602,7 @@
 														%>
 															<mark>待付款</mark>
 														<%
-													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS" && list[i].cancel_status=="WAIT_PROCESS")
+													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS" && (list[i].cancel_status=="WAIT_PROCESS" || list[i].cancel_status=="REFUND_PROCESS"))
 													{
 														%>
 															<mark>退款处理中</mark>
