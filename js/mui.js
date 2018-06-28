@@ -7796,11 +7796,13 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			var self = this;
 			self.plus.addEventListener(tapEventName, function(event) {
 				var val = parseFloat(self.input.value) + self.options.step;
+				val = val.toFixed(2);
 				self.input.value = val.toString();
 				$.trigger(self.input, changeEventName, null);
 			});
 			self.minus.addEventListener(tapEventName, function(event) {
 				var val = parseFloat(self.input.value) - self.options.step;
+				val = val.toFixed(2);
 				self.input.value = val.toString();
 				$.trigger(self.input, changeEventName, null);
 			});
