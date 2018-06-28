@@ -256,12 +256,9 @@
 					<div class="action-item"><button class="mui-btn mui-btn-warning mui-btn-outlined mui-btn-block bbc-btn-outlined action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid": <%= shop.shop_id %>}'><i class="bbc-icon bbc-icon-store-empty"></i> 进入店铺</button></div>
 				</div>-->
 				<div style="padding:0.6rem 1.2rem">
-  <table >
-        <tr><td>抽样化验</td><td>技术指标</td></tr>
-        <tr><td>C/%</td><td><0.04</td></tr>
-        <tr><td>Mn/%</td><td>0.93-1.02</td></tr>
-        <tr><td>S/%</td><td>>0.3</td></tr>
-    </table>
+  <div id="wap_desc">
+
+    </div>
     </div>
 			</section>
 		</section>
@@ -376,9 +373,13 @@
 
 			$.dataRequest(param, function(rs) {
 				var data = rs.data;
+				var wap_desc = data.item.wap_desc;
 				var detailTemplate = template('goods_detail', data);
 				$('body').append(detailTemplate);
-        mui('.mui-numbox').numbox();
+				if (wap_desc) {
+					document.getElementById('wap_desc').innerHTML=wap_desc;
+				}
+        		mui('.mui-numbox').numbox();
 				if(data.item_message) return;
 				// 分享
 				$(document).on('tap', '.action-share', function() {
