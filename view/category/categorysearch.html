@@ -1108,11 +1108,16 @@
 	      			GetContentList(first_show[i].start_id,pro_name_id,gg_text,cd_id,jgk_id,1,first_show[i].cat_id);
 	      		}
 	      	}*/
+					//监听点击事件
+	      	mui('#slider').slider({
+					  interval:0//自动轮播周期，若为0则不自动播放，默认为0；
+					});
 	      	for(var index in fl_sort_obj)
 	      	{
 	      		if(fl_sort_obj[index]==fl_id)
 	      		{
 	      			current_page_sort = index;
+	      			mui('#slider').slider().gotoItem(index);
 	      		}
 	      	}
 /*	      	setTimeout(function(){
