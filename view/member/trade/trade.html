@@ -607,7 +607,7 @@
 														%>
 															<mark>退款处理中</mark>
 														<%
-													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS" && list[i].cancel_status=="NO_APPLY_CANCEL")
+													}else if(list[i].status=="WAIT_SELLER_SEND_GOODS" && (list[i].cancel_status=="NO_APPLY_CANCEL" ||  list[i].cancel_status=="FAILS"))
 													{
 														%>
 															<mark>待发货</mark>
