@@ -159,7 +159,10 @@
 				<a class="todetail" data-article_id="<%=articleList[i].article_id%>">
 					<img class="mui-media-object mui-pull-left" src="<%=articleList[i].article_logo%>">
 					<div class="mui-media-body">
-						<%=articleList[i].title%>
+						<div style="width:90%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+							<%=articleList[i].title%>
+						</div>
+						
 						<p class="mui-ellipsis">
 							<%=articleList[i].content%>
 						</p>
