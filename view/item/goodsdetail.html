@@ -256,10 +256,10 @@
 					<div class="action-item"><button class="mui-btn mui-btn-warning mui-btn-outlined mui-btn-block bbc-btn-outlined action-webview" data-webview="_www/view/shop/shop.html" data-webparam='{"shopid": <%= shop.shop_id %>}'><i class="bbc-icon bbc-icon-store-empty"></i> 进入店铺</button></div>
 				</div>-->
 				<div style="padding:0.6rem 1.2rem">
-  <div id="wap_desc">
+				  	<div id="wap_desc">
 
-    </div>
-    </div>
+				    </div>
+    			</div>
 			</section>
 		</section>
 		<section class="action-bar-mini">
@@ -272,7 +272,7 @@
         <div class="op-item-init"><i class="bbc-icon bbc-icon-star-empty"></i><span>收藏</span></div>
       </div>-->
 			<div class="op-item goods-op-incart action-webview" data-webview="_www/view/cart/cart.html">
-				<div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"></i><span>购物车</span></div>
+				<div class="op-item-init"><i class="bbc-icon bbc-icon-cart-empty"><span class="cart_bottom_num_abs"></span></i><span>购物车</span></div>
 			</div>
 			<% if( item.valid && item.realStore>0 ){ %>
 			<div class="op-item op-btn goods-op-cart action-addtocart">
@@ -350,7 +350,7 @@
 	<script>
 		mui.plusReady(function() {
 			var state = app.getState();
-			//getcartnumabs(state.token);
+			getcartnumabs(state.token);
 			var favorite_items = app.getFavoriteItems();
 			var favorite_shop = app.getFavoriteShop();
 			var goods_id = plus.webview.currentWebview().itemid;
@@ -725,7 +725,8 @@
 						method: 'GET'
 					}
 					$.dataRequest(param, function(rs) {
-						mui.toast('成功添加到购物车')
+						mui.toast('成功添加到购物车');
+						getcartnumabs(state.token);
 					});
 				});
 
