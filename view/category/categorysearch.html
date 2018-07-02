@@ -474,6 +474,7 @@
 		    <div class="child search_size"><img class="search_img" src="../../img/category/search.png" /><img class="message_img" src="../../img/category/message.png" /></div>  
 	    </header>
   		<header id="head-search" class="mui-bar mui-bar-transparent home-header" style="background-color: #d92e2e;">
+  			<div class="child category_size" id="left-content2"><img class="category_img" src="../../img/cart/back.png" style="margin-left: 0.5rem;width: 0.7rem;" /></div>
 				<div class="main" style="flex: 6;">
 					<form onsubmit="return false;">
 						<div class="mui-input-row header-search-form search-class">
@@ -809,7 +810,9 @@
       var SizePicker = new mui.PopPicker();
       
       mui.plusReady(function() {
-      	
+      		document.querySelector('#left-content2').addEventListener('tap',function(){
+				mui.back();
+			});
 		  	cd_id = plus.webview.currentWebview().manufacturers_id;
 		  	fl_id = plus.webview.currentWebview().cat_id;
 		  	keyword = plus.webview.currentWebview().keyword;
