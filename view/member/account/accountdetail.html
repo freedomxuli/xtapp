@@ -310,7 +310,7 @@
 //								if(type=='qcpe'||type=='qmpe')
 //									li.innerHTML = '<div class="li-content-div">' + list[i].ticket_code + '</div><div class="li-content-div">' + list[i].manufacturers_name + '</div><div class="li-content-div point">' + list[i].num + '</div><div class="li-content-div point">' + list[i].price + '</div>';
 //								else if(type=='bqpe')
-								li.innerHTML = '<div class="li-content-div flex2">' + list[i].tid + '</div><div class="li-content-div flex2"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige + '</span></div><div class="li-content-div">' + list[i].num + '</div><div class="li-content-div">￥' + list[i].payment + '</div>';
+								li.innerHTML = '<div class="li-content-div flex2">' + list[i].tid + '</div><div class="li-content-div flex2 point"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige + '</span></div><div class="li-content-div">' + list[i].num + '</div><div class="li-content-div">￥' + list[i].payment + '</div>';
 								table.appendChild(li);
 								var obj = {};
 								obj.num = (count - 1) * config.pagesize + i;
