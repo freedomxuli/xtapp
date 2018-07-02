@@ -7,31 +7,31 @@ function onPlusReady() {
 }
 
 function onNetChange() {
-  var nt = plus.networkinfo.getCurrentType();
-
-  switch(nt) {
-    case plus.networkinfo.CONNECTION_ETHERNET:
-    case plus.networkinfo.CONNECTION_WIFI:
-      plus.nativeUI.toast("已连接到wifi网络", {
-        duration: 'long',
-        verticalAlign: 'center'
-      });
-      break;
-    case plus.networkinfo.CONNECTION_CELL2G:
-    case plus.networkinfo.CONNECTION_CELL3G:
-    case plus.networkinfo.CONNECTION_CELL4G:
-      plus.nativeUI.toast("您网络已切换到蜂窝网络，继续浏览会产生流量", {
-        duration: 'long',
-        verticalAlign: 'center'
-      });
-      break;
-    default:
-      plus.nativeUI.toast("您的网络已断开", {
-        duration: 'long',
-        verticalAlign: 'center'
-      });
-      break;
-  }
+//var nt = plus.networkinfo.getCurrentType();
+//
+//switch(nt) {
+//  case plus.networkinfo.CONNECTION_ETHERNET:
+//  case plus.networkinfo.CONNECTION_WIFI:
+//    plus.nativeUI.toast("已连接到wifi网络", {
+//      duration: 'long',
+//      verticalAlign: 'center'
+//    });
+//    break;
+//  case plus.networkinfo.CONNECTION_CELL2G:
+//  case plus.networkinfo.CONNECTION_CELL3G:
+//  case plus.networkinfo.CONNECTION_CELL4G:
+//    plus.nativeUI.toast("您网络已切换到蜂窝网络，继续浏览会产生流量", {
+//      duration: 'long',
+//      verticalAlign: 'center'
+//    });
+//    break;
+//  default:
+//    plus.nativeUI.toast("您的网络已断开", {
+//      duration: 'long',
+//      verticalAlign: 'center'
+//    });
+//    break;
+//}
 }
 
 // 通用倒计时，包括倒计时所在容器，倒数秒数，显示方式，回调。
