@@ -22,7 +22,7 @@
 				margin: 0.5rem 0 1rem 0.9rem;
 			}
 			#content{
-				margin: 0 0.4rem 1rem 0.9rem;
+				margin: 0 0.5rem 1rem 0.5rem;
 			}
 		</style>
 	</head>
@@ -41,7 +41,8 @@
 			<div  id="title"></div>
 			<ul class="mui-table-view" id="ul">
 				<li class="time"></li>
-				<li  id="content"></li>
+				<li  id="content">
+				</li>
 		</div>
 		<script src="../../js/zepto.js"></script>
 		<script src="../../js/mui.min.js"></script>
@@ -63,10 +64,14 @@
 					$('.time').html(formatDateTime(rs.data.modified));
 					$('#title').html(rs.data.title);
 					$('#content').html(rs.data.content);
+					var imgs = $('#content').find('img');
+					if (imgs) {
+						imgs.each(function(index, el) {
+							$(el).css('width','100%');
+						});
+					}
 				});
 			});
-			
-			
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
@@ -84,7 +89,5 @@
 				return y + '-' + m + '-' + d + ' ' + h + ':' + minute;
 			};
 		</script>
-
 	</body>
-
 </html>
