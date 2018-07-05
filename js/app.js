@@ -1003,7 +1003,6 @@ function preateClear() {
             var self = this;
             setTimeout(function() {
               data.queryData.page_no = config.cpage;
-              count = 0
               $.dataRequest(data, function(response) {
                 var result = template(renderFor, response.data);
                 $(self.element.firstElementChild).html(result);
@@ -1016,7 +1015,7 @@ function preateClear() {
         up: {
           callback: function() {
             var self = this;
-            count++
+            count++;
             data.queryData.page_no = count;
             $.dataRequest(data, function(response) {
               if(!isEmptyObject(response.data) && response.data.pagers.total){
