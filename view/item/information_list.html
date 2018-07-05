@@ -100,7 +100,7 @@
 			function pullupRefresh() {
 				count++;
 				setTimeout(function() {
-					var node_id = '37';
+					var node_id = plus.webview.currentWebview().node_id;
 					var param = {
 						queryData: {
 							'method': config.apimethod.contentlist,
