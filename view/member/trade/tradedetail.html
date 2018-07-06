@@ -364,7 +364,7 @@
 		</section>
 		<% }else{ %>
 
-		<% if(status=="WAIT_BUYER_PAY"){ 
+		<% if(status=="WAIT_BUYER_PAY"){
 			if(shenhe_status=="refuse"){
 				%>
 		<section class="action-bar-mini op-group">
@@ -375,7 +375,9 @@
 	  else if(pay_type=="online"){ %>
 		<section class="action-bar-mini op-group">
 			<div class="op-group-item col-half action-webview" data-webview="_www/view/member/trade/tradecancel.html" data-webparam='{"tid":<%= tid %>}'>取消订单</div>
+			<%  if(shenhe_status=="success"){ %>
 			<div class="op-group-item col-half action-webview" data-webview="_www/view/payment/payment.html" data-webparam='{"tid":<%= tid %>,"type":"trade"}'>去支付</div>
+			<% } %>
 		</section>
 		<% } %>
 		<% } else if(status=="WAIT_SELLER_SEND_GOODS" && cancel_status=="NO_APPLY_CANCEL"){ %>
