@@ -1,236 +1,269 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>Shopex Onex B2B2C</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopex Onex B2B2C</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <link rel="stylesheet" href="../../css/style.css">
-    <style type="text/css">
-    	/*抬头*/
-    	.mui-bar-backcolor{
-      	background-color:#d92e2e;
-      	display: flex;  
-      	flex-direction: row;
-      }
-			.child{   
-			    flex:1;    
-			} 
+		<link rel="stylesheet" href="../../css/style.css">
+		<style type="text/css">
+			/*抬头*/
 			
-			.child_1{   
-			    flex:7;    
-			} 
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+				flex-direction: row;
+			}
 			
-			.category_img{
+			.child {
+				flex: 1;
+			}
+			
+			.child_1 {
+				flex: 7;
+			}
+			
+			.category_img {
 				height: 1rem;
 				width: 0.6rem;
 				line-height: 1rem;
-      }
-      
-      .category_size{
-      	line-height: 3rem;
-      	text-align: center;
-      }
-      
-      .category_title{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	margin-left: 0.4rem;
-      	font-size: 0.9rem;
-      }
-      
-      .title_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1.2rem;
-      }
-      
-      .edit_span{
-      	color: #ffffff;
-      	font-family: "微软雅黑";
-      	text-align: center;
-      	font-size: 1rem;
-      	height: 1.2rem;
-      	line-height: 1.2rem;
-      }
-      
-      .search_img{
-      	height: 1.2rem;
+			}
+			
+			.category_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.category_title {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				margin-left: 0.4rem;
+				font-size: 0.9rem;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1.2rem;
+			}
+			
+			.edit_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				text-align: center;
+				font-size: 1rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			
+			.search_img {
+				height: 1.2rem;
 				width: 1.2rem;
-      }
-      .search_size{
-      	line-height: 3.5rem;
-      	text-align: center;
-      }
-      .nodata-layout{
-      	top:9rem;
-      }
-      .nodata-tip{
-      	font-size: 1.2rem;
-      	color: #222222;
-      }
-      .qxd-class{
-      	background-color: #E35D4C;
-      	color: #FFFFFF;
-      	width: 20rem;
-      	height: 3rem;
-      	margin-top: 2rem;
-      }
-      
-      /*付款选择*/
-	    .kind-select{
-	     	position: relative;
-	     	top:40px;
-	     	background-color: #ffffff !important;
-	     	display: flex;
-	     	flex-direction: row;
-	     	z-index: 10000;
-	    }
-	    .mui-radio input[type="radio"]:checked:before, .mui-checkbox input[type="checkbox"]:checked:before{
-	    	color: #E35D4C;
-	    }
-	    .radio-text{
-	    	color: #666666;
-	    }
-	    
-	    /*详情列表*/
-	   	.mui-left-all{
-	   		border-bottom: 1px solid #CCCCCC;
-	   	}
-	   	.mui-content{
-	   		background-color:#F0EFF5;
-	   	}
-		  .mui-table-view{
-		   	margin-top:30px;
-		   	margin-bottom: 40px;
-		   	background-color:#FFFFFF;
-		  }
-		  .content-space{
+			}
+			
+			.search_size {
+				line-height: 3.5rem;
+				text-align: center;
+			}
+			
+			.nodata-layout {
+				top: 9rem;
+			}
+			
+			.nodata-tip {
+				font-size: 1.2rem;
+				color: #222222;
+			}
+			
+			.qxd-class {
+				background-color: #E35D4C;
+				color: #FFFFFF;
+				width: 20rem;
+				height: 3rem;
+				margin-top: 2rem;
+			}
+			/*付款选择*/
+			
+			.kind-select {
+				position: relative;
+				top: 40px;
+				background-color: #ffffff !important;
+				display: flex;
+				flex-direction: row;
+				z-index: 10000;
+			}
+			
+			.mui-radio input[type="radio"]:checked:before,
+			.mui-checkbox input[type="checkbox"]:checked:before {
+				color: #E35D4C;
+			}
+			
+			.radio-text {
+				color: #666666;
+			}
+			/*详情列表*/
+			
+			.mui-left-all {
+				border-bottom: 1px solid #CCCCCC;
+			}
+			
+			.mui-content {
+				background-color: #F0EFF5;
+			}
+			
+			.mui-table-view {
+				margin-top: 30px;
+				margin-bottom: 40px;
+				background-color: #FFFFFF;
+			}
+			
+			.content-space {
 				height: 10px;
 				background-color: #f0eff5;
 			}
-			.check-title{
+			
+			.check-title {
 				font-family: "arial rounded mt bold";
 				font-size: 0.8rem;
 				color: #666666;
 			}
-			.check-right-img{
+			
+			.check-right-img {
 				width: 0.4rem;
 				margin-left: 5rem;
 			}
-			.check-div-border{
+			
+			.check-div-border {
 				border-bottom: 1px solid #e3e3e6;
 			}
-			.check-content{
+			
+			.check-content {
 				display: flex !important;
 				flex-direction: row;
 			}
-			.check-content-left{
+			
+			.check-content-left {
 				flex: 2;
-				color:#333333;
+				color: #333333;
 				font-size: 0.8rem;
 				font-family: "微软雅黑";
 			}
-			.check-content-right{
+			
+			.check-content-right {
 				flex: 1;
-				color:#666666;
+				color: #666666;
 				font-size: 0.8rem;
 				font-family: "微软雅黑";
 				text-align: right;
 			}
-			.content-price{
+			
+			.content-price {
 				padding: 0px 0px 20px 58px;
 				display: flex;
 				flex-direction: row;
 			}
-			.content-price-left{
-				flex:2;
+			
+			.content-price-left {
+				flex: 2;
 				margin: 0px auto;
 			}
-			.content-price-right{
-				flex:1;
+			
+			.content-price-right {
+				flex: 1;
 				margin: 0px auto;
 				padding-top: 5px;
 			}
-			.content-price-left-text{
+			
+			.content-price-left-text {
 				color: #666666;
 				font-size: 0.8rem;
 			}
-			
 			/*底部样式*/
-			.submit-bottom-div{
+			
+			.submit-bottom-div {
 				background-color: #ffffff;
 				border-top: 1px solid #e3e3e6;
 				display: flex;
 				flex: row;
 				height: 3rem;
-				bottom:3rem;
+				bottom: 3rem;
 			}
-			.submit-bottom-left{
-				flex:4.5;
+			
+			.submit-bottom-left {
+				flex: 4.5;
 			}
-			.submit-bottom-right{
-				flex:1;
+			
+			.submit-bottom-right {
+				flex: 1;
 				color: #ffffff;
 				background-color: #f85251;
 				font-size: 1rem;
 				text-align: center;
 				padding-top: 10px;
 			}
-			.submit-bottom{
+			
+			.submit-bottom {
 				display: flex !important;
 				flex-direction: row;
-				align-items:center;
+				align-items: center;
 			}
-			.submit-bottom-flex-1{
+			
+			.submit-bottom-flex-1 {
 				flex: 1;
 				margin: 0 auto;
 				font-size: 0.6rem;
 				text-align: left;
-				color:#666666;
+				color: #666666;
 			}
-			.submit-bottom-flex-2{
-				flex:2;
+			
+			.submit-bottom-flex-2 {
+				flex: 2;
 				font-size: 0.6rem;
-				color:#666666;
+				color: #666666;
 			}
-			.submit-bottom-flex-3{
-				flex:5;
+			
+			.submit-bottom-flex-3 {
+				flex: 5;
 				font-size: 0.6rem;
-				color:#666666;
+				color: #666666;
 			}
-			.submit-bottom-flex-3-price{
+			
+			.submit-bottom-flex-3-price {
 				color: #e25d4c;
 				font-weight: bold;
 			}
-			.submit-bottom-flex-3-kind{
+			
+			.submit-bottom-flex-3-kind {
 				color: #222222;
 			}
-			.action-bar-op-item{
+			
+			.action-bar-op-item {
 				padding: 1rem;
 			}
-			.editing{
+			
+			.editing {
 				color: #FFFFFF !important;
 			}
-    </style>
-  </head>
+		</style>
+	</head>
 
-  <body class="body-padding-xs cart-padding">
-<!--    <header class="page-header">
+	<body class="body-padding-xs cart-padding">
+		<!--    <header class="page-header">
       <div class="header-title">购物车</div>
       <div id="cart_edit" class="header-right txt-func" style="display: none;">编辑</div>
     </header>-->
-    <header class="mui-bar mui-bar-nav mui-bar-backcolor">
-    	<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>  
-	    <div class="child_1 category_size"><span class="title_span">购物车<span class="cart_top_num"></span></span></div>  
-	    <div id="cart_edit" class="child category_size"><span class="edit_span">编辑</span></div>  
-   	</header>
-    <div class="cart-main checkout-action ">
-<!--			<div class="kind-select">
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<div class="child category_size" id="left-content"><img class="category_img" src="../../img/cart/back.png" /></div>
+			<div class="child_1 category_size"><span class="title_span">购物车<span class="cart_top_num"></span></span>
+			</div>
+			<div id="cart_edit" class="child category_size"><span class="edit_span">编辑</span></div>
+		</header>
+		<div class="cart-main checkout-action ">
+			<!--			<div class="kind-select">
     		<div class="mui-input-row mui-radio mui-left">
 					<label class="radio-text">现金预存款支付</label>
 					<input name="radio1" type="radio" checked="checked">
@@ -362,7 +395,7 @@
 			</div>
 			<nav id="edit_off" class="mui-bar bbc-bar-tab submit-bottom-div">
 				<div class="mui-input-row mui-checkbox mui-left submit-bottom-left">
-					  <label class="submit-bottom">
+					<label class="submit-bottom">
 					  	<div class="submit-bottom-flex-1">全选</div>
 					  	<div class="submit-bottom-flex-2">
 					  		<div>合计<span class="hj-num"></span>件</div>
@@ -373,41 +406,41 @@
 					  		<div><span class="submit-bottom-flex-3-kind">承兑总金额：</span><span class="submit-bottom-flex-3-price cd-total"></span></div>
 					  	</div>
 					  </label>
-					  <input id="checkAll" name="checkbox3" value="Item 1" type="checkbox">
-					</div>
-					<div id="checkout" class="submit-bottom-right">
-            	结算
-         </div>
+					<input id="checkAll" name="checkbox3" value="Item 1" type="checkbox">
+				</div>
+				<div id="checkout" class="submit-bottom-right">
+					结算
+				</div>
 			</nav>
 			<nav id="edit_on" class="mui-bar bbc-bar-tab submit-bottom-div" style="display: none;">
 				<div class="action-bar-op-item content-right">
-          <div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
-        </div>
+					<div class="action-bar-op-info font-gray-20"><span id="cart_del"><i class="bbc-icon bbc-icon-remove fontm"></i> 删除</span></div>
+				</div>
 			</nav>
 			<nav class="mui-bar bbc-bar-tab">
-			<a class="bbc-tab-item" data-webview="_www/view/index.html">
-				<span class="mui-icon icon-home"></span>
-				<span class="mui-tab-label">首页</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
-				<span class="mui-icon icon-category"></span>
-				<span class="mui-tab-label">现货商城</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
-				<span class="mui-icon icon-share"></span>
-				<span class="mui-tab-label">共享资源</span>
-			</a>
-			<a class="bbc-tab-item  bbc-active" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
-				<span class="mui-tab-label">购物车</span>
-			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-				<span class="mui-icon icon-user"></span>
-				<span class="mui-tab-label">我的</span>
-			</a>
-		</nav>
-			
-<!--			<nav class="mui-bar bbc-bar-tab">
+				<a class="bbc-tab-item" data-webview="_www/view/index.html">
+					<span class="mui-icon icon-home"></span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
+					<span class="mui-icon icon-category"></span>
+					<span class="mui-tab-label">现货商城</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
+					<span class="mui-icon icon-share"></span>
+					<span class="mui-tab-label">共享资源</span>
+				</a>
+				<a class="bbc-tab-item  bbc-active" data-webview="_www/view/cart/cart.html">
+					<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
+					<span class="mui-tab-label">购物车</span>
+				</a>
+				<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
+					<span class="mui-icon icon-user"></span>
+					<span class="mui-tab-label">我的</span>
+				</a>
+			</nav>
+
+			<!--			<nav class="mui-bar bbc-bar-tab">
 			<a class="bbc-tab-item">
 				<span class="mui-icon bbc-icon bbc-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
@@ -429,65 +462,104 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>-->
-    <div id="promotion" class="mui-popover mui-popover-action mui-popover-bottom promotion-modal">
-      <div class="mui-content-padded content-center">促销活动</div>
-      <ul class="mui-table-view mui-table-view-radio bbc-radio theme-no-radius">
+			<div id="promotion" class="mui-popover mui-popover-action mui-popover-bottom promotion-modal">
+				<div class="mui-content-padded content-center">促销活动</div>
+				<ul class="mui-table-view mui-table-view-radio bbc-radio theme-no-radius">
 
-      </ul>
-      <div class="action-bar">
-        <div class="action-bar-op-btn">确定</div>
-      </div>
-    </div>
-    <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.js"></script>
-    <script src="../../js/template.min.js"></script>
-    <script src="../../config.js"></script>
-    <script src="../../js/app.js"></script>
-    
-    <script type="text/html" id="cart_list">
-    	<%
+				</ul>
+				<div class="action-bar">
+					<div class="action-bar-op-btn">确定</div>
+				</div>
+			</div>
+			<script src="../../js/zepto.js"></script>
+			<script src="../../js/mui.js"></script>
+			<script src="../../js/template.min.js"></script>
+			<script src="../../config.js"></script>
+			<script src="../../js/app.js"></script>
+
+			<script type="text/html" id="cart_list">
+				<%
     		for(var shop in resultCartData)
     		{
     			%>
-    			<li>
-						<div class="content-space"> </div>
-						<div class="mui-input-row mui-checkbox mui-left check-div-border shop">
-						  <label class="check-title"><%=resultCartData[shop].shop_name %><img class="check-right-img" src="../../img/cart/right.png" /></label>
-						  <input name="checkbox1" value="Item 1" type="checkbox" <%if(resultCartData[shop].is_shopChecked == 1){%>checked<%}%>>
-						</div>
-						<%
+				<li>
+					<div class="content-space"> </div>
+					<div class="mui-input-row mui-checkbox mui-left check-div-border shop">
+						<label class="check-title"><%=resultCartData[shop].shop_name %><img class="check-right-img" src="../../img/cart/right.png" /></label>
+						<input name="checkbox1" value="Item 1" type="checkbox" <%if(resultCartData[shop].is_shopChecked==1 ){%>checked
+						<%}%>>
+					</div>
+					<%
 							for(var obj_id in resultCartData[shop].object)
 							{
-								%>
-								<div data-cartid = "<%=obj_id%>" data-ischecked = "<%=resultCartData[shop].object[obj_id].is_checked%>" data-promotionid = "<%=resultCartData[shop].object[obj_id].selected_promotion%>" <%if(resultCartData[shop].object[obj_id].price.valid){%>class="mui-left-all invalid"<%}else{%>class="mui-left-all"<%}%>>
-									<div class="mui-input-row mui-checkbox mui-left">
-									  <label class="check-content"><div class="check-content-left action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%=resultCartData[shop].object[obj_id].item_id%>}'><%=resultCartData[shop].object[obj_id].manufacturers_name%>-<%=resultCartData[shop].object[obj_id].pm_name%> <%=resultCartData[shop].object[obj_id].guige%></div><div class="check-content-right"><%=resultCartData[shop].object[obj_id].storage_name%></div></label>
-									  <input name="checkbox2" value="Item 1" type="checkbox" <%if(resultCartData[shop].object[obj_id].is_checked == 1){%>checked<%}%>>
-									</div>
-									<div class="content-price">
-										<div class="content-price-left">
-											<div class="content-price-left-text">现金价：￥<%=resultCartData[shop].object[obj_id].price.price%></div>
-											<div class="content-price-left-text">承兑价：￥<%=resultCartData[shop].object[obj_id].price_accept.price%></div>
-										</div>
-										<div class="content-price-right">
-											<div class="mui-numbox bbc-numbox" data-numbox-min="0.01" data-numbox-max="10000">
-					              <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-					              <input class="action-modify mui-input-numbox" type="number" value="<%=resultCartData[shop].object[obj_id].quantity%>">
-					              <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-					            </div>
-										</div>
-									</div>
+								if(resultCartData[shop].object[obj_id].valid == false)
+								{
+									%>
+					<div data-cartid="<%=obj_id%>" class="mui-left-all invalid">
+						<div class="mui-input-row mui-checkbox mui-left">
+							<label class="check-content"><div class="check-content-left action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%=resultCartData[shop].object[obj_id].item_id%>}'><%=resultCartData[shop].object[obj_id].manufacturers_name%>-<%=resultCartData[shop].object[obj_id].pm_name%> <%=resultCartData[shop].object[obj_id].guige%></div><div class="check-content-right"><%=resultCartData[shop].object[obj_id].storage_name%></div></label>
+							<input name="checkbox2" value="Item 1" type="checkbox" disabled="" <%if(resultCartData[shop].object[obj_id].is_checked==1 ){%>checked
+							<%}%>>
+						</div>
+						<div class="content-price">
+							<div class="content-price-left">
+								<div class="content-price-left-text">现金价：￥
+									<%=resultCartData[shop].object[obj_id].price.price%>
 								</div>
-								<%
+								<div class="content-price-left-text">承兑价：￥
+									<%=resultCartData[shop].object[obj_id].price_accept.price%>
+								</div>
+							</div>
+							<div class="content-price-right  sx-del">
+								<div class="content-price-left-text" style="text-align: right;margin-right:0.6rem">已失效</div>
+								<div class="content-price-left-text" style="text-align: right;margin-right:1rem">删除</div>
+							</div>
+						</div>
+					</div>
+					<%
+								}
+								else{
+									%>
+					<div data-cartid="<%=obj_id%>" data-ischecked="<%=resultCartData[shop].object[obj_id].is_checked%>" data-promotionid="<%=resultCartData[shop].object[obj_id].selected_promotion%>" <%if(resultCartData[shop].object[obj_id].price.valid){%>class="mui-left-all invalid"
+						<%}else{%>class="mui-left-all"
+						<%}%>>
+						<div class="mui-input-row mui-checkbox mui-left">
+							<label class="check-content"><div class="check-content-left action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid":<%=resultCartData[shop].object[obj_id].item_id%>}'><%=resultCartData[shop].object[obj_id].manufacturers_name%>-<%=resultCartData[shop].object[obj_id].pm_name%> <%=resultCartData[shop].object[obj_id].guige%></div><div class="check-content-right"><%=resultCartData[shop].object[obj_id].storage_name%></div></label>
+							<input name="checkbox2" value="Item 1" type="checkbox" <%if(resultCartData[shop].object[obj_id].is_checked==1 ){%>checked
+							<%}%>>
+						</div>
+						<div class="content-price">
+							<div class="content-price-left">
+								<div class="content-price-left-text">现金价：￥
+									<%=resultCartData[shop].object[obj_id].price.price%>
+								</div>
+								<div class="content-price-left-text">承兑价：￥
+									<%=resultCartData[shop].object[obj_id].price_accept.price%>
+								</div>
+							</div>
+							<div class="content-price-right">
+								<div class="mui-numbox bbc-numbox" data-numbox-min="0.01" data-numbox-max="10000">
+									<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+									<input class="action-modify mui-input-numbox" type="number" value="<%=resultCartData[shop].object[obj_id].quantity%>">
+									<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<%
+								}
+								%>
+
+					<%
 							}
 						%>
-					</li>
-					<%
+				</li>
+				<%
     		}
     	%>
-    </script>
+			</script>
 
-    <!--<script type="text/html" id="cart_list">
+			<!--<script type="text/html" id="cart_list">
       <section class="container">
         <div class="cart-list">
           <% for(var i=0; i<cartlist.length; i++){ %>
@@ -674,478 +746,488 @@
         </div>
       </div>
     </script>-->
-		
-    <script>
-    	mui.init({
-				pullRefresh: {
-					container: '#pullrefresh',
-					up: {
-						contentrefresh: '正在加载...',
-						callback: pullupRefresh
+
+			<script>
+				mui.init({
+					pullRefresh: {
+						container: '#pullrefresh',
+						up: {
+							contentrefresh: '正在加载...',
+							callback: pullupRefresh
+						}
 					}
-				}
-			});
-			
-			var count = 0;
-			/**
-			 * 上拉加载具体业务实现
-			 */
-			function pullupRefresh() {
-				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 0)); //参数为true代表没有更多数据了。
-/*					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						table.appendChild(li);
-					}*/
-				}, 100);
-			}
-			/*if (mui.os.plus) {
-				mui.plusReady(function() {
+				});
+
+				var count = 0;
+				/**
+				 * 上拉加载具体业务实现
+				 */
+				function pullupRefresh() {
 					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 0)); //参数为true代表没有更多数据了。
+						/*					var table = document.body.querySelector('.mui-table-view');
+											var cells = document.body.querySelectorAll('.mui-table-view-cell');
+											for (var i = cells.length, len = i + 20; i < len; i++) {
+												var li = document.createElement('li');
+												li.className = 'mui-table-view-cell';
+												li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+												table.appendChild(li);
+											}*/
+					}, 100);
+				}
+				/*if (mui.os.plus) {
+					mui.plusReady(function() {
+						setTimeout(function() {
+							mui('#pullrefresh').pullRefresh().pullupLoading();
+						}, 1000);
+
+					});
+				} else {
+					mui.ready(function() {
 						mui('#pullrefresh').pullRefresh().pullupLoading();
-					}, 1000);
+					});
+				}*/
+				//document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
 
-				});
-			} else {
-				mui.ready(function() {
-					mui('#pullrefresh').pullRefresh().pullupLoading();
-				});
-			}*/
-			//document.getElementById("pullrefresh").style.height = (document.documentElement.clientHeight)+"px";
-			
-			
-//			mui(document).on('tap', '#left-content', function() {
-//				mui.back();
-//			});
-			
-			
-			/*以下是原有的*/
-      mui.plusReady(function() {
-      	var enter_page = plus.webview.currentWebview().enter_page;
-				//如果是从我的订单页面进入的，点击返回的时候 则跳转到商城。mgm
-        if(enter_page=='trade'){
-        	document.querySelector('#left-content').addEventListener('tap',function(e){
-						    e.preventDefault();
-						    e.stopPropagation();
-						    //为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
-						    clicked('_www/view/category/category.html');
-						},true);
-        }else{
-        	document.querySelector('#left-content').addEventListener('tap',function(){
-						   mui.back();
+				//			mui(document).on('tap', '#left-content', function() {
+				//				mui.back();
+				//			});
+
+				/*以下是原有的*/
+				mui.plusReady(function() {
+					var enter_page = plus.webview.currentWebview().enter_page;
+					//如果是从我的订单页面进入的，点击返回的时候 则跳转到商城。mgm
+					if(enter_page == 'trade') {
+						document.querySelector('#left-content').addEventListener('tap', function(e) {
+							e.preventDefault();
+							e.stopPropagation();
+							//为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
+							clicked('_www/view/category/category.html');
+						}, true);
+					} else {
+						document.querySelector('#left-content').addEventListener('tap', function() {
+							mui.back();
 						});
-        }
-        var wid = plus.webview.currentWebview().id;
-        window.addEventListener('refresh',fetchList);
-        fetchList();
-        function fetchList() {
-          var state = app.getState();
-          console.log(state.token);
-          if(state.token) {
-            var loading = plus.nativeUI.showWaiting();
-            var param = {
-              queryData: {
-                'method': config.apimethod.cartlist,
-                'accessToken': state.token,
-                'mode': 'cart'
-              },
-              method: 'GET'
-            }
-            $.dataRequest(param, function(rs) {
-            	getcartnumabs(state.token);
-            	getcarttopnumabs(state.token);
-            	console.log(JSON.stringify(rs.data));
-              if(!isEmptyObject(rs.data)) {
-              	if(rs.data.resultCartData!=null)
-              	{
-              		var list = template('cart_list', rs.data);
-	                $('#content-main').html(list);
-	                mui('.mui-numbox').numbox();
-	                $('.edit_span').html("编辑");
-	                $('#cart_edit').show();
-	                if(rs.data.totalCart!=null&&rs.data.totalCart!=undefined)
-	                {
-	                	$('.hj-num').text(rs.data.totalCart.number);
-		                $('.hj-weight').text(rs.data.totalCart.totalWeight);
-		                $('.xj-total').text("￥"+rs.data.totalCart.totalPrice);
-		                $('.cd-total').text("￥"+rs.data.totalCart.totalAcceptPrice);
-		                if(rs.data.is_AllChecked==1)
-		                	$('input[name=checkbox3]').prop('checked',true);
-		                else
-		                	$('input[name=checkbox3]').prop('checked',false);
-	                }
-              	}
-                else
-                {
-                	$('.edit_span').html("");
-	                $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
-	              	
-					        document.getElementById("qxd-button").addEventListener("tap",function () {
-									  var webview = "_www/view/category/category.html";
+					}
+					var wid = plus.webview.currentWebview().id;
+					window.addEventListener('refresh', fetchList);
+					fetchList();
+
+					function fetchList() {
+						var state = app.getState();
+						console.log(state.token);
+						if(state.token) {
+							var loading = plus.nativeUI.showWaiting();
+							var param = {
+								queryData: {
+									'method': config.apimethod.cartlist,
+									'accessToken': state.token,
+									'mode': 'cart'
+								},
+								method: 'GET'
+							}
+							$.dataRequest(param, function(rs) {
+								getcartnumabs(state.token);
+								getcarttopnumabs(state.token);
+								console.log(JSON.stringify(rs.data));
+								if(!isEmptyObject(rs.data)) {
+									if(rs.data.resultCartData != null) {
+										var list = template('cart_list', rs.data);
+										$('#content-main').html(list);
+										mui('.mui-numbox').numbox();
+										$('.edit_span').html("编辑");
+										$('#cart_edit').show();
+										if(rs.data.totalCart != null && rs.data.totalCart != undefined) {
+											$('.hj-num').text(rs.data.totalCart.number);
+											$('.hj-weight').text(rs.data.totalCart.totalWeight);
+											$('.xj-total').text("￥" + rs.data.totalCart.totalPrice);
+											$('.cd-total').text("￥" + rs.data.totalCart.totalAcceptPrice);
+											if(rs.data.is_AllChecked == 1)
+												$('input[name=checkbox3]').prop('checked', true);
+											else
+												$('input[name=checkbox3]').prop('checked', false);
+										}
+									} else {
+										$('.edit_span').html("");
+										$('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
+
+										document.getElementById("qxd-button").addEventListener("tap", function() {
+											var webview = "_www/view/category/category.html";
+											mui.openWindow({
+												url: webview,
+												id: webview,
+												createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+												show: {
+													autoShow: true, //页面loaded事件发生后自动显示，默认为true
+													aniShow: 'none'
+												},
+												waiting: {
+													autoShow: true //自动显示等待框，默认为true
+												}
+											});
+											var openw = plus.webview.getWebviewById(webview);
+											if(openw) {
+												mui.fire(openw, 'refresh');
+											}
+										});
+									}
+								} else {
+									$('.edit_span').html("");
+									$('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
+
+									document.getElementById("qxd-button").addEventListener("tap", function() {
+										var webview = "_www/view/category/category.html";
 										mui.openWindow({
-						          url: webview,
-						          id: webview,
-						          createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-						          show: {
-						            autoShow: true, //页面loaded事件发生后自动显示，默认为true
-						            aniShow: 'none'
-						          },
-						          waiting: {
-						            autoShow: true //自动显示等待框，默认为true
-						          }
-						        });
-						        var openw = plus.webview.getWebviewById(webview);
-						        if(openw) {
-						          mui.fire(openw, 'refresh');
-						        }
+											url: webview,
+											id: webview,
+											createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+											show: {
+												autoShow: true, //页面loaded事件发生后自动显示，默认为true
+												aniShow: 'none'
+											},
+											waiting: {
+												autoShow: true //自动显示等待框，默认为true
+											}
+										});
+										var openw = plus.webview.getWebviewById(webview);
+										if(openw) {
+											mui.fire(openw, 'refresh');
+										}
 									});
-                }
-              } else {
-                $('.edit_span').html("");
-                $('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
-              	
-				        document.getElementById("qxd-button").addEventListener("tap",function () {
-								  var webview = "_www/view/category/category.html";
-									mui.openWindow({
-					          url: webview,
-					          id: webview,
-					          createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-					          show: {
-					            autoShow: true, //页面loaded事件发生后自动显示，默认为true
-					            aniShow: 'none'
-					          },
-					          waiting: {
-					            autoShow: true //自动显示等待框，默认为true
+								}
+								loading.close();
+							});
+						} else {
+							$('.edit_span').html("");
+							$('.cart-main').html('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
+						}
+					}
+
+					var flag = false;
+					var isPromotionSelect = true;
+					$('#cart_edit').on('tap', function() {
+						if($(this).hasClass('editing')) {
+							$(this).removeClass('editing').html('<span class="edit_span">编辑</span>');
+							$('#edit_on').hide();
+							$('#edit_off').show();
+							$('.mui-numbox').show();
+							//$('.order-goods-num').hide();
+							//$('.order-goods-header .more-link').show();
+							$('.cart-main').addClass('checkout-action').removeClass('del-action');
+							//$('.invalid').find('input[type="hidden"]').attr('disabled', 'disabled');
+							//$('.invalid').find('input[type="checkbox"]').attr('disabled', 'disabled');
+							//$('.promotion-select').attr('href', '#promotion');
+							//$('.promotion-edit').show();
+							flag = true;
+							isPromotionSelect = true;
+							fetchList();
+						} else {
+							$(this).addClass('editing').text('完成');
+							$('#edit_on').show();
+							$('#edit_off').hide();
+							$('.mui-numbox').hide();
+							//$('.order-goods-num').show();
+							//$('.order-goods-header .more-link').hide();
+							$('.cart-main').addClass('del-action').removeClass('checkout-action');
+							//$('.invalid').find('input[type="hidden"]').removeAttr('disabled');
+							//$('.invalid').find('input[type="checkbox"]').removeAttr('disabled');
+							$('input[type="checkbox"]').prop('checked', false);
+							//$('.promotion-select').attr('href', 'javascript:void(0);');
+							//$('.promotion-edit').hide();
+							isPromotionSelect = false;
+						}
+					});
+
+					$('.cart-main').off();
+					$('.cart-main').on('change', '#checkAll', function(event) {
+						var value = this.checked ? true : false;
+						if(value === true) {
+							$(this).prop('checked', true);
+							$('input[type="checkbox"]').each(function() {
+								$(this).prop('checked', true);
+								$('#content-main').find('.mui-left-all').data('ischecked', 1);
+							});
+						} else {
+							$(this).prop('checked', false);
+							$('input[type="checkbox"]').prop('checked', false);
+							$('#content-main').find('.mui-left-all').data('ischecked', 0);
+						}
+						if($('.cart-main').hasClass('checkout-action')) {
+							updateItem();
+						}
+					});
+
+					/*        $('.cart-main').on('change', '.order-goods-header input[type="checkbox"]', function(event) {
+					          var value = this.checked ? true : false;
+					          if(value === true) {
+					            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').each(function() {
+					              if(!$(this).attr('disabled')) {
+					                $(this).prop('checked', true);
+					              };
+					              $($(this).parents('.order-goods').find('li')).data('ischecked', 1);
+					            });
+					          } else {
+					            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').prop('checked', false);
+					            $($(this).parents('.order-goods').find('li')).data('ischecked', 0);
+					            $('#checkAll').prop('checked', false);
 					          }
-					        });
-					        var openw = plus.webview.getWebviewById(webview);
-					        if(openw) {
-					          mui.fire(openw, 'refresh');
-					        }
-								});
-              }
-              loading.close(); 
-            });
-          }else{
-          	$('.edit_span').html("");
-            $('.cart-main').html('<section class="container"><div class="section-container bg-white"><div class="section-init fontS font-gray-40">你可以在登录后同步您购物车中的商品</div><button id="log" class="mui-btn mui-btn-warning  mui-btn-outlined bbc-btn-waring bbc-btn-outlined">登录</button></div></section>');
-          }
-        }
+					          if($('.cart-main').hasClass('checkout-action')) {
+					            updateItem();
+					          }
+					        })*/
 
-        var flag = false;
-        var isPromotionSelect = true;
-        $('#cart_edit').on('tap', function() {
-          if($(this).hasClass('editing')) {
-            $(this).removeClass('editing').html('<span class="edit_span">编辑</span>');
-            $('#edit_on').hide();
-            $('#edit_off').show();
-            $('.mui-numbox').show();
-            //$('.order-goods-num').hide();
-            //$('.order-goods-header .more-link').show();
-            $('.cart-main').addClass('checkout-action').removeClass('del-action');
-            //$('.invalid').find('input[type="hidden"]').attr('disabled', 'disabled');
-            //$('.invalid').find('input[type="checkbox"]').attr('disabled', 'disabled');
-            //$('.promotion-select').attr('href', '#promotion');
-            //$('.promotion-edit').show();
-            flag = true;
-            isPromotionSelect = true;
-            fetchList();
-          } else {
-            $(this).addClass('editing').text('完成');
-            $('#edit_on').show();
-            $('#edit_off').hide();
-            $('.mui-numbox').hide();
-            //$('.order-goods-num').show();
-            //$('.order-goods-header .more-link').hide();
-            $('.cart-main').addClass('del-action').removeClass('checkout-action');
-            //$('.invalid').find('input[type="hidden"]').removeAttr('disabled');
-            //$('.invalid').find('input[type="checkbox"]').removeAttr('disabled');
-            $('input[type="checkbox"]').prop('checked', false);
-            //$('.promotion-select').attr('href', 'javascript:void(0);');
-            //$('.promotion-edit').hide();
-            isPromotionSelect = false;
-          }
-        });
+					$('.cart-main').on('change', '.check-div-border input[type="checkbox"]', function(event) {
+						if(this.checked) {
+							$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked", "checked");
+							$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 1);
+						} else {
+							$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked", false);
+							$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 0);
+						}
+						if($('.cart-main').hasClass('checkout-action')) {
+							updateItem();
+						}
+					});
 
-        $('.cart-main').off();
-        $('.cart-main').on('change', '#checkAll', function(event) {
-          var value = this.checked ? true : false;
-          if(value === true) {
-          	$(this).prop('checked', true);
-            $('input[type="checkbox"]').each(function() {
-              $(this).prop('checked', true);
-              $('#content-main').find('.mui-left-all').data('ischecked', 1);
-            });
-          } else {
-          	$(this).prop('checked', false);
-            $('input[type="checkbox"]').prop('checked', false);
-            $('#content-main').find('.mui-left-all').data('ischecked', 0);
-          }
-          if($('.cart-main').hasClass('checkout-action')) {
-            updateItem();
-          }
-        });
+					$('.cart-main').on('change', '.mui-left-all input[type="checkbox"]', function(event) {
+							var fa = $(this).parents('.mui-left-all');
+							var shop = $(this).parents('.mui-left-all').siblings('.check-div-border').find('input[type="checkbox"]');
+							var totalChecked = $(fa).find('input[type="checkbox"]');
+							var totalCheck = $(fa).find('input[type="checkbox"]:checked');
+							console.log(totalChecked);
+							console.log(totalCheck);
+							var val = this.checked ? true : false;
+							if(val === true) {
+								$(this).parents('.mui-left-all').data('ischecked', 1);
+							} else {
+								$(this).parents('.mui-left-all').data('ischecked', 0);
+							}
+							if(totalCheck.length == totalChecked.length) {
+								$(shop).prop('checked', true);
+							} else {
+								$(shop).prop('checked', false);
+							}
 
-/*        $('.cart-main').on('change', '.order-goods-header input[type="checkbox"]', function(event) {
-          var value = this.checked ? true : false;
-          if(value === true) {
-            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').each(function() {
-              if(!$(this).attr('disabled')) {
-                $(this).prop('checked', true);
-              };
-              $($(this).parents('.order-goods').find('li')).data('ischecked', 1);
-            });
-          } else {
-            $(this).parents('.order-goods').find('.order-goods-list input[type="checkbox"]').prop('checked', false);
-            $($(this).parents('.order-goods').find('li')).data('ischecked', 0);
-            $('#checkAll').prop('checked', false);
-          }
-          if($('.cart-main').hasClass('checkout-action')) {
-            updateItem();
-          }
-        })*/
-        
-        $('.cart-main').on('change', '.check-div-border input[type="checkbox"]', function(event) {
-        		if(this.checked)
-        		{
-        			$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked","checked");
-        			$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 1);
-        		}
-        		else
-        		{
-        			$(this).parent('.check-div-border').siblings('.mui-left-all').find('input[type="checkbox"]').prop("checked",false);
-        			$(this).parent('.check-div-border').siblings('.mui-left-all').data('ischecked', 0);
-        		}
-        		if($('.cart-main').hasClass('checkout-action')) {
-	            updateItem();
-	          }
-        });
+							if($('.cart-main').hasClass('checkout-action')) {
+								updateItem();
+							}
+						})
+						.on('change', '.action-modify', function() {
+							$(this).parents('li').data('quantity', parseFloat($(this).val()));
+							if($('.cart-main').hasClass('checkout-action')) {
+								updateItem();
+							}
+						})
 
-        $('.cart-main').on('change', '.mui-left-all input[type="checkbox"]', function(event) {
-            var fa = $(this).parents('.mui-left-all');
-            var shop = $(this).parents('.mui-left-all').siblings('.check-div-border').find('input[type="checkbox"]');
-            var totalChecked = $(fa).find('input[type="checkbox"]');
-            var totalCheck = $(fa).find('input[type="checkbox"]:checked');
-						console.log(totalChecked);
-						console.log(totalCheck);
-            var val = this.checked ? true : false;
-            if(val === true) {
-              $(this).parents('.mui-left-all').data('ischecked', 1);
-            } else {
-              $(this).parents('.mui-left-all').data('ischecked', 0);
-            }
-            if(totalCheck.length == totalChecked.length) {
-              $(shop).prop('checked', true);
-            } else {
-              $(shop).prop('checked', false);
-            }
+					$('.cart-main').on('tap', '#cart_del', function() {
+						var data = '';
+						if(!$('#content-main .mui-left-all').find('input[type="checkbox"]').length) {
+							mui.alert('请选择需要删除的商品');
+							return
+						}
+						var checkedItem = $('#content-main .mui-left-all').find('input[type="checkbox"]:checked');
+						for(var i = 0; i < checkedItem.length; i++) {
+							var delDom = $(checkedItem[i]).parents('.mui-left-all').data('cartid');
+							data += delDom + ',';
+						};
+						var btnArray = ['否', '是'];
+						mui.confirm('是否删除所选商品？', '提示', btnArray, function(e) {
+							if(e.index == 1) {
+								updateCart(data);
+								var state = app.getState();
+								getcartnumabs(state.token);
+								getcarttopnumabs(state.token);
+							} else {
+								return
+							}
+						});
+					});
 
-            if($('.cart-main').hasClass('checkout-action')) {
-              updateItem();
-            }
-          })
-          .on('change', '.action-modify', function() {
-            $(this).parents('li').data('quantity', parseFloat($(this).val()));
-            if($('.cart-main').hasClass('checkout-action')) {
-              updateItem();
-            }
-          })
+					$(window).on('tap', '.sx-del', function() {
+						var delDom = $(this).parent().parent().data('cartid');
+						var data = '';
+						data += delDom + ',';
+						var btnArray = ['否', '是'];
+						mui.confirm('是否删除所选商品？', '提示', btnArray, function(e) {
+							if(e.index == 1) {
+								updateCart(data);
+								var state = app.getState();
+								getcartnumabs(state.token);
+								getcarttopnumabs(state.token);
+							} else {
+								return
+							}
+						});
+					});
 
-        $('.cart-main').on('tap', '#cart_del', function() {
-          var data = '';
-          if(!$('#content-main .mui-left-all').find('input[type="checkbox"]').length) {
-            mui.alert('请选择需要删除的商品');
-            return
-          }
-          var checkedItem = $('#content-main .mui-left-all').find('input[type="checkbox"]:checked');
-          for(var i = 0; i < checkedItem.length; i++) {
-            var delDom = $(checkedItem[i]).parents('.mui-left-all').data('cartid');
-            data += delDom + ',';
-          };
-          var btnArray = ['否', '是'];
-          mui.confirm('是否删除所选商品？', '提示', btnArray, function(e) {
-            if(e.index == 1) {
-              updateCart(data);
-              var state = app.getState();
-              getcartnumabs(state.token);
-            	getcarttopnumabs(state.token);
-            } else {
-              return
-            }
-          });
-        });
+					$('body').off();
+					$('body').on('tap', '.promotion-select', function(e) {
+						var that = $(this);
+						if(!isPromotionSelect) return;
+						var promotion_id = $(this).parents('li').data('promotionid');
+						var list = $(this).data('promotion');
+						var listwrapper = $('#promotion');
 
-        $('body').off();
-        $('body').on('tap', '.promotion-select', function(e) {
-          var that = $(this);
-          if(!isPromotionSelect) return;
-          var promotion_id = $(this).parents('li').data('promotionid');
-          var list = $(this).data('promotion');
-          var listwrapper = $('#promotion');
+						if(list) {
+							var html = ' ';
+							for(var i = 0; i < list.length; i++) {
+								html += '<li class="mui-table-view-cell" data-id="' + list[i].promotion_id + '"><a class="mui-navigate-right"><span class="tag tag-outline">' + list[i].promotion_tag + '</span><em> ' + list[i].promotion_name + '</em></a></li>'
+							}
+							html += '<li class="mui-table-view-cell" data-id="0"><a class="mui-navigate-right"><em>不使用优惠</em></a></li>';
 
-          if(list) {
-            var html = ' ';
-            for(var i = 0; i < list.length; i++) {
-              html += '<li class="mui-table-view-cell" data-id="' + list[i].promotion_id + '"><a class="mui-navigate-right"><span class="tag tag-outline">' + list[i].promotion_tag + '</span><em> ' + list[i].promotion_name + '</em></a></li>'
-            }
-            html += '<li class="mui-table-view-cell" data-id="0"><a class="mui-navigate-right"><em>不使用优惠</em></a></li>';
+							listwrapper.find('ul').html(html);
+							listwrapper.find('li').each(function() {
+								if($(this).data('id') == promotion_id) {
+									$(this).addClass('mui-selected');
+									return true;
+								}
+							});
+						}
+						listwrapper.off('tap');
+						listwrapper.on('tap', '.action-bar-op-btn', function() {
+							var checked = listwrapper.find('.mui-selected');
+							if(checked.length > 0) {
+								var id = $(checked).data('id');
+								var name = $(checked).find('em').text();
+								that.find('span').text(name);
+								that.parents('li').data('promotionid', id);
+								updateItem();
+								mui('#promotion').popover('hide');
+							} else {
+								mui.alert('请选择一种优惠方式');
+							}
+						});
+					});
 
-            listwrapper.find('ul').html(html);
-            listwrapper.find('li').each(function() {
-              if($(this).data('id') == promotion_id) {
-                $(this).addClass('mui-selected');
-                return true;
-              }
-            });
-          }
-          listwrapper.off('tap');
-          listwrapper.on('tap', '.action-bar-op-btn', function() {
-            var checked = listwrapper.find('.mui-selected');
-            if(checked.length > 0) {
-              var id = $(checked).data('id');
-              var name = $(checked).find('em').text();
-              that.find('span').text(name);
-              that.parents('li').data('promotionid', id);
-              updateItem();
-              mui('#promotion').popover('hide');
-            } else {
-              mui.alert('请选择一种优惠方式');
-            }
-          });
-        });
+					function updateItem() {
+						var state = app.getState();
+						var cartList = $('#content-main').find('li');
+						var cartParam = []; //mui-left-all
+						for(var i = 0; i < cartList.length; i++) {
+							var cartNew = $(cartList[i]).find('.mui-left-all');
+							for(var j = 0; j < cartNew.length; j++) {
+								if(!$(cartNew[j]).hasClass('invalid')) {
+									var itemParam = {};
+									itemParam.cart_id = $(cartNew[j]).data('cartid');
+									itemParam.is_checked = $(cartNew[j]).data('ischecked');
+									itemParam.selected_promotion = $(cartNew[j]).data('promotionid');
+									itemParam.totalQuantity = $(cartNew[j]).find('.action-modify').val();
+									cartParam.push(itemParam);
+								}
+							}
+						}
+						cartParam = JSON.stringify(cartParam);
+						if(flag) {
+							$('input[type="checkbox"]').prop('checked', false);
+						}
+						console.log("更新数据:" + cartParam);
+						var param = {
+							queryData: {
+								'method': config.apimethod.cartupdate,
+								'accessToken': state.token,
+								'cart_params': cartParam
+							},
+							method: 'GET'
+						}
+						$.dataRequest(param, function(rs) {
+							fetchList();
+							if(flag) {
+								$('input[type="checkbox"]').prop('checked', false);
+								flag = false;
+							}
+						});
+					}
 
-        function updateItem() {
-          var state = app.getState();
-          var cartList = $('#content-main').find('li');
-          var cartParam = [];//mui-left-all
-          for(var i = 0; i < cartList.length; i++) {
-          	var cartNew = $(cartList[i]).find('.mui-left-all');
-          	for(var j = 0;j<cartNew.length;j++)
-          	{
-          		if(!$(cartNew[j]).hasClass('invalid')) {
-	              var itemParam = {};
-	              itemParam.cart_id = $(cartNew[j]).data('cartid');
-	              itemParam.is_checked = $(cartNew[j]).data('ischecked');
-	              itemParam.selected_promotion = $(cartNew[j]).data('promotionid');
-	              itemParam.totalQuantity = $(cartNew[j]).find('.action-modify').val();
-	              cartParam.push(itemParam);
-	            }
-          	}
-          }
-          cartParam = JSON.stringify(cartParam);
-          if(flag) {
-            $('input[type="checkbox"]').prop('checked', false);
-          }
-          console.log("更新数据:"+cartParam);
-          var param = {
-            queryData: {
-              'method': config.apimethod.cartupdate,
-              'accessToken': state.token,
-              'cart_params': cartParam
-            },
-            method: 'GET'
-          }
-          $.dataRequest(param, function(rs) {
-            fetchList();
-            if(flag) {
-              $('input[type="checkbox"]').prop('checked', false);
-              flag = false;
-            }
-          });
-        }
+					function updateCart(data) {
+						var state = app.getState();
+						var param = {
+							queryData: {
+								'method': config.apimethod.cartdel,
+								'accessToken': state.token,
+								'cart_id': data
+							},
+							method: 'POST'
+						}
+						data = data.split(',');
+						data = data.splice(0, data.length - 1);
+						$.dataRequest(param, function() {
+							fetchList();
+							if(flag) {
+								$('input[type="checkbox"]').prop('checked', false);
+								flag = false;
+							}
+							/*for(var i = 0; i < data.length; i++) {
+							  $('input[data-cartid="' + data[i] + '"]').parents('li').remove()
+							}
+							var promotionlist = $('.promotion-goods-group');
+							for(var i = 0; i < promotionlist.length; i++) {
+							  if($(promotionlist[i]).find('li').length == 0) {
+							    $(promotionlist[i]).remove();
+							  }
+							}
+							var shoplist = $('.order-goods');
+							for(var i = 0; i < shoplist.length; i++) {
+							  if($(shoplist[i]).find('.promotion-goods-group').length == 0) {
+							    $(shoplist[i]).remove();
+							  }
+							}*/
+						});
+					}
 
-        function updateCart(data) {
-          var state = app.getState();
-          var param = {
-            queryData: {
-              'method': config.apimethod.cartdel,
-              'accessToken': state.token,
-              'cart_id': data
-            },
-            method: 'POST'
-          }
-          data = data.split(',');
-          data = data.splice(0, data.length - 1);
-          $.dataRequest(param, function() {
-          	fetchList();
-            if(flag) {
-              $('input[type="checkbox"]').prop('checked', false);
-              flag = false;
-            }
-            /*for(var i = 0; i < data.length; i++) {
-              $('input[data-cartid="' + data[i] + '"]').parents('li').remove()
-            }
-            var promotionlist = $('.promotion-goods-group');
-            for(var i = 0; i < promotionlist.length; i++) {
-              if($(promotionlist[i]).find('li').length == 0) {
-                $(promotionlist[i]).remove();
-              }
-            }
-            var shoplist = $('.order-goods');
-            for(var i = 0; i < shoplist.length; i++) {
-              if($(shoplist[i]).find('.promotion-goods-group').length == 0) {
-                $(shoplist[i]).remove();
-              }
-            }*/
-          });
-        }
+					$('.get-coupon').on('tap', function() {
+						clicked('_www/view/shop/shopcoupon.html');
+					});
 
-        $('.get-coupon').on('tap', function() {
-          clicked('_www/view/shop/shopcoupon.html');
-        });
+					$('.shop').on('tap', function() {
+						clicked('_www/view/shop/shop.html');
+					});
 
-        $('.shop').on('tap', function() {
-          clicked('_www/view/shop/shop.html');
-        });
+					$('body').on('tap', '#checkout', function() {
+						if(!$('#content-main').find('input[type="checkbox"]:checked').length) {
+							mui.alert('请至少选择一件商品');
+							return
+						}
+						clicked('_www/view/cart/cart_order.html', {
+							'mode': 'cart'
+						});
+					})
 
-        $('body').on('tap', '#checkout', function() {
-          if(!$('#content-main').find('input[type="checkbox"]:checked').length) {
-            mui.alert('请至少选择一件商品');
-            return
-          }
-          clicked('_www/view/cart/cart_order.html', {
-            'mode': 'cart'
-          });
-        })
+					mui('#promotion').on('tap', '*', function(e) {
+						e.detail.gesture.preventDefault();
+					});
 
-        mui('#promotion').on('tap', '*', function(e) {
-          e.detail.gesture.preventDefault();
-        });
+					$('body').on('tap', ' #log', function() {
+						clicked('_www/view/passport/login.html', {
+							'entrance': wid
+						}, 'slide-in-bottom');
+					});
 
-        $('body').on('tap',' #log', function() {
-          clicked('_www/view/passport/login.html', {'entrance':wid}, 'slide-in-bottom');
-        });
-        
-      });
+				});
 
-    	$('.bbc-tab-item').on('tap', function() {
-	        var webview = $(this).data('webview');
-	        if(webview) {
-	          if(webview) {
-	            mui.openWindow({
-	              url: webview,
-	              id: webview,
-	              createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-	              show: {
-	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
-	                aniShow: 'none'
-	              },
-	              waiting: {
-	                autoShow: true //自动显示等待框，默认为true
-	              }
-	            });
-	            var openw = plus.webview.getWebviewById(webview);
-	            if(openw) {
-	              mui.fire(openw, 'refresh');
-	            }
-	          }
-	        }
-	     });
-    </script>
-  </body>
+				$('.bbc-tab-item').on('tap', function() {
+					var webview = $(this).data('webview');
+					if(webview) {
+						if(webview) {
+							mui.openWindow({
+								url: webview,
+								id: webview,
+								createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									aniShow: 'none'
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								}
+							});
+							var openw = plus.webview.getWebviewById(webview);
+							if(openw) {
+								mui.fire(openw, 'refresh');
+							}
+						}
+					}
+				});
+			</script>
+	</body>
 
 </html>
