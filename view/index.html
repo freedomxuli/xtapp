@@ -1559,10 +1559,12 @@
 			});
 
 			mui.plusReady(function() {
+				
 				// Android处理返回键
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
+                plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
 
 			});
 

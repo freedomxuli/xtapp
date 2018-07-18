@@ -94,18 +94,21 @@
 				}
 
 				$.dataRequest(param, function(rs) {
-					var wa = plus.nativeUI.showWaiting();
+					//var wa = plus.nativeUI.showWaiting();
 					mui.toast('提交成功');
-					var parent = plus.webview.currentWebview().opener();
-
-					parent.reload(true);
-					parent.addEventListener('loaded', function() {
-						wa.close();
-						mui.back();
-						setTimeout(function() {
-							plus.webview.currentWebview().close();
-						}, 300)
-					});
+					setTimeout(function() {
+						plus.webview.currentWebview().close();
+					}, 1000)
+					//					var parent = plus.webview.currentWebview().opener();
+					//
+					//					parent.reload(true);
+					//					parent.addEventListener('loaded', function() {
+					//						wa.close();
+					//						mui.back();
+					//						setTimeout(function() {
+					//							plus.webview.currentWebview().close();
+					//						}, 300)
+					//					});
 
 				});
 			});
