@@ -53,14 +53,32 @@
 			}
 			
 			.mui-input-row img {
-/*				height: 1.3rem;*/
+				/*				height: 1.3rem;*/
 				width: 1rem;
 			}
 			
 			.mui-input-row label {
-				width: 3rem;
-				padding-top: 0.9rem;
-				padding:0.9rem 0 0 0.9rem;
+				font-family: 'Helvetica Neue', Helvetica, sans-serif;
+				line-height: 1.1;
+				float: left;
+				width: 15%;
+				padding: 11px 15px;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				float: right;
+				width: 85%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 0;
+			}
+			
+			.mui-input-row {
+				clear: left;
+				display: block;
+				overflow: hidden;
 			}
 			
 			.form-container {
@@ -102,7 +120,7 @@
 				<section class="mui-input-group">
 					<div class="mui-input-row">
 						<label><img src="../../img/item/name.png" /></label>
-						<input id="account" type="text" value="" class="mui-input-clear mui-input" placeholder="请输入手机号">
+						<input id="account" type="text" class="mui-input-clear" placeholder="请输入手机号">
 					</div>
 					<div class="mui-input-row">
 						<label><img src="../../img/item/password.png" /></label>

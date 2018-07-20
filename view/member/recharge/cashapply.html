@@ -536,6 +536,28 @@
 			.mui-input-row-new{
 				border-bottom: 10px solid #efeff4;
 			}
+			
+						.mui-input-row label  {
+				font-family: 'Helvetica Neue', Helvetica, sans-serif;
+				float: left;
+				width: 28%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				float: right;
+				width: 72%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 0;
+			}
+			
+			.mui-input-row {
+				clear: left;
+				display: block;
+				overflow: hidden;
+			}
 		</style>
 
 	</head>
@@ -558,11 +580,11 @@
 					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>提现方式</div></label>
 					<div class="goods_info_detail_content">
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">现金</label>
+							<label class="radio-text" style="width:6rem">现金</label>
 							<input name="radio1" type="radio" value="price" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">承兑</label>
+							<label class="radio-text" style="width:6rem">承兑</label>
 							<input name="radio1" value="accept" type="radio">
 						</div>
 					</div>

@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="../../../css/style.css">
     <link href="../../../css/mui.picker.css" rel="stylesheet" />
     <link href="../../../css/mui.poppicker.css" rel="stylesheet" />
+    <style>
+    				.mui-input-row label  {
+				font-family: 'Helvetica Neue', Helvetica, sans-serif;
+				line-height: 1.5;
+				float: left;
+				width: 32%;
+				padding: 11px 15px;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				float: right;
+				width: 68%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 0;
+			}
+			
+			.mui-input-row {
+				clear: left;
+				display: block;
+				overflow: hidden;
+			}
+    </style>
   </head>
 
   <body>
@@ -53,7 +78,7 @@
           </div>
         </section>
         <section class="mui-input-row mui-checkbox bbc-checkbox mui-left">
-          <label>设置默认地址</label>
+          <label style="width:20rem">设置默认地址</label>
           <input id="def_addr" type="checkbox" class="input-action">
         </section>
         <section class="mui-content-padded form-op-section">

@@ -523,6 +523,34 @@
 			.hide {
 				display: none;
 			}
+			
+						.mui-input-row label  {
+				font-family: 'Helvetica Neue', Helvetica, sans-serif;
+				line-height: 2;
+				float: left;
+				width: 30%;
+				padding: 11px 15px;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				float: right;
+				width: 70%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 0;
+			}
+			
+			.mui-input-row {
+				clear: left;
+				display: block;
+				overflow: hidden;
+			}
+			
+			.checkbox-width{
+				width:10rem;
+			}
 		</style>
 
 	</head>
@@ -556,11 +584,11 @@
 					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>公司类型</div></label>
 					<div class="goods_info_detail_content" id="gsfr">
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">中间商</label>
+							<label class="radio-text" style="width:10rem">中间商</label>
 							<input name="radio1" type="radio" value="middle" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">终端客户</label>
+							<label class="radio-text" style="width:10rem">终端客户</label>
 							<input name="radio1" value="end" type="radio">
 						</div>
 					</div>
@@ -582,11 +610,11 @@
 					<label><div class="goods_info_detail_label"><span class="goods_info_detail_important">*</span>上传证件</div></label>
 					<div class="goods_info_detail_content" id="sczj">
 						<div class="mui-input-row mui-radio mui-left">
-							<label class="radio-text">三证合一</label>
+							<label class="radio-text" style="width:10rem">三证合一</label>
 							<input name="radio2" type="radio" value="3" checked="checked">
 						</div>
 						<div class="mui-input-row mui-radio mui-left" style="display:none">
-							<label class="radio-text">企业五证</label>
+							<label class="radio-text" style="width:10rem">企业五证</label>
 							<input name="radio2" value="5" type="radio" >
 						</div>
 					</div>
