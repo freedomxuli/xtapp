@@ -748,7 +748,7 @@
 			}
 
 			function getTime(date) {
-				var date = new Date(date);
+				var date = new Date(date.replace(/-/g, '/'));
 				return Date.parse(date) / 1000;
 			}
 
