@@ -427,7 +427,6 @@
 			}
 			.left-side-content-detail-nav
 			{
-				width: 100% !important;
 				font-size: 1rem;
 			}
 			.left-side-content-detail-list
@@ -441,7 +440,7 @@
 			.left-side-content-detail-list li{
 				float:left;
 				width:50%;
-				padding: 0.1rem 0.1rem 0.1rem 0rem;
+				padding: 0.2rem 0.1rem 0.2rem 0rem;
 				text-align: left;
 				line-height: 1.2rem;
 			}
@@ -1886,6 +1885,13 @@
 		    						</li>
 		    						<%
 									}
+								}
+								if(lv1Cats[i].lv3.length%2!=0)
+								{%>
+									<li>
+	    							&nbsp;
+	    						</li>
+								<%
 								}
 							%>
 							</ul>
