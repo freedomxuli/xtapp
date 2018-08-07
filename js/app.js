@@ -288,6 +288,7 @@ var toSearch = function(el, wv, shop) {
 }
 
 var toSearchByMy = function(el, wv, shop,manufacturers_id,cat_id) {
+  //document.getElementsByTagName('body')[0].scrollTop = 0;
   if($('.search-modal').length == 0) {
     var hlist = localStorage.getItem('_history');
     $('body').append('<div id="search_panel" class="search-modal"><div id="history_list" class="mui-scroll-wrapper"><div class="mui-scroll"></div></div></div>');
@@ -345,12 +346,12 @@ var toSearchByMy = function(el, wv, shop,manufacturers_id,cat_id) {
     });
 
     $('.search-cancel').on('tap', function() {
-    	$('.search-input').val('');
-      //$('#search_panel').remove();
-      //$(this).hide().siblings('.search-hide').show();
-      //$('#head-search').removeClass('home-color1');
-      //$('#head-search').addClass('home-color');
-      el.blur();
+    		$('.search-input').val('');
+	      //$('#search_panel').remove();
+	      //$(this).hide().siblings('.search-hide').show();
+	      //$('#head-search').removeClass('home-color1');
+	      //$('#head-search').addClass('home-color');
+      	el.blur();
     });
     
     $('.img-back').on('tap', function() {
