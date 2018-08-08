@@ -8973,7 +8973,7 @@ input[type="search"].header-search {
 }
 
 .search-modal {
-	position: absolute;
+	position: absolute !important;
 	top: 44px;
 	bottom: 0;
 	left: 0;

@@ -441,7 +441,11 @@
 			.left-side-content-detail-list li{
 				float:left;
 				width:50%;
+<<<<<<< HEAD
 				padding: 0.1rem 0.1rem 0.1rem 0rem;
+=======
+				padding: 0.2rem 0.1rem 0.2rem 0rem;
+>>>>>>> f3686151130209302ef46f01780ad60c983d48bc
 				text-align: left;
 				line-height: 1.2rem;
 			}
@@ -1239,7 +1243,7 @@
 	            mui.openWindow({
 	              url: webview,
 	              id: webview,
-	              createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+	              //createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 	              show: {
 	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
 	                aniShow: 'none'
@@ -1750,6 +1754,13 @@
 		    						</li>
 		    						<%
 									}
+								}
+								if(lv1Cats[i].lv3.length%2!=0)
+								{%>
+									<li>
+	    							&nbsp;
+	    						</li>
+								<%
 								}
 							%>
 							</ul>
