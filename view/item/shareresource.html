@@ -441,11 +441,7 @@
 			.left-side-content-detail-list li{
 				float:left;
 				width:50%;
-<<<<<<< HEAD
-				padding: 0.1rem 0.1rem 0.1rem 0rem;
-=======
 				padding: 0.2rem 0.1rem 0.2rem 0rem;
->>>>>>> f3686151130209302ef46f01780ad60c983d48bc
 				text-align: left;
 				line-height: 1.2rem;
 			}
@@ -786,15 +782,22 @@
       var keykind = "";
       setTimeout(function(){
       	mui.plusReady(function() {
-  		  var state = app.getState();
-      	getcartnumabs(state.token);
-      	wid = plus.webview.currentWebview().id;
-		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
-		    mui('.mui-scroll-wrapper').scroll({
-		        bounce: false,
-		        indicators: true, //是否显示滚动条
-		        deceleration: deceleration
-		    });
+	      	window.addEventListener('refresh', fetchList);
+					fetchList();
+	
+					function fetchList() {
+						var state1 = app.getState();
+						getcartnumabs(state1.token);
+					}
+	  		  var state = app.getState();
+	      	getcartnumabs(state.token);
+	      	wid = plus.webview.currentWebview().id;
+			    var deceleration = mui.os.ios ? 0.003 : 0.0009;
+			    mui('.mui-scroll-wrapper').scroll({
+			        bounce: false,
+			        indicators: true, //是否显示滚动条
+			        deceleration: deceleration
+			    });
 			});
       },1000);
       
@@ -1248,12 +1251,17 @@
 	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
 	                aniShow: 'none'
 	              },
+	              extras: {
+									refresh: true
+								},
 	              waiting: {
 	                autoShow: true //自动显示等待框，默认为true
 	              }
 	            });
 	            var openw = plus.webview.getWebviewById(webview);
 	            if(openw) {
+	            	var state1 = app.getState();
+								getcartnumabs(state1.token);
 	              mui.fire(openw, 'refresh');
 	            }
 	          }

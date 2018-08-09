@@ -783,6 +783,13 @@
       var keykind = "";
       setTimeout(function(){
       	mui.plusReady(function() {
+      	window.addEventListener('refresh', fetchList);
+				fetchList();
+
+				function fetchList() {
+					var state1 = app.getState();
+					getcartnumabs(state1.token);
+				}
       	wid = plus.webview.currentWebview().id;
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
 		    mui('.mui-scroll-wrapper').scroll({
@@ -1197,6 +1204,9 @@
 	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
 	                aniShow: 'none'
 	              },
+	              extras: {
+									refresh: true
+								},
 	              waiting: {
 	                autoShow: true //自动显示等待框，默认为true
 	              }

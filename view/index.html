@@ -1560,7 +1560,13 @@
 			});
 
 			mui.plusReady(function() {
-				
+				window.addEventListener('refresh', fetchList);
+				fetchList();
+
+				function fetchList() {
+					var state1 = app.getState();
+					getcartnumabs(state1.token);
+				}
 				// Android处理返回键
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
