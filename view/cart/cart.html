@@ -812,7 +812,7 @@
 					var wid = plus.webview.currentWebview().id;
 					window.addEventListener('refresh', fetchList);
 					fetchList();
-
+					
 					function fetchList() {
 						var state = app.getState();
 						console.log(state.token);
@@ -827,11 +827,10 @@
 								method: 'GET'
 							}
 							$.dataRequest(param, function(rs) {
-								getcartnumabs(state.token);
-								getcarttopnumabs(state.token);
 								console.log(JSON.stringify(rs.data));
 								if(!isEmptyObject(rs.data)) {
 									if(rs.data.resultCartData != null) {
+										$('.nodata-wrapper').remove();
 										var list = template('cart_list', rs.data);
 										$('#content-main').html(list);
 										mui('.mui-numbox').numbox();
@@ -847,19 +846,24 @@
 											else
 												$('input[name=checkbox3]').prop('checked', false);
 										}
+										getcartnumabs(state.token);
+										getcarttopnumabs(state.token);
 									} else {
 										$('.edit_span').html("");
-										$('.cart-main').html('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
+										$('.cart-main').append('<div class="nodata-wrapper"><div class="nodata-layout"><div class="nodata-icon"><img style="width:6rem;" src="../../img/cart/cart.png"></div><div class="nodata-tip">您的购物车是空的</div><button id="qxd-button" class="qxd-class">去下单</button></div></div>')
 
 										document.getElementById("qxd-button").addEventListener("tap", function() {
 											var webview = "_www/view/category/category.html";
 											mui.openWindow({
 												url: webview,
 												id: webview,
-												createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+												//createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 												show: {
 													autoShow: true, //页面loaded事件发生后自动显示，默认为true
 													aniShow: 'none'
+												},
+												extras: {
+													refresh: true
 												},
 												waiting: {
 													autoShow: true //自动显示等待框，默认为true
@@ -880,10 +884,13 @@
 										mui.openWindow({
 											url: webview,
 											id: webview,
-											createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+											//createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 											show: {
 												autoShow: true, //页面loaded事件发生后自动显示，默认为true
 												aniShow: 'none'
+											},
+											extras: {
+												refresh: true
 											},
 											waiting: {
 												autoShow: true //自动显示等待框，默认为true
@@ -1225,8 +1232,6 @@
 							});
 							var openw = plus.webview.getWebviewById(webview);
 							if(openw) {
-								var state1 = app.getState();
-						        getcartnumabs(state1.token);
 								mui.fire(openw, 'refresh');
 							}
 						}
