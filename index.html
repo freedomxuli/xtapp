@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 	<head>
@@ -7,8 +7,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/widgets.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/widgets.css" />
+		<link rel="stylesheet" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
 	</head>
 
 	<style>
@@ -18,6 +20,17 @@
 			vertical-align: middle
 		}
 		
+		.img-back {
+			height: 1rem;
+			width: 0.6rem;
+			line-height: 1rem;
+			display: none;
+		}
+		
+		.img-padding {
+			margin: 0rem 0.5rem 0rem 0.5rem;
+		}
+		
 		.sel-icon {
 			height: 3rem !important;
 			width: 3rem !important;
@@ -25,7 +38,7 @@
 			margin: 0 auto;
 			text-align: center;
 			position: relative;
-			left: 1.39rem
+			left: 1.39rem;
 		}
 		
 		.menu {
@@ -79,311 +92,338 @@
 			color: #e35d4c;
 			border-bottom: 2px solid #E35D4C;
 		}
+		
+		.mui-col-xs-6 {
+			width: 33%;
+		}
+		
+		header.home-header {
+			/*background-color: rgba(217, 46, 46, 0);*/
+		}
+		
+		header.head-color {
+			background-color: rgba(217, 46, 46, 0);
+		}
+		
+		header.home-color1 {
+			background-color: #d92e2e !important;
+		}
+		
+		.flex {
+			display: flex;
+		}
+		
+		.rxcp-left {
+			flex: 1;
+			padding: 10px 3px 0px 10px;
+			position: relative;
+		}
+		
+		.rxcp-right {
+			flex: 1;
+			padding: 10px 10px 0px 3px;
+			position: relative;
+		}
+		
+		.rxcp-middle {
+			flex: 1;
+			padding: 5px 10px;
+			position: relative;
+		}
+		
+		.img-all {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.img-half {
+			width: 100%;
+			height: 50%;
+		}
+		
+		.type-name1 {
+			position: absolute;
+			width: 4rem;
+			height: 25px;
+			z-index: 2;
+			left: 0.4rem;
+			bottom: 0.8rem;
+			background: #C9C9C9;
+			color: #ffffff;
+			line-height: 25px;
+			text-align: center;
+		}
+		
+		.type-name2 {
+			position: absolute;
+			width: 5rem;
+			height: 25px;
+			z-index: 2;
+			left: 0.8rem;
+			bottom: 0.8rem;
+			background: #C9C9C9;
+			color: #ffffff;
+			line-height: 25px;
+			text-align: center;
+		}
+		
+		.type-name3 {
+			position: absolute;
+			width: 40%;
+			height: 25px;
+			z-index: 2;
+			left: 10px;
+			top: 36%;
+			background: #C9C9C9;
+			color: #ffffff;
+			line-height: 25px;
+			text-align: center;
+		}
+		
+		.jgzd-right {
+			margin-right: -10px;
+		}
+		
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+			color: #E35D4C;
+			background: none;
+			border-bottom: 2px solid #E35D4C;
+		}
+		
+		.header-search {
+			padding-left: 0rem !important;
+		}
+		
+		.search-class1 {
+			background-color: #d92e2e !important;
+		}
+		
+		.search-class {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			align-content: center;
+		}
+		
+		.search-input {
+			flex: 5;
+			border-top-left-radius: 0px !important;
+			border-bottom-left-radius: 0px !important;
+			border-bottom-right-radius: 3px !important;
+			border-top-right-radius: 3px !important;
+			border: 0px;
+			background: rgba(255, 255, 255, 0.2) !important;
+			/*opacity: 0.2;*/
+			color: #FFFFFF !important;
+		}
+		
+		.search-select {
+			flex: 1;
+			height: 2rem !important;
+			padding: 7px 10px 10px 10px !important;
+			border: 0px;
+			border-top-left-radius: 3px !important;
+			border-bottom-left-radius: 3px !important;
+			border-bottom-right-radius: 0px !important;
+			border-top-right-radius: 0px !important;
+			background: rgba(255, 255, 255, 0.2) !important;
+			color: #FFFFFF !important;
+		}
+		
+		.search-img {
+			width: 0.8rem;
+			margin-bottom: 2px;
+			margin-left: 3px;
+		}
+		
+		.search-img2 {
+			height: 1rem;
+			margin-left: 0.2rem;
+		}
+		
+		.search-fgf-img {
+			height: 1rem;
+			width: 0.1rem;
+			color: #FFFFFF;
+			margin-left: 0.2rem;
+		}
+		
+		.search-input::-webkit-input-placeholder {
+			color: #FFFFFF !important;
+		}
+		
+		input::-ms-input-placeholder {
+			text-align: left;
+		}
+		
+		input::-webkit-input-placeholder {
+			text-align: left;
+		}
+		
+		.mui-control-content {
+			/*background-color: white;*/
+			min-height: 215px;
+		}
+		
+		.mui-control-content .mui-loading {
+			margin-top: 50px;
+		}
+		
+		.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+			border-top: none;
+			border-bottom: none;
+		}
+		
+		.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+			padding: 0 15px !important;
+		}
+		
+		.box-display {
+			display: flex;
+		}
+		
+		.box-item-flex1 {
+			flex: 1;
+		}
+		
+		.pm_name {
+			height: 2rem;
+			font-size: 0.8rem;
+			display: -webkit-box;
+			-webkit-box-pack: center;
+			-webkit-box-align: left;
+			-webkit-box-orient: vertical;
+		}
+		
+		.guige {
+			height: 2rem;
+			font-size: 0.7rem;
+			line-height: 2rem;
+			font-family: 'arial rounded mt bold';
+		}
 	</style>
 
 	<body>
-		<header class="home-header">
-			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
-				<img class="header-icon" src="img/index/phone.png" />
+		<header id="head-search" class="mui-bar mui-bar-transparent home-header head-color">
+			<i class="search-hide icon-func bbc-icon">
+				<a href="#picture"><img class="header-icon" src="../img/index/phone.png" /></a>
 			</i>
 			<div class="main">
-
 				<form onsubmit="return false;">
-					<div class="mui-input-row header-search-form">
-						<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search mui-input-clear" placeholder="搜索钢材"></div>
+					<div class="mui-input-row header-search-form search-class">
+						<img class="img-back img-padding" src="../img/index/back.png" />
+						<button id='showUserPicker' class="search-select" type='button'>
+							<span id="search-span">全部</span>
+							<img class="search-img" src="../img/index/downicon.png" />
+							<img class="search-fgf-img" src="../img/index/fgf.png" />
+							<img class="search-img2" src="../img/index/search.png" />
+						</button>
+						<!--<img class="search-fgf-img" src="../img/index/fgf.png" />-->
+						<input type="search" onfocus="toSearchByMy(this,'_www/view/category/categorysearch.html','','','')" class="header-search search-input" placeholder="搜索炉料">
+						<!--<input type="search" onfocus="toSearch(this,'_www/view/list/goods.html')" class="header-search search-input" placeholder="搜索钢材">-->
+					</div>
 				</form>
 			</div>
 			<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
-				<i class="search-hide icon-func bbc-icon" data-webview="_www/view/qrcode/barcode_scan.html">
-				<img class="header-icon" src="img/index/message.png" />
+				<img class="header-icon" src="../img/index/message.png" />
 			</i>
-			</i>
-			<a href="#" class="txt-func search-cancel" style="display:none;">取消</a>
+			<a href="#" class="txt-func search-cancel" style="display:none;color:white">取消</a>
 		</header>
-		<div class="mui-slider">
-			<div class="mui-slider-group">
-				<div class="mui-slider-item">
-					<a href="#"><img src="img/index/_banner.png" /></a>
-				</div>
-				<div class="mui-slider-item">
-					<a href="#"><img src="img/index/_banner.png" /></a>
-				</div>
-				<div class="mui-slider-item">
-					<a href="#"><img src="img/index/_banner.png" /></a>
-				</div>
-				<div class="mui-slider-item">
-					<a href="#"><img src="img/index/_banner.png" /></a>
-				</div>
-			</div>
-		</div>
-		<div style="height:0.34rem;background-color: #f0eff5;"></div>
-		<section class="section-white">
-			<div style="height:0.69rem;background-color:#FFFFFF;"></div>
-			<div class="box-display menu">
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="img/index/llsc.png" />
-					<div class="menu-name">炉料商城</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/gxzy.png" />
-					<div class="menu-name">共享资源</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/lljr.png" />
-					<div class="menu-name">炉料金融</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/llzx.png" />
-					<div class="menu-name">炉料资讯</div>
-				</a>
-				<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
-			</div>
-
-			<div class="box-display menu menu-top">
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 action-clickview content-center font-gray-20"><img class="sel-icon" src="img/index/zxhd.png" />
-					<div class="menu-name">最新活动</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/llzs.png" />
-					<div class="menu-name">炉料指数</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/xxwl.png" />
-					<div class="menu-name">线下网络</div>
-				</a>
-				<a data-needlog="true" data-view="_www/view/member/trade/trade.html" class="box-item-flex1 content-center action-clickview font-gray-20"><img class="sel-icon" src="img/index/qggy.png" />
-					<div class="menu-name">求购供应</div>
-				</a>
-				<!--<a data-needlog="true" data-view="_www/view/member/trade/canceled.html" class="box-item-flex1 content-center action-clickview font-gray-20"><i class="bbc-icon bbc-icon-history-gap"><span id="canceled_num" class="mui-badge bbc-badge" style="display: none">3</span></i><br>已取消</a>-->
-			</div>
-			<div style="height:0.5rem;background-color:#FFFFFF;"></div>
-		</section>
-		<section class="section-white">
-			<div class="section-title user-title title">
-				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-				<div class="title-txt title-txt-padding">
-
-					<span class="lbm-font">合作厂家</span></div>
-				<div class="more-link">
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-			</div>
-			<div class="box-display content-vertical-padded fontS">
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="img/index/ztgt.png" /></a>
-				<div style="width:1rem"></div>
-				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
-				<div style="width:1rem"></div>
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="img/index/bgjt.png" /></a>
-				<div style="width:1rem"></div>
-				<div style="width:1px;height:3rem;border-left: 1px solid #efefef;"></div>
-				<div style="width:1rem"></div>
-				<a><img style="width:5.6rem;height:3.2rem;margin-top:0.5rem;" src="img/index/xxzg.png" /></a>
-		</section>
-
-		<section class="section-white">
-			<div class="section-title user-title title">
-				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-				<div class="title-txt title-txt-padding">
-
-					<span class="lbm-font">价格指导</span></div>
-				<div class="more-link">
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-			</div>
-			<div class="box-display jgzd-tab">
-				<a class="box-item-flex1 content-center select"><span>生铁</span></a>
-				<a class="box-item-flex1 content-center"><span>废钢</span></a>
-				<a class="box-item-flex1 content-center"><span>增碳剂</span></a>
-				<a class="box-item-flex1 content-center"><span>铁合金</span></a>
-				<a class="box-item-flex1 content-center"><span>孕育剂</span></a>
-				<a class="box-item-flex1 content-center"><span>其他辅料</span></a>
-			</div>
-		</section>
-		<section>
-			<div style="position:relative">
-				<div style="left:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="img/index/left.png" /></div>
-				<div style="right:0;top:38%;position:absolute;"><img style="width:1.4rem;height:3.2rem" src="img/index/right.png" /></div>
-				<div class="box-display" style="height:6rem;">
-					<div class="box-item-flex1 " style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-						<div class="box-display ">
-							<div class="box-item-flex1" style="padding-left: 0.5rem;">
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-							</div>
-							<div class="box-item-flex1">
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="img/index/zhang.png" /></div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
-							</div>
-						</div>
-					</div>
-					<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-						<div class="box-display ">
-							<div class="box-item-flex1" style="padding-left: 0.5rem;">
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-							</div>
-							<div class="box-item-flex1">
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #6d6d6d;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:1rem;height:0.5rem;float:left;margin-top:0.6rem;margin-left:0.2rem" src="img/index/ping.png" /></div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">+0 +0.00%</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
-					<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
-						<div class="box-display ">
-							<div class="box-item-flex1" style="padding-left: 0.5rem;">
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-							</div>
-							<div class="box-item-flex1">
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #509c2f;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="img/index/die.png" /></div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
-							</div>
-						</div>
-					</div>
-					<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
-						<div class="box-display ">
-							<div class="box-item-flex1" style="padding-left: 0.5rem;">
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">博丰生铁</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">球铁</div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">Z18</div>
-							</div>
-							<div class="box-item-flex1">
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">11-27 10:00</div>
-								<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #E35D4C;font-family: 'arial rounded mt bold';float:left">3300</span><img style="width:0.8rem;height:0.8rem;float:left;margin-top:0.45rem;margin-left:0.2rem" src="img/index/zhang.png" /></div>
-								<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #E35D4C;">+50 +1.02%</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="section-white">
-			<div class="section-title user-title title">
-				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
-				<div class="title-txt title-txt-padding">
-					<span class="lbm-font">热销产品</span></div>
-				<div class="more-link">
-					<a data-needlog="true" data-view="_www/view/member/trade/trade.html" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>　<i class="bbc-icon bbc-icon-forward"></i></div>
-			</div>
-			<div class="box-display" style="margin-top: 0.5rem;margin-left: 0.3rem">
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 12rem;" src="img/index/st.png" />
-				</div>
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 5.8rem;" src="img/index/fg.png" />
-					
-				 <img style="width: 10.8rem;height: 5.5rem;margin-top: 0.5rem;" src="img/index/ztj.png" />
-				</div>
-			</div>
+		<section id="context">
 			
-				<div class="box-display" style="margin-top: 0.3rem;margin-left: 0.3rem">
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 6rem;" src="img/index/thj.png" />
+		<div id="main-content1">
+
+		</div>
+		<div id="main-content2">
+
+		</div>
+		<div id="main-jgzd">
+
+		</div>
+		<div id="main-content3">
+
+			<div id="slider_jgzd" class="mui-slider">
+				<div id="sliderSegmentedControl" class="section-white mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+					</div>
 				</div>
-				<div class="box-item-flex1">
-					<img style="width: 10.8rem;height: 6rem;" src="img/index/yyj.png" />
-			
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
+				<div class="mui-slider-group" id="sliderSegmentedControl2" style="margin-top:10px;">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+
+					</div>
 				</div>
+
 			</div>
-			<div style="margin-top: 0.3rem;margin-left:0.3rem;">
-				<img style="width: 22rem;height: 10rem;" src="img/index/qtfl.png" />
-			</div>
+		</div>
+		<div id="main-content4">
+
+		</div>
+
+		<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a id="telephone">服务热线：0519-86558808</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#picture"><b>取消</b></a>
+				</li>
+			</ul>
+		</div>
+		
 		</section>
-		<div style="height:3rem"></div>
-		<!--<div style="height:12rem;background-color:#FFFFFF;">
-	<div style="height:2.8rem">
-		<div style="width:3.4rem;margin-left:1.74rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-	</div>
-	
-	<div style="height:2.8rem">
-		<div style="width:3.4rem;margin-left:1.74rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-		<div style="width:3.4rem;margin-left:1.97rem;float:left">
-			<img style="width:3rem;height:3rem;margin-top:0.69rem;" src="img/index/llsc.png" />
-			<span style="font-family: '微软雅黑';font-size:0.8rem;color:#222222">炉料商城</span>
-		</div>
-	</div>
-</div>-->
-		<!--<div class="container">
-			<div class="mui-scroll-wrapper bbc-pullrefresh-top">
-				<div class="mui-scroll">
-					<div class="mui-content content-bottom-padded-nav"></div>
-				</div>
-			</div>
-		</div>-->
 		<nav class="mui-bar bbc-bar-tab">
-			<a class="bbc-tab-item bbc-active">
-				<span class="mui-icon bbc-icon bbc-icon-home"></span>
+			<a class="bbc-tab-item bbc-active" data-webview="_www/view/index.html">
+				<span class="mui-icon icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
-				<span class="mui-icon bbc-icon bbc-icon-category-empty"></span>
+				<span class="mui-icon icon-category"></span>
 				<span class="mui-tab-label">现货商城</span>
 			</a>
-			<a class="bbc-tab-item" data-webview="_www/view/category/category.html">
-				<span class="mui-icon bbc-icon bbc-icon-share"></span>
+			<a class="bbc-tab-item" data-webview="_www/view/item/shareresource.html">
+				<span class="mui-icon icon-share"></span>
 				<span class="mui-tab-label">共享资源</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/cart/cart.html">
-				<span class="mui-icon bbc-icon bbc-icon-cart-empty"></span>
+				<span class="mui-icon icon-cart"><span class="cart_bottom_num_abs"></span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="bbc-tab-item" data-webview="_www/view/member/member.html">
-				<span class="mui-icon bbc-icon bbc-icon-user-empty"></span>
+				<span class="mui-icon icon-user"></span>
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</nav>
-		<script src="js/zepto.js"></script>
-		<script src="js/mui.min.js"></script>
-		<script src="js/template.min.js"></script>
-		<script src="config.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/mipush.js"></script>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/template.min.js"></script>
+		<script src="../config.js"></script>
+		<script src="../js/app.js"></script>
+		<!--<script src="../js/mipush.js"></script>-->
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
 
 		<script type="text/html" id="widget_slider">
 			<div id="slider" class="mui-slider">
-				<div class="mui-slider-group mui-slider-loop widgets-slider">
+				<div class="mui-slider-group mui-slider-loop">
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a class="action-webview" data-webview="<%= pic[pic.length-1].webview %>" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[pic.length-1].webparam) %>'>
 							<img src="<%= pic[pic.length-1].imagesrc %>">
 						</a>
 					</div>
 					<% for(var i in pic) { %>
 					<div class="mui-slider-item">
-						<a class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[i].webparam) %>'>
 							<img src="<%= pic[i].imagesrc %>">
 						</a>
 					</div>
 					<% } %>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a class="action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
+						<a class="action-webview" data-webparam='<%= $json_string(pic[0].webparam) %>'>
 							<img src="<%= pic[0].imagesrc %>">
 						</a>
 					</div>
@@ -394,181 +434,943 @@
 					<% } %>
 				</div>
 			</div>
+
+			<div style="height:0.34rem;background-color: #f0eff5;"></div>
 		</script>
 
 		<script type="text/html" id="widget_icons_nav">
 			<section>
 				<ul class="widgets-icons-nav">
-					<% for(var i in pic) { %>
+					<!--<% for(var i in pic) { %>
 					<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'><i><a href="#"><img src="<%= pic[i].imagesrc %>"></a></i><span><%= pic[i].tag %></span></li>
-					<% } %>
+					<% } %>-->
+					<li class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'><i><a href="#"><img src="<%= pic[0].imagesrc %>"></a></i><span><%= pic[0].tag %></span></li>
+					<li id="gxzy" class="action-webview" data-webview="_www/view/item/shareresource.html" data-webparam=''><i><a href="#"><img src="<%= pic[1].imagesrc %>"></a></i><span><%= pic[1].tag %></span></li>
+					<li id="lljr" class="action-webview" data-webview="_www/view/item/financenew.html" data-webparam=''><i><a href="#"><img src="<%= pic[2].imagesrc %>"></a></i><span><%= pic[2].tag %></span></li>
+					<li id="llzx" class="action-webview" data-webview="_www/view/item/information_list.html" data-webparam='{"node_id": "<%=pic[3].webparam.nodeid%>"}'><i><a href="#"><img src="<%= pic[3].imagesrc %>"></a></i><span><%= pic[3].tag %></span></li>
+					<li id="zxhd" class="action-webview" data-webview="_www/view/item/activity.html" data-webparam=''><i><a href="#"><img src="<%= pic[4].imagesrc %>"></a></i><span><%= pic[4].tag %></span></li>
+					<li id="llzs" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-webparam=''><i><a href="#"><img src="<%= pic[5].imagesrc %>"></a></i><span><%= pic[5].tag %></span></li>
+					<li id="xxwl" class="action-webview" data-webview="_www/view/item/offlinenetwork.html" data-webparam=''><i><a href="#"><img src="<%= pic[6].imagesrc %>"></a></i><span><%= pic[6].tag %></span></li>
+					<li id="qggy" class="action-webview" data-webview="_www/view/item/supplynew.html" data-webparam=''><i><a href="#"><img src="<%= pic[7].imagesrc %>"></a></i><span><%= pic[7].tag %></span></li>
 				</ul>
 			</section>
 		</script>
 
-		<script type="text/html" id="widget_single_pic">
-			<section class="single-img action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>
-				<img src="<%= imagesrc %>">
-			</section>
-		</script>
+		<script type="text/html" id="widget_manufacturers">
+			<section class="section-white">
+				<div class="section-title user-title title">
+					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+					<div class="title-txt title-txt-padding">
 
-		<script type="text/html" id="widget_double_pics">
-			<section class="widgets-double-pics">
-				<div class="pics-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-					<a><img src="<%= pic[0].imagesrc %>"></a>
+						<span class="lbm-font">合作厂家</span></div>
+					<div id="hzcj" class="more-link action-webview" data-webview="_www/view/item/merchants.html">
+						<a class="action-clickview font-gray-40" style="margin-right: -10px;">更多</a>&nbsp;&nbsp;&nbsp;<i class="bbc-icon bbc-icon-forward"></i></div>
 				</div>
-				<div class="pics-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-					<a><img src="<%= pic[1].imagesrc %>"></a>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_floor_one">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-inline">
-					<div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-						<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
-					</div>
-					<div class="showarea-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-						<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-					</div>
-				</div>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_floor_two">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-group">
-					<div class="showarea-item-ingroup">
-						<div class="item-ingroup-top action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-							<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
+				<div id="hzcj_slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<ul class="mui-table-view mui-grid-view">
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[data.length-1].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-1].manufacturers_logo%>" />
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[data.length-2].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-2].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[data.length-3].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[data.length-3].manufacturers_logo%>" /></a>
+								</li>
+							</ul>
 						</div>
-						<div class="item-ingroup-bottom">
-							<div class="ingroup-item action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-								<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-							</div>
-							<div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
-								<a href="#"><img src="<%= pic[2].imagesrc %>"></a>
-							</div>
+						<%
+							for(var i=0;i<data.length;i=i+3){
+								%>
+						<div class="mui-slider-item">
+							<ul class="mui-table-view mui-grid-view">
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[i].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[i].manufacturers_logo%>" />
+									</a>
+								</li>
+								<%
+										if((i+1)>=data.length){
+									%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[0].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[1].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[1].manufacturers_logo%>" /></a>
+								</li>
+								<%
+								}
+								else{
+									%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[i+1].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[i+1].manufacturers_logo%>" /></a>
+								</li>
+								<%
+									if((i+2)>=data.length){
+										%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[0].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" /></a>
+								</li>
+								<%
+								}
+											else{
+												%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[i+2].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[i+2].manufacturers_logo%>" /></a>
+								</li>
+								<%
+											}
+									}
+								%>
+
+							</ul>
+						</div>
+						<%
+							}
+						%>
+
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<ul class="mui-table-view mui-grid-view">
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[0].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[0].manufacturers_logo%>" />
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[1].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[1].manufacturers_logo%>" /></a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='<%= $json_string(data[2].webparam)%>'>
+									<a href="#"><img class="mui-media-object" src="<%=data[2].manufacturers_logo%>" /></a>
+								</li>
+							</ul>
 						</div>
 					</div>
-					<div class="showarea-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
-						<a href="#"><img src="<%= pic[3].imagesrc %>"></a>
-					</div>
+
 				</div>
+
 			</section>
 		</script>
 
-		<script type="text/html" id="widget_floor_three">
-			<section class="widgets-floor section-white">
-				<div class="section-title">
-					<div class="title-txt">
-						<%= title %>
-					</div>
-					<div class="more-link action-webview" data-webview="<%= webview %>" data-webparam='<%= $json_string(webparam) %>'>查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
-				</div>
-				<div class="floor-container floor-showarea-group">
-					<div class="showarea-item action-webview" data-webview="<%= pic[0].webview %>" data-webparam='<%= $json_string(pic[0].webparam) %>'>
-						<a href="#"><img src="<%= pic[0].imagesrc %>"></a>
-					</div>
-					<div class="showarea-item-ingroup">
-						<div class="item-ingroup-top action-webview" data-webview="<%= pic[1].webview %>" data-webparam='<%= $json_string(pic[1].webparam) %>'>
-							<a href="#"><img src="<%= pic[1].imagesrc %>"></a>
-						</div>
-						<div class="item-ingroup-bottom">
-							<div class="ingroup-item action-webview" data-webview="<%= pic[2].webview %>" data-webparam='<%= $json_string(pic[2].webparam) %>'>
-								<a href="#"><img src="<%= pic[2].imagesrc %>"></a>
-							</div>
-							<div class="ingroup-item action-webview" data-webview="<%= pic[3].webview %>" data-webparam='<%= $json_string(pic[3].webparam) %>'>
-								<a href="#"><img src="<%= pic[3].imagesrc %>"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+		<script type="text/javascript" id="priceguide0">
+			<div class="section-title user-title title section-white">
+				<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"> </div>
+				<div class="title-txt title-txt-padding">
+
+					<span class="lbm-font">价格指导</span></div>
+				<div class="more-link action-webview" data-webview="_www/view/item/goodsindex.html">
+					<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px">更多</a>&nbsp;&nbsp;&nbsp;<i class="bbc-icon bbc-icon-forward"></i></div>
+			</div>
 		</script>
 
-		<script type="text/html" id="widget_category_nav">
-			<section class="widgets-category-nav section-white">
-				<div class="section-title">
-					<div class="title-txt">商品分类</div>
-					<div class="more-link action-webview" data-webview="_www/view/category/category.html">查看更多<i class="bbc-icon bbc-icon-forward"></i></div>
+		<script type="text/html" id="priceguide1">
+			<% for(var i in data) { %>
+			<a class="mui-control-item <%= (i==0) ? 'mui-active' : ' ' %>" href="#item<%=i%>mobile">
+				<%=data[i].cat_name%>
+			</a>
+			<%}%>
+		</script>
+
+		<script type="text/html" id="priceguide2">
+			<% for(var i in data) { %>
+			<div id="item<%=i%>mobile" class="mui-slider-item mui-control-content <%= (i==0) ? 'mui-active' : ' ' %>">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="mui-slider jgzd-slider<%=i%>">
+							<div class="mui-slider-group mui-slider-loop" id="sider<%=i%>">
+							</div>
+						</div>
+					</div>
 				</div>
-				<ul class="category-nav-list">
-					<% for(var i in pic) { %>
-					<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
-						<div class="nav-items">
-							<div class="category-nav-txt">
-								<div>
-									<p class="category-name">
-										<%= pic[i].categoryname %>
-									</p>
-									<p class="category-sub-des">
-										<%= pic[i].linkinfo %>
-									</p>
+			</div>
+			<%}%>
+		</script>
+
+		<script type="text/html" id="priceguide3">
+
+			<%
+								if(data.length>4){
+									if(data.length%4==0){
+									%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
 								</div>
-							</div>
-							<div class="category-thumb-img">
-								<a href="#"><img src="<%= pic[i].imagesrc %>" alt=""></a>
-							</div>
-						</div>
-					</li>
-					<% } %>
-				</ul>
-			</section>
-		</script>
-
-		<script type="text/html" id="widget_goods_like">
-			<section class="widgets-goods-like">
-				<div class="widgets-goods-like-header">
-					<span>猜你喜欢</span>
-				</div>
-				<div class="mui-table-view">
-					<ul class="pro-list-grid">
-						<% for(var i in pic) { %>
-						<li class="action-webview" data-webview="<%= pic[i].webview %>" data-webparam='<%= $json_string(pic[i].webparam) %>'>
-							<div class="thumbnail">
-								<div class="thumb-img">
-									<a href="#"><img src="<%= object[i].imagesrc %>" alt=""></a>
-								</div>
-								<div class="caption">
-									<h1 class="goods-title"><span class="tag"><%= pic[i].promotion %></span><%= pic[i].title %></h1>
-									<div class="price">
-										<div class="amount CNY">
-											<%= pic[i].price %>
-										</div>
-										<div class="purchased">已有
-											<%= pic[i].num %>人购买</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
 									</div>
 								</div>
 							</div>
-						</li>
-						<% } %>
-					</ul>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:<%=data[data.length-4+3].width%>rem;height:<%=data[data.length-4+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+3].color%>;">
+										<%=data[data.length-4+3].priceResult%>
+										<%=data[data.length-4+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==1){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==2){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length%4==3){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+								}
+							%>
+
+			<%
+	for(var i=0;i<data.length;i=i+4){
+		%>
+			<div class="mui-slider-item">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i].current_price%></span><img style="width:<%=data[i].width%>rem;height:<%=data[i].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i].color%>;">
+										<%=data[i].priceResult%>
+										<%=data[i].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<%
+													if((i+1)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+1].current_price%></span><img style="width:<%=data[i+1].width%>rem;height:<%=data[i+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+1].color%>;">
+										<%=data[i+1].priceResult%>
+										<%=data[i+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+												%>
+
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+						<%
+													if((i+2)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+2].current_price%></span><img style="width:<%=data[i+2].width%>rem;height:<%=data[i+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+2].color%>;">
+										<%=data[i+2].priceResult%>
+										<%=data[i+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';">
+
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #6d6d6d;">
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+												%>
+
+						<%
+													if((i+3)<data.length){
+														%>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[i+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[i+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[i+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[i+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[i+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[i+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[i+3].current_price%></span><img style="width:<%=data[i+3].width%>rem;height:<%=data[i+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[i+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[i+3].color%>;">
+										<%=data[i+3].priceResult%>
+										<%=data[i+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+													}
+													else{
+														%>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+						<%
+													}
+												%>
+					</div>
+				</div>
+			</div>
+			<%
+	}
+
+								if(data.length>4){
+									%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[0].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[0].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[0].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[0].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[0].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[0].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[0].current_price%></span><img style="width:<%=data[0].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[0].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[0].color%>;">
+										<%=data[0].priceResult%>
+										<%=data[0].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[1].current_price%></span><img style="width:<%=data[1].width%>rem;height:<%=data[1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[1].priceResult%>
+										<%=data[1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[2].current_price%></span><img style="width:<%=data[2].width%>rem;height:<%=data[2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[2].priceResult%>
+										<%=data[2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[3].current_price%></span><img style="width:<%=data[3].width%>rem;height:<%=data[3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[1].color%>;">
+										<%=data[3].priceResult%>
+										<%=data[3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+								}
+							%>
+
+		</script>
+
+		<script type="text/html" id="widget_rxcp">
+
+			<section class="section-white">
+				<div class="section-title user-title title">
+					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+					<div class="title-txt title-txt-padding">
+						<span class="lbm-font">热销产品</span></div>
+					<div class="more-link action-webview" data-webview="_www/view/category/category.html">
+						<a data-needlog="true" class="action-clickview font-gray-40" style="margin-right:-10px" data-param='{"tab": ""}' class="action-clickview font-gray-40">更多</a>&nbsp;&nbsp;&nbsp;<i class="bbc-icon bbc-icon-forward"></i></div>
+				</div>
+
+				<div style="display:flex;padding:3px 6px;">
+					<div style="flex:1;margin-right:3px;position:relative;">
+						<%
+							if(pic.length>0){
+						%>
+						<img style="width:100%;height:95%" src="../img/index/st.png" class="action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[0].webparam.catid%>"}' src="<%=pic[0].imagesrc%>" />
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "1"}' src="<%=pic[0].imagesrc%>">
+							生铁
+						</div>
+						<%
+						}
+						%>
+					</div>
+					<div style="flex:1;margin-left:3px;display:flex;flex-direction: column;">
+						<div style="flex:1;position:relative;">
+							<%
+							if(pic.length>1){
+						%>
+							<img style="width:100%;height:100%" class="action-webview" src="../img/index/fg.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[1].webparam.catid%>"}' src="<%=pic[1].imagesrc%>" />
+							<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "2"}' src="<%=pic[1].imagesrc%>">
+								废钢
+							</div>
+							<%
+						}
+						%>
+						</div>
+						<div style="flex:1;position:relative;">
+							<%
+							if(pic.length>2){
+						%>
+							<img style="width:100%;height:100%" class="action-webview" src="../img/index/ztj.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[2].webparam.catid%>"}' src="<%=pic[2].imagesrc%>" />
+							<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "72"}' src="<%=pic[2].imagesrc%>">
+								增碳剂
+							</div>
+							<%
+						}
+						%>
+						</div>
+					</div>
+				</div>
+
+				<div style="display:flex;padding:0px 6px;">
+					<div style="flex:1;margin-right:3px;position:relative;">
+						<%
+							if(pic.length>3){
+						%>
+						<img style="width:100%;height:100%" class="action-webview" src="../img/index/thj.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[3].webparam.catid%>"}' src="<%=pic[3].imagesrc%>" />
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "3"}' src="<%=pic[3].imagesrc%>">
+							铁合金
+						</div>
+						<%
+						}
+						%>
+					</div>
+					<div style="flex:1;margin-left:3px;position:relative;">
+						<%
+							if(pic.length>4){
+						%>
+						<img style="width:100%;height:100%" class="action-webview" src="../img/index/qtfl1.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[4].webparam.catid%>"}' src="<%=pic[4].imagesrc%>" />
+						<div class="type-name1 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "4"}' src="<%=pic[4].imagesrc%>">
+							其他辅料
+						</div>
+						<%
+						}
+						%>
+					</div>
+				</div>
+
+				<div style="display:flex;padding:3px 6px;position:relative;">
+					<%
+							if(pic.length>5){
+						%>
+					<img style="width:100%;height:100%" class="action-webview" src="../img/index/yyj1.png" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "<%=pic[5].webparam.catid%>"}' src="<%=pic[5].imagesrc%>" />
+					<div class="type-name2 action-webview" data-webview="_www/view/category/categorysearch.html" data-webparam='{"category": "","keyword": "","manufacturers_id": "","cat_id": "38"}' src="<%=pic[5].imagesrc%>">
+						孕育剂
+					</div>
+					<%
+						}
+						%>
 				</div>
 			</section>
+			<div style="height:3rem"></div>
 		</script>
 
 		<script type="text/javascript">
 			mui.init({
-				swipeBack: true //启用右滑关闭功能
+				swipeBack: false //启用右滑关闭功能
 			});
-			var gallery = mui('.mui-slider');
+			var gallery = mui('#title_slider');
 			gallery.slider({
 				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 			});
+			var state = app.getState();
+			getcartnumabs(state.token);
+			setTimeout(function() {
+				var searchPicker = new mui.PopPicker();
+				searchPicker.setData([{
+						value: '全部',
+						text: '全部'
+					}, {
+						value: '品名',
+						text: '品名'
+					}, {
+						value: '规格',
+						text: '规格'
+					}, {
+						value: '交割库',
+						text: '交割库'
+					},
+					{
+						value: '厂家/产地',
+						text: '厂家/产地'
+					}
+				]);
+				var showUserPickerButton = document.getElementById('showUserPicker');
+				showUserPickerButton.addEventListener('tap', function(event) {
+					searchPicker.show(function(items) {
+						$('#search-span').html(items[0].text);
+						//userResult.innerText = JSON.stringify(items[0]);
+						//返回 false 可以阻止选择框的关闭
+						//return false;
+					});
+				}, false);
+			}, 500);
+
 			var param = {
 				queryData: {
 					'method': config.apimethod.home,
@@ -582,16 +1384,22 @@
 				for(var i = 0; i < data.length; i++) {
 					var tpl_id = '';
 					if(!isEmptyObject(data[i].params)) {
-						if(data[i].widget == 'floor') {
-							tpl_id = 'widget_' + data[i].widget + '_' + data[i].params.styletag;
-						} else {
-							tpl_id = 'widget_' + data[i].widget
+						if(data[i].widget == "slider" || data[i].widget == "icons_nav") {
+							if(data[i].widget == 'floor') {
+								tpl_id = 'widget_' + data[i].widget + '_' + data[i].params.styletag;
+							} else {
+								tpl_id = 'widget_' + data[i].widget
+							}
+							var widgets = template(tpl_id, data[i].params);
+							$('#main-content1').append(widgets);
+							mui('.mui-scroll-wrapper').scroll({
+								indicators: false
+							});
+						} else if(data[i].widget == "user_defined") {
+							var widgets = template('widget_rxcp', data[i].params);
+							$('#main-content4').append(widgets);
+
 						}
-						var widgets = template(tpl_id, data[i].params);
-						$('.mui-content').append(widgets);
-						mui('.mui-scroll-wrapper').scroll({
-							indicators: false
-						});
 					}
 				}
 				$('.header-logo img').attr('src', rs.data.brand_logo);
@@ -602,13 +1410,139 @@
 				});
 			});
 
+			var param = {
+				queryData: {
+					'method': config.apimethod.manufacturers
+				},
+				method: 'GET'
+			}
+
+			$.dataRequest(param, function(rs) {
+				var obj = {};
+				var arry = [];
+				for(var i in rs.data) {
+					rs.data[i].webparam = {
+						"category": "",
+						"keyword": "",
+						"manufacturers_id": rs.data[i].manufacturers_id,
+						"cat_id": ""
+					};
+					arry.push(rs.data[i]);
+				}
+				obj.data = arry;
+
+				var widgets = template('widget_manufacturers', obj);
+				$('#main-content2').append(widgets);
+
+				var gallery = mui("#hzcj_slider");
+				gallery.slider({
+					interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
+			});
+
+			setTimeout(function() {
+				var widgets = template('priceguide0', {});
+				$('#main-jgzd').append(widgets);
+			}, 1000)
+
+			param = {
+				queryData: {
+					'method': config.apimethod.priceguide
+				},
+				method: 'GET'
+			}
+
+			var slideNumber = 0;
+
+			document.getElementById('slider_jgzd').addEventListener('slide', function(e) {
+				slideNumber = e.detail.slideNumber
+			});
+			var jgzdData = [];
+			$.dataRequest(param, function(rs) {
+
+				widgets = template('priceguide1', rs);
+				$('#sliderSegmentedControl .mui-scroll').html(widgets);
+
+				widgets = template('priceguide2', rs);
+				$('#sliderSegmentedControl2').html(widgets);
+				for(var i in rs.data) {
+					var obj = {};
+					var arry = [];
+					for(var j in rs.data[i].priceTrend) {
+						rs.data[i].priceTrend[j].created_time = formatDateTime(rs.data[i].priceTrend[j].created_time);
+						if(rs.data[i].priceTrend[j].priceResult == 0) {
+							rs.data[i].priceTrend[j].width = 1;
+							rs.data[i].priceTrend[j].height = 0.4;
+							rs.data[i].priceTrend[j].color = '666666';
+							rs.data[i].priceTrend[j].pic = 'ping';
+						} else if(rs.data[i].priceTrend[j].priceResult > 0) {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = 'E35D4C';
+							rs.data[i].priceTrend[j].pic = 'zhang';
+							rs.data[i].priceTrend[j].priceResult = '+' + rs.data[i].priceTrend[j].priceResult;
+							rs.data[i].priceTrend[j].priceResultRate = '+' + rs.data[i].priceTrend[j].priceResultRate;
+						} else {
+							rs.data[i].priceTrend[j].width = 0.8;
+							rs.data[i].priceTrend[j].height = 0.6;
+							rs.data[i].priceTrend[j].color = '509c2f';
+							rs.data[i].priceTrend[j].pic = 'die';
+						}
+						rs.data[i].priceTrend[j].priceResultRate = rs.data[i].priceTrend[j].priceResultRate + '%';
+						rs.data[i].priceTrend[j].num = i;
+						arry.push(rs.data[i].priceTrend[j]);
+					}
+					jgzdData.push(arry.length);
+					obj.data = arry;
+
+					widgets = template('priceguide3', obj);
+
+					$('#sider' + i).html(widgets);
+				}
+			});
+			setTimeout(function() {
+				//mui('#slider3').slider().setStopped(true);
+				for(var i in jgzdData) {
+					var gallery = mui(".jgzd-slider" + i);
+					gallery.slider({
+						interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
+					});
+				}
+			}, 1000)
+			var itemNum = 0;
+			var page = 0;
+
+			setTimeout(function() {
+				//alert(jgzdData[slideNumber])
+				if(jgzdData[slideNumber] > 0)
+					page = parseInt(jgzdData[slideNumber] / 4);
+
+				$(".left-arrow").click(function() {
+					itemNum--;
+					if(itemNum < 0)
+						itemNum = page;
+					var gallery = mui(".jgzd-slider" + slideNumber);
+					gallery.slider().gotoItem(itemNum);
+
+				});
+
+				$(".right-arrow").click(function() {
+					itemNum++;
+					if(itemNum > page)
+						itemNum = 0;
+					var gallery = mui(".jgzd-slider" + slideNumber);
+					gallery.slider().gotoItem(itemNum);
+
+				});
+			}, 2000)
+
 			$('.bbc-tab-item').on('tap', function() {
 				var webview = $(this).data('webview');
 				if(webview) {
 					mui.openWindow({
 						url: webview,
 						id: webview,
-						createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+						createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
 						show: {
 							autoShow: true, //页面loaded事件发生后自动显示，默认为true
 							aniShow: 'none'
@@ -628,11 +1562,85 @@
 			});
 
 			mui.plusReady(function() {
+				
 				// Android处理返回键
 				plus.key.addEventListener('backbutton', function() {
 					plus.runtime.quit();
 				}, false);
+                plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
+
 			});
+
+			document.getElementById("telephone").addEventListener('tap', function() {
+				var btnArray = ['拨打', '取消'];
+				var phone = "0519-86558808";
+				//				mui.confirm('是否拨打' + phone + '?', '提示', btnArray, function(e) {
+				//					if(e.index == 0) {
+				plus.device.dial(phone, false);
+				//	}
+				//});
+			});
+
+			//			document.getElementById('llzs').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/goodsindex.html',
+			//					id: 'llzs'
+			//				});
+			//			});
+			//			document.getElementById('gxzy').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/shareresource.html',
+			//					id: 'gxzy'
+			//				});
+			//			});
+			//			document.getElementById('llzx').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/information_list.html',
+			//					id: 'llzx'
+			//				});
+			//			});
+			//
+			//			document.getElementById('zxhd').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/activity.html',
+			//					id: 'zxhd'
+			//				});
+			//			});
+			//			document.getElementById('lljr').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/finance.html',
+			//					id: 'lljr'
+			//				});
+			//			});
+			//			document.getElementById('xxwl').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/offlinenetwork.html',
+			//					id: 'xxwl'
+			//				});
+			//			});
+			//			document.getElementById('qggy').addEventListener('tap', function() {
+			//				mui.openWindow({
+			//					url: 'item/supply.html',
+			//					id: 'qggy'
+			//				});
+			//			});
+
+			function formatDateTime(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
+				var y = date.getFullYear();
+				var m = date.getMonth() + 1;
+				m = m < 10 ? ('0' + m) : m;
+				var d = date.getDate();
+				d = d < 10 ? ('0' + d) : d;
+				var h = date.getHours();
+				h = h < 10 ? ('0' + h) : h;
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				minute = minute < 10 ? ('0' + minute) : minute;
+				second = second < 10 ? ('0' + second) : second;
+				return m + '-' + d + ' ' + h + ':' + minute;
+			};
 		</script>
 	</body>
 
