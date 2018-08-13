@@ -1194,35 +1194,41 @@
 			}, false);
 
     	$('.bbc-tab-item').on('tap', function() {
-    		  setTimeout(function() {
-	            var service_comfirm = plus.webview.getWebviewById("_www/view/category/category.html");
-              plus.webview.close(service_comfirm, "none");
-              console.log(11);
-	        }, 300);
+    		  
 	        var webview = $(this).data('webview');
-	        if(webview) {
-	          if(webview) {
-	          	console.log(22);
-	            mui.openWindow({
-	              url: webview,
-	              id: webview,
-	              //createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-	              show: {
-	                autoShow: true, //页面loaded事件发生后自动显示，默认为true
-	                aniShow: 'none'
-	              },
-	              extras: {
-									refresh: true
-								},
-	              waiting: {
-	                autoShow: true //自动显示等待框，默认为true
-	              }
-	            });
-	            var openw = plus.webview.getWebviewById(webview);
-	            if(openw) {
-	              mui.fire(openw, 'refresh');
-	            }
-	          }
+	        if(webview!="_www/view/category/category.html")
+	        {
+	        	setTimeout(function() {
+		            var service_comfirm = plus.webview.getWebviewById("_www/view/category/category.html");
+	              plus.webview.close(service_comfirm, "none");
+		        }, 300);
+		        if(webview) {
+		          if(webview) {
+		            mui.openWindow({
+		              url: webview,
+		              id: webview,
+		              //createNew: true, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+		              show: {
+		                autoShow: true, //页面loaded事件发生后自动显示，默认为true
+		                aniShow: 'none'
+		              },
+		              extras: {
+										refresh: true
+									},
+		              waiting: {
+		                autoShow: true //自动显示等待框，默认为true
+		              }
+		            });
+		            var openw = plus.webview.getWebviewById(webview);
+		            if(openw) {
+		              mui.fire(openw, 'refresh');
+		            }
+		          }
+		        }
+	        }
+	        else
+	        {
+	        	plus.webview.currentWebview().reload(true);
 	        }
 	     });
 
