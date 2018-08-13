@@ -1338,6 +1338,10 @@
 			}, false);
 			
     	$('.bbc-tab-item').on('tap', function() {
+    		  setTimeout(function() {
+	            var service_comfirm = plus.webview.getWebviewById("_www/view/category/categorysearch.html");
+              plus.webview.close(service_comfirm, "none");
+	        }, 300);
 	        var webview = $(this).data('webview');
 	        if(webview) {
 	          if(webview) {

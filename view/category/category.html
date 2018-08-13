@@ -784,11 +784,12 @@
       setTimeout(function(){
       	mui.plusReady(function() {
       	window.addEventListener('refresh', fetchList);
-				fetchList();
+				//fetchList();
 
 				function fetchList() {
 					var state1 = app.getState();
 					getcartnumabs(state1.token);
+					//plus.webview.currentWebview().reload(true);
 				}
       	wid = plus.webview.currentWebview().id;
 		    var deceleration = mui.os.ios ? 0.003 : 0.0009;
@@ -1193,9 +1194,15 @@
 			}, false);
 
     	$('.bbc-tab-item').on('tap', function() {
+    		  setTimeout(function() {
+	            var service_comfirm = plus.webview.getWebviewById("_www/view/category/category.html");
+              plus.webview.close(service_comfirm, "none");
+              console.log(11);
+	        }, 300);
 	        var webview = $(this).data('webview');
 	        if(webview) {
 	          if(webview) {
+	          	console.log(22);
 	            mui.openWindow({
 	              url: webview,
 	              id: webview,
