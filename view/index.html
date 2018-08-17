@@ -739,7 +739,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 
 						</div>
 					</div>
@@ -900,7 +900,330 @@
 							</div>
 						</div>
 
-						<div class="box-item-flex1" style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+							}								
+										else if(data.length>0&&data.length<=4){
+									if(data.length==4){
+									%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:<%=data[data.length-4+3].width%>rem;height:<%=data[data.length-4+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+3].color%>;">
+										<%=data[data.length-4+3].priceResult%>
+										<%=data[data.length-4+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==1){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-1].current_price%></span><img style="width:<%=data[data.length-1].width%>rem;height:<%=data[data.length-1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-1].color%>;">
+										<%=data[data.length-1].priceResult%>
+										<%=data[data.length-1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==2){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-2].current_price%></span><img style="width:<%=data[data.length-2].width%>rem;height:<%=data[data.length-2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-2].color%>;">
+										<%=data[data.length-2].priceResult%>
+										<%=data[data.length-2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-2+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-2+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-2+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-2+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-2+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-2+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-2+1].current_price%></span><img style="width:<%=data[data.length-2+1].width%>rem;height:<%=data[data.length-2+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-2+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-2+1].color%>;">
+										<%=data[data.length-2+1].priceResult%>
+										<%=data[data.length-2+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==3){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3].current_price%></span><img style="width:<%=data[data.length-3].width%>rem;height:<%=data[data.length-3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3].color%>;">
+										<%=data[data.length-3].priceResult%>
+										<%=data[data.length-3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3+1].current_price%></span><img style="width:<%=data[data.length-3+1].width%>rem;height:<%=data[data.length-3+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3+1].color%>;">
+										<%=data[data.length-3+1].priceResult%>
+										<%=data[data.length-3+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3+2].current_price%></span><img style="width:<%=data[data.length-3+2].width%>rem;height:<%=data[data.length-3+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3+2].color%>;">
+										<%=data[data.length-3+2].priceResult%>
+										<%=data[data.length-3+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
 							<div class="box-display ">
 
 							</div>
@@ -912,9 +1235,7 @@
 			<%
 			}
 								}
-							%>
 
-			<%
 	for(var i=0;i<data.length;i=i+4){
 		%>
 			<div class="mui-slider-item">
@@ -1228,6 +1549,329 @@
 				</div>
 			</div>
 			<%
+								}
+													else if(data.length>0&&data.length<=4){
+									if(data.length==4){
+									%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4].current_price%></span><img style="width:<%=data[data.length-4].width%>rem;height:<%=data[data.length-4].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4].color%>;">
+										<%=data[data.length-4].priceResult%>
+										<%=data[data.length-4].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+1].current_price%></span><img style="width:<%=data[data.length-4+1].width%>rem;height:<%=data[data.length-4+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+1].color%>;">
+										<%=data[data.length-4+1].priceResult%>
+										<%=data[data.length-4+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+2].current_price%></span><img style="width:<%=data[data.length-4+2].width%>rem;height:<%=data[data.length-4+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+2].color%>;">
+										<%=data[data.length-4+2].priceResult%>
+										<%=data[data.length-4+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-4+3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-4+3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-4+3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-4+3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-4+3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-4+3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-4+3].current_price%></span><img style="width:<%=data[data.length-4+3].width%>rem;height:<%=data[data.length-4+3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-4+3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-4+3].color%>;">
+										<%=data[data.length-4+3].priceResult%>
+										<%=data[data.length-4+3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==1){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-1].current_price%></span><img style="width:<%=data[data.length-1].width%>rem;height:<%=data[data.length-1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-1].color%>;">
+										<%=data[data.length-1].priceResult%>
+										<%=data[data.length-1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==2){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-2].current_price%></span><img style="width:<%=data[data.length-2].width%>rem;height:<%=data[data.length-2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-2].color%>;">
+										<%=data[data.length-2].priceResult%>
+										<%=data[data.length-2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-2+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-2+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-2+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-2+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-2+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-2+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-2+1].current_price%></span><img style="width:<%=data[data.length-2+1].width%>rem;height:<%=data[data.length-2+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-2+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-2+1].color%>;">
+										<%=data[data.length-2+1].priceResult%>
+										<%=data[data.length-2+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			else if(data.length==3){
+				%>
+			<div class="mui-slider-item mui-slider-item-duplicate">
+				<div style="position:relative">
+					<div style="left:0;top:38%;position:absolute;"><img class="left-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/left.png" /></div>
+					<div style="right:0;top:38%;position:absolute;"><img class="right-arrow" style="width:1.4rem;height:3.2rem" src="../img/index/right.png" /></div>
+					<div class="box-display" style="height:6rem;">
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3].current_price%></span><img style="width:<%=data[data.length-3].width%>rem;height:<%=data[data.length-3].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3].color%>;">
+										<%=data[data.length-3].priceResult%>
+										<%=data[data.length-3].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3+1].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3+1].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3+1].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3+1].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3+1].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3+1].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3+1].current_price%></span><img style="width:<%=data[data.length-3+1].width%>rem;height:<%=data[data.length-3+1].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3+1].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3+1].color%>;">
+										<%=data[data.length-3+1].priceResult%>
+										<%=data[data.length-3+1].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-display" style="height:6rem;margin-top: 0.7rem;">
+
+						<div class="box-item-flex1 action-webview" data-webview="_www/view/item/goodsdetail.html" data-webparam='{"itemid": "<%=data[data.length-3+2].item_id%>"}' style="background-color: #FFFFFF;height:100%;margin-left: 0.7rem;">
+							<div class="box-display ">
+								<div class="box-item-flex1" style="padding-left: 0.5rem;">
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;">
+										<%=data[data.length-3+2].manufacturers_name%>
+									</div>
+									<div class="pm_name">
+										<%=data[data.length-3+2].pm_name%>
+									</div>
+									<div class="guige">
+										<%=data[data.length-3+2].guige%>
+									</div>
+								</div>
+								<div class="box-item-flex1">
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;">
+										<%=data[data.length-3+2].created_time%>
+									</div>
+									<div style="height:2rem;font-size:0.9rem;line-height: 2rem;"><span style="font-size:1.2rem;color: #<%=data[data.length-3+2].color%>;font-family: 'arial rounded mt bold';float:left"><%=data[data.length-3+2].current_price%></span><img style="width:<%=data[data.length-3+2].width%>rem;height:<%=data[data.length-3+2].height%>rem;float:left;margin-top:0.7rem;margin-left:0.2rem" src="../img/index/<%=data[data.length-3+2].pic%>.png" /></div>
+									<div style="height:2rem;font-size:0.8rem;line-height: 2rem;font-family:'arial rounded mt bold';color: #<%=data[data.length-3+2].color%>;">
+										<%=data[data.length-3+2].priceResult%>
+										<%=data[data.length-3+2].priceResultRate%>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-item-flex1" style="height:100%;margin-left: 0.7rem;margin-right: 0.7rem;">
+							<div class="box-display ">
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<%
+			}
 								}
 							%>
 
