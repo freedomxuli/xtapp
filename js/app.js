@@ -1044,7 +1044,7 @@ function preateClear() {
           }
         }
       });
-    });
+    }); 
 
     var deceleration = mui.os.ios ? 0.003 : 0.0009;
     mui('.mui-scroll-wrapper').scroll({
