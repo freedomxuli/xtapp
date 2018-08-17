@@ -1012,10 +1012,10 @@ function preateClear() {
 									var result = template(renderFor, response.data);
 									$(self.element.firstElementChild).html(result);
 								} else
-									$(self.element.firstElementChild).html('');
+									  $(self.element.firstElementChild).html('<div style="height:15rem;overflow:hidden;text-align:center">亲，暂无数据～</div>');
 							});
 							self.endPullDownToRefresh();
-							self.refresh(self.element);
+							//self.refresh(self.element);
 						}, 500);
           }
         },
@@ -1036,7 +1036,7 @@ function preateClear() {
                 }
               }else{
                 self.endPullUpToRefresh(true,' ');
-                self.refresh(self.element);
+                $(self.element.firstElementChild).html('<div style="height:15rem;overflow:hidden;text-align:center">亲，暂无数据～</div>');
                 //$(self.element).parent().parent().append(nodata_el);
               }
             });
