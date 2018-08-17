@@ -504,6 +504,27 @@
 			.wait_part_left_img {
 				width: 1.7rem;
 			}
+				.mui-input-row label  {
+				font-family: 'Helvetica Neue', Helvetica, sans-serif;
+				float: left;
+				width: 30%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				float: right;
+				width: 70%;
+				margin-bottom: 0;
+				padding-left: 0;
+				border: 0;
+			}
+			
+			.mui-input-row {
+				clear: left;
+				display: block;
+				overflow: hidden;
+			}
 		</style>
 
 	</head>
@@ -690,11 +711,11 @@
 				<div class="kind-select">
 					<input type="hidden" name="pay_type" class="op-pay-type" value="<%=payType.pay_type %>">
 					<div data-kind='1' class="mui-input-row mui-radio mui-left">
-						<label data-kind='1' class="radio-text">现金预存款支付</label>
-						<input data-kind='1' name="radio1" type="radio" checked="checked" value="1">
+						<label data-kind='1' class="radio-text" style="width:12rem">现金预存款支付</label>
+						<input data-kind='1' name="radio1" type="radio"  checked="checked" value="1">
 					</div>
 					<div data-kind='2' class="mui-input-row mui-radio mui-left">
-						<label data-kind='1' class="radio-text">承兑预存款支付</label>
+						<label data-kind='1' class="radio-text" style="width:12rem">承兑预存款支付</label>
 						<input data-kind='2' name="radio1" type="radio" value="2">
 					</div>
 				</div>
@@ -763,8 +784,8 @@
 				</section>
 					<div class="goods_info_detail">
 						<div class="mui-input-row input-div">
-							<label class="input-text">买家留言：</label>
-							<div class="user-message" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark" placeholder="本次交易补充说明"></div>
+							<label class="input-text" style="width:8rem">买家留言：</label>
+							<div class="user-message"  style="float:left;width:12rem" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark" placeholder="本次交易补充说明"></div>
 							<!--<input type="text" class="">-->
 						</div>
 					</div>
