@@ -1030,13 +1030,14 @@ function preateClear() {
                 if(count > total){
                   self.endPullUpToRefresh(true);
                 }else{
-                  var result = template(renderFor, response.data);
+                  var result = template(renderFor, response.data); 
                   $(self.element.firstElementChild).append(result);
                   self.endPullUpToRefresh();
                 }
               }else{
                 self.endPullUpToRefresh(true,' ');
-                $(self.element).parent().parent().append(nodata_el);
+                self.refresh(self.element);
+                //$(self.element).parent().parent().append(nodata_el);
               }
             });
             $(pullRefreshEl).attr('data-count', count);
