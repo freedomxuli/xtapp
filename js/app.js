@@ -1012,7 +1012,7 @@ function preateClear() {
 									var result = template(renderFor, response.data);
 									$(self.element.firstElementChild).html(result);
 								} else
-									  $(self.element.firstElementChild).html('<div style="height:15rem;overflow:hidden;text-align:center">亲，暂无数据～</div>');
+									  $(self.element.firstElementChild).html('<div style="height:15rem;overflow:hidden;text-align:center"></div>');
 							});
 							self.endPullDownToRefresh();
 							//self.refresh(self.element);
@@ -1036,7 +1036,7 @@ function preateClear() {
                 }
               }else{
                 self.endPullUpToRefresh(true,' ');
-                $(self.element.firstElementChild).html('<div style="height:15rem;overflow:hidden;text-align:center">亲，暂无数据～</div>');
+                $(self.element.firstElementChild).html('<div style="height:20rem;overflow:hidden;text-align:center"></div>');
                 //$(self.element).parent().parent().append(nodata_el);
               }
             });
