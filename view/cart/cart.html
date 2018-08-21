@@ -1209,6 +1209,9 @@
 							mui.alert('请至少选择一件商品');
 							return
 						}
+						setTimeout(function() {
+			              	plus.webview.close(plus.webview.getWebviewById("_www/view/cart/cart.html"), "none");
+				        }, 300);
 						clicked('_www/view/cart/cart_order.html', {
 							'mode': 'cart'
 						});
