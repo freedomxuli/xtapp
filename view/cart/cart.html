@@ -1209,10 +1209,9 @@
 							mui.alert('请至少选择一件商品');
 							return
 						}
-						//这三行代码影响结算页面的返回功能，暂时注释掉
-//						setTimeout(function() {
-//			              	plus.webview.close(plus.webview.getWebviewById("_www/view/cart/cart.html"), "none");
-//				        }, 600);
+						setTimeout(function() {
+			              	plus.webview.close(plus.webview.getWebviewById("_www/view/cart/cart.html"), "none");
+				        }, 600);
 						clicked('_www/view/cart/cart_order.html', {
 							'mode': 'cart'
 						});

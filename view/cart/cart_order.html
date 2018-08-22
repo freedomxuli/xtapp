@@ -1457,7 +1457,13 @@
 			var totalAcceptPrice = 0;
 			var pricetype = "price";
 			var billId;
-
+			if(mode=='cart'){
+	        	document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+				    e.preventDefault();
+				    e.stopPropagation();
+				    clicked('_www/view/cart/cart.html',{'enter_page':'cart_order'});
+				},true);
+	        }
 			console.log(state.token);
 			var param = {
 				queryData: {
