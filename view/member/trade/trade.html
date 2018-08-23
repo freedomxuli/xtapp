@@ -805,16 +805,27 @@
 						    //为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
 						    clicked('_www/view/cart/cart.html',{'enter_page':'trade'});
 						},true);
+        }else if(enter_page=='paymentsuccess'){
+        	document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+        				setTimeout(function() {
+			              	plus.webview.close(plus.webview.getWebviewById("_www/view/member/trade/trade.html"), "none");
+				        }, 300);
+						    e.preventDefault();
+						    e.stopPropagation();
+						    //为了防止页面一直在我的订单和购物车之间跳转退不出去，在 cart.html页面也增加判断
+						    clicked('_www/view/member/member.html');
+						},true);
         }
         mui.init({
           beforeback: function() {
             var fw = plus.webview.currentWebview().opener();
-            fw.reload(true);
-            fw.addEventListener('loaded',function(){
-              //返回true，继续页面关闭逻辑
-              return true;
-            });
-            
+            if	(fw!=null){
+            	fw.reload(true);
+	            fw.addEventListener('loaded',function(){
+	              //返回true，继续页面关闭逻辑
+	              return true;
+	            });
+            }
           }
         });
         

@@ -34,7 +34,7 @@
 				支付金额：<mark id="total"></mark> 红包支付：<mark id="hongbao"></mark>
 			</section>
 			<section class="mui-content-padded">
-				<button type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning action-webview" data-webview="_www/view/member/trade/trade.html">查看我的订单</button>
+				<button type="button" id="showOrder" class="mui-btn mui-btn-block bbc-btn-warning" >查看我的订单</button>
 			</section>
 		</section>
 	</body>
@@ -46,11 +46,17 @@
 	<script type="text/javascript">
 		mui.plusReady(function() {
 			//支付成功后，点击返回应该是到我的订单页面
-			document.querySelector('.mui-action-back').addEventListener('tap',function(e){
-			    e.preventDefault();
-			    e.stopPropagation();
-			    clicked('_www/view/member/member.html',{'enterpage':'paymentsuccess'});
-			},true);
+			var enter_page = plus.webview.currentWebview().enterpage;
+			
+				document.querySelector('.mui-action-back').addEventListener('tap',function(e){
+				    e.preventDefault();
+				    e.stopPropagation();
+				    setTimeout(function() {
+		              	plus.webview.getWebviewById("_www/view/payment/paymentsuccess.html").close();
+			        }, 300);
+				    clicked('_www/view/member/member.html',{'enterpage':'paymentsuccess'});
+				},true);
+			
 			mui.init({
 				beforeback: function() {
 					var fw = plus.webview.currentWebview().opener();
@@ -78,7 +84,14 @@
 					$('.pay-op-price').html('支付金额：<mark id="total">' + Currency.format(total) + '</mark> &nbsp; 红包支付：<mark id="hongbao">' + Currency.format(hongbao) + '</mark>');
 				}
 			}
+		});
+		$('body').on('tap', '#showOrder', function() {
+			setTimeout(function() {
+              	plus.webview.getWebviewById("_www/view/payment/paymentsuccess.html").close();
+	        }, 300);
+			clicked('_www/view/member/trade/trade.html',{'enterpage':'paymentsuccess'});
 		})
+
 	</script>
 
 </html>
