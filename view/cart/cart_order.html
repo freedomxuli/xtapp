@@ -2143,9 +2143,9 @@
 						}
 						$.dataRequest(param, function(rs) {
 							mui.toast('创建订单成功,等待审核！');
-							setTimeout(function() {
-				              	plus.webview.close(plus.webview.getWebviewById("_www/view/cart/cart_order.html"), "none");
-					        }, 300);
+//							setTimeout(function() {
+//				              	plus.webview.close(plus.webview.getWebviewById("_www/view/cart/cart_order.html"), "none");
+//					        }, 300);
 							if(rs.data.payment_type == 'online') {
 								var payid = rs.data.payment_id;
 						        clicked('_www/view/member/trade/trade.html',{'enterpage':'cart_order'});
