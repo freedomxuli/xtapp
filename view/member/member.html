@@ -560,7 +560,7 @@
 				for(var i = 0, len = wvs.length; i < len; i++) {
 					if(wvs[i].id == curr.id)
 						continue;
-					plus.webview.close(wvs[i]);
+					plus.webview.close(wvs[i],'none');
 				}
 				var webview = $(this).data('webview');
 				var webview_id = $(this).data('webview') + new Date().getTime();
