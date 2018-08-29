@@ -963,6 +963,7 @@
 				var maxcount = 0;
 				//上传图片
 				$('.rate-img-box').on('tap', function() {
+					document.activeElement.blur();
 					that = $(this).parent().parent();
 					maxcount = 1 - that.find('.rate-img-list').find('li').length;
 					$('.img-count').html(maxcount);
