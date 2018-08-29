@@ -485,6 +485,9 @@
 				padding-left: 0.6rem;
 				/*width: 5rem;*/
 			}
+			.span_active{
+				color:#e35d4c;
+			}
 		</style>
 	</head>
 
@@ -563,8 +566,11 @@
 				console.log(JSON.stringify(rs));
 				var html = template('title-list', rs);
 				jQuery(".jgzs_cate").html(html);
+				jQuery(".jgzs_cate_span").first().addClass('span_active');
 				createtable(rs.data[0].cat_id, rs.data[0].cat_name);
 				jQuery(".jgzs_cate_span").click(function() {
+					jQuery(".jgzs_cate_span").removeClass('span_active');
+					jQuery(this).addClass('span_active');
 					createtable(jQuery(this).data("index"), jQuery(this).data("name"));
 				});
 				/*function movetaptable(cat_id,cat_name)
