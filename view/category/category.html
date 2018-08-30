@@ -1044,7 +1044,11 @@
 
 					//产地列表
 					var pp_list = [];
-
+					var manufacturers_all_obj={
+						value:'',
+						text:'厂家/产地'
+					};
+					pp_list.push(manufacturers_all_obj);
 					for(var m_id in rs.data.manufacturers)
 					{
 						var m_obj = {
@@ -1068,14 +1072,19 @@
 
 					//品名列表
 					child_data = rs.data.lv2Cats;
+					console.log(JSON.stringify(child_data));
 					GetProList(NamePicker,rs.data.lv2Cats,fl_id);
-
+					
 					//规格列表
 					//GetGGList(pro_name_id);
 
 					//交割库列表
 					var jg_list = [];
-
+					var jg_all_obj={
+						value:'',
+						text:'交割库'
+					};
+					jg_list.push(jg_all_obj);
 					for(var s_id in rs.data.storage)
 					{
 						var s_obj = {
@@ -1559,6 +1568,11 @@
       function GetProList(NamePickerNew,objs,fl)
       {
       	var pm_list = [];
+      	var pm_all_obj={
+      		value:'',
+					text:'品名'
+      	};
+      	pm_list.push(pm_all_obj);
 				for(var l_id in objs)
 				{
 					if(objs[l_id].lv1catid == fl)
