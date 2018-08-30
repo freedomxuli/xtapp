@@ -645,6 +645,10 @@
 					mui.alert('电话不能为空');
 					return
 				}
+				if(!(/^1[3|4|5|7|8]\d{9}$/.test(tel))){ 
+ 					mui.alert("手机号格式不正确");
+ 					return
+ 				}
 				if(!open_bank) {
 					mui.alert('开户银行不能为空');
 					return
@@ -653,7 +657,10 @@
 					mui.alert('银行账户不能为空');
 					return
 				}
-
+				if(!(/^\d{15,}$/.test(bank_account))){ 
+ 					mui.alert("手银行账户格式不正确");
+ 					return
+ 				}
 				var param = {
 					queryData: {
 						'method': config.apimethod.billingsave,
