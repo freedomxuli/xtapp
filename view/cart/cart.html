@@ -1002,24 +1002,35 @@
 					});
 
 					$('.cart-main').on('change', '.mui-left-all input[type="checkbox"]', function(event) {
-							var fa = $(this).parents('.mui-left-all');
+//							
+							var innerhtml=$('#cart_edit').text();
 							var shop = $(this).parents('.mui-left-all').siblings('.check-div-border').find('input[type="checkbox"]');
-							var totalChecked = $(fa).find('input[type="checkbox"]');
-							var totalCheck = $(fa).find('input[type="checkbox"]:checked');
-							console.log(totalChecked);
-							console.log(totalCheck);
-							var val = this.checked ? true : false;
-							if(val === true) {
-								$(this).parents('.mui-left-all').data('ischecked', 1);
-							} else {
-								$(this).parents('.mui-left-all').data('ischecked', 0);
+							if(innerhtml=='编辑'){
+								var fa = $(this).parents('.mui-left-all');
+								var totalChecked = $(fa).find('input[type="checkbox"]');
+								var totalCheck = $(fa).find('input[type="checkbox"]:checked');
+								
+								var val = this.checked ? true : false;
+								if(val === true) {
+									$(this).parents('.mui-left-all').data('ischecked', 1);
+								} else {
+									$(this).parents('.mui-left-all').data('ischecked', 0);
+								}
+								if(totalCheck.length == totalChecked.length) {
+									$(shop).prop('checked', true);
+								} else {
+									$(shop).prop('checked', false);
+								}
+							}else if(innerhtml=='完成'){ 
+								var totalCheck = $('.mui-left-all input[type="checkbox"]');
+								var totalChecked = $('.mui-left-all input[type="checkbox"]:checked');
+								
 							}
 							if(totalCheck.length == totalChecked.length) {
 								$(shop).prop('checked', true);
 							} else {
 								$(shop).prop('checked', false);
 							}
-
 							if($('.cart-main').hasClass('checkout-action')) {
 								updateItem();
 							}
