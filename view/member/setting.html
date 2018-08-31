@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+    
   </head>
 
   <body>
@@ -22,79 +23,8 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</div>
 		</header>
-    <div id="minimenu" class="bbc-mini-menu mui-popover">
-        <div class="mui-popover-arrow"></div>
-        <div>
-          <ul class="mui-table-view">
-            <li class="mui-table-view-cell action-webview" data-webview="_www/view/index.html">
-              <a><i class="bbc-icon bbc-icon-home"></i> 首页</a>
-            </li>
-            <li class="mui-table-view-cell action-webview" data-webview="_www/view/category/category.html">
-              <a><i class="bbc-icon bbc-icon-category"></i> 分类</a>
-            </li>
-            <li class="mui-table-view-cell action-webview" data-webview="_www/view/cart/cart.html">
-              <a><i class="bbc-icon bbc-icon-cart"></i> 购物车</a>
-            </li>
-            <li class="mui-table-view-cell action-webview" data-webview="_www/view/member/member.html">
-              <a><i class="bbc-icon bbc-icon-member"></i> 会员</a>
-            </li>
-          </ul>
-        </div>
-    </div>
-    <section class="container">
-      <form class="form-container" action="">
-        <section class="section-white">
-          <ul class="mui-table-view">
-            <li class="mui-table-view-cell">
-              <a class="mui-navigate-right action-webview" data-webview='_www/view/member/useProtocol.html' >使用协议</a>
-            </li>
-            <li class="mui-table-view-cell">
-              <a class="mui-navigate-right action-webview" data-webview='_www/view/artical/articalcategory.html' >关于我们</a>
-            </li>
-          </ul>
-        </section>
-        <section class="mui-content-padded form-op-section">
-          <button id="exit" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">退出登录</button>
-        </section>
-      </form>
-    </section>
-    <script src="../../js/zepto.js"></script>
-    <script src="../../js/mui.min.js"></script>
-    <script src="../../js/template.min.js"></script>
-    <script src="../../config.js"></script>
-    <script src="../../js/app.js"></script>
-    <script type="text/javascript">
-      document.getElementById('exit').addEventListener('tap', function() {
-        mui.confirm('亲，确定退出登录吗？', '', ['取消', '确认'], function(e) {
-          if(e.index == 1) {
-            var state = app.getState();
-            var param = {
-              queryData: {
-                'method': config.apimethod.logout,
-                'accessToken': state.token
-              },
-              method: 'POST'
-            }
-
-            $.dataRequest(param, function(rs) {
-              var wa = plus.nativeUI.showWaiting();
-              var parent = plus.webview.currentWebview().opener();
-              parent.reload(true);
-              app.setState({});
-              parent.addEventListener('loaded', function() {
-                wa.close()
-                mui.back();
-                setTimeout(function(){
-                  plus.webview.currentWebview().close();
-                },300)
-              });
-            });
-          } else {
-            return false;
-          }
-        })
-      }, false);
-    </script>
+   
+    <script src='//kefu.easemob.com/webim/easemob.js?configId=b172253d-bc42-4790-8664-d46dd4b2a422'></script>
   </body>
 
 </html>

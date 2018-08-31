@@ -16,7 +16,7 @@
 			<div class="mui-action-back mui-pull-left back-left back-width">
 				<img class="back_img" src="../../../img/item/back_arrow.png" />
 			</div>
-			<h1 class="mui-title title_span">安全中心</h1>
+			<h1 class="mui-title title_span">账户设置</h1>
 			<div class="message_size">
 				<img class="message_img" src="../../../img/category/message.png" />
 			</div>
@@ -50,6 +50,9 @@
           </li>
         </ul>
       </section>
+      <section class="mui-content-padded form-op-section">
+          <button id="exit" type="button" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">退出登录</button>
+        </section>
     </section>
     <script src="../../../js/zepto.js"></script>
     <script src="../../../js/mui.min.js"></script>
@@ -96,6 +99,36 @@
 
         clicked('_www/view/member/safe/viewbind.html', {'mobile': mobile});
       });
+      document.getElementById('exit').addEventListener('tap', function() {
+        mui.confirm('亲，确定退出登录吗？', '', ['取消', '确认'], function(e) {
+          if(e.index == 1) {
+            var state = app.getState();
+            var param = {
+              queryData: {
+                'method': config.apimethod.logout,
+                'accessToken': state.token
+              },
+              method: 'POST'
+            }
+
+            $.dataRequest(param, function(rs) {
+              var wa = plus.nativeUI.showWaiting();
+              var parent = plus.webview.currentWebview().opener();
+              parent.reload(true);
+              app.setState({});
+              parent.addEventListener('loaded', function() {
+                wa.close()
+                mui.back();
+                setTimeout(function(){
+                  plus.webview.currentWebview().close();
+                },300)
+              });
+            });
+          } else {
+            return false;
+          }
+        })
+      }, false);
     </script>
   </body>
 

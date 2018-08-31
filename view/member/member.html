@@ -289,7 +289,7 @@
 		<header class="mui-bar mui-bar-transparent home-header">
 
 			<div class="shezhi">
-				<div id="setting" data-view="_www/view/member/setting.html" style="display: none;"><img class="szicon" src="../../img/hyzx/szicon.png"></div>
+				<div id="kefu"  style="display: none;"><img class="szicon" src="../../img/hyzx/QQ.png"></div>
 			</div>
 			<div class="hyzx-title">我的账户</div>
 			<div class="wdxx"><img class="szicon" src="../../img/base/message-icon.png"></div>
@@ -393,7 +393,7 @@
 			<section class="section-white" style="margin-bottom: 1.6rem;">
 				<ul class="mui-table-view">
 					<li data-needlog="true" data-view="_www/view/member/safe/safe.html" class="mui-table-view-cell action-clickview">
-						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">安全中心</span></div>
+						<div class="mui-navigate-right"><img class="order-img user-order bbc-icon-list" src="../../img/hyzx/zhsz.png" /><span class="lb-font">账户设置</span></div>
 					</li>
 				</ul>
 			</section>
@@ -484,11 +484,30 @@
 				});
 
 			});
-
+			document.getElementById('kefu').addEventListener('tap',function(){ 
+			         if (plus.os.name == "Android") { 
+			            var main = plus.android.runtimeMainActivity(); 
+			            var Intent = plus.android.importClass('android.content.Intent'); 
+			            var Uri = plus.android.importClass('android.net.Uri');  
+			            var intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mqqwpa://im/chat?chat_type=wpa&uin=2935046463")); 
+			            main.startActivity(intent); 
+			        } 
+			         if (plus.os.name == "iOS") {  
+					   plus.runtime.launchApplication({  
+					       action: "mqq://im/chat?chat_type=wpa&uin=2935046463&version=1&src_type=web"  
+					   }, function(e) {  
+					       plus.nativeUI.confirm("检查到您未安装qq，请先到appstore搜索下载？", function(i) {  
+					           if (i.index == 0) {  
+					               iosAppstore("itunes.apple.com/cn/app/mqq/");  
+					           }  
+					       });  
+					   });  
+					}  
+			    }); 
 			function fetchMemberData() {
 				if(state.token) {
 					//document.getElementById('account').innerText = state.account;
-					document.getElementById('setting').style.display = "block";
+					document.getElementById('kefu').style.display = "block";
 					document.getElementById('login').style.display = "none";
 					document.getElementById('nologin').style.display = "none";
 					document.getElementById('user_info').style.display = "block";
