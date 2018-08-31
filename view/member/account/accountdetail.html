@@ -222,10 +222,12 @@
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
-					/*down: {
+					down: {
+						style:'circle',
 						callback: pulldownRefresh
-					},*/
+					},
 					up: {
+						auto:true,
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
 					}
@@ -253,7 +255,7 @@
 							'start_time':starttime,
 							'end_time':endtime,
 							'page_no': count,
-							'page_size': 10
+							'page_size': 15
 						},
 						method: 'POST'
 					}
@@ -266,7 +268,7 @@
 								'start_time':starttime,
 								'end_time':endtime,
 								'page_no': count,
-								'page_size': 10
+								'page_size': 15
 							},
 							method: 'POST'
 						}
@@ -279,7 +281,7 @@
 								'start_time':starttime,
 								'end_time':endtime,
 								'page_no': count,
-								'page_size': 10
+								'page_size': 15
 							},
 							method: 'POST'
 						}
@@ -292,10 +294,10 @@
 						}else
 						{
 							var list = rs.data.list;
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1)*10+list.length >= rs.data.count)); //参数为true代表没有更多数据了。
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1)*15+list.length >= rs.data.count)); //参数为true代表没有更多数据了。
 							var table = document.body.querySelector('.mui-table-view');
 							var cells = document.body.querySelectorAll('.mui-table-view-cell');
-							for(var i = cells.length, len = i + 10; i < len; i++) {
+							for(var i = cells.length, len = i + 15; i < len; i++) {
 								//当首次条数不足10条时
 								if(i>=list.length){
 									break;
@@ -313,7 +315,7 @@
 								li.innerHTML = '<div class="li-content-div flex2">' + list[i].tid + '</div><div class="li-content-div flex2 point"><span style="height:100%" id="mx' + ((count - 1) * config.pagesize + i) + '" class="li-content-div mx" href="middlePopover' + ((count - 1) * config.pagesize + i) + '">' + list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige + '</span></div><div class="li-content-div">' + list[i].num + '</div><div class="li-content-div">￥' + list[i].payment + '</div>';
 								table.appendChild(li);
 								var obj = {};
-								obj.num = (count - 1) * config.pagesize + i;
+								obj.num = (count - 1) * 15 + i;
 								obj.text = list[i].manufacturers_name +'-'+ list[i].pm_name +list[i].guige ;
 								var widgets = template('tip', obj);
 								$('#main').append(widgets);
@@ -330,19 +332,25 @@
 				}, 1000);
 			}
 			
-			if(mui.os.plus) {
-				mui.plusReady(function() {
-					setTimeout(function() {
-						mui('#pullrefresh').pullRefresh().pullupLoading();
-					}, 1000);
-
-				});
-			} else {
-				mui.ready(function() {
-					mui('#pullrefresh').pullRefresh().pullupLoading();
-				});
+//			if(mui.os.plus) {
+//				mui.plusReady(function() {
+//					setTimeout(function() {
+//						mui('#pullrefresh').pullRefresh().pullupLoading();
+//					}, 1000);
+//
+//				});
+//			} else {
+//				mui.ready(function() {
+//					mui('#pullrefresh').pullRefresh().pullupLoading();
+//				});
+//			}
+			function pulldownRefresh() {
+				setTimeout(function() {
+					console.log(111);
+					mui('#pullrefresh').pullRefresh().endPulldown(true);
+					mui.toast("没有最新数据了");
+				}, 1500);
 			}
-
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);

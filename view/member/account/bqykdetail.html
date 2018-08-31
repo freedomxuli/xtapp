@@ -242,9 +242,9 @@
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
-					/*down: {
-						callback: pulldownRefresh
-					},*/
+//					down: {
+//						callback: pulldownRefresh
+//					},
 					up: {
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
@@ -252,7 +252,7 @@
 				}
 			});
 			mui('body').on('tap','.popver_close',function(){
-				console.log(1);
+				
 				mui('.mui-popover-bottom').popover('hide');
 			});
 			var state = app.getState();
@@ -270,16 +270,16 @@
 							'start_time': starttime,
 							'end_time': endtime,
 							'page_no': count,
-							'page_size': config.pagesize
+							'page_size': 15
 						},
 						method: 'POST'
 					}
 					$.dataRequest(param, function(rs) {
 						var list = rs.data.list;
-						mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1)*config.pagesize+list.length>=rs.data.count)); //参数为true代表没有更多数据了。
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1)*15+list.length>=rs.data.count)); //参数为true代表没有更多数据了。
 						var table = document.body.querySelector('.mui-table-view');
 						var cells = document.body.querySelectorAll('.mui-table-view-cell');
-						for(var i = cells.length, len = i + config.pagesize; i < len; i++) {
+						for(var i = cells.length, len = i + 15; i < len; i++) {
 							//当首次条数不足10条时
 							if(i>=list.length){
 								break;
@@ -291,7 +291,7 @@
 							table.appendChild(li);
 							
 							var obj = {};
-							obj.num = (count - 1) * config.pagesize + i;
+							obj.num = (count - 1) * 15 + i;
 							obj.text = sp;
 							var widgets = template('tip', obj);
 							$('#main').append(widgets);
