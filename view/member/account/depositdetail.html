@@ -175,9 +175,10 @@
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
-					/*down: {
+					down: {
+						style:'circle',
 						callback: pulldownRefresh
-					},*/
+					},
 					up: {
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
@@ -269,7 +270,14 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-
+			
+			function pulldownRefresh() {
+				clicked('_www/view/member/account/depositdetail.html', {
+					'starttime': starttime, //开始时间-每个月1号的0:0:0的时间戳
+					'endtime': endtime
+				},'none');
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			}
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
