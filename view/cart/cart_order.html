@@ -1359,14 +1359,17 @@
 		<div class="mui-scroll-wrapper has-btn">
 			<div class="mui-scroll">
 				<section class="section-white">
-					<!--<div class="section-title">
-						<div class="title-txt"><i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型</div>
-					</div>-->
-					<div id="invoiceType" class="invoice-tab-group content-bottom-padded">
-						<!--<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>-->
-						<label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
-						<!-- <label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>-->
+					<div class="section-title">
+						<div class="title-txt">
+							<i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型 &nbsp;&nbsp;
+							<label style="background: #ea2329; color: #fff;width: 6rem;display:inline-block;text-align: center; border-radius: 3px;"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+						</div>
 					</div>
+					<!--<div id="invoiceType" class="invoice-tab-group content-bottom-padded">
+						<label <% if(invoice_type=='normal' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="normal" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'normal') {%>checked<% } %>>普通发票</label>
+						<label class="active"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+						<label <% if(invoice_type=='notuse' ) {%>class="active"<% } %>><input type="radio" name="invoice[invoice_type]" value="notuse" class="mui-hidden op-choose-invoice" <% if(invoice_type == 'notuse') {%>checked<% } %>>不需要发票</label>
+					</div>-->
 				</section>
 				<section class="invoice-content">
 					<div class="section-white invoice-content-item">
