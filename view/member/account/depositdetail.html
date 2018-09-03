@@ -202,7 +202,7 @@
 							'start_time': starttime,
 							'end_time': endtime,
 							'page_no': count,
-							'page_size': config.pagesize
+							'page_size': 15
 						},
 						method: 'GET'
 					}
@@ -213,7 +213,7 @@
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count < 1));
 						} else {
 							var list = rs.data.detailData;
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1) * config.pagesize + list.length >= rs.data.count)); //参数为true代表没有更多数据了。
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count-1) * 15 + list.length >= rs.data.count)); //参数为true代表没有更多数据了。
 							var table = document.body.querySelector('.mui-table-view');
 							var cells = document.body.querySelectorAll('.mui-table-view-cell');
 							for(var i = 0; i < list.length; i++) {
