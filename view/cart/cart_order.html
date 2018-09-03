@@ -1360,9 +1360,9 @@
 			<div class="mui-scroll">
 				<section class="section-white">
 					<div class="section-title">
-						<div class="title-txt">
+						<div class="title-txt" id="invoiceType">
 							<i class="bbc-icon bbc-icon-invoice fontm"></i> 发票类型 &nbsp;&nbsp;
-							<label style="background: #ea2329; color: #fff;width: 6rem;display:inline-block;text-align: center; border-radius: 3px;"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
+							<label class="active" style="background: #ea2329; color: #fff;width: 6rem;display:inline-block;text-align: center; border-radius: 3px;"><input type="radio" name="invoice[invoice_type]" value="vat" class="mui-hidden op-choose-invoice" checked>增值税发票</label>
 						</div>
 					</div>
 					<!--<div id="invoiceType" class="invoice-tab-group content-bottom-padded">
@@ -1407,7 +1407,7 @@
 			</div>
 		</div>
 		<footer class="action-bar-mini">
-			<button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确定</button>
+			<button type="button" class="action-bar-op-btn mui-action-back mui-left act-ok">确1定</button>
 		</footer>
 	</script>
 
@@ -1856,11 +1856,15 @@
 
 				$('#invoice').on('tap', '.act-ok', function(e) {
 						var radio = $('#invoiceType').find('.active').find('input');
-
+						
 						$('#op_invoice_type').val(radio.val());
 						$('#op_need_invoice').val(radio.val() == 'notuse' ? 0 : 1);
 						$('#op_invoice_name').text(radio.parent('label').text());
-
+						var tel = $("#DH").val();
+						if(!(/^1[3|4|5|7|8]\d{9}$/.test(tel))){ 
+		 					mui.alert("手机号格式不正确");
+		 					return false; 
+		 				}
 						var param_billing = {
 							queryData: {
 								'method': config.apimethod.billingsave,

@@ -657,10 +657,7 @@
 					mui.alert('银行账户不能为空');
 					return
 				}
-				if(!(/^\d{15,}$/.test(bank_account))){ 
- 					mui.alert("手银行账户格式不正确");
- 					return
- 				}
+				
 				var param = {
 					queryData: {
 						'method': config.apimethod.billingsave,
