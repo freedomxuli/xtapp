@@ -1601,6 +1601,7 @@
       //构造规格combobox
       function GetGGList(search_pro_id)
       {
+      	
 	      var param_gg = {
 	        queryData: {
 	          'method': config.apimethod.filteritems,
@@ -1613,6 +1614,11 @@
 	      	var ggids = rs.data.cat_id;
 	      	var gg_ids = ggids.split(',');
 	      	var gg_array = [];
+	      	var gg_all_obj={
+	      		value:'',
+						text:'规格'
+	      	};
+      		gg_array.push(gg_all_obj);
 	      	for(var i = 0;i<gg_ids.length;i++)
 	      	{
 	      		var gg_obj = {
@@ -1627,6 +1633,9 @@
 						SizePicker.show(function(items) {
 							gg_text = items[0].text;
 							$("#showSizePicker span").html(items[0].text);
+							if(!items[0].value){
+								gg_text='';
+							}
 							GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 							//PlaceResult.innerText = JSON.stringify(items[0]);
 							//返回 false 可以阻止选择框的关闭
