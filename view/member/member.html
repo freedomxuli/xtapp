@@ -422,12 +422,26 @@
 			</a>
 		</nav>
 		<script src="../../js/zepto.js"></script>
-		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.js"></script>
 		<script src="../../js/template.min.js"></script>
 		<script src="../../config.js"></script>
 		<script src="../../js/app.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			var state = app.getState();
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						style:'circle',
+						callback: pulldownRefresh
+					},
+//					up: {
+//						auto:true,
+//						contentrefresh: '正在加载...',
+//						callback: pullupRefresh
+//					}
+				}
+			});
 			mui.plusReady(function() {
 //				window.addEventListener('refresh', fetchMemberData);
 				window.addEventListener('refresh', fetchList);
@@ -639,6 +653,10 @@
 				}
 
 			});
+			function pulldownRefresh(){
+				window.location.reload();
+//				mui('#pullrefresh').pullRefresh().endPulldown(true);
+			}
 		</script>
 	</body>
 
