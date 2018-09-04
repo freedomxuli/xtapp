@@ -1145,6 +1145,10 @@
 											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
 										}, 1100);
 									}
+								},
+								down:{
+									style:'circle',
+									callback: pulldownRefresh
 								}
 							});
 						});
@@ -1765,7 +1769,9 @@
 			        }
 			    });
 			}
-
+			function pulldownRefresh(){
+				window.location.reload();
+			}
       function OrderDenno(item_id,cat_id)
 			{
 				addFly(event);

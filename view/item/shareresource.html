@@ -1190,6 +1190,10 @@
 											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
 										}, 1100);
 									}
+								},
+								down:{
+									style:'circle',
+									callback: pulldownRefresh
 								}
 							});
 						});
@@ -1534,7 +1538,9 @@
 					});
 				}, false);*/
       }
-      
+      function pulldownRefresh() {
+		window.location.reload();
+	  }
       function ChangeLeftMenu(change_left_id)
       {
       	//构造左侧大类列表
