@@ -134,30 +134,34 @@
 				<img class="message_img" src="../../../img/category/message.png" />
 			</div>
 		</header>
-		<div class="div_nav">
-			<div class="div_nav_label">
-				时间
+		<div class="mui-content">
+			
+		
+			<div class="div_nav">
+				<div class="div_nav_label">
+					时间
+				</div>
+				<div class="div_nav_label">
+					事项
+				</div>
+				<div class="div_nav_label">
+					收入
+				</div>
+				<div class="div_nav_label">
+					支出
+				</div>
 			</div>
-			<div class="div_nav_label">
-				事项
-			</div>
-			<div class="div_nav_label">
-				收入
-			</div>
-			<div class="div_nav_label">
-				支出
-			</div>
-		</div>
-		<div id="pullrefresh" class="mui-content mui-scroll-wrapper content-center">
-			<div class="mui-scroll">
-				<!--数据列表-->
-				<ul class="mui-table-view mui-table-view-chevron">
-
-				</ul>
+			<div id="pullrefresh">
+				
+					<!--数据列表-->
+					<ul class="mui-table-view mui-table-view-chevron">
+	
+					</ul>
+				
 			</div>
 		</div>
 		<script src="../../../js/zepto.js"></script>
-		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/mui.view.js"></script>
 		<script src="../../../js/template.min.js"></script>
 		<script src="../../../config.js"></script>
@@ -272,10 +276,11 @@
 			}
 			
 			function pulldownRefresh() {
-				clicked('_www/view/member/account/depositdetail.html', {
-					'starttime': starttime, //开始时间-每个月1号的0:0:0的时间戳
-					'endtime': endtime
-				},'none');
+				window.location.reload();
+//				clicked('_www/view/member/account/depositdetail.html', {
+//					'starttime': starttime, //开始时间-每个月1号的0:0:0的时间戳
+//					'endtime': endtime
+//				},'none');
 				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
 			}
 			function formatDateTime(timeStamp) {

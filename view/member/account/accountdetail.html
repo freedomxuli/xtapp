@@ -188,7 +188,7 @@
 			</div>
 		</div>
 		<script src="../../../js/zepto.js"></script>
-		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/mui.view.js"></script>
 		<script src="../../../js/template.min.js"></script>
 		<script src="../../../config.js"></script>
@@ -345,11 +345,7 @@
 //				});
 //			}
 			function pulldownRefresh() {
-				setTimeout(function() {
-					console.log(111);
-					mui('#pullrefresh').pullRefresh().endPulldown(true);
-					mui.toast("没有最新数据了");
-				}, 1500);
+				window.location.reload();
 			}
 			function formatDateTime(timeStamp) {
 				var date = new Date();

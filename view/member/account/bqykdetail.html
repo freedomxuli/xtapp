@@ -179,36 +179,39 @@
 				<img class="message_img" src="../../../img/category/message.png" />
 			</div>
 		</header>
-		<div class="div_nav">
-			<div class="div_nav_label">
-				开票时间
-			</div>
-			<div class="div_nav_label">
-				票号
-			</div>
-			<div class="div_nav_label">
-				商品
-			</div>
-			<div class="div_nav_label">
-				单价
-			</div>
-			<div class="div_nav_label" style="flex:1.2rem">
-				开票数量(吨)
-			</div>
-			<div class="div_nav_label">
-				开票金额
+		<div class="mui-content">
+			<div class="div_nav">
+				<div class="div_nav_label">
+					开票时间
+				</div>
+				<div class="div_nav_label">
+					票号
+				</div>
+				<div class="div_nav_label">
+					商品
+				</div>
+				<div class="div_nav_label">
+					单价
+				</div>
+				<div class="div_nav_label" style="flex:1.2rem">
+					开票数量(吨)
+				</div>
+				<div class="div_nav_label">
+					开票金额
+				</div>
 			</div>
 		</div>
-		<div id="pullrefresh" class="mui-content mui-scroll-wrapper content-center">
-			<div class="mui-scroll">
+		
+		<div id="pullrefresh">
+			
 				<!--数据列表-->
 				<ul class="mui-table-view mui-table-view-chevron">
 
 				</ul>
-			</div>
+			
 		</div>
 		<script src="../../../js/zepto.js"></script>
-		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/mui.view.js"></script>
 		<script src="../../../js/template.min.js"></script>
 		<script src="../../../config.js"></script>
@@ -242,9 +245,10 @@
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
-//					down: {
-//						callback: pulldownRefresh
-//					},
+					down: {
+						style:'circle',
+						callback: pulldownRefresh
+					},
 					up: {
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
@@ -319,7 +323,14 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-
+			function pulldownRefresh() {
+				window.location.reload();
+//				clicked('_www/view/member/account/depositdetail.html', {
+//					'starttime': starttime, //开始时间-每个月1号的0:0:0的时间戳
+//					'endtime': endtime
+//				},'none');
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			}
 			function formatDateTimeD(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
