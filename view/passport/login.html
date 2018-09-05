@@ -157,10 +157,14 @@
 				var state = app.getState();
 				var entrance = plus.webview.currentWebview().entrance;
 				var toMain = function() {
-					var parentview = plus.webview.currentWebview().opener();
-					parentview.reload(true);
-					var ws = plus.webview.currentWebview();
-					plus.webview.close(ws, 'slide-out-bottom');
+					if(entrance=='logpassword'){ 
+						clicked('_www/view/index.html',{},false);
+					}else{
+						var parentview = plus.webview.currentWebview().opener();
+						parentview.reload(true);
+						var ws = plus.webview.currentWebview();
+						plus.webview.close(ws, 'slide-out-bottom');
+					}
 				};
 				//检查 "登录状态/锁屏状态" 开始
 				if(state.token) {
