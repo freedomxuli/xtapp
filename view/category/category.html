@@ -1476,6 +1476,9 @@
 	      };
 	      console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
+	      	if(rs.data.list.length==0){
+						jQuery('#item'+fl_new_id+'mobile .mui-pull-loading').html('没有更多数据了');
+					}
 	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
 	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
 	      	page_obj[fl_new_id] = 1;
@@ -1564,7 +1567,7 @@
 					ulment.insertAdjacentHTML('afterend', resultnew);
 
 					ul_obj.appendChild(fragment);
-					self_obj.endPullUpToRefresh();
+					self_obj.endPullUpToRefresh(true);
 	      });
 			}
 
