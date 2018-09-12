@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Shopex Onex B2B2C</title>
+		<title>Hello MUI</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,6 +12,91 @@
 		<link href="../../../css/mui.picker.min.css" rel="stylesheet" />
 		<link href="../../../css/mui.poppicker.css" rel="stylesheet" />
 		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
 			.mui-row.mui-fullscreen>[class*="mui-col-"] {
 				height: 100%;
 			}
@@ -113,12 +198,6 @@
 			
 			.mui-scroll-wrapper {
 				overflow-y: scroll;
-			}
-			
-			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
-				position: relative;
-				top: 0;
-				/*height: 600px;*/
 			}
 			
 			.mui-col-xs-1 {
@@ -362,6 +441,59 @@
 				font-size: 15px;
 				color: #666666;
 			}
+			
+			.mui-bar-backcolor {
+				background-color: #d92e2e;
+				display: flex;
+			}
+			
+			.title_span {
+				color: #ffffff;
+				font-family: "微软雅黑";
+				font-size: 1.2rem;
+			}
+			
+			.back_img {
+				height: 1rem;
+				width: 0.6rem;
+			}
+			
+			.title_size {
+				line-height: 3rem;
+				text-align: center;
+			}
+			
+			.back-left {
+				line-height: 3rem;
+				display: inline-block;
+				font-family: Muiicons;
+				font-weight: normal;
+				font-style: normal;
+				text-decoration: none;
+				-webkit-font-smoothing: antialiased;
+				font-size: 24px;
+				margin-left: -10px;
+				margin-right: -10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.message_size {
+				position: absolute;
+				line-height: 3.5rem;
+				right: 10px;
+			}
+			
+			.message_img {
+				height: 1.5rem;
+				width: 1.5rem;
+			}
+		
+		.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #e35d4c;
+    background: none;
+    border-bottom: 2px solid #007aff;
+}
 		</style>
 	</head>
 
@@ -375,10 +507,8 @@
 				<img class="message_img" src="../../../img/category/message.png" />
 			</div>
 		</header>
-
-		<section class="container mui-row mui-fullscreen category-nav">
-
-			<div id="slider" class="mui-slider">
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<a class="mui-control-item mui-active" href="#item1mobile">
 						余额对账
@@ -387,9 +517,7 @@
 						开票对账
 					</a>
 				</div>
-
-				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-1"></div>-->
-				<div class="mui-slider-group" id="content-main">
+				<div class="mui-slider-group">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
@@ -555,9 +683,7 @@
 					</div>
 				</div>
 			</div>
-
-		</section>
-
+		</div>
 		<script src="../../../js/zepto.js"></script>
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template.min.js"></script>
@@ -568,33 +694,6 @@
 		<script src="../../../js/mui.picker.min.js"></script>
 		<script src="../../../js/mui.poppicker.js"></script>
 		<script>
-//			mui.plusReady(function(){
-//				var fenbian=parseInt(plus.screen.resolutionHeight*plus.screen.scale);
-//				var scroll1=document.getElementById('scroll1');
-//				var content=document.getElementsByClassName('mui-control-content')[0];
-//				var scrollheights;
-//				
-//				if(fenbian=='2208'){//iphone 6plus
-//					scrollheights='39rem';
-//				}else if(fenbian=='1920'){//魅族 mx4
-//					scrollheights='33rem';
-//				}else if(fenbian =='2029'){//小米MIX 2
-//					scrollheights='37.2rem';
-//				}else if(fenbian=='1280'){ //魅蓝E3
-//					scrollheights='30rem';
-//				}else{
-//					scrollheights='35rem';
-//				}
-//				// TODO  其他机型
-//				scroll1.style.height=scrollheights;
-//				content.style.minHeight=scrollheights;
-//			});
-			mui.init({
-				swipeBack: false, //启用右滑关闭功能
-				statusBarBackground: "#E35D4C"
-			});
-				var screen = window.screen.width * window.devicePixelRatio;
-			$(".mui-control-content").css("height", (document.documentElement.clientHeight-85)+"px");
 			var state = app.getState();
 			var param = {
 				queryData: {
@@ -633,78 +732,6 @@
 				method: 'GET'
 			};
 			load_kpdz(param);
-
-			mui.init();
-
-			(function($) {
-
-				//阻尼系数
-//				var deceleration = mui.os.ios ? 0.003 : 0.0009;
-//				$('.mui-scroll-wrapper').scroll({
-//					bounce: false,
-//					indicators: true, //是否显示滚动条
-//					deceleration: deceleration
-//				});
-
-				var result = $('#result')[0];
-				var result2 = $('#result2')[0];
-				var btns = $('.btn');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var _self = this;
-						if(_self.picker) {
-							_self.picker.show(function(rs) {
-								result.innerText = rs.text;
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						} else {
-							var optionsJson = this.getAttribute('data-options') || '{}';
-							var options = JSON.parse(optionsJson);
-							var id = this.getAttribute('id');
-							var type = this.getAttribute('data-type');
-							_self.picker = new $.DtPicker(options);
-							_self.picker.show(function(rs) {
-								if(type == "ye") {
-									result.innerText = getNowFormatDate(new Date(rs.text + "-01"));
-									var param = {
-										queryData: {
-											'method': config.apimethod.getAccountDeposit,
-											'accessToken': state.token,
-											'start_time': getTime(rs.text + "-01 00:00:00"),
-											'end_time': getTime(rs.text + "-31 23:59:59"),
-											'page_no': 1,
-											'page_size': config.pagesize
-										},
-										method: 'GET'
-									};
-									load(param);
-								} else {
-									result2.innerText = getNowFormatDate(new Date(rs.text + "-01"));
-									var param = {
-										queryData: {
-											'method': config.apimethod.getAccountTickets,
-											'accessToken': state.token,
-											'start_time': getTime(rs.text + "-01 00:00:00"),
-											'end_time': getTime(rs.text + "-31 23:59:59"),
-											'page_no': 1,
-											'page_size': config.pagesize
-										},
-										method: 'GET'
-									};
-
-									load_kpdz(param);
-								}
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						}
-
-					}, false);
-
-				});
-			})(mui);
-			//点击侧滑
 
 			function load(param) {
 				$.dataRequest(param, function(rs) {
@@ -795,23 +822,7 @@
 				}
 			});
 
-//			$('#qcye').on('tap', function() {
-//
-//				var faid = plus.webview.currentWebview().id;
-//				clicked('_www/view/member/account/accountdetail.html', {
-//					'faid': faid
-//				});
-//
-//			});
-//
-//			$('#qmye').on('tap', function() {
-//				var faid = plus.webview.currentWebview().id;
-//				clicked('_www/view/member/account/accountdetail.html', {
-//					'faid': faid
-//				});
-//
-//			});
-				$('#ye_ckmx').on('tap', function() {
+			$('#ye_ckmx').on('tap', function() {
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/depositdetail.html', {
 					'faid': faid,
@@ -836,7 +847,7 @@
 				var faid = plus.webview.currentWebview().id;
 				clicked('_www/view/member/account/accountdetail.html', {
 					'faid': faid,
-				'starttime': getTime($('#result2').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
+					'starttime': getTime($('#result2').text() + "-01 00:00:00"), //开始时间-每个月1号的0:0:0的时间戳
 					'endtime': getTime($('#result2').text() + "-31 23:59:59"), //结束时间-每个月最后一天的23:59:59的时间戳
 					'type': 'qmpe'
 				});
@@ -861,6 +872,120 @@
 				});
 
 			});
+
+			mui.init();
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration
+				});
+				$.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+						$(pullRefreshEl).pullToRefresh({
+							down: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										
+										if(index == 0) {
+											var result = $('#result')[0];
+											var param = {
+												queryData: {
+													'method': config.apimethod.getAccountDeposit,
+													'accessToken': state.token,
+													'start_time': getTime(result.innerText + "-01 00:00:00"),
+													'end_time': getTime(result.innerText + "-31 23:59:59"),
+													'page_no': 1,
+													'page_size': config.pagesize
+												},
+												method: 'GET'
+											};
+											load(param);
+										} else {
+											var result = $('#result2')[0];
+											var param = {
+												queryData: {
+													'method': config.apimethod.getAccountTickets,
+													'accessToken': state.token,
+													'start_time': getTime(result.innerText + "-01 00:00:00"),
+													'end_time': getTime(result.innerText + "-31 23:59:59"),
+													'page_no': 1,
+													'page_size': config.pagesize
+												},
+												method: 'GET'
+											};
+											load_kpdz(param);
+										}
+										self.endPullDownToRefresh();
+									}, 1000);
+								}
+							}
+						});
+					});
+
+					var result = $('#result')[0];
+					var result2 = $('#result2')[0];
+					var btns = $('.btn');
+					btns.each(function(i, btn) {
+						btn.addEventListener('tap', function() {
+							var _self = this;
+							if(_self.picker) {
+								_self.picker.show(function(rs) {
+									result.innerText = rs.text;
+									_self.picker.dispose();
+									_self.picker = null;
+								});
+							} else {
+								var optionsJson = this.getAttribute('data-options') || '{}';
+								var options = JSON.parse(optionsJson);
+								var id = this.getAttribute('id');
+								var type = this.getAttribute('data-type');
+								_self.picker = new $.DtPicker(options);
+								_self.picker.show(function(rs) {
+									if(type == "ye") {
+										result.innerText = getNowFormatDate(new Date(rs.text + "-01"));
+										var param = {
+											queryData: {
+												'method': config.apimethod.getAccountDeposit,
+												'accessToken': state.token,
+												'start_time': getTime(rs.text + "-01 00:00:00"),
+												'end_time': getTime(rs.text + "-31 23:59:59"),
+												'page_no': 1,
+												'page_size': config.pagesize
+											},
+											method: 'GET'
+										};
+										load(param);
+									} else {
+										result2.innerText = getNowFormatDate(new Date(rs.text + "-01"));
+										var param = {
+											queryData: {
+												'method': config.apimethod.getAccountTickets,
+												'accessToken': state.token,
+												'start_time': getTime(rs.text + "-01 00:00:00"),
+												'end_time': getTime(rs.text + "-31 23:59:59"),
+												'page_no': 1,
+												'page_size': config.pagesize
+											},
+											method: 'GET'
+										};
+
+										load_kpdz(param);
+									}
+									_self.picker.dispose();
+									_self.picker = null;
+								});
+							}
+
+						}, false);
+
+					});
+				});
+			})(mui);
 		</script>
 	</body>
 
