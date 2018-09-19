@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<style>
+			.mui-table-view {
+				background: #efeff4;
+			}
+			
+			.mui-table-view li {
+				background: #FFFFFF;
+			}
+			
+			.margintop {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav mui-bar-backcolor">
+			<div class="mui-action-back mui-pull-left back-left">
+				<img class="back_img" src="../img/item/back_arrow.png" />
+			</div>
+			<h1 class="mui-title title_span">通知消息</h1>
+
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view" id="ul">
+
+				</ul>
+			</div>
+		</div>
+		<script src="../js/zepto.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.view.js"></script>
+		<script src="../js/template.min.js"></script>
+		<script src="../config.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/mui.zoom.js"></script>
+		<script src="../js/mui.previewimage.js"></script>
+
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					/*down: {
+						callback: pulldownRefresh
+					},*/
+					up: {
+						auto: true,
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			var state = app.getState();
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				count++;
+				setTimeout(function() {
+					var param = {
+						queryData: {
+							'method': config.apimethod.getMessage,
+							'accessToken': state.token,
+							'page_no': 1,
+							'page_size': 1000
+						},
+						method: 'GET'
+					}
+					$.dataRequest(param, function(rs) {
+						var list = rs.data.list;
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((list.length <= config.pagesize)); //参数为true代表没有更多数据了。
+						for(var i in rs.data.list){
+							rs.data.list[i].rq=formatDateTime(rs.data.list[i].create_time);
+						}
+						var widgets = template('main-content', rs.data);
+						$('#ul').append(widgets);
+
+					});
+
+				}, 1000);
+			}
+			if(mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+			
+				$(window).on('tap', '.content', function() {
+				var message_id = $(this).data('message_id');
+				alert(message_id)
+				var message_type = $(this).data('message_type');
+				var url='';
+				var param = {
+						queryData: {
+							'method': config.apimethod.setMessageView,
+							'accessToken': state.token,
+							'message_id': message_id
+						},
+						method: 'GET'
+					}
+					$.dataRequest(param, function(rs) {
+						if(rs.data.status=='success'){
+							switch(message_type){
+								case 'refund_success':
+								case 'refund_failing':
+								     url='';
+								     break;
+								case 'shenhe_no':
+								case 'shenhe_ing':
+								case 'shenhe_failing':
+								case 'shenhe_successful':
+								     url='_www/view/member/comp/comp.html';
+								     break;
+								case 'deposit_successful':
+								case 'deposit_failing':
+								case 'cash_successful':
+								case 'cash_failing':
+								     url='_www/view/member/payrecord/payrecord.html';
+								     break;
+								case 'trade_success':
+								case 'trade_failing':
+								     url='_www/view/member/trade/trade.html';
+								     break;
+								
+							}
+							clicked(url);
+						}
+					});
+			});
+			
+			function formatDateTime(timeStamp) {
+				var date = new Date();
+				date.setTime(timeStamp * 1000);
+				var y = date.getFullYear();
+				var m = date.getMonth() + 1;
+				m = m < 10 ? ('0' + m) : m;
+				var d = date.getDate();
+				d = d < 10 ? ('0' + d) : d;
+				var h = date.getHours();
+				h = h < 10 ? ('0' + h) : h;
+				var minute = date.getMinutes();
+				var second = date.getSeconds();
+				minute = minute < 10 ? ('0' + minute) : minute;
+				second = second < 10 ? ('0' + second) : second;
+				return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+			};
+		</script>
+
+		<script type="text/html" id="main-content">
+			<%
+				for(var item in list){
+			%>
+
+			<a class="content" data-message_id="<%=list[item].message_id%>" data-message_type="<%=list[item].message_type%>">
+				<div style="height:60px;text-align:center;line-height: 60px;">
+					<i style="background: #CCCCCC;color: #FFFFFF;font-size:1rem;"><%=list[item].rq%></i>
+				</div>
+				<div style="background: #FFFFFF;margin:0 0.6rem 0 0.6rem;">
+					<div style="height:50px;line-height: 50px;text-align: center;">
+						<%=list[item].message%>
+					</div>
+
+				</div>
+			</a>
+			<%
+				}
+				%>
+		</script>
+	</body>
+
+</html>
