@@ -75,14 +75,14 @@
 						queryData: {
 							'method': config.apimethod.getMessage,
 							'accessToken': state.token,
-							'page_no': 1,
-							'page_size': 1000
+							'page_no': count,
+							'page_size': 10
 						},
 						method: 'GET'
 					}
 					$.dataRequest(param, function(rs) {
 						var list = rs.data.list;
-						mui('#pullrefresh').pullRefresh().endPullupToRefresh((list.length <= config.pagesize)); //参数为true代表没有更多数据了。
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count - 1) * 10 + list.length >= rs.data.count)); //参数为true代表没有更多数据了。
 						for(var i in rs.data.list){
 							rs.data.list[i].rq=formatDateTime(rs.data.list[i].create_time);
 						}
