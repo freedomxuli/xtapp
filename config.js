@@ -110,6 +110,7 @@ var config = {
 		logisticsback: 'logistics.send', //回寄物流信息提交
 		contentnodelist: 'content.node.list', //获取文章目录
 		contentlist: 'content.list', //获取文章列表
+		contentlistnew:'content.activity.list',//获取文章列表（新）
 		contentinfo: 'content.info', //获取文章内容
 		remindinfo: 'promotion.activity.remindinfo', //获取订阅信息
 		remindsubmit: 'promotion.activity.remindsubmit', //提交订阅信息

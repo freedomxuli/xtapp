@@ -7,11 +7,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<script src="../../js/mui.min.js"></script>
-		<link rel="stylesheet" href="../../css/mui.min.css">
 		<link rel="stylesheet" href="../../css/style.css">
 		<style>
-
+			.message_img {
+				height: 1.5rem;
+				width: 1.5rem;
+				margin-left: 0.8rem;
+			}
+			#pullrefresh{
+				margin-top:3rem;
+			}
 		</style>
 	</head>
 
@@ -25,39 +30,86 @@
 				<img class="message_img" src="../../img/category/message.png" />
 			</div>
 		</header>
+	    <div id="pullrefresh" class="mui-scroll-wrapper">
+	      <div class="mui-scroll">
+			<ul class="article-list">
+				
+			</ul>
+	      </div>
+	    </div>
+	  <script src="../../js/zepto.js"></script>
+	  <script src="../../js/mui.min.js"></script>
+	  <script src="../../js/template.min.js"></script>
+	  <script src="../../config.js"></script>
+	  <script src="../../js/app.js"></script>
+	    <script type="text/html" id="article_list">
+		      <% for(var i=0; i<list.length; i++) { %>
+		      <li>
+		        <a class="mui-linkto action-webview" data-webview="_www/view/artical/articaldetail.html" data-webparam='{"articleid": <%= list[i].article_id %>}'>
+		          	<div style="height:60px;text-align:center;line-height: 60px;">
+						<i style="background: #CCCCCC;color: #FFFFFF;font-size:1rem;padding: 0 5px 0 5px;border-radius: 5px;"><%= $timestamp_To_Time(list[i].modified) %></i>
+					</div>
+					<div style="background: #FFFFFF;margin:0 0.6rem 0 0.6rem;padding:0 0.6rem 0.6rem 0.6rem">
+						<div style="height:50px;border-bottom: 1px solid #efeff4;line-height: 50px;">
+							<%= list[i].title %>
+						</div>
+						<div style="margin-top: 10px;">
+							<img style="width:100%;height:9rem;" src="<%= list[i].article_logo %>" />
+						</div>
+						<div style="font-size:1rem;color:#666666">
+							<%= list[i].content %>
+						</div>
+					</div>
+		        </a>
+		      </li>
+		      <% } %>
+		</script>
+		<script>
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			var count = 1;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				mui.plusReady(function() {
+			      var param = {
+			        queryData: {
+			          'method': config.apimethod.contentlistnew,
+			          'page_no': config.cpage,
+			          'page_size': config.pagesize
+			        },
+			        method: 'GET'
+			      }
+			      $.dataRequest(param, function(rs) {
+		      		setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.data.count))); //参数为true代表没有更多数据了。
+						var result = template('article_list', rs.data);
+						$('.article-list').html(result);
+					}, 1500);
+			      })
+			    });
+			}
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
 
-		<div class="mui-content">
-			<div style="height:60px;text-align:center;line-height: 60px;">
-				<i style="background: #CCCCCC;color: #FFFFFF;font-size:1rem;">2018.01.11 11:18</i>
-			</div>
-			<div style="background: #FFFFFF;margin:0 0.6rem 0 0.6rem;padding:0 0.6rem 0.6rem 0.6rem">
-				<div style="height:50px;border-bottom: 1px solid #efeff4;line-height: 50px;">
-					【每日促销】新年好礼满就送
-				</div>
-				<div style="margin-top: 10px;">
-					<img style="width:21rem;height:9rem;" src="../../img/item/cxhd.png" />
-				</div>
-				<div style="font-size:1rem;color:#666666">
-					通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通
-				</div>
-			</div>
-
-			<div style="height:60px;text-align:center;line-height: 60px;">
-				<i style="background: #CCCCCC;color: #FFFFFF;font-size:1rem;">2018.01.11 11:18</i>
-			</div>
-			<div style="background: #FFFFFF;margin:0 0.6rem 0 0.6rem;padding:0 0.6rem 0.6rem 0.6rem">
-				<div style="height:50px;border-bottom: 1px solid #efeff4;line-height: 50px;">
-					【每日促销】新年好礼满就送
-				</div>
-				<div style="margin-top: 10px;">
-					<img style="width:21rem;height:9rem;" src="../../img/item/hdjs.png" />
-				</div>
-				<div style="font-size:1rem;color:#666666">
-					通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通
-				</div>
-			</div>
-
-		</div>
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+		</script>
 	</body>
 
 </html>
