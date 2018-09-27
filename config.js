@@ -25,6 +25,7 @@ var config = {
 		trustDcloudLogin: 'user.trust.dcloudlogin', //dcloud第三方信任登录信息验证
 		trustBindUser: 'user.trust.bindUser', //信任登录绑定用户
 		userinfo: 'member.basics.get', //用户信息
+		avatar: 'member.header.get', //用户信息
 		updateuserinfo: 'member.basics.update', //更新用户信息
 		addresslist: 'member.address.list', //收获地址
 		setdefaultadd: 'member.address.setDefault', //设置默认收货地址

@@ -48,7 +48,9 @@
             <a href="#forward1" class="mui-navigate-right">
               <div class="mui-table">
                 <div class="mui-table-cell mui-col-xs-4">头像:</div>
-                <div id="avatar" class="mui-table-cell mui-col-xs-8 mui-text-right"><img class="userinfo-avatar" src="../../../img/shop_logo.gif" /></div>
+                <div id="avatar" class="mui-table-cell mui-col-xs-8 mui-text-right">
+                	<img class="userinfo-avatar" src="../../../img/shop_logo.gif" />
+                </div>
               </div>
             </a>
           </li>
@@ -102,12 +104,12 @@
     </section>
     <div id="forward" class="mui-popover mui-popover-action mui-popover-bottom">
       <ul class="mui-table-view">
-        <li class="mui-table-view-cell">
-          <a onclick="getImage()">拍照</a>
-        </li>
-        <li class="mui-table-view-cell">
-          <a onclick="galleryImg()">从手机相册选择</a>
-        </li>
+        <li class="mui-table-view-cell action-camera">
+					<a>拍照</a>
+				</li>
+				<li class="mui-table-view-cell action-gallery">
+					<a>相册</a>
+				</li>
       </ul>
       <ul class="mui-table-view">
         <li class="mui-table-view-cell">
@@ -151,7 +153,8 @@
         }
         document.getElementById('result').innerText = data.birthday;
       });
-
+			//获取头像
+			getAvatar();
       (function() {
         mui.init();
         var result = mui('#result')[0];
@@ -209,49 +212,159 @@
         }, false);
       }
       document.addEventListener('plusready', plusReady, false);
+				var maxcount = 0;
+				//上传图片
+				$('#avatar').on('tap', function() {
+					document.activeElement.blur();
+//					that = $(this).parent().parent();
+//					maxcount = 1 - that.find('.rate-img-list').find('li').length;
+					mui('#forward').popover('toggle');
+				});
+				$('.action-camera').on('tap', function() {
+					getImage();
+					mui('#forward').popover('hide');
+				});
+				$('.action-gallery').on('tap', function() {
+					galleryImgsMaximum();
+					mui('#forward').popover('hide');
+				});
+      //拍照
+				function getImage() {
+					var cmr = plus.camera.getCamera();
+					cmr.captureImage(function(p) {
+						plus.io.resolveLocalFileSystemURL(p, function(entry) {
+							var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+							appendFile(entry.toLocalURL(), name);
+						}, function(e) {
+							log("读取拍照文件错误：" + e.message);
+						});
+					}, function(e) {
+						log("失败：" + e.message);
+					}, {
+						filename: "_doc/camera/",
+						index: 1
+					});
+				}
 
-      function getImage() {
-        var AVCaptureDevice = plus.ios.importClass("AVCaptureDevice");
-        var Status = AVCaptureDevice.authorizationStatusForMediaType("vide");
-        if (3 != Status) {
-            mui.confirm('请在设置中允许使用相机','',["取消","确定"],function(e){
-              log(e.index);
-              if(e.index==1){
-                var UIApplication = plus.ios.import("UIApplication");
-                var NSURL = plus.ios.import("NSURL");
-                var setting = NSURL.URLWithString("app-settings:");
-                var application = UIApplication.sharedApplication();
-                application.openURL(setting);
-                plus.ios.deleteObject(setting);
-                plus.ios.deleteObject(application);
-              }
-            });
-        }
-        var cmr = plus.camera.getCamera();
-        cmr.captureImage(function(path) {
-          plus.gallery.save(path);
-          //outSet("照片已成功保存到系统相册");
-        }, function(e) {
-          //outSet("取消拍照");
-        }, {
-          filename: "_doc/gallery/",
-          index: 1
-        });
-      }
+				//从相册中选择图片
+				function galleryImgsMaximum(maxcount) {
+					// 从相册中选择图片
+					plus.gallery.pick(function(e) {
+						var imgstr = "";
+						var name = '';
+						console.log(e.files);
+						for(var i in e.files) {
+							name = e.files[0].substr(e.files[0].lastIndexOf('/') + 1);
+							appendFile(e.files[0], name);
+						}
+					}, function(e) {
+						//          log( "取消选择图片" );
+					}, {
+						filter: "image",
+						multiple: true,
+						maximum: 1,
+						system: false,
+						onmaxed: function() {
+							plus.nativeUI.alert('最多只能选择1张图片');
+						}
+					});
+				}
+				// 添加文件
+				function appendFile(path, imgname) {
+					var img = new Image();
+					img.src = path; // 传过来的图片路径在这里用。
+					var img_id = '';
+					img.onload = function() {
+						var el = this;
+						//生成比例 
+						var w = el.width,
+							h = el.height;
+						if(w > h) {
+							var scale = w / h;
+							w = 1280 || w;
+							h = w / scale;
+						} else {
+							var scale = h / w;
+							h = 1280 || h;
+							w = h / scale;
+						}
+						//生成canvas
+						var canvas = document.createElement('canvas');
+						var ctx = canvas.getContext('2d');
+						if(w > h) {
+							$(canvas).attr({
+								width: w,
+								height: h
+							});
+							ctx.drawImage(el, 0, 0, w, h);
+						} else {
+							$(canvas).attr({
+								width: h,
+								height: w
+							});
+							ctx.drawImage(el, 0, 0, h, w);
+						}
 
-      function galleryImg() {
-        // 从相册中选择图片
-        //outSet("从相册中选择图片:");
-        plus.gallery.pick(function(path) {
-          //outLine(path);
-          //showImg( path );
-          //createItem(path);
-        }, function(e) {
-          //outSet("取消选择图片");
-        }, {
-          filter: "image"
-        });
-      }
+						var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+						upload(path, base64, imgname);
+					}
+				}
+				// 上传文件
+				function upload(localPath, base64, imagename) {
+					plus.nativeUI.showWaiting();
+					//发送数据  
+					var imgParam = {
+						'v': config.apiversion,
+						'format': 'json',
+						'method': config.apimethod.imgupload,
+						'accessToken': state.token,
+						'upload_type': 'base64',
+						'image': base64,
+						'image_input_title': imagename
+					};
+					mui.post(config.server + config.apiname, imgParam, function(rs) {
+						console.log(JSON.stringify(rs));
+						if(rs.errorcode == 0) {
+							updateAvatar(rs.data.image_id);
+							plus.nativeUI.closeWaiting();
+						} else {
+							mui.alert(rs.message);
+						}
+					}, 'json');
+				}
+				
+				function updateAvatar(image_id){
+					var param = {
+						queryData: {
+							'method': config.apimethod.updateuserinfo,
+							'accessToken': state.token,
+							'header': image_id
+						},
+						method: 'POST'
+					}
+					$.dataRequest(param, function(rs) {
+						getAvatar();
+						mui.toast('头像上传成功');
+					});
+				}
+				
+				//获取用户头像
+				function getAvatar(){
+					var params = {
+		        queryData: {
+		          'method': config.apimethod.avatar,
+		          'accessToken': state.token
+		        },
+		        method: 'GET'
+		      }
+		      $.dataRequest(params, function(rs) {
+		        var data = rs.data;
+		        if(data){
+		        	var ht='<img class="userinfo-avatar" src="'+data+'" />';
+		        	document.getElementById('avatar').innerHTML=ht;
+		        }
+		      });
+				}
     </script>
   </body>
 
