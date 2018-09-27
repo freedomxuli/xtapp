@@ -65,6 +65,7 @@
 		      <% } %>
 		</script>
 		<script>
+			var count = 0;
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
@@ -74,25 +75,25 @@
 					}
 				}
 			});
-			var count = 1;
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				++count;
 				mui.plusReady(function() {
 			      var param = {
 			        queryData: {
 			          'method': config.apimethod.contentlistnew,
-			          'page_no': config.cpage,
+			          'page_no': count,
 			          'page_size': config.pagesize
 			        },
 			        method: 'GET'
 			      }
 			      $.dataRequest(param, function(rs) {
 		      		setTimeout(function() {
-						mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > parseInt(rs.data.count))); //参数为true代表没有更多数据了。
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > parseInt(rs.data.count/10))); //参数为true代表没有更多数据了。
 						var result = template('article_list', rs.data);
-						$('.article-list').html(result);
+						$('.article-list').append(result);
 					}, 1500);
 			      })
 			    });
