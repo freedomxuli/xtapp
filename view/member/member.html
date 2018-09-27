@@ -586,7 +586,20 @@
 					document.getElementById('user_info').style.display = "none";
 				}
 			}
-
+			var params = {
+		        queryData: {
+		          'method': config.apimethod.avatar,
+		          'accessToken': state.token
+		        },
+		        method: 'GET'
+		      }
+		      $.dataRequest(params, function(rs) {
+		        var data = rs.data;
+		        if(data){
+		        	var ht='<img class="userinfo-avatar" src="'+data+'" />';
+		        	document.getElementsByClassName('login-avatar')[0].innerHTML=ht;
+		        }
+	      	});
 	    	$('.bbc-tab-item').on('tap', function() {
 		      var curr = plus.webview.currentWebview();
 				var wvs = plus.webview.all();
