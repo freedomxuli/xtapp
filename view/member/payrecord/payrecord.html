@@ -193,7 +193,7 @@
 		</div>
 
 		<script src="../../../js/zepto.js"></script>
-		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/mui.pullToRefresh.js"></script>
 		<script src="../../../js/mui.pullToRefresh.material.js"></script>
 		<script src="../../../js/mui.view.js"></script>
@@ -223,9 +223,9 @@
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
-					/*down: {
+					down: {
 						callback: pulldownRefresh
-					},*/
+					},
 					up: {
 						contentrefresh: '正在加载...',
 						callback: pullupRefresh
@@ -346,7 +346,9 @@
 					mui('#pullrefresh').pullRefresh().pullupLoading();
 				});
 			}
-
+			function pulldownRefresh(){
+				window.location.reload();
+			}
 			function formatDateTime(timeStamp) {
 				var date = new Date();
 				date.setTime(timeStamp * 1000);
