@@ -595,7 +595,7 @@
 		      }
 		      $.dataRequest(params, function(rs) {
 		        var data = rs.data;
-		        if(data){
+		        if(JSON.stringify(data)!="{}"){
 		        	var ht='<img class="userinfo-avatar" src="'+data+'" />';
 		        	document.getElementsByClassName('login-avatar')[0].innerHTML=ht;
 		        }
