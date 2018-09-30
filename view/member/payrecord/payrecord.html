@@ -148,7 +148,9 @@
 			    
 			    color:#007aff;
 			}
-			
+			.mui-table-view-chevron{
+				margin-top: 2.8rem;
+			}
 		</style>
 	</head>
 
@@ -260,6 +262,7 @@
 					}
 					$.dataRequest(param, function(rs) {
 						var list = rs.data.list;
+						console.log(JSON.stringify(list));
 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count - 1) * 20 + list.length >= rs.data.count)); //参数为true代表没有更多数据了。
 						var table = document.body.querySelector('.mui-table-view');
 						var cells = document.body.querySelectorAll('.mui-table-view-cell');
