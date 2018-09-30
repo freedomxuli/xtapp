@@ -8232,7 +8232,11 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 self.input.value = self.options.min || 0;
                 self.minus.disabled = self.options.min != null;
             } else {
-                var val = parseInt(val);
+            	if(val%1===0){
+            		val =parseInt(val);
+            	}else{
+            		val=parseFloat(val).toFixed(2);
+            	}
                 if (self.options.max != null && !isNaN(self.options.max) && val >= parseInt(self.options.max)) {
                     val = self.options.max;
                     self.plus.disabled = true;
@@ -8245,6 +8249,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 } else {
                     self.minus.disabled = false;
                 }
+               
                 self.input.value = val;
             }
         },
