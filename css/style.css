@@ -5010,7 +5010,12 @@ a {
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 }
-
+.box-displayson1{
+	-webkit-box-flex:6;
+}
+.box-displayson2{
+	-webkit-box-flex:1;
+}
 .box {
 	display: -webkit-box;
 }
@@ -5026,9 +5031,17 @@ a {
 }
 
 .box-item-flex1 {
+	display: -webkit-box;
 	-webkit-box-flex: 1;
+	 -webkit-box-orient: horizontal;
 }
 
+.box-item-flex1span1{
+	width: 300px;
+}
+.box-item-flex1span2{
+	-webkit-box-flex: 1;
+}
 .box-item-flex2 {
 	-webkit-box-flex: 2;
 }

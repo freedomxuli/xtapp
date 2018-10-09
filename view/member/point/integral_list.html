@@ -16,7 +16,7 @@
     </style>
   </head>
 
-  <body>
+  <body style="background: #fff;">
     <div class="user-header integral-header">
     </div>
     <div>
@@ -43,12 +43,12 @@
         <% for(var i=0; i<list.length; i++) { %>
         <li class="mui-table-view-cell">
           <div class="box-display">
-            <div class="box-item-flex1">
+            <div class="box-item-flex1 box-displayson1">
               <%= list[i].behavior%><br>
-              <span class="fontS font-gray-60 fonts"><%= list[i].remark%></span>
-              <span class="fontS font-gray-60 fonts"><%= $timestamp_To_Date(list[i].modified_time)%></span>
+              <span class="fontS font-gray-60 fonts box-item-flex1span1"><%= list[i].remark%></span>
+              <span class="fontS font-gray-60 fonts box-item-flex1span2"><%= $timestamp_To_Date(list[i].modified_time)%></span>
             </div>
-            <div class="box-item-flex1 content-right deposit-detail-amount  <%if (list[i].behavior_type=='obtain'){%>font-red<% }else{ %>font-green<% } %>">
+            <div class="box-item-flex1 content-right deposit-detail-amount box-displayson2  <%if (list[i].behavior_type=='obtain'){%>font-red<% }else{ %>font-green<% } %>">
               <%if (list[i].behavior_type=='obtain'){%>+
               <% } %>
               <%if (list[i].behavior_type=='consume'){%>-
