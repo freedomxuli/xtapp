@@ -68,6 +68,12 @@
         var tempEl = template('content-info', rs.data);
         $('.container').html(tempEl);
         $('.single-img').html(rs.data.content);
+        var imgs = $('.single-img').find('img');
+          if (imgs) {
+            imgs.each(function(index, el) {
+              $(el).css('width','100%');
+            });
+          }
       });
     });
   </script>
