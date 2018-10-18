@@ -402,6 +402,92 @@
 		<!--<script src="../js/mipush.js"></script>-->
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/mui.poppicker.js"></script>
+		
+		<script type="text/html" id="none1">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a class="action-webview" >
+							<img src="../img/index/lunbo.jpg">
+						</a>
+					</div>
+
+					<div class="mui-slider-item">
+						<a class="action-webview" data-webparam=''>
+							<img src="../img/index/lunbo.jpg">
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a class="action-webview" data-webparam=''>
+							<img src="../img/index/lunbo.jpg">
+						</a>
+					</div>
+				</div>
+				
+			</div>
+
+			<div style="height:0.34rem;background-color: #f0eff5;"></div>
+		</script>
+
+		<script type="text/html" id="none2">
+			<section>
+				<ul class="widgets-icons-nav">
+					<li class="action-webview" data-webview="_www/view/category/category.html" data-param='{"tab": ""}'><i><a href="#"><img src="../img/index/none1.png"></a></i><span>炉料商城</span></li>
+					<li id="gxzy" class="action-webview" data-webview="_www/view/item/shareresource.html" data-webparam=''><i><a href="#"><img src="../img/index/none2.png"></a></i><span>共享资源</span></li>
+					<li id="lljr" class="action-webview" data-webview="_www/view/item/financenew.html" data-webparam=''><i><a href="#"><img src="../img/index/none3.png"></a></i><span>炉料金融</span></li>
+					<li id="llzx" class="action-webview" data-webview="_www/view/item/information_list.html" ><i><a href="#"><img src="../img/index/none4.png"></a></i><span>炉料资讯</span></li>
+					<li id="zxhd" class="action-webview" data-webview="_www/view/item/activity.html" data-webparam=''><i><a href="#"><img src="../img/index/none5.png"></a></i><span>最新活动</span></li>
+					<li id="llzs" class="action-webview" data-webview="_www/view/item/goodsindex.html" data-webparam=''><i><a href="#"><img src="../img/index/none6.png"></a></i><span>炉料指数</span></li>
+					<li id="xxwl" class="action-webview" data-webview="_www/view/item/offlinenetwork.html" data-webparam=''><i><a href="#"><img src="../img/index/none7.png"></a></i><span>线下网络</span></li>
+					<li id="qggy" class="action-webview" data-webview="_www/view/item/supplynew.html" data-webparam=''><i><a href="#"><img src="../img/index/none8.png"></a></i><span>求购供应</span></li>
+				</ul>
+			</section>
+		</script>
+
+		<script type="text/html" id="none3">
+			<section class="section-white">
+				<div class="section-title user-title title">
+					<div style="width:0.3rem;height:2.2rem;background-color: #CB0719;"></div>
+					<div class="title-txt title-txt-padding">
+
+						<span class="lbm-font">合作厂家</span></div>
+					<div id="hzcj" class="more-link action-webview" data-webview="_www/view/item/merchants.html">
+						<a class="action-clickview font-gray-40" style="margin-right: -10px;">更多&nbsp;&nbsp;&nbsp;<i class="bbc-icon bbc-icon-forward"></i></a></div>
+				</div>
+				<div id="hzcj_slider" class="mui-slider">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<ul class="mui-table-view mui-grid-view">
+								
+							</ul>
+						</div>
+
+						<div class="mui-slider-item">
+							<ul class="mui-table-view mui-grid-view">
+								<li class="mui-table-view-cell mui-media mui-col-xs-6 action-webview" data-webview="_www/view/category/categorysearch.html" >
+									<a href="#"><img class="mui-media-object" />
+									</a>
+								</li>
+							
+
+							</ul>
+						</div>
+						
+						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<ul class="mui-table-view mui-grid-view">
+								
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+		</script>
 
 		<script type="text/html" id="widget_slider">
 			<div id="slider" class="mui-slider">
@@ -1973,6 +2059,7 @@
 		</script>
 
 		<script type="text/javascript">
+		
 			mui.init({
 				swipeBack: false //启用右滑关闭功能
 			});
@@ -1980,6 +2067,7 @@
 			gallery.slider({
 				interval: 5000 //自动轮播周期，若为0则不自动播放，默认为0；
 			});
+			
 			var state = app.getState();
 			getcartnumabs(state.token);
 			setTimeout(function() {
@@ -2022,6 +2110,7 @@
 			}
 
 			$.dataRequest(param, function(rs) {
+	
 				var data = rs.data.modules;
 				for(var i = 0; i < data.length; i++) {
 					var tpl_id = '';
@@ -2043,6 +2132,7 @@
 
 						}
 					}
+					
 				}
 				$('.header-logo img').attr('src', rs.data.brand_logo);
 
@@ -2212,6 +2302,16 @@
 			});
 
 			mui.plusReady(function() {
+				  if (plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+				  		var widgets = template('none1', []);
+							$('#main-content1').append(widgets);
+							var widgets = template('none2', []);
+							$('#main-content1').append(widgets);
+							var widgets = template('none3', []);
+							$('#main-content1').append(widgets);
+        //mui.toast("网络异常，请检查网络设置！");
+mui.toast("请在确保网络信号正常的情况点击左下角主页图标。");
+    } 
 				window.addEventListener('refresh', fetchList);
 				fetchList();
 

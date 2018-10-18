@@ -91,9 +91,13 @@
 			      }
 			      $.dataRequest(param, function(rs) {
 		      		setTimeout(function() {
-						mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > parseInt(rs.data.count/10))); //参数为true代表没有更多数据了。
+
+						mui('#pullrefresh').pullRefresh().endPullupToRefresh((rs.data.count==undefined||count > parseInt(rs.data.count/10))); //参数为true代表没有更多数据了。
+						//mui('#pullrefresh').pullRefresh().endPullupToRefresh(((count - 1) * 10 + rs.data.list.length >= rs.data.count));
+						if(rs.data.count>0){
 						var result = template('article_list', rs.data);
 						$('.article-list').append(result);
+						}
 					}, 1500);
 			      })
 			    });
