@@ -1078,7 +1078,7 @@
 							var test = JSON.stringify(items);
 							console.log(test);
 							if (! items[0].value) {
-								$("#showPlacePicker span").html('厂家/产地');
+								$("#showPlacePicker span").html('厂家/产地');  
 							}else{
 								$("#showPlacePicker span").html(items[0].text);
 							}
@@ -1451,7 +1451,7 @@
 				var pp_list = [];
 				var manufacturers_all_obj={
 					value:'',
-					text:'厂家/产地'
+					text:'全部'
 				};
 				pp_list.push(manufacturers_all_obj);
 				for(var i=0;i<placePikerDataArr.length;i++){

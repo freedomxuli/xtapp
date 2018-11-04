@@ -178,7 +178,7 @@
 				color: #E35D4C;
 				font-size: 1rem;
 				padding: 0.2rem 0rem 0.2rem 0rem;
-				border-bottom: 1px solid #DDDDDD;
+				/*border-bottom: 1px solid #DDDDDD;*/
 			}
 			
 			.content-div-center {
@@ -326,11 +326,41 @@
 				for(var i in rs.data.list) {
 					for(var j in rs.data.list[i]) {
 						array.push(rs.data.list[i][j]);
+
 					}
 				}
+				
+				var tid_arr=[];
+				var arry2=[];
+
+				for(var i in array){
+					if(tid_arr.indexOf(array[i].tid)<0){
+					   tid_arr.push(array[i].tid);
+					   
+					   var o={};
+					   o.tid=array[i].tid;
+					   arry2.push(o);
+					 }
+				}
+				
+				var obj2={};
+				obj2.list=arry2;
+
 				var obj = {};
 				obj.list = array;
-				var widgets = template('kpwl', obj);
+				var no="";
+				var arr=[];
+				for(var i in obj2.list){
+					var arr=[];
+					for(var j in obj.list){
+					   if(obj2.list[i].tid==obj.list[j].tid)	{
+					       arr.push(obj.list[j]);
+					      
+					   }
+					}
+				    obj2.list[i].child=arr;
+				}
+				var widgets = template('kpwl', obj2);
 				$('#ul2').append(widgets);
 			});
 
@@ -514,7 +544,7 @@
 						订单编号
 						<%=list[item].tid%>
 					</div>
-					<div class="content-div-center" style="border-bottom: 0px;">
+					<div class="content-div-center" style="border-bottom: 0px;border-top:1px solid #DDDDDD">
 						<div class="content-div-center-left">
 							出库单号：
 							<%=list[item].batches_id%>
@@ -615,35 +645,38 @@
 				<div class="content-div">
 					<div class="content-div-code">
 						订单编号
-						<%=list[i].tid%>
+						<%=list[i].tid%> 
 					</div>
-					<div class="content-div-center" style="border-bottom: 0px;">
+					<%
+						for(var j in list[i].child){
+					%>
+					<div class="content-div-center" style="border-bottom: 0px;border-top:1px solid #DDDDDD;margin-top:3px">
 						<div class="content-div-center-left">
 							开票金额：￥
-							<%=list[i].ticket_money%>
+							<%=list[i].child[j].ticket_money%>
 						</div>
 					</div>
 					<div class="content-div-center" style="border-bottom: 0px;">
 						<div class="content-div-center-left">
 							发票抬头：
-							<%=list[i].ticket_title%>
+							<%=list[i].child[j].ticket_title%>
 						</div>
 					</div>
 					<div class="content-div-center" style="border-bottom: 0px;">
 						<div class="content-div-center-left">
 							开票内容：
-							<%=list[i].manufacturers_name%>-
-							<%=list[i].pm_name%>
-							<%=list[i].guige%>
-							<%=list[i].price%>/吨
-							<%=list[i].ticket_num%>吨
+							<%=list[i].child[j].manufacturers_name%>-
+							<%=list[i].child[j].pm_name%>
+							<%=list[i].child[j].guige%>
+							<%=list[i].child[j].price%>/吨
+							<%=list[i].child[j].ticket_num%>吨
 						</div>
 					</div>
 					<div class="content-div-center" >
 						<div class="content-div-center-left">
 							快递单号：
-							<%=list[i].ticket_corp%>
-							<%=list[i].ticket_code%>
+							<%=list[i].child[j].ticket_corp%>
+							<%=list[i].child[j].ticket_code%>
 						</div>
 					</div>
 					<div class="content-div-center" style="border-bottom: 0px;">
@@ -651,10 +684,10 @@
 
 						</div>
 						<%
-								if(list[i].status=="WAIT_BUYER_CONFIRM_TICKET"){
+								if(list[i].child[j].status=="WAIT_BUYER_CONFIRM_TICKET"){
 							%>
-						<div class="content-div-center-right-button" id="<%=list[i].ticket_id%>">
-							<div class="content-div-center-right-button ticket-confirm" data-ticket_id='<%=list[i].ticket_id%>'>
+						<div class="content-div-center-right-button" id="<%=list[i].child[j].ticket_id%>">
+							<div class="content-div-center-right-button ticket-confirm" data-ticket_id='<%=list[i].child[j].ticket_id%>'>
 								确认收票
 							</div>
 						</div>
@@ -669,9 +702,12 @@
 							}
 							%>
 					</div>
+					<%
+					}
+					%>
 				</div>
 			</li>
-			<div style="height:10px;background: #efeff4;"></div>
+			<div style="height:10px;background: #efeff4;"></div> 
 			<%
 			}
 			%>

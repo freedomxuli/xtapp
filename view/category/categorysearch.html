@@ -809,6 +809,9 @@
       var child_data;
       var NamePicker = new mui.PopPicker();
       var SizePicker = new mui.PopPicker();
+			var placePicker = new mui.PopPicker();
+			var placePikerDataArr=[];
+			var placePikerDataArr1=[];
       
       mui.plusReady(function() {
       		document.querySelector('#left-content2').addEventListener('tap',function(){
@@ -1090,6 +1093,14 @@
 				      	//console.log("获取："+rs1.data.cat_id);
 				      	cat_all_obj[start_id]=rs1.data.cat_id;
 				      	GetContentList(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
+				      		if(!start_num){
+			      		GetContentList1(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
+			      		setTimeout(function(){
+								SetPlaceData1();
+								},600);
+//								console.log(3333333);
+			      	}
+				      	
 				      	var start_num_new = start_num + 1;
 				      	startContent(arr_1[start_num_new],start_num_new);
 				      });
@@ -1157,18 +1168,18 @@
 						//console.log("集合："+JSON.stringify(cat_all_obj));
 						
 						//产地列表
-						var pp_list = [];
-						
-						for(var m_id in rs.data.manufacturers)
-						{
-							var m_obj = {
-								value:rs.data.manufacturers[m_id].manufacturers_id,
-								text:rs.data.manufacturers[m_id].manufacturers_name
-							};
-							pp_list.push(m_obj);
-						}
-						var placePicker = new mui.PopPicker();
-						placePicker.setData(pp_list);
+//						var pp_list = [];
+//						
+//						for(var m_id in rs.data.manufacturers)
+//						{
+//							var m_obj = {
+//								value:rs.data.manufacturers[m_id].manufacturers_id,
+//								text:rs.data.manufacturers[m_id].manufacturers_name
+//							};
+//							pp_list.push(m_obj);
+//						}
+//						var placePicker = new mui.PopPicker();
+//						placePicker.setData(pp_list);
 						var showPlacePickerButton = document.getElementById('showPlacePicker');
 						showPlacePickerButton.addEventListener('tap', function(event) {
 							placePicker.show(function(items) {
@@ -1189,7 +1200,11 @@
 						
 						//交割库列表
 						var jg_list = [];
-						
+						var jg_all_obj={
+						value:'',
+						text:'全部'
+					};
+					jg_list.push(jg_all_obj);
 						for(var s_id in rs.data.storage)
 						{
 							var s_obj = {
@@ -1227,6 +1242,9 @@
 								$("#showNamePicker span").html("品名");
 								$("#showSizePicker span").html("规格");
 								GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
+								setTimeout(function(){
+							SetPlaceData();
+						},600);
 								//GetContentList(fl_id,fl_zl_obj[fl_id],'',cd_id,jgk_id,1,cat_all_obj[fl_id]);
 							} 
 						});
@@ -1425,6 +1443,53 @@
 			  });
 			}
 			
+					function SetPlaceData(){
+
+				var pp_list = [];
+				var manufacturers_all_obj={
+					value:'',
+					text:'全部'
+				};
+				pp_list.push(manufacturers_all_obj);
+				for(var i=0;i<placePikerDataArr.length;i++){
+						var m_obj = {
+							value:placePikerDataArr[i].manufacturers_id,
+							text:placePikerDataArr[i].manufacturers_name
+						};
+						pp_list.push(m_obj);
+				}
+				 var obj = {};
+		     pp_list = pp_list.reduce(function(item, next) {
+		       obj[next.value] ? '' : obj[next.value] = true && item.push(next);
+		       return item;
+		    }, []);
+				placePicker.setData(pp_list);
+				console.log(JSON.stringify(pp_list))
+			}
+					
+						function SetPlaceData1(){
+				var pp_list = [];
+				var manufacturers_all_obj={
+					value:'',
+					text:'全部'
+				};
+				pp_list.push(manufacturers_all_obj);
+				for(var i=0;i<placePikerDataArr1.length;i++){
+						var m_obj = {
+							value:placePikerDataArr1[i].manufacturers_id,
+							text:placePikerDataArr1[i].manufacturers_name
+						};
+						pp_list.push(m_obj);
+				}
+				 var obj = {};
+		     pp_list = pp_list.reduce(function(item, next) {
+		       obj[next.value] ? '' : obj[next.value] = true && item.push(next);
+		       return item;
+		    }, []);
+				placePicker.setData(pp_list);
+				console.log(JSON.stringify(pp_list))
+			}
+			
 			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
 			{
 				var search = "";
@@ -1503,7 +1568,96 @@
 						indicators: true, //是否显示滚动条
 						deceleration:deceleration
 					});*/
+					
+					placePikerDataArr=rs.data.list;
+					placePikerDataArr1=rs.data.list;
 	      });
+			}
+			
+			function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
+			{
+				var arrData=[];
+				var search = "";
+				var all = "";
+				var pm = "";
+				var gg = "";
+				var cj = "";
+				var jgk = "";
+				if(keykind!="")
+				{
+					switch(keykind)
+					{
+						case "全部":
+							search = "all";
+							all = keyword;
+						break;
+						case "品名":
+							pm = keyword;
+						break;
+						case "规格":
+							gg = keyword;
+						break;
+						case "厂家/产地":
+							cj = keyword;
+						break;
+						case "交割库":
+							jgk = keyword;
+						break;
+					}
+				}
+				var param1 = {
+	        queryData: {
+	          'method': config.apimethod.goodslist,
+	          'lv1Cat':'',
+	          'lv2Cat':pm_id,
+	          'cat_id':cat_all_id,
+	          'shop_id':'',
+	          'search':search,
+	          'all':all,
+	          'pm':pm,
+	          'gg':gg,
+	          'cj':cj,
+	          'jgk':jgk,
+	          'page_no':page_new,
+	          'page_size':config.pagesize,
+	          'orderBy':'',
+	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
+	          'guige':guige,
+	          'manufacturers_id':cd_new_id,
+	          'storage_id':jgk_new_id
+	        },
+	        method: 'GET'
+	      };
+//	      console.log(JSON.stringify(param1));
+	      $.dataRequest(param1, function(rs) {
+//	      	console.log(JSON.stringify(rs));
+//	      	console.log(1);
+	      	if(rs.data.list.length==0){
+						jQuery('#item'+fl_new_id+'mobile .mui-pull-loading').html('没有更多数据了');
+					}
+	      	jQuery('#item'+fl_new_id+'mobile ul').empty();
+	      	jQuery('#item'+fl_new_id+'mobile ul').siblings('li').remove();
+	      	page_obj[fl_new_id] = 1;
+	      	for(var i = 0;i < rs.data.list.length;i++)
+	      	{
+	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
+	      		rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
+	      		
+	      	}
+					
+	      	var result = template('filters_center_list', rs.data);
+					$('#item'+fl_new_id+'mobile ul').html(result);
+					
+					placePikerDataArr1=rs.data.list;
+					//$('#item'+fl_new_id+'mobile').click();
+					//阻尼系数
+/*					var deceleration = mui.os.ios?0.003:0.0001;
+					$('.mui-scroll-wrapper').scroll({
+						bounce: false,
+						indicators: true, //是否显示滚动条
+						deceleration:deceleration
+					});*/
+	     });
 			}
 			
 			function GetContentListNew(page_index,ul_obj,self_obj,pm_id,guige,cd_new_id,jgk_new_id)
@@ -1577,9 +1731,14 @@
 			}
       
       //构造品名combobox
-      function GetProList(NamePickerNew,objs,fl)
+      function GetProList(NamePickerNew,objs,fl) 
       {
       	var pm_list = [];
+      	var pm_all_obj={
+      		value:'',
+					text:'全部'
+      	};
+      	pm_list.push(pm_all_obj);
 				for(var l_id in objs)
 				{
 					if(objs[l_id].lv1catid == fl)
