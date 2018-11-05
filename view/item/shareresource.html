@@ -1043,7 +1043,7 @@
 			var pp_list = [];
 			var manufacturers_all_obj={
 						value:'',
-						text:'厂家/产地'
+						text:'全部'
 					};
 			pp_list.push(manufacturers_all_obj);
 			for(var m_id in rs.data.manufacturers_name) {
@@ -1059,7 +1059,11 @@
 			var showPlacePickerButton = document.getElementById('showPlacePicker');
 			showPlacePickerButton.addEventListener('tap', function(event) {
 				placePicker.show(function(items) {
-					$("#showPlacePicker span").html(items[0].text);
+					if (! items[0].value) {
+						$("#showPlacePicker span").html('厂家/产地');  
+					}else{
+						$("#showPlacePicker span").html(items[0].text);
+					}
 					cd_id = items[0].value;
 					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 				});
@@ -1069,7 +1073,7 @@
 			jg_list = [];
 			var jg_all_obj={
 				value:'',
-				text:'交割库'
+				text:'全部'
 			};
 			jg_list.push(jg_all_obj);
 			for(var m_id in rs.data.storage_name) {
@@ -1084,7 +1088,11 @@
 			var showJgPickerButton = document.getElementById('showJgPicker');
 			showJgPickerButton.addEventListener('tap', function(event) {
 				jgPicker.show(function(items) {
-					$("#showJgPicker span").html(items[0].text);
+					if (! items[0].value) {
+						$("#showJgPicker span").html('交割库');
+					}else{
+						$("#showJgPicker span").html(items[0].text);
+					}
 					jgk_id = items[0].value;
 					GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 				});
@@ -1446,7 +1454,7 @@
       	var pm_list = [];
       	var pm_all_obj={
       		value:'',
-					text:'品名'
+			text:'全部'
       	};
       	pm_list.push(pm_all_obj);
 				for(var l_id in objs)
@@ -1464,7 +1472,11 @@
 				var showNamePickerButton = document.getElementById('showNamePicker');
 				showNamePickerButton.addEventListener('tap', function(event) {
 					NamePickerNew.show(function(items) {
-						$("#showNamePicker span").html(items[0].text);
+						if (! items[0].value) {
+							$("#showNamePicker span").html('品名');
+						}else{
+							$("#showNamePicker span").html(items[0].text);
+						}
 						$("#showSizePicker span").html("规格");
 						pro_name_id = items[0].value;
 						gg_text = "";
@@ -1491,7 +1503,7 @@
 	      	var gg_array = [];
 	      	var gg_all_obj={
 	      		value:'',
-						text:'规格'
+				text:'全部'
 	      	};
       		gg_array.push(gg_all_obj);
 	      	for(var i = 0;i<gg_ids.length;i++)
@@ -1507,7 +1519,11 @@
 					showSizePickerButton.addEventListener('tap', function(event) {
 						SizePicker.show(function(items) {
 							gg_text = items[0].text; 
-							$("#showSizePicker span").html(items[0].text);
+							if (!items[0].value) {
+								$("#showSizePicker span").html('规格');
+							}else{
+								$("#showSizePicker span").html(items[0].text);
+							}
 							if(!items[0].value){
 								gg_text='';
 							}
