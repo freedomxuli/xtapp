@@ -830,7 +830,9 @@
           getTradeList('');
         }
       });
-      
+      mui.back=function () {
+          clicked('_www/view/member/member.html');
+      }
 
       function getTradeList(active) {
         var state = app.getState();
