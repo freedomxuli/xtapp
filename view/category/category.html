@@ -1563,7 +1563,7 @@
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
 					
-					placePikerDataArr=rs.data.list;
+					//placePikerDataArr=rs.data.list;
 					//$('#item'+fl_new_id+'mobile').click();
 					//阻尼系数
 /*					var deceleration = mui.os.ios?0.003:0.0001;
@@ -1572,6 +1572,34 @@
 						indicators: true, //是否显示滚动条
 						deceleration:deceleration
 					});*/
+	     });
+	     
+	     param1 = {
+	        queryData: {
+	          'method': config.apimethod.goodslist,
+	          'lv1Cat':'',
+	          'lv2Cat':pm_id,
+	          'cat_id':cat_all_id,
+	          'shop_id':'',
+	          'search':search,
+	          'all':all,
+	          'pm':'',
+	          'gg':'',
+	          'cj':'',
+	          'jgk':'',
+	          'page_no':page_new,
+	          'page_size':config.pagesize,
+	          'orderBy':'',
+	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
+	          'guige':guige,
+	          'manufacturers_id':'',
+	          'storage_id':''
+	        },
+	        method: 'GET'
+	     };
+	      $.dataRequest(param1, function(rs1) {  
+					placePikerDataArr=rs1.data.list;
+					
 	     });
 			}
 function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
