@@ -1297,12 +1297,12 @@
 								up: {
 									callback: function() {
 										var self = this;
-										setTimeout(function() {
+										//setTimeout(function() {
 											var ul = self.element.querySelector('.mui-table-view');
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
 											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
-										}, 1100);
+										//}, 1100);
 									}
 								}
 							});
@@ -1568,9 +1568,9 @@
 						indicators: true, //是否显示滚动条
 						deceleration:deceleration
 					});*/
-	
-					placePikerDataArr=rs.data.list;
-					placePikerDataArr1=rs.data.list;
+
+//					placePikerDataArr=rs.data.list;
+//					placePikerDataArr1=rs.data.list;
 	      });
 	      
 	      param1 = {
@@ -1600,6 +1600,7 @@
 	      $.dataRequest(param1, function(rs1) {
 
 					placePikerDataArr=rs1.data.list;
+					placePikerDataArr1=rs.data.list;
 	      });
 			}
 			

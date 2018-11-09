@@ -1161,12 +1161,12 @@
 								up: {
 									callback: function() {
 										var self = this;
-										setTimeout(function() {
+								//		setTimeout(function() {
 											var ul = self.element.querySelector('.mui-table-view');
 											/*ul.appendChild(createFragment(ul, index, config.pagesize));
 											self.endPullUpToRefresh();*/
 											GetContentListNew(index,ul,self,pro_name_id,gg_text,cd_id,jgk_id);
-										}, 1100);
+									//	}, 1100);
 									}
 								},
 								down:{
@@ -1469,6 +1469,7 @@
 				placePicker.setData(pp_list);
 			}
 			function SetPlaceData1(){
+
 				var pp_list = [];
 				var manufacturers_all_obj={
 					value:'',
@@ -1598,7 +1599,10 @@
 	        method: 'GET'
 	     };
 	      $.dataRequest(param1, function(rs1) {  
-					placePikerDataArr=rs1.data.list;
+    
+          	placePikerDataArr=rs1.data.list;
+					//placePikerDataArr1=rs1.data.list;
+      
 					
 	     });
 			}
@@ -1675,7 +1679,7 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
 					
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
-					
+
 					placePikerDataArr1=rs.data.list;
 					//$('#item'+fl_new_id+'mobile').click();
 					//阻尼系数
