@@ -1076,7 +1076,8 @@
 	      	{
 	      		arr_1.push(top_kind_id.substr(2));
 	      	}
-	      	startContent(arr_1[0],0);
+	      	
+	      	startContent(fl_id,0);
 	      	function startContent(start_id,start_num)
 	      	{
 	      		if(start_num<arr_1.length)
@@ -1094,6 +1095,7 @@
 				      	cat_all_obj[start_id]=rs1.data.cat_id;
 				      	GetContentList(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
 				      		if(!start_num){
+
 			      		GetContentList1(start_id,pro_name_id,gg_text,cd_id,jgk_id,1,rs1.data.cat_id);
 			      		setTimeout(function(){
 								SetPlaceData1();
@@ -1241,6 +1243,7 @@
 								gg_text = "";
 								$("#showNamePicker span").html("品名");
 								$("#showSizePicker span").html("规格");
+								console.log(JSON.stringify(cat_all_obj))
 								GetContentList(fl_id,pro_name_id,gg_text,cd_id,jgk_id,1,cat_all_obj[fl_id]);
 								setTimeout(function(){
 							SetPlaceData();
@@ -1464,7 +1467,7 @@
 		       return item;
 		    }, []);
 				placePicker.setData(pp_list);
-				console.log(JSON.stringify(pp_list))
+				//console.log(JSON.stringify(pp_list))
 			}
 					
 						function SetPlaceData1(){
@@ -1487,7 +1490,7 @@
 		       return item;
 		    }, []);
 				placePicker.setData(pp_list);
-				console.log(JSON.stringify(pp_list))
+				//console.log(JSON.stringify(pp_list))
 			}
 			
 			function GetContentList(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
@@ -1544,7 +1547,7 @@
 	        },
 	        method: 'GET'
 	      };
-	      console.log(JSON.stringify(param1));
+	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs) {
 	      	if(rs.data.list.length==0){
 						jQuery('#item'+fl_new_id+'mobile .mui-pull-loading').html('没有更多数据了');
@@ -1572,7 +1575,7 @@
 //					placePikerDataArr=rs.data.list;
 //					placePikerDataArr1=rs.data.list;
 	      });
-	      
+	  
 	      param1 = {
 	        queryData: {
 	          'method': config.apimethod.goodslist, 
@@ -1596,11 +1599,11 @@
 	        },
 	        method: 'GET'
 	      };
-	      console.log(JSON.stringify(param1));
+	      //console.log(JSON.stringify(param1));
 	      $.dataRequest(param1, function(rs1) {
 
 					placePikerDataArr=rs1.data.list;
-					placePikerDataArr1=rs.data.list;
+					//console.log(JSON.stringify(rs1.data.list))
 	      });
 			}
 			
@@ -1635,26 +1638,27 @@
 						break;
 					}
 				}
+
 				var param1 = {
-	        queryData: {
-	          'method': config.apimethod.goodslist,
+	       queryData: {
+	          'method': config.apimethod.goodslist, 
 	          'lv1Cat':'',
 	          'lv2Cat':pm_id,
 	          'cat_id':cat_all_id,
 	          'shop_id':'',
 	          'search':search,
 	          'all':all,
-	          'pm':pm,
-	          'gg':gg,
-	          'cj':cj,
-	          'jgk':jgk,
+	          'pm':'',
+	          'gg':'',
+	          'cj':'',
+	          'jgk':'',
 	          'page_no':page_new,
 	          'page_size':config.pagesize,
 	          'orderBy':'',
 	          'fields':'item_id,cat_id,title,image_default_id,price,price_accept,manufacturers_id,storage_id,store',
 	          'guige':guige,
-	          'manufacturers_id':cd_new_id,
-	          'storage_id':jgk_new_id
+	          'manufacturers_id':'',
+	          'storage_id':''
 	        },
 	        method: 'GET'
 	      };
@@ -1677,16 +1681,10 @@
 					
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
+
+					//console.log(JSON.stringify(rs.data.list))
+					placePikerDataArr1=rs.data.list; 
 					
-					placePikerDataArr1=rs.data.list;
-					//$('#item'+fl_new_id+'mobile').click();
-					//阻尼系数
-/*					var deceleration = mui.os.ios?0.003:0.0001;
-					$('.mui-scroll-wrapper').scroll({
-						bounce: false,
-						indicators: true, //是否显示滚动条
-						deceleration:deceleration
-					});*/
 	     });
 			}
 			
