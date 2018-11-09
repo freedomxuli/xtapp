@@ -4032,6 +4032,10 @@ select:focus
     background: #fff;
 }
 
+.mui-android header{
+	padding-top: 40px !important;
+}
+
 .mui-plus.mui-android .mui-popup-backdrop
 {
     -webkit-transition-duration: 1ms;
@@ -5503,6 +5507,12 @@ body > .mui-progressbar
 .mui-android.mui-android-4-3 textarea
 {
     -webkit-user-select: text;
+}
+
+.mui-ios header{
+
+padding-top: 32px !important;
+
 }
 
 .mui-ios .mui-table-view-cell
