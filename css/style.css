@@ -8987,7 +8987,7 @@ input[type="search"].header-search {
 
 .search-modal {
 	position: absolute !important;
-	top: 44px;
+	top: 80px;
 	bottom: 0;
 	left: 0;
 	right: 0;
