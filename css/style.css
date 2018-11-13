@@ -9147,3 +9147,9 @@ input[type="search"].header-search {
 .icon-user:before {
 	content: "\e60c";
 }
+.immerse-padding{
+	padding-top: 22px;height: 73px;
+}
+.immerse-margin{
+	margin-top: 22px;
+}
