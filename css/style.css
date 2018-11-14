@@ -8987,7 +8987,7 @@ input[type="search"].header-search {
 
 .search-modal {
 	position: absolute !important;
-	top: 80px;
+	top: 65px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -9148,7 +9148,7 @@ input[type="search"].header-search {
 	content: "\e60c";
 }
 .immerse-padding{
-	padding-top: 22px;height: 73px;
+	padding-top: 22px;height: 67px;
 }
 .immerse-margin{
 	margin-top: 22px;
