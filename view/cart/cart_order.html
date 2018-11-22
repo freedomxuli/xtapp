@@ -744,16 +744,7 @@
 						</div>
 					</div>
 					<%}%>
-					<!--<div class="goods_info_detail">
-	   			<div class="goods_info_detail_type">开票信息</div>
-	   			<div class="goods_info_detail_type">
-	   				<div class="goods_info_detail_type_text">增值税发票</div>
-	   				<div class="goods_info_detail_type_img">
-	   					<img class="check-right-img" src="../../img/orderdetail/right.png" />
-	   				</div>
-	   			</div>
-	   		</div>-->
-				
+
 					<div class="goods_info_detail">
 						<div class="goods_info_detail_type">优惠券：</div>
 						<div class="goods_info_detail_type">
@@ -762,26 +753,25 @@
 							</div>
 						</div>
 					</div>
-				
 					
-							<section class="mui-input-group integral-use">
-					<section class="section-white immerse-margin">
-						<ul class="function-list">
-							<li class="mui-table-view-cell">
-								<a href="#invoice" class="mui-navigate-right act-invoice-detail">
-									<div class="mui-table">
-										<div class="mui-table-cell mui-col-xs-3 fpxx">发票信息：</div>
-										<input type="hidden" id="op_need_invoice" value="0">
-										<input type="hidden" name="" id="op_invoice_type" value="notuse">
-										<input type="hidden" id="op_invoice_title" value="" />
-										<div class="mui-table-cell mui-col-xs-9 mui-text-right " id="op_invoice_name">不需要发票</div>
-									</div>
-								</a>
-							</li>
-						</ul>
+					<section class="mui-input-group integral-use">
+						<section class="section-white">
+							<ul class="function-list">
+								<li class="mui-table-view-cell">
+									<a href="#invoice" class="mui-navigate-right act-invoice-detail">
+										<div class="mui-table">
+											<div class="mui-table-cell mui-col-xs-3 fpxx">发票信息：</div>
+											<input type="hidden" id="op_need_invoice" value="0">
+											<input type="hidden" name="" id="op_invoice_type" value="notuse">
+											<input type="hidden" id="op_invoice_title" value="" />
+											<div class="mui-table-cell mui-col-xs-9 mui-text-right " id="op_invoice_name">不需要发票</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</section>
 					</section>
-				</section>
-					<div class="goods_info_detail">
+					<div class="goods_info_detail" style="padding-top: 0px;">
 						<div class="mui-input-row input-div">
 							<label class="input-text" style="width:8rem">买家留言：</label>
 							<div class="user-message"  style="float:left;width:12rem" rel="<%= cartInfo.resultCartData[i].shop_id %>"><input type="text" class="user-mark input-write" name="mark" placeholder="本次交易补充说明"></div>
