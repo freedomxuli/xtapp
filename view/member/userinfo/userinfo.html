@@ -359,7 +359,7 @@
 		      }
 		      $.dataRequest(params, function(rs) {
 		        var data = rs.data;
-		        if(data){
+		        if(!isEmptyObject(data)){
 		        	var ht='<img class="userinfo-avatar" src="'+data+'" />';
 		        	document.getElementById('avatar').innerHTML=ht;
 		        }
