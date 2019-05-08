@@ -425,6 +425,9 @@
 			.left-side-content-detail-li{
 				list-style-type: none;
 				padding: 1rem 1rem 3rem 1rem;
+				height: 20px;
+				margin-bottom: 2rem;
+
 			}
 			.left-side-content-detail-nav
 			{
@@ -437,6 +440,12 @@
 			}
 			.left-side-content-detail-list ul{
 				width: 100%;
+			}
+			.left-side-content-detail-list ul li:last-child{
+				margin-bottom: 1rem;
+			}
+			.left-side-content-detail-list ul li:nth-last-child(2){
+				margin-bottom: 1rem;
 			}
 			.left-side-content-detail-list li{
 				float:left;
@@ -496,185 +505,8 @@
 			  <aside class="mui-off-canvas-left" id="left-side" style="top: -5px;">
 			    <div class="left-side-content">
 			    	<div class="left-side-content-nav">
-<!--							<ul>
-								<li class="nav-active">生铁</li>
-								<li>废钢</li>
-								<li>增碳剂</li>
-								<li>铁合金</li>
-								<li>孕育剂</li>
-								<li>其他辅料</li>
-							</ul>-->
 			    	</div>
 			    	<div class="left-side-content-detail" id="left-side-content-detail">
-			    		<ul>
-			    			<li class="left-side-content-detail-li">
-			    				<div class="left-side-content-detail-nav">
-			    					球铁
-			    				</div>
-			    				<div class="left-side-content-detail-list">
-			    					<ul>
-			    						<li class="left-side-content-detail-active">
-			    							Q8
-			    						</li>
-			    						<li>
-			    							Q10
-			    						</li>
-			    						<li>
-			    							Q12
-			    						</li>
-			    						<li>
-			    							Q16
-			    						</li>
-			    					</ul>
-			    				</div>
-			    			</li>
-			    			<li class="left-side-content-detail-li">
-			    				<div class="left-side-content-detail-nav">
-			    					铸铁
-			    				</div>
-			    				<div class="left-side-content-detail-list">
-			    					<ul>
-			    						<li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li>
-			    						<li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li><li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    									    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li>
-			    						<li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li><li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    									    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li>
-			    						<li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li><li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    									    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li>
-			    						<li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    						<li>
-			    							中锰方块
-			    						</li><li>
-			    							低锰八角
-			    						</li>
-			    						<li>
-			    							中锰八角
-			    						</li>
-			    						<li>
-			    							低锰方块
-			    						</li>
-			    					</ul>
-			    				</div>
-			    			</li>
-			    			<li class="left-side-content-detail-li">
-			    				<div class="left-side-content-detail-nav">
-			    					炼钢铁
-			    				</div>
-			    				<div class="left-side-content-detail-list">
-			    					<ul>
-			    						<li>
-			    							L7
-			    						</li>
-			    						<li>
-			    							L8
-			    						</li>
-			    						<li>
-			    							L10
-			    						</li>
-			    					</ul>
-			    				</div>
-			    			</li>
-			    		</ul>
 			    	</div>
 			    </div>
 			    <div class="left-side-submit" id="left-side-submit" style="margin-bottom: 20px">确定</div>
@@ -969,12 +801,12 @@
       	left_content_obj = {
       		lv1Cats:left_content_list
       	};
+      	console.log(JSON.stringify(obj));
+		result = template('filters_left_content', left_content_obj);
+		$('.left-side-content-detail').html(result);
 
-				result = template('filters_left_content', left_content_obj);
-				$('.left-side-content-detail').html(result);
-
-				//构造头部列表
-				var top_kind_obj;
+		//构造头部列表
+		var top_kind_obj;
       	var top_kind_list = [];
       	for(var top_kind_id in rs.data.lv1Cats)
       	{
@@ -1037,8 +869,8 @@
 								},600);
 //								console.log(3333333);
 			      	}
-			      	
-							
+
+
 			      	var start_num_new = start_num + 1;
 //			      	console.log(start_num+'次');
 			      	startContent(arr_1[start_num_new],start_num_new);
@@ -1070,7 +902,7 @@
 //						};
 //						pp_list.push(m_obj);
 //					}
-//					
+//
 //					placePicker.setData(pp_list);
 					var showPlacePickerButton = document.getElementById('showPlacePicker');
 					showPlacePickerButton.addEventListener('tap', function(event) {
@@ -1078,7 +910,7 @@
 							var test = JSON.stringify(items);
 							console.log(test);
 							if (! items[0].value) {
-								$("#showPlacePicker span").html('厂家/产地');  
+								$("#showPlacePicker span").html('厂家/产地');
 							}else{
 								$("#showPlacePicker span").html(items[0].text);
 							}
@@ -1088,15 +920,11 @@
 							//return false;
 						});
 					}, false);
-
 					//品名列表
 					child_data = rs.data.lv2Cats;
-					console.log(JSON.stringify(child_data));
 					GetProList(NamePicker,rs.data.lv2Cats,fl_id);
-					
 					//规格列表
 					//GetGGList(pro_name_id);
-
 					//交割库列表
 					var jg_list = [];
 					var jg_all_obj={
@@ -1173,7 +1001,7 @@
 									style:'circle',
 									callback: pulldownRefresh
 								}
-							}); 
+							});
 						});
 						document.getElementById("content-main").addEventListener("swiperight",function(event){
 								 document.getElementById("showNamePicker").childNodes[0].innerHTML = "品名";
@@ -1230,7 +1058,7 @@
 			}, false);
 
     	$('.bbc-tab-item').on('tap', function() {
-    		  
+
 	        var curr = plus.webview.currentWebview();
 				var wvs = plus.webview.all();
 				for(var i = 0, len = wvs.length; i < len; i++) {
@@ -1558,12 +1386,12 @@
 	      	{
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
 	      		rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
-	      		
+
 	      	}
-					
+
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
-					
+
 					//placePikerDataArr=rs.data.list;
 					//$('#item'+fl_new_id+'mobile').click();
 					//阻尼系数
@@ -1574,7 +1402,7 @@
 						deceleration:deceleration
 					});*/
 	     });
-	     
+
 	     param1 = {
 	        queryData: {
 	          'method': config.apimethod.goodslist,
@@ -1598,12 +1426,12 @@
 	        },
 	        method: 'GET'
 	     };
-	      $.dataRequest(param1, function(rs1) {  
-    
+	      $.dataRequest(param1, function(rs1) {
+
           	placePikerDataArr=rs1.data.list;
 					//placePikerDataArr1=rs1.data.list;
-      
-					
+
+
 	     });
 			}
 function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat_all_id)
@@ -1674,9 +1502,9 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
 	      	{
 	      		rs.data.list[i].price = parseInt(rs.data.list[i].price);
 	      		rs.data.list[i].price_accept = parseInt(rs.data.list[i].price_accept);
-	      		
+
 	      	}
-					
+
 	      	var result = template('filters_center_list', rs.data);
 					$('#item'+fl_new_id+'mobile ul').html(result);
 
@@ -1693,7 +1521,7 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
 			}
 			function GetContentListNew(page_index,ul_obj,self_obj,pm_id,guige,cd_new_id,jgk_new_id)
 			{
-				
+
 				var search = "";
 				var all = "";
 				var pm = "";
@@ -1803,7 +1631,7 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
       //构造规格combobox
       function GetGGList(search_pro_id)
       {
-      	
+
 	      var param_gg = {
 	        queryData: {
 	          'method': config.apimethod.filteritems,
@@ -1948,9 +1776,9 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
       		lv1Cats:left_content_list
       	};
 
-				result = template('filters_left_content', left_content_obj);
-				$('.left-side-content-detail').html(result);
-				//mui('.left-side-content-detail').scroll();
+		result = template('filters_left_content', left_content_obj);
+		$('.left-side-content-detail').html(result);
+		//mui('.left-side-content-detail').scroll();
       }
 
       function addFly(event) {
@@ -2108,47 +1936,33 @@ function GetContentList1(fl_new_id,pm_id,guige,cd_new_id,jgk_new_id,page_new,cat
 
     <script type="text/html" id="filters_left_content">
     	<ul>
-    	<%
-    		for(var i = 0;i < lv1Cats.length;i++)
-    		{%>
-    			<li class="left-side-content-detail-li">
-						<div class="left-side-content-detail-nav">
-    					<%=lv1Cats[i].cat_name%>
-    				</div>
-    				<div class="left-side-content-detail-list">
-		    			<ul>
-		    			<%
-			    			for(var j = 0;j < lv1Cats[i].lv3.length;j++)
-								{
-									if(lv1Cats[i].lv3[j].is_select == 0)
-									{%>
-										<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>">
-		    							<%=lv1Cats[i].lv3[j].cat_name%>
-		    						</li>
-		    						<%
-									}else
-									{
-										%>
-										<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>" class="left-side-content-detail-active">
-		    							<%=lv1Cats[i].lv3[j].cat_name%>
-		    						</li>
-		    						<%
-									}
-								}
-								if(lv1Cats[i].lv3.length%2!=0)
-								{%>
-									<li>
-	    							&nbsp;
-	    						</li>
-								<%
-								}
-							%>
-							</ul>
-						</div>
-    			</li>
-    			<%
-    		}
-    	%>
+    	<%for(var i = 0;i < lv1Cats.length;i++){%>
+			<li class="left-side-content-detail-li">
+				<div class="left-side-content-detail-nav">
+					<%=lv1Cats[i].cat_name%>
+				</div>
+				<div class="left-side-content-detail-list">
+	    			<ul>
+	    			<%for(var j = 0;j < lv1Cats[i].lv3.length;j++){
+						if(lv1Cats[i].lv3[j].is_select == 0){%>
+							<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>">
+	    						<%=lv1Cats[i].lv3[j].cat_name%>
+	    					</li>
+	    				<%}else{%>
+							<li data-cid="<%=lv1Cats[i].lv3[j].cat_id%>" class="left-side-content-detail-active">
+	    						<%=lv1Cats[i].lv3[j].cat_name%>
+	    					</li>
+	    				<%}
+					}
+					if(lv1Cats[i].lv3.length%2!=0){%>
+						<li>
+							&nbsp;
+						</li>
+					<%}%>
+					</ul>
+				</div>
+			</li>
+    	<%}%>
     	</ul>
     </script>
 
